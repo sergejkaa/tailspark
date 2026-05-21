@@ -18,15 +18,15 @@
       ],
       "name": "Animated Wave Divider",
       "settings": {
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-1",
         "color_band": 60,
-        "wave1_color": "#ff6700",
+        "wave1_color": "#333333",
         "wave1_opacity": 28,
         "front_wave_solid_floor": true,
-        "wave2_color": "#f6e7dc",
-        "wave2_opacity": 30,
+        "wave2_color": "#333333",
+        "wave2_opacity": 100,
         "wave2_solid_floor": false,
-        "wave3_color": "#5ba870",
+        "wave3_color": "#333333",
         "wave3_opacity": 40,
         "wave3_solid_floor": false,
         "wave4_color": "#333333",
@@ -45,14 +45,14 @@
           "type": "link_list",
           "settings": {
             "heading": "NAVIGATION",
-            "menu": "footer-navigation"
+            "menu": ""
           }
         },
         "link_list_XQLArY": {
           "type": "link_list",
           "settings": {
             "heading": "CUSTOMER CARE",
-            "menu": "customer-care"
+            "menu": ""
           }
         },
         "brand_information_978yXB": {
