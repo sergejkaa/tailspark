@@ -166,7 +166,7 @@
         "product_nNAA4B": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "tailspark-hip-joint",
             "subtitle": "Short product benefit description",
             "card_bg": "#FFF5F0",
             "icon_1_preset": "none",
