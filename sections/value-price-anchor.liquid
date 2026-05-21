@@ -1,0 +1,537 @@
+{%- comment -%}
+  sections/value-price-anchor.liquid
+  Mobile-first Price Anchor / Value Stack
+  Uses theme color scheme (foreground/background) via CSS variables.
+{%- endcomment -%}
+
+<section class="price-anchor color-{{ section.settings.color_scheme }}" style="--pa-scale: {{ section.settings.font_scale | divided_by: 100.0 }}; padding-top: {{ section.settings.padding_top | default: 44 }}px; padding-bottom: {{ section.settings.padding_bottom | default: 44 }}px;">
+  <div class="price-anchor__inner">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="price-anchor__heading {{ section.settings.heading_size | default: 'h2' }}">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="price-anchor__subheading">
+        {{ section.settings.subheading }}
+      </p>
+    {% endif %}
+
+    <div class="price-anchor__list" role="list">
+      {% for block in section.blocks %}
+        <div class="price-anchor__item" role="listitem" {{ block.shopify_attributes }}>
+          <span class="item-title">{{ block.settings.title }}</span>
+          <span class="item-value{% if block.settings.value_striked %} is-striked{% endif %}">{{ block.settings.value }}</span>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="price-anchor__divider" aria-hidden="true"></div>
+
+    <div class="price-anchor__totals">
+      <div class="price-anchor__total">
+        <span class="total-label">{{ section.settings.total_label }}</span>
+        <span class="total-value">{{ section.settings.total_value }}</span>
+      </div>
+
+      <div class="price-anchor__price">
+        <div class="price-line">
+          <span class="price-label">{{ section.settings.price_label }}</span>
+          <span class="price-value{% if section.settings.price_blink %} is-animated{% endif %}">{{ section.settings.actual_price }}</span>
+        </div>
+
+        {% if section.settings.show_timer %}
+          <div class="price-timer" id="price-timer-{{ section.id }}" data-mode="{{ section.settings.timer_mode }}" data-hours="{{ section.settings.timer_hours }}" data-end="{{ section.settings.timer_end | escape }}">
+            {% if section.settings.timer_label != blank %}
+              <span class="timer-label">{{ section.settings.timer_label }}</span>
+            {% endif %}
+            <span class="timer-value" aria-live="polite">--:--:--</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.payment_note != blank %}
+      <p class="price-anchor__note">
+        {{ section.settings.payment_note }}
+      </p>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .price-anchor {
+    --pa-scale: 1;
+    padding-left: 18px;
+    padding-right: 18px;
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+  }
+
+  .price-anchor__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .price-anchor__heading {
+    line-height: 1.15;
+    margin: 0 0 10px;
+  }
+
+  .price-anchor__subheading {
+    font-size: calc(15px * var(--pa-scale));
+    line-height: 1.5;
+    opacity: 0.85;
+    margin: 0 auto 26px;
+    max-width: 52ch;
+  }
+
+  .price-anchor__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+  }
+
+  .price-anchor__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--color-foreground), 0.12);
+    background: rgba(var(--color-foreground), 0.03);
+    text-align: left;
+  }
+
+  .item-title {
+    font-size: calc(14px * var(--pa-scale));
+    line-height: 1.35;
+    opacity: 0.95;
+  }
+
+  .item-value {
+    font-size: calc(14px * var(--pa-scale));
+    line-height: 1.35;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .item-value.is-striked {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  .price-anchor__divider {
+    height: 1px;
+    margin: 22px 0 18px;
+    background: rgba(var(--color-foreground), 0.14);
+  }
+
+  .price-anchor__totals {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .price-anchor__total {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .price-anchor__price {
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+  }
+
+  .total-label,
+  .price-label {
+    font-size: calc(14px * var(--pa-scale));
+    opacity: 0.85;
+  }
+
+  .total-value {
+    font-size: calc(18px * var(--pa-scale));
+    text-decoration: line-through;
+    opacity: 0.6;
+    font-weight: 600;
+  }
+
+  .price-value {
+    font-size: calc(26px * var(--pa-scale));
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    {% if section.settings.price_value_color != blank %}color: {{ section.settings.price_value_color }};{% endif %}
+  }
+
+  .price-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .price-value.is-animated {
+    animation: pa-price-pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes pa-price-pulse {
+    0% { opacity: 1; text-shadow: 0 0 0 rgba(var(--color-foreground), 0.1); }
+    50% { opacity: 0.45; text-shadow: 0 0 18px rgba(var(--color-foreground), 0.28); }
+    100% { opacity: 1; text-shadow: 0 0 0 rgba(var(--color-foreground), 0.1); }
+  }
+
+  .price-timer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 2px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(var(--color-foreground), 0.06);
+    font-size: calc(14px * var(--pa-scale));
+    font-weight: 600;
+  }
+
+  .timer-label {
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  .price-anchor__note {
+    margin: 12px auto 0;
+    font-size: calc(14px * var(--pa-scale));
+    line-height: 1.45;
+    opacity: 0.8;
+    max-width: 60ch;
+  }
+
+  @media (min-width: 768px) {
+    .price-anchor {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    .price-anchor__inner {
+      max-width: 920px;
+    }
+
+    .price-anchor__heading {
+      margin-bottom: 12px;
+    }
+
+    .price-anchor__subheading {
+      font-size: calc(16px * var(--pa-scale));
+      margin-bottom: 30px;
+    }
+
+    .price-anchor__list {
+      gap: 14px;
+    }
+
+    .price-anchor__item {
+      padding: 14px 16px;
+      border-radius: 14px;
+    }
+
+    .item-title,
+    .item-value {
+      font-size: calc(15px * var(--pa-scale));
+    }
+
+    .price-value {
+      font-size: calc(30px * var(--pa-scale));
+    }
+  }
+</style>
+
+{% if section.settings.show_timer %}
+  <script>
+    (() => {
+      const timerEl = document.getElementById('price-timer-{{ section.id }}');
+      if (!timerEl) return;
+
+      const valueEl = timerEl.querySelector('.timer-value');
+      const mode = timerEl.getAttribute('data-mode') || 'fixed_date';
+      const hours = parseFloat(timerEl.getAttribute('data-hours')) || 0;
+      const targetRaw = timerEl.getAttribute('data-end');
+
+      if (!valueEl) return;
+
+      const completeLabel = {{ section.settings.timer_complete_label | json }};
+      const parseTarget = () => {
+        if (mode === 'relative_hours') {
+          return new Date(Date.now() + hours * 3600 * 1000);
+        }
+        if (mode === 'daily_reset') {
+          const now = new Date();
+          const target = new Date(now);
+          target.setHours(23, 59, 59, 999);
+          if (target <= now) target.setDate(target.getDate() + 1);
+          return target;
+        }
+        return new Date(targetRaw);
+      };
+
+      let target = parseTarget();
+      if (isNaN(target.getTime())) {
+        valueEl.textContent = '--:--:--';
+        return;
+      }
+
+      const updateTimer = () => {
+        const now = new Date();
+        const diff = target - now;
+
+        if (diff <= 0) {
+          if (mode === 'relative_hours') {
+            target = parseTarget();
+            return updateTimer();
+          }
+          valueEl.textContent = completeLabel || '00:00:00';
+          clearInterval(interval);
+          return;
+        }
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hoursLeft = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        if (days > 0) {
+          valueEl.textContent = `${days}d ` + [hoursLeft, minutes, seconds]
+            .map(unit => String(unit).padStart(2, '0'))
+            .join(':');
+        } else {
+          valueEl.textContent = [hoursLeft, minutes, seconds]
+            .map(unit => String(unit).padStart(2, '0'))
+            .join(':');
+        }
+      };
+
+      updateTimer();
+      const interval = setInterval(updateTimer, 1000);
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "💜 Price Value Stack",
+  "settings": [
+    {
+      "type": "range",
+      "id": "font_scale",
+      "label": "Font scale (%)",
+      "min": 80,
+      "max": 160,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h2",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h3", "label": "Large" },
+        { "value": "h4", "label": "Extra large" },
+        { "value": "h5", "label": "Extra extra large" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 44
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Total Value vs. Your Investment"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A clear breakdown of what's included inside the Blueprint."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "background-1"
+    },
+    {
+      "type": "text",
+      "id": "total_label",
+      "label": "Total label",
+      "default": "Total Value"
+    },
+    {
+      "type": "text",
+      "id": "total_value",
+      "label": "Total value",
+      "default": "$2,441"
+    },
+    {
+      "type": "text",
+      "id": "price_label",
+      "label": "Price label",
+      "default": "Today"
+    },
+    {
+      "type": "text",
+      "id": "actual_price",
+      "label": "Actual price",
+      "default": "$149.99"
+    },
+    {
+      "type": "color",
+      "id": "price_value_color",
+      "label": "Price text color",
+      "default": "#111111"
+    },
+    {
+      "type": "checkbox",
+      "id": "price_blink",
+      "label": "Animate price pulse",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_timer",
+      "label": "Show countdown under price",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "timer_mode",
+      "label": "Timer mode",
+      "default": "fixed_date",
+      "options": [
+        {
+          "value": "relative_hours",
+          "label": "Evergreen hours (always N hours from visit)"
+        },
+        {
+          "value": "fixed_date",
+          "label": "Fixed date/time"
+        },
+        {
+          "value": "daily_reset",
+          "label": "Resets daily at midnight"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "timer_hours",
+      "label": "Hours for evergreen mode",
+      "min": 3,
+      "max": 240,
+      "step": 3,
+      "unit": "hr",
+      "default": 24
+    },
+    {
+      "type": "text",
+      "id": "timer_label",
+      "label": "Timer label",
+      "default": "Offer ends in"
+    },
+    {
+      "type": "text",
+      "id": "timer_end",
+      "label": "Fixed date target (YYYY-MM-DDTHH:MM:SS)",
+      "default": "2025-12-31T23:59:59"
+    },
+    {
+      "type": "text",
+      "id": "timer_complete_label",
+      "label": "Text when timer completes",
+      "default": "Offer expired"
+    },
+    {
+      "type": "text",
+      "id": "payment_note",
+      "label": "Payment note",
+      "default": "One-time payment. No subscriptions. Instant access."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_item",
+      "name": "💜 Value item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Item title",
+          "default": "Financial Clarity Toolkit"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Item value",
+          "default": "$499"
+        },
+        {
+          "type": "checkbox",
+          "id": "value_striked",
+          "label": "Strike through this price",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "💜 Price Anchor / Value Stack",
+      "blocks": [
+        {
+          "type": "value_item"
+        },
+        {
+          "type": "value_item"
+        },
+        {
+          "type": "value_item"
+        },
+        {
+          "type": "value_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

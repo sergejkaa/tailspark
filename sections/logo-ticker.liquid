@@ -1,0 +1,512 @@
+{% comment %}
+  Logo/Text ticker - infinite loop for Dawn
+  - Supports per-block content type: logo or text
+  - Stable mobile animation with runtime cloning based on viewport width
+{% endcomment %}
+
+{% assign ticker_item_count = 0 %}
+{% capture ticker_base_list %}
+  <ul class="logo-ticker__list logo-ticker__list--base" data-ticker-base>
+    {% for block in section.blocks %}
+      {% if block.type == 'logo' %}
+        {% assign item_type = block.settings.item_type | default: 'logo' %}
+
+        {% if item_type == 'text' and block.settings.text != blank %}
+          {% assign ticker_item_count = ticker_item_count | plus: 1 %}
+          <li
+            class="logo-ticker__item logo-ticker__item--text"
+            style="
+              --item-text-size: {{ block.settings.text_size | default: 22 }}px;
+              --item-text-weight: {{ block.settings.text_weight | default: '700' }};
+              --item-text-color: {{ block.settings.text_color | default: '#111111' }};
+              --item-text-transform: {% if block.settings.text_uppercase %}uppercase{% else %}none{% endif %};
+              --item-text-letter-spacing: {{ block.settings.text_letter_spacing | default: 0 }}px;
+            "
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.link != blank %}
+              <a
+                href="{{ block.settings.link }}"
+                class="logo-ticker__link"
+                {% if block.settings.target_blank %}target="_blank" rel="noopener"{% endif %}
+              >
+            {% endif %}
+            <span class="logo-ticker__text">{{ block.settings.text | escape }}</span>
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+          </li>
+        {% elsif item_type == 'logo' and block.settings.image != blank %}
+          {% assign ticker_item_count = ticker_item_count | plus: 1 %}
+          {% assign item_logo_width = block.settings.max_width | default: 180 %}
+          <li
+            class="logo-ticker__item logo-ticker__item--logo"
+            style="--item-logo-width: {{ item_logo_width }}px;"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.link != blank %}
+              <a
+                href="{{ block.settings.link }}"
+                class="logo-ticker__link"
+                {% if block.settings.target_blank %}target="_blank" rel="noopener"{% endif %}
+              >
+            {% endif %}
+            {% capture image_sizes %}(max-width: 900px) 40vw, {{ item_logo_width }}px{% endcapture %}
+            {{ block.settings.image
+              | image_url: width: 700
+              | image_tag:
+                loading: 'lazy',
+                widths: '120,180,240,360,480,600,700',
+                sizes: image_sizes,
+                class: 'logo-ticker__img',
+                alt: block.settings.alt | default: 'Logo' | escape
+            }}
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endcapture %}
+
+<section
+  id="logo-ticker-{{ section.id }}"
+  class="logo-ticker color-{{ section.settings.color_scheme }}"
+  style="
+    --ticker-speed: {{ section.settings.speed | default: 16 }}s;
+    --ticker-gap: {{ section.settings.gap | default: 36 }}px;
+    --pt: {{ section.settings.padding_top | default: 32 }}px;
+    --pb: {{ section.settings.padding_bottom | default: 32 }}px;
+  "
+>
+  <div class="logo-ticker__inner {% if section.settings.constrain_width %}page-width{% endif %}">
+    <div class="logo-ticker__viewport" data-ticker-viewport aria-label="Ticker carousel" role="region">
+      {% if ticker_item_count > 0 %}
+        <div class="logo-ticker__track logo-ticker__track--ready" data-ticker-track>
+          {{ ticker_base_list }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <style>
+    #logo-ticker-{{ section.id }} {
+      padding-top: var(--pt);
+      padding-bottom: var(--pb);
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__viewport {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__track {
+      display: flex;
+      gap: var(--ticker-gap);
+      width: max-content;
+      animation: logo-ticker-marquee var(--ticker-speed) linear infinite;
+      animation-play-state: paused;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__track.logo-ticker__track--ready {
+      animation-play-state: running;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      #logo-ticker-{{ section.id }}:hover .logo-ticker__track {
+        animation-play-state: paused;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #logo-ticker-{{ section.id }} .logo-ticker__track {
+        animation: none;
+      }
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__list {
+      display: flex;
+      align-items: center;
+      gap: var(--ticker-gap);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      margin: 0;
+      min-height: {{ section.settings.max_height | default: 38 }}px;
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__img {
+      display: block;
+      height: auto;
+      width: auto;
+      max-height: {{ section.settings.max_height | default: 38 }}px;
+      max-width: min(100%, var(--item-logo-width, 180px));
+      {% if section.settings.dim %}filter: grayscale(100%) opacity(0.7);{% else %}filter: none;{% endif %}
+      transition: transform .2s ease, filter .2s ease;
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__text {
+      display: inline-block;
+      font-size: var(--item-text-size, 22px);
+      font-weight: var(--item-text-weight, 700);
+      color: var(--item-text-color, currentColor);
+      text-transform: var(--item-text-transform, none);
+      letter-spacing: var(--item-text-letter-spacing, 0);
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    #logo-ticker-{{ section.id }} .logo-ticker__link:hover .logo-ticker__img,
+    #logo-ticker-{{ section.id }} .logo-ticker__item:hover .logo-ticker__img {
+      transform: scale(1.03);
+      filter: none;
+    }
+
+    @keyframes logo-ticker-marquee {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(calc(-1 * var(--ticker-shift, 50%)), 0, 0); }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const sectionId = 'logo-ticker-{{ section.id }}';
+      const sectionEl = document.getElementById(sectionId);
+      if (!sectionEl) return;
+
+      const viewportEl = sectionEl.querySelector('[data-ticker-viewport]');
+      const trackEl = sectionEl.querySelector('[data-ticker-track]');
+      const baseListEl = sectionEl.querySelector('[data-ticker-base]');
+      if (!viewportEl || !trackEl || !baseListEl) return;
+
+      let frameId = null;
+      let resizeObserver = null;
+
+      const rebuildTicker = () => {
+        trackEl.querySelectorAll('.logo-ticker__list--generated').forEach((node) => node.remove());
+
+        const listWidth = baseListEl.scrollWidth;
+        const viewportWidth = viewportEl.clientWidth;
+        const gapValue = window.getComputedStyle(trackEl).columnGap || window.getComputedStyle(trackEl).gap || '0';
+        const gap = Number.parseFloat(gapValue) || 0;
+
+        if (!listWidth || !viewportWidth) {
+          trackEl.classList.remove('logo-ticker__track--ready');
+          return;
+        }
+
+        const shift = listWidth + gap;
+        trackEl.style.setProperty('--ticker-shift', `${shift}px`);
+
+        const minLists = Math.max(2, Math.ceil((viewportWidth + gap) / shift) + 1);
+        for (let i = 1; i < minLists; i += 1) {
+          const clone = baseListEl.cloneNode(true);
+          clone.classList.remove('logo-ticker__list--base');
+          clone.classList.add('logo-ticker__list--clone', 'logo-ticker__list--generated');
+          clone.removeAttribute('data-ticker-base');
+          clone.setAttribute('aria-hidden', 'true');
+          clone.querySelectorAll('[id]').forEach((node) => node.removeAttribute('id'));
+
+          clone.querySelectorAll('[data-shopify-editor-block]').forEach((node) => {
+            node.removeAttribute('data-shopify-editor-block');
+          });
+
+          clone.querySelectorAll('a').forEach((linkEl) => {
+            linkEl.setAttribute('tabindex', '-1');
+            linkEl.setAttribute('aria-hidden', 'true');
+          });
+
+          trackEl.appendChild(clone);
+        }
+
+        trackEl.classList.add('logo-ticker__track--ready');
+      };
+
+      const queueRebuild = () => {
+        if (frameId) window.cancelAnimationFrame(frameId);
+        frameId = window.requestAnimationFrame(rebuildTicker);
+      };
+
+      queueRebuild();
+
+      window.addEventListener('resize', queueRebuild, { passive: true });
+      window.addEventListener('orientationchange', queueRebuild, { passive: true });
+
+      if ('ResizeObserver' in window) {
+        resizeObserver = new ResizeObserver(queueRebuild);
+        resizeObserver.observe(viewportEl);
+        resizeObserver.observe(baseListEl);
+      }
+
+      baseListEl.querySelectorAll('img').forEach((imgEl) => {
+        if (!imgEl.complete) {
+          imgEl.addEventListener('load', queueRebuild, { once: true });
+          imgEl.addEventListener('error', queueRebuild, { once: true });
+        }
+      });
+
+      document.addEventListener('shopify:block:select', (event) => {
+        if (sectionEl.contains(event.target)) queueRebuild();
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "💜 Logo ticker (infinite)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "constrain_width",
+      "label": "Constrain to page width",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 2,
+      "max": 102,
+      "step": 1,
+      "unit": "s",
+      "label": "Scroll duration (lower = faster)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 8,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap between items",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "max_height",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Max logo height",
+      "default": 38
+    },
+    {
+      "type": "checkbox",
+      "id": "dim",
+      "label": "Make logos gray/soft by default",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "💜 Ticker item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "item_type",
+          "label": "Content type",
+          "default": "logo",
+          "options": [
+            {
+              "value": "logo",
+              "label": "Logo image"
+            },
+            {
+              "value": "text",
+              "label": "Text"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text content",
+          "default": "Fast Shipping"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "min": 12,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "label": "Text size",
+          "default": 22
+        },
+        {
+          "type": "select",
+          "id": "text_weight",
+          "label": "Text weight",
+          "default": "700",
+          "options": [
+            {
+              "value": "400",
+              "label": "400 Regular"
+            },
+            {
+              "value": "500",
+              "label": "500 Medium"
+            },
+            {
+              "value": "600",
+              "label": "600 Semibold"
+            },
+            {
+              "value": "700",
+              "label": "700 Bold"
+            },
+            {
+              "value": "800",
+              "label": "800 Extra Bold"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "text_letter_spacing",
+          "min": 0,
+          "max": 8,
+          "step": 1,
+          "unit": "px",
+          "label": "Text letter spacing",
+          "default": 0
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#111111"
+        },
+        {
+          "type": "checkbox",
+          "id": "text_uppercase",
+          "label": "Uppercase text",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "default": "Brand logo"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "min": 80,
+          "max": 260,
+          "step": 10,
+          "unit": "px",
+          "label": "Max logo width (per item)",
+          "default": 180
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Optional link"
+        },
+        {
+          "type": "checkbox",
+          "id": "target_blank",
+          "label": "Open link in new tab",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "max_blocks": 40,
+  "presets": [
+    {
+      "name": "💜 Logo ticker (infinite)",
+      "category": "Media",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "item_type": "text",
+            "text": "Fast Shipping"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "item_type": "text",
+            "text": "24/7 Support"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "item_type": "text",
+            "text": "Secure Checkout"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "item_type": "text",
+            "text": "Easy Returns"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

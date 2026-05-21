@@ -1,0 +1,1604 @@
+{%- liquid
+  assign script_only = script_only | default: false
+  assign bar_enabled = settings.free_shipping_bar_enabled
+  assign goal_amount = settings.free_shipping_goal | default: 50
+  assign goal_cents = goal_amount | times: 100
+  assign goal_cents = goal_cents | default: 5000
+
+  if goal_cents <= 0
+    assign goal_cents = 1
+  endif
+
+  assign total_cents = cart.total_price | default: 0
+  assign progress = total_cents | times: 100 | divided_by: goal_cents
+
+  if progress > 100
+    assign progress = 100
+  endif
+
+  assign remaining_cents = goal_cents | minus: total_cents
+  if remaining_cents < 0
+    assign remaining_cents = 0
+  endif
+
+  assign unlocked = false
+  if total_cents >= goal_cents
+    assign unlocked = true
+  endif
+
+  assign fsb_from = settings.free_shipping_bar_gradient_from | default: '#00c6ff'
+  assign fsb_to = settings.free_shipping_bar_gradient_to | default: '#0072ff'
+  assign fsb_success = settings.free_shipping_bar_success | default: '#10b981'
+  assign fsb_progress_glow_color = settings.free_shipping_progress_glow_color | default: '#10b981'
+  assign fsb_progress_glow_soft = fsb_progress_glow_color | color_modify: 'alpha', 0.18
+  assign fsb_progress_glow_strong = fsb_progress_glow_color | color_modify: 'alpha', 0.32
+  assign fsb_background = settings.free_shipping_bar_background | default: '#171b24'
+  assign fsb_text_color = settings.free_shipping_bar_text_color | default: '#f8fafc'
+  assign fsb_border_color = settings.free_shipping_bar_border_color | default: '#94a3b8'
+  assign fsb_border_color_alpha = fsb_border_color | color_modify: 'alpha', 0.28
+  assign fsb_shadow_enabled = settings.free_shipping_shadow_enable
+  assign fsb_shadow_color = settings.free_shipping_shadow_color | default: '#020617'
+  assign fsb_shadow_strength = settings.free_shipping_shadow_strength | default: 52 | plus: 0
+  assign fsb_shadow_enabled_numeric = 1
+  if fsb_shadow_enabled == blank
+    assign fsb_shadow_enabled = true
+  endif
+  if fsb_shadow_enabled != true
+    assign fsb_shadow_enabled_numeric = 0
+  endif
+  if fsb_shadow_strength < 0
+    assign fsb_shadow_strength = 0
+  endif
+  if fsb_shadow_strength > 100
+    assign fsb_shadow_strength = 100
+  endif
+  assign fsb_shadow_r = fsb_shadow_color | color_extract: 'red'
+  assign fsb_shadow_g = fsb_shadow_color | color_extract: 'green'
+  assign fsb_shadow_b = fsb_shadow_color | color_extract: 'blue'
+  assign fsb_current_from = '#10b981'
+  assign fsb_current_to = '#34d399'
+  assign upsell_dot_active_color = settings.free_shipping_upsell_dot_color | default: '#0ea5e9'
+  assign upsell_card_background = settings.free_shipping_upsell_card_background | default: '#0f172a'
+  assign upsell_variant_bg_color = settings.free_shipping_upsell_variant_bg_color | default: '#0f172a'
+  assign upsell_variant_text_color = settings.free_shipping_upsell_variant_text_color | default: '#f8fafc'
+  assign upsell_card_border_color = settings.free_shipping_upsell_card_border_color | default: '#94a3b8'
+  assign upsell_card_border_color_alpha = upsell_card_border_color | color_modify: 'alpha', 0.26
+  assign upsell_heading_color = settings.free_shipping_upsell_heading_color | default: '#94a3b8'
+  assign upsell_price_color = settings.free_shipping_upsell_price_color | default: '#94a3b8'
+  assign upsell_arrow_color = settings.free_shipping_upsell_arrow_color | default: '#e2e8f0'
+  assign locked_text = settings.free_shipping_text_locked | default: "You're only %amount% away from free shipping"
+  assign unlocked_text = settings.free_shipping_text_unlocked | default: 'Free shipping unlocked'
+  assign highlight_color = settings.free_shipping_highlight_color | default: '#0284c7'
+  if highlight_color == '#7dd3fc'
+    assign highlight_color = '#0284c7'
+  endif
+-%}
+
+{%- if bar_enabled and script_only != true -%}
+  <div class="free-shipping-wrap" aria-live="polite" role="status">
+    <div
+      class="free-shipping-bar{% if unlocked %} fsb--unlocked{% endif %}"
+      style="
+        --fsb-gradient-from: {{ fsb_from }};
+        --fsb-gradient-to: {{ fsb_to }};
+        --fsb-current-from: {{ fsb_current_from }};
+        --fsb-current-to: {{ fsb_current_to }};
+        --fsb-success: {{ fsb_success }};
+        --fsb-progress-glow-soft: {{ fsb_progress_glow_soft }};
+        --fsb-progress-glow-strong: {{ fsb_progress_glow_strong }};
+        --fsb-bg: {{ fsb_background }};
+        --fsb-bg-unlocked: {{ fsb_background }};
+        --fsb-text: {{ fsb_text_color }};
+        --fsb-border: {{ fsb_border_color_alpha }};
+        --fsb-shadow-enabled: {{ fsb_shadow_enabled_numeric }};
+        --fsb-shadow-r: {{ fsb_shadow_r }};
+        --fsb-shadow-g: {{ fsb_shadow_g }};
+        --fsb-shadow-b: {{ fsb_shadow_b }};
+        --fsb-shadow-strength: {{ fsb_shadow_strength }};
+        --fsb-progress: {{ progress }}%;
+        --fsb-progress-value: {{ progress }}%;
+        --fsb-highlight: {{ highlight_color }};
+        --fsb-upsell-dot-active: {{ upsell_dot_active_color }};
+        --fsb-upsell-card-bg: {{ upsell_card_background }};
+        --fsb-upsell-variant-bg: {{ upsell_variant_bg_color }};
+        --fsb-upsell-variant-text: {{ upsell_variant_text_color }};
+        --fsb-upsell-card-border: {{ upsell_card_border_color_alpha }};
+        --fsb-upsell-heading-color: {{ upsell_heading_color }};
+        --fsb-upsell-price-color: {{ upsell_price_color }};
+        --fsb-upsell-arrow-color: {{ upsell_arrow_color }};
+      "
+      data-progress="{{ progress }}"
+      data-remaining-cents="{{ remaining_cents }}"
+    >
+      <div class="fsb__header">
+        <div class="fsb__text">
+          <p class="fsb__title{% if unlocked %} fsb__title--unlocked{% endif %}">
+            {%- if unlocked -%}
+              {{ unlocked_text }}
+              <span class="fsb__check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l4 4 11-11"/></svg>
+              </span>
+            {%- else -%}
+              {%- capture highlight_html -%}<span class="fsb__highlight" data-target-cents="{{ remaining_cents }}" data-currency="{{ cart.currency.iso_code | default: shop.currency }}">{{ remaining_cents | money_with_currency }}</span>{%- endcapture -%}
+              {{ locked_text | replace: '%amount%', highlight_html }}
+            {%- endif -%}
+          </p>
+        </div>
+      </div>
+
+      <div class="fsb__track" role="presentation">
+        <div class="fsb__track-inner">
+          <div
+            class="fsb__fill{% if unlocked %} fsb__fill--complete{% endif %}"
+            style="width: {{ progress }}%; background: linear-gradient(90deg, #10b981 0%, #34d399 100%); background-color: #10b981;"
+          ></div>
+        </div>
+        {%- unless unlocked -%}
+          <span class="fsb__tip" aria-hidden="true">
+            <svg width="1em" height="1em" viewBox="0 0 511.99 511.99" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <polygon style="fill:#E6E9ED;" points="310.557,373.18 329.649,202.62 420.975,202.527 463.116,264.588 501.303,283.76 501.115,373.18"/>
+              <polygon style="fill:#4FC2E9;" points="457.491,256.291 420.975,202.527 329.649,202.62 323.649,256.291"/>
+              <path style="fill:#E6E9ED;" d="M470.382,256.291l-43.75-64.437l-106.529,0.109l-21.468,191.873h213.121l0.234-106.654L470.382,256.291z M490.475,362.508H322.493l16.688-149.231l76.155-0.078l37.405,55.077l3.109,4.594l4.953,2.484l29.812,14.969L490.475,362.508z"/>
+              <path style="fill:#FC6E51;" d="M319.977,85.201H21.328C9.547,85.201,0,94.748,0,106.529v255.979c0,11.781,9.547,21.328,21.328,21.328h298.634c11.781,0,21.344-9.547,21.344-21.328v-255.98C341.306,94.747,331.759,85.201,319.977,85.201z"/>
+              <rect x="362.645" y="213.244" style="fill:#3BAFDA;" width="21.328" height="43.05"/>
+              <rect x="63.748" y="84.966" style="fill:#E9573F;" width="21.328" height="297.09"/>
+              <rect x="127.995" y="84.966" style="fill:#E9573F;" width="21.328" height="297.09"/>
+              <rect x="192.245" y="84.966" style="fill:#E9573F;" width="21.328" height="297.09"/>
+              <rect x="256.495" y="84.966" style="fill:#E9573F;" width="21.328" height="297.09"/>
+              <circle style="fill:#434A54;" cx="415.965" cy="373.694" r="53.33"/>
+              <circle style="fill:#434A54;" cx="106.655" cy="373.694" r="53.33"/>
+              <path style="fill:#F5F7FA;" d="M405.289,373.695c0,5.891,4.781,10.672,10.672,10.672c5.89,0,10.671-4.781,10.671-10.672s-4.781-10.656-10.671-10.656C410.07,363.039,405.289,367.805,405.289,373.695z"/>
+              <path style="fill:#F5F7FA;" d="M95.982,373.695c0,5.891,4.781,10.672,10.672,10.672c5.891,0,10.656-4.781,10.656-10.672s-4.765-10.656-10.656-10.656C100.763,363.039,95.982,367.805,95.982,373.695z"/>
+              <path style="fill:#ED5564;" d="M511.943,298.51h-21.312c-5.891,0-10.656,4.781-10.656,10.67c0,5.891,4.766,10.656,10.656,10.656h21.265L511.943,298.51z"/>
+            </svg>
+          </span>
+        {%- endunless -%}
+        <div class="fsb__glow"></div>
+      </div>
+
+      {%- liquid
+        assign upsell_limit = settings.free_shipping_upsell_limit | default: 6
+        assign upsell_source_mode = settings.free_shipping_upsell_source | default: 'auto'
+        assign upsell_products = blank
+
+        if upsell_source_mode == 'products' or upsell_source_mode == 'auto'
+          if settings.free_shipping_upsell_products != blank
+            assign upsell_products = settings.free_shipping_upsell_products
+          endif
+        endif
+
+        if upsell_products == blank and upsell_source_mode != 'products' and settings.free_shipping_upsell_collection != blank
+          assign upsell_handle = settings.free_shipping_upsell_collection.handle | default: settings.free_shipping_upsell_collection
+          if upsell_handle != blank and collections[upsell_handle] != blank
+            assign upsell_products = collections[upsell_handle].products
+          elsif settings.free_shipping_upsell_collection.products != blank
+            assign upsell_products = settings.free_shipping_upsell_collection.products
+          endif
+        endif
+      -%}
+
+      {%- if settings.free_shipping_upsell_enable and upsell_products != blank -%}
+        {%- assign cart_product_ids = cart.items | map: 'product_id' -%}
+        {%- assign upsell_heading_text = settings.free_shipping_upsell_heading | default: 'Recommended for you' -%}
+        {%- if upsell_heading_text == 'Add one to unlock free shipping faster' -%}
+          {%- assign upsell_heading_text = 'Recommended for you' -%}
+        {%- endif -%}
+        {%- if upsell_heading_text == 'Add one more item to unlock free shipping' -%}
+          {%- assign upsell_heading_text = 'Recommended for you' -%}
+        {%- endif -%}
+        {%- assign rendered_upsell = 0 -%}
+        {%- capture upsell_items_markup -%}
+          {%- for product in upsell_products -%}
+            {%- assign candidate_product = product -%}
+            {%- if candidate_product.id == blank and all_products[product] != blank -%}
+              {%- assign candidate_product = all_products[product] -%}
+            {%- endif -%}
+            {%- if candidate_product == blank or candidate_product.id == blank -%}{% continue %}{%- endif -%}
+            {%- if candidate_product.available == false -%}{% continue %}{%- endif -%}
+            {%- if settings.free_shipping_upsell_hide_in_cart and unlocked == false and cart_product_ids contains candidate_product.id -%}{% continue %}{%- endif -%}
+              {%- assign first_variant = candidate_product.selected_or_first_available_variant -%}
+              {%- if first_variant == blank -%}{% continue %}{%- endif -%}
+              {%- assign first_variant_increment = first_variant.quantity_rule.increment | default: 1 -%}
+              {%- assign first_variant_min = first_variant.quantity_rule.min | default: 1 -%}
+              {%- assign first_variant_qty = first_variant_increment -%}
+              {%- if first_variant_min > first_variant_qty -%}
+                {%- assign first_variant_qty = first_variant_min -%}
+              {%- endif -%}
+              <div class="fsb-upsell__item" role="listitem">
+                <a class="fsb-upsell__image" href="{{ candidate_product.url }}">
+                  {%- if candidate_product.featured_image -%}
+                  <img
+                    src="{{ candidate_product.featured_image | image_url: width: 120 }}"
+                    alt="{{ candidate_product.featured_image.alt | escape }}"
+                    loading="lazy"
+                    width="54"
+                    height="{{ 54 | divided_by: candidate_product.featured_image.aspect_ratio | ceil }}"
+                    style="object-position: {{ settings.free_shipping_upsell_focus_x | default: 50 }}% {{ settings.free_shipping_upsell_focus_y | default: 50 }}%;"
+                  >
+                {%- else -%}
+                  <span class="fsb-upsell__placeholder">+</span>
+                {%- endif -%}
+              </a>
+              <div class="fsb-upsell__meta">
+                <a class="fsb-upsell__title" href="{{ candidate_product.url }}">{{ candidate_product.title }}</a>
+                <div class="fsb-upsell__price">
+                  {%- if candidate_product.price_varies -%}
+                    From {{ candidate_product.price_min | money }}
+                  {%- else -%}
+                    {{ candidate_product.price | money }}
+                  {%- endif -%}
+                </div>
+                {%- if candidate_product.variants.size > 1 -%}
+                  <select class="fsb-upsell__variant" aria-label="Choose variant">
+                    {%- for variant in candidate_product.variants -%}
+                      <option
+                        value="{{ variant.id }}"
+                        data-price="{{ variant.price | money | escape }}"
+                        data-qty-increment="{{ variant.quantity_rule.increment | default: 1 }}"
+                        data-qty-min="{{ variant.quantity_rule.min | default: 1 }}"
+                        {% if variant.id == first_variant.id %}selected{% endif %}
+                        {% unless variant.available %}disabled{% endunless %}
+                      >
+                        {{ variant.title }}{% unless variant.available %} - Sold out{% endunless %}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                {%- endif -%}
+              </div>
+              <button
+                type="button"
+                class="fsb-upsell__add"
+                data-variant-id="{{ first_variant.id }}"
+                data-quantity="{{ first_variant_qty }}"
+                data-default-label="{{ settings.free_shipping_upsell_button | escape }}"
+                aria-label="{{ settings.free_shipping_upsell_button }} {{ candidate_product.title | escape }}"
+                {% unless first_variant.available %}disabled{% endunless %}
+              >
+                <span class="fsb-upsell__add-icon" aria-hidden="true">+</span>
+                <span class="fsb-upsell__add-text">{{ settings.free_shipping_upsell_button }}</span>
+              </button>
+            </div>
+            {%- assign rendered_upsell = rendered_upsell | plus: 1 -%}
+            {%- if rendered_upsell >= upsell_limit -%}{%- break -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+
+        {%- if rendered_upsell > 0 -%}
+          {%- assign upsell_slides_desktop = settings.free_shipping_upsell_slides_desktop | default: 1.1 | plus: 0 -%}
+          {%- assign upsell_slides_mobile = settings.free_shipping_upsell_slides_mobile | default: 1 | plus: 0 -%}
+          {%- if upsell_slides_desktop < 1 -%}{%- assign upsell_slides_desktop = 1 -%}{%- endif -%}
+          {%- if upsell_slides_mobile < 1 -%}{%- assign upsell_slides_mobile = 1 -%}{%- endif -%}
+          {%- if rendered_upsell == 1 -%}
+            {%- assign upsell_slides_desktop = 1 -%}
+            {%- assign upsell_slides_mobile = 1 -%}
+          {%- endif -%}
+          <div class="fsb-upsell">
+            <div class="fsb-upsell__header">{{ upsell_heading_text }}</div>
+            <div class="fsb-upsell__viewport">
+              <div
+                class="fsb-upsell__slider"
+                role="list"
+                aria-label="{{ upsell_heading_text | escape }}"
+                data-real-count="{{ rendered_upsell }}"
+                style="--fsb-upsell-visible-desktop: {{ upsell_slides_desktop }}; --fsb-upsell-visible-mobile: {{ upsell_slides_mobile }};"
+              >
+                {{ upsell_items_markup }}
+              </div>
+              {%- if rendered_upsell > 1 -%}
+                {%- assign show_upsell_arrows = false -%}
+                {%- if settings.free_shipping_upsell_arrows_desktop or settings.free_shipping_upsell_arrows_mobile -%}
+                  {%- assign show_upsell_arrows = true -%}
+                {%- endif -%}
+                {%- if show_upsell_arrows -%}
+                  <div class="fsb-upsell__controls{% unless settings.free_shipping_upsell_arrows_desktop %} fsb-upsell__controls--hide-desktop{% endunless %}{% unless settings.free_shipping_upsell_arrows_mobile %} fsb-upsell__controls--hide-mobile{% endunless %}">
+                    <button type="button" class="fsb-upsell__arrow fsb-upsell__arrow--prev" data-direction="prev" aria-label="Previous upsell slide">
+                      <span aria-hidden="true">&#8249;</span>
+                    </button>
+                    <button type="button" class="fsb-upsell__arrow fsb-upsell__arrow--next" data-direction="next" aria-label="Next upsell slide">
+                      <span aria-hidden="true">&#8250;</span>
+                    </button>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+            {%- if rendered_upsell > 1 -%}
+              <div class="fsb-upsell__dots" aria-hidden="true">
+                {%- for i in (1..rendered_upsell) -%}
+                  <button
+                    type="button"
+                    class="fsb-upsell__dot{% if forloop.first %} is-active{% endif %}"
+                    data-index="{{ i }}"
+                    aria-label="Go to upsell {{ i }}"
+                  ></button>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <style>
+    .free-shipping-wrap {
+      margin: 2px 0 10px;
+      padding: 0 2px;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+
+    .free-shipping-bar {
+      --fsb-height: 6px;
+      --fsb-radius: 999px;
+      --fsb-border: rgba(148, 163, 184, 0.28);
+      padding: 10px 12px;
+      background: var(--fsb-bg, #171b24);
+      border: 1px solid var(--fsb-border);
+      border-radius: 12px;
+      box-shadow:
+        0
+        calc((3px + (var(--fsb-shadow-strength, 52) * 0.07px)) * var(--fsb-shadow-enabled, 1))
+        calc((8px + (var(--fsb-shadow-strength, 52) * 0.18px)) * var(--fsb-shadow-enabled, 1))
+        calc((-7px - (var(--fsb-shadow-strength, 52) * 0.06px)) * var(--fsb-shadow-enabled, 1))
+        rgba(
+          var(--fsb-shadow-r, 2),
+          var(--fsb-shadow-g, 6),
+          var(--fsb-shadow-b, 23),
+          calc((0.07 + (var(--fsb-shadow-strength, 52) * 0.0032)) * var(--fsb-shadow-enabled, 1))
+        ),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
+      color: var(--fsb-text, #f8fafc);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .free-shipping-bar.fsb--unlocked {
+      background: var(--fsb-bg-unlocked, var(--fsb-bg, #171b24));
+      border-color: var(--fsb-border);
+    }
+
+    .free-shipping-bar .fsb__header {
+      display: block;
+      align-items: center;
+    }
+
+    .free-shipping-bar .fsb__text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .free-shipping-bar .fsb__title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      color: var(--fsb-text, #f8fafc);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      line-height: 1.36;
+      white-space: nowrap;
+      overflow: visible;
+      text-overflow: clip;
+    }
+
+    .free-shipping-bar .fsb__check {
+      display: none;
+      width: 24px;
+      height: 24px;
+      color: #22c55e;
+      background: rgba(16, 185, 129, 0.12);
+      border-radius: 50%;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      padding: 1px;
+      line-height: 1;
+      transform-origin: center;
+      overflow: visible;
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.14);
+      flex-shrink: 0;
+      margin-left: 2px;
+    }
+
+    .free-shipping-bar.fsb--unlocked .fsb__check {
+      display: inline-grid;
+      place-items: center;
+      animation: fsbCheck 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .free-shipping-bar .fsb__highlight {
+      color: var(--fsb-highlight, #0284c7);
+      font-weight: 650;
+      display: inline-block;
+      transition: color 220ms ease, opacity 420ms ease, transform 420ms ease;
+      animation: fsbSwap 420ms ease;
+      white-space: nowrap;
+    }
+
+    .free-shipping-bar .fsb__track {
+      position: relative;
+      width: 100%;
+      height: var(--fsb-height);
+      margin-top: 16px;
+      overflow: visible;
+    }
+
+    .free-shipping-bar .fsb__track-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #334155;
+      border-radius: var(--fsb-radius);
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: inset 0 0 0 1px rgba(226, 232, 240, 0.08);
+    }
+
+    .free-shipping-bar .fsb__track-inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: var(--fsb-progress-value, 0%);
+      border-radius: inherit;
+      background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+      transition: width 950ms cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .free-shipping-bar .fsb__track-inner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: calc(var(--fsb-progress-value, 100%) - 1px);
+      border-radius: 0 var(--fsb-radius) var(--fsb-radius) 0;
+      background:
+        linear-gradient(90deg, rgba(148, 163, 184, 0.44), rgba(148, 163, 184, 0.62)),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.52) 0 8px,
+          rgba(255, 255, 255, 0.14) 8px 16px
+        );
+      background-size: 100% 100%, auto;
+      animation: fsbStripes 1.45s linear infinite;
+      opacity: 0.96;
+      pointer-events: none;
+      z-index: 3;
+      transition: left 950ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: left, background-position;
+    }
+
+    .free-shipping-bar .fsb__fill {
+      display: none !important;
+    }
+
+    .free-shipping-bar .fsb__fill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.32) 50%, rgba(255, 255, 255, 0) 80%);
+      background-size: 180% 100%;
+      background-position: 170% 0;
+      opacity: 0.28;
+      animation: fsbSheen 3.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .free-shipping-bar .fsb__tip {
+      position: absolute;
+      left: clamp(9px, var(--fsb-progress-value), calc(100% - 9px));
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28.8px;
+      line-height: 1;
+      filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.25));
+      z-index: 3;
+      pointer-events: none;
+      transition: left 950ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fsb-upsell {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(148, 163, 184, 0.24);
+      display: grid;
+      gap: 8px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .fsb-upsell__header {
+      font-size: 12px;
+      color: var(--fsb-upsell-heading-color, #94a3b8);
+      letter-spacing: 0.01em;
+    }
+
+    .fsb-upsell__viewport {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      padding: 0 1px 0 0;
+      box-sizing: border-box;
+    }
+
+    .fsb-upsell__slider {
+      --fsb-upsell-gap: 8px;
+      --fsb-upsell-visible-mobile: 1;
+      --fsb-upsell-visible-desktop: 1.1;
+      --fsb-upsell-visible: var(--fsb-upsell-visible-mobile);
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc(
+        (100% - (var(--fsb-upsell-gap) * (var(--fsb-upsell-visible) - 1)))
+        / var(--fsb-upsell-visible)
+      );
+      column-gap: var(--fsb-upsell-gap);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      padding-right: 1px;
+      scroll-padding-left: 0;
+      scroll-padding-right: 1px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      touch-action: pan-x;
+      overscroll-behavior-x: contain;
+    }
+
+    .fsb-upsell__slider[data-real-count='1'] {
+      --fsb-upsell-visible: 1;
+      grid-auto-columns: 100%;
+    }
+
+    .fsb-upsell__slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .fsb-upsell__item {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 10px;
+      background: var(--fsb-upsell-card-bg, rgba(15, 23, 42, 0.6));
+      border: 1px solid var(--fsb-upsell-card-border, rgba(148, 163, 184, 0.26));
+      border-radius: 10px;
+      padding: 4px 18px;
+      min-height: 88px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .fsb-upsell__image,
+    .fsb-upsell__meta,
+    .fsb-upsell__add {
+      align-self: center;
+    }
+
+    .fsb-upsell__image {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(148, 163, 184, 0.18);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .fsb-upsell__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .fsb-upsell__placeholder {
+      color: #cbd5e1;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .fsb-upsell__meta {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+      width: 100%;
+      max-width: 90%;
+      align-content: center;
+    }
+
+    .fsb-upsell__variant {
+      width: 100%;
+      min-height: 28px;
+      margin-top: 2px;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.42);
+      background: var(--fsb-upsell-variant-bg, rgba(15, 23, 42, 0.72));
+      color: var(--fsb-upsell-variant-text, var(--fsb-text, #f8fafc));
+      font-size: 10.5px;
+      line-height: 1.2;
+      padding: 4px 8px;
+      outline: none;
+      transition: border-color 140ms ease, background 140ms ease;
+    }
+
+    .fsb-upsell__variant:focus {
+      border-color: rgba(14, 165, 233, 0.65);
+      background: var(--fsb-upsell-variant-bg, rgba(15, 23, 42, 0.72));
+    }
+
+    .fsb-upsell__variant option {
+      color: var(--fsb-upsell-variant-text, #e2e8f0);
+      background: var(--fsb-upsell-variant-bg, #0f172a);
+    }
+
+    .fsb-upsell__title {
+      color: var(--fsb-text, #f8fafc);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .fsb-upsell__title:hover {
+      text-decoration: underline;
+    }
+
+    .fsb-upsell__price {
+      color: var(--fsb-upsell-price-color, #94a3b8);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .fsb-upsell__add {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 50px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--fsb-text, #f8fafc);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, opacity 160ms ease;
+      white-space: nowrap;
+    }
+
+    .fsb-upsell__add-icon {
+      font-size: 13px;
+      line-height: 1;
+      width: 13px;
+      height: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .fsb-upsell__add-icon svg {
+      width: 13px;
+      height: 13px;
+      display: block;
+    }
+
+    .fsb-upsell__add:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(148, 163, 184, 0.8);
+    }
+
+    .fsb-upsell__add.is-added {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: rgba(52, 211, 153, 0.5);
+      color: #065f46;
+    }
+
+    .fsb-upsell__add:disabled,
+    .fsb-upsell__add.is-loading {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .fsb-upsell__dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .fsb-upsell__controls {
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      right: 2px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .fsb-upsell__arrow {
+      pointer-events: auto;
+      background: none;
+      border: 0;
+      color: var(--fsb-upsell-arrow-color, rgba(226, 232, 240, 0.85));
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      transition: opacity 160ms ease, transform 160ms ease;
+      padding: 0;
+      width: 16px;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(2, 6, 23, 0.8);
+    }
+
+    .fsb-upsell__arrow:hover {
+      opacity: 0.85;
+      transform: scale(1.06);
+    }
+
+    .fsb-upsell__arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .fsb-upsell__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(148, 163, 184, 0.45);
+      padding: 0;
+      cursor: pointer;
+      transition: width 220ms ease, background 220ms ease;
+    }
+
+    .fsb-upsell__dot.is-active {
+      width: 16px;
+      background: var(--fsb-upsell-dot-active, #0ea5e9);
+    }
+
+    .free-shipping-bar .fsb__fill--complete,
+    .free-shipping-bar.fsb--unlocked .fsb__fill {
+      background: linear-gradient(90deg, #10b981, #34d399) !important;
+      width: 100% !important;
+      animation: none;
+      box-shadow: 0 0 0 1px var(--fsb-progress-glow-soft, rgba(16, 185, 129, 0.18)), 0 0 12px var(--fsb-progress-glow-strong, rgba(16, 185, 129, 0.32));
+    }
+
+    .free-shipping-bar.fsb--unlocked .fsb__fill::after {
+      animation: none;
+      opacity: 0.16;
+    }
+
+    .free-shipping-bar.fsb--unlocked .fsb__track-inner::after {
+      opacity: 0;
+      animation: none;
+    }
+
+    .free-shipping-bar .fsb__glow {
+      position: absolute;
+      inset: -40% -20%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.1), transparent 55%);
+      filter: blur(12px);
+      opacity: 0.22;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes fsbCheck {
+      0% {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.12);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fsbSheen {
+      0% {
+        background-position: 170% 0;
+      }
+      100% {
+        background-position: -90% 0;
+      }
+    }
+
+    @keyframes fsbFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes fsbStripes {
+      0% {
+        background-position: 0 0, 0 0;
+      }
+      100% {
+        background-position: 0 0, 22.627px 0;
+      }
+    }
+
+    @keyframes fsbSwap {
+      0% {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .free-shipping-bar {
+        padding: 8px 10px 10px;
+      }
+
+      .free-shipping-bar .fsb__title {
+        font-size: 12px;
+        gap: 5px;
+      }
+
+      .free-shipping-bar .fsb__check {
+        width: 18px;
+        height: 18px;
+      }
+
+      .free-shipping-bar .fsb__highlight {
+        font-size: 12px;
+      }
+
+      .free-shipping-bar .fsb__tip {
+        font-size: 25.2px !important;
+      }
+
+      .fsb-upsell__title {
+        font-size: 11px;
+      }
+
+      .fsb-upsell__price,
+      .fsb-upsell__add {
+        font-size: 10px;
+      }
+
+      .fsb-upsell__variant {
+        font-size: 9.5px;
+      }
+
+      .fsb-upsell__arrow {
+        font-size: 22px;
+      }
+    }
+
+    @media (min-width: 750px) {
+      .fsb-upsell__controls--hide-desktop {
+        display: none;
+      }
+
+      .fsb-upsell__slider {
+        --fsb-upsell-visible: var(--fsb-upsell-visible-desktop);
+        cursor: grab;
+      }
+
+      .fsb-upsell__slider.is-dragging {
+        cursor: grabbing;
+        scroll-snap-type: none;
+        user-select: none;
+      }
+    }
+
+    @media (max-width: 749px) {
+      .fsb-upsell__controls--hide-mobile {
+        display: none;
+      }
+    }
+
+    .cart-drawer .drawer__contents,
+    .cart-drawer .drawer__cart-items-wrapper,
+    .cart-drawer .cart-items {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+  </style>
+{%- endif -%}
+
+{%- if bar_enabled -%}
+  <script>
+    (function () {
+      if (window.__fsbUpsellBound) return;
+      window.__fsbUpsellBound = true;
+
+      function getAllSlides(slider) {
+        return Array.prototype.slice.call(slider.querySelectorAll('.fsb-upsell__item'));
+      }
+
+      function getRealSlides(slider) {
+        return getAllSlides(slider).filter(function (slide) {
+          return !slide.classList.contains('is-clone');
+        });
+      }
+
+      function getActiveRealIndex(slider) {
+        var realSlides = getRealSlides(slider);
+        if (!realSlides.length) return 0;
+
+        var sliderCenter = slider.scrollLeft + slider.clientWidth / 2;
+        var bestIndex = 0;
+        var bestDistance = Infinity;
+
+        realSlides.forEach(function (slide, index) {
+          var center = slide.offsetLeft + slide.offsetWidth / 2;
+          var distance = Math.abs(center - sliderCenter);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+          }
+        });
+
+        return bestIndex;
+      }
+
+      function getSavedUpsellIndex() {
+        var saved = parseInt(window.__fsbUpsellActiveIndex, 10);
+        if (Number.isNaN(saved) || saved < 0) return 0;
+        return saved;
+      }
+
+      function setSavedUpsellIndex(index) {
+        var next = parseInt(index, 10);
+        if (Number.isNaN(next) || next < 0) next = 0;
+        window.__fsbUpsellActiveIndex = next;
+      }
+
+      function moveToRealIndex(slider, index, behavior) {
+        var realSlides = getRealSlides(slider);
+        if (!realSlides.length) return;
+
+        var normalized = ((index % realSlides.length) + realSlides.length) % realSlides.length;
+        slider.scrollTo({
+          left: realSlides[normalized].offsetLeft,
+          behavior: behavior || 'smooth'
+        });
+      }
+
+      function normalizeLoopPosition(slider) {
+        if (slider.getAttribute('data-loop') !== 'true') return;
+
+        var slides = getAllSlides(slider);
+        if (slides.length < 3) return;
+
+        var firstClone = slides[0];
+        var firstReal = slides[1];
+        var lastReal = slides[slides.length - 2];
+        var lastClone = slides[slides.length - 1];
+        var x = slider.scrollLeft;
+        var shift = firstReal.offsetWidth * 0.5;
+
+        if (x <= firstClone.offsetLeft + shift) {
+          slider.scrollLeft = lastReal.offsetLeft;
+        } else if (x >= lastClone.offsetLeft - shift) {
+          slider.scrollLeft = firstReal.offsetLeft;
+        }
+      }
+
+      function updateDots(slider) {
+        var container = slider.closest('.fsb-upsell');
+        var realSlides = getRealSlides(slider);
+        var realIndex = getActiveRealIndex(slider);
+        setSavedUpsellIndex(realIndex);
+        if (!container) return;
+        var isLoop = slider.getAttribute('data-loop') === 'true' && realSlides.length > 1;
+
+        var dots = container.querySelectorAll('.fsb-upsell__dot');
+        dots.forEach(function (dot, idx) {
+          dot.classList.toggle('is-active', idx === realIndex);
+        });
+
+        var prevArrow = container.querySelector('.fsb-upsell__arrow--prev');
+        var nextArrow = container.querySelector('.fsb-upsell__arrow--next');
+        if (prevArrow) prevArrow.disabled = !isLoop && realIndex <= 0;
+        if (nextArrow) nextArrow.disabled = !isLoop && realIndex >= Math.max(realSlides.length - 1, 0);
+      }
+
+      function waitForSliderLayout(slider, callback) {
+        var tries = 0;
+
+        function check() {
+          var firstReal = slider.querySelector('.fsb-upsell__item:not(.is-clone)');
+          if (firstReal && slider.clientWidth > 20 && firstReal.getBoundingClientRect().width > 20) {
+            callback();
+            return;
+          }
+
+          tries += 1;
+          if (tries < 80) {
+            setTimeout(check, 40);
+          } else {
+            callback();
+          }
+        }
+
+        check();
+      }
+
+      function bindUpsellSliders(scope) {
+        var root = scope || document;
+        var sliders = root.querySelectorAll('.fsb-upsell__slider');
+
+        sliders.forEach(function (slider) {
+          if (slider.dataset.fsbBound === 'true') return;
+          slider.dataset.fsbBound = 'true';
+
+          var initialItems = getAllSlides(slider);
+          if (initialItems.length > 1) {
+            var firstClone = initialItems[0].cloneNode(true);
+            var lastClone = initialItems[initialItems.length - 1].cloneNode(true);
+            firstClone.classList.add('is-clone');
+            lastClone.classList.add('is-clone');
+            slider.insertBefore(lastClone, slider.firstChild);
+            slider.appendChild(firstClone);
+            slider.setAttribute('data-loop', 'true');
+          } else {
+            slider.setAttribute('data-loop', 'false');
+          }
+
+          var dragState = {
+            active: false,
+            pointerId: null,
+            startX: 0,
+            startScrollLeft: 0
+          };
+          var scrollSettleTimer = null;
+
+          function scheduleNormalizeAfterScroll() {
+            if (slider.getAttribute('data-loop') !== 'true') return;
+            if (dragState.active) return;
+            if (scrollSettleTimer) {
+              clearTimeout(scrollSettleTimer);
+            }
+            scrollSettleTimer = setTimeout(function () {
+              normalizeLoopPosition(slider);
+              updateDots(slider);
+            }, 90);
+          }
+
+          waitForSliderLayout(slider, function () {
+            moveToRealIndex(slider, getSavedUpsellIndex(), 'auto');
+            normalizeLoopPosition(slider);
+            updateDots(slider);
+          });
+
+          slider.addEventListener('scroll', function () {
+            window.requestAnimationFrame(function () {
+              if (!dragState.active) {
+                updateDots(slider);
+              }
+            });
+            scheduleNormalizeAfterScroll();
+          }, { passive: true });
+
+          var dots = slider.closest('.fsb-upsell') ? slider.closest('.fsb-upsell').querySelectorAll('.fsb-upsell__dot') : [];
+          dots.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+              var targetIndex = parseInt(dot.getAttribute('data-index'), 10) - 1;
+              if (Number.isNaN(targetIndex)) return;
+              setSavedUpsellIndex(targetIndex);
+              moveToRealIndex(slider, targetIndex, 'smooth');
+            });
+          });
+
+          var container = slider.closest('.fsb-upsell');
+          if (container) {
+            var arrows = container.querySelectorAll('.fsb-upsell__arrow');
+            arrows.forEach(function (arrow) {
+              arrow.addEventListener('click', function () {
+                var direction = arrow.getAttribute('data-direction') === 'prev' ? -1 : 1;
+                var realSlides = getRealSlides(slider);
+                var currentIndex = getActiveRealIndex(slider);
+                var nextIndex = currentIndex + direction;
+                var allSlides = getAllSlides(slider);
+                var isLoop = slider.getAttribute('data-loop') === 'true' && realSlides.length > 1;
+
+                if (isLoop && direction > 0 && currentIndex >= realSlides.length - 1 && allSlides.length > 0) {
+                  setSavedUpsellIndex(0);
+                  slider.scrollTo({
+                    left: allSlides[allSlides.length - 1].offsetLeft,
+                    behavior: 'smooth'
+                  });
+                  scheduleNormalizeAfterScroll();
+                  return;
+                }
+
+                if (isLoop && direction < 0 && currentIndex <= 0 && allSlides.length > 0) {
+                  setSavedUpsellIndex(realSlides.length - 1);
+                  slider.scrollTo({
+                    left: allSlides[0].offsetLeft,
+                    behavior: 'smooth'
+                  });
+                  scheduleNormalizeAfterScroll();
+                  return;
+                }
+
+                setSavedUpsellIndex(nextIndex);
+                moveToRealIndex(slider, nextIndex, 'smooth');
+                scheduleNormalizeAfterScroll();
+              });
+            });
+          }
+
+          slider.addEventListener('pointerdown', function (event) {
+            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            if (event.target.closest('a, button, select, input, label')) return;
+
+            dragState.active = true;
+            dragState.pointerId = event.pointerId;
+            dragState.startX = event.clientX;
+            dragState.startScrollLeft = slider.scrollLeft;
+            slider.classList.add('is-dragging');
+
+            try {
+              slider.setPointerCapture(event.pointerId);
+            } catch (error) {
+              dragState.active = false;
+              slider.classList.remove('is-dragging');
+            }
+          });
+
+          slider.addEventListener('pointermove', function (event) {
+            if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+            event.preventDefault();
+            slider.scrollLeft = dragState.startScrollLeft - (event.clientX - dragState.startX);
+          });
+
+          function endDrag(event) {
+            if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+
+            dragState.active = false;
+            var targetIndex = getActiveRealIndex(slider);
+            setSavedUpsellIndex(targetIndex);
+            normalizeLoopPosition(slider);
+            moveToRealIndex(slider, targetIndex, 'smooth');
+            scheduleNormalizeAfterScroll();
+            window.setTimeout(function () {
+              if (document.body.contains(slider)) {
+                slider.classList.remove('is-dragging');
+              }
+            }, 160);
+
+            if (slider.hasPointerCapture && slider.hasPointerCapture(event.pointerId)) {
+              slider.releasePointerCapture(event.pointerId);
+            }
+          }
+
+          slider.addEventListener('pointerup', endDrag);
+          slider.addEventListener('pointercancel', endDrag);
+
+          window.addEventListener('resize', function () {
+            normalizeLoopPosition(slider);
+            updateDots(slider);
+          });
+        });
+      }
+
+      function formatMoneyWithCurrency(cents, currency) {
+        var amount = (cents || 0) / 100;
+
+        try {
+          var formatted = new Intl.NumberFormat(undefined, {
+            style: 'currency',
+            currency: currency,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }).format(amount);
+          return formatted + ' ' + currency;
+        } catch (error) {
+          return '$' + amount.toFixed(2) + ' ' + currency;
+        }
+      }
+
+      function animateHighlight(scope) {
+        var root = scope || document;
+        var highlight = root.querySelector('.fsb__highlight[data-target-cents]');
+        if (!highlight) return;
+
+        var target = parseInt(highlight.getAttribute('data-target-cents'), 10);
+        if (Number.isNaN(target)) return;
+
+        var currency = highlight.getAttribute('data-currency') || 'USD';
+        var previous = window.__fsbRemainingCents;
+
+        if (typeof previous !== 'number') {
+          window.__fsbRemainingCents = target;
+          return;
+        }
+
+        if (previous === target) return;
+
+        var startTime;
+        var duration = 650;
+
+        function frame(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.round(previous + (target - previous) * eased);
+
+          highlight.textContent = formatMoneyWithCurrency(current, currency);
+
+          if (progress < 1) {
+            window.requestAnimationFrame(frame);
+          }
+        }
+
+        window.requestAnimationFrame(frame);
+        window.__fsbRemainingCents = target;
+      }
+
+      function animateProgress(scope) {
+        var root = scope || document;
+        var bar = root.querySelector('.free-shipping-bar[data-progress]');
+        var fill = root.querySelector('.free-shipping-bar .fsb__fill');
+        if (!bar) return;
+
+        var target = parseFloat(bar.getAttribute('data-progress'));
+        if (Number.isNaN(target)) return;
+
+        var previous = window.__fsbProgressPercent;
+        if (typeof previous !== 'number') previous = target;
+
+        if (fill) fill.style.width = previous + '%';
+        bar.style.setProperty('--fsb-progress-value', previous + '%');
+
+        window.requestAnimationFrame(function () {
+          if (fill) fill.style.width = target + '%';
+          bar.style.setProperty('--fsb-progress-value', target + '%');
+        });
+
+        window.__fsbProgressPercent = target;
+      }
+
+      function updateCartBubbles() {
+        return fetch('/cart.js', { headers: { Accept: 'application/json' } })
+          .then(function (response) {
+            if (!response.ok) return null;
+            return response.json();
+          })
+          .then(function (cartState) {
+            if (!cartState || typeof cartState.item_count !== 'number') return;
+            var bubbles = document.querySelectorAll('.cart-count-bubble span:first-child');
+            bubbles.forEach(function (bubbleText) {
+              bubbleText.textContent = cartState.item_count;
+            });
+          })
+          .catch(function () {
+            return null;
+          });
+      }
+
+      function refreshCartDrawerFallback() {
+        return fetch('/cart?section_id=cart-drawer')
+          .then(function (response) {
+            if (!response.ok) throw response;
+            return response.text();
+          })
+          .then(function (html) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+            var incoming = doc.querySelector('#CartDrawer');
+            var current = document.querySelector('#CartDrawer');
+
+            if (!incoming || !current) {
+              window.location.reload();
+              return;
+            }
+
+            current.replaceWith(incoming);
+
+            var drawer = document.querySelector('cart-drawer');
+            if (drawer && typeof drawer.open === 'function') {
+              drawer.open();
+            }
+
+            bindUpsellSliders(incoming);
+            animateProgress(incoming);
+            animateHighlight(incoming);
+          });
+      }
+
+      function refreshCartDrawerFromState(state) {
+        var drawer = document.querySelector('cart-drawer');
+
+        if (drawer && typeof drawer.renderContents === 'function' && state && state.sections) {
+          drawer.renderContents(state);
+          if (typeof drawer.open === 'function') drawer.open();
+
+          bindUpsellSliders(document);
+          animateProgress(document);
+          animateHighlight(document);
+          return Promise.resolve();
+        }
+
+        return refreshCartDrawerFallback();
+      }
+
+      function setAddedState(button) {
+        if (!button) return;
+
+        var textEl = button.querySelector('.fsb-upsell__add-text');
+        var iconEl = button.querySelector('.fsb-upsell__add-icon');
+        var defaultText = button.getAttribute('data-default-label') || 'Add';
+        var addedIconSvg = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>';
+
+        button.classList.add('is-added');
+        if (textEl) textEl.textContent = 'Added';
+        if (iconEl) iconEl.innerHTML = addedIconSvg;
+
+        setTimeout(function () {
+          if (!document.body.contains(button)) return;
+          button.classList.remove('is-added');
+          if (textEl) textEl.textContent = defaultText;
+          if (iconEl) iconEl.textContent = '+';
+        }, 1200);
+      }
+
+      document.addEventListener('change', function (event) {
+        var variantSelect = event.target.closest('.fsb-upsell__variant');
+        if (!variantSelect) return;
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        var parentItem = variantSelect.closest('.fsb-upsell__item');
+        var addButton = parentItem ? parentItem.querySelector('.fsb-upsell__add') : null;
+        if (!addButton) return;
+
+        var selectedOption = variantSelect.options[variantSelect.selectedIndex];
+        var selectedVariantId = variantSelect.value || '';
+        var increment = selectedOption ? parseInt(selectedOption.getAttribute('data-qty-increment') || '1', 10) : 1;
+        var minQty = selectedOption ? parseInt(selectedOption.getAttribute('data-qty-min') || '1', 10) : 1;
+        if (Number.isNaN(increment) || increment < 1) increment = 1;
+        if (Number.isNaN(minQty) || minQty < 1) minQty = 1;
+        var qty = Math.max(increment, minQty);
+        var priceEl = parentItem ? parentItem.querySelector('.fsb-upsell__price') : null;
+        var selectedPrice = selectedOption ? selectedOption.getAttribute('data-price') : '';
+        if (priceEl && selectedPrice) {
+          priceEl.textContent = selectedPrice;
+        }
+        addButton.setAttribute('data-variant-id', selectedVariantId);
+        addButton.setAttribute('data-quantity', String(qty));
+        addButton.disabled = !selectedVariantId || !selectedOption || selectedOption.disabled || addButton.classList.contains('is-loading');
+      }, true);
+
+      document.addEventListener('click', function (event) {
+        var button = event.target.closest('.fsb-upsell__add');
+        if (!button || button.disabled) return;
+
+        var sliderForButton = button.closest('.fsb-upsell') ? button.closest('.fsb-upsell').querySelector('.fsb-upsell__slider') : null;
+        if (sliderForButton) {
+          setSavedUpsellIndex(getActiveRealIndex(sliderForButton));
+        }
+
+        event.preventDefault();
+
+        var parentItem = button.closest('.fsb-upsell__item');
+        var variantSelect = parentItem ? parentItem.querySelector('.fsb-upsell__variant') : null;
+        var variantId = parseInt(button.getAttribute('data-variant-id'), 10);
+        if (variantSelect && variantSelect.value) {
+          variantId = parseInt(variantSelect.value, 10);
+        }
+        if (Number.isNaN(variantId)) return;
+
+        var qty = parseInt(button.getAttribute('data-quantity') || '1', 10);
+        if (variantSelect && variantSelect.options[variantSelect.selectedIndex]) {
+          var selectedOption = variantSelect.options[variantSelect.selectedIndex];
+          var incFromOption = parseInt(selectedOption.getAttribute('data-qty-increment') || '1', 10);
+          var minFromOption = parseInt(selectedOption.getAttribute('data-qty-min') || '1', 10);
+          if (Number.isNaN(incFromOption) || incFromOption < 1) incFromOption = 1;
+          if (Number.isNaN(minFromOption) || minFromOption < 1) minFromOption = 1;
+          qty = Math.max(qty, incFromOption, minFromOption);
+        }
+        if (Number.isNaN(qty) || qty < 1) qty = 1;
+
+        button.disabled = true;
+        button.classList.add('is-loading');
+
+        var payload = {
+          id: variantId,
+          quantity: qty
+        };
+
+        var drawer = document.querySelector('cart-drawer');
+        if (drawer && typeof drawer.getSectionsToRender === 'function') {
+          var sectionIds = drawer
+            .getSectionsToRender()
+            .map(function (section) {
+              return section.section || section.id;
+            })
+            .filter(Boolean);
+
+          if (sectionIds.length) {
+            payload.sections = sectionIds;
+            payload.sections_url = window.location.pathname;
+          }
+        }
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify(payload)
+        })
+          .then(function (response) {
+            return response.json().then(function (state) {
+              if (!response.ok) throw state;
+              return state;
+            });
+          })
+          .then(function (state) {
+            setAddedState(button);
+            return new Promise(function (resolve) {
+              setTimeout(function () {
+                resolve(state);
+              }, 650);
+            });
+          })
+          .then(function (state) {
+            return refreshCartDrawerFromState(state);
+          })
+          .then(function () {
+            return updateCartBubbles();
+          })
+          .catch(function () {
+            button.disabled = false;
+            button.classList.remove('is-loading');
+          })
+          .finally(function () {
+            if (document.body.contains(button)) {
+              button.disabled = false;
+              button.classList.remove('is-loading');
+            }
+          });
+      });
+
+      var rebindScheduled = false;
+
+      function rebindFreeShipping(scope) {
+        var root = scope || document;
+        bindUpsellSliders(root);
+        animateProgress(root);
+        animateHighlight(root);
+      }
+
+      function scheduleRebind(scope) {
+        if (rebindScheduled) return;
+        rebindScheduled = true;
+        window.requestAnimationFrame(function () {
+          rebindScheduled = false;
+          rebindFreeShipping(scope || document);
+        });
+      }
+
+      function hasRelevantNode(node) {
+        if (!node || node.nodeType !== 1) return false;
+
+        if (
+          node.matches &&
+          (
+            node.matches('#CartDrawer') ||
+            node.matches('.free-shipping-bar') ||
+            node.matches('.fsb-upsell__slider') ||
+            node.matches('cart-drawer') ||
+            node.matches('cart-drawer-items')
+          )
+        ) {
+          return true;
+        }
+
+        if (node.querySelector) {
+          return Boolean(
+            node.querySelector(
+              '#CartDrawer, .free-shipping-bar, .fsb-upsell__slider, cart-drawer, cart-drawer-items'
+            )
+          );
+        }
+
+        return false;
+      }
+
+      function watchCartDrawerMutations() {
+        if (window.__fsbMutationObserverBound || !window.MutationObserver || !document.body) return;
+        window.__fsbMutationObserverBound = true;
+
+        var observer = new MutationObserver(function (mutations) {
+          var shouldRebind = false;
+
+          for (var i = 0; i < mutations.length; i += 1) {
+            var mutation = mutations[i];
+            if (!mutation.addedNodes || mutation.addedNodes.length === 0) continue;
+
+            for (var j = 0; j < mutation.addedNodes.length; j += 1) {
+              if (hasRelevantNode(mutation.addedNodes[j])) {
+                shouldRebind = true;
+                break;
+              }
+            }
+
+            if (shouldRebind) break;
+          }
+
+          if (shouldRebind) scheduleRebind(document);
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+
+      document.addEventListener('shopify:section:load', function (event) {
+        scheduleRebind(event.target || document);
+      });
+
+      ['cart:refresh', 'cart:updated', 'cart:update', 'cart:change'].forEach(function (eventName) {
+        document.addEventListener(eventName, function () {
+          scheduleRebind(document);
+        });
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+          rebindFreeShipping(document);
+          watchCartDrawerMutations();
+        });
+      } else {
+        rebindFreeShipping(document);
+        watchCartDrawerMutations();
+      }
+    })();
+  </script>
+{%- endif -%}

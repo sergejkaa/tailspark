@@ -1,0 +1,792 @@
+{% comment %}
+  Renders a product media gallery. Should be used with 'media-gallery.js'
+  Also see 'product-media-modal'
+
+  Accepts:
+  - product: {Object} Product liquid object
+  - variant_images: {Array} Product images associated with a variant
+  - limit: {Number} (optional) When passed, limits the number of media items to render
+
+  Usage:
+  {% render 'product-media-gallery' %}
+{% endcomment %}
+
+{%- liquid
+  if section.settings.hide_variants and variant_images.size == product.media.size
+    assign single_media_visible = true
+  endif
+
+  if limit == 1
+    assign single_media_visible = true
+  endif
+
+  assign media_count = product.media.size
+  if section.settings.hide_variants and media_count > 1 and variant_images.size > 0
+    assign media_count = media_count | minus: variant_images.size | plus: 1
+  endif
+
+  if media_count == 1 or single_media_visible
+    assign single_media_visible_mobile = true
+  endif
+
+  if media_count == 0 or single_media_visible_mobile or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
+    assign hide_mobile_slider = true
+  endif
+
+  if section.settings.mobile_thumbnails == 'hide' and hide_mobile_slider != true
+    assign show_mobile_hide_dots = true
+  endif
+
+  if section.settings.media_size == 'large'
+    assign media_width = 0.65
+  elsif section.settings.media_size == 'medium'
+    assign media_width = 0.55
+  elsif section.settings.media_size == 'small'
+    assign media_width = 0.45
+  endif
+-%}
+
+{%- if show_mobile_hide_dots -%}
+  {%- style -%}
+    #MediaGallery-{{ section.id }} .product-gallery__mobile-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 11px;
+    }
+
+    #MediaGallery-{{ section.id }} .product-gallery__mobile-dot {
+      display: block;
+      width: 0.7rem;
+      height: 0.7rem;
+      min-width: 0;
+      min-height: 0;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      border-radius: 999px;
+      background: {{ section.settings.mobile_hide_dots_color }};
+      opacity: 0.4;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: width 0.25s ease, opacity 0.25s ease;
+      -webkit-appearance: none;
+      appearance: none;
+      box-sizing: content-box;
+      line-height: 0;
+      font-size: 0;
+      overflow: hidden;
+    }
+
+    #MediaGallery-{{ section.id }} .product-gallery__mobile-dot.is-active {
+      width: 2rem;
+      opacity: 1;
+    }
+
+    @media screen and (max-width: 749px) {
+      #MediaGallery-{{ section.id }} .product-gallery__slider-buttons--mobile-dots {
+        justify-content: center;
+      }
+
+      #MediaGallery-{{ section.id }} .product-gallery__slider-buttons--mobile-dots > .slider-button,
+      #MediaGallery-{{ section.id }} .product-gallery__slider-buttons--mobile-dots > .slider-counter {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      #MediaGallery-{{ section.id }} .product-gallery__mobile-dots {
+        display: none;
+      }
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+{%- if section.settings.gallery_layout contains 'thumbnail' -%}
+  {%- liquid
+    assign gallery_side_arrows_desktop_enabled = true
+    if section.settings.gallery_side_arrows_desktop == false
+      assign gallery_side_arrows_desktop_enabled = false
+    endif
+
+    assign gallery_side_arrows_mobile_enabled = true
+    if section.settings.gallery_side_arrows_mobile == false
+      assign gallery_side_arrows_mobile_enabled = false
+    endif
+
+    assign gallery_side_arrows_button_size = section.settings.gallery_side_arrows_button_size | default: 44
+    assign gallery_side_arrows_button_size_mobile = section.settings.gallery_side_arrows_button_size_mobile | default: 36
+    assign gallery_side_arrows_icon_size = section.settings.gallery_side_arrows_icon_size | default: 12
+    assign gallery_side_arrows_icon_size_mobile = section.settings.gallery_side_arrows_icon_size_mobile | default: 10
+    assign gallery_side_arrows_style = section.settings.gallery_side_arrows_style | default: 'soft'
+    assign gallery_side_arrows_offset = section.settings.gallery_side_arrows_offset | default: 10
+    assign gallery_side_arrows_icon_color = section.settings.gallery_side_arrows_icon_color | default: '#1F2937'
+    assign gallery_side_arrows_bg_color = section.settings.gallery_side_arrows_bg_color | default: '#FFFFFF'
+    assign gallery_side_arrows_border_color = section.settings.gallery_side_arrows_border_color | default: '#D1D5DB'
+    assign gallery_side_arrows_shadow_color = section.settings.gallery_side_arrows_shadow_color | default: '#000000'
+    assign gallery_side_arrows_shadow_opacity = section.settings.gallery_side_arrows_shadow_opacity | default: 0.1
+    assign gallery_side_arrows_shadow_x = section.settings.gallery_side_arrows_shadow_x | default: 0
+    assign gallery_side_arrows_shadow_y = section.settings.gallery_side_arrows_shadow_y | default: 8
+    assign gallery_side_arrows_shadow_blur = section.settings.gallery_side_arrows_shadow_blur | default: 20
+    assign gallery_side_arrows_shadow_spread = section.settings.gallery_side_arrows_shadow_spread | default: 0
+    assign gallery_side_arrows_accent_color = section.settings.mobile_hide_dots_color | default: '#1b4a3d'
+  -%}
+  {%- style -%}
+    #GalleryViewer-{{ section.id }} {
+      position: relative;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons {
+      align-items: center;
+      justify-content: center;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-counter {
+      display: none;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button {
+      width: {{ gallery_side_arrows_button_size }}px;
+      height: {{ gallery_side_arrows_button_size }}px;
+      min-width: {{ gallery_side_arrows_button_size }}px;
+      border-radius: 999px;
+      border: 1px solid {{ gallery_side_arrows_border_color }};
+      background: {{ gallery_side_arrows_bg_color }};
+      color: {{ gallery_side_arrows_icon_color }};
+      box-shadow:
+        {{ gallery_side_arrows_shadow_x }}px
+        {{ gallery_side_arrows_shadow_y }}px
+        {{ gallery_side_arrows_shadow_blur }}px
+        {{ gallery_side_arrows_shadow_spread }}px
+        rgba(
+          {{ gallery_side_arrows_shadow_color | color_extract: 'red' }},
+          {{ gallery_side_arrows_shadow_color | color_extract: 'green' }},
+          {{ gallery_side_arrows_shadow_color | color_extract: 'blue' }},
+          {{ gallery_side_arrows_shadow_opacity }}
+        );
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button .icon {
+      height: {{ gallery_side_arrows_icon_size }}px;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button:hover {
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    {% case gallery_side_arrows_style %}
+      {% when 'outline' %}
+        #GalleryViewer-{{ section.id }} .slider-buttons .slider-button {
+          border-color: rgba(
+            {{ gallery_side_arrows_accent_color | color_extract: 'red' }},
+            {{ gallery_side_arrows_accent_color | color_extract: 'green' }},
+            {{ gallery_side_arrows_accent_color | color_extract: 'blue' }},
+            0.28
+          );
+          background: rgba(255, 255, 255, 0.76);
+          color: {{ gallery_side_arrows_accent_color }};
+          box-shadow: 0 8px 18px rgba(
+            {{ gallery_side_arrows_shadow_color | color_extract: 'red' }},
+            {{ gallery_side_arrows_shadow_color | color_extract: 'green' }},
+            {{ gallery_side_arrows_shadow_color | color_extract: 'blue' }},
+            0.06
+          );
+        }
+      {% when 'solid' %}
+        #GalleryViewer-{{ section.id }} .slider-buttons .slider-button {
+          border-color: {{ gallery_side_arrows_accent_color }};
+          background: {{ gallery_side_arrows_accent_color }};
+          color: #ffffff;
+          box-shadow: 0 14px 28px rgba(
+            {{ gallery_side_arrows_accent_color | color_extract: 'red' }},
+            {{ gallery_side_arrows_accent_color | color_extract: 'green' }},
+            {{ gallery_side_arrows_accent_color | color_extract: 'blue' }},
+            0.24
+          );
+        }
+      {% when 'glass' %}
+        #GalleryViewer-{{ section.id }} .slider-buttons .slider-button {
+          border-color: rgba(255, 255, 255, 0.82);
+          background: rgba(255, 255, 255, 0.58);
+          color: {{ gallery_side_arrows_accent_color }};
+          box-shadow: 0 12px 30px rgba(
+            {{ gallery_side_arrows_shadow_color | color_extract: 'red' }},
+            {{ gallery_side_arrows_shadow_color | color_extract: 'green' }},
+            {{ gallery_side_arrows_shadow_color | color_extract: 'blue' }},
+            0.12
+          );
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+        }
+      {% else %}
+        #GalleryViewer-{{ section.id }} .slider-buttons .slider-button {
+          backdrop-filter: blur(0);
+          -webkit-backdrop-filter: blur(0);
+        }
+    {% endcase %}
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button[disabled] {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button[disabled] .icon {
+      color: currentColor;
+      opacity: 1;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--prev,
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--prev {
+      left: {{ gallery_side_arrows_offset }}px;
+    }
+
+    #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--next {
+      right: {{ gallery_side_arrows_offset }}px;
+    }
+
+    @media screen and (max-width: 749px) {
+      #GalleryViewer-{{ section.id }} .slider-buttons {
+        display: {% if gallery_side_arrows_mobile_enabled or show_mobile_hide_dots %}flex{% else %}none{% endif %} !important;
+      }
+
+      #GalleryViewer-{{ section.id }} .slider-buttons .slider-button {
+        display: {% if gallery_side_arrows_mobile_enabled %}flex{% else %}none{% endif %} !important;
+      }
+
+      #GalleryViewer-{{ section.id }} .slider-buttons .slider-button {
+        width: {{ gallery_side_arrows_button_size_mobile }}px;
+        height: {{ gallery_side_arrows_button_size_mobile }}px;
+        min-width: {{ gallery_side_arrows_button_size_mobile }}px;
+      }
+
+      #GalleryViewer-{{ section.id }} .slider-buttons .slider-button .icon {
+        height: {{ gallery_side_arrows_icon_size_mobile }}px;
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      #GalleryViewer-{{ section.id }} .slider-buttons {
+        display: {% if gallery_side_arrows_desktop_enabled %}flex{% else %}none{% endif %} !important;
+      }
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<media-gallery
+  id="MediaGallery-{{ section.id }}"
+  role="region"
+  {% if section.settings.enable_sticky_info %}
+    class="product__column-sticky"
+  {% endif %}
+  aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
+  data-desktop-layout="{{ section.settings.gallery_layout }}"
+>
+  <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
+  <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
+    {% comment %} <a class="skip-to-content-link button visually-hidden quick-add-hidden" href="#ProductInfo-{{ section.id }}">
+      {{ 'accessibility.skip_to_product_info' | t }}
+    </a> {% endcomment %}
+    <ul
+      id="Slider-Gallery-{{ section.id }}"
+      class="product__media-list contains-media grid grid--peek list-unstyled slider slider--mobile"
+      role="list"
+    >
+      {%- if product.selected_or_first_available_variant.featured_media != null -%}
+        {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+        <li
+          id="Slide-{{ section.id }}-{{ featured_media.id }}"
+          class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          data-media-id="{{ section.id }}-{{ featured_media.id }}"
+        >
+          {%- assign media_position = 1 -%}
+          {% render 'product-thumbnail',
+            media: featured_media,
+            media_count: media_count,
+            position: media_position,
+            desktop_layout: section.settings.gallery_layout,
+            mobile_layout: section.settings.mobile_thumbnails,
+            loop: section.settings.enable_video_looping,
+            modal_id: section.id,
+            xr_button: true,
+            media_width: media_width,
+            media_fit: section.settings.media_fit,
+            constrain_to_viewport: section.settings.constrain_to_viewport,
+            lazy_load: false
+          %}
+        </li>
+      {%- endif -%}
+      {%- for media in product.media -%}
+        {% if media_position >= limit
+          or media_position >= 1
+          and section.settings.hide_variants
+          and variant_images contains media.src
+        %}
+          {% continue %}
+        {% endif %}
+
+        {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+          <li
+            id="Slide-{{ section.id }}-{{ media.id }}"
+            class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if product.selected_or_first_available_variant.featured_media == nil and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            data-media-id="{{ section.id }}-{{ media.id }}"
+          >
+            {%- liquid
+              assign media_position = media_position | default: 0 | plus: 1
+              assign lazy_load = false
+              if media_position > 1
+                assign lazy_load = true
+              endif
+            -%}
+            {% render 'product-thumbnail',
+              media: media,
+              media_count: media_count,
+              position: media_position,
+              desktop_layout: section.settings.gallery_layout,
+              mobile_layout: section.settings.mobile_thumbnails,
+              loop: section.settings.enable_video_looping,
+              modal_id: section.id,
+              xr_button: true,
+              media_width: media_width,
+              media_fit: section.settings.media_fit,
+              constrain_to_viewport: section.settings.constrain_to_viewport,
+              lazy_load: lazy_load
+            %}
+          </li>
+        {%- endunless -%}
+      {%- endfor -%}
+    </ul>
+    <div class="slider-buttons quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}{% if show_mobile_hide_dots %} product-gallery__slider-buttons--mobile-dots{% endif %}">
+      <button
+        type="button"
+        class="slider-button slider-button--prev"
+        name="previous"
+        aria-label="{{ 'general.slider.previous_slide' | t }}"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+      <div class="slider-counter caption">
+        <span class="slider-counter--current">1</span>
+        <span aria-hidden="true"> / </span>
+        <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+        <span class="slider-counter--total">{{ media_count }}</span>
+      </div>
+      {%- if show_mobile_hide_dots -%}
+        <div
+          class="product-gallery__mobile-dots"
+          data-product-gallery-mobile-dots
+          aria-label="Slider pagination"
+        >
+          {%- for media in (1..media_count) -%}
+            <button
+              type="button"
+              class="product-gallery__mobile-dot{% if forloop.first %} is-active{% endif %}"
+              data-product-gallery-dot
+              data-index="{{ forloop.index0 }}"
+              aria-label="Go to media {{ forloop.index }}"
+              {% if forloop.first %}
+                aria-current="true"
+              {% else %}
+                aria-current="false"
+              {% endif %}
+            ></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      <button
+        type="button"
+        class="slider-button slider-button--next"
+        name="next"
+        aria-label="{{ 'general.slider.next_slide' | t }}"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    </div>
+  </slider-component>
+  {%- if first_3d_model -%}
+    <button
+      class="button button--full-width product__xr-button"
+      type="button"
+      aria-label="{{ 'products.product.xr_button_label' | t }}"
+      data-shopify-xr
+      data-shopify-model3d-id="{{ first_3d_model.id }}"
+      data-shopify-title="{{ product.title | escape }}"
+      data-shopify-xr-hidden
+    >
+      <span class="svg-wrapper">
+        {{- 'icon-3d-model.svg' | inline_asset_content -}}
+      </span>
+      {{ 'products.product.xr_button' | t }}
+    </button>
+  {%- endif -%}
+  {%- liquid
+    assign is_not_limited_to_single_item = false
+    if limit == null or limit > 1
+      assign is_not_limited_to_single_item = true
+    endif
+  -%}
+  {%- if is_not_limited_to_single_item
+    and media_count > 1
+    and section.settings.gallery_layout contains 'thumbnail'
+    or section.settings.mobile_thumbnails == 'show'
+  -%}
+    <slider-component
+      id="GalleryThumbnails-{{ section.id }}"
+      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
+    >
+      <button
+        type="button"
+        class="slider-button slider-button--prev{% if media_count <= 3 %} small-hide{% endif %}{% if media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+        name="previous"
+        aria-label="{{ 'general.slider.previous_slide' | t }}"
+        aria-controls="GalleryThumbnails-{{ section.id }}"
+        data-step="3"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+      <ul
+        id="Slider-Thumbnails-{{ section.id }}"
+        class="thumbnail-list list-unstyled slider slider--mobile{% if section.settings.gallery_layout == 'thumbnail_slider' %} slider--tablet-up{% endif %}"
+      >
+        {%- capture sizes -%}
+          (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4),
+          (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4),
+          (min-width: 750px) calc((100vw - 15rem) / 8),
+          calc((100vw - 8rem) / 3)
+        {%- endcapture -%}
+
+        {%- if featured_media != null -%}
+          {%- liquid
+            capture media_index
+              if featured_media.media_type == 'model'
+                increment model_index
+              elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video'
+                increment video_index
+              elsif featured_media.media_type == 'image'
+                increment image_index
+              endif
+            endcapture
+            assign media_index = media_index | plus: 1
+          -%}
+          <li
+            id="Slide-Thumbnails-{{ section.id }}-0"
+            class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains featured_media.src %} thumbnail-list_item--variant{% endif %}"
+            data-target="{{ section.id }}-{{ featured_media.id }}"
+            data-media-position="{{ media_index }}"
+          >
+            {%- capture thumbnail_id -%}
+              Thumbnail-{{ section.id }}-0
+            {%- endcapture -%}
+            <button
+              class="thumbnail global-media-settings global-media-settings--no-shadow"
+              aria-label="{%- if featured_media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif featured_media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
+              aria-current="true"
+              aria-controls="GalleryViewer-{{ section.id }}"
+              aria-describedby="{{ thumbnail_id }}"
+            >
+              {{
+                featured_media.preview_image
+                | image_url: width: 416
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: sizes,
+                  widths: '54, 74, 104, 162, 208, 324, 416',
+                  id: thumbnail_id,
+                  alt: featured_media.alt
+                | escape
+              }}
+            </button>
+          </li>
+        {%- endif -%}
+        {%- for media in product.media -%}
+          {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+            {%- liquid
+              capture media_index
+                if media.media_type == 'model'
+                  increment model_index
+                elsif media.media_type == 'video' or media.media_type == 'external_video'
+                  increment video_index
+                elsif media.media_type == 'image'
+                  increment image_index
+                endif
+              endcapture
+              assign media_index = media_index | plus: 1
+            -%}
+            <li
+              id="Slide-Thumbnails-{{ section.id }}-{{ forloop.index }}"
+              class="thumbnail-list__item slider__slide{% if section.settings.hide_variants and variant_images contains media.src %} thumbnail-list_item--variant{% endif %}"
+              data-target="{{ section.id }}-{{ media.id }}"
+              data-media-position="{{ media_index }}"
+            >
+              {%- if media.media_type == 'model' -%}
+                <span class="thumbnail__badge" aria-hidden="true">
+                  <span class="svg-wrapper">
+                    {{- 'icon-3d-model.svg' | inline_asset_content -}}
+                  </span>
+                </span>
+              {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                <span class="thumbnail__badge" aria-hidden="true">
+                  <span class="svg-wrapper">
+                    {{- 'icon-play.svg' | inline_asset_content -}}
+                  </span>
+                </span>
+              {%- endif -%}
+              {%- capture thumbnail_id -%}
+                Thumbnail-{{ section.id }}-{{ forloop.index }}
+              {%- endcapture -%}
+              <button
+                class="thumbnail global-media-settings global-media-settings--no-shadow"
+                aria-label="{%- if media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
+                {% if media == product.selected_or_first_available_variant.featured_media
+                  or product.selected_or_first_available_variant.featured_media == null
+                  and forloop.index == 1
+                %}
+                  aria-current="true"
+                {% endif %}
+                aria-controls="GalleryViewer-{{ section.id }}"
+                aria-describedby="{{ thumbnail_id }}"
+              >
+                {{
+                  media.preview_image
+                  | image_url: width: 416
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: sizes,
+                    widths: '54, 74, 104, 162, 208, 324, 416',
+                    id: thumbnail_id,
+                    alt: media.alt
+                  | escape
+                }}
+              </button>
+            </li>
+          {%- endunless -%}
+        {%- endfor -%}
+      </ul>
+      <button
+        type="button"
+        class="slider-button slider-button--next{% if media_count <= 3 %} small-hide{% endif %}{% if media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+        name="next"
+        aria-label="{{ 'general.slider.next_slide' | t }}"
+        aria-controls="GalleryThumbnails-{{ section.id }}"
+        data-step="3"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    </slider-component>
+  {%- endif -%}
+</media-gallery>
+{%- if section.settings.gallery_layout contains 'thumbnail' -%}
+  <script>
+    (() => {
+      const sectionId = '{{ section.id }}';
+      const desktopEnabled = {% if section.settings.gallery_side_arrows_desktop == false %}false{% else %}true{% endif %};
+      const mobileEnabled = {% if section.settings.gallery_side_arrows_mobile == false %}false{% else %}true{% endif %};
+
+      const isDesktop = () => window.matchMedia('(min-width: 750px)').matches;
+
+      const getVisibleThumbItems = (galleryRoot) => {
+        const thumbsList =
+          galleryRoot.querySelector(`#Slider-Thumbnails-${sectionId}`) ||
+          galleryRoot.querySelector('[id^="Slider-Thumbnails-"]') ||
+          galleryRoot.querySelector('.thumbnail-list');
+        if (!thumbsList) return [];
+
+        return Array.from(thumbsList.querySelectorAll('.thumbnail-list__item')).filter((item) => {
+          if (item.classList.contains('thumbnail-list_item--variant')) return false;
+          return !!item.querySelector('button.thumbnail, button');
+        });
+      };
+
+      const getCurrentThumbIndex = (galleryRoot, thumbItems) => {
+        const currentByAria = thumbItems.findIndex((item) => {
+          const button = item.querySelector('button.thumbnail, button');
+          return button && button.getAttribute('aria-current') === 'true';
+        });
+        if (currentByAria >= 0) return currentByAria;
+
+        const activeSlide = galleryRoot.querySelector('.product__media-list .product__media-item.is-active');
+        const activeMediaId = activeSlide ? activeSlide.getAttribute('data-media-id') : null;
+        if (!activeMediaId) return 0;
+
+        const currentByTarget = thumbItems.findIndex((item) => item.getAttribute('data-target') === activeMediaId);
+        return currentByTarget >= 0 ? currentByTarget : 0;
+      };
+
+      const removeHideClasses = (node) => {
+        if (!node) return;
+        node.classList.remove('hidden', 'small-hide', 'medium-hide', 'large-up-hide');
+        node.removeAttribute('hidden');
+      };
+
+      const bindSideArrows = (root) => {
+        const galleryRoot = root.querySelector(`#MediaGallery-${sectionId}`);
+        if (!galleryRoot) return;
+
+        const viewer = galleryRoot.querySelector(`#GalleryViewer-${sectionId}`);
+        if (!viewer || viewer.dataset.desktopSideArrowsBound === 'true') return;
+
+        const controls = viewer.querySelector('.slider-buttons');
+        const prevButton = viewer.querySelector('.slider-buttons .slider-button--prev');
+        const nextButton = viewer.querySelector('.slider-buttons .slider-button--next');
+        if (!controls || !prevButton || !nextButton) return;
+
+        const syncControlsVisibility = () => {
+          const hasMobileDots =
+            controls.classList.contains('product-gallery__slider-buttons--mobile-dots') ||
+            !!controls.querySelector('[data-product-gallery-mobile-dots]');
+          const shouldShowControls = isDesktop() ? desktopEnabled : mobileEnabled || hasMobileDots;
+          const shouldShowArrows = isDesktop() ? desktopEnabled : mobileEnabled;
+
+          if (shouldShowControls) {
+            removeHideClasses(controls);
+          }
+
+          if (shouldShowArrows) {
+            removeHideClasses(prevButton);
+            removeHideClasses(nextButton);
+          }
+
+          controls.style.display = shouldShowControls ? 'flex' : 'none';
+          prevButton.style.display = shouldShowArrows ? 'flex' : 'none';
+          nextButton.style.display = shouldShowArrows ? 'flex' : 'none';
+        };
+
+        const goToRelativeThumb = (step) => {
+          if (!isDesktop() || !desktopEnabled) return;
+
+          prevButton.removeAttribute('disabled');
+          nextButton.removeAttribute('disabled');
+
+          const thumbItems = getVisibleThumbItems(galleryRoot);
+          if (thumbItems.length < 2) return;
+
+          const currentIndex = getCurrentThumbIndex(galleryRoot, thumbItems);
+          let targetIndex = currentIndex + step;
+          if (targetIndex < 0) targetIndex = thumbItems.length - 1;
+          if (targetIndex >= thumbItems.length) targetIndex = 0;
+
+          const targetButton = thumbItems[targetIndex].querySelector('button.thumbnail, button');
+          if (targetButton) targetButton.click();
+        };
+
+        prevButton.addEventListener('click', (event) => {
+          if (!isDesktop()) return;
+          event.preventDefault();
+          event.stopPropagation();
+          goToRelativeThumb(-1);
+        });
+
+        nextButton.addEventListener('click', (event) => {
+          if (!isDesktop()) return;
+          event.preventDefault();
+          event.stopPropagation();
+          goToRelativeThumb(1);
+        });
+
+        syncControlsVisibility();
+        window.addEventListener('resize', syncControlsVisibility);
+        viewer.dataset.desktopSideArrowsBound = 'true';
+      };
+
+      bindSideArrows(document);
+      document.addEventListener('DOMContentLoaded', () => bindSideArrows(document));
+      document.addEventListener('shopify:section:load', (event) => bindSideArrows(event.target));
+    })();
+  </script>
+{%- endif -%}
+{%- if show_mobile_hide_dots -%}
+  <script>
+    (() => {
+      const initGalleryDots = (gallery) => {
+        if (!gallery || gallery.dataset.mobileDotsReady === 'true') return;
+
+        const slider = gallery.querySelector('[id^="Slider-Gallery-"]');
+        const currentPage = gallery.querySelector('.slider-counter--current');
+        const dots = Array.from(gallery.querySelectorAll('[data-product-gallery-dot]'));
+
+        if (!slider || !currentPage || !dots.length) return;
+
+        gallery.dataset.mobileDotsReady = 'true';
+
+        const setActiveDot = (index) => {
+          dots.forEach((dot, dotIndex) => {
+            const isActive = dotIndex === index;
+            dot.classList.toggle('is-active', isActive);
+            dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+          });
+        };
+
+        const syncDots = () => {
+          const currentIndex = Math.max(
+            0,
+            Math.min(dots.length - 1, (parseInt(currentPage.textContent, 10) || 1) - 1)
+          );
+          setActiveDot(currentIndex);
+        };
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            const targetSlide = slider.children[index];
+            if (!targetSlide) return;
+
+            slider.scrollTo({
+              left: targetSlide.offsetLeft,
+              behavior: 'smooth',
+            });
+
+            setActiveDot(index);
+          });
+        });
+
+        new MutationObserver(syncDots).observe(currentPage, {
+          childList: true,
+          characterData: true,
+          subtree: true,
+        });
+
+        syncDots();
+      };
+
+      if (!window.lsProductGalleryMobileDots) {
+        window.lsProductGalleryMobileDots = {
+          init() {
+            document.querySelectorAll('[data-product-gallery-mobile-dots]').forEach((dotsContainer) => {
+              initGalleryDots(dotsContainer.closest('media-gallery'));
+            });
+          },
+        };
+
+        const runInit = () => window.lsProductGalleryMobileDots.init();
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', runInit, { once: true });
+        } else {
+          runInit();
+        }
+
+        new MutationObserver(runInit).observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+        });
+      } else {
+        window.lsProductGalleryMobileDots.init();
+      }
+    })();
+  </script>
+{%- endif -%}

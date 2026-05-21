@@ -1,0 +1,1599 @@
+{%- liquid
+        assign upsell_limit = block.settings.free_shipping_upsell_limit | default: 6
+        assign upsell_source_mode = block.settings.free_shipping_upsell_source | default: 'auto'
+        assign upsell_products = blank
+
+        if upsell_source_mode == 'products' or upsell_source_mode == 'auto'
+          if block.settings.free_shipping_upsell_products != blank
+            assign upsell_products = block.settings.free_shipping_upsell_products
+          endif
+        endif
+
+        if upsell_products == blank and upsell_source_mode != 'products' and block.settings.free_shipping_upsell_collection != blank
+          assign upsell_handle = block.settings.free_shipping_upsell_collection.handle | default: block.settings.free_shipping_upsell_collection
+          if upsell_handle != blank and collections[upsell_handle] != blank
+            assign upsell_products = collections[upsell_handle].products
+          elsif block.settings.free_shipping_upsell_collection.products != blank
+            assign upsell_products = block.settings.free_shipping_upsell_collection.products
+          endif
+        endif
+      -%}
+
+{%- if upsell_products == blank and request.design_mode -%}
+  {%- assign _ph_heading = block.settings.free_shipping_upsell_heading | default: 'Recommended for you' -%}
+  {%- assign _ph_color = block.settings.free_shipping_upsell_heading_color | default: '#64748b' -%}
+  {%- assign _ph_size = block.settings.free_shipping_upsell_heading_size | default: 13 -%}
+  <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(15,23,42,0.1);">
+    <div style="font-size:{{ _ph_size }}px;font-weight:600;color:{{ _ph_color }};margin-bottom:8px;letter-spacing:0.01em;">{{ _ph_heading }}</div>
+    <div style="display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow:hidden;border-radius:10px;">
+      <div style="display:grid;grid-template-columns:56px 1fr 60px;align-items:center;gap:10px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:8px 18px;min-height:88px;opacity:0.7;">
+        <div style="width:56px;height:56px;border-radius:8px;background:#e2e8f0;flex-shrink:0;"></div>
+        <div>
+          <div style="height:11px;background:#e2e8f0;border-radius:4px;width:75%;margin-bottom:7px;"></div>
+          <div style="height:9px;background:#e2e8f0;border-radius:4px;width:45%;"></div>
+        </div>
+        <div style="width:60px;height:32px;border-radius:6px;border:1px solid #cbd5e1;background:#fff;"></div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:#94a3b8;margin:6px 0 0;text-align:center;">&#x2197; Add products or a collection in block settings</p>
+  </div>
+{%- else -%}
+        {%- assign cart_product_ids = cart.items | map: 'product_id' -%}
+        {%- assign upsell_products_count = upsell_products.size | default: 0 -%}
+        {%- assign enforce_hide_current_product = false -%}
+        {%- assign enforce_hide_in_cart = false -%}
+        {%- if block.settings.free_shipping_upsell_hide_current_product and upsell_products_count > 1 -%}
+          {%- assign enforce_hide_current_product = true -%}
+        {%- endif -%}
+        {%- if block.settings.free_shipping_upsell_hide_in_cart and upsell_products_count > 1 -%}
+          {%- assign enforce_hide_in_cart = true -%}
+        {%- endif -%}
+        {%- assign current_product_id = product.id -%}
+        {%- assign upsell_heading_text = block.settings.free_shipping_upsell_heading | default: 'Recommended for you' -%}
+        {%- assign upsell_heading_color = block.settings.free_shipping_upsell_heading_color | default: '#64748b' -%}
+        {%- assign upsell_heading_weight = block.settings.free_shipping_upsell_heading_weight | default: '600' -%}
+        {%- assign upsell_heading_letter_spacing = block.settings.free_shipping_upsell_heading_letter_spacing | default: 0.2 -%}
+        {%- assign upsell_show_image = block.settings.free_shipping_upsell_show_image | default: true -%}
+        {%- assign upsell_image_size = block.settings.free_shipping_upsell_image_size | default: 56 -%}
+        {%- assign upsell_image_format = block.settings.free_shipping_upsell_image_format | default: 'square' -%}
+        {%- assign upsell_image_width = upsell_image_size -%}
+        {%- assign upsell_image_height = upsell_image_size -%}
+        {%- if upsell_image_format == 'portrait_9_16' -%}
+          {%- assign upsell_image_width = upsell_image_size | times: 9 | divided_by: 16 -%}
+          {%- assign upsell_image_height = upsell_image_size -%}
+          {%- if upsell_image_width < 24 -%}{%- assign upsell_image_width = 24 -%}{%- endif -%}
+        {%- endif -%}
+        {%- assign upsell_image_request_base = upsell_image_width -%}
+        {%- if upsell_image_height > upsell_image_request_base -%}
+          {%- assign upsell_image_request_base = upsell_image_height -%}
+        {%- endif -%}
+        {%- assign upsell_image_request_width = upsell_image_request_base | times: 2 -%}
+        {%- assign upsell_image_width_md = upsell_image_width -%}
+        {%- assign upsell_image_height_md = upsell_image_height -%}
+        {%- if upsell_image_width > upsell_image_height and upsell_image_width > 48 -%}
+          {%- assign upsell_image_height_md = upsell_image_height | times: 48 | divided_by: upsell_image_width -%}
+          {%- assign upsell_image_width_md = 48 -%}
+        {%- elsif upsell_image_height >= upsell_image_width and upsell_image_height > 48 -%}
+          {%- assign upsell_image_width_md = upsell_image_width | times: 48 | divided_by: upsell_image_height -%}
+          {%- assign upsell_image_height_md = 48 -%}
+        {%- endif -%}
+        {%- assign upsell_item_bg_color = block.settings.free_shipping_upsell_item_bg_color | default: '#f8fafc' -%}
+        {%- assign upsell_block_border_color = block.settings.free_shipping_upsell_block_border_color | default: 'rgba(15, 23, 42, 0.1)' -%}
+        {%- assign upsell_item_border_color = block.settings.free_shipping_upsell_item_border_color | default: '#e2e8f0' -%}
+        {%- assign upsell_chevron_color = block.settings.free_shipping_upsell_chevron_color | default: 'rgba(15, 23, 42, 0.72)' -%}
+        {%- assign upsell_dot_active_color = block.settings.free_shipping_upsell_dot_active_color | default: '#0284c7' -%}
+        {%- assign upsell_dot_inactive_color = block.settings.free_shipping_upsell_dot_inactive_color | default: 'rgba(148, 163, 184, 0.45)' -%}
+        {%- assign upsell_meta_gap = block.settings.free_shipping_upsell_meta_gap | default: 6 -%}
+        {%- assign upsell_heading_size = block.settings.free_shipping_upsell_heading_size | default: 13 -%}
+        {%- assign upsell_title_size = block.settings.free_shipping_upsell_title_size | default: 13 -%}
+        {%- assign upsell_title_color = block.settings.free_shipping_upsell_title_color | default: '#0f172a' -%}
+        {%- assign upsell_title_weight = block.settings.free_shipping_upsell_title_weight | default: '600' -%}
+        {%- assign upsell_price_size = block.settings.free_shipping_upsell_price_size | default: 12 -%}
+        {%- assign upsell_price_color = block.settings.free_shipping_upsell_price_color | default: '#64748b' -%}
+        {%- assign upsell_price_weight = block.settings.free_shipping_upsell_price_weight | default: '500' -%}
+        {%- assign upsell_variant_size = block.settings.free_shipping_upsell_variant_size | default: 11 -%}
+        {%- assign upsell_variant_text_color = block.settings.free_shipping_upsell_variant_text_color | default: '#0f172a' -%}
+        {%- assign upsell_variant_bg_color = block.settings.free_shipping_upsell_variant_bg_color | default: '#ffffff' -%}
+        {%- assign upsell_variant_border_color = block.settings.free_shipping_upsell_variant_border_color | default: '#cbd5e1' -%}
+        {%- assign upsell_button_size = block.settings.free_shipping_upsell_button_size | default: 12 -%}
+        {%- assign upsell_button_text_color = block.settings.free_shipping_upsell_button_text_color | default: '#0f172a' -%}
+        {%- assign upsell_button_bg_color = block.settings.free_shipping_upsell_button_bg_color | default: '#ffffff' -%}
+        {%- assign upsell_button_border_color = block.settings.free_shipping_upsell_button_border_color | default: '#cbd5e1' -%}
+        {%- assign upsell_button_weight = block.settings.free_shipping_upsell_button_weight | default: '600' -%}
+        {%- assign upsell_empty_text = block.settings.free_shipping_upsell_empty_text | default: 'Add Product' -%}
+        {%- if upsell_heading_text == blank -%}
+          {%- assign upsell_heading_text = 'Recommended for you' -%}
+        {%- endif -%}
+        {%- if upsell_heading_text == 'Add one to unlock free shipping faster' -%}
+          {%- assign upsell_heading_text = 'Recommended for you' -%}
+        {%- endif -%}
+        {%- if upsell_heading_text == 'Add one more item to unlock free shipping' -%}
+          {%- assign upsell_heading_text = 'Recommended for you' -%}
+        {%- endif -%}
+        {%- assign rendered_upsell = 0 -%}
+        {%- capture upsell_items_markup -%}
+          {%- for upsell_product in upsell_products -%}
+            {%- assign candidate_product = upsell_product -%}
+            {%- if candidate_product.id == blank and all_products[upsell_product] != blank -%}
+              {%- assign candidate_product = all_products[upsell_product] -%}
+            {%- endif -%}
+            {%- if candidate_product == blank or candidate_product.id == blank -%}{% continue %}{%- endif -%}
+            {%- if candidate_product.available == false -%}{% continue %}{%- endif -%}
+            {%- if enforce_hide_current_product and current_product_id != blank and candidate_product.id == current_product_id -%}{% continue %}{%- endif -%}
+            {%- if enforce_hide_in_cart and cart_product_ids contains candidate_product.id -%}{% continue %}{%- endif -%}
+              {%- assign first_variant = candidate_product.selected_or_first_available_variant -%}
+              {%- if first_variant == blank -%}{% continue %}{%- endif -%}
+              {%- assign first_variant_increment = first_variant.quantity_rule.increment | default: 1 -%}
+              {%- assign first_variant_min = first_variant.quantity_rule.min | default: 1 -%}
+              {%- assign first_variant_qty = first_variant_increment -%}
+              {%- if first_variant_min > first_variant_qty -%}
+                {%- assign first_variant_qty = first_variant_min -%}
+              {%- endif -%}
+              <div class="ppu-upsell__item{% unless upsell_show_image %} ppu-upsell__item--no-image{% endunless %}" role="listitem">
+                {%- if upsell_show_image -%}
+                  <a class="ppu-upsell__image" href="{{ candidate_product.url }}" draggable="false">
+                    {%- if candidate_product.featured_image -%}
+                    <img
+                      src="{{ candidate_product.featured_image | image_url: width: upsell_image_request_width }}"
+                      alt="{{ candidate_product.featured_image.alt | escape }}"
+                      loading="lazy"
+                      width="{{ upsell_image_width }}"
+                      height="{{ upsell_image_height }}"
+                      draggable="false"
+                      style="object-position: {{ block.settings.free_shipping_upsell_focus_x | default: 50 }}% {{ block.settings.free_shipping_upsell_focus_y | default: 50 }}%;"
+                    >
+                  {%- else -%}
+                    <span class="ppu-upsell__placeholder">+</span>
+                  {%- endif -%}
+                </a>
+                {%- endif -%}
+              <div class="ppu-upsell__meta{% unless upsell_show_image %} ppu-upsell__meta--full{% endunless %}">
+                <a class="ppu-upsell__title" href="{{ candidate_product.url }}" draggable="false">{{ candidate_product.title }}</a>
+                {%- if candidate_product.variants.size > 1 -%}
+                  <select class="ppu-upsell__variant" aria-label="Choose variant">
+                    {%- for variant in candidate_product.variants -%}
+                      <option
+                        value="{{ variant.id }}"
+                        data-price="{{ variant.price | money | escape }}"
+                        data-qty-increment="{{ variant.quantity_rule.increment | default: 1 }}"
+                        data-qty-min="{{ variant.quantity_rule.min | default: 1 }}"
+                        {% if variant.id == first_variant.id %}selected{% endif %}
+                        {% unless variant.available %}disabled{% endunless %}
+                      >
+                        {{ variant.title }}{% unless variant.available %} - Sold out{% endunless %}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                {%- endif -%}
+                <div class="ppu-upsell__price">
+                  {%- if candidate_product.price_varies -%}
+                    From {{ candidate_product.price_min | money }}
+                  {%- else -%}
+                    {{ candidate_product.price | money }}
+                  {%- endif -%}
+                </div>
+              </div>
+              <button
+                type="button"
+                class="ppu-upsell__add"
+                data-variant-id="{{ first_variant.id }}"
+                data-quantity="{{ first_variant_qty }}"
+                data-default-label="{{ block.settings.free_shipping_upsell_button | escape }}"
+                aria-label="{{ block.settings.free_shipping_upsell_button }} {{ candidate_product.title | escape }}"
+                {% unless first_variant.available %}disabled{% endunless %}
+              >
+                <span class="ppu-upsell__add-icon" aria-hidden="true">+</span>
+                <span class="ppu-upsell__add-text">{{ block.settings.free_shipping_upsell_button }}</span>
+              </button>
+            </div>
+            {%- assign rendered_upsell = rendered_upsell | plus: 1 -%}
+            {%- if rendered_upsell >= upsell_limit -%}{%- break -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+
+        {%- assign upsell_slides_desktop = block.settings.free_shipping_upsell_slides_desktop | default: 1.1 | plus: 0 -%}
+        {%- assign upsell_slides_mobile = block.settings.free_shipping_upsell_slides_mobile | default: 1 | plus: 0 -%}
+        {%- if upsell_slides_desktop < 1 -%}{%- assign upsell_slides_desktop = 1 -%}{%- endif -%}
+        {%- if upsell_slides_mobile < 1 -%}{%- assign upsell_slides_mobile = 1 -%}{%- endif -%}
+        {%- if rendered_upsell == 1 -%}
+          {%- assign upsell_slides_desktop = 1 -%}
+          {%- assign upsell_slides_mobile = 1 -%}
+        {%- endif -%}
+        <div
+          class="ppu-upsell{% unless upsell_show_image %} ppu-upsell--hide-image{% endunless %}{% if rendered_upsell == 0 %} ppu-upsell--empty{% endif %}"
+          style="
+            --ppu-image-size: {{ upsell_image_size }}px;
+            --ppu-image-width: {{ upsell_image_width }}px;
+            --ppu-image-height: {{ upsell_image_height }}px;
+            --ppu-image-width-md: {{ upsell_image_width_md }}px;
+            --ppu-image-height-md: {{ upsell_image_height_md }}px;
+            --ppu-block-border: {{ upsell_block_border_color }};
+            --ppu-item-bg: {{ upsell_item_bg_color }};
+            --ppu-item-border: {{ upsell_item_border_color }};
+            --ppu-chevron-color: {{ upsell_chevron_color }};
+            --ppu-dot-active: {{ upsell_dot_active_color }};
+            --ppu-dot-inactive: {{ upsell_dot_inactive_color }};
+            --ppu-meta-gap: {{ upsell_meta_gap }}px;
+            --ppu-heading-size: {{ upsell_heading_size }}px;
+            --ppu-heading-weight: {{ upsell_heading_weight }};
+            --ppu-heading-letter-spacing: {{ upsell_heading_letter_spacing }}px;
+            --ppu-title-size: {{ upsell_title_size }}px;
+            --ppu-title-color: {{ upsell_title_color }};
+            --ppu-title-weight: {{ upsell_title_weight }};
+            --ppu-price-size: {{ upsell_price_size }}px;
+            --ppu-price-color: {{ upsell_price_color }};
+            --ppu-price-weight: {{ upsell_price_weight }};
+            --ppu-variant-size: {{ upsell_variant_size }}px;
+            --ppu-variant-color: {{ upsell_variant_text_color }};
+            --ppu-variant-bg: {{ upsell_variant_bg_color }};
+            --ppu-variant-border: {{ upsell_variant_border_color }};
+            --ppu-button-size: {{ upsell_button_size }}px;
+            --ppu-button-color: {{ upsell_button_text_color }};
+            --ppu-button-bg: {{ upsell_button_bg_color }};
+            --ppu-button-border: {{ upsell_button_border_color }};
+            --ppu-button-weight: {{ upsell_button_weight }};
+          "
+        >
+          <div class="ppu-upsell__header" style="color: {{ upsell_heading_color }};">{{ upsell_heading_text }}</div>
+          <div class="ppu-upsell__viewport">
+            {%- if rendered_upsell > 0 -%}
+              <div
+                class="ppu-upsell__slider"
+                role="list"
+                aria-label="{{ upsell_heading_text | escape }}"
+                data-real-count="{{ rendered_upsell }}"
+                style="--ppu-upsell-visible-desktop: {{ upsell_slides_desktop }}; --ppu-upsell-visible-mobile: {{ upsell_slides_mobile }};"
+              >
+                {{ upsell_items_markup }}
+              </div>
+              {%- if rendered_upsell > 1 -%}
+                {%- assign show_upsell_arrows = false -%}
+                {%- if block.settings.free_shipping_upsell_arrows_desktop or block.settings.free_shipping_upsell_arrows_mobile -%}
+                  {%- assign show_upsell_arrows = true -%}
+                {%- endif -%}
+                {%- if show_upsell_arrows -%}
+                  <div class="ppu-upsell__controls{% unless block.settings.free_shipping_upsell_arrows_desktop %} ppu-upsell__controls--hide-desktop{% endunless %}{% unless block.settings.free_shipping_upsell_arrows_mobile %} ppu-upsell__controls--hide-mobile{% endunless %}">
+                    <button type="button" class="ppu-upsell__arrow ppu-upsell__arrow--prev" data-direction="prev" aria-label="Previous upsell slide">
+                      <span aria-hidden="true">&#8249;</span>
+                    </button>
+                    <button type="button" class="ppu-upsell__arrow ppu-upsell__arrow--next" data-direction="next" aria-label="Next upsell slide">
+                      <span aria-hidden="true">&#8250;</span>
+                    </button>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            {%- else -%}
+              <div class="ppu-upsell__empty" role="status" aria-live="polite">
+                <span class="ppu-upsell__empty-icon" aria-hidden="true">+</span>
+                <span class="ppu-upsell__empty-text">{{ upsell_empty_text }}</span>
+              </div>
+            {%- endif -%}
+          </div>
+          {%- if rendered_upsell > 1 -%}
+            <div class="ppu-upsell__dots" aria-hidden="true">
+              {%- for i in (1..rendered_upsell) -%}
+                <button
+                  type="button"
+                  class="ppu-upsell__dot{% if forloop.first %} is-active{% endif %}"
+                  data-index="{{ i }}"
+                  aria-label="Go to upsell {{ i }}"
+                ></button>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      
+<style>
+    .ppu-upsell {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--ppu-block-border, rgba(15, 23, 42, 0.1));
+      display: grid;
+      gap: 8px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .ppu-upsell__header {
+      font-size: var(--ppu-heading-size, 13px);
+      color: #64748b;
+      font-weight: var(--ppu-heading-weight, 600);
+      letter-spacing: var(--ppu-heading-letter-spacing, 0.2px);
+    }
+
+    .ppu-upsell__viewport {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow: hidden;
+      padding: 0 1px 0 0;
+      box-sizing: border-box;
+    }
+
+    .ppu-upsell__slider {
+      --ppu-upsell-gap: 8px;
+      --ppu-upsell-visible-mobile: 1;
+      --ppu-upsell-visible-desktop: 1.1;
+      --ppu-upsell-visible: var(--ppu-upsell-visible-mobile);
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc(
+        (100% - (var(--ppu-upsell-gap) * (var(--ppu-upsell-visible) - 1)))
+        / var(--ppu-upsell-visible)
+      );
+      column-gap: var(--ppu-upsell-gap);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      padding-right: 1px;
+      scroll-padding-left: 0;
+      scroll-padding-right: 1px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      touch-action: pan-x;
+      overscroll-behavior-x: contain;
+    }
+
+    .ppu-upsell__slider[data-real-count='1'] {
+      --ppu-upsell-visible: 1;
+      grid-auto-columns: 100%;
+    }
+
+    .ppu-upsell__slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .ppu-upsell__item {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 10px;
+      background: var(--ppu-item-bg, #f8fafc);
+      border: 1px solid var(--ppu-item-border, #e2e8f0);
+      border-radius: 10px;
+      padding: 4px 18px;
+      min-height: 88px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .ppu-upsell__item--no-image {
+      grid-template-columns: 1fr auto;
+    }
+
+    .ppu-upsell__image,
+    .ppu-upsell__meta,
+    .ppu-upsell__add {
+      align-self: center;
+    }
+
+    .ppu-upsell__image {
+      width: var(--ppu-image-width, var(--ppu-image-size, 56px));
+      height: var(--ppu-image-height, var(--ppu-image-size, 56px));
+      border-radius: 8px;
+      overflow: hidden;
+      background: #e2e8f0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ppu-upsell__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      -webkit-user-drag: none;
+    }
+
+    .ppu-upsell__image,
+    .ppu-upsell__title {
+      -webkit-user-drag: none;
+    }
+
+    .ppu-upsell__placeholder {
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .ppu-upsell__meta {
+      display: grid;
+      gap: var(--ppu-meta-gap, 6px);
+      min-width: 0;
+      width: 100%;
+      max-width: 90%;
+      align-content: center;
+    }
+
+    .ppu-upsell__meta--full {
+      max-width: 100%;
+    }
+
+    .ppu-upsell__empty {
+      min-height: 88px;
+      border: 1px dashed var(--ppu-item-border, #e2e8f0);
+      border-radius: 10px;
+      background: var(--ppu-item-bg, #f8fafc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px;
+      color: var(--ppu-price-color, #64748b);
+      font-size: var(--ppu-price-size, 12px);
+      font-weight: 600;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .ppu-upsell__empty-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid currentColor;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .ppu-upsell__empty-text {
+      line-height: 1.3;
+    }
+
+    .ppu-upsell__variant {
+      width: 100%;
+      min-height: 28px;
+      margin-top: 2px;
+      border-radius: 8px;
+      border: 1px solid var(--ppu-variant-border, #cbd5e1);
+      background: var(--ppu-variant-bg, #ffffff);
+      color: var(--ppu-variant-color, #0f172a);
+      font-size: var(--ppu-variant-size, 11px);
+      line-height: 1.2;
+      padding: 4px 8px;
+      outline: none;
+      transition: border-color 140ms ease, background 140ms ease;
+    }
+
+    .ppu-upsell__variant:focus,
+    .ppu-upsell__variant:focus-visible {
+      border-color: #94a3b8;
+      background: #f8fafc;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.28);
+      outline: none;
+    }
+
+    .ppu-upsell__variant option {
+      color: var(--ppu-variant-color, #0f172a);
+      background: var(--ppu-variant-bg, #ffffff);
+    }
+
+    .ppu-upsell__title {
+      color: var(--ppu-title-color, #0f172a);
+      font-size: var(--ppu-title-size, 13px);
+      font-weight: var(--ppu-title-weight, 600);
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ppu-upsell__title:hover {
+      text-decoration: underline;
+    }
+
+    .ppu-upsell__price {
+      color: var(--ppu-price-color, #64748b);
+      font-size: var(--ppu-price-size, 12px);
+      font-weight: var(--ppu-price-weight, 500);
+      white-space: nowrap;
+    }
+
+    .ppu-upsell__add {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 50px;
+      background: var(--ppu-button-bg, #ffffff);
+      color: var(--ppu-button-color, #0f172a);
+      border: 1px solid var(--ppu-button-border, #cbd5e1);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: var(--ppu-button-size, 12px);
+      font-weight: var(--ppu-button-weight, 600);
+      cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, opacity 160ms ease;
+      white-space: nowrap;
+    }
+
+    .ppu-upsell__add-icon {
+      font-size: 13px;
+      line-height: 1;
+      width: 13px;
+      height: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ppu-upsell__add-icon svg {
+      width: 13px;
+      height: 13px;
+      display: block;
+    }
+
+    .ppu-upsell__add:hover {
+      transform: translateY(-1px);
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    .ppu-upsell__add.is-added {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: rgba(52, 211, 153, 0.5);
+      color: #065f46;
+    }
+
+    .ppu-upsell__add:disabled,
+    .ppu-upsell__add.is-loading {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .ppu-upsell__dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .ppu-upsell__controls {
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      right: 2px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    .ppu-upsell__arrow {
+      pointer-events: auto;
+      background: none;
+      border: 0;
+      color: var(--ppu-chevron-color, rgba(15, 23, 42, 0.72));
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      transition: opacity 160ms ease, transform 160ms ease;
+      padding: 0;
+      width: 16px;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.75);
+    }
+
+    .ppu-upsell__arrow:hover {
+      opacity: 0.85;
+      transform: scale(1.06);
+    }
+
+    .ppu-upsell__arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .ppu-upsell__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      border: 0;
+      background: var(--ppu-dot-inactive, rgba(148, 163, 184, 0.45));
+      padding: 0;
+      cursor: pointer;
+      transition: width 220ms ease, background 220ms ease;
+    }
+
+    .ppu-upsell__dot.is-active {
+      width: 16px;
+      background: var(--ppu-dot-active, #0284c7);
+    }
+
+    .free-shipping-bar .fsb__fill--complete,
+    .free-shipping-bar.fsb--unlocked .fsb__fill {
+      background: linear-gradient(90deg, #10b981, #34d399) !important;
+      width: 100% !important;
+      animation: none;
+      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.18), 0 0 12px rgba(16, 185, 129, 0.32);
+    }
+
+    .free-shipping-bar.fsb--unlocked .fsb__fill::after {
+      animation: none;
+      opacity: 0.16;
+    }
+
+    .free-shipping-bar.fsb--unlocked .fsb__track-inner::after {
+      opacity: 0;
+      animation: none;
+    }
+
+    .free-shipping-bar .fsb__glow {
+      position: absolute;
+      inset: -40% -20%;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.1), transparent 55%);
+      filter: blur(12px);
+      opacity: 0.22;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes fsbCheck {
+      0% {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.12);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fsbSheen {
+      0% {
+        background-position: 170% 0;
+      }
+      100% {
+        background-position: -90% 0;
+      }
+    }
+
+    @keyframes fsbFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes fsbStripes {
+      0% {
+        background-position: 0 0, 0 0;
+      }
+      100% {
+        background-position: 0 0, 22.627px 0;
+      }
+    }
+
+    @keyframes fsbSwap {
+      0% {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .free-shipping-bar {
+        padding: 8px 10px 10px;
+      }
+
+      .free-shipping-bar .fsb__title {
+        font-size: 12px;
+        gap: 5px;
+      }
+
+      .free-shipping-bar .fsb__check {
+        width: 18px;
+        height: 18px;
+      }
+
+      .free-shipping-bar .fsb__highlight {
+        font-size: 12px;
+      }
+
+      .free-shipping-bar .fsb__tip {
+        font-size: 21px;
+      }
+
+      .ppu-upsell__title {
+        font-size: calc(var(--ppu-title-size, 13px) - 1px);
+      }
+
+      .ppu-upsell__price,
+      .ppu-upsell__add {
+        font-size: calc(var(--ppu-price-size, 12px) - 1px);
+      }
+
+      .ppu-upsell__add {
+        font-size: calc(var(--ppu-button-size, 12px) - 1px);
+      }
+
+      .ppu-upsell__variant {
+        font-size: calc(var(--ppu-variant-size, 11px) - 1px);
+      }
+
+      .ppu-upsell__arrow {
+        font-size: 22px;
+      }
+    }
+
+    @media (min-width: 750px) {
+      .ppu-upsell__controls--hide-desktop {
+        display: none;
+      }
+
+      .ppu-upsell__item {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .ppu-upsell__variant {
+        width: min(100%, 220px);
+        justify-self: start;
+      }
+
+      .ppu-upsell__slider {
+        --ppu-upsell-visible: var(--ppu-upsell-visible-desktop);
+        cursor: grab;
+      }
+
+      .ppu-upsell__slider.is-dragging {
+        cursor: grabbing;
+        scroll-snap-type: none;
+        user-select: none;
+      }
+    }
+
+    @media (min-width: 750px) and (max-width: 1099px) {
+      .ppu-upsell__viewport {
+        padding-left: 1px;
+        padding-right: 1px;
+      }
+
+      .ppu-upsell__slider {
+        --ppu-upsell-gap: 6px;
+      }
+
+      .ppu-upsell__item {
+        padding-left: 14px;
+        padding-right: 14px;
+        gap: 8px;
+        min-height: 78px;
+      }
+
+      .ppu-upsell__image {
+        width: var(--ppu-image-width-md, var(--ppu-image-width, var(--ppu-image-size, 56px)));
+        height: var(--ppu-image-height-md, var(--ppu-image-height, var(--ppu-image-size, 56px)));
+      }
+
+      .ppu-upsell__meta {
+        gap: min(var(--ppu-meta-gap, 6px), 5px);
+      }
+
+      .ppu-upsell__title {
+        font-size: calc(var(--ppu-title-size, 13px) - 1px);
+      }
+
+      .ppu-upsell__price {
+        font-size: calc(var(--ppu-price-size, 12px) - 1px);
+      }
+
+      .ppu-upsell__variant {
+        width: min(100%, 150px);
+        justify-self: start;
+        min-height: 26px;
+        padding: 3px 6px;
+        font-size: calc(var(--ppu-variant-size, 11px) - 1px);
+      }
+
+      .ppu-upsell__add {
+        min-width: 54px;
+        padding: 4px 8px;
+        font-size: calc(var(--ppu-button-size, 12px) - 1px);
+      }
+
+      .ppu-upsell__arrow {
+        font-size: 20px;
+        width: 14px;
+      }
+    }
+
+    @media (max-width: 749px) {
+      .ppu-upsell__controls--hide-mobile {
+        display: none;
+      }
+    }
+</style>
+
+  <script>
+    (function () {
+      if (window.__ppuUpsellBound) return;
+      window.__ppuUpsellBound = true;
+
+      function getAllSlides(slider) {
+        return Array.prototype.slice.call(slider.querySelectorAll('.ppu-upsell__item'));
+      }
+
+      function getRealSlides(slider) {
+        return getAllSlides(slider).filter(function (slide) {
+          return !slide.classList.contains('is-clone');
+        });
+      }
+
+      function getActiveRealIndex(slider) {
+        var realSlides = getRealSlides(slider);
+        if (!realSlides.length) return 0;
+
+        var sliderCenter = slider.scrollLeft + slider.clientWidth / 2;
+        var bestIndex = 0;
+        var bestDistance = Infinity;
+
+        realSlides.forEach(function (slide, index) {
+          var center = slide.offsetLeft + slide.offsetWidth / 2;
+          var distance = Math.abs(center - sliderCenter);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+          }
+        });
+
+        return bestIndex;
+      }
+
+      function getLoopCloneCount(slider) {
+        var count = parseInt(slider.getAttribute('data-loop-clones') || '0', 10);
+        if (Number.isNaN(count) || count < 0) return 0;
+        return count;
+      }
+
+      function getVisualRealIndex(slider) {
+        var realSlides = getRealSlides(slider);
+        if (!realSlides.length) return 0;
+        var isLoop = slider.getAttribute('data-loop') === 'true' && realSlides.length > 1;
+        if (!isLoop) return getActiveRealIndex(slider);
+
+        var cloneCount = getLoopCloneCount(slider);
+        if (cloneCount < 1) return getActiveRealIndex(slider);
+
+        var slides = getAllSlides(slider);
+        if (slides.length <= realSlides.length) return getActiveRealIndex(slider);
+
+        var leadingEdge = slides[cloneCount - 1];
+        var trailingEdge = slides[slides.length - cloneCount];
+        if (!leadingEdge || !trailingEdge) return getActiveRealIndex(slider);
+        var x = slider.scrollLeft;
+        var epsilon = 2;
+
+        if (x >= trailingEdge.offsetLeft - epsilon) {
+          return 0;
+        }
+        if (x <= leadingEdge.offsetLeft + epsilon) {
+          return realSlides.length - 1;
+        }
+
+        return getActiveRealIndex(slider);
+      }
+
+      function getSavedUpsellIndex() {
+        var saved = parseInt(window.__ppuUpsellActiveIndex, 10);
+        if (Number.isNaN(saved) || saved < 0) return 0;
+        return saved;
+      }
+
+      function setSavedUpsellIndex(index) {
+        var next = parseInt(index, 10);
+        if (Number.isNaN(next) || next < 0) next = 0;
+        window.__ppuUpsellActiveIndex = next;
+      }
+
+      function moveToRealIndex(slider, index, behavior) {
+        var realSlides = getRealSlides(slider);
+        if (!realSlides.length) return;
+
+        var normalized;
+        if (slider.getAttribute('data-loop') === 'true') {
+          normalized = ((index % realSlides.length) + realSlides.length) % realSlides.length;
+        } else {
+          normalized = Math.min(Math.max(index, 0), realSlides.length - 1);
+        }
+        slider.scrollTo({
+          left: realSlides[normalized].offsetLeft,
+          behavior: behavior || 'smooth'
+        });
+      }
+
+      function normalizeLoopPosition(slider) {
+        if (slider.getAttribute('data-loop') !== 'true') return;
+
+        var cloneCount = getLoopCloneCount(slider);
+        if (cloneCount < 1) return;
+        var slides = getAllSlides(slider);
+        if (slides.length < cloneCount * 2 + 1) return;
+
+        var firstReal = slides[cloneCount];
+        var lastReal = slides[slides.length - cloneCount - 1];
+        var leadingEdge = slides[cloneCount - 1];
+        var trailingEdge = slides[slides.length - cloneCount];
+        if (!firstReal || !lastReal || !leadingEdge || !trailingEdge) return;
+        var x = slider.scrollLeft;
+        var epsilon = 2;
+
+        if (x <= leadingEdge.offsetLeft + epsilon) {
+          slider.scrollLeft = lastReal.offsetLeft;
+        } else if (x >= trailingEdge.offsetLeft - epsilon) {
+          slider.scrollLeft = firstReal.offsetLeft;
+        }
+      }
+
+      function updateDots(slider) {
+        var container = slider.closest('.ppu-upsell');
+        var realSlides = getRealSlides(slider);
+        var realIndex = getVisualRealIndex(slider);
+        setSavedUpsellIndex(realIndex);
+        if (!container) return;
+
+        var dots = container.querySelectorAll('.ppu-upsell__dot');
+        dots.forEach(function (dot, idx) {
+          dot.classList.toggle('is-active', idx === realIndex);
+        });
+      }
+
+      function waitForSliderLayout(slider, callback) {
+        var tries = 0;
+
+        function check() {
+          var firstReal = slider.querySelector('.ppu-upsell__item:not(.is-clone)');
+          if (firstReal && slider.clientWidth > 20 && firstReal.getBoundingClientRect().width > 20) {
+            callback();
+            return;
+          }
+
+          tries += 1;
+          if (tries < 80) {
+            setTimeout(check, 40);
+          } else {
+            callback();
+          }
+        }
+
+        check();
+      }
+
+      function bindUpsellSliders(scope) {
+        var root = scope || document;
+        var sliders = root.querySelectorAll('.ppu-upsell__slider');
+
+        sliders.forEach(function (slider) {
+          if (slider.dataset.ppuBound === 'true') return;
+          slider.dataset.ppuBound = 'true';
+
+          var initialItems = getRealSlides(slider);
+          if (initialItems.length > 1) {
+            var visibleDesktop = parseFloat(slider.style.getPropertyValue('--ppu-upsell-visible-desktop')) || 1; var cloneCount = Math.max(initialItems.length > 2 ? 2 : 1, Math.ceil(visibleDesktop));
+            var headFragment = document.createDocumentFragment();
+            var tailFragment = document.createDocumentFragment();
+            var startIndex = Math.max(initialItems.length - cloneCount, 0);
+
+            for (var i = startIndex; i < initialItems.length; i += 1) {
+              var headClone = initialItems[i].cloneNode(true);
+              headClone.classList.add('is-clone');
+              headFragment.appendChild(headClone);
+            }
+            for (var j = 0; j < cloneCount; j += 1) {
+              var tailClone = initialItems[j].cloneNode(true);
+              tailClone.classList.add('is-clone');
+              tailFragment.appendChild(tailClone);
+            }
+
+            slider.insertBefore(headFragment, slider.firstChild);
+            slider.appendChild(tailFragment);
+            slider.setAttribute('data-loop', 'true');
+            slider.setAttribute('data-loop-clones', String(cloneCount));
+          } else {
+            slider.setAttribute('data-loop', 'false');
+            slider.setAttribute('data-loop-clones', '0');
+          }
+
+          var dragState = {
+            active: false,
+            pointerId: null,
+            startX: 0,
+            startScrollLeft: 0,
+            moved: false,
+            suppressClickUntil: 0
+          };
+          var scrollSettleTimer = null;
+          function scheduleNormalizeAfterScroll() {
+            if (slider.getAttribute('data-loop') !== 'true') return;
+            if (dragState.active) return;
+            if (scrollSettleTimer) {
+              clearTimeout(scrollSettleTimer);
+            }
+            scrollSettleTimer = setTimeout(function () {
+              normalizeLoopPosition(slider);
+              updateDots(slider);
+            }, 150);
+          }
+
+          waitForSliderLayout(slider, function () {
+            moveToRealIndex(slider, getSavedUpsellIndex(), 'auto');
+            normalizeLoopPosition(slider);
+            updateDots(slider);
+          });
+
+          slider.addEventListener('scroll', function () {
+            window.requestAnimationFrame(function () {
+              if (!dragState.active) {
+                updateDots(slider);
+              }
+            });
+            scheduleNormalizeAfterScroll();
+          }, { passive: true });
+          if ('onscrollend' in window) {
+            slider.addEventListener('scrollend', function () {
+              if (dragState.active) return;
+              normalizeLoopPosition(slider);
+              updateDots(slider);
+            }, { passive: true });
+          }
+
+          var dots = slider.closest('.ppu-upsell') ? slider.closest('.ppu-upsell').querySelectorAll('.ppu-upsell__dot') : [];
+          dots.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+              var targetIndex = parseInt(dot.getAttribute('data-index'), 10) - 1;
+              if (Number.isNaN(targetIndex)) return;
+              setSavedUpsellIndex(targetIndex);
+              moveToRealIndex(slider, targetIndex, 'smooth');
+            });
+          });
+
+          var container = slider.closest('.ppu-upsell');
+          if (container) {
+            var arrows = container.querySelectorAll('.ppu-upsell__arrow');
+            arrows.forEach(function (arrow) {
+              arrow.addEventListener('click', function () {
+                normalizeLoopPosition(slider);
+                var direction = arrow.getAttribute('data-direction') === 'prev' ? -1 : 1;
+                var realSlides = getRealSlides(slider);
+                if (realSlides.length < 2) return;
+                var currentIndex = getSavedUpsellIndex();
+                if (currentIndex < 0 || currentIndex >= realSlides.length) {
+                  currentIndex = getVisualRealIndex(slider);
+                }
+                var nextIndex = currentIndex + direction;
+                var allSlides = getAllSlides(slider);
+                var isLoop = slider.getAttribute('data-loop') === 'true' && realSlides.length > 1;
+                var hasLoopClones = isLoop && allSlides.length > realSlides.length;
+                var loopCloneCount = getLoopCloneCount(slider);
+
+                if (direction > 0 && currentIndex >= realSlides.length - 1) {
+                  setSavedUpsellIndex(0);
+                  var firstTailCloneIndex = Math.max(allSlides.length - loopCloneCount, 0);
+                  if (hasLoopClones && loopCloneCount > 0 && allSlides[firstTailCloneIndex]) {
+                    slider.scrollTo({
+                      left: allSlides[firstTailCloneIndex].offsetLeft,
+                      behavior: 'smooth'
+                    });
+                    scheduleNormalizeAfterScroll();
+                  } else {
+                    moveToRealIndex(slider, 0, 'smooth');
+                  }
+                  return;
+                }
+
+                if (direction < 0 && currentIndex <= 0) {
+                  setSavedUpsellIndex(realSlides.length - 1);
+                  var lastHeadCloneIndex = Math.max(loopCloneCount - 1, 0);
+                  if (hasLoopClones && loopCloneCount > 0 && allSlides[lastHeadCloneIndex]) {
+                    slider.scrollTo({
+                      left: allSlides[lastHeadCloneIndex].offsetLeft,
+                      behavior: 'smooth'
+                    });
+                    scheduleNormalizeAfterScroll();
+                  } else {
+                    moveToRealIndex(slider, realSlides.length - 1, 'smooth');
+                  }
+                  return;
+                }
+
+                setSavedUpsellIndex(nextIndex);
+                moveToRealIndex(slider, nextIndex, 'smooth');
+                scheduleNormalizeAfterScroll();
+              });
+            });
+          }
+
+          slider.addEventListener('pointerdown', function (event) {
+            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            if (event.target.closest('a, button, select, input, label')) return;
+
+            dragState.active = true;
+            dragState.pointerId = event.pointerId;
+            dragState.startX = event.clientX;
+            dragState.startScrollLeft = slider.scrollLeft;
+            dragState.moved = false;
+
+            try {
+              slider.setPointerCapture(event.pointerId);
+            } catch (error) {
+              dragState.active = false;
+              slider.classList.remove('is-dragging');
+            }
+          });
+
+          slider.addEventListener('pointermove', function (event) {
+            if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+            var deltaX = event.clientX - dragState.startX;
+            if (!dragState.moved) {
+              if (Math.abs(deltaX) < 5) return;
+              dragState.moved = true;
+              slider.classList.add('is-dragging');
+            }
+            event.preventDefault();
+            slider.scrollLeft = dragState.startScrollLeft - deltaX;
+          });
+
+          function endDrag(event) {
+            if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+
+            dragState.active = false;
+            if (dragState.moved) {
+              dragState.suppressClickUntil = Date.now() + 260;
+              var targetIndex = getActiveRealIndex(slider);
+              setSavedUpsellIndex(targetIndex);
+              normalizeLoopPosition(slider);
+              moveToRealIndex(slider, targetIndex, 'smooth');
+              scheduleNormalizeAfterScroll();
+              window.setTimeout(function () {
+                if (document.body.contains(slider)) {
+                  slider.classList.remove('is-dragging');
+                }
+              }, 160);
+            } else {
+              slider.classList.remove('is-dragging');
+            }
+
+            if (slider.hasPointerCapture && slider.hasPointerCapture(event.pointerId)) {
+              slider.releasePointerCapture(event.pointerId);
+            }
+          }
+
+          slider.addEventListener('pointerup', endDrag);
+          slider.addEventListener('pointercancel', endDrag);
+          slider.addEventListener('dragstart', function (event) {
+            if (event.target.closest('img, a')) {
+              event.preventDefault();
+            }
+          });
+          slider.addEventListener('click', function (event) {
+            if (Date.now() < dragState.suppressClickUntil) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+          }, true);
+
+          window.addEventListener('resize', function () {
+            normalizeLoopPosition(slider);
+            updateDots(slider);
+          });
+        });
+      }
+
+      function formatMoneyWithCurrency(cents, currency) {
+        var amount = (cents || 0) / 100;
+
+        try {
+          var formatted = new Intl.NumberFormat(undefined, {
+            style: 'currency',
+            currency: currency,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }).format(amount);
+          return formatted + ' ' + currency;
+        } catch (error) {
+          return '$' + amount.toFixed(2) + ' ' + currency;
+        }
+      }
+
+      function animateHighlight(scope) {
+        var root = scope || document;
+        var highlight = root.querySelector('.fsb__highlight[data-target-cents]');
+        if (!highlight) return;
+
+        var target = parseInt(highlight.getAttribute('data-target-cents'), 10);
+        if (Number.isNaN(target)) return;
+
+        var currency = highlight.getAttribute('data-currency') || 'USD';
+        var previous = window.__fsbRemainingCents;
+
+        if (typeof previous !== 'number') {
+          window.__fsbRemainingCents = target;
+          return;
+        }
+
+        if (previous === target) return;
+
+        var startTime;
+        var duration = 650;
+
+        function frame(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.round(previous + (target - previous) * eased);
+
+          highlight.textContent = formatMoneyWithCurrency(current, currency);
+
+          if (progress < 1) {
+            window.requestAnimationFrame(frame);
+          }
+        }
+
+        window.requestAnimationFrame(frame);
+        window.__fsbRemainingCents = target;
+      }
+
+      function animateProgress(scope) {
+        var root = scope || document;
+        var bar = root.querySelector('.free-shipping-bar[data-progress]');
+        var fill = root.querySelector('.free-shipping-bar .fsb__fill');
+        if (!bar) return;
+
+        var target = parseFloat(bar.getAttribute('data-progress'));
+        if (Number.isNaN(target)) return;
+
+        var previous = window.__fsbProgressPercent;
+        if (typeof previous !== 'number') previous = target;
+
+        if (fill) fill.style.width = previous + '%';
+        bar.style.setProperty('--fsb-progress-value', previous + '%');
+
+        window.requestAnimationFrame(function () {
+          if (fill) fill.style.width = target + '%';
+          bar.style.setProperty('--fsb-progress-value', target + '%');
+        });
+
+        window.__fsbProgressPercent = target;
+      }
+
+      function updateCartBubbles() {
+        return fetch('/cart.js', { headers: { Accept: 'application/json' } })
+          .then(function (response) {
+            if (!response.ok) return null;
+            return response.json();
+          })
+          .then(function (cartState) {
+            if (!cartState || typeof cartState.item_count !== 'number') return;
+            var bubbles = document.querySelectorAll('.cart-count-bubble span:first-child');
+            bubbles.forEach(function (bubbleText) {
+              bubbleText.textContent = cartState.item_count;
+            });
+          })
+          .catch(function () {
+            return null;
+          });
+      }
+
+      function refreshCartDrawerFallback() {
+        return fetch('/cart?section_id=cart-drawer')
+          .then(function (response) {
+            if (!response.ok) throw response;
+            return response.text();
+          })
+          .then(function (html) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+            var incoming = doc.querySelector('#CartDrawer');
+            var current = document.querySelector('#CartDrawer');
+            var incomingDrawer = doc.querySelector('cart-drawer');
+            var currentDrawer = document.querySelector('cart-drawer');
+
+            if (!incoming || !current || !currentDrawer) {
+              window.location.reload();
+              return;
+            }
+
+            current.replaceWith(incoming);
+            if (incomingDrawer && incomingDrawer.className) {
+              currentDrawer.className = incomingDrawer.className;
+            }
+
+            if (typeof currentDrawer.open === 'function') {
+              currentDrawer.open();
+            }
+
+            bindUpsellSliders(incoming);
+            animateProgress(incoming);
+            animateHighlight(incoming);
+          });
+      }
+
+      function syncDrawerEmptyStateFromState(state) {
+        var drawer = document.querySelector('cart-drawer');
+        if (!drawer || !state) return;
+
+        var itemCount = null;
+        if (typeof state.item_count === 'number') {
+          itemCount = state.item_count;
+        } else if (Array.isArray(state.items)) {
+          itemCount = state.items.length;
+        }
+
+        if (itemCount === null) return;
+        drawer.classList.toggle('is-empty', itemCount === 0);
+      }
+
+      function refreshCartDrawerFromState(state) {
+        syncDrawerEmptyStateFromState(state);
+        return refreshCartDrawerFallback();
+      }
+
+      function setAddedState(button) {
+        if (!button) return;
+
+        var textEl = button.querySelector('.ppu-upsell__add-text');
+        var iconEl = button.querySelector('.ppu-upsell__add-icon');
+        var defaultText = button.getAttribute('data-default-label') || 'Add';
+        var addedIconSvg = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>';
+
+        button.classList.add('is-added');
+        if (textEl) textEl.textContent = 'Added';
+        if (iconEl) iconEl.innerHTML = addedIconSvg;
+
+        setTimeout(function () {
+          if (!document.body.contains(button)) return;
+          button.classList.remove('is-added');
+          if (textEl) textEl.textContent = defaultText;
+          if (iconEl) iconEl.textContent = '+';
+        }, 1200);
+      }
+
+      document.addEventListener('change', function (event) {
+        var variantSelect = event.target.closest('.ppu-upsell__variant');
+        if (!variantSelect) return;
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+
+        var parentItem = variantSelect.closest('.ppu-upsell__item');
+        var addButton = parentItem ? parentItem.querySelector('.ppu-upsell__add') : null;
+        if (!addButton) return;
+
+        var selectedOption = variantSelect.options[variantSelect.selectedIndex];
+        var selectedVariantId = variantSelect.value || '';
+        var increment = selectedOption ? parseInt(selectedOption.getAttribute('data-qty-increment') || '1', 10) : 1;
+        var minQty = selectedOption ? parseInt(selectedOption.getAttribute('data-qty-min') || '1', 10) : 1;
+        if (Number.isNaN(increment) || increment < 1) increment = 1;
+        if (Number.isNaN(minQty) || minQty < 1) minQty = 1;
+        var qty = Math.max(increment, minQty);
+        var priceEl = parentItem ? parentItem.querySelector('.ppu-upsell__price') : null;
+        var selectedPrice = selectedOption ? selectedOption.getAttribute('data-price') : '';
+        if (priceEl && selectedPrice) {
+          priceEl.textContent = selectedPrice;
+        }
+        addButton.setAttribute('data-variant-id', selectedVariantId);
+        addButton.setAttribute('data-quantity', String(qty));
+        addButton.disabled = !selectedVariantId || !selectedOption || selectedOption.disabled || addButton.classList.contains('is-loading');
+      }, true);
+
+      document.addEventListener('click', function (event) {
+        var button = event.target.closest('.ppu-upsell__add');
+        if (!button || button.disabled) return;
+
+        var sliderForButton = button.closest('.ppu-upsell') ? button.closest('.ppu-upsell').querySelector('.ppu-upsell__slider') : null;
+        if (sliderForButton) {
+          setSavedUpsellIndex(getActiveRealIndex(sliderForButton));
+        }
+
+        event.preventDefault();
+
+        var parentItem = button.closest('.ppu-upsell__item');
+        var variantSelect = parentItem ? parentItem.querySelector('.ppu-upsell__variant') : null;
+        var variantId = parseInt(button.getAttribute('data-variant-id'), 10);
+        if (variantSelect && variantSelect.value) {
+          variantId = parseInt(variantSelect.value, 10);
+        }
+        if (Number.isNaN(variantId)) return;
+
+        var qty = parseInt(button.getAttribute('data-quantity') || '1', 10);
+        if (variantSelect && variantSelect.options[variantSelect.selectedIndex]) {
+          var selectedOption = variantSelect.options[variantSelect.selectedIndex];
+          var incFromOption = parseInt(selectedOption.getAttribute('data-qty-increment') || '1', 10);
+          var minFromOption = parseInt(selectedOption.getAttribute('data-qty-min') || '1', 10);
+          if (Number.isNaN(incFromOption) || incFromOption < 1) incFromOption = 1;
+          if (Number.isNaN(minFromOption) || minFromOption < 1) minFromOption = 1;
+          qty = Math.max(qty, incFromOption, minFromOption);
+        }
+        if (Number.isNaN(qty) || qty < 1) qty = 1;
+
+        button.disabled = true;
+        button.classList.add('is-loading');
+
+        var payload = {
+          id: variantId,
+          quantity: qty
+        };
+
+        var drawer = document.querySelector('cart-drawer');
+        if (drawer && typeof drawer.getSectionsToRender === 'function') {
+          var sectionIds = drawer
+            .getSectionsToRender()
+            .map(function (section) {
+              return section.section || section.id;
+            })
+            .filter(Boolean);
+
+          if (sectionIds.length) {
+            payload.sections = sectionIds;
+            payload.sections_url = window.location.pathname;
+          }
+        }
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify(payload)
+        })
+          .then(function (response) {
+            return response.json().then(function (state) {
+              if (!response.ok) throw state;
+              return state;
+            });
+          })
+          .then(function (state) {
+            setAddedState(button);
+            return new Promise(function (resolve) {
+              setTimeout(function () {
+                resolve(state);
+              }, 650);
+            });
+          })
+          .then(function (state) {
+            return refreshCartDrawerFromState(state);
+          })
+          .then(function () {
+            return updateCartBubbles();
+          })
+          .catch(function () {
+            button.disabled = false;
+            button.classList.remove('is-loading');
+          })
+          .finally(function () {
+            if (document.body.contains(button)) {
+              button.disabled = false;
+              button.classList.remove('is-loading');
+            }
+          });
+      });
+
+      var rebindScheduled = false;
+
+      function rebindFreeShipping(scope) {
+        var root = scope || document;
+        bindUpsellSliders(root);
+        animateProgress(root);
+        animateHighlight(root);
+      }
+
+      function scheduleRebind(scope) {
+        if (rebindScheduled) return;
+        rebindScheduled = true;
+        window.requestAnimationFrame(function () {
+          rebindScheduled = false;
+          rebindFreeShipping(scope || document);
+        });
+      }
+
+      function hasRelevantNode(node) {
+        if (!node || node.nodeType !== 1) return false;
+
+        if (
+          node.matches &&
+          (
+            node.matches('#CartDrawer') ||
+            node.matches('.free-shipping-bar') ||
+            node.matches('.ppu-upsell__slider') ||
+            node.matches('cart-drawer') ||
+            node.matches('cart-drawer-items')
+          )
+        ) {
+          return true;
+        }
+
+        if (node.querySelector) {
+          return Boolean(
+            node.querySelector(
+              '#CartDrawer, .free-shipping-bar, .ppu-upsell__slider, cart-drawer, cart-drawer-items'
+            )
+          );
+        }
+
+        return false;
+      }
+
+      function watchCartDrawerMutations() {
+        if (window.__ppuMutationObserverBound || !window.MutationObserver || !document.body) return;
+        window.__ppuMutationObserverBound = true;
+
+        var observer = new MutationObserver(function (mutations) {
+          var shouldRebind = false;
+
+          for (var i = 0; i < mutations.length; i += 1) {
+            var mutation = mutations[i];
+            if (!mutation.addedNodes || mutation.addedNodes.length === 0) continue;
+
+            for (var j = 0; j < mutation.addedNodes.length; j += 1) {
+              if (hasRelevantNode(mutation.addedNodes[j])) {
+                shouldRebind = true;
+                break;
+              }
+            }
+
+            if (shouldRebind) break;
+          }
+
+          if (shouldRebind) scheduleRebind(document);
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+
+      document.addEventListener('shopify:section:load', function (event) {
+        scheduleRebind(event.target || document);
+      });
+
+      ['cart:refresh', 'cart:updated', 'cart:update', 'cart:change'].forEach(function (eventName) {
+        document.addEventListener(eventName, function () {
+          scheduleRebind(document);
+        });
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+          rebindFreeShipping(document);
+          watchCartDrawerMutations();
+        });
+      } else {
+        rebindFreeShipping(document);
+        watchCartDrawerMutations();
+      }
+    })();
+  </script>
+{%- endif -%}
+
+
+

@@ -1,0 +1,330 @@
+{%- comment -%} Estimated delivery (fix: month-first dates everywhere) {%- endcomment -%}
+
+{%- assign heading_text  = block.settings.heading_text  | default: 'ESTIMATED DELIVERY' -%}
+
+{%- assign bg_color         = block.settings.bg_color         | default: '#EEEFE0' -%}
+{%- assign border_color     = block.settings.border_color     | default: '#819A91' -%}
+{%- assign accent_color     = block.settings.accent_color     | default: '#A7C1A8' -%}
+{%- assign title_color      = block.settings.title_color      | default: '#26322B' -%}
+{%- assign summary_color    = block.settings.summary_color    | default: '#8AA092' -%}
+{%- assign label_color      = block.settings.label_color      | default: '#26322B' -%}
+{%- assign date_color       = block.settings.date_color       | default: '#8AA092' -%}
+{%- assign ring_color       = block.settings.ring_color       | default: '#9BB1A7' -%}
+{%- assign connector_color  = block.settings.connector_color  | default: '#9BB1A7' -%}
+
+{%- assign border_style     = block.settings.border_style     | default: 'solid' -%}
+{%- assign connector_style  = block.settings.connector_style  | default: 'solid' -%}
+
+{%- assign dmin = block.settings.dispatch_min  | default: 0 | plus: 0 -%}
+{%- assign dmax = block.settings.dispatch_max  | default: dmin | plus: 0 -%}
+{%- assign lmin = block.settings.delivery_min  | default: 6 | plus: 0 -%}
+{%- assign lmax = block.settings.delivery_max  | default: lmin | plus: 0 -%}
+
+{%- assign sec_day = 86400 -%}
+{%- assign now_ts  = 'now' | date: '%s' | plus: 0 -%}
+
+{%- assign dmin_sec = dmin | times: sec_day -%}
+{%- assign dmax_sec = dmax | times: sec_day -%}
+{%- assign lmin_sec = lmin | times: sec_day -%}
+{%- assign lmax_sec = lmax | times: sec_day -%}
+
+{%- assign disp_min_ts = now_ts | plus: dmin_sec -%}
+{%- assign disp_max_ts = now_ts | plus: dmax_sec -%}
+{%- assign delv_min_ts = disp_min_ts | plus: lmin_sec -%}
+{%- assign delv_max_ts = disp_max_ts | plus: lmax_sec -%}
+
+{%- assign disp_m1 = disp_min_ts | date: '%B' -%}
+{%- assign disp_m2 = disp_max_ts | date: '%B' -%}
+{%- assign delv_m1 = delv_min_ts | date: '%B' -%}
+{%- assign delv_m2 = delv_max_ts | date: '%B' -%}
+
+{%- assign disp_d1 = disp_min_ts | date: '%-d' -%}
+{%- assign disp_d2 = disp_max_ts | date: '%-d' -%}
+{%- assign delv_d1 = delv_min_ts | date: '%-d' -%}
+{%- assign delv_d2 = delv_max_ts | date: '%-d' -%}
+
+{%- comment -%} Step 2 display (month first) {%- endcomment -%}
+{%- if disp_min_ts == disp_max_ts -%}
+  {%- capture step2_date -%}{{ disp_min_ts | date: '%B %-d' }}{%- endcapture -%}
+{%- elsif disp_m1 == disp_m2 -%}
+  {%- capture step2_date -%}{{ disp_m1 }} {{ disp_d1 }}–{{ disp_d2 }}{%- endcapture -%}
+{%- else -%}
+  {%- capture step2_date -%}{{ disp_min_ts | date: '%b %-d' }} – {{ disp_max_ts | date: '%b %-d' }}{%- endcapture -%}
+{%- endif -%}
+
+{%- comment -%} Step 3 display (month first) {%- endcomment -%}
+{%- if delv_min_ts == delv_max_ts -%}
+  {%- capture step3_date -%}{{ delv_min_ts | date: '%B %-d' }}{%- endcapture -%}
+{%- elsif delv_m1 == delv_m2 -%}
+  {%- capture step3_date -%}{{ delv_m1 }} {{ delv_d1 }}–{{ delv_d2 }}{%- endcapture -%}
+{%- else -%}
+  {%- capture step3_date -%}{{ delv_min_ts | date: '%b %-d' }} – {{ delv_max_ts | date: '%b %-d' }}{%- endcapture -%}
+{%- endif -%}
+
+{%- comment -%} Summary line (month first; single-day stays single) {%- endcomment -%}
+{%- if delv_min_ts == delv_max_ts -%}
+  {%- capture summary_date -%}{{ delv_min_ts | date: '%B %-d' }}{%- endcapture -%}
+{%- elsif delv_m1 == delv_m2 -%}
+  {%- capture summary_date -%}{{ delv_m1 }} {{ delv_d1 }}–{{ delv_d2 }}{%- endcapture -%}
+{%- else -%}
+  {%- capture summary_date -%}{{ delv_min_ts | date: '%b %-d' }} – {{ delv_max_ts | date: '%b %-d' }}{%- endcapture -%}
+{%- endif -%}
+
+{%- assign label_order      = block.settings.label_order      | default: 'Order placed (Today)' -%}
+{%- assign label_dispatched = block.settings.label_dispatched | default: 'Dispatched' -%}
+{%- assign label_delivered  = block.settings.label_delivered  | default: 'Delivered to You' -%}
+
+<div id="ed-{{ block.id }}" class="ed-wrap" {{ block.shopify_attributes }}>
+  <style>
+    #ed-{{ block.id }}{
+      --bg:      {{ bg_color }};
+      --border:  {{ border_color }};
+      --accent:  {{ accent_color }};
+
+      --title:   {{ title_color }};
+      --summary: {{ summary_color }};
+      --label:   {{ label_color }};
+      --date:    {{ date_color }};
+
+      --ring:    {{ ring_color }};
+      --track:   {{ connector_color }};
+
+      --card-border-style: {{ border_style }};
+
+      --icon: 56px;
+      --icon-pop: 1.06;
+      --line-h: 2px;
+      --gap-x: clamp(24px, 6vw, 80px);
+
+      --conn-dur: .6s;
+      --fade-dur: .45s;
+      --r: 16px;
+    }
+
+    #ed-{{ block.id }} .ed-card{
+      position: relative;
+      border: 1px var(--card-border-style) var(--border);
+      border-radius: var(--r);
+      padding: 16px 12px 20px;
+      background: var(--bg);
+      box-shadow: 0 4px 14px color-mix(in srgb, var(--border) 14%, transparent);
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    #ed-{{ block.id }} .ed-title{
+      margin:0 0 2px 0; line-height:1.22;
+      font-weight:800; color:var(--title);
+      text-transform:uppercase; letter-spacing:.02em;
+      font-size: clamp(14px, 2.8vw, 16px);
+    }
+    #ed-{{ block.id }} .ed-range{ margin:0 0 12px 0; color:var(--summary); font-weight:600; font-size:16px; }
+
+    /* steps row */
+    #ed-{{ block.id }} .ed-steps{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items:center;
+      align-items:flex-start;
+      gap: var(--gap-x);
+      position: relative;
+    }
+
+    /* connector tracks */
+    #ed-{{ block.id }} .ed-lines{ position:absolute; left:0; top:0; right:0; height:0; pointer-events:none; }
+    #ed-{{ block.id }} .ed-line{
+      position:absolute; height: var(--line-h); border-radius:2px; overflow:hidden;
+      background: var(--track);
+      -webkit-mask-image: none; mask-image: none;
+    }
+    /* dashed mask */
+    #ed-{{ block.id }} .ed-line.dashed{
+      -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 8px, transparent 8px 14px);
+      mask-image: repeating-linear-gradient(90deg, #000 0 8px, transparent 8px 14px);
+      -webkit-mask-size: 14px 100%;
+      mask-size: 14px 100%;
+      -webkit-mask-repeat: repeat-x;
+      mask-repeat: repeat-x;
+    }
+
+    /* fill bars */
+    #ed-{{ block.id }} .ed-line .bar{
+      position:absolute; left:0; top:0; bottom:0; width:100%;
+      background: var(--accent);
+      opacity:0; transform: scaleX(0);
+      transform-origin:left center;
+      transition: transform var(--conn-dur) linear, opacity var(--fade-dur) ease;
+      border-radius: inherit;
+    }
+    #ed-{{ block.id }} .ed-line.fill .bar { transform: scaleX(1); opacity:1; }
+    #ed-{{ block.id }} .ed-line.fade .bar { opacity:0; }
+
+    /* steps */
+    #ed-{{ block.id }} .ed-step{
+      display:grid; grid-template-rows: var(--icon) auto auto;
+      align-items:center; justify-items:center;
+      min-width:0; text-align:center;
+    }
+    #ed-{{ block.id }} .ed-ico{
+      width:var(--icon); height:var(--icon); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      border:1.5px solid var(--ring); color:var(--ring);
+      transition: transform .3s ease, border-color .3s ease, color .3s ease, background-color .3s ease, box-shadow .3s ease;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 88%, #ffffff 12%), var(--bg));
+    }
+    #ed-{{ block.id }} .ed-ico svg{
+      width:24px; height:24px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;
+    }
+    #ed-{{ block.id }} .ed-label{ margin-top:10px; font-weight:800; color:var(--label); font-size:14px; line-height:1.12; }
+    #ed-{{ block.id }} .ed-date { margin-top:8px; color:var(--date); font-size:14px; line-height:1.1; white-space:nowrap; }
+
+    #ed-{{ block.id }} .is-lit .ed-ico{
+      border-color: var(--accent); color: var(--accent); transform: scale(var(--icon-pop));
+      background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 80%, var(--accent) 20%), var(--bg));
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+    }
+    #ed-{{ block.id }} .is-lit .ed-label{ color: var(--accent); }
+
+    /* tablet tweaks */
+    @media (max-width: 1024px){
+      #ed-{{ block.id }}{ --icon: 52px; --gap-x: clamp(18px, 4.5vw, 60px); }
+      #ed-{{ block.id }} .ed-ico svg{ width:22px; height:22px; }
+      #ed-{{ block.id }} .ed-label{ font-size:14.5px; }
+      #ed-{{ block.id }} .ed-date { font-size:12.5px; }
+      #ed-{{ block.id }} .step-3 .ed-date { white-space:normal; line-height:1.15; }
+    }
+
+    /* responsive */
+    @media (max-width: 900px){
+      #ed-{{ block.id }}{ --icon: 52px; --gap-x: clamp(20px, 5vw, 56px); }
+      #ed-{{ block.id }} .ed-ico svg{ width:22px; height:22px; }
+      #ed-{{ block.id }} .ed-label{ font-size:13.5px;  }
+    }
+    @media (max-width: 700px){
+      #ed-{{ block.id }}{ --icon: 48px; --gap-x: clamp(16px, 4.5vw, 44px); }
+      #ed-{{ block.id }} .ed-ico svg{ width:21px; height:21px; }
+      #ed-{{ block.id }} .ed-label{ font-size:14px; font-weight:600; }
+      #ed-{{ block.id }} .ed-date { font-size:11px; }
+    }
+    @media (max-width: 420px){
+      #ed-{{ block.id }}{ --icon: 44px; --gap-x: clamp(12px, 4vw, 32px); }
+      #ed-{{ block.id }} .ed-ico svg{ width:20px; height:20px; }
+      #ed-{{ block.id }} .ed-label{ font-size:12.5px; }
+      #ed-{{ block.id }} .ed-date { font-size:11.5px; }
+    }
+  </style>
+
+  <div class="ed-card">
+    <div class="gradient-text-animated ed-title">{{ heading_text }}</div>
+    <p class="ed-range">{{ summary_date }}</p>
+
+    <div class="ed-steps">
+      <div class="ed-lines">
+        <div class="ed-line line-1{% if connector_style == 'dashed' %} dashed{% endif %}"><span class="bar"></span></div>
+        <div class="ed-line line-2{% if connector_style == 'dashed' %} dashed{% endif %}"><span class="bar"></span></div>
+      </div>
+
+      <!-- step 1 -->
+      <div class="ed-step step-1">
+        <div class="ed-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+          </svg>
+        </div>
+        <div class="ed-label">{{ label_order }}</div>
+        <div class="ed-date">{{ 'now' | date: '%B %-d' }}</div>
+      </div>
+
+      <!-- step 2 -->
+      <div class="ed-step step-2">
+        <div class="ed-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+            <path d="M15 18H9"/>
+            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+            <circle cx="17" cy="18" r="2"/>
+            <circle cx="7" cy="18" r="2"/>
+          </svg>
+        </div>
+        <div class="ed-label">{{ label_dispatched }}</div>
+        <div class="ed-date">{{ step2_date }}</div>
+      </div>
+
+      <!-- step 3 -->
+      <div class="ed-step step-3">
+        <div class="ed-ico" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-house-icon lucide-map-pin-house"><path d="M15 22a1 1 0 0 1-1-1v-4a1 1 0 0 1 .445-.832l3-2a1 1 0 0 1 1.11 0l3 2A1 1 0 0 1 22 17v4a1 1 0 0 1-1 1z"/><path d="M18 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 .601.2"/><path d="M18 22v-3"/><circle cx="10" cy="10" r="3"/></svg>
+        </div>
+        <div class="ed-label">{{ label_delivered }}</div>
+        <div class="ed-date">{{ step3_date }}</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const root = document.getElementById('ed-{{ block.id }}'); if(!root) return;
+      const steps = root.querySelector('.ed-steps');
+      const l1 = root.querySelector('.line-1');
+      const l2 = root.querySelector('.line-2');
+      const s1 = root.querySelector('.step-1');
+      const s2 = root.querySelector('.step-2');
+      const s3 = root.querySelector('.step-3');
+
+      const connDur = 600, stepGap = 350, holdLit = 2200, fadeDur = 450, pad = 10, startDelay = 4000;
+
+      function center(el){ const r = el.getBoundingClientRect(); const host = steps.getBoundingClientRect(); return { x: r.left - host.left + r.width/2, y: r.top - host.top + r.height/2 }; }
+      function icon(el){ return el.querySelector('.ed-ico'); }
+
+      function placeLines(){
+        const p1 = center(icon(s1)), p2 = center(icon(s2)), p3 = center(icon(s3));
+        const r1 = icon(s1).offsetWidth/2, r2 = icon(s2).offsetWidth/2, r3 = icon(s3).offsetWidth/2;
+        const y  = p1.y;
+        const left1 = Math.round(p1.x + r1 + pad), right1 = Math.round(p2.x - r2 - pad);
+        const w1 = Math.max(0, right1 - left1);
+        l1.style.left = left1 + 'px'; l1.style.width = w1 + 'px';
+        l1.style.top  = Math.round(y - (parseFloat(getComputedStyle(root).getPropertyValue('--line-h'))/2)) + 'px';
+
+        const left2 = Math.round(p2.x + r2 + pad), right2 = Math.round(p3.x - r3 - pad);
+        const w2 = Math.max(0, right2 - left2);
+        l2.style.left = left2 + 'px'; l2.style.width = w2 + 'px'; l2.style.top = l1.style.top;
+      }
+      function resetLine(el){
+        el.classList.remove('fill','fade');
+        const bar = el.querySelector('.bar');
+        bar.style.transition = 'none'; bar.style.removeProperty('transform'); bar.style.removeProperty('opacity');
+        void bar.offsetHeight; bar.style.transition = '';
+      }
+      function fillLine(el){ el.classList.remove('fade'); el.classList.add('fill'); }
+
+      async function cycle(){
+        [s1,s2,s3].forEach(e=>e.classList.remove('is-lit'));
+        [l1,l2].forEach(resetLine);
+
+        s1.classList.add('is-lit'); await new Promise(r=>setTimeout(r, stepGap));
+        fillLine(l1);               await new Promise(r=>setTimeout(r, connDur));
+
+        s2.classList.add('is-lit'); await new Promise(r=>setTimeout(r, stepGap));
+        fillLine(l2);               await new Promise(r=>setTimeout(r, connDur));
+
+        s3.classList.add('is-lit'); await new Promise(r=>setTimeout(r, holdLit));
+
+        [l1,l2].forEach(el=>el.classList.add('fade'));
+        [s1,s2,s3].forEach(e=>e.classList.remove('is-lit'));
+        await new Promise(r=>setTimeout(r, fadeDur + 250));
+
+        [l1,l2].forEach(resetLine);
+        await new Promise(r=>setTimeout(r, 300));
+        cycle();
+      }
+
+      const ro = new ResizeObserver(()=>{ placeLines(); });
+      ro.observe(steps); ro.observe(icon(s1)); ro.observe(icon(s2)); ro.observe(icon(s3));
+      placeLines();
+
+      const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduce) { [l1,l2].forEach(resetLine); [s1,s2,s3].forEach(e=>e.classList.remove('is-lit')); return; }
+
+      setTimeout(cycle, startDelay);
+    })();
+  </script>
+</div>

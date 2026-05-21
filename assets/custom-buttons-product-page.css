@@ -1,0 +1,38 @@
+/* Гладка анімація для всіх кнопок у блоці buy-buttons */
+.product-form__buttons button{
+  transition: transform .18s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+  text-transform: uppercase;
+      font-weight: 500;
+  box-shadow: none;
+}
+
+/* Сяйво при наведенні */
+.product-form__buttons button:hover{
+  transform: translateY(-1px);
+  box-shadow:
+    
+    0 0 36px rgba(var(--btn-glow-rgb, 168,198,229), .25);
+}
+
+/* Додатково: охайний фокус (клавіатура/тач) */
+.product-form__buttons button:focus-visible{
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(var(--btn-glow-rgb, 247,165,244), .45),
+    0 0 0 6px rgba(var(--btn-glow-rgb, 247,165,244), .18),
+    0 0 30px rgba(var(--btn-glow-rgb, 247,165,244), .28);
+}
+
+/* Натискання — прибираємо підскок */
+.product-form__buttons button:active{
+  transform: translateY(0);
+}
+
+/* Без сяйва, якщо кнопка вимкнена */
+.product-form__buttons button[disabled]{
+  pointer-events: none;
+  box-shadow: none !important;
+  transform: none !important;
+  opacity: .6;
+}
+

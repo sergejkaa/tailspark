@@ -1,0 +1,234 @@
+{% comment %}
+  ✨ Multi Color Waves — no seam, scales with height, anchored to bottom
+  • Немає підкладки (rect)
+  • Solid bottom: окремі перемикачі для хвиль 1–4
+  • Хвиля масштабується разом із контейнером; без пустоти під хвилею
+  • Градієнти: gradientUnits="userSpaceOnUse" (прив’язані до viewBox)
+  • Геп прибитий: SVG приклеєний до низу, height: calc(100% + 1px)
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "✨Multi Color Waves",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Background color scheme", "default": "background-1" },
+
+    { "type": "header", "content": "Top color band (global)" },
+    { "type": "range", "id": "color_band", "label": "Top color band height (%)", "min": 5, "max": 60, "step": 1, "default": 60, "info": "How many % of the top area is filled with color" },
+
+    { "type": "header", "content": "Wave 1 (front)" },
+    { "type": "color", "id": "wave1_color", "label": "Main color", "default": "#F7A5F4" },
+    { "type": "range", "id": "wave1_opacity", "label": "Top opacity (%)", "min": 0, "max": 100, "step": 1, "default": 30 },
+    { "type": "checkbox", "id": "front_wave_solid_floor", "label": "Solid bottom (no transparency)", "default": true },
+
+    { "type": "header", "content": "Wave 2" },
+    { "type": "color", "id": "wave2_color", "label": "Main color", "default": "#F7A5F4" },
+    { "type": "range", "id": "wave2_opacity", "label": "Top opacity (%)", "min": 0, "max": 100, "step": 1, "default": 40 },
+    { "type": "checkbox", "id": "wave2_solid_floor", "label": "Solid bottom (no transparency)", "default": true },
+
+    { "type": "header", "content": "Wave 3" },
+    { "type": "color", "id": "wave3_color", "label": "Main color", "default": "#F7A5F4" },
+    { "type": "range", "id": "wave3_opacity", "label": "Top opacity (%)", "min": 0, "max": 100, "step": 1, "default": 50 },
+    { "type": "checkbox", "id": "wave3_solid_floor", "label": "Solid bottom (no transparency)", "default": false },
+
+    { "type": "header", "content": "Wave 4 (back)" },
+    { "type": "color", "id": "wave4_color", "label": "Main color", "default": "#F7A5F4" },
+    { "type": "range", "id": "wave4_opacity", "label": "Top opacity (%)", "min": 0, "max": 100, "step": 1, "default": 60 },
+    { "type": "checkbox", "id": "wave4_solid_floor", "label": "Solid bottom (no transparency)", "default": false },
+
+    { "type": "header", "content": "Layout & Motion" },
+    { "type": "range", "id": "mobile_wave_height", "min": 8, "max": 120, "step": 2, "unit": "px", "label": "Mobile height", "default": 24 },
+    { "type": "range", "id": "desktop_wave_height", "min": 30, "max": 230, "step": 2, "unit": "px", "label": "Desktop height", "default": 58 },
+    { "type": "range", "id": "wave_speed", "min": 4, "max": 24, "step": 1, "unit": "s", "label": "Base speed (seconds, lower = faster)", "default": 11 },
+    { "type": "checkbox", "id": "flip_wave", "label": "Flip upside down", "default": false }
+  ],
+  "presets": [ { "name": "✨Multi Color Waves" } ]
+}
+{% endschema %}
+
+{% assign band = section.settings.color_band | default: 25 %}
+{% assign mobile_h = section.settings.mobile_wave_height | default: 24 %}
+{% assign desktop_h = section.settings.desktop_wave_height | default: 90 %}
+{% assign speed_s = section.settings.wave_speed | default: 10 %}
+
+<style>
+:root{
+  --wave-mobile-h-{{ section.id }}: {{ mobile_h }}px;
+  --wave-desktop-h-{{ section.id }}: {{ desktop_h }}px;
+}
+
+/* Контейнер: висота керується слайдерами; прибираємо паддінги секції теми */
+.wave-animated-wrap{ line-height:0; overflow:hidden; }
+.wave-animated-wrap-{{ section.id }}{
+  position: relative;
+  height: var(--wave-mobile-h-{{ section.id }}) !important;
+  --section-padding-top: 0px;
+  --section-padding-bottom: 0px;
+  padding: 0 !important;
+}
+@media (min-width: 990px){
+  .wave-animated-wrap-{{ section.id }}{
+    height: var(--wave-desktop-h-{{ section.id }}) !important;
+  }
+}
+
+/* SVG займає 100% висоти контейнера і приклеєний до низу (без пустоти) */
+.wave-animated__svg{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;                        /* мікроперекриття стику */
+  width: 100%;
+  height: calc(100% + 1px) !important; /* заповнює весь контейнер */
+  display: block;
+  max-width: 100%;
+  will-change: transform;
+  -webkit-backface-visibility: hidden; /* iOS hairline fix */
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);    /* force GPU on Safari */
+  transform: translateZ(0);
+}
+
+/* flip (always available; toggle by adding class) */
+.wave-animated__svg--flipped{
+  -webkit-transform: scaleY(-1) translateY(1px) translateZ(0);
+  transform: scaleY(-1) translateY(1px) translateZ(0);
+}
+
+/* When flipped, overlap the previous section by 1px to avoid hairline on iOS */
+.wave-animated-wrap--flipped{
+  margin-top: -1px;
+}
+
+/* Motion */
+.wave-animated-wrap-{{ section.id }} .parallax1 > use{
+  animation: wave-move-1 var(--wave-speed-{{ section.id }}) linear infinite !important;
+}
+.wave-animated-wrap-{{ section.id }} .parallax2 > use{
+  animation: wave-move-2 calc(var(--wave-speed-{{ section.id }}) / 1.25) linear infinite !important;
+}
+.wave-animated-wrap-{{ section.id }} .parallax3 > use{
+  animation: wave-move-3 calc(var(--wave-speed-{{ section.id }}) / 1.7) linear infinite !important;
+}
+.wave-animated-wrap-{{ section.id }} .parallax4 > use{
+  animation: wave-move-4 calc(var(--wave-speed-{{ section.id }}) / 2.5) linear infinite !important;
+}
+
+@keyframes wave-move-1{ from{ transform: translate3d(85px,0,0);} to{ transform: translate3d(-90px,0,0);} }
+@keyframes wave-move-2{ from{ transform: translate3d(-90px,0,0);} to{ transform: translate3d(85px,0,0);} }
+@keyframes wave-move-3{ from{ transform: translate3d(85px,0,0);} to{ transform: translate3d(-90px,0,0);} }
+@keyframes wave-move-4{ from{ transform: translate3d(-90px,0,0);} to{ transform: translate3d(85px,0,0);} }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .wave-animated-wrap-{{ section.id }} .parallax1 > use,
+  .wave-animated-wrap-{{ section.id }} .parallax2 > use,
+  .wave-animated-wrap-{{ section.id }} .parallax3 > use,
+  .wave-animated-wrap-{{ section.id }} .parallax4 > use{
+    animation: none !important;
+  }
+}
+</style>
+
+<div
+  class="section color-{{ section.settings.color_scheme }} gradient wave-animated-wrap wave-animated-wrap-{{ section.id }} {% if section.settings.flip_wave %}wave-animated-wrap--flipped{% endif %}"
+  style="--wave-speed-{{ section.id }}: {{ speed_s }}s;"
+>
+  <svg
+    class="wave-animated__svg wave-animated {% if section.settings.flip_wave %}wave-animated__svg--flipped{% endif %}"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28"
+    preserveAspectRatio="none"
+  >
+    <defs>
+      {%- comment -%}
+        Видима область по Y: 24..52 (бо viewBox="0 24 150 28")
+        Path закінчується рівно внизу (y=52): v8
+      {%- endcomment -%}
+      <path id="gentle-wave" d="M-160 44c30 0
+          58-18 88-18s
+          58 18 88 18
+          58-18 88-18
+          58 18 88 18
+          v8h-352z" />
+
+      {%- assign y_top = 24 -%}
+      {%- assign y_bot = 52 -%}
+
+      {#-- WAVE 1 --#}
+      {% if section.settings.front_wave_solid_floor %}
+        <linearGradient id="grad1-{{ section.id }}" gradientUnits="userSpaceOnUse" x1="0" y1="{{ y_top }}" x2="0" y2="{{ y_bot }}">
+          <stop offset="0%"   stop-color="{{ section.settings.wave1_color }}" stop-opacity="{{ section.settings.wave1_opacity | divided_by: 100.0 }}" />
+          <stop offset="{{ band }}%" stop-color="{{ section.settings.wave1_color }}" stop-opacity="1" />
+          <stop offset="100%" stop-color="{{ section.settings.wave1_color }}" stop-opacity="1" />
+        </linearGradient>
+      {% else %}
+        <linearGradient id="grad1-{{ section.id }}" gradientUnits="userSpaceOnUse" x1="0" y1="{{ y_top }}" x2="0" y2="{{ y_bot }}">
+          <stop offset="0%"   stop-color="{{ section.settings.wave1_color }}" stop-opacity="{{ section.settings.wave1_opacity | divided_by: 100.0 }}" />
+          <stop offset="{{ band }}%" stop-color="{{ section.settings.wave1_color }}" stop-opacity="0" />
+          <stop offset="100%" stop-color="{{ section.settings.wave1_color }}" stop-opacity="0" />
+        </linearGradient>
+      {% endif %}
+
+      {#-- WAVE 2 --#}
+      {% if section.settings.wave2_solid_floor %}
+        <linearGradient id="grad2-{{ section.id }}" gradientUnits="userSpaceOnUse" x1="0" y1="{{ y_top }}" x2="0" y2="{{ y_bot }}">
+          <stop offset="0%"   stop-color="{{ section.settings.wave2_color }}" stop-opacity="{{ section.settings.wave2_opacity | divided_by: 100.0 }}" />
+          <stop offset="{{ band }}%" stop-color="{{ section.settings.wave2_color }}" stop-opacity="1" />
+          <stop offset="100%" stop-color="{{ section.settings.wave2_color }}" stop-opacity="1" />
+        </linearGradient>
+      {% else %}
+        <linearGradient id="grad2-{{ section.id }}" gradientUnits="userSpaceOnUse" x1="0" y1="{{ y_top }}" x2="0" y2="{{ y_bot }}">
+          <stop offset="0%"   stop-color="{{ section.settings.wave2_color }}" stop-opacity="{{ section.settings.wave2_opacity | divided_by: 100.0 }}" />
+          <stop offset="{{ band }}%" stop-color="{{ section.settings.wave2_color }}" stop-opacity="0" />
+          <stop offset="100%" stop-color="{{ section.settings.wave2_color }}" stop-opacity="0" />
+        </linearGradient>
+      {% endif %}
+
+      {#-- WAVE 3 --#}
+      {% if section.settings.wave3_solid_floor %}
+        <linearGradient id="grad3-{{ section.id }}" gradientUnits="userSpaceOnUse" x1="0" y1="{{ y_top }}" x2="0" y2="{{ y_bot }}">
+          <stop offset="0%"   stop-color="{{ section.settings.wave3_color }}" stop-opacity="{{ section.settings.wave3_opacity | divided_by: 100.0 }}" />
+          <stop offset="{{ band }}%" stop-color="{{ section.settings.wave3_color }}" stop-opacity="1" />
+          <stop offset="100%" stop-color="{{ section.settings.wave3_color }}" stop-opacity="1" />
+        </linearGradient>
+      {% else %}
+        <linearGradient id="grad3-{{ section.id }}" gradientUnits="userSpaceOnUse" x1="0" y1="{{ y_top }}" x2="0" y2="{{ y_bot }}">
+          <stop offset="0%"   stop-color="{{ section.settings.wave3_color }}" stop-opacity="{{ section.settings.wave3_opacity | divided_by: 100.0 }}" />
+          <stop offset="{{ band }}%" stop-color="{{ section.settings.wave3_color }}" stop-opacity="0" />
+          <stop offset="100%" stop-color="{{ section.settings.wave3_color }}" stop-opacity="0" />
+        </linearGradient>
+      {% endif %}
+
+      {#-- WAVE 4 --#}
+      {% if section.settings.wave4_solid_floor %}
+        <linearGradient id="grad4-{{ section.id }}" gradientUnits="userSpaceOnUse" x1="0" y1="{{ y_top }}" x2="0" y2="{{ y_bot }}">
+          <stop offset="0%"   stop-color="{{ section.settings.wave4_color }}" stop-opacity="{{ section.settings.wave4_opacity | divided_by: 100.0 }}" />
+          <stop offset="{{ band }}%" stop-color="{{ section.settings.wave4_color }}" stop-opacity="1" />
+          <stop offset="100%" stop-color="{{ section.settings.wave4_color }}" stop-opacity="1" />
+        </linearGradient>
+      {% else %}
+        <linearGradient id="grad4-{{ section.id }}" gradientUnits="userSpaceOnUse" x1="0" y1="{{ y_top }}" x2="0" y2="{{ y_bot }}">
+          <stop offset="0%"   stop-color="{{ section.settings.wave4_color }}" stop-opacity="{{ section.settings.wave4_opacity | divided_by: 100.0 }}" />
+          <stop offset="{{ band }}%" stop-color="{{ section.settings.wave4_color }}" stop-opacity="0" />
+          <stop offset="100%" stop-color="{{ section.settings.wave4_color }}" stop-opacity="0" />
+        </linearGradient>
+      {% endif %}
+    </defs>
+
+    <!-- Порядок: back → ... → front (front зверху) -->
+    <g class="parallax4">
+      <use xlink:href="#gentle-wave" x="50" y="6" fill="url(#grad4-{{ section.id }})" />
+    </g>
+    <g class="parallax3">
+      <use xlink:href="#gentle-wave" x="50" y="9" fill="url(#grad3-{{ section.id }})" />
+    </g>
+    <g class="parallax2">
+      <use xlink:href="#gentle-wave" x="50" y="0" fill="url(#grad2-{{ section.id }})" />
+    </g>
+    <g class="parallax1">
+      <use xlink:href="#gentle-wave" x="50" y="3" fill="url(#grad1-{{ section.id }})" />
+    </g>
+  </svg>
+</div>

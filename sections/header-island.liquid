@@ -1,0 +1,709 @@
+{{ 'section-header-island.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- if settings.predictive_search_enabled -%}
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+{%- liquid
+  assign logo_width        = section.settings.logo_width
+  assign logo_width_mobile = section.settings.logo_width_mobile
+  assign bg_style          = section.settings.bg_style
+  assign radius_opt        = section.settings.border_radius
+  assign shadow_opt        = section.settings.shadow
+  assign top_offset        = section.settings.top_offset
+  assign top_offset_mobile = section.settings.top_offset_mobile
+  assign padding_v         = section.settings.padding_v
+  assign padding_h         = section.settings.padding_h
+  assign sticky            = section.settings.sticky_type
+  assign entrance          = section.settings.entrance_animation
+  assign island_w          = section.settings.island_width
+  assign overlap_pages     = section.settings.overlap_pages
+  assign chevron_style     = section.settings.drawer_chevron_style | default: 'chevron'
+
+  case radius_opt
+    when 'pill'
+      assign radius_val = '10rem'
+      assign radius_compact = '2rem'
+    when 'card'
+      assign radius_val = '2rem'
+      assign radius_compact = '1.2rem'
+    when 'square'
+      assign radius_val = '0.6rem'
+      assign radius_compact = '0.4rem'
+  endcase
+
+  case shadow_opt
+    when 'none'
+      assign shadow_val = 'none'
+    when 'subtle'
+      assign shadow_val = '0 2px 12px rgba(0,0,0,0.07)'
+    when 'medium'
+      assign shadow_val = '0 4px 24px rgba(0,0,0,0.12)'
+    when 'strong'
+      assign shadow_val = '0 8px 40px rgba(0,0,0,0.22)'
+  endcase
+
+  case island_w
+    when 'narrow'
+      assign max_width_val = '90rem'
+    when 'wide'
+      assign max_width_val = 'min(calc(var(--page-width) * 1.1), calc(100vw - 3rem))'
+    else
+      assign max_width_val = 'var(--page-width, 120rem)'
+  endcase
+
+  assign bg_color_raw         = section.settings.island_bg_color
+  assign text_color_raw       = section.settings.island_text_color
+  assign dropdown_bg_raw      = section.settings.dropdown_bg_color
+  assign dropdown_text_raw    = section.settings.dropdown_text_color
+
+  assign bg_val  = bg_color_raw
+  assign blur_val = '0px'
+  if bg_style == 'glass'
+    assign bg_val   = bg_color_raw | color_modify: 'alpha', 0.75
+    assign blur_val = '16px'
+  elsif bg_style == 'dark-glass'
+    assign bg_val   = bg_color_raw | color_modify: 'alpha', 0.55
+    assign blur_val = '20px'
+  endif
+
+  assign should_overlap = false
+  if overlap_pages == 'all'
+    assign should_overlap = true
+  elsif overlap_pages == 'homepage' and request.page_type == 'index'
+    assign should_overlap = true
+  endif
+
+  assign is_flat = false
+  unless request.page_type == 'index'
+    assign is_flat = true
+    assign should_overlap = false
+  endunless
+-%}
+
+{%- style -%}
+  .header-island-section {
+    --header-island-top-offset:        {{ top_offset }}px;
+    --header-island-top-offset-mobile: {{ top_offset_mobile }}px;
+    --header-island-padding-v:         {{ padding_v }}px;
+    --header-island-padding-h:         {{ padding_h }}px;
+    --header-island-radius:            {{ radius_val }};
+    --header-island-radius-compact:    {{ radius_compact }};
+    --header-island-shadow:            {{ shadow_val }};
+    --header-island-bg:                {{ bg_val }};
+    --header-island-blur:              {{ blur_val }};
+    --header-island-max-width:         {{ max_width_val }};
+    --header-island-logo-width:        {{ logo_width }}px;
+    --header-island-logo-width-mobile: {{ logo_width_mobile }}px;
+    --header-island-text-color:        {{ text_color_raw }};
+    --header-island-dropdown-bg:       {{ dropdown_bg_raw }};
+    --header-island-dropdown-text:     {{ dropdown_text_raw }};
+    --header-island-badge-bg:          {{ section.settings.badge_bg_color }};
+    --header-island-badge-color:       {{ section.settings.badge_text_color }};
+  }
+{%- endstyle -%}
+
+{%- assign menu_links = linklists[section.settings.menu].links -%}
+{%- assign account_url = routes.account_login_url -%}
+{%- if customer -%}{%- assign account_url = routes.account_url -%}{%- endif -%}
+
+<div class="header-island-section{% if should_overlap %} header-island-section--overlap{% endif %}{% if is_flat %} header-island-section--flat{% endif %}">
+
+  <div class="header-island-spacer"></div>
+
+  <div class="header-island-wrapper">
+    <island-header
+      class="header-island{% if section.settings.logo_position == 'center' %} header-island--logo-center{% endif %}"
+      data-sticky="{{ sticky }}"
+      {% if entrance != 'none' %}data-entrance="{{ entrance }}"{% endif %}
+    >
+
+      {%- comment -%} Burger — mobile left {%- endcomment -%}
+      <button class="header-island__burger" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6"  x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      {%- comment -%} ===== LOGO ===== {%- endcomment -%}
+      <div class="header-island__logo">
+        <a href="{{ routes.root_url }}">
+          {%- if section.settings.logo != blank -%}
+            {{
+              section.settings.logo
+              | image_url: width: logo_width
+              | image_tag:
+                loading: 'eager',
+                fetchpriority: 'high',
+                class: 'header-island__logo-image',
+                alt: section.settings.logo.alt | default: shop.name
+            }}
+          {%- else -%}
+            <span class="header-island__logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+      </div>
+
+      {%- comment -%} ===== DESKTOP NAV ===== {%- endcomment -%}
+      {%- if menu_links.size > 0 -%}
+        <nav class="header-island__nav" role="navigation" aria-label="Menu">
+          <ul class="header-island__menu" role="list">
+            {%- for link in menu_links -%}
+              {%- liquid
+                assign has_children = false
+                if link.links.size > 0
+                  assign has_children = true
+                endif
+                assign is_mega = false
+                if has_children
+                  for child in link.links
+                    if child.links.size > 0
+                      assign is_mega = true
+                    endif
+                  endfor
+                endif
+              -%}
+
+              <li class="header-island__item{% if has_children %} header-island__item--has-sub{% endif %}"
+                {% if has_children %}data-has-sub{% endif %}
+                role="none">
+
+                {%- if has_children -%}
+                  <button class="header-island__link" aria-expanded="false" aria-haspopup="true">
+                    {{- link.title -}}
+                    <svg class="header-island__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </button>
+                {%- else -%}
+                  <a class="header-island__link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+                    {{- link.title -}}
+                  </a>
+                {%- endif -%}
+
+                {%- if has_children and is_mega == false -%}
+                  <ul class="header-island__dropdown" role="list">
+                    {%- for child in link.links -%}
+                      <li>
+                        <a class="header-island__dropdown-link" href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>
+                          {{- child.title -}}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+                {%- if has_children and is_mega -%}
+                  <div class="header-island__mega" role="region">
+                    <ul class="header-island__mega-grid" role="list">
+                      {%- for child in link.links -%}
+                        <li>
+                          <a class="header-island__mega-col-title" href="{{ child.url }}">{{- child.title -}}</a>
+                          {%- if child.links.size > 0 -%}
+                            <ul class="header-island__mega-children" role="list">
+                              {%- for grandchild in child.links -%}
+                                <li>
+                                  <a class="header-island__mega-link" href="{{ grandchild.url }}"{% if grandchild.current %} aria-current="page"{% endif %}>
+                                    {{- grandchild.title -}}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+      {%- endif -%}
+
+      {%- comment -%} ===== ACTIONS ===== {%- endcomment -%}
+      <div class="header-island__actions">
+
+        {%- if section.settings.show_search -%}
+          <button class="header-island__action-btn header-island__action-btn--desktop-only" data-island-search aria-label="{{ 'general.search.search' | t }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        {%- endif -%}
+
+        {%- if section.settings.show_account -%}
+          <a href="{{ account_url }}" class="header-island__action-btn header-island__action-btn--desktop-only" aria-label="Account">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.show_cart -%}
+          <a href="{{ routes.cart_url }}" class="header-island__action-btn" data-island-cart aria-label="{{ 'templates.cart.cart' | t }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 01-8 0"></path>
+            </svg>
+            <span class="header-island__cart-badge" data-count="{{ cart.item_count }}" aria-hidden="true">
+              {%- if cart.item_count > 0 -%}{{ cart.item_count }}{%- endif -%}
+            </span>
+          </a>
+        {%- endif -%}
+
+      </div>
+    </island-header>
+  </div>
+</div>
+
+{%- comment -%} ===== SEARCH PANEL with Predictive Search ===== {%- endcomment -%}
+{%- if section.settings.show_search -%}
+  <div class="header-island__search-panel" aria-label="{{ 'general.search.search' | t }}">
+    {%- if settings.predictive_search_enabled -%}
+      <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+    {%- else -%}
+      <search-form class="search-modal__form">
+    {%- endif -%}
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+        <div class="field">
+          <input
+            class="search__input field__input"
+            id="Search-In-Island"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.search' | t }}"
+            {%- if settings.predictive_search_enabled -%}
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results-island"
+              aria-controls="predictive-search-results-island"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            {%- endif -%}
+          >
+          <label class="field__label" for="Search-In-Island">{{ 'general.search.search' | t }}</label>
+          <input type="hidden" name="options[prefix]" value="last">
+          <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+            <span class="svg-wrapper">
+              {{- 'icon-search.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+
+        {%- if settings.predictive_search_enabled -%}
+          <div
+            class="predictive-search predictive-search--header"
+            id="predictive-search-results-island"
+            tabindex="-1"
+            data-predictive-search
+          >
+            {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+          </div>
+          <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+        {%- endif -%}
+      </form>
+    {%- if settings.predictive_search_enabled -%}
+      </predictive-search>
+    {%- else -%}
+      </search-form>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{%- comment -%} ===== MOBILE DRAWER ===== {%- endcomment -%}
+<div class="header-island__drawer" aria-hidden="true">
+  <div class="header-island__drawer-overlay"></div>
+  <div class="header-island__drawer-panel" role="dialog" aria-modal="true" aria-label="Menu">
+
+    <div class="header-island__drawer-header">
+      <a href="{{ routes.root_url }}">
+        {%- if section.settings.logo != blank -%}
+          {{
+            section.settings.logo
+            | image_url: width: 120
+            | image_tag: loading: 'lazy', class: 'header-island__logo-image', alt: section.settings.logo.alt | default: shop.name
+          }}
+        {%- else -%}
+          <span class="header-island__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+      <button class="header-island__drawer-close" aria-label="{{ 'accessibility.close' | t }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="header-island__drawer-nav">
+      <ul class="header-island__drawer-menu" role="list">
+        {%- for link in menu_links -%}
+          {%- assign has_children = false -%}
+          {%- if link.links.size > 0 -%}{%- assign has_children = true -%}{%- endif -%}
+
+          <li class="header-island__drawer-item{% if has_children %} header-island__drawer-item--has-sub{% endif %}"
+            {% if has_children %}data-has-sub{% endif %}>
+
+            {%- if has_children -%}
+              <button class="header-island__drawer-link" data-toggle aria-expanded="false">
+                {{- link.title -}}
+                {%- case chevron_style -%}
+                  {%- when 'plus' -%}
+                    <svg class="header-island__drawer-icon header-island__drawer-icon--plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <line class="icon-plus"  x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <line class="icon-minus" x1="5"  y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  {%- when 'arrow' -%}
+                    <svg class="header-island__drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  {%- else -%}
+                    <svg class="header-island__drawer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                {%- endcase -%}
+              </button>
+              <ul class="header-island__drawer-submenu" role="list">
+                <li>
+                  <a class="header-island__drawer-sublink" href="{{ link.url }}">{{ link.title }} — View all</a>
+                </li>
+                {%- for child in link.links -%}
+                  <li>
+                    <a class="header-island__drawer-sublink" href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>
+                      {{- child.title -}}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- else -%}
+              <a class="header-island__drawer-link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+                {{- link.title -}}
+              </a>
+            {%- endif -%}
+
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- comment -%} Drawer footer: search + account icons {%- endcomment -%}
+    <div class="header-island__drawer-footer">
+      {%- if section.settings.show_search -%}
+        <a href="{{ routes.search_url }}" class="header-island__drawer-footer-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          {{ 'general.search.search' | t }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.show_account -%}
+        <a href="{{ account_url }}" class="header-island__drawer-footer-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          {%- if customer -%}Account{%- else -%}Sign in{%- endif -%}
+        </a>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+<script src="{{ 'section-header-island.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Island Header",
+  "class": "shopify-section-header-island",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width — desktop",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width — mobile",
+      "default": 90
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shop_name",
+      "label": "Show shop name if no logo",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "island_width",
+      "label": "Island width",
+      "options": [
+        { "value": "page-width", "label": "Page width" },
+        { "value": "narrow",     "label": "Narrow" },
+        { "value": "wide",       "label": "Wide" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo position (desktop)",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "overlap_pages",
+      "label": "Overlap content (float over next section)",
+      "options": [
+        { "value": "never",    "label": "Never — spacer pushes content down" },
+        { "value": "homepage", "label": "Homepage only" },
+        { "value": "all",      "label": "All pages" }
+      ],
+      "default": "homepage",
+      "info": "Use 'Homepage only' when your homepage has a full-height hero. Use 'Never' on product/collection pages."
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "select",
+      "id": "bg_style",
+      "label": "Background style",
+      "options": [
+        { "value": "solid",      "label": "Solid" },
+        { "value": "glass",      "label": "Glass (blur)" },
+        { "value": "dark-glass", "label": "Dark glass" }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "select",
+      "id": "border_radius",
+      "label": "Shape",
+      "options": [
+        { "value": "pill",   "label": "Pill" },
+        { "value": "card",   "label": "Card" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "pill"
+    },
+    {
+      "type": "select",
+      "id": "shadow",
+      "label": "Shadow",
+      "options": [
+        { "value": "none",   "label": "None" },
+        { "value": "subtle", "label": "Subtle" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "strong", "label": "Strong" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "top_offset",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap from top — desktop",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "top_offset_mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap from top — mobile",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_v",
+      "min": 6,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_h",
+      "min": 12,
+      "max": 56,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "select",
+      "id": "sticky_type",
+      "label": "Sticky behavior",
+      "options": [
+        { "value": "none",                "label": "Not sticky" },
+        { "value": "always",              "label": "Always visible" },
+        { "value": "compact-on-scroll",   "label": "Compact on scroll" },
+        { "value": "reveal-on-scroll-up", "label": "Hide down, reveal up" }
+      ],
+      "default": "reveal-on-scroll-up"
+    },
+    {
+      "type": "select",
+      "id": "entrance_animation",
+      "label": "Entrance animation",
+      "options": [
+        { "value": "slide-down", "label": "Slide down" },
+        { "value": "fade-in",    "label": "Fade in" },
+        { "value": "none",       "label": "None" }
+      ],
+      "default": "slide-down"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "island_bg_color",
+      "label": "Island background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "island_text_color",
+      "label": "Island text / icons",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_bg_color",
+      "label": "Dropdown / mega background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "dropdown_text_color",
+      "label": "Dropdown text",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Cart badge"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge background",
+      "default": "#FFD9B3"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Mobile drawer"
+    },
+    {
+      "type": "select",
+      "id": "drawer_chevron_style",
+      "label": "Submenu icon style",
+      "options": [
+        { "value": "chevron", "label": "Chevron ↓" },
+        { "value": "plus",    "label": "Plus / Minus" },
+        { "value": "arrow",   "label": "Arrow →" }
+      ],
+      "default": "chevron"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Island Header"
+    }
+  ]
+}
+{% endschema %}

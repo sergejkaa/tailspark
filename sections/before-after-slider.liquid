@@ -1,0 +1,381 @@
+{%- liquid
+  assign before_label = section.settings.before_label | default: 'Înainte'
+  assign after_label = section.settings.after_label | default: 'După'
+-%}
+
+{%- style -%}
+  #before-after-{{ section.id }} {
+    --ba-text: #67645e;
+    --ba-bg: #ffffff;
+    --ba-soft: #f1f0ec;
+    --ba-padding-top: {{ section.settings.section_padding_top }}px;
+    --ba-padding-bottom: {{ section.settings.section_padding_bottom }}px;
+    padding-top: var(--ba-padding-top);
+    padding-bottom: var(--ba-padding-bottom);
+    background: var(--ba-bg);
+    color: var(--ba-text);
+  }
+
+  #before-after-{{ section.id }} .before-after__inner {
+    width: min(100%, var(--page-width, 1200px));
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  #before-after-{{ section.id }} .before-after__header {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  #before-after-{{ section.id }} .before-after__heading {
+    margin: 0;
+    color: var(--ba-text);
+    font-size: clamp(2.8rem, 4vw, 5.2rem);
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+
+  #before-after-{{ section.id }} .before-after__subheading {
+    margin: 14px 0 0;
+    color: var(--ba-text);
+    font-size: 1.6rem;
+    line-height: 1.55;
+    opacity: 0.82;
+  }
+
+  #before-after-{{ section.id }} .before-after__slider {
+    position: relative;
+    width: min(100%, 960px);
+    margin: 0 auto;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--ba-soft);
+    user-select: none;
+    touch-action: pan-y;
+    cursor: ew-resize;
+  }
+
+  @media screen and (min-width: 750px) {
+    #before-after-{{ section.id }} .before-after__slider {
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  #before-after-{{ section.id }} .before-after__image,
+  #before-after-{{ section.id }} .before-after__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #before-after-{{ section.id }} .before-after__image img,
+  #before-after-{{ section.id }} .before-after__placeholder svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #before-after-{{ section.id }} .before-after__image--after {
+    clip-path: inset(0 0 0 var(--ba-position, 50%));
+  }
+
+  #before-after-{{ section.id }} .before-after__divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--ba-position, 50%);
+    width: 2px;
+    background: var(--ba-text);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  #before-after-{{ section.id }} .before-after__handle {
+    position: absolute;
+    top: 50%;
+    left: var(--ba-position, 50%);
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--ba-text);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.84);
+    color: var(--ba-text);
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+  }
+
+  #before-after-{{ section.id }} .before-after__handle::before,
+  #before-after-{{ section.id }} .before-after__handle::after {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-top: 1.5px solid currentColor;
+    border-left: 1.5px solid currentColor;
+    position: absolute;
+    top: 50%;
+  }
+
+  #before-after-{{ section.id }} .before-after__handle::before {
+    left: 15px;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  #before-after-{{ section.id }} .before-after__handle::after {
+    right: 15px;
+    transform: translateY(-50%) rotate(135deg);
+  }
+
+  #before-after-{{ section.id }} .before-after__label {
+    position: absolute;
+    top: 16px;
+    z-index: 2;
+    padding: 7px 12px;
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--ba-text);
+    font-size: 1.2rem;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    transition: opacity 180ms ease;
+    pointer-events: none;
+  }
+
+  #before-after-{{ section.id }} .before-after__label--before {
+    left: 16px;
+  }
+
+  #before-after-{{ section.id }} .before-after__label--after {
+    right: 16px;
+  }
+
+  #before-after-{{ section.id }} .before-after__slider:hover .before-after__label,
+  #before-after-{{ section.id }} .before-after__slider.is-dragging .before-after__label {
+    opacity: 0.36;
+  }
+
+  #before-after-{{ section.id }} .before-after__range {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: ew-resize;
+  }
+
+  #before-after-{{ section.id }} .before-after__range:focus-visible + .before-after__divider,
+  #before-after-{{ section.id }} .before-after__range:focus-visible ~ .before-after__handle {
+    outline: 2px solid var(--ba-text);
+    outline-offset: 4px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #before-after-{{ section.id }} .before-after__inner {
+      padding: 0 1.6rem;
+    }
+
+    #before-after-{{ section.id }} .before-after__header {
+      margin-bottom: 24px;
+    }
+
+    #before-after-{{ section.id }} .before-after__heading {
+      font-size: 3rem;
+    }
+
+    #before-after-{{ section.id }} .before-after__subheading {
+      font-size: 1.45rem;
+    }
+
+    #before-after-{{ section.id }} .before-after__handle {
+      width: 44px;
+      height: 44px;
+    }
+  }
+{%- endstyle -%}
+
+<section id="before-after-{{ section.id }}" class="before-after-section">
+  <div class="before-after__inner">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="before-after__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="before-after__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <div class="before-after__subheading rte">{{ section.settings.subheading | escape }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="before-after__slider" data-before-after-slider style="--ba-position: 50%;">
+      <div class="before-after__image before-after__image--before">
+        {%- if section.settings.before_image != blank -%}
+          {{ section.settings.before_image | image_url: width: 1800 | image_tag: widths: '375, 550, 750, 1100, 1500, 1800', sizes: '(min-width: 990px) 960px, 100vw', loading: 'lazy', alt: section.settings.before_image.alt | default: before_label }}
+        {%- else -%}
+          <div class="before-after__placeholder">{{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {%- endif -%}
+      </div>
+
+      <div class="before-after__image before-after__image--after">
+        {%- if section.settings.after_image != blank -%}
+          {{ section.settings.after_image | image_url: width: 1800 | image_tag: widths: '375, 550, 750, 1100, 1500, 1800', sizes: '(min-width: 990px) 960px, 100vw', loading: 'lazy', alt: section.settings.after_image.alt | default: after_label }}
+        {%- else -%}
+          <div class="before-after__placeholder">{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {%- endif -%}
+      </div>
+
+      <span class="before-after__label before-after__label--before">{{ before_label | escape }}</span>
+      <span class="before-after__label before-after__label--after">{{ after_label | escape }}</span>
+      <input class="before-after__range" type="range" min="0" max="100" value="50" aria-label="{{ before_label | escape }} / {{ after_label | escape }}">
+      <span class="before-after__divider" aria-hidden="true"></span>
+      <span class="before-after__handle" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var root = document.getElementById('before-after-{{ section.id }}');
+    if (!root) return;
+
+    var slider = root.querySelector('[data-before-after-slider]');
+    var range = root.querySelector('.before-after__range');
+    if (!slider || !range || slider.dataset.initialized === 'true') return;
+    slider.dataset.initialized = 'true';
+
+    function setPosition(value) {
+      var position = Math.max(0, Math.min(100, Number(value)));
+      slider.style.setProperty('--ba-position', position + '%');
+      range.value = position;
+    }
+
+    function positionFromEvent(event) {
+      var rect = slider.getBoundingClientRect();
+      var clientX = event.clientX;
+      if (event.touches && event.touches.length) {
+        clientX = event.touches[0].clientX;
+      }
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    function move(event) {
+      setPosition(positionFromEvent(event));
+    }
+
+    var activePointerId = null;
+    var startX = 0;
+    var startY = 0;
+
+    slider.addEventListener('pointerdown', function(event) {
+      activePointerId = event.pointerId;
+      startX = event.clientX;
+      startY = event.clientY;
+    });
+
+    slider.addEventListener('pointermove', function(event) {
+      if (activePointerId !== event.pointerId) return;
+
+      var deltaX = Math.abs(event.clientX - startX);
+      var deltaY = Math.abs(event.clientY - startY);
+
+      if (!slider.classList.contains('is-dragging')) {
+        if (deltaY > deltaX) return;
+        if (deltaX < 6) return;
+
+        slider.classList.add('is-dragging');
+        slider.setPointerCapture(event.pointerId);
+      }
+
+      if (slider.classList.contains('is-dragging')) {
+        move(event);
+      }
+    });
+
+    slider.addEventListener('pointerup', function(event) {
+      slider.classList.remove('is-dragging');
+      activePointerId = null;
+      if (slider.hasPointerCapture(event.pointerId)) {
+        slider.releasePointerCapture(event.pointerId);
+      }
+    });
+
+    slider.addEventListener('pointercancel', function() {
+      slider.classList.remove('is-dragging');
+      activePointerId = null;
+    });
+
+    range.addEventListener('input', function(event) {
+      setPosition(event.target.value);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Before / After",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Before / After"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image",
+      "label": "Before image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image",
+      "label": "After image"
+    },
+    {
+      "type": "text",
+      "id": "before_label",
+      "label": "Before label",
+      "default": "Înainte"
+    },
+    {
+      "type": "text",
+      "id": "after_label",
+      "label": "After label",
+      "default": "După"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Before / After",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

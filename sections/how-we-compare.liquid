@@ -1,0 +1,1167 @@
+{%- liquid
+  assign primary_label = section.settings.primary_label | default: 'Our product'
+  assign secondary_label = section.settings.secondary_label | default: 'Other brands'
+  assign primary_label_plain = primary_label | strip_html
+  assign secondary_label_plain = secondary_label | strip_html
+  assign show_lottie = false
+  assign lottie_container_id = 'compare-lottie-' | append: section.id
+  if section.settings.enable_lottie and section.settings.lottie_json_url != blank
+    assign show_lottie = true
+  endif
+  assign lottie_position_setting = section.settings.lottie_position | default: 'heading'
+  assign lottie_is_product = false
+  assign lottie_is_heading = false
+  assign lottie_is_corner = false
+  case lottie_position_setting
+    when 'product'
+      assign lottie_is_product = true
+    when 'heading'
+      assign lottie_is_heading = true
+    when 'corner'
+      assign lottie_is_corner = true
+    else
+      assign lottie_is_product = true
+  endcase
+  capture compare_check_svg
+    echo '<svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false"><polyline points="4 12 9 17 20 6"></polyline></svg>'
+  endcapture
+  capture compare_cross_svg
+    echo '<svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>'
+  endcapture
+-%}
+
+{% style %}
+  #compare-{{ section.id }} {
+    --compare-heading-color: {{ section.settings.heading_color }};
+    --compare-heading-size: {{ section.settings.heading_size }}px;
+    --compare-heading-weight: {{ section.settings.heading_weight }};
+    --compare-heading-gap: {{ section.settings.heading_spacing }}px;
+    --compare-feature-color: {{ section.settings.feature_color }};
+    --compare-feature-size: {{ section.settings.feature_size }}px;
+    --compare-feature-size-mobile: {{ section.settings.feature_size_mobile | default: section.settings.feature_size }}px;
+    --compare-feature-weight: {{ section.settings.feature_weight }};
+    --compare-row-divider: {{ section.settings.row_divider_color }};
+    --compare-primary-column-bg: {{ section.settings.primary_column_bg }};
+    --compare-primary-column-radius: {{ section.settings.primary_column_radius }}px;
+    --compare-row-padding: {{ section.settings.row_padding }}px;
+    --compare-row-padding-mobile: {{ section.settings.row_padding_mobile | default: section.settings.row_padding }}px;
+    --compare-icon-size: {{ section.settings.icon_size }}px;
+    --compare-icon-stroke: {{ section.settings.icon_stroke }};
+    --compare-primary-check-color: {{ section.settings.primary_check_color }};
+    --compare-primary-cross-color: {{ section.settings.primary_cross_color }};
+    --compare-secondary-check-color: {{ section.settings.secondary_check_color }};
+    --compare-secondary-cross-color: {{ section.settings.secondary_cross_color }};
+    --compare-max-width: {{ section.settings.content_max_width }}px;
+    --compare-section-bg: {{ section.settings.section_background }};
+    --compare-primary-text-color: {{ section.settings.primary_text_color }};
+    --compare-secondary-text-color: {{ section.settings.secondary_text_color }};
+    --compare-primary-image-max: {{ section.settings.primary_image_max_width }}px;
+    --compare-secondary-image-max: {{ section.settings.secondary_image_max_width }}px;
+    --compare-lottie-width: {{ section.settings.lottie_width }}px;
+    --compare-lottie-height: {{ section.settings.lottie_height }}px;
+    --compare-lottie-top: {{ section.settings.lottie_offset_top }}px;
+    --compare-lottie-right: {{ section.settings.lottie_offset_right }}px;
+    --compare-lottie-mobile-offset: {{ section.settings.lottie_mobile_offset_top | default: section.settings.lottie_offset_top }}px;
+    --compare-section-padding-top: {{ section.settings.padding_top }}px;
+    --compare-section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --compare-section-padding-top-mobile: {{ section.settings.padding_top_mobile | default: section.settings.padding_top }}px;
+    --compare-section-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile | default: section.settings.padding_bottom }}px;
+    padding-top: var(--compare-section-padding-top);
+    padding-bottom: var(--compare-section-padding-bottom);
+    background-color: var(--compare-section-bg);
+  }
+
+  #compare-{{ section.id }} .compare-section__inner {
+    max-width: min(var(--compare-max-width), var(--page-width, var(--compare-max-width)));
+    margin: 0 auto;
+    width: min(100%, var(--page-width, var(--compare-max-width)));
+    padding: 0 clamp(16px, 5vw, 48px);
+    position: relative;
+  }
+
+  #compare-{{ section.id }} .compare-heading-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 12px;
+    margin: 0 0 var(--compare-heading-gap);
+    text-align: center;
+  }
+
+  #compare-{{ section.id }} .compare-heading {
+    color: var(--compare-heading-color);
+    font-size: var(--compare-heading-size);
+    font-weight: var(--compare-heading-weight);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  #compare-{{ section.id }} .compare-table__wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #compare-{{ section.id }} .compare-lottie {
+    position: absolute;
+    top: var(--compare-lottie-top);
+    right: var(--compare-lottie-right);
+    width: var(--compare-lottie-width);
+    height: var(--compare-lottie-height);
+    max-width: 100%;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+    display: block;
+    transition: opacity 0.35s ease;
+  }
+
+  #compare-{{ section.id }} .compare-lottie.is-visible {
+    opacity: 1;
+  }
+
+  #compare-{{ section.id }} .compare-lottie--inline {
+    position: static;
+    margin: 0 auto calc(var(--compare-heading-gap) * 0.3);
+    width: 100%;
+    justify-content: center;
+    right: auto;
+    left: auto;
+    display: flex;
+  }
+
+  #compare-{{ section.id }} .compare-lottie--product {
+    top: 0;
+    left: 50%;
+    right: auto;
+    transform: translate(calc(-50% + var(--compare-lottie-right)), calc(-100% + var(--compare-lottie-top)));
+  }
+
+  #compare-{{ section.id }} .compare-lottie--heading {
+    position: static;
+    opacity: 1;
+    width: var(--compare-lottie-width);
+    height: var(--compare-lottie-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: none;
+    right: auto;
+    top: auto;
+    transition: opacity 0.35s ease;
+    margin-left: 6px;
+    flex-shrink: 0;
+  }
+
+  #compare-{{ section.id }} .compare-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    display: table !important;
+  }
+
+  #compare-{{ section.id }} .compare-table thead {
+    display: table-header-group !important;
+  }
+
+  #compare-{{ section.id }} .compare-table tbody {
+    display: table-row-group !important;
+  }
+
+  #compare-{{ section.id }} .compare-table tr {
+    display: table-row !important;
+  }
+
+  #compare-{{ section.id }} .compare-table th,
+  #compare-{{ section.id }} .compare-table td {
+    display: table-cell !important;
+    vertical-align: middle;
+  }
+
+  #compare-{{ section.id }} .compare-col--feature { width: 62%; }
+  #compare-{{ section.id }} .compare-col--primary { width: 20%; }
+  #compare-{{ section.id }} .compare-col--secondary { width: 18%; }
+
+  #compare-{{ section.id }} thead th {
+    padding: calc(var(--compare-row-padding) + 8px) clamp(12px, 3vw, 32px);
+    border: none;
+    text-align: center;
+  }
+
+  #compare-{{ section.id }} thead th:first-child {
+    text-align: left;
+    color: var(--compare-feature-color);
+    font-size: calc(var(--compare-feature-size) * 0.9);
+    font-weight: var(--compare-feature-weight);
+  }
+
+  #compare-{{ section.id }} .compare-table__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--compare-feature-color);
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    overflow: visible;
+  }
+
+  #compare-{{ section.id }} .compare-brand-stack {
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #compare-{{ section.id }} .compare-brand-stack--with-lottie {
+    padding-top: calc(var(--compare-lottie-height) * 0.35);
+  }
+
+  #compare-{{ section.id }} .compare-table__brand img {
+    display: block;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #compare-{{ section.id }} .compare-table__brand--primary,
+  #compare-{{ section.id }} .compare-table__brand--secondary {
+    overflow: visible;
+    padding-bottom: 0;
+  }
+  #compare-{{ section.id }} .compare-brand-image {
+    display: flex;
+    justify-content: center;
+  }
+  #compare-{{ section.id }} .compare-table__brand--primary img {
+    max-width: var(--compare-primary-image-max);
+  }
+  #compare-{{ section.id }} .compare-table__brand--secondary img {
+    max-width: var(--compare-secondary-image-max);
+  }
+
+  #compare-{{ section.id }} tbody th {
+    text-align: left;
+    padding: var(--compare-row-padding) clamp(12px, 3vw, 32px);
+    color: var(--compare-feature-color);
+    font-size: var(--compare-feature-size);
+    font-weight: var(--compare-feature-weight);
+    border-bottom: 1px solid var(--compare-row-divider);
+  }
+
+  #compare-{{ section.id }} .compare-feature-text {
+    display: inline-block;
+  }
+
+  #compare-{{ section.id }} tbody td {
+    padding: var(--compare-row-padding) clamp(12px, 2vw, 24px);
+    text-align: center;
+    border-bottom: 1px solid var(--compare-row-divider);
+  }
+
+  #compare-{{ section.id }} tbody tr:last-child td,
+  #compare-{{ section.id }} tbody tr:last-child th {
+    border-bottom: none;
+  }
+
+  #compare-{{ section.id }} thead th.compare-table__brand--primary,
+  #compare-{{ section.id }} td.compare-table__cell--primary {
+    background-color: var(--compare-primary-column-bg);
+  }
+
+  #compare-{{ section.id }} thead th.compare-table__brand--primary {
+    border-top-left-radius: var(--compare-primary-column-radius);
+    border-top-right-radius: var(--compare-primary-column-radius);
+  }
+
+  #compare-{{ section.id }} tbody tr:last-child td.compare-table__cell--primary {
+    border-bottom-left-radius: var(--compare-primary-column-radius);
+    border-bottom-right-radius: var(--compare-primary-column-radius);
+  }
+
+  #compare-{{ section.id }} .compare-table__cell--primary {
+    color: var(--compare-primary-text-color);
+  }
+
+  #compare-{{ section.id }} .compare-table__cell--secondary {
+    color: var(--compare-secondary-text-color);
+  }
+
+  #compare-{{ section.id }} .compare-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--compare-icon-size);
+    height: var(--compare-icon-size);
+  }
+
+  #compare-{{ section.id }} .compare-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: var(--compare-icon-stroke);
+  }
+
+  #compare-{{ section.id }} .compare-table__cell--primary .compare-icon--check { color: var(--compare-primary-check-color); }
+  #compare-{{ section.id }} .compare-table__cell--primary .compare-icon--cross { color: var(--compare-primary-cross-color); }
+  #compare-{{ section.id }} .compare-table__cell--secondary .compare-icon--check { color: var(--compare-secondary-check-color); }
+  #compare-{{ section.id }} .compare-table__cell--secondary .compare-icon--cross { color: var(--compare-secondary-cross-color); }
+
+  #compare-{{ section.id }} .compare-icon--cross {
+    opacity: 0.9;
+  }
+
+  #compare-{{ section.id }} .compare-icon--cross svg {
+    transform: scale(0.88);
+    transform-origin: center;
+  }
+
+  #compare-{{ section.id }} .compare-table__cell--primary .compare-icon--check svg {
+    stroke-width: calc(var(--compare-icon-stroke) + 1);
+  }
+
+  #compare-{{ section.id }} .compare-icon__text {
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  #compare-{{ section.id }} .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  @media (max-width: 749px) {
+    #compare-{{ section.id }} {
+      padding-top: var(--compare-section-padding-top-mobile);
+      padding-bottom: var(--compare-section-padding-bottom-mobile);
+    }
+    #compare-{{ section.id }} .compare-table {
+      min-width: 120vw;
+      width: 120vw;
+      table-layout: fixed;
+    }
+    #compare-{{ section.id }} .compare-heading {
+      font-size: calc(var(--compare-heading-size) - 8px);
+    }
+    #compare-{{ section.id }} .compare-heading-row {
+      gap: 8px;
+      margin-bottom: calc(var(--compare-heading-gap) * 0.55);
+      flex-wrap: wrap;
+    }
+    #compare-{{ section.id }} .compare-lottie:not(.compare-lottie--inline) {
+      width: calc(var(--compare-lottie-width) * 0.7);
+      height: calc(var(--compare-lottie-height) * 0.7);
+      top: var(--compare-lottie-mobile-offset);
+    }
+    #compare-{{ section.id }} .compare-lottie--inline {
+      width: 100%;
+    }
+    #compare-{{ section.id }} .compare-lottie--product {
+      transform: translate(calc(-50% + var(--compare-lottie-right)), calc(-100% + var(--compare-lottie-mobile-offset)));
+    }
+    /* feature+primary = 75% of 120vw = 90vw — fills exactly to section's page-width right edge */
+    #compare-{{ section.id }} .compare-col--feature { width: 55%; }
+    #compare-{{ section.id }} .compare-col--primary { width: 20%; }
+    #compare-{{ section.id }} .compare-col--secondary { width: 25%; }
+
+    #compare-{{ section.id }} thead th,
+    #compare-{{ section.id }} tbody th,
+    #compare-{{ section.id }} tbody td {
+      padding-top: var(--compare-row-padding-mobile);
+      padding-bottom: var(--compare-row-padding-mobile);
+      padding-right: 16px;
+    }
+
+    #compare-{{ section.id }} thead th:first-child,
+    #compare-{{ section.id }} tbody th {
+      padding-left: 0;
+    }
+
+    #compare-{{ section.id }} tbody th {
+      font-size: var(--compare-feature-size-mobile);
+      line-height: 1.35;
+    }
+
+    #compare-{{ section.id }} thead th:first-child {
+      font-size: calc(var(--compare-feature-size-mobile) * 0.9);
+    }
+
+    #compare-{{ section.id }} .compare-table__brand--primary img {
+      max-width: calc(var(--compare-primary-image-max) * 0.65);
+    }
+
+    #compare-{{ section.id }} .compare-table__brand--secondary img {
+      max-width: calc(var(--compare-secondary-image-max) * 0.65);
+    }
+  }
+
+  @media (max-width: 520px) {
+    #compare-{{ section.id }} .compare-heading {
+      font-size: calc(var(--compare-heading-size) - 10px);
+    }
+    #compare-{{ section.id }} .compare-heading-row {
+      gap: 6px;
+      margin-bottom: calc(var(--compare-heading-gap) * 0.5);
+    }
+    #compare-{{ section.id }} .compare-lottie:not(.compare-lottie--inline) {
+      width: calc(var(--compare-lottie-width) * 0.6);
+      height: calc(var(--compare-lottie-height) * 0.6);
+      top: var(--compare-lottie-mobile-offset);
+    }
+    #compare-{{ section.id }} .compare-lottie--product {
+      transform: translate(calc(-50% + var(--compare-lottie-right)), calc(-100% + var(--compare-lottie-mobile-offset)));
+    }
+
+    #compare-{{ section.id }} thead th,
+    #compare-{{ section.id }} tbody th,
+    #compare-{{ section.id }} tbody td {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    #compare-{{ section.id }} .compare-table__brand--primary img {
+      max-width: calc(var(--compare-primary-image-max) * 0.55);
+    }
+
+    #compare-{{ section.id }} .compare-table__brand--secondary img {
+      max-width: calc(var(--compare-secondary-image-max) * 0.55);
+    }
+  }
+{% endstyle %}
+
+<section id="compare-{{ section.id }}" class="compare-section">
+  <div class="compare-section__inner page-width">
+    {%- if section.settings.heading_text != blank -%}
+      <div class="compare-heading-row" data-aos="fade" data-aos-duration="800" data-aos-offset="250" data-aos-once="true">
+        <h2 class="compare-heading">{{ section.settings.heading_text | escape }}</h2>
+        {%- if show_lottie and lottie_is_heading -%}
+          <div class="compare-lottie compare-lottie--heading" id="{{ lottie_container_id }}" aria-hidden="true"></div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if show_lottie and lottie_is_corner -%}
+      <div class="compare-lottie" id="{{ lottie_container_id }}" aria-hidden="true"></div>
+    {%- endif -%}
+
+    <div class="compare-table__wrapper">
+      <table class="compare-table">
+        <colgroup>
+          <col class="compare-col compare-col--feature">
+          <col class="compare-col compare-col--primary">
+          <col class="compare-col compare-col--secondary">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">
+              {%- if section.settings.show_feature_label and section.settings.feature_column_label != blank -%}
+                {{ section.settings.feature_column_label | escape }}
+              {%- endif -%}
+            </th>
+            <th scope="col" class="compare-table__brand compare-table__brand--primary">
+              {%- assign primary_stack_class = 'compare-brand-stack' -%}
+              {%- if show_lottie and lottie_is_product -%}
+                {%- assign primary_stack_class = primary_stack_class | append: ' compare-brand-stack--with-lottie' -%}
+              {%- endif -%}
+              <div class="{{ primary_stack_class }}">
+                {%- if show_lottie and lottie_is_product -%}
+                  <div class="compare-lottie compare-lottie--product" id="{{ lottie_container_id }}" aria-hidden="true"></div>
+                {%- endif -%}
+                {%- if section.settings.primary_image != blank -%}
+                  <div class="compare-brand-image" data-aos="zoom-in" data-aos-delay="100" data-aos-offset="220" data-aos-once="true">
+                    {{ section.settings.primary_image | image_url: width: 400 | image_tag: widths: '200,300,400', alt: section.settings.primary_image.alt | default: primary_label_plain, loading: 'lazy', class: 'compare-brand-image__img' }}
+                  </div>
+                {%- elsif primary_label != blank -%}
+                  <span>{{ primary_label | escape }}</span>
+                {%- endif -%}
+              </div>
+            </th>
+            <th scope="col" class="compare-table__brand compare-table__brand--secondary">
+              <div class="compare-brand-stack">
+                {%- if section.settings.secondary_image != blank -%}
+                  <div class="compare-brand-image" data-aos="zoom-in" data-aos-delay="200" data-aos-offset="220" data-aos-once="true">
+                    {{ section.settings.secondary_image | image_url: width: 400 | image_tag: widths: '200,300,400', alt: section.settings.secondary_image.alt | default: secondary_label_plain, loading: 'lazy', class: 'compare-brand-image__img' }}
+                  </div>
+                {%- elsif secondary_label != blank -%}
+                  <span>{{ secondary_label | escape }}</span>
+                {%- endif -%}
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              {%- assign feature_text = block.settings.feature_text | default: 'Feature' -%}
+              {%- assign feature_plain = feature_text | strip_html -%}
+              <tr id="block-{{ block.id }}" {{ block.shopify_attributes }}>
+                <th scope="row">
+                  <span class="compare-feature-text" data-aos="fade" data-aos-delay="{{ forloop.index0 | times: 80 }}" data-aos-offset="200" data-aos-once="true">
+                    {{ feature_text | escape }}
+                  </span>
+                </th>
+                <td class="compare-table__cell compare-table__cell--primary">
+                  {%- case block.settings.primary_state -%}
+                    {%- when 'text' -%}
+                      <span class="compare-icon__text">
+                        {%- if block.settings.primary_text != blank -%}
+                          {{ block.settings.primary_text | escape }}
+                        {%- else -%}
+                          &mdash;
+                        {%- endif -%}
+                      </span>
+                    {%- when 'cross' -%}
+                      <span class="compare-icon compare-icon--cross compare-icon--primary" aria-hidden="true">
+                        {{ compare_cross_svg }}
+                      </span>
+                      <span class="visually-hidden">{{ primary_label_plain | escape }} does not include {{ feature_plain | escape }}</span>
+                    {%- else -%}
+                      <span class="compare-icon compare-icon--check compare-icon--primary" aria-hidden="true">
+                        {{ compare_check_svg }}
+                      </span>
+                      <span class="visually-hidden">{{ primary_label_plain | escape }} includes {{ feature_plain | escape }}</span>
+                  {%- endcase -%}
+                </td>
+                <td class="compare-table__cell compare-table__cell--secondary">
+                  {%- case block.settings.secondary_state -%}
+                    {%- when 'text' -%}
+                      <span class="compare-icon__text">
+                        {%- if block.settings.secondary_text != blank -%}
+                          {{ block.settings.secondary_text | escape }}
+                        {%- else -%}
+                          &mdash;
+                        {%- endif -%}
+                      </span>
+                    {%- when 'check' -%}
+                      <span class="compare-icon compare-icon--check compare-icon--secondary" aria-hidden="true">
+                        {{ compare_check_svg }}
+                      </span>
+                      <span class="visually-hidden">{{ secondary_label_plain | escape }} includes {{ feature_plain | escape }}</span>
+                    {%- else -%}
+                      <span class="compare-icon compare-icon--cross compare-icon--secondary" aria-hidden="true">
+                        {{ compare_cross_svg }}
+                      </span>
+                      <span class="visually-hidden">{{ secondary_label_plain | escape }} does not include {{ feature_plain | escape }}</span>
+                  {%- endcase -%}
+                </td>
+              </tr>
+            {%- endfor -%}
+          {%- else -%}
+            <tr>
+              <th scope="row">Add feature rows to finish this comparison.</th>
+              <td colspan="2">&mdash;</td>
+            </tr>
+          {%- endif -%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{%- if show_lottie -%}
+  <script>
+    (function() {
+      var containerId = '{{ lottie_container_id }}';
+      var animationPath = {{ section.settings.lottie_json_url | json }};
+      var shouldLoop = {{ section.settings.lottie_loop | json }};
+      var shouldAutoplay = {{ section.settings.lottie_autoplay | json }};
+      var animationSpeed = {{ section.settings.lottie_speed | json }};
+
+      function ensureLottieScript(callback) {
+        if (window.bodymovin) {
+          callback();
+          return;
+        }
+
+        var existingScript = document.getElementById('lottie-web-lib');
+        if (existingScript) {
+          existingScript.addEventListener('load', callback, { once: true });
+          return;
+        }
+
+        var script = document.createElement('script');
+        script.id = 'lottie-web-lib';
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js';
+        script.async = true;
+        script.onload = callback;
+        document.head.appendChild(script);
+      }
+
+      function startAnimation() {
+        var target = document.getElementById(containerId);
+        if (!target || target.dataset.lottieMounted === 'true' || !window.bodymovin) {
+          return;
+        }
+        target.dataset.lottieMounted = 'true';
+        target.classList.add('is-visible');
+        var animation = window.bodymovin.loadAnimation({
+          container: target,
+          renderer: 'svg',
+          loop: shouldLoop,
+          autoplay: shouldAutoplay,
+          path: animationPath
+        });
+        animation.setSpeed(animationSpeed);
+      }
+
+      function initLottie() {
+        if (window.bodymovin) {
+          startAnimation();
+        } else {
+          ensureLottieScript(startAnimation);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLottie);
+      } else {
+        initLottie();
+      }
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "How we compare",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "How We Compare"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#F05577"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 20,
+      "max": 72,
+      "step": 1,
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Space below heading",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "default": "700",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Corner animation"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_lottie",
+      "label": "Enable Lottie animation",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "lottie_position",
+      "label": "Placement",
+      "default": "product",
+      "options": [
+        {
+          "value": "product",
+          "label": "Above product (default)"
+        },
+        {
+          "value": "heading",
+          "label": "Above heading"
+        },
+        {
+          "value": "corner",
+          "label": "Floating corner"
+        }
+      ]
+    },
+    {
+      "type": "url",
+      "id": "lottie_json_url",
+      "label": "Lottie JSON URL",
+      "info": "Paste the JSON link from LottieFiles."
+    },
+    {
+      "type": "checkbox",
+      "id": "lottie_loop",
+      "label": "Loop animation",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "lottie_autoplay",
+      "label": "Autoplay animation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "lottie_speed",
+      "label": "Playback speed",
+      "min": 0.2,
+      "max": 3,
+      "step": 0.1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "lottie_width",
+      "label": "Animation width",
+      "min": 40,
+      "max": 240,
+      "step": 5,
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "lottie_height",
+      "label": "Animation height",
+      "min": 40,
+      "max": 240,
+      "step": 5,
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "lottie_offset_top",
+      "label": "Offset from top",
+      "min": -100,
+      "max": 200,
+      "step": 3,
+      "default": -19,
+      "info": "Used for Floating corner or Above product."
+    },
+    {
+      "type": "range",
+      "id": "lottie_mobile_offset_top",
+      "label": "Offset from top (mobile)",
+      "min": -120,
+      "max": 180,
+      "step": 3,
+      "default": 0,
+      "info": "Overrides the top gap on screens smaller than 750px."
+    },
+    {
+      "type": "range",
+      "id": "lottie_offset_right",
+      "label": "Offset from right edge",
+      "min": -100,
+      "max": 200,
+      "step": 3,
+      "default": -19,
+      "info": "Used for Floating corner or Above product."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_feature_label",
+      "label": "Show feature column label",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "feature_column_label",
+      "label": "Feature column label",
+      "default": "Features"
+    },
+    {
+      "type": "color",
+      "id": "feature_color",
+      "label": "Feature text color",
+      "default": "#123643"
+    },
+    {
+      "type": "range",
+      "id": "feature_size",
+      "label": "Feature text size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "feature_size_mobile",
+      "label": "Feature text size (mobile)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "feature_weight",
+      "label": "Feature text weight",
+      "default": "600",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "row_divider_color",
+      "label": "Row divider color",
+      "default": "#C6E0E8"
+    },
+    {
+      "type": "range",
+      "id": "row_padding",
+      "label": "Row padding",
+      "min": 10,
+      "max": 36,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "row_padding_mobile",
+      "label": "Row padding (mobile)",
+      "min": 8,
+      "max": 36,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "primary_column_bg",
+      "label": "Primary column background",
+      "default": "#E2F4F7"
+    },
+    {
+      "type": "range",
+      "id": "primary_column_radius",
+      "label": "Primary column radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "primary_check_color",
+      "label": "Primary check color",
+      "default": "#4A9A2C"
+    },
+    {
+      "type": "color",
+      "id": "primary_cross_color",
+      "label": "Primary cross color",
+      "default": "#F05577"
+    },
+    {
+      "type": "color",
+      "id": "secondary_check_color",
+      "label": "Secondary check color",
+      "default": "#4A9A2C"
+    },
+    {
+      "type": "color",
+      "id": "secondary_cross_color",
+      "label": "Secondary cross color",
+      "default": "#F05577"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Primary column text color",
+      "default": "#123643"
+    },
+    {
+      "type": "color",
+      "id": "secondary_text_color",
+      "label": "Secondary column text color",
+      "default": "#123643"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 16,
+      "max": 64,
+      "step": 2,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "icon_stroke",
+      "label": "Icon stroke weight",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "image_picker",
+      "id": "primary_image",
+      "label": "Primary image"
+    },
+    {
+      "type": "range",
+      "id": "primary_image_max_width",
+      "label": "Primary image max width",
+      "min": 40,
+      "max": 240,
+      "step": 5,
+      "default": 110
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary label",
+      "default": "Nutrii Deep Sleep"
+    },
+    {
+      "type": "image_picker",
+      "id": "secondary_image",
+      "label": "Secondary image"
+    },
+    {
+      "type": "range",
+      "id": "secondary_image_max_width",
+      "label": "Secondary image max width",
+      "min": 40,
+      "max": 240,
+      "step": 5,
+      "default": 90
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary label",
+      "default": "Traditional Gummies"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 720,
+      "max": 1400,
+      "step": 20,
+      "default": 1180
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Feature text",
+          "default": "Calms you down with L-theanine"
+        },
+        {
+          "type": "select",
+          "id": "primary_state",
+          "label": "Primary column value",
+          "default": "check",
+          "options": [
+            {
+              "value": "check",
+              "label": "Check"
+            },
+            {
+              "value": "cross",
+              "label": "Cross"
+            },
+            {
+              "value": "text",
+              "label": "Custom text"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "primary_text",
+          "label": "Primary custom text",
+          "info": "Used when the value above is set to Custom text."
+        },
+        {
+          "type": "select",
+          "id": "secondary_state",
+          "label": "Secondary column value",
+          "default": "cross",
+          "options": [
+            {
+              "value": "check",
+              "label": "Check"
+            },
+            {
+              "value": "cross",
+              "label": "Cross"
+            },
+            {
+              "value": "text",
+              "label": "Custom text"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "secondary_text",
+          "label": "Secondary custom text",
+          "info": "Used when the value above is set to Custom text."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "💜How we compare",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Calms you down with L-theanine",
+            "primary_state": "check",
+            "secondary_state": "cross"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Natural griffonia seed extract",
+            "primary_state": "check",
+            "secondary_state": "cross"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "All natural melatonin",
+            "primary_state": "check",
+            "secondary_state": "cross"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "With soothing herbal extracts",
+            "primary_state": "check",
+            "secondary_state": "cross"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Sugar free",
+            "primary_state": "check",
+            "secondary_state": "cross"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

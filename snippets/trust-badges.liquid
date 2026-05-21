@@ -1,0 +1,178 @@
+{%- comment -%}
+  Trust badges (3 fixed items), controlled from a block's settings.
+  Expects: {% render 'trust-badges', block: block %}
+{%- endcomment -%}
+
+{%- assign bg = block.settings.bg_color | default: '#D1D8BE' -%}
+{%- assign title_color = block.settings.title_color | default: '#26322B' -%}
+{%- assign subtitle_color = block.settings.subtitle_color | default: '#26322B' -%}
+{%- assign icon_color = block.settings.icon_color | default: '#222222' -%}
+
+{%- assign item_gap = block.settings.item_gap | default: 16 -%}
+{%- assign item_radius = block.settings.item_radius | default: 12 -%}
+{%- assign item_pad_v = block.settings.item_pad_v | default: 8 -%}
+{%- assign item_pad_h = block.settings.item_pad_h | default: 15 -%}
+
+<ul class="trust-badges"
+    style="--tb-bg: {{ bg }}; --tb-title: {{ title_color }}; --tb-sub: {{ subtitle_color }}; --tb-icon: {{ icon_color }};
+           --tb-gap: {{ item_gap }}px; --tb-radius: {{ item_radius }}px; --tb-pad-v: {{ item_pad_v }}px; --tb-pad-h: {{ item_pad_h }}px;">
+  {%- for i in (1..3) -%}
+    {%- assign icon_mode_key = 'item' | append: i | append: '_icon_mode' -%}
+    {%- assign icon_choice_key = 'item' | append: i | append: '_icon_choice' -%}
+    {%- assign icon_image_key = 'item' | append: i | append: '_icon_image' -%}
+    {%- assign title_key = 'item' | append: i | append: '_title' -%}
+    {%- assign subtitle_key = 'item' | append: i | append: '_subtitle' -%}
+
+    {%- assign icon_mode = block.settings[icon_mode_key] | default: 'built_in' -%}
+    {%- assign icon_choice = block.settings[icon_choice_key] | default: 'delivery' -%}
+    {%- assign icon_image = block.settings[icon_image_key] -%}
+
+    <li class="trust-badge-item">
+      <div class="trust-badge-icon">
+        {%- if icon_mode == 'image' and icon_image != blank -%}
+          <img src="{{ icon_image | image_url: width: 56 }}" width="28" height="28" alt="" loading="lazy">
+        {%- else -%}
+          {%- case icon_choice -%}
+            {%- when 'delivery' -%}
+              <!-- Truck / Delivery -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M3 6H16V18H3V6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 9H19L21 12V18H16V9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="7.5" cy="18.5" r="1.5" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="17.5" cy="18.5" r="1.5" fill="#fff" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            {%- when 'return' -%}
+              <!-- Return -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="7" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9 10L6 13L9 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 13H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            {%- when 'secure' -%}
+              <!-- Secure / Lock -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="10" width="18" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 10V7C8 5.343 9.343 4 11 4h2c1.657 0 3 1.343 3 3v3" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="12" cy="15" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            {%- when 'package' -%}
+              <!-- Package / Box -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M3 7l9-4 9 4v10l-9 4-9-4V7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 3v18" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 7l9 4 9-4" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            {%- when 'support' -%}
+              <!-- Headset / Support -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="3" y="11" width="4" height="6" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="17" y="11" width="4" height="6" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 18c1.2 1.2 3.1 2 5 2s3.8-.8 5-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            {%- when 'star' -%}
+              <!-- Star -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l2.9 5.9 6.5.9-4.7 4.5 1.1 6.4L12 17.8 6.2 20.7 7.3 14 2.6 9.8l6.5-.9L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            {%- when 'clock' -%}
+              <!-- Clock -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 7v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            {%- when 'gift' -%}
+              <!-- Gift -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="9" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 12h18" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 9v11" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7.5 9c-1.4 0-2.5-1-2.5-2.3S6.4 4.5 7.7 5.1L12 7.5 8.7 9H7.5z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16.5 9c1.4 0 2.5-1 2.5-2.3S17.6 4.5 16.3 5.1L12 7.5 15.3 9h1.2z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            {%- when 'globe' -%}
+              <!-- Globe -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            {%- when 'credit_card' -%}
+              <!-- Credit card -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 10h18" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            {%- when 'shield' -%}
+              <!-- Shield -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l8 3v6c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            {%- when 'recycle' -%}
+              <!-- Recycle -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M7 7l2.5-3.5L12 7M5 13l-2 3.5H7M17 7l-2.5-3.5L12 7M19 13l2 3.5h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7 7h5M5 13h5M17 7h-5M19 13h-5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            {%- else -%}
+              <!-- Fallback -->
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+          {%- endcase -%}
+        {%- endif -%}
+      </div>
+
+      <div class="trust-badge-text">
+        <div class="trust-badge-title">
+          {%- if block.settings[title_key] != blank -%}
+            {{ block.settings[title_key] }}
+          {%- elsif i == 1 -%}
+            Free Shipping > $50
+          {%- elsif i == 2 -%}
+            30 Days Return
+          {%- else -%}
+            Secure Payment
+          {%- endif -%}
+        </div>
+        <div class="trust-badge-subtitle">
+          {%- if block.settings[subtitle_key] != blank -%}
+            {{ block.settings[subtitle_key] }}
+          {%- elsif i == 1 -%}
+            Expected delivery between 2-3 days
+          {%- elsif i == 2 -%}
+            Return label included for easy returns
+          {%- else -%}
+            Powered by Shopify and Stripe
+          {%- endif -%}
+        </div>
+      </div>
+    </li>
+  {%- endfor -%}
+</ul>
+
+<style>
+.trust-badges{
+  display:flex; flex-direction:column; gap:var(--tb-gap); width:100%;
+  margin: 0px auto 0; padding:0; list-style:none;
+}
+.trust-badge-item{
+  background:var(--tb-bg);
+  border-radius:var(--tb-radius);
+  box-shadow:0 2px 16px rgba(131, 235, 90, 0.05);
+  padding:var(--tb-pad-v) var(--tb-pad-h);
+  display:flex; align-items:center; gap:14px;
+  transition:box-shadow .16s;
+}
+.trust-badge-item:hover{ box-shadow:0 3px 15px pink; }
+.trust-badge-icon svg{ display:block; width:36px; height:36px; color:var(--tb-icon); }
+.trust-badge-icon img{ display:block; width:36px; height:36px; object-fit:contain; }
+.trust-badge-title{ font-size:1.4rem; font-weight:700; color:var(--tb-title); margin-bottom:2px; }
+.trust-badge-subtitle{ font-size:1rem; color:var(--tb-sub); font-weight:300; margin-top:2px; opacity:.85; }
+@media (max-width:600px){
+  .trust-badges{ padding:0 8px; }
+  .trust-badge-item{ gap:10px; }
+  .trust-badge-icon svg,.trust-badge-icon img{ width:28px; height:28px; }
+}
+</style>

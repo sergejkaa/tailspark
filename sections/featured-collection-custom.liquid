@@ -1,0 +1,811 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+{%- liquid
+  assign section_collection = section.settings.collection
+  assign products_limit = section.settings.products_to_show
+-%}
+
+{%- style -%}
+  @font-face {
+    font-family: "SS Josefin Sans";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.70f7efd699799949e6d9f99bc20843a2c86a2e0f.woff2") format("woff2"),
+      url("//section.store/cdn/fonts/josefin_sans/josefinsans_n4.35d308a1bdf56e5556bc2ac79702c721e4e2e983.woff") format("woff");
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6 {
+    border-top: solid #000000 0;
+    border-bottom: solid #000000 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: "SS Josefin Sans", var(--font-body-family, sans-serif);
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__settings {
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top_mobile }}px 1.5rem {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__title-wrapper {
+    margin-bottom: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__section-title {
+    font-family: var(--font-heading-family, var(--font-body-family, sans-serif));
+    font-style: var(--font-heading-style, normal);
+    font-weight: var(--font-heading-weight, 700);
+    letter-spacing: var(--font-heading-letter-spacing, normal);
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__slider {
+    position: relative;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: -1.5rem !important;
+    margin-right: -1.5rem !important;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__slide {
+    aspect-ratio: 9.6 / 13;
+    border-radius: {{ section.settings.card_radius }}px;
+    border: 0 solid #696660;
+    background-color: {{ section.settings.card_background }};
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box !important;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: {{ section.settings.card_radius }}px;
+    background-color: rgba(255,255,255,0.1);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all .7s cubic-bezier(.76,0,.24,1);
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__image--second {
+    opacity: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__image img,
+  #shopify-section-{{ section.id }} .ss-fc6__image svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__placeholder {
+    width: 100%;
+    height: 100%;
+    background: #eeeeee;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+    padding: 16px 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__content::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba({{ section.settings.card_background.red }}, {{ section.settings.card_background.green }}, {{ section.settings.card_background.blue }}, 0) 60%, {{ section.settings.card_background }} 100%);
+    transition: opacity .3s cubic-bezier(.76,0,.24,1);
+    transition-delay: 0.25s;
+    opacity: 1;
+    z-index: -1;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__heading {
+    margin: 0;
+    font-size: 32px;
+    line-height: 130%;
+    color: {{ section.settings.heading_color }};
+    text-transform: unset;
+    word-break: break-word;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__bottom-inner {
+    transition: all 0.5s ease 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__bottom-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__bottom-left {
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__title {
+    flex: 0 1 70%;
+    margin: 0;
+    font-size: 14px;
+    line-height: 150%;
+    color: {{ section.settings.title_color }};
+    text-transform: unset;
+    word-break: break-word;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__vendor {
+    margin: 8px 0 0;
+    font-size: 14px;
+    color: {{ section.settings.vendor_color }};
+    line-height: 130%;
+    text-transform: unset;
+    transition: all 0.25s ease 0s;
+    text-align: left;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__price {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__price * {
+    margin: 0;
+    font-size: 14px;
+    color: {{ section.settings.price_color }};
+    line-height: 150%;
+    text-transform: unset;
+    font-style: normal;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__compare-price {
+    opacity: 0.8;
+    font-size: 14.4px;
+    color: {{ section.settings.price_color }};
+    text-decoration: line-through !important;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 16px 0 0;
+    font-size: 14px;
+    color: {{ section.settings.button_text_color }};
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 100px;
+    transition: all 1s ease 0s;
+    background-color: {{ section.settings.button_background }};
+    border: 1px solid {{ section.settings.button_border }};
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__button:hover {
+    color: {{ section.settings.button_text_hover_color }};
+    background-color: {{ section.settings.button_hover_background }};
+    border-color: {{ section.settings.button_hover_background }};
+    transition: all 0.25s ease 0s;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__arrow {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    width: 48px;
+    height: 48px;
+    border: 0 solid #696660;
+    border-radius: 100px;
+    background: #ffffff;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+    color: #696660;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__arrow--prev {
+    left: 10px;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__arrow--next {
+    right: 10px;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__arrow-icon {
+    pointer-events: none;
+    place-items: center;
+    display: grid;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__arrow-icon::before {
+    content: "";
+    grid-area: 1 / -1;
+    transition: all .2s ease;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    box-sizing: border-box;
+    border-right: 2px solid currentcolor;
+    border-top: 2px solid currentcolor;
+    position: relative;
+    left: -1px;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__arrow--prev .ss-fc6__arrow-icon::before {
+    left: unset;
+    right: -1px;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 2px solid currentcolor;
+    border-left: 2px solid currentcolor;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__arrow:hover {
+    background: #696660;
+    color: #ffffff;
+  }
+
+  #shopify-section-{{ section.id }} .ss-fc6__arrow.swiper-button-disabled {
+    opacity: 0;
+  }
+
+  @media (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .ss-fc6__content {
+      padding-bottom: 6px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__bottom {
+      transform: none;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__bottom-top {
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__title {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      line-height: 140%;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__price {
+      min-width: 64px;
+      align-self: flex-end;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__button {
+      margin-top: 4px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .ss-fc6__settings {
+      padding: {{ section.settings.padding_top }}px 4rem {{ section.settings.padding_bottom }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__title-wrapper {
+      margin-bottom: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__slider {
+      padding-left: 4rem !important;
+      padding-right: 4rem !important;
+      margin-left: -4rem !important;
+      margin-right: -4rem !important;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__slide {
+      aspect-ratio: 9.6 / 11;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__content {
+      padding: 28px 16px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__heading {
+      font-size: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__title {
+      font-size: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__vendor {
+      margin-top: 8px;
+      font-size: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__price * {
+      font-size: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__button {
+      width: calc(100% - 32px);
+      position: absolute;
+      bottom: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: all 0.5s ease 0s;
+      margin-top: 0;
+      padding: 14px 12px;
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__slide:hover .ss-fc6__button {
+      transition: all 0.4s ease 0s;
+      bottom: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__slide:hover .ss-fc6__bottom-inner {
+      opacity: 0;
+      transition: all 0.5s ease 0s;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__slide:hover .ss-fc6__image--second {
+      opacity: 1;
+      transition: all .7s cubic-bezier(.76,0,.24,1);
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__slide:hover .ss-fc6__image--first {
+      opacity: 0;
+      transition: all .7s cubic-bezier(.76,0,.24,1);
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__slide:hover .ss-fc6__content::after {
+      opacity: 0;
+      transition-delay: 0s;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__arrow {
+      display: flex;
+      width: 48px;
+      height: 48px;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__arrow--prev {
+      left: 48px !important;
+    }
+
+    #shopify-section-{{ section.id }} .ss-fc6__arrow--next {
+      right: 48px !important;
+    }
+  }
+{%- endstyle -%}
+
+<div class="ss-fc6" data-section-id="{{ section.id }}">
+  <div class="ss-fc6__settings">
+    {%- if section.settings.title != blank -%}
+      <div class="ss-fc6__title-wrapper title-wrapper title-wrapper--no-top-margin">
+        <h2 class="ss-fc6__section-title title inline-richtext {{ section.settings.heading_size }}">
+          {{ section.settings.title }}
+        </h2>
+      </div>
+    {%- endif -%}
+
+    <div class="ss-fc6__slider swiper">
+      <button class="ss-fc6__arrow ss-fc6__arrow--prev" type="button" aria-label="Previous slide">
+        <span class="ss-fc6__arrow-icon"></span>
+      </button>
+      <button class="ss-fc6__arrow ss-fc6__arrow--next" type="button" aria-label="Next slide">
+        <span class="ss-fc6__arrow-icon"></span>
+      </button>
+
+      <div class="swiper-wrapper">
+        {%- if section_collection != blank and section_collection.all_products_count > 0 -%}
+          {%- for product in section_collection.products limit: products_limit -%}
+            {%- liquid
+              assign card_heading = product.title | split: ' ' | first | downcase
+              if section.settings.card_heading_source == 'vendor'
+                assign card_heading = product.vendor
+              elsif section.settings.card_heading_source == 'collection'
+                assign card_heading = section_collection.title
+              elsif section.settings.card_heading_source == 'type'
+                assign card_heading = product.type | default: card_heading
+              endif
+              assign card_heading = card_heading | downcase
+              assign second_image = product.media[1].preview_image
+              assign featured_alt = product.featured_image.alt | default: product.title
+              assign second_alt = second_image.alt | default: product.title
+              if product.featured_image == blank
+                assign second_image = blank
+              endif
+            -%}
+            <a href="{{ product.url }}" class="ss-fc6__slide swiper-slide">
+              <div class="ss-fc6__image ss-fc6__image--first">
+                {%- if product.featured_image != blank -%}
+                  {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: featured_alt }}
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'ss-fc6__placeholder' }}
+                {%- endif -%}
+              </div>
+
+              {%- if second_image != blank -%}
+                <div class="ss-fc6__image ss-fc6__image--second">
+                  {{ second_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: second_alt }}
+                </div>
+              {%- endif -%}
+
+              <div class="ss-fc6__content">
+                <p class="ss-fc6__heading">{{ card_heading }}</p>
+                <div class="ss-fc6__bottom">
+                  <div class="ss-fc6__bottom-inner">
+                    <div class="ss-fc6__bottom-top">
+                      <div class="ss-fc6__bottom-left">
+                        <p class="ss-fc6__title">{{ product.title }}</p>
+                        {%- if section.settings.show_vendor -%}
+                          <p class="ss-fc6__vendor">{{ product.vendor }}</p>
+                        {%- endif -%}
+                      </div>
+                      <div class="ss-fc6__price">
+                        <p>{{ product.price | money }}</p>
+                        {%- if product.compare_at_price > product.price -%}
+                          <p class="ss-fc6__compare-price">{{ product.compare_at_price | money }}</p>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ss-fc6__button">{{ section.settings.button_label }}</div>
+                </div>
+              </div>
+            </a>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for i in (1..4) -%}
+            <div class="ss-fc6__slide swiper-slide">
+              <div class="ss-fc6__image ss-fc6__image--first">
+                {{ 'product-' | append: i | placeholder_svg_tag: 'ss-fc6__placeholder' }}
+              </div>
+              <div class="ss-fc6__content">
+                <p class="ss-fc6__heading">product</p>
+                <div class="ss-fc6__bottom">
+                  <div class="ss-fc6__bottom-inner">
+                    <div class="ss-fc6__bottom-top">
+                      <div class="ss-fc6__bottom-left">
+                        <p class="ss-fc6__title">Example product</p>
+                        {%- if section.settings.show_vendor -%}
+                          <p class="ss-fc6__vendor">Vendor name</p>
+                        {%- endif -%}
+                      </div>
+                      <div class="ss-fc6__price"><p>{{ 3200 | money }}</p></div>
+                    </div>
+                  </div>
+                  <div class="ss-fc6__button">{{ section.settings.button_label }}</div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var sectionId = {{ section.id | json }};
+    var selector = '#shopify-section-' + sectionId + ' .ss-fc6__slider';
+
+    function loadSwiper(callback) {
+      if (window.Swiper) {
+        callback();
+        return;
+      }
+
+      var existingScript = document.querySelector('script[data-ss-swiper]');
+      if (existingScript) {
+        existingScript.addEventListener('load', callback, { once: true });
+        return;
+      }
+
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+      script.defer = true;
+      script.dataset.ssSwiper = 'true';
+      script.addEventListener('load', callback, { once: true });
+      document.head.appendChild(script);
+    }
+
+    function initFeaturedCollection6() {
+      var slider = document.querySelector(selector);
+      if (!slider || !window.Swiper) return;
+
+      if (slider.swiper) {
+        slider.swiper.destroy(true, true);
+      }
+
+      new Swiper(slider, {
+        speed: 300,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '#shopify-section-' + sectionId + ' .ss-fc6__arrow--next',
+          prevEl: '#shopify-section-' + sectionId + ' .ss-fc6__arrow--prev'
+        },
+        breakpoints: {
+          320: {
+            spaceBetween: 20,
+            slidesPerView: 1.2
+          },
+          768: {
+            spaceBetween: 20,
+            slidesPerView: 2
+          },
+          1024: {
+            spaceBetween: 40,
+            slidesPerView: 3
+          }
+        }
+      });
+    }
+
+    loadSwiper(initFeaturedCollection6);
+
+    document.addEventListener('shopify:section:load', function(event) {
+      if (event.detail && event.detail.sectionId === sectionId) {
+        loadSwiper(initFeaturedCollection6);
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Featured Coll Custom",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "label": "Products to show",
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "card_heading_source",
+      "label": "Large card heading source",
+      "options": [
+        {
+          "value": "vendor",
+          "label": "Vendor"
+        },
+        {
+          "value": "collection",
+          "label": "Collection name"
+        },
+        {
+          "value": "type",
+          "label": "Product type"
+        },
+        {
+          "value": "first_word",
+          "label": "First word of product title"
+        }
+      ],
+      "default": "type"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SHOP PRODUCT"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Desktop bottom padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 90,
+      "step": 3,
+      "unit": "px",
+      "label": "Mobile top padding",
+      "default": 27
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 90,
+      "step": 3,
+      "unit": "px",
+      "label": "Mobile bottom padding",
+      "default": 27
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Card radius",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Large heading",
+      "default": "#595754"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Product title",
+      "default": "#595754"
+    },
+    {
+      "type": "color",
+      "id": "vendor_color",
+      "label": "Vendor",
+      "default": "#696660"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price",
+      "default": "#696660"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_border",
+      "label": "Button border",
+      "default": "#696660"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#696660"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#696660"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_color",
+      "label": "Button hover text",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection Custom"
+    }
+  ]
+}
+{% endschema %}

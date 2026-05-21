@@ -1,0 +1,272 @@
+{%- comment -%}
+  Back-to-top section (v2.7)
+  - Floating ↑ button
+  - Desktop: size = base * 1.2
+  - Mobile:
+      • Center toggle (new)
+      • adjustable scale/opacity/raise
+      • optional LEFT side if not centered
+  - Auto-avoid bottom-right badge (Cloudflare Turnstile / reCAPTCHA) on X & Y
+{%- endcomment -%}
+
+<div class="back-to-top-wrapper" data-section-id="{{ section.id }}">
+  <button
+    id="backToTopButton-{{ section.id }}"
+    class="back-to-top{% if section.settings.shadow %} has-shadow{% endif %}{% if section.settings.mobile_center %} is-centered-mob{% endif %}"
+    type="button"
+    aria-label="{{ 'general.accessibility.back_to_top' | t | default: 'Back to top' }}"
+    aria-hidden="true"
+    tabindex="-1"
+    data-threshold="{{ section.settings.threshold | default: 300 }}"
+  >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M12 5l-7 7 1.414 1.414L11 9.828V20h2V9.828l4.586 4.586L19 12l-7-7z" fill="currentColor"/>
+    </svg>
+  </button>
+</div>
+
+<style>
+  /* Пер-інстанс змінні */
+  #backToTopButton-{{ section.id }}{
+    --btt-size: {{ section.settings.size | default: 44 }}px;
+    --btt-bottom: {{ section.settings.bottom_offset | default: 24 }}px;
+    --btt-side: {{ section.settings.side_offset | default: 24 }}px;
+    --btt-mobile-bottom-extra: {{ section.settings.mobile_bottom_extra | default: 8 }}px;
+    --btt-bg: {{ section.settings.bg_color | default: '#000000B3' }};
+    --btt-icon: {{ section.settings.icon_color | default: '#FFFFFF' }};
+    --btt-radius: {{ section.settings.radius | default: 100 }}px;
+    --btt-z: {{ section.settings.z_index | default: 9999 }};
+
+    /* Відступи від бейджа (X/Y) */
+    --widget-gutter-x: {% if section.settings.enable_widget_gutter %}{{ section.settings.widget_gutter_x | default: 88 }}px{% else %}0px{% endif %};
+    --widget-gutter-y: {% if section.settings.enable_widget_gutter %}{{ section.settings.widget_gutter_y | default: 72 }}px{% else %}0px{% endif %};
+
+    /* Мобільні настройкі */
+    --mob-scale: {{ section.settings.mobile_scale | default: 90 | divided_by: 100.0 }};
+    --mob-opacity: {{ section.settings.mobile_opacity | default: 65 | divided_by: 100.0 }};
+    --mob-raise: {{ section.settings.mobile_raise | default: 48 }}px;
+  }
+
+  .back-to-top{
+    position: fixed;
+
+    bottom: calc(var(--btt-bottom) + var(--widget-gutter-y) + env(safe-area-inset-bottom, 0px));
+    {% if section.settings.position == 'left' %}
+      left: var(--btt-side);
+      right: auto;
+    {% else %}
+      right: calc(var(--btt-side) + var(--widget-gutter-x));
+      left: auto;
+    {% endif %}
+
+    /* Desktop size: +20% */
+    width: calc(var(--btt-size) * 1.2);
+    height: calc(var(--btt-size) * 1.2);
+
+    border: 0;
+    border-radius: var(--btt-radius);
+    background: var(--btt-bg);
+    color: var(--btt-icon);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: var(--btt-z);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+    pointer-events: none;
+  }
+
+  .back-to-top.has-shadow{ box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.12); }
+  .back-to-top.is-visible{ opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto; }
+  .back-to-top:focus-visible{ outline:2px solid rgba(255,255,255,.9); outline-offset:2px; }
+
+  /* Мобільний тюнінг */
+  @media (max-width: 768px){
+    .back-to-top{
+      width:  calc(var(--btt-size) * var(--mob-scale));
+      height: calc(var(--btt-size) * var(--mob-scale));
+      opacity: var(--mob-opacity);
+
+      bottom: calc(
+        var(--btt-bottom)
+        + var(--btt-mobile-bottom-extra)
+        + var(--widget-gutter-y)
+        + var(--mob-raise)
+        + env(safe-area-inset-bottom, 0px)
+      );
+    }
+
+    /* NEW: якщо центр на мобільному */
+    .back-to-top.is-centered-mob{
+      left: 50%;
+      right: auto;
+      /* перекриваємо десктопний transform під мобайл */
+      transform: translate(-50%, 10px);
+    }
+    .back-to-top.is-centered-mob.is-visible{
+      transform: translate(-50%, 0);
+    }
+
+    /* Якщо НЕ центр — працює попередня логіка left/right */
+    {% unless section.settings.mobile_center %}
+    .back-to-top{
+      {% if section.settings.mobile_place_left %}
+        left: var(--btt-side); right: auto;
+      {% else %}
+        right: calc(var(--btt-side) + var(--widget-gutter-x)); left: auto;
+      {% endif %}
+    }
+    {% endunless %}
+
+    .back-to-top:active,
+    .back-to-top:focus-visible{ opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce){ .back-to-top{ transition:none; } }
+</style>
+
+<script>
+  (function(){
+    var btn = document.getElementById('backToTopButton-{{ section.id }}');
+    if(!btn) return;
+
+    var threshold = parseInt(btn.getAttribute('data-threshold'), 10);
+    if(isNaN(threshold)) threshold = 300;
+
+    var prefersReduced = false;
+    try{ prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+
+    function setVisible(v){
+      if(v){
+        if(!btn.classList.contains('is-visible')){
+          btn.classList.add('is-visible');
+          btn.removeAttribute('tabindex');
+          btn.setAttribute('aria-hidden','false');
+        }
+      }else{
+        if(btn.classList.contains('is-visible')) btn.classList.remove('is-visible');
+        btn.setAttribute('tabindex','-1');
+        btn.setAttribute('aria-hidden','true');
+      }
+    }
+
+    function findBadge(){
+      return (
+        document.querySelector('iframe[src*="challenges.cloudflare.com"]') ||
+        document.querySelector('.cf-turnstile, .cf-challenge-badge') ||
+        document.querySelector('.grecaptcha-badge') ||
+        document.querySelector('iframe[src*="google.com/recaptcha"]')
+      );
+    }
+
+    function applyWidgetGutter(){
+      var centeredMob = {{ section.settings.mobile_center | json }};
+      var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+
+      /* Якщо моб і центр — відступи від віджетів не потрібні */
+      if (isMobile && centeredMob) {
+        btn.style.setProperty('--widget-gutter-x','0px');
+        btn.style.setProperty('--widget-gutter-y','0px');
+        return;
+      }
+
+      /* Якщо зліва на десктопі — теж не потрібні */
+      if ('{{ section.settings.position }}' === 'left') {
+        btn.style.setProperty('--widget-gutter-x','0px');
+        btn.style.setProperty('--widget-gutter-y','0px');
+        return;
+      }
+
+      var badge = findBadge();
+      if(!badge){
+        btn.style.setProperty('--widget-gutter-x','{{ section.settings.widget_gutter_x | default: 88 }}px');
+        btn.style.setProperty('--widget-gutter-y','{{ section.settings.widget_gutter_y | default: 72 }}px');
+        return;
+      }
+      try{
+        var rect = badge.getBoundingClientRect();
+        var baseX = {{ section.settings.widget_gutter_x | default: 88 }};
+        var baseY = {{ section.settings.widget_gutter_y | default: 72 }};
+        var isRight = rect.left > (window.innerWidth/2);
+        var isBottom = rect.top > (window.innerHeight/2);
+        var gutterX = isRight ? Math.max(baseX, rect.width + 16) : 0;
+        var gutterY = isBottom ? Math.max(baseY, rect.height + 16) : 0;
+        btn.style.setProperty('--widget-gutter-x', gutterX + 'px');
+        btn.style.setProperty('--widget-gutter-y', gutterY + 'px');
+      }catch(e){
+        btn.style.setProperty('--widget-gutter-x','{{ section.settings.widget_gutter_x | default: 88 }}px');
+        btn.style.setProperty('--widget-gutter-y','{{ section.settings.widget_gutter_y | default: 72 }}px');
+      }
+    }
+
+    var ticking = false;
+    function onScroll(){ setVisible(window.scrollY > threshold); }
+
+    window.addEventListener('scroll', function(){
+      if(!ticking){
+        window.requestAnimationFrame(function(){ onScroll(); ticking=false; });
+        ticking = true;
+      }
+    }, { passive:true });
+
+    window.addEventListener('resize', applyWidgetGutter);
+    document.addEventListener('DOMContentLoaded', applyWidgetGutter);
+    setTimeout(applyWidgetGutter, 300);
+    setTimeout(applyWidgetGutter, 1500);
+    applyWidgetGutter();
+    onScroll();
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      try{
+        if(!prefersReduced && 'scrollBehavior' in document.documentElement.style){
+          window.scrollTo({ top:0, behavior:'smooth' });
+        } else { window.scrollTo(0,0); }
+      }catch(err){ window.scrollTo(0,0); }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Back to top",
+  "tag": "section",
+  "class": "back-to-top-section",
+  "settings": [
+    { "type": "range", "id": "threshold", "min": 100, "max": 2000, "step": 50, "unit": "px", "label": "Show after scroll", "default": 300 },
+    { "type": "select", "id": "position", "label": "Button side (desktop)", "default": "right", "options": [ { "value": "right", "label": "Right" }, { "value": "left", "label": "Left" } ] },
+
+    /* ≤101 steps (0–200 step 2) */
+    { "type": "range", "id": "bottom_offset", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Bottom offset", "default": 24 },
+    { "type": "range", "id": "side_offset",   "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Side offset",   "default": 24 },
+
+    { "type": "range", "id": "mobile_bottom_extra", "min": 0, "max": 100, "step": 1, "unit": "px", "label": "Extra bottom on mobile", "default": 8 },
+
+    { "type": "range", "id": "size",   "min": 32, "max": 96,  "step": 1, "unit": "px", "label": "Base size (desktop autoscaled +20%)", "default": 44 },
+    { "type": "range", "id": "radius", "min": 0,  "max": 100, "step": 1, "unit": "px", "label": "Border radius", "default": 100 },
+
+    { "type": "color", "id": "bg_color",   "label": "Background color", "default": "#000000B3" },
+    { "type": "color", "id": "icon_color", "label": "Icon color",        "default": "#FFFFFF" },
+    { "type": "checkbox", "id": "shadow", "label": "Drop shadow", "default": true },
+    { "type": "number",   "id": "z_index", "label": "Z-index", "default": 9999 },
+
+    /* Відступ від бейджа */
+    { "type": "checkbox", "id": "enable_widget_gutter", "label": "Avoid bottom-right badge (captcha/turnstile)", "default": true },
+    { "type": "range", "id": "widget_gutter_x", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Widget gutter X (left shift)", "default": 88 },
+    { "type": "range", "id": "widget_gutter_y", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Widget gutter Y (up shift)",   "default": 72 },
+
+    /* Мобільні налаштування вигляду */
+    { "type": "checkbox", "id": "mobile_center", "label": "Center on mobile", "default": true },
+    { "type": "checkbox", "id": "mobile_place_left", "label": "Place on LEFT on mobile (if not centered)", "default": true },
+    { "type": "range", "id": "mobile_scale",   "min": 60, "max": 120, "step": 1, "unit": "%", "label": "Mobile scale (of base size)", "default": 90 },
+    { "type": "range", "id": "mobile_opacity", "min": 30, "max": 100, "step": 1, "unit": "%", "label": "Mobile opacity", "default": 65 },
+    { "type": "range", "id": "mobile_raise",   "min": 0,  "max": 180, "step": 2, "unit": "px", "label": "Mobile extra raise", "default": 48 }
+  ],
+  "blocks": [],
+  "presets": [ { "name": "Back to top button" } ]
+}
+{% endschema %}

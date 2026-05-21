@@ -1,0 +1,871 @@
+{% liquid
+  assign section_id = 'what-inside-' | append: section.id
+  assign initial_items = section.settings.initial_visible | default: 3
+  assign flavor_render_width = section.settings.flavor_image_width | default: 340
+%}
+
+<section id="{{ section_id }}" class="what-inside" style="
+  --bg-color: {{ section.settings.background_color }};
+  --heading-color: {{ section.settings.heading_color }};
+  --item-title-color: {{ section.settings.item_title_color }};
+  --item-text-color: {{ section.settings.item_text_color }};
+  --right-title-color: {{ section.settings.right_title_color }};
+  --right-text-color: {{ section.settings.right_text_color }};
+  --divider-color: {{ section.settings.divider_color }};
+  --accent-color: {{ section.settings.accent_color }};
+  --button-bg: {{ section.settings.button_background }};
+  --button-bg-hover: {{ section.settings.button_background_hover }};
+  --button-text: {{ section.settings.button_text_color }};
+  --heading-letter-spacing: {{ section.settings.heading_letter_spacing }}px;
+  --item-title-letter-spacing: {{ section.settings.item_heading_letter_spacing }}px;
+  --right-title-letter-spacing: {{ section.settings.right_heading_letter_spacing }}px;
+  --item-title-size: {{ section.settings.item_title_size }}px;
+  --item-text-size: {{ section.settings.item_text_size }}px;
+  --right-title-size: {{ section.settings.right_title_size }}px;
+  --right-text-size: {{ section.settings.right_text_size }}px;
+  --icon-size: {{ section.settings.icon_size }}px;
+  --icon-size-mobile: {{ section.settings.icon_size_mobile }}px;
+  --flavor-image-width: {{ section.settings.flavor_image_width }}px;
+  --flavor-image-width-mobile: {{ section.settings.flavor_image_width_mobile }}px;
+  --flavor-image-radius: {{ section.settings.flavor_image_radius }}px;
+  --content-max-width: {{ section.settings.max_width }}px;
+  --card-radius: {{ section.settings.card_radius }}px;
+  --button-radius: {{ section.settings.button_radius }}px;
+  --section-padding-desktop: {{ section.settings.section_padding_desktop }}px;
+  --section-padding-mobile: {{ section.settings.section_padding_mobile }}px;
+  --row-gap: {{ section.settings.row_gap }}px;
+">
+  <div class="what-inside__inner{% if section.settings.enable_aos and section.settings.aos_effect != blank %} what-inside__aos{% endif %}"
+    {% if section.settings.enable_aos and section.settings.aos_effect != blank %}
+      data-aos="{{ section.settings.aos_effect }}"
+      data-aos-duration="{{ section.settings.aos_duration }}"
+      data-aos-delay="{{ section.settings.aos_delay }}"
+      data-aos-anchor-placement="{{ section.settings.aos_anchor_placement }}"
+      data-aos-offset="{{ section.settings.aos_offset }}"
+    {% endif %}
+  >
+    {% if section.settings.heading != blank %}
+      <h2 class="what-inside__heading {{ section.settings.heading_size | default: 'h2' }}">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="what-inside__content">
+      <div class="what-inside__left">
+        <div class="what-inside__items is-collapsed anim-{{ section.settings.expand_animation }}" data-ingredient-list data-initial-count="{{ initial_items }}">
+          {% for block in section.blocks %}
+            {% assign show_hidden_class = '' %}
+            {% if forloop.index > initial_items %}
+              {% assign show_hidden_class = 'is-extra' %}
+            {% endif %}
+            <article class="what-inside__item {{ show_hidden_class }}" {{ block.shopify_attributes }}>
+              <div class="what-inside__icon">
+                {% if block.settings.icon != blank %}
+                  {{ block.settings.icon | image_url: width: 260 | image_tag: loading: 'lazy', alt: block.settings.title | default: section.settings.heading }}
+                {% else %}
+                  <div class="what-inside__icon-placeholder" aria-hidden="true">
+                    <span>*</span>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="what-inside__text">
+                {% if block.settings.title != blank %}
+                  <h3 class="what-inside__item-title">{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.description != blank %}
+                  <p class="what-inside__item-desc">{{ block.settings.description }}</p>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+      </div>
+
+      <div class="what-inside__right">
+        <div class="what-inside__divider" aria-hidden="true"></div>
+        <div class="what-inside__flavor">
+          {% if section.settings.flavor_image != blank %}
+            {{ section.settings.flavor_image | image_url: width: flavor_render_width | image_tag: loading: 'lazy', class: 'what-inside__flavor-img', alt: section.settings.flavor_title }}
+          {% endif %}
+          {% if section.settings.flavor_title != blank %}
+            <h3 class="what-inside__flavor-title">{{ section.settings.flavor_title }}</h3>
+          {% endif %}
+          {% if section.settings.flavor_subtitle != blank %}
+            <p class="what-inside__flavor-subtitle">{{ section.settings.flavor_subtitle }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% if section.blocks.size > initial_items %}
+      <div class="what-inside__toggle-wrap">
+        <button
+          type="button"
+          class="what-inside__toggle"
+          data-toggle
+          aria-expanded="false"
+          data-show-text="{{ section.settings.view_more_label | escape }}"
+          data-hide-text="{{ section.settings.view_less_label | escape }}"
+        >
+          {{ section.settings.view_more_label }}
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  #{{ section_id }} {
+    background: var(--bg-color);
+    padding: var(--section-padding-desktop) 0;
+  }
+
+  #{{ section_id }} .what-inside__inner {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  #{{ section_id }} .what-inside__heading {
+    color: var(--heading-color);
+    margin: 0 0 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: var(--heading-letter-spacing);
+  }
+
+  #{{ section_id }} .what-inside__content {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  #{{ section_id }} .what-inside__left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #{{ section_id }} .what-inside__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--row-gap);
+  }
+  #{{ section_id }} .what-inside__items.is-collapsed .what-inside__item.is-extra {
+    display: none;
+  }
+
+  #{{ section_id }} .what-inside__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 14px;
+    border-radius: var(--card-radius);
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  #{{ section_id }} .what-inside__icon img,
+  #{{ section_id }} .what-inside__icon-placeholder {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: center;
+  }
+
+  #{{ section_id }} .what-inside__item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  #{{ section_id }} .what-inside__items.is-collapsed .what-inside__item.is-extra {
+    display: none;
+  }
+
+  #{{ section_id }} .what-inside__icon {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #{{ section_id }} .what-inside__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: none;
+  }
+
+  #{{ section_id }} .what-inside__icon-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    display: grid;
+    place-items: center;
+    color: var(--accent-color);
+    font-size: 18px;
+    font-weight: 700;
+    transition: none;
+  }
+
+  #{{ section_id }} .what-inside__icon::after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--divider-color);
+    opacity: 0.8;
+  }
+
+  #{{ section_id }} .what-inside__item-title {
+    font-size: var(--item-title-size);
+    color: var(--item-title-color);
+    margin: 0 0 6px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: var(--item-title-letter-spacing);
+  }
+
+  #{{ section_id }} .what-inside__item-desc {
+    font-size: var(--item-text-size);
+    color: var(--item-text-color);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  #{{ section_id }} .what-inside__toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  #{{ section_id }} .what-inside__toggle {
+    border: 2px solid var(--button-bg);
+    background: transparent;
+    color: var(--button-bg);
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: var(--button-radius);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    letter-spacing: 0.8px;
+    display: inline-flex;
+    justify-content: center;
+    min-width: 170px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  #{{ section_id }} .what-inside__toggle:hover {
+    background: linear-gradient(135deg, var(--button-bg), var(--button-bg-hover));
+    color: var(--button-text);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+  }
+
+  #{{ section_id }} .what-inside__toggle:active {
+    transform: translateY(0);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  #{{ section_id }} .what-inside__right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    align-self: stretch;
+    height: 100%;
+  }
+
+  #{{ section_id }} .what-inside__divider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--divider-color);
+    opacity: 0.9;
+    transform: translateX(-50%);
+  }
+
+  #{{ section_id }} .what-inside__flavor {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  #{{ section_id }} .what-inside__flavor-img {
+    width: var(--flavor-image-width);
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: var(--flavor-image-radius);
+  }
+
+  #{{ section_id }} .what-inside__flavor-title {
+    font-size: var(--right-title-size);
+    color: var(--right-title-color);
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.2;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed;
+    white-space: normal;
+    letter-spacing: var(--right-title-letter-spacing);
+  }
+
+  #{{ section_id }} .what-inside__flavor-subtitle {
+    font-size: var(--right-text-size);
+    color: var(--right-text-color);
+    margin: 0;
+    line-height: 1.4;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed;
+    white-space: normal;
+  }
+
+  @media (max-width: 1024px) {
+    #{{ section_id }} .what-inside__content {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    #{{ section_id }} .what-inside__right {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #{{ section_id }} {
+      padding: var(--section-padding-mobile) 0;
+    }
+
+    #{{ section_id }} .what-inside__heading {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    #{{ section_id }} .what-inside__item {
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+    }
+
+    #{{ section_id }} .what-inside__icon {
+      width: var(--icon-size-mobile);
+      height: var(--icon-size-mobile);
+    }
+
+    #{{ section_id }} .what-inside__flavor-img {
+      width: var(--flavor-image-width-mobile);
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.getElementById('{{ section_id }}');
+    if (!section) return;
+
+    const list = section.querySelector('[data-ingredient-list]');
+    const toggle = section.querySelector('[data-toggle]');
+    if (!list || !toggle) return;
+
+    const expandedClass = 'is-expanded';
+    const collapsedClass = 'is-collapsed';
+
+    const updateButton = (expanded) => {
+      toggle.setAttribute('aria-expanded', expanded);
+      toggle.textContent = expanded ? toggle.dataset.hideText : toggle.dataset.showText;
+    };
+
+    toggle.addEventListener('click', () => {
+      const isExpanded = list.classList.contains(expandedClass);
+      list.classList.toggle(expandedClass, !isExpanded);
+      list.classList.toggle(collapsedClass, isExpanded);
+      updateButton(!isExpanded);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "💜 What inside section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What's inside"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f2e5f6"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#e85b71"
+    },
+    {
+      "type": "color",
+      "id": "item_title_color",
+      "label": "Item title color",
+      "default": "#0f3b3f"
+    },
+    {
+      "type": "color",
+      "id": "item_text_color",
+      "label": "Item description color",
+      "default": "#2f2f2f"
+    },
+    {
+      "type": "color",
+      "id": "right_title_color",
+      "label": "Right column title color",
+      "default": "#0f3b3f"
+    },
+    {
+      "type": "color",
+      "id": "right_text_color",
+      "label": "Right column text color",
+      "default": "#2f2f2f"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "rgba(255, 255, 255, 0.7)"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#e85b71"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#e85b71"
+    },
+    {
+      "type": "color",
+      "id": "button_background_hover",
+      "label": "Button hover background",
+      "default": "#d14f64"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h2",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h3", "label": "Large" },
+        { "value": "h4", "label": "Extra large" },
+        { "value": "h5", "label": "Extra extra large" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Main heading letter spacing",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "item_heading_letter_spacing",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Ingredient heading letter spacing",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "right_heading_letter_spacing",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "label": "Right title letter spacing",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "item_title_size",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Item title size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "item_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Item description size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "right_title_size",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Right title size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "right_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Right text size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 40,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size (desktop)",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "min": 40,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size (mobile)",
+      "default": 86
+    },
+    {
+      "type": "range",
+      "id": "flavor_image_width",
+      "min": 80,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Right image width (desktop)",
+      "default": 340
+    },
+    {
+      "type": "range",
+      "id": "flavor_image_width_mobile",
+      "min": 80,
+      "max": 400,
+      "step": 4,
+      "unit": "px",
+      "label": "Right image width (mobile)",
+      "default": 220
+    },
+    {
+      "type": "range",
+      "id": "flavor_image_radius",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Right image corner radius",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "expand_animation",
+      "label": "Expand animation style",
+      "default": "height",
+      "options": [
+        {
+          "value": "height",
+          "label": "Height + fade"
+        },
+        {
+          "value": "slide",
+          "label": "Slide + fade"
+        },
+        {
+          "value": "fade",
+          "label": "Fade only"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "initial_visible",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Items visible before expand",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 900,
+      "max": 1600,
+      "step": 10,
+      "unit": "px",
+      "label": "Section max width",
+      "default": 1320
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Spacing between rows",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "section_padding_desktop",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical padding (desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_mobile",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical padding (mobile)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Row corner radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Button radius",
+      "default": 28
+    },
+    {
+      "type": "text",
+      "id": "view_more_label",
+      "label": "View more label",
+      "default": "View More"
+    },
+    {
+      "type": "text",
+      "id": "view_less_label",
+      "label": "View less label",
+      "default": "View Less"
+    },
+    {
+      "type": "image_picker",
+      "id": "flavor_image",
+      "label": "Right column image"
+    },
+    {
+      "type": "text",
+      "id": "flavor_title",
+      "label": "Right column title",
+      "default": "Naturally Tasty"
+    },
+    {
+      "type": "text",
+      "id": "flavor_subtitle",
+      "label": "Right column subtitle",
+      "default": "Berry Gummies"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_aos",
+      "label": "Enable AOS animation",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "aos_offset",
+      "label": "AOS offset (px)",
+      "min": 0,
+      "max": 400,
+      "step": 10,
+      "default": 200
+    },
+    {
+      "type": "select",
+      "id": "aos_effect",
+      "label": "AOS effect",
+      "default": "fade-up",
+      "options": [
+        {
+          "value": "fade-up",
+          "label": "Fade up"
+        },
+        {
+          "value": "fade-right",
+          "label": "Fade right"
+        },
+        {
+          "value": "fade-left",
+          "label": "Fade left"
+        },
+        {
+          "value": "zoom-in",
+          "label": "Zoom in"
+        },
+        {
+          "value": "flip-up",
+          "label": "Flip up"
+        },
+        {
+          "value": "",
+          "label": "None"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "aos_anchor_placement",
+      "label": "AOS anchor placement",
+      "default": "top-bottom",
+      "options": [
+        {
+          "value": "top-bottom",
+          "label": "Top-Bottom (later trigger)"
+        },
+        {
+          "value": "center-bottom",
+          "label": "Center-Bottom"
+        },
+        {
+          "value": "top-center",
+          "label": "Top-Center"
+        },
+        {
+          "value": "center-center",
+          "label": "Center-Center"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "aos_duration",
+      "label": "AOS duration (ms)",
+      "min": 200,
+      "max": 2000,
+      "step": 50,
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "aos_delay",
+      "label": "AOS delay (ms)",
+      "min": 0,
+      "max": 1000,
+      "step": 50,
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "💜 Ingredient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Lavender Flower Extract"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Celebrated for its calming essence, Lavender has been used for centuries to ease us into restful, rejuvenating sleep."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "💜 What inside section",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

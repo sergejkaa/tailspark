@@ -1,0 +1,606 @@
+{%- liquid
+  assign section_id = 'why-us-' | append: section.id
+  assign bg_color = section.settings.background
+  assign card_bg = section.settings.card_background | default: section.settings.background
+  assign text_color = section.settings.text_color
+  assign heading_color = section.settings.heading_color
+  assign heading_align_desktop = section.settings.heading_align_desktop | default: 'left'
+  assign heading_align_mobile = section.settings.heading_align_mobile | default: 'left'
+  assign heading_weight_desktop = section.settings.heading_weight_desktop | default: 700
+  assign heading_weight_mobile = section.settings.heading_weight_mobile | default: 600
+-%}
+
+<section id="{{ section_id }}" class="why-us" style="background: {{ bg_color }};">
+  <div class="why-us__inner {% if section.settings.enable_page_width %}page-width{% else %}why-us__full-width{% endif %}" style="padding-top: {{ section.settings.padding_top | default: 60 }}px; padding-bottom: {{ section.settings.padding_bottom | default: 60 }}px;">
+    <div class="why-us__heading {% if heading_align_desktop == 'center' %}why-us__heading--center-desktop{% endif %} {% if heading_align_mobile == 'center' %}why-us__heading--center-mobile{% endif %}" data-aos="fade-up" style="--heading-align-desktop: {{ heading_align_desktop }}; --heading-align-mobile: {{ heading_align_mobile }}; --heading-weight-desktop: {{ heading_weight_desktop }}; --heading-weight-mobile: {{ heading_weight_mobile }};">
+      {%- if section.settings.heading != blank -%}
+        <h2 style="color: {{ heading_color }};">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p style="color: {{ text_color }};">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="why-us__slider" data-why-us-slider="{{ section.id }}">
+      {%- if section.settings.show_nav -%}
+        <button class="why-us__nav why-us__nav--prev" type="button" aria-label="{{ 'sections.slideshow.previous' | t | default: 'Previous' }}">
+          <span aria-hidden="true">&lsaquo;</span>
+        </button>
+      {%- endif -%}
+      <div class="why-us__viewport">
+        <div class="why-us__track" style="--card-bg: {{ card_bg }}; --text-color: {{ text_color }}; --heading-color: {{ heading_color }};">
+          {%- for block in section.blocks -%}
+            <article class="why-us__slide" data-block-id="{{ block.id }}" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 80 }}">
+              <div class="why-us__media {% unless block.settings.icon_animation == 'none' or block.settings.icon_animation == blank %}why-us__media--{{ block.settings.icon_animation }}{% endunless %}" style="--icon-size: {{ block.settings.icon_size }}px; width: {{ block.settings.icon_size }}px; height: {{ block.settings.icon_size }}px;">
+                {%- if block.settings.lottie_url != blank -%}
+                  <div class="why-us__lottie" data-lottie="{{ block.settings.lottie_url }}"></div>
+                {%- elsif block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'why-us__image', widths: '200,300,400,600', alt: block.settings.alt | escape }}
+                {%- else -%}
+                  {%- assign idx0 = forloop.index0 -%}
+                  {%- assign mod = idx0 | modulo: 4 -%}
+                  {%- case mod -%}
+                    {%- when 0 -%}{%- assign fallback_icon = 'so-why-1.png' -%}
+                    {%- when 1 -%}{%- assign fallback_icon = 'so-why-2.png' -%}
+                    {%- when 2 -%}{%- assign fallback_icon = 'so-why-3.png' -%}
+                    {%- when 3 -%}{%- assign fallback_icon = 'so-why-4.png' -%}
+                    {%- else -%}{%- assign fallback_icon = 'so-why-1.png' -%}
+                  {%- endcase -%}
+                  <img
+                    src="{{ fallback_icon | asset_url }}"
+                    class="why-us__image"
+                    alt="{{ block.settings.alt | default: block.settings.title | escape }}"
+                    loading="lazy"
+                  >
+                {%- endif -%}
+              </div>
+              {%- if block.settings.title != blank -%}
+                <h3 class="why-us__title">{{ block.settings.title }}</h3>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p class="why-us__text">{{ block.settings.text }}</p>
+              {%- endif -%}
+            </article>
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- if section.settings.show_nav -%}
+        <button class="why-us__nav why-us__nav--next" type="button" aria-label="{{ 'sections.slideshow.next' | t | default: 'Next' }}">
+          <span aria-hidden="true">&rsaquo;</span>
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- style -%}
+  #{{ section_id }} {
+    position: relative;
+    overflow: hidden;
+  }
+  #{{ section_id }} .why-us__inner {
+    margin: 0 auto;
+  }
+  #{{ section_id }} .why-us__full-width {
+    padding-left: clamp(16px, 3vw, 48px);
+    padding-right: clamp(16px, 3vw, 48px);
+    max-width: 100%;
+  }
+  #{{ section_id }} .why-us__heading {
+    margin-bottom: clamp(20px, 4vw, 36px);
+    text-align: var(--heading-align-desktop, left);
+    width: 100%;
+  }
+  #{{ section_id }} .why-us__heading h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    margin: 0 0 8px;
+    font-weight: var(--heading-weight-desktop, 700);
+    line-height: 1.2;
+    text-align: var(--heading-align-desktop, left);
+  }
+  #{{ section_id }} .why-us__heading p {
+    max-width: 720px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: var(--heading-align-desktop, left);
+  }
+  #{{ section_id }} .why-us__heading--center-desktop p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #{{ section_id }} .why-us__slider {
+    position: relative;
+  }
+  #{{ section_id }} .why-us__viewport {
+    overflow: hidden;
+  }
+  #{{ section_id }} .why-us__track {
+    display: flex;
+    gap: clamp(16px, 3vw, 32px);
+    align-items: stretch;
+    will-change: transform;
+    touch-action: pan-y;
+    padding: 8px 6px;
+  }
+  #{{ section_id }} .why-us__slide {
+    flex: 0 0 calc((100% - clamp(16px, 3vw, 32px) * 2) / 3);
+    background: var(--card-bg);
+    border-radius: 0;
+    padding: clamp(18px, 2vw, 28px);
+    text-align: center;
+    box-shadow: none;
+  }
+  #{{ section_id }} .why-us__slide--clone {
+    visibility: visible;
+  }
+  #{{ section_id }} .why-us__media {
+    margin: 0 auto clamp(22px, calc(var(--icon-size, 120px) * 0.26), 68px);
+    display: grid;
+    place-items: center;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  #{{ section_id }} .why-us__media--pulse {
+    animation: why-us-pulse 2.8s ease-in-out infinite;
+  }
+  #{{ section_id }} .why-us__media--spin {
+    animation: why-us-spin 8s linear infinite;
+  }
+  #{{ section_id }} .why-us__image,
+  #{{ section_id }} .why-us__lottie lottie-player {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+  #{{ section_id }} .why-us__placeholder {
+    width: 60%;
+    height: 60%;
+    border: 2px dashed rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+  #{{ section_id }} .why-us__title {
+    margin: 0 0 10px;
+    font-size: clamp(18px, 2.2vw, 22px);
+    line-height: 1.3;
+    color: var(--heading-color);
+    font-weight: 700;
+  }
+  #{{ section_id }} .why-us__text {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  #{{ section_id }} .why-us__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    color: #111;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 2;
+    box-shadow: none;
+  }
+  #{{ section_id }} .why-us__nav:hover {
+    transform: translateY(-50%) scale(1.04);
+  }
+  #{{ section_id }} .why-us__nav:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 2px;
+  }
+  #{{ section_id }} .why-us__nav--prev {
+    left: 8px;
+  }
+  #{{ section_id }} .why-us__nav--next {
+    right: 8px;
+  }
+
+  @media (max-width: 1024px) {
+    #{{ section_id }} .why-us__slide {
+      flex-basis: calc((100% - clamp(16px, 3vw, 32px)) / 2);
+    }
+  }
+  @media (max-width: 720px) {
+    #{{ section_id }} .why-us__heading {
+      text-align: var(--heading-align-mobile, left);
+    }
+    #{{ section_id }} .why-us__heading h2,
+    #{{ section_id }} .why-us__heading p {
+      text-align: var(--heading-align-mobile, left);
+    }
+    #{{ section_id }} .why-us__heading h2 {
+      font-weight: var(--heading-weight-mobile, 600);
+    }
+    #{{ section_id }} .why-us__heading--center-mobile p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #{{ section_id }} .why-us__track {
+      gap: 12px;
+      padding: 0;
+    }
+    #{{ section_id }} .why-us__slide {
+      flex-basis: 100%;
+      max-width: 100%;
+      min-width: 100%;
+      margin-inline: 0;
+    }
+    #{{ section_id }} .why-us__nav {
+      width: 38px;
+      height: 38px;
+    }
+    #{{ section_id }} .why-us__nav--prev {
+      left: 2px;
+    }
+    #{{ section_id }} .why-us__nav--next {
+      right: 2px;
+    }
+  }
+
+  @keyframes why-us-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+  @keyframes why-us-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+{%- endstyle -%}
+
+<script>
+  (function() {
+    const sectionId = '{{ section.id }}';
+    const slider = document.querySelector('[data-why-us-slider="' + sectionId + '"]');
+    if (!slider) return;
+
+    const track = slider.querySelector('.why-us__track');
+    const viewport = slider.querySelector('.why-us__viewport');
+    let baseSlides = Array.from(track.querySelectorAll('.why-us__slide'));
+    const baseCount = baseSlides.length;
+    if (!baseCount) return;
+
+    const cloneSlide = (slide) => {
+      const cloned = slide.cloneNode(true);
+      cloned.classList.add('why-us__slide--clone');
+      return cloned;
+    };
+
+    const clonesBefore = baseSlides.map(cloneSlide).reverse();
+    const clonesAfter = baseSlides.map(cloneSlide);
+    clonesBefore.forEach((clone) => track.insertBefore(clone, track.firstChild));
+    clonesAfter.forEach((clone) => track.appendChild(clone));
+
+    let allSlides = Array.from(track.children);
+    let index = clonesBefore.length;
+    let slideWidth = 0;
+
+    const getGap = () => {
+      const styles = window.getComputedStyle(track);
+      return parseFloat(styles.columnGap || styles.gap || 0) || 0;
+    };
+
+    const setSlideWidth = () => {
+      const current = allSlides[index];
+      if (!current) return;
+      slideWidth = current.getBoundingClientRect().width + getGap();
+    };
+
+    const setTransform = (animate = true) => {
+      track.style.transition = animate ? 'transform 0.45s ease' : 'none';
+      track.style.transform = 'translateX(' + (-index * slideWidth) + 'px)';
+      if (!animate) {
+        // Force reflow so the next animated move works consistently
+        track.getBoundingClientRect();
+        track.style.transition = 'transform 0.45s ease';
+      }
+    };
+
+    setSlideWidth();
+    setTransform(false);
+
+    const goTo = (nextIndex) => {
+      index = nextIndex;
+      setTransform(true);
+    };
+    const next = () => goTo(index + 1);
+    const prev = () => goTo(index - 1);
+
+    const total = track.children.length;
+    track.addEventListener('transitionend', () => {
+      if (index >= total - clonesAfter.length) {
+        index -= baseCount;
+        setTransform(false);
+      } else if (index < clonesBefore.length) {
+        index += baseCount;
+        setTransform(false);
+      }
+    });
+
+    const resizeObserver = new ResizeObserver(() => {
+      setSlideWidth();
+      setTransform(false);
+    });
+    resizeObserver.observe(viewport);
+
+    const btnNext = slider.querySelector('.why-us__nav--next');
+    const btnPrev = slider.querySelector('.why-us__nav--prev');
+    if (btnNext) btnNext.addEventListener('click', next);
+    if (btnPrev) btnPrev.addEventListener('click', prev);
+
+    // Basic swipe support
+    let startX = 0;
+    let isDragging = false;
+    let pointerId = null;
+
+    const onPointerDown = (event) => {
+      if (event.button !== undefined && event.button !== 0) return;
+      event.preventDefault();
+      isDragging = true;
+      startX = event.clientX;
+      pointerId = event.pointerId;
+      track.style.transition = 'none';
+      viewport.setPointerCapture(pointerId);
+    };
+    const onPointerMove = (event) => {
+      if (!isDragging) return;
+      const delta = event.clientX - startX;
+      track.style.transform = 'translateX(' + ((-index * slideWidth) + delta) + 'px) +';
+    };
+    const onPointerUp = (event) => {
+      if (!isDragging) return;
+      const delta = event.clientX - startX;
+      isDragging = false;
+      viewport.releasePointerCapture(pointerId);
+      pointerId = null;
+      if (Math.abs(delta) > slideWidth * 0.2) {
+        delta > 0 ? prev() : next();
+      } else {
+        setTransform(true);
+      }
+    };
+    viewport.addEventListener('pointerdown', onPointerDown);
+    viewport.addEventListener('pointermove', onPointerMove);
+    viewport.addEventListener('pointerup', onPointerUp);
+    viewport.addEventListener('pointercancel', onPointerUp);
+
+    // Lottie loader (only if needed)
+    const lottieHolders = slider.querySelectorAll('[data-lottie]');
+    if (lottieHolders.length) {
+      if (!window.__whyUsLottieRequested) {
+        window.__whyUsLottieRequested = true;
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js';
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+      const initLottie = () => {
+        lottieHolders.forEach((holder) => {
+          if (holder.dataset.lottieReady) return;
+          const src = holder.getAttribute('data-lottie');
+          const player = document.createElement('lottie-player');
+          player.setAttribute('src', src);
+          player.setAttribute('loop', '');
+          player.setAttribute('autoplay', '');
+          player.setAttribute('background', 'transparent');
+          player.style.width = '100%';
+          player.style.height = '100%';
+          holder.appendChild(player);
+          holder.dataset.lottieReady = 'true';
+        });
+      };
+      if (customElements.get('lottie-player')) {
+        initLottie();
+      } else {
+        document.addEventListener('DOMContentLoaded', () => {
+          const interval = setInterval(() => {
+            if (customElements.get('lottie-player')) {
+              clearInterval(interval);
+              initLottie();
+            }
+          }, 100);
+        });
+      }
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "So why us slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "So, why Nutrili?"
+    },
+    {
+      "type": "select",
+      "id": "heading_align_desktop",
+      "label": "Heading align (desktop)",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_align_mobile",
+      "label": "Heading align (mobile)",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_weight_desktop",
+      "label": "Heading font weight (desktop)",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" },
+        { "value": "800", "label": "800" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_weight_mobile",
+      "label": "Heading font weight (mobile)",
+      "default": "600",
+      "options": [
+        { "value": "400", "label": "400" },
+        { "value": "500", "label": "500" },
+        { "value": "600", "label": "600" },
+        { "value": "700", "label": "700" },
+        { "value": "800", "label": "800" }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover what makes our formulas stand out."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_page_width",
+      "label": "Use page width container",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav",
+      "label": "Show navigation buttons",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Section background",
+      "default": "#ffe9de"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffe9de"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#e94f6b"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#1f1f1f"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Our supplements are natural"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Natural flavors and colors only! Our gummies are certified vegan by EVE Vegan® & gluten free. Our collagen is non-GMO and sugar free!"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon / image"
+        },
+        {
+          "type": "select",
+          "id": "icon_animation",
+          "label": "Icon animation",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "pulse", "label": "Pulse" },
+            { "value": "spin", "label": "Spin" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "lottie_url",
+          "label": "Lottie animation URL",
+          "info": "If set, Lottie animation is used instead of the image for this card."
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Image alt text"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon size",
+          "min": 40,
+          "max": 220,
+          "step": 4,
+          "unit": "px",
+          "default": 120
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "So why us slider",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

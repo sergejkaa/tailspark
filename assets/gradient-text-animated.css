@@ -1,0 +1,29 @@
+﻿.gradient-text-animated {
+  background: linear-gradient(
+    120deg,
+    var(--gradient-text-color-1, #f0963c),
+    var(--gradient-text-color-2, #2477ca),
+    var(--gradient-text-color-3, #f38b23)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: lora-gradient-move 4s ease-in-out infinite alternate;
+}
+
+@keyframes lora-gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text-animated {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}

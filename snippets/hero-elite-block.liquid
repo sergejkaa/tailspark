@@ -1,0 +1,219 @@
+{%- comment -%}
+  Snippet: hero-elite-block
+  Params: block, delay_s
+{%- endcomment -%}
+
+{%- case block.type -%}
+
+  {%- when 'eyebrow' -%}
+    <p
+      class="hero-elite__eyebrow hero-elite__anim"
+      style="animation-delay: {{ delay_s }}{% if block.settings.text_color != blank %}; color: {{ block.settings.text_color }}{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      {{- block.settings.text -}}
+    </p>
+
+  {%- when 'heading' -%}
+    <{{ block.settings.heading_tag }}
+      class="hero-elite__heading hero-elite__anim {{ block.settings.heading_size }} inline-richtext"
+      style="animation-delay: {{ delay_s }}{% if block.settings.text_color != blank %}; color: {{ block.settings.text_color }}{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      {{ block.settings.heading }}
+    </{{ block.settings.heading_tag }}>
+
+  {%- when 'subheading' -%}
+    <p
+      class="hero-elite__subheading hero-elite__anim subtitle"
+      style="animation-delay: {{ delay_s }}{% if block.settings.text_color != blank %}; color: {{ block.settings.text_color }}{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      {{- block.settings.text -}}
+    </p>
+
+  {%- when 'text' -%}
+    <div
+      class="hero-elite__text hero-elite__anim rte {{ block.settings.text_style }}"
+      style="animation-delay: {{ delay_s }}{% if block.settings.text_color != blank %}; color: {{ block.settings.text_color }}{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      {{ block.settings.text }}
+    </div>
+
+  {%- when 'inline_rating' -%}
+    {%- assign ir_id = 'ir-hero-' | append: block.id -%}
+    <style>
+      #{{ ir_id }} { --ir-stars-desktop: {{ block.settings.stars_size_desktop }}px; --ir-font-desktop: {{ block.settings.font_size_desktop }}px; }
+      @media screen and (max-width: 749px) {
+        #{{ ir_id }} { --ir-stars-mobile: {{ block.settings.stars_size_mobile }}px; --ir-font-mobile: {{ block.settings.font_size_mobile }}px; }
+      }
+    </style>
+    <div
+      id="{{ ir_id }}"
+      class="hero-elite__inline-rating hero-elite__anim"
+      style="animation-delay: {{ delay_s }}{% if block.settings.text_color != blank %}; color: {{ block.settings.text_color }}{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      <span
+        class="hero-elite__stars"
+        style="color: {{ block.settings.star_color | default: '#22a06b' }}"
+        aria-label="{{ block.settings.rating_value }} out of 5 stars"
+      >★★★★★</span>
+      <span class="hero-elite__rating-inline-text">
+        <strong style="color: {{ block.settings.rating_value_color | default: 'inherit' }}">{{ block.settings.rating_value }}</strong>
+        {%- if block.settings.rating_label != blank %} {{ block.settings.rating_label }}{%- endif -%}
+        {%- if block.settings.segment_1_number != blank or block.settings.segment_1_label != blank -%}
+          <span class="hero-elite__rating-sep" aria-hidden="true"> | </span>
+          {%- if block.settings.segment_1_number != blank -%}
+            {%- if block.settings.segment_1_number_mobile != blank -%}
+              <strong class="hero-elite__num--desktop" style="color: {{ block.settings.segment_1_color | default: 'inherit' }}">{{ block.settings.segment_1_number }}</strong>
+              <strong class="hero-elite__num--mobile" style="color: {{ block.settings.segment_1_color | default: 'inherit' }}">{{ block.settings.segment_1_number_mobile }}</strong>
+            {%- else -%}
+              <strong style="color: {{ block.settings.segment_1_color | default: 'inherit' }}">{{ block.settings.segment_1_number }}</strong>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if block.settings.segment_1_label != blank %} {{ block.settings.segment_1_label }}{%- endif -%}
+        {%- endif -%}
+        {%- if block.settings.segment_2_number != blank or block.settings.segment_2_label != blank -%}
+          <span class="hero-elite__rating-sep" aria-hidden="true"> | </span>
+          {%- if block.settings.segment_2_number != blank -%}
+            {%- if block.settings.segment_2_number_mobile != blank -%}
+              <strong class="hero-elite__num--desktop" style="color: {{ block.settings.segment_2_color | default: 'inherit' }}">{{ block.settings.segment_2_number }}</strong>
+              <strong class="hero-elite__num--mobile" style="color: {{ block.settings.segment_2_color | default: 'inherit' }}">{{ block.settings.segment_2_number_mobile }}</strong>
+            {%- else -%}
+              <strong style="color: {{ block.settings.segment_2_color | default: 'inherit' }}">{{ block.settings.segment_2_number }}</strong>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if block.settings.segment_2_label != blank %} {{ block.settings.segment_2_label }}{%- endif -%}
+        {%- endif -%}
+      </span>
+    </div>
+
+  {%- when 'trust_badge' -%}
+    {%- assign tb_id = 'tb-hero-' | append: block.id -%}
+    <style>
+      #{{ tb_id }} { --trust-font-desktop: {{ block.settings.font_size_desktop | default: 12 }}px; }
+      @media screen and (max-width: 749px) {
+        #{{ tb_id }} { --trust-font-mobile: {{ block.settings.font_size_mobile | default: 11 }}px; }
+      }
+    </style>
+    <div
+      id="{{ tb_id }}"
+      class="hero-elite__trust-row hero-elite__anim{% if block.settings.mobile_inline %} hero-elite__trust-row--mobile-inline{% endif %}"
+      style="animation-delay: {{ delay_s }}{% if block.settings.text_color != blank %}; color: {{ block.settings.text_color }}{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      {%- for i in (1..3) -%}
+        {%- liquid
+          assign text_key        = 'text_'        | append: i
+          assign icon_key        = 'icon_'        | append: i
+          assign icon_image_key  = 'icon_image_'  | append: i
+          assign tooltip_key     = 'tooltip_'     | append: i
+          assign icon_color_key  = 'icon_color_'  | append: i
+          assign item_text       = block.settings[text_key]
+          assign item_icon       = block.settings[icon_key]
+          assign item_icon_image = block.settings[icon_image_key]
+          assign item_tooltip    = block.settings[tooltip_key]
+          assign item_icon_color = block.settings[icon_color_key]
+        -%}
+        {%- if item_text != blank -%}
+          <div class="hero-elite__trust-item">
+            <span
+              class="hero-elite__trust-icon"
+              style="{% if item_icon_color != blank %}color: {{ item_icon_color }};{% endif %}"
+              aria-hidden="true"
+            >
+              {%- if item_icon_image != blank -%}
+                {{- item_icon_image | image_url: width: 32 | image_tag: width: 16, height: 16, loading: 'lazy', style: 'width: 1em; height: 1em; object-fit: contain; display: block;', alt: '' -}}
+              {%- else -%}
+              {%- case item_icon -%}
+                {%- when 'shield' -%}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1.5L2.5 4v4.5c0 3 2.5 5.5 5.5 6 3-.5 5.5-3 5.5-6V4L8 1.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                {%- when 'lock' -%}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 7V5a3 3 0 016 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                {%- when 'truck' -%}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3h9v8H1V3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 5.5h2.5L14 8v3h-4V5.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="4" cy="11.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="11.5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+                {%- when 'leaf' -%}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 13c1-5 5-9 10-10C12 9 8 13 3 13z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M3 13l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                {%- else -%}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 8.5l3.5 3.5 7.5-7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {%- endcase -%}
+              {%- endif -%}
+            </span>
+            <span class="hero-elite__trust-text">{{- item_text | escape -}}</span>
+            {%- if item_tooltip != blank -%}
+              <button class="hero-elite__trust-info" type="button" title="{{ item_tooltip | escape }}" aria-label="{{ item_tooltip | escape }}">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M7 6.3V10M7 4.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </button>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  {%- when 'rating_badge' -%}
+    <div
+      class="hero-elite__rating-wrap hero-elite__anim"
+      style="animation-delay: {{ delay_s }}"
+      {{ block.shopify_attributes }}
+    >
+      {%- render 'glass-rating-badge', block: block -%}
+    </div>
+
+  {%- when 'buttons' -%}
+    {%- liquid
+      assign btn1_style = block.settings.button_style_1
+      assign btn2_style = block.settings.button_style_2
+      assign btn1_bg    = block.settings.button_color_bg_1
+      assign btn1_text  = block.settings.button_color_text_1
+      assign btn2_bg    = block.settings.button_color_bg_2
+      assign btn2_text  = block.settings.button_color_text_2
+    -%}
+    <div
+      class="hero-elite__buttons hero-elite__anim{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} hero-elite__buttons--double{% endif %}"
+      style="animation-delay: {{ delay_s }}"
+      {{ block.shopify_attributes }}
+    >
+      {%- if block.settings.button_label_1 != blank -%}
+        <a
+          {% if block.settings.button_link_1 == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ block.settings.button_link_1 }}"
+          {% endif %}
+          class="hero-btn hero-btn--{{ btn1_style }}"
+          style="--hbtn-bg: {{ btn1_bg }}; --hbtn-text: {{ btn1_text }};"
+        >
+          <span>{{- block.settings.button_label_1 | escape -}}</span>
+        </a>
+      {%- endif -%}
+      {%- if block.settings.button_label_2 != blank -%}
+        <a
+          {% if block.settings.button_link_2 == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ block.settings.button_link_2 }}"
+          {% endif %}
+          class="hero-btn hero-btn--{{ btn2_style }}"
+          style="--hbtn-bg: {{ btn2_bg }}; --hbtn-text: {{ btn2_text }};"
+        >
+          <span>{{- block.settings.button_label_2 | escape -}}</span>
+        </a>
+      {%- endif -%}
+    </div>
+
+  {%- when 'divider' -%}
+    <div
+      class="hero-elite__divider hero-elite__anim"
+      style="animation-delay: {{ delay_s }}"
+      {{ block.shopify_attributes }}
+    >
+      <span class="hero-elite__divider-line"></span>
+      {%- if block.settings.text != blank -%}
+        <span class="hero-elite__divider-text">{{ block.settings.text }}</span>
+        <span class="hero-elite__divider-line"></span>
+      {%- endif -%}
+    </div>
+
+{%- endcase -%}

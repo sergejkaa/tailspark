@@ -1,0 +1,56 @@
+/* .banner__heading {
+  font-family: 'Playfair Display';
+  font-weight: 500; 
+  font-style: normal; 
+  color:rgb(255, 255, 255);
+} */
+
+/* .product__title h1 {
+  font-family: 'Playfair Display';
+  font-weight: 500; 
+  
+} */
+
+
+
+
+.template-search {
+  background-color:rgb(255, 255, 255);
+}
+/* .template-search h1 {
+  color: white;
+} */
+
+
+.cart-count-bubble {
+  background-color: #D4C089;
+}
+
+.cart-count-bubble span {
+  color: black;
+  
+}
+
+header__inline-menu,
+.header__inline-menu .list-menu__item,
+.header__inline-menu .list-menu__item > a,
+.header__inline-menu .list-menu__item--link {
+  font-family: "Hubot Sans", sans-serif !important;
+  font-synthesis-weight: none;                 
+  font-weight: 400;
+}
+
+.header__active-menu-item { 
+  text-decoration: underline; 
+  text-decoration-color: #D4C089;
+  text-decoration-thickness: 1.5px; 
+  text-underline-offset: 4px; 
+
+}
+
+
+
+/* 
+.collection .card__media {
+    border-radius: 25px !important;
+} */

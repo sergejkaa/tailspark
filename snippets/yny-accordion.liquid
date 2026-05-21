@@ -1,0 +1,174 @@
+{%- liquid
+  assign acc_source = block.settings.source | default: 'custom'
+-%}
+
+<details class="yny-acc" data-yny-accordion {{ block.shopify_attributes }}>
+  <summary class="yny-acc__summary">
+    <span>{{ block.settings.heading | escape }}</span>
+    <span class="yny-acc__icon" aria-hidden="true"></span>
+  </summary>
+  <div class="yny-acc__content">
+    <div class="yny-acc__inner rte">
+      {%- if acc_source == 'description' -%}
+        {{ product.description }}
+      {%- else -%}
+        {{ block.settings.content }}
+      {%- endif -%}
+    </div>
+  </div>
+</details>
+
+<style>
+  .yny-acc {
+    border: 1.5px solid rgba(0,0,0,0.13);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 10px;
+  }
+  .yny-acc__summary {
+    cursor: pointer;
+    padding: 14px 16px;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.4rem;
+  }
+  .yny-acc__summary::-webkit-details-marker { display: none; }
+  .yny-acc__icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-left: 8px;
+    opacity: .55;
+    transition: transform .32s cubic-bezier(.22, 1, .36, 1), opacity .2s ease;
+  }
+  .yny-acc__icon::before,
+  .yny-acc__icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    right: 2px;
+    height: 1.5px;
+    border-radius: 999px;
+    background: currentColor;
+    transform: translateY(-50%);
+    transition: transform .32s cubic-bezier(.22, 1, .36, 1), opacity .2s ease;
+  }
+  .yny-acc__icon::after {
+    transform: translateY(-50%) rotate(90deg);
+  }
+  .yny-acc[open] .yny-acc__icon {
+    transform: rotate(180deg);
+    opacity: .8;
+  }
+  .yny-acc.is-closing .yny-acc__icon {
+    transform: rotate(0deg);
+    opacity: .55;
+  }
+  .yny-acc[open] .yny-acc__icon::after {
+    transform: translateY(-50%) rotate(0deg);
+    opacity: 0;
+  }
+  .yny-acc.is-closing .yny-acc__icon::after {
+    transform: translateY(-50%) rotate(90deg);
+    opacity: 1;
+  }
+  .yny-acc__content {
+    height: 0;
+    overflow: hidden;
+    /* duration set dynamically via JS */
+    transition: height var(--yny-acc-dur, 0.34s) cubic-bezier(.22, 1, .36, 1);
+    will-change: height;
+  }
+  .yny-acc__inner {
+    padding: 0 16px 16px;
+    font-size: 1.4rem;
+    line-height: 1.65;
+  }
+  .yny-acc.is-ready[open] .yny-acc__content {
+    height: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .yny-acc__content,
+    .yny-acc__icon,
+    .yny-acc__icon::before,
+    .yny-acc__icon::after {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    if (window.ynyAccordionReady) return;
+    window.ynyAccordionReady = true;
+
+    const calcDuration = (scrollHeight) =>
+      Math.min(600, Math.max(220, Math.round(scrollHeight * 0.55)));
+
+    const openAccordion = (details, content) => {
+      const dur = calcDuration(content.scrollHeight);
+      content.style.setProperty('--yny-acc-dur', dur + 'ms');
+      details.open = true;
+      details.classList.remove('is-closing');
+      details.classList.add('is-animating');
+      content.style.height = '0px';
+      content.getBoundingClientRect();
+      content.style.height = `${content.scrollHeight}px`;
+
+      window.setTimeout(() => {
+        if (details.open) content.style.height = 'auto';
+        details.classList.remove('is-animating');
+      }, dur);
+    };
+
+    const closeAccordion = (details, content) => {
+      const dur = calcDuration(content.scrollHeight);
+      content.style.setProperty('--yny-acc-dur', dur + 'ms');
+      details.classList.add('is-animating', 'is-closing');
+      content.style.height = `${content.scrollHeight}px`;
+      content.getBoundingClientRect();
+      content.style.height = '0px';
+
+      window.setTimeout(() => {
+        details.open = false;
+        details.classList.remove('is-animating', 'is-closing');
+      }, dur);
+    };
+
+    const bindAccordion = (details) => {
+      if (!details || details.dataset.ynyAccordionBound === 'true') return;
+      const summary = details.querySelector('.yny-acc__summary');
+      const content = details.querySelector('.yny-acc__content');
+      if (!summary || !content) return;
+
+      details.dataset.ynyAccordionBound = 'true';
+      details.classList.add('is-ready');
+      content.style.height = details.open ? 'auto' : '0px';
+
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (details.classList.contains('is-animating')) return;
+        if (details.open) closeAccordion(details, content);
+        else openAccordion(details, content);
+      });
+    };
+
+    const init = (root = document) => {
+      root.querySelectorAll('[data-yny-accordion]').forEach(bindAccordion);
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => init(), { once: true });
+    } else {
+      init();
+    }
+
+    document.addEventListener('shopify:section:load', (event) => init(event.target));
+  })();
+</script>

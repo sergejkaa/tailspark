@@ -1,0 +1,263 @@
+{% comment %}
+  Trust Metrics Bar — fixed layout
+  Left: kicker text
+  Right: two metrics (rating + stars, big number)
+{% endcomment %}
+{% assign use_scheme = section.settings.use_color_scheme %}
+{% assign use_page_width = section.settings.use_page_width %}
+
+{% assign sfx1 = section.settings.metric1_suffix %}{% if sfx1 == 'none' %}{% assign sfx1 = '' %}{% endif %}
+{% assign sfx2 = section.settings.metric2_suffix %}{% if sfx2 == 'none' %}{% assign sfx2 = '' %}{% endif %}
+
+<section
+  class="trust-metrics color-{{ section.settings.color_scheme }}"
+
+  style="
+  {% if use_scheme == false %}
+    background: linear-gradient(
+      {{ section.settings.grad_direction }},
+      {{ section.settings.grad_left }} {{ section.settings.grad_start }}%,
+      {{ section.settings.grad_right }} {{ section.settings.grad_end }}%
+    );
+  {% endif %}
+  padding-top: {{ section.settings.pad_top }}px;
+  padding-bottom: {{ section.settings.pad_bottom }}px;">
+  <div class="{% if use_page_width %}page-width{% else %}trust-metrics__full{% endif %}">
+    <div data-aos="fade-left" class="trust-metrics__grid"
+         style="column-gap: {{ section.settings.gap }}px; row-gap: 14px;">
+      <!-- Left text -->
+      <div class="trust-metrics__left"
+           style="max-width: {{ section.settings.kicker_max_width }}%;
+                  --kicker-weight: {{ section.settings.kicker_weight }};">
+        <p  class="trust-metrics__kicker "
+           style="font-size: {{ section.settings.kicker_size }}px; color: {{ section.settings.kicker_color }};">
+          {{ section.settings.kicker }}
+        </p>
+      </div>
+
+      <!-- Right side: two metrics -->
+      <div class="trust-metrics__right"
+           style="column-gap: {{ section.settings.right_gap }}px; margin-right: {{ section.settings.right_inset }}px;">
+        <!-- Metric 1: rating with stars -->
+        <div class="tm-item">
+          <div class="tm-value tm-value--first"
+               data-countup="{{ section.settings.metric1_value | replace: ',', '' }}"
+               data-decimals="{{ section.settings.metric1_decimals }}"
+               data-suffix="{{ sfx1 }}"
+               style="font-size: {{ section.settings.value_size }}px; color: {{ section.settings.value_color }}; letter-spacing: {{ section.settings.value1_letter_spacing }}px;">
+            {{ section.settings.metric1_value }}{{ sfx1 }}
+          </div>
+
+          {% if section.settings.show_stars %}
+          <div class="tm-stars"
+               style="color: {{ section.settings.star_color }}; font-size: {{ section.settings.stars_size }}px;"
+               aria-label="{{ section.settings.metric1_aria }}"
+               title="{{ section.settings.metric1_aria }}">
+            {% for i in (1..5) %}<span class="tm-star">★</span>{% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="tm-sub"
+               style="font-size: {{ section.settings.sub_size }}px; color: {{ section.settings.sub_color }};">
+            {{ section.settings.metric1_sub }}
+          </div>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="tm-item">
+          <div class="tm-value"
+               data-countup="{{ section.settings.metric2_value | replace: ',', '' }}"
+               data-decimals="{{ section.settings.metric2_decimals }}"
+               data-suffix="{{ sfx2 }}"
+               style="font-size: {{ section.settings.value_size }}px; color: {{ section.settings.value_color }};">
+            {{ section.settings.metric2_value }}{{ sfx2 }}
+          </div>
+          <div class="tm-sub"
+               style="font-size: {{ section.settings.sub_size }}px; color: {{ section.settings.sub_color }};">
+            {{ section.settings.metric2_sub }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({
+      duration: 700,   // тривалість анімації (мс)
+      offset: 80,      // на скільки пікселів елемент має зайти в екран
+      once: true       // анімувати тільки один раз, без повторів при скролі назад
+    });
+  });
+</script>
+  <style>
+    .trust-metrics { position: relative; overflow: hidden; }
+    /* .page-width стиль береться з теми — не чіпаємо */
+    .trust-metrics__full { max-width: none; margin: 0 auto; padding: 0 1rem; }
+
+    .trust-metrics__grid { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+
+    .trust-metrics__kicker{
+      margin: 0; line-height: 1.25;
+      font-weight: var(--kicker-weight) !important;
+      font-variation-settings: "wght" var(--kicker-weight);
+      font-synthesis-weight: none;
+    }
+
+    .trust-metrics__right { display: grid; grid-auto-flow: column; }
+    .tm-item { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+    .tm-value { font-weight: 800; line-height: 1; }
+    .tm-stars{
+      line-height: 1; letter-spacing: 2px;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .tm-stars.is-visible{ opacity: 1; transform: translateY(0); }
+    .tm-stars .tm-star{ font-size: 1em; } /* успадковує з контейнера */
+    .tm-sub { opacity: .85; }
+
+    /* ===== Mobile (<= 990px) ===== */
+    @media (max-width: 990px) {
+      .trust-metrics__grid { grid-template-columns: 1fr; }
+
+      /* Кікер по центру, ширина на всю */
+      .trust-metrics__left { max-width: 100% !important; justify-self: center; }
+      .trust-metrics__kicker { text-align: center; }
+
+      /* Дві метрики в один ряд, центровано, МЕНШИЙ зазор */
+      .trust-metrics__right {
+        grid-auto-flow: column;
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        justify-items: center;
+        column-gap: 14px;                 /* було 24px */
+        margin-right: 0 !important;
+        margin-top: 12px;
+      }
+      .tm-item { align-items: center; text-align: center; gap: 8px; }
+    }
+
+    /* ===== Small phones (<= 560px) — ще трішки менше між метриками ===== */
+    @media (max-width: 560px) {
+      .trust-metrics__right { column-gap: 10px; } /* було 16px */
+    }
+  </style>
+
+  <script>
+    (function(){
+      if (!document.currentScript) return;
+      const root = document.currentScript.closest('section.trust-metrics');
+      if (!root) return;
+
+      const ease = t => 1 - Math.pow(1 - t, 3); // cubic ease-out
+
+      const parseTarget = (el) => {
+        const num = parseFloat((el.getAttribute('data-countup') || '0').trim()) || 0;
+        const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        const suffix = (el.getAttribute('data-suffix') || '').trim();
+        return { target: num, decimals, suffix };
+      };
+
+      const formatOut = (val, decimals, suffix) => {
+        const out = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toString();
+        return out + suffix;
+      };
+
+      const animateCount = (el, duration) => {
+        const { target, decimals, suffix } = parseTarget(el);
+        const start = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - start) / duration);
+          const v = target * ease(t);
+          el.textContent = formatOut(v, decimals, suffix);
+          if (t < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      const revealStars = () => {
+        root.querySelectorAll('.tm-stars').forEach(s => s.classList.add('is-visible'));
+      };
+
+      const run = () => {
+        root.querySelectorAll('.tm-value').forEach(n => animateCount(n, {{ section.settings.anim_duration }}));
+        revealStars();
+      };
+
+      if ({{ section.settings.enable_anim | json }}) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { run(); io.unobserve(entry.target); }
+          });
+        }, { threshold: 0.3 });
+        io.observe(root);
+      }
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Metrics Bar",
+  "settings": [
+    { "type": "header", "content": "Background" },
+    { "type": "checkbox", "id": "use_color_scheme", "label": "Use theme color scheme", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "background-1" },
+
+    { "type": "select", "id": "grad_direction", "label": "Gradient direction (when scheme is OFF)", "default": "90deg",
+      "options": [
+        { "value": "90deg",  "label": "Horizontal (left → right)" },
+        { "value": "180deg", "label": "Vertical (top → bottom)" }
+      ]
+    },
+    { "type": "color", "id": "grad_left",  "label": "Gradient left/top color",  "default": "#000000" },
+    { "type": "color", "id": "grad_right", "label": "Gradient right/bottom color", "default": "#A78BFA" },
+    { "type": "range", "id": "grad_start", "label": "Gradient start (%)", "min": 0, "max": 100, "step": 1, "default": 79 },
+    { "type": "range", "id": "grad_end",   "label": "Gradient end (%)",   "min": 0, "max": 100, "step": 1, "default": 100 },
+
+    { "type": "header", "content": "Layout" },
+    { "type": "checkbox", "id": "use_page_width", "label": "Wrap with page-width", "default": true },
+    { "type": "range", "id": "pad_top", "min": 0, "max": 120, "step": 2, "unit": "px", "label": "Padding top", "default": 36 },
+    { "type": "range", "id": "pad_bottom", "min": 0, "max": 120, "step": 2, "unit": "px", "label": "Padding bottom", "default": 36 },
+    { "type": "range", "id": "gap", "min": 0, "max": 80, "step": 2, "unit": "px", "label": "Gap left↔right", "default": 24 },
+    { "type": "range", "id": "right_gap", "min": 0, "max": 80, "step": 2, "unit": "px", "label": "Gap between metrics", "default": 40 },
+    { "type": "range", "id": "right_inset", "min": 0, "max": 200, "step": 2, "unit": "px", "label": "Right inset (push metrics left)", "default": 32 },
+
+    { "type": "header", "content": "Left text" },
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Trusted by 8,000+ shoppers since 2016." },
+    { "type": "range", "id": "kicker_size", "min": 12, "max": 28, "step": 1, "unit": "px", "label": "Kicker font size", "default": 14 },
+    { "type": "range", "id": "kicker_weight", "min": 300, "max": 900, "step": 10, "label": "Kicker font weight", "default": 600 },
+    { "type": "range", "id": "kicker_max_width", "min": 30, "max": 100, "step": 1, "unit": "%", "label": "Kicker max width (%)", "default": 45 },
+    { "type": "color", "id": "kicker_color", "label": "Kicker color", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "Metric 1 (rating)" },
+    { "type": "text", "id": "metric1_value", "label": "Number (digits & decimal)", "default": "4.7" },
+    { "type": "range", "id": "metric1_decimals", "label": "Decimals for animation", "min": 0, "max": 2, "step": 1, "default": 1 },
+    { "type": "text", "id": "metric1_suffix", "label": "Suffix (none, K, M, +)", "default": "none" },
+    { "type": "range", "id": "value1_letter_spacing", "label": "Rating letter-spacing (px)", "min": -1, "max": 3, "step": 1, "default": 0 },
+    { "type": "text", "id": "metric1_sub", "label": "Subtext", "default": "Last 12 months" },
+    { "type": "checkbox", "id": "show_stars", "label": "Show stars row", "default": true },
+    { "type": "text", "id": "metric1_aria", "label": "Stars ARIA label", "default": "Average customer rating 4.7 out of 5" },
+
+    { "type": "header", "content": "Metric 2" },
+    { "type": "text", "id": "metric2_value", "label": "Number (digits & decimal)", "default": "1.5" },
+    { "type": "range", "id": "metric2_decimals", "label": "Decimals for animation", "min": 0, "max": 2, "step": 1, "default": 1 },
+    { "type": "text", "id": "metric2_suffix", "label": "Suffix (M, K, +)", "default": "M" },
+    { "type": "text", "id": "metric2_sub", "label": "Subtext", "default": "interactions each year" },
+
+    { "type": "header", "content": "Typography & icons" },
+    { "type": "color", "id": "value_color", "label": "Numbers color", "default": "#FFFFFF" },
+    { "type": "range", "id": "value_size", "label": "Numbers size", "min": 24, "max": 80, "step": 1, "unit": "px", "default": 42 },
+    { "type": "color", "id": "sub_color", "label": "Subtext color", "default": "#A3A3A3" },
+    { "type": "range", "id": "sub_size", "label": "Subtext size", "min": 10, "max": 22, "step": 1, "unit": "px", "default": 12 },
+    { "type": "color", "id": "star_color", "label": "Stars color", "default": "#FBBF24" },
+    { "type": "range", "id": "stars_size", "label": "Stars size (px)", "min": 12, "max": 24, "step": 1, "default": 16 },
+
+    { "type": "header", "content": "Animation" },
+    { "type": "checkbox", "id": "enable_anim", "label": "Enable count-up on view", "default": true },
+    { "type": "range", "id": "anim_duration", "label": "Animation duration (ms)", "min": 400, "max": 3000, "step": 100, "default": 1200 }
+  ],
+  "presets": [
+    { "name": "Trust Metrics Bar", "category": "Text" }
+  ]
+}
+{% endschema %}

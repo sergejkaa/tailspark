@@ -1,0 +1,607 @@
+  {% comment %}
+    Testimonials Slider (Jade)
+    - Desktop: 3 відгуки в одному слайді
+    - Mobile: всі відгуки показуються, але по одному в рядок
+    - Нескінченний loop без стрибка
+    - ЖОДНОГО peek сусіднього слайду
+    - Хедінг H1–H4, золоті зірочки
+    - Кнопка "Leave review"
+    - Кольорові схеми, dots color, навігаційні стрілки (color + opacity)
+    - Вхідні анімації: elegant / bounce / slideup / rotate / flipX / fadeUp / scaleIn / slideLeft
+  {% endcomment %}
+
+{% liquid
+  assign sec_id = section.id
+  assign enable_container = section.settings.enable_page_width
+  assign pad_t = section.settings.padding_top | default: 48
+  assign pad_b = section.settings.padding_bottom | default: 56
+  assign dots_color = section.settings.dots_color | default: '#666666'
+  assign nav_color = section.settings.nav_color | default: '#ffffff'
+  assign nav_opacity = section.settings.nav_opacity | default: 80
+  assign nav_opacity_dec = nav_opacity | divided_by: 100.0
+  assign content_max = section.settings.content_max | default: 1200
+%}
+
+<section id="testimonials-{{ sec_id }}"
+  class="testimonials color-{{ section.settings.color_scheme }} gradient anim-{{ section.settings.anim_style }}"
+  style="--pt: {{ pad_t }}px; --pb: {{ pad_b }}px; --dots-color: {{ dots_color }}; --nav-color: {{ nav_color }}; --nav-opacity: {{ nav_opacity_dec }}; --star-gold: #FFC300; --content-max: {{ content_max }}px;">
+  <div class="{% if enable_container %}page-width{% else %}section-inner{% endif %}">
+
+    {% if section.settings.heading != blank %}
+      <{{ section.settings.heading_tag }} class="testimonials__heading reveal-trigger">
+        {{ section.settings.heading }}
+      </{{ section.settings.heading_tag }}>
+    {% endif %}
+
+    <div class="ts-wrapper reveal-trigger" data-ts-wrapper>
+      {%- if section.settings.show_nav -%}
+      <button class="ts-nav ts-nav--prev" aria-label="Previous" data-ts-prev>
+        {% render 'icon-caret' %}
+      </button>
+      {%- endif -%}
+
+      <div class="ts-viewport" data-ts-viewport>
+        <ul class="ts-track" data-ts-track>
+          {%- assign per_page = 3 -%}
+          {%- for block in section.blocks -%}
+            {%- assign i0 = forloop.index0 -%}
+            {%- assign open_group = i0 | modulo: per_page -%}
+            {%- if open_group == 0 -%}
+              <li class="ts-slide">
+                <div class="ts-grid">
+            {%- endif -%}
+
+              {%- liquid
+                assign name = block.settings.name
+                assign city = block.settings.city
+                assign rating = block.settings.rating | minus: 0
+                assign text = block.settings.text
+                assign img = block.settings.avatar
+                assign max_chars = section.settings.max_chars | default: 180
+              -%}
+              <article class="ts-card" {{ block.shopify_attributes }}>
+                <div class="ts-card__top">
+                  <div class="ts-card__avatar">
+                    {% if img != blank %}
+                      {{ img 
+                        | image_url: width: 224, height: 224, crop: 'center' 
+                        | image_tag: 
+                          widths: '56, 112, 168, 224, 336', 
+                          sizes: '(max-width: 480px) 52px, 56px', 
+                          class: 'avatar', 
+                          alt: name, 
+                          loading: 'lazy', 
+                          decoding: 'async' 
+                      }}
+                    {% else %}
+                      {%- assign review_index = forloop.index -%}
+                      {%- case review_index -%}
+                        {%- when 1 -%}{%- assign fallback_avatar = 'review-1.webp' -%}
+                        {%- when 2 -%}{%- assign fallback_avatar = 'review-2.webp' -%}
+                        {%- when 3 -%}{%- assign fallback_avatar = 'review-3.webp' -%}
+                        {%- when 4 -%}{%- assign fallback_avatar = 'review-4.webp' -%}
+                        {%- when 5 -%}{%- assign fallback_avatar = 'review-5.webp' -%}
+                        {%- when 6 -%}{%- assign fallback_avatar = 'review-6.webp' -%}
+                        {%- when 7 -%}{%- assign fallback_avatar = 'review-7.webp' -%}
+                        {%- when 8 -%}{%- assign fallback_avatar = 'review-8.webp' -%}
+                        {%- when 9 -%}{%- assign fallback_avatar = 'review-9.webp' -%}
+                        {%- else -%}{%- assign fallback_avatar = 'review-1.webp' -%}
+                      {%- endcase -%}
+
+                      <img
+                        src="{{ fallback_avatar | asset_url }}"
+                        alt="{{ name | default: 'Customer review' | escape }}"
+                        class="avatar"
+                        loading="lazy"
+                        decoding="async"
+                      >
+                    {% endif %}
+                  </div>
+                  <div class="ts-card__meta">
+                    {% if name != blank %}<div class="ts-name">{{ name }}</div>{% endif %}
+                    {% if city != blank %}<div class="ts-sub">{{ city }}</div>{% endif %}
+                    <div class="ts-stars" aria-label="{{ rating }} out of 5 stars">
+                      {% for i in (1..5) %}
+                        {% if i <= rating %}
+                          <svg class="star star--full" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.56 5.82 22 7 14.15l-5-4.88 6.91-1.01L12 2z"/></svg>
+                        {% else %}
+                          <svg class="star star--empty" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 9.27l-7-.99L12 2 9 8.28l-7 .99 5 4.88L5.82 22 12 18.56 18.18 22 17 14.15l5-4.88zm-10 7.07l-3.76 2.17 1-4.29-3.32-3.24 4.38-.63L12 6.1l1.71 3.25 4.38.63-3.32 3.24 1 4.29L12 16.34z"/></svg>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                {% if text != blank %}
+                  <p class="ts-text">{{ text | strip_html | truncate: max_chars, '…' }}</p>
+                {% endif %}
+              </article>
+
+            {%- assign end_group = i0 | plus: 1 | modulo: per_page -%}
+            {%- if end_group == 0 or forloop.last -%}
+                </div>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      {%- if section.settings.show_nav -%}
+      <button class="ts-nav ts-nav--next" aria-label="Next" data-ts-next>
+        {% render 'icon-caret' %}
+      </button>
+      {%- endif -%}
+    </div>
+
+    <div class="ts-dots" role="tablist" aria-label="Testimonials pagination" data-ts-dots></div>
+
+    {% if section.settings.cta_label != blank %}
+      <div class="ts-cta-wrap reveal-trigger">
+        <a class="button button--primary" href="{{ section.settings.cta_link | default: '#' }}">{{ section.settings.cta_label }}</a>
+      </div>
+    {% endif %}
+  </div>
+
+  <style>
+    #testimonials-{{ sec_id }}{ padding-top: var(--pt); padding-bottom: var(--pb); }
+    #testimonials-{{ sec_id }} .section-inner{max-width:1280px;margin:0 auto;padding:0 1.6rem;}
+    #testimonials-{{ sec_id }} .testimonials__heading{ text-align:center; margin:0 0 4rem; letter-spacing:.01em; }
+
+    /* ===== Slider layout ===== */
+    #testimonials-{{ sec_id }} .ts-wrapper{ position:relative; }
+    /* Give the viewport side margins so arrows never sit on top of cards */
+    #testimonials-{{ sec_id }} .ts-viewport{
+      overflow:hidden; padding:0; margin:0 72px; position:relative;
+      -webkit-user-select:none; user-select:none; -webkit-touch-callout:none; -webkit-tap-highlight-color: transparent;
+      touch-action: pan-y; clip-path: inset(0 0 0 0); contain: layout paint;
+    }
+    #testimonials-{{ sec_id }} .ts-track{
+      display:flex; gap:0; will-change:transform; transition:transform .45s cubic-bezier(.22,.61,.36,1);
+      padding:0; margin:0; list-style:none; /* reset UL */
+    }
+    #testimonials-{{ sec_id }} .ts-slide{
+      min-width:100%; flex:0 0 100%; padding:0; overflow:hidden; /* не показуємо вміст сусідніх слайдів */
+    }
+    #testimonials-{{ sec_id }} .ts-grid{
+      display:grid; gap:1.1rem; grid-template-columns:repeat(3, minmax(0,1fr));
+      align-items:stretch; max-width: var(--content-max); margin: 0 auto; /* центр сітки */
+    }
+    /* Mobile: тільки 2 ревю на слайд (вертикально: одна зверху, одна знизу) */
+    @media (max-width:640px){
+      /* Remove extra margins because arrows are hidden on mobile */
+      #testimonials-{{ sec_id }} .ts-viewport{ margin: 0; }
+      #testimonials-{{ sec_id }} .ts-grid{ 
+        grid-template-columns: 1fr; /* stack two cards */
+        gap: 0.8rem;
+        justify-items: stretch;
+      }
+      /* Приховуємо третій та наступні блоки */
+      #testimonials-{{ sec_id }} .ts-grid > .ts-card:nth-child(n+3){ 
+        display: none; 
+      }
+      #testimonials-{{ sec_id }} .ts-card{
+        max-width: none;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+      }
+      #testimonials-{{ sec_id }} .ts-card__top{
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        margin-bottom: 8px;
+      }
+      #testimonials-{{ sec_id }} .ts-card__avatar{
+        flex-shrink: 0;
+        margin-right: 8px;
+      }
+      #testimonials-{{ sec_id }} .ts-card__meta{
+        flex: 1;
+      }
+      #testimonials-{{ sec_id }} .ts-text{
+        margin: 0;
+        font-size: 0.9rem;
+        -webkit-line-clamp: 6; /* allow a bit more on mobile */
+      }
+    }
+
+    /* ===== Cards ===== */
+    #testimonials-{{ sec_id }} .ts-card{
+      height:100%; border:1px solid rgba(0,0,0,.06);
+      border-radius:14px; padding:16px;
+      background: rgb(var(--color-background)); color: rgb(var(--color-foreground));
+      box-shadow:0 1px 0 rgba(0,0,0,.04);
+      transform-style: preserve-3d;
+    }
+    #testimonials-{{ sec_id }} .ts-card__top{display:flex; gap:12px; align-items:center; margin-bottom:8px;}
+    #testimonials-{{ sec_id }} .ts-card__avatar .avatar{ width:56px; height:56px; border-radius:9999px; object-fit:cover; display:block; }
+    #testimonials-{{ sec_id }} .avatar--placeholder{ 
+      width:56px !important;height:56px !important;border-radius:9999px !important;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      display: flex !important; align-items: center !important; justify-content: center !important;
+      color: white !important; font-weight: 600 !important; font-size: 20px !important;
+      text-transform: uppercase !important; letter-spacing: 0 !important;
+      line-height: 1 !important; margin: 0 !important; padding: 0 !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      text-align: center !important;
+    }
+    /* Різні кольори для різних імен */
+    #testimonials-{{ sec_id }} .ts-card:nth-child(1) .avatar--placeholder{ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(2) .avatar--placeholder{ background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(3) .avatar--placeholder{ background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(4) .avatar--placeholder{ background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(5) .avatar--placeholder{ background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(6) .avatar--placeholder{ background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(7) .avatar--placeholder{ background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(8) .avatar--placeholder{ background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(9) .avatar--placeholder{ background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(10) .avatar--placeholder{ background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(11) .avatar--placeholder{ background: linear-gradient(135deg, #ff8a80 0%, #ff80ab 100%); }
+    #testimonials-{{ sec_id }} .ts-card:nth-child(12) .avatar--placeholder{ background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
+    #testimonials-{{ sec_id }} .ts-name{font-weight:600;line-height:1.15;}
+    #testimonials-{{ sec_id }} .ts-sub{opacity:.9;margin-top:.05rem;font-size:1rem;font-weight:500;}
+    #testimonials-{{ sec_id }} .ts-stars{display:flex; gap:2px; margin-top:.2rem;}
+    #testimonials-{{ sec_id }} .star{width:16px;height:16px;fill:currentColor;}
+    #testimonials-{{ sec_id }} .star--full{color:var(--star-gold);}
+    #testimonials-{{ sec_id }} .star--empty{opacity:.35;}
+    #testimonials-{{ sec_id }} .ts-text{
+      margin:8px 0 0; line-height:1.5; font-size:1.235rem;
+      display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; /* soft cut if extremely long */
+    }
+
+    /* ===== Nav (колір/прозорість з адмінки). Приховані на мобілці ===== */
+    #testimonials-{{ sec_id }} .ts-nav{
+      position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+      background: rgb(var(--color-background)); color: var(--nav-color);
+      border:1px solid rgba(0,0,0,.08); width:40px;height:40px;border-radius:999px;
+      display:grid;place-items:center;cursor:pointer; transition: box-shadow .2s ease, transform .2s ease, opacity .2s ease;
+      opacity: var(--nav-opacity);
+    }
+    #testimonials-{{ sec_id }} .ts-nav[disabled]{opacity: calc(var(--nav-opacity) * .6); pointer-events:none;}
+    #testimonials-{{ sec_id }} .ts-nav:hover{box-shadow:0 6px 20px rgba(0,0,0,.10)}
+    /* Place arrows symmetrically and keep a consistent gap from cards */
+    #testimonials-{{ sec_id }} .ts-nav--prev{left:16px}
+    #testimonials-{{ sec_id }} .ts-nav--next{right:16px}
+    #testimonials-{{ sec_id }} .ts-nav--prev svg{ transform:rotate(180deg); }
+    @media (max-width:640px){ #testimonials-{{ sec_id }} .ts-nav{ display:none; } } /* hide on mobile by default */
+    {%- if section.settings.show_nav_mobile -%}
+    @media (max-width:640px){
+      #testimonials-{{ sec_id }} .ts-nav{ display:grid; }
+      #testimonials-{{ sec_id }} .ts-viewport{ margin: 0 56px; }
+    }
+    {%- endif -%}
+
+    /* ===== Dots / CTA ===== */
+    #testimonials-{{ sec_id }} .ts-dots{ display:flex; gap:6px; justify-content:center; margin-top:14px; align-items:center; }
+    #testimonials-{{ sec_id }} .ts-dots button{
+      display:block; width:7px; height:7px; border-radius:999px; border:none; padding:0;
+      -webkit-appearance:none; appearance:none; box-sizing:content-box;
+      min-width:0; min-height:0; line-height:0; font-size:0; overflow:hidden; flex-shrink:0;
+      background: var(--dots-color); opacity:.35; cursor:pointer; transition: opacity .2s ease, width .2s ease, transform .2s ease;
+    }
+    #testimonials-{{ sec_id }} .ts-dots button[aria-selected="true"]{opacity:1; width:20px; border-radius:999px;}
+    #testimonials-{{ sec_id }} .ts-cta-wrap{margin-top:22px; text-align:center;}
+
+    /* ===== Entrance animations (вмикаються лише коли секція у вʼюпорті) ===== */
+    #testimonials-{{ sec_id }} .reveal-trigger { opacity:0; transition: opacity .4s cubic-bezier(0.4, 0, 0.2, 1); }
+    
+    /* Нові елегантні анімації */
+    #testimonials-{{ sec_id }}.anim-elegant .ts-card.revealed { animation: elegantIn .8s cubic-bezier(0.4, 0, 0.2, 1) var(--d,0ms) both; }
+    #testimonials-{{ sec_id }}.anim-bounce .ts-card.revealed { animation: bounceIn .7s cubic-bezier(0.68, -0.55, 0.265, 1.55) var(--d,0ms) both; }
+    #testimonials-{{ sec_id }}.anim-slideup .ts-card.revealed { animation: slideUpFade .6s cubic-bezier(0.4, 0, 0.2, 1) var(--d,0ms) both; }
+    #testimonials-{{ sec_id }}.anim-rotate .ts-card.revealed { animation: rotateScale .7s cubic-bezier(0.4, 0, 0.2, 1) var(--d,0ms) both; }
+    
+    /* Класичні анімації */
+    #testimonials-{{ sec_id }}.anim-flipx .ts-card.revealed { animation: flipInX .7s cubic-bezier(.22,.61,.36,1) var(--d,0ms) both; }
+    #testimonials-{{ sec_id }}.anim-fadeup .ts-card.revealed { animation: fadeUp .6s ease-out var(--d,0ms) both; }
+    #testimonials-{{ sec_id }}.anim-scalein .ts-card.revealed { animation: scaleIn .5s ease var(--d,0ms) both; }
+    #testimonials-{{ sec_id }}.anim-slideleft .ts-card.revealed { animation: slideLeft .6s ease-out var(--d,0ms) both; }
+
+    /* Нові keyframes */
+    @keyframes elegantIn{ 
+      0%{ transform: translateY(30px) scale(0.9); opacity:0; filter: blur(4px); } 
+      50%{ transform: translateY(-5px) scale(1.02); opacity:0.8; filter: blur(0px); }
+      100%{ transform: translateY(0) scale(1); opacity:1; filter: blur(0px); } 
+    }
+    @keyframes bounceIn{ 
+      0%{ transform: translateY(40px) scale(0.3); opacity:0; } 
+      50%{ transform: translateY(-10px) scale(1.05); opacity:0.8; }
+      70%{ transform: translateY(5px) scale(0.95); opacity:0.9; }
+      100%{ transform: translateY(0) scale(1); opacity:1; } 
+    }
+    @keyframes slideUpFade{ 
+      0%{ transform: translateY(40px); opacity:0; filter: brightness(0.8); } 
+      100%{ transform: translateY(0); opacity:1; filter: brightness(1); } 
+    }
+    @keyframes rotateScale{ 
+      0%{ transform: rotate(-5deg) scale(0.8); opacity:0; } 
+      50%{ transform: rotate(2deg) scale(1.05); opacity:0.8; }
+      100%{ transform: rotate(0deg) scale(1); opacity:1; } 
+    }
+
+    /* Класичні keyframes */
+    @keyframes flipInX{ 0%{ transform: perspective(900px) rotateX(25deg) translateY(20px); opacity:0; } 60%{ transform: perspective(900px) rotateX(-6deg) translateY(0); opacity:1; } 100%{ transform: perspective(900px) rotateX(0deg); opacity:1; } }
+    @keyframes fadeUp{ 0%{ transform: translateY(20px); opacity:0; } 100%{ transform: translateY(0); opacity:1; } }
+    @keyframes scaleIn{ 0%{ transform: scale(.95); opacity:0; } 100%{ transform: scale(1); opacity:1; } }
+    @keyframes slideLeft{ 0%{ transform: translateX(20px); opacity:0; } 100%{ transform: translateX(0); opacity:1; } }
+  </style>
+
+  <script>
+    (function(){
+      const root = document.getElementById('testimonials-{{ sec_id }}');
+      if(!root) return;
+
+       /* Fire entrance animations ONLY when section appears in viewport */
+       const onEnter = ()=>{
+         const cards = root.querySelectorAll('.ts-card');
+         // Більш елегантний stagger з різними затримками для різних анімацій
+         const animStyle = root.classList.contains('anim-elegant') ? 120 : 
+                          root.classList.contains('anim-bounce') ? 150 :
+                          root.classList.contains('anim-slideup') ? 100 :
+                          root.classList.contains('anim-rotate') ? 130 : 90;
+         cards.forEach((c,i)=> c.style.setProperty('--d', (i%3)*animStyle + 'ms'));
+         cards.forEach(c=>c.classList.add('revealed'));
+         root.querySelectorAll('.reveal-trigger').forEach(el=>el.style.opacity=1);
+       };
+      const secObserver = new IntersectionObserver((ents)=>{
+        if(ents.some(e=>e.isIntersecting)){ onEnter(); secObserver.disconnect(); }
+      }, { threshold: 0.25 });
+      secObserver.observe(root);
+
+      /* ===== Slider (no peek, no jump) ===== */
+      const viewport = root.querySelector('[data-ts-viewport]');
+      const track    = root.querySelector('[data-ts-track]');
+      const prevBtn  = root.querySelector('[data-ts-prev]');
+      const nextBtn  = root.querySelector('[data-ts-next]');
+      const dotsWrap = root.querySelector('[data-ts-dots]');
+
+      let slides = Array.from(track.children);
+      const REAL_COUNT = slides.length;
+      if(REAL_COUNT === 0) return;
+
+      // Create clones for infinite loop
+      const firstClone = slides[0].cloneNode(true);
+      const lastClone  = slides[slides.length-1].cloneNode(true);
+      track.insertBefore(lastClone, slides[0]);
+      track.appendChild(firstClone);
+      slides = Array.from(track.children);
+
+      let index = 1, lock = false;
+
+      // Exact visible width of the viewport (padding=0), rounded to px
+      const slideW = () => Math.round(viewport.getBoundingClientRect().width);
+
+      const snap = (inst=false)=>{
+        if(inst) track.style.transition = 'none';
+        const x = -index * slideW();
+        track.style.transform = 'translate3d(' + Math.round(x) + 'px,0,0)';
+        if(inst){ track.offsetHeight; track.style.transition = ''; }
+      };
+
+      const pages = ()=> REAL_COUNT;
+
+      // Dots for real slides only
+      const buildDots = ()=>{
+        dotsWrap.innerHTML='';
+        for(let i=0;i<pages();i++){
+          const b=document.createElement('button');
+          b.type='button';
+          b.addEventListener('click', ()=>goTo(i+1));
+          dotsWrap.appendChild(b);
+        }
+        updateDots();
+      };
+
+      const updateDots = ()=>{
+        const pos = (index-1+REAL_COUNT) % REAL_COUNT;
+        dotsWrap.querySelectorAll('button').forEach((d,i)=>d.setAttribute('aria-selected', i===pos));
+      };
+
+      // Normalize after crossing clones — double RAF to avoid visible jump
+      const normalize = ()=>{
+        if(index===0){
+          index = REAL_COUNT;
+          requestAnimationFrame(()=>{ requestAnimationFrame(()=>snap(true)); });
+        } else if(index===REAL_COUNT+1){
+          index = 1;
+          requestAnimationFrame(()=>{ requestAnimationFrame(()=>snap(true)); });
+        }
+        updateDots();
+      };
+
+       const goTo = (i)=>{
+         if(lock) return;
+         
+         // Якщо намагаємося перейти на той самий слайд, ігноруємо
+         if(i === index) return;
+         
+         index = i;
+         snap();
+         lock = true;
+         
+         // Додаємо таймаут як запасний варіант розблокування
+         const unlockTimeout = setTimeout(() => {
+           lock = false;
+         }, 500);
+         
+         track.addEventListener('transitionend', function te(){
+           clearTimeout(unlockTimeout);
+           lock = false;
+           track.removeEventListener('transitionend', te);
+           normalize();
+         }, { once:true });
+       };
+
+      const next = ()=>goTo(index+1);
+      const prev = ()=>goTo(index-1);
+
+      // Debounced navigation buttons
+      let navDebounce = false;
+      const debouncedNext = () => {
+        if(navDebounce) return;
+        navDebounce = true;
+        next();
+        setTimeout(() => navDebounce = false, 300);
+      };
+      const debouncedPrev = () => {
+        if(navDebounce) return;
+        navDebounce = true;
+        prev();
+        setTimeout(() => navDebounce = false, 300);
+      };
+
+      nextBtn?.addEventListener('click', debouncedNext);
+      prevBtn?.addEventListener('click', debouncedPrev);
+
+       // Drag / swipe — з перевіркою напрямку для вертикального скролу
+       let isDown=false, startX=0, startY=0, startTx=0, lastMoveTime=0;
+       const onDown = e=>{ 
+         if(lock) return; // Запобігаємо свайпам під час анімації
+         isDown=true; 
+         startX=(e.touches?e.touches[0].clientX:e.clientX); 
+         startY=(e.touches?e.touches[0].clientY:e.clientY);
+         startTx=-index*slideW(); 
+         track.style.transition='none';
+         lastMoveTime = Date.now();
+       };
+       const onMove = e=>{
+         if(!isDown || lock) return;
+         const x=(e.touches?e.touches[0].clientX:e.clientX), dx=x-startX;
+         const y=(e.touches?e.touches[0].clientY:e.clientY), dy=y-startY;
+         
+         // Якщо рух більше вертикальний ніж горизонтальний, не блокуємо скрол
+         if(Math.abs(dy) > Math.abs(dx)) {
+           isDown = false;
+           track.style.transition = '';
+           return;
+         }
+         
+         if(Math.abs(dx)>4 && e.cancelable) e.preventDefault();
+         track.style.transform='translate3d('+ Math.round(startTx+dx) +'px,0,0)';
+         lastMoveTime = Date.now();
+       };
+       const onUp = e=>{
+         if(!isDown) return; 
+         isDown=false; 
+         track.style.transition='';
+         
+         const x=(e.changedTouches?e.changedTouches[0].clientX:e.clientX), dx=x-startX;
+         const th=slideW()*0.12;
+         
+         // Перевіряємо чи не було занадто швидкого свайпу
+         const timeSinceLastMove = Date.now() - lastMoveTime;
+         if(timeSinceLastMove > 150) { // Якщо останній рух був більше 150мс тому
+           snap(); // Просто повертаємося до поточної позиції
+           return;
+         }
+         
+         // Більш розумна логіка для визначення напрямку свайпу
+         if(Math.abs(dx) < th) {
+           snap(); // Недостатньо руху - повертаємося
+         } else if(dx < -th) {
+           debouncedNext(); // Свайп вліво - наступний слайд
+         } else if(dx > th) {
+           debouncedPrev(); // Свайп вправо - попередній слайд
+         } else {
+           snap(); // Запасний варіант
+         }
+       };
+      viewport.addEventListener('mousedown', onDown);
+      viewport.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+      viewport.addEventListener('touchstart', onDown, {passive:true});
+      viewport.addEventListener('touchmove', onMove, {passive:false});
+      viewport.addEventListener('touchend', onUp);
+
+      // Re-snap after layout changes
+      const resnap = ()=>snap(true);
+      window.addEventListener('resize', ()=>requestAnimationFrame(resnap));
+      window.addEventListener('load', resnap);
+
+      // Init
+      snap(true);
+      buildDots();
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials (Jade)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real customer stories" },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading size",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" }
+      ]
+    },
+    { "type": "select", "id": "anim_style", "label": "Cards entrance animation", "default": "elegant",
+      "options": [
+        { "value": "elegant", "label": "Elegant fade + scale" },
+        { "value": "bounce", "label": "Bounce in" },
+        { "value": "slideup", "label": "Slide up + fade" },
+        { "value": "rotate", "label": "Rotate + scale" },
+        { "value": "flipx", "label": "Flip on X (airport board)" },
+        { "value": "fadeup", "label": "Fade up" },
+        { "value": "scalein", "label": "Scale in" },
+        { "value": "slideleft", "label": "Slide left" }
+      ]
+    },
+    { "type": "checkbox", "id": "enable_page_width", "label": "Use page width", "default": true },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "color", "id": "dots_color", "label": "Dots color", "default": "#666666" },
+    { "type": "checkbox", "id": "show_nav", "label": "Show arrows", "default": true },
+    { "type": "checkbox", "id": "show_nav_mobile", "label": "Show arrows on mobile", "default": false },
+    { "type": "color", "id": "nav_color", "label": "Arrows color", "default": "#ffffff" },
+    { "type": "range", "id": "nav_opacity", "label": "Arrows opacity", "min": 20, "max": 100, "step": 5, "default": 80 },
+
+    { "type": "range", "id": "max_chars", "label": "Max review text length (chars)", "min": 80, "max": 400, "step": 10, "default": 180 },
+
+    { "type": "range", "id": "content_max", "label": "Inner grid max width", "min": 800, "max": 1400, "step": 20, "unit": "px", "default": 1200 },
+
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Leave review" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "image_picker", "id": "avatar", "label": "Image" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Sam" },
+        { "type": "text", "id": "city", "label": "City", "default": "Kyiv" },
+        { "type": "range", "id": "rating", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "text", "label": "Review text", "default": "Saves me money and time. I pick a section I like and add it to my store—no devs needed. Setup is fast and the results look polished." }
+      ]
+    }
+  ],
+  "max_blocks": 24,
+  "presets": [
+    { 
+      "name": "Testimonials (Jade)", 
+      "blocks": [ 
+        { "type": "review", "settings": { "name": "Emma L.", "city": "Paris", "text": "My skin feels so much calmer and hydrated since I switched to this routine. The cleanser is gentle but actually removes all my makeup." } },
+        { "type": "review", "settings": { "name": "Sophia M.", "city": "New York", "text": "The serum is a game changer. My dark spots are fading and my skin looks more even and glowy in the morning." } },
+        { "type": "review", "settings": { "name": "Isabella R.", "city": "London", "text": "Light textures, no heaviness, no breakouts. My combination skin finally feels balanced instead of oily and tight at the same time." } },
+        { "type": "review", "settings": { "name": "Olivia K.", "city": "Tokyo", "text": "I love how simple the routine is. Three products and my skin looks fresher, brighter and less tired, even on busy weeks." } },
+        { "type": "review", "settings": { "name": "Ava S.", "city": "Sydney", "text": "My skin is sensitive and reactive, but this line feels super soothing. No redness, no burning, just soft and comfortable skin." } },
+        { "type": "review", "settings": { "name": "Charlotte B.", "city": "Berlin", "text": "The moisturizer is rich but not greasy at all. Makeup goes on smoother and my skin still feels nourished at the end of the day." } },
+        { "type": "review", "settings": { "name": "Amelia W.", "city": "Rome", "text": "I noticed a real glow after about two weeks. Friends keep asking what I changed in my routine—that never happened before." } },
+        { "type": "review", "settings": { "name": "Mia T.", "city": "Barcelona", "text": "Packaging looks beautiful in my bathroom and the ingredients are clean. It feels like spa-level skincare I can use every day." } },
+        { "type": "review", "settings": { "name": "Harper D.", "city": "Amsterdam", "text": "My skin used to feel dry after washing, now it feels soft even before I put on cream. Everything absorbs quickly and doesn’t feel heavy." } }
+      ] 
+    }
+  ]
+}
+{% endschema %}

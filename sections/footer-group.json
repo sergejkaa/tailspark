@@ -1,0 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "waves_PNYPRX": {
+      "type": "waves",
+      "custom_css": [
+        ".wave-animated-section {background-color: #1a1a1a;}"
+      ],
+      "name": "Animated Wave Divider",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "color_band": 60,
+        "wave1_color": "#1b4a3d",
+        "wave1_opacity": 28,
+        "front_wave_solid_floor": true,
+        "wave2_color": "#1b4a3d",
+        "wave2_opacity": 30,
+        "wave2_solid_floor": false,
+        "wave3_color": "#1b4a3d",
+        "wave3_opacity": 40,
+        "wave3_solid_floor": false,
+        "wave4_color": "#1b4a3d",
+        "wave4_opacity": 50,
+        "wave4_solid_floor": false,
+        "mobile_wave_height": 24,
+        "desktop_wave_height": 40,
+        "wave_speed": 13,
+        "flip_wave": false
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_CjtrHf": {
+          "type": "link_list",
+          "settings": {
+            "heading": "NAVIGATION",
+            "menu": "footer-navigation"
+          }
+        },
+        "link_list_XQLArY": {
+          "type": "link_list",
+          "settings": {
+            "heading": "CUSTOMER CARE",
+            "menu": "customer-care"
+          }
+        },
+        "brand_information_978yXB": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": false
+          }
+        }
+      },
+      "block_order": [
+        "link_list_CjtrHf",
+        "link_list_XQLArY",
+        "brand_information_978yXB"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "waves_PNYPRX",
+    "footer"
+  ]
+}

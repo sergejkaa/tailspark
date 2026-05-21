@@ -1,0 +1,293 @@
+{%- style -%}
+  .faq-section {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+  .faq-section__inner {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .faq-section__heading {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-weight: 700;
+    color: rgb(var(--color-foreground));
+  }
+  .faq-section__subheading {
+    text-align: center;
+    font-size: 1.4rem;
+    color: rgba(var(--color-foreground), 0.55);
+    margin-bottom: 48px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Category heading */
+  .faq-category {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(var(--color-foreground), 0.5);
+    padding: 6px 0 10px;
+    margin: 32px 0 8px;
+    border-bottom: 1.5px solid rgba(var(--color-foreground), 0.1);
+  }
+  .faq-category:first-of-type { margin-top: 0; }
+
+  /* Accordion items — same style as yny-accordion */
+  .faq-acc {
+    border: 1.5px solid rgba(0,0,0,0.13);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgb(var(--color-background));
+    margin-bottom: 8px;
+  }
+  .faq-acc__summary {
+    cursor: pointer;
+    padding: 14px 18px;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    color: rgb(var(--color-foreground));
+  }
+  .faq-acc__summary::-webkit-details-marker { display: none; }
+  .faq-acc__icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-left: 12px;
+    opacity: .5;
+    transition: transform .32s cubic-bezier(.22, 1, .36, 1), opacity .2s ease;
+  }
+  .faq-acc__icon::before,
+  .faq-acc__icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    right: 2px;
+    height: 1.5px;
+    border-radius: 999px;
+    background: currentColor;
+    transform: translateY(-50%);
+    transition: transform .32s cubic-bezier(.22, 1, .36, 1), opacity .2s ease;
+  }
+  .faq-acc__icon::after {
+    transform: translateY(-50%) rotate(90deg);
+  }
+  details.faq-acc[open] .faq-acc__icon {
+    transform: rotate(180deg);
+    opacity: .8;
+  }
+  .faq-acc.is-closing .faq-acc__icon {
+    transform: rotate(0deg);
+    opacity: .5;
+  }
+  details.faq-acc[open] .faq-acc__icon::after {
+    transform: translateY(-50%) rotate(0deg);
+    opacity: 0;
+  }
+  .faq-acc.is-closing .faq-acc__icon::after {
+    transform: translateY(-50%) rotate(90deg);
+    opacity: 1;
+  }
+  .faq-acc__content {
+    height: 0;
+    overflow: hidden;
+    transition: height var(--faq-acc-dur, 0.34s) cubic-bezier(.22, 1, .36, 1);
+    will-change: height;
+  }
+  .faq-acc.is-ready[open] .faq-acc__content { height: auto; }
+  .faq-acc__inner {
+    padding: 0 18px 16px;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    color: rgba(var(--color-foreground), 0.75);
+  }
+  .faq-acc__inner p { margin: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-acc__content, .faq-acc__icon,
+    .faq-acc__icon::before, .faq-acc__icon::after { transition: none !important; }
+  }
+{%- endstyle -%}
+
+<div class="faq-section color-{{ section.settings.color_scheme }}">
+  <div class="faq-section__inner">
+
+    {%- if section.settings.heading != blank -%}
+      <h1 class="faq-section__heading">{{ section.settings.heading | escape }}</h1>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="faq-section__subheading">{{ section.settings.subheading | escape }}</p>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'category' -%}
+          <h2 class="faq-category" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+
+        {%- when 'item' -%}
+          <details class="faq-acc" data-faq-accordion {{ block.shopify_attributes }}>
+            <summary class="faq-acc__summary">
+              <span>{{ block.settings.heading | escape }}</span>
+              <span class="faq-acc__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-acc__content">
+              <div class="faq-acc__inner rte">
+                {{ block.settings.content }}
+              </div>
+            </div>
+          </details>
+      {%- endcase -%}
+    {%- endfor -%}
+
+  </div>
+</div>
+
+<script>
+  (() => {
+    if (window.faqAccordionReady) return;
+    window.faqAccordionReady = true;
+
+    const calcDur = (h) => Math.min(600, Math.max(220, Math.round(h * 0.55)));
+
+    const openFaq = (el, content) => {
+      const dur = calcDur(content.scrollHeight);
+      content.style.setProperty('--faq-acc-dur', dur + 'ms');
+      el.open = true;
+      el.classList.remove('is-closing');
+      el.classList.add('is-animating');
+      content.style.height = '0px';
+      content.getBoundingClientRect();
+      content.style.height = content.scrollHeight + 'px';
+      setTimeout(() => {
+        if (el.open) content.style.height = 'auto';
+        el.classList.remove('is-animating');
+      }, dur);
+    };
+
+    const closeFaq = (el, content) => {
+      const dur = calcDur(content.scrollHeight);
+      content.style.setProperty('--faq-acc-dur', dur + 'ms');
+      el.classList.add('is-animating', 'is-closing');
+      content.style.height = content.scrollHeight + 'px';
+      content.getBoundingClientRect();
+      content.style.height = '0px';
+      setTimeout(() => {
+        el.open = false;
+        el.classList.remove('is-animating', 'is-closing');
+      }, dur);
+    };
+
+    const bind = (el) => {
+      if (!el || el.dataset.faqBound === 'true') return;
+      const summary = el.querySelector('.faq-acc__summary');
+      const content = el.querySelector('.faq-acc__content');
+      if (!summary || !content) return;
+      el.dataset.faqBound = 'true';
+      el.classList.add('is-ready');
+      content.style.height = el.open ? 'auto' : '0px';
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (el.classList.contains('is-animating')) return;
+        el.open ? closeFaq(el, content) : openFaq(el, content);
+      });
+    };
+
+    const init = (root = document) => root.querySelectorAll('[data-faq-accordion]').forEach(bind);
+
+    document.readyState === 'loading'
+      ? document.addEventListener('DOMContentLoaded', () => init(), { once: true })
+      : init();
+
+    document.addEventListener('shopify:section:load', (e) => init(e.target));
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Accordions",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently asked questions" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Tot ce trebuie să știi" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    {
+      "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px",
+      "label": "Padding top", "default": 60
+    },
+    {
+      "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px",
+      "label": "Padding bottom", "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category heading",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Category name", "default": "Category" }
+      ]
+    },
+    {
+      "type": "item",
+      "name": "FAQ item",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Question", "default": "Question goes here" },
+        { "type": "richtext", "id": "content", "label": "Answer", "default": "<p>Answer goes here.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "FAQ Accordions",
+      "blocks": [
+        { "type": "category", "settings": { "heading": "Delivery and shipping" } },
+        { "type": "item", "settings": { "heading": "How long does delivery take?", "content": "<p>Standard delivery to Romania takes 2-4 business days. Orders are processed and shipped the same day if placed before 2:00 PM.</p>" } },
+        { "type": "item", "settings": { "heading": "Is shipping free?", "content": "<p>Yes! We offer free shipping for orders over a certain threshold. The free shipping threshold is displayed in the notification bar at the top of the site.</p>" } },
+        { "type": "item", "settings": { "heading": "Which courier is used for delivery?", "content": "<p>We work with trusted couriers active throughout Romania. You will receive an SMS and an email with the tracking number immediately after shipment.</p>" } },
+        { "type": "item", "settings": { "heading": "Can I deliver outside Romania?", "content": "<p>We currently only deliver within Romania. International delivery is in preparation - follow us on social media for announcements.</p>" } },
+        { "type": "item", "settings": { "heading": "What do I do if my package is delayed?", "content": "<p>If your package has not arrived within the estimated time, contact us on WhatsApp or by email and we will check the status of your order for you immediately.</p>" } },
+        { "type": "category", "settings": { "heading": "Returns and refunds" } },
+        { "type": "item", "settings": { "heading": "Can I return a product?", "content": "<p>Yes. We accept returns within 14 days of receiving the order, in accordance with applicable law. The product must be unused and in its original packaging.</p>" } },
+        { "type": "item", "settings": { "heading": "How do I initiate a return?", "content": "<p>Contact us via email or WhatsApp with your order number and reason for return. We will send you instructions within 24 hours.</p>" } },
+        { "type": "item", "settings": { "heading": "How long does the refund take?", "content": "<p>After receiving and checking the returned product, the refund is processed within 5-7 business days, to the same card or bank account used for purchase.</p>" } },
+        { "type": "item", "settings": { "heading": "What do I do if I received a defective or wrong product?", "content": "<p>We apologize for the inconvenience! Contact us immediately with a photo of the product and your order number. We will replace or fully refund, at no cost to you.</p>" } },
+        { "type": "category", "settings": { "heading": "Doctor X Products — Facial Care" } },
+        { "type": "item", "settings": { "heading": "Are facial masks suitable for all skin types?", "content": "<p>Yes, our masks are formulated for all skin types, including sensitive skin. The active ingredients (Hyaluronic Acid, AHA, Aloe Vera) are selected for their effectiveness and high tolerance.</p>" } },
+        { "type": "item", "settings": { "heading": "How many times a week can I use the facial mask?", "content": "<p>We recommend 2-3 uses per week for optimal results. The HydroGlow mask is part of an 8-week protocol for visible and lasting results.</p>" } },
+        { "type": "item", "settings": { "heading": "How long do I leave the mask on my face?", "content": "<p>Between 15-20 minutes, depending on the type of mask. Full instructions are on the packaging and in the product description.</p>" } },
+        { "type": "item", "settings": { "heading": "Are the products suitable for a daily routine?", "content": "<p>The products are designed to fit easily into a daily care routine. Choose the product based on your needs and follow the usage instructions on the page or packaging.</p>" } },
+        { "type": "item", "settings": { "heading": "Are the ingredients safe? Do they contain parabens or harmful substances?", "content": "<p>Our formulas are free of parabens, sulfates, or irritants. Check the full list of ingredients on each product page.</p>" } },
+        { "type": "item", "settings": { "heading": "Can I use the mask if I am pregnant or breastfeeding?", "content": "<p>We recommend consulting a doctor before use during pregnancy or breastfeeding.</p>" } },
+        { "type": "category", "settings": { "heading": "Doctor X Oral Irrigator" } },
+        { "type": "item", "settings": { "heading": "How does an oral irrigator work?", "content": "<p>The irrigator uses a pressurized water jet that effectively cleans between teeth, below the gum line, and in areas that are difficult to reach with traditional brushing. It removes up to 99% of bacterial plaque.</p>" } },
+        { "type": "item", "settings": { "heading": "How is it different from traditional brushing?", "content": "<p>Traditional brushing only cleans the surface of the teeth. The Doctor X irrigator deeply cleans the interdental and gingival spaces, providing complete oral hygiene, similar to a visit to the dentist.</p>" } },
+        { "type": "item", "settings": { "heading": "Does it include replacement heads?", "content": "<p>Yes, the package includes 5 different heads for effective cleaning of all areas of the oral cavity - including a standard head, an orthodontic head and a gingival hygiene head.</p>" } },
+        { "type": "item", "settings": { "heading": "Is it recommended for braces wearers?", "content": "<p>Yes, the irrigator is great for people with fixed braces. The orthodontic head in the set is specially designed for cleaning around brackets.</p>" } },
+        { "type": "category", "settings": { "heading": "Produse 99% Beauty — Make-up" } },
+        { "type": "item", "settings": { "heading": "Are the sponges suitable for all types of foundation?", "content": "<p>Yes. The Ultra Sponge and Detail Sponge work perfectly with liquid, cream, BB cream or loose powder foundation. The special material absorbs minimal product and ensures even blending.</p>" } },
+        { "type": "item", "settings": { "heading": "Do the sponges contain latex?", "content": "<p>No. All 99% Beauty sponges are 100% latex-free - safe even for people with latex sensitivities.</p>" } },
+        { "type": "item", "settings": { "heading": "How to clean sponges?", "content": "<p>Rinse the sponge with warm water and neutral soap or shampoo after each use. Let it dry naturally. Avoid squeezing hard.</p>" } },
+        { "type": "item", "settings": { "heading": "Is the brush set vegan?", "content": "<p>Yes. The Set of 6 Professional Brushes by Lacramioara Hamza is 100% Vegan and Cruelty-free. The brushes are made of innovative corn fiber - softer and more performing than classic synthetic fiber.</p>" } },
+        { "type": "item", "settings": { "heading": "Is the hair mask suitable for color-treated hair?", "content": "<p>Yes. Ultra Hair Mask is specially formulated for damaged, dry or color-treated hair. Hydrolyzed Keratin and Lactobacillus Ferment repair and protect the hair fiber, regardless of previous treatments.</p>" } },
+        { "type": "category", "settings": { "heading": "Orders and payments" } },
+        { "type": "item", "settings": { "heading": "What payment methods do you accept?", "content": "<p>We accept card payment (Visa, Mastercard), Apple Pay, Google Pay and cash on delivery (cash on delivery).</p>" } },
+        { "type": "item", "settings": { "heading": "Can I change or cancel an order?", "content": "<p>You can change or cancel your order within 2 hours of placing it, before it is processed. Contact us immediately on WhatsApp at +40 742 653 650.</p>" } },
+        { "type": "item", "settings": { "heading": "Is my order secure? Is my data protected?", "content": "<p>Yes. Our site is SSL secured. We do not store your card details - payment is processed through PCI DSS certified platforms.</p>" } },
+        { "type": "item", "settings": { "heading": "Will I receive an invoice for my order?", "content": "<p>Yes, the invoice is automatically sent to your email upon order confirmation.</p>" } },
+        { "type": "category", "settings": { "heading": "Bulk orders" } },
+        { "type": "item", "settings": { "heading": "Do you offer special prices for large orders?", "content": "<p>Yes! All our products have package prices available directly on the site (5, 10, 20 pieces). For very large orders or business collaborations, contact us directly.</p>" } },
+        { "type": "item", "settings": { "heading": "Are there subscriptions or recurring orders?", "content": "<p>We currently do not offer automatic subscriptions, but you can easily order at any time. Follow us for exclusive promotions for newsletter subscribers.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

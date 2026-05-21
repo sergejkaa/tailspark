@@ -1,0 +1,625 @@
+/* =============================================================================
+   HERO ELITE — section-hero-elite.css
+   ============================================================================= */
+
+.hero-elite-section { margin: 0; padding: 0; position: relative; z-index: 1; }
+
+/* ─── Root ─── */
+.hero-elite {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+}
+
+/* ─── HEIGHT ─── */
+.hero-elite { min-height: var(--hero-height-mobile, 70vh); }
+
+@media screen and (min-width: 750px) {
+  .hero-elite { min-height: var(--hero-height-desktop, 85vh); }
+}
+
+/* ─── MEDIA LAYER ─── */
+.hero-elite__media-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-elite__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-elite__media--desktop { display: none; }
+.hero-elite__media--mobile  { display: block; }
+
+@media screen and (min-width: 750px) {
+  .hero-elite__media--desktop { display: block; }
+  .hero-elite__media--mobile  { display: none; }
+}
+.hero-elite--no-separate-mobile .hero-elite__media--desktop { display: block; }
+
+.hero-elite__img,
+.hero-elite__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-elite__placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── IMAGE BEHAVIORS ─── */
+.hero-elite__media--behavior-zoom-in .hero-elite__img,
+.hero-elite__media--behavior-zoom-in .hero-elite__video {
+  transform: scale(1.12);
+  transition: transform 10s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+.hero-elite--loaded .hero-elite__media--behavior-zoom-in .hero-elite__img,
+.hero-elite--loaded .hero-elite__media--behavior-zoom-in .hero-elite__video {
+  transform: scale(1);
+}
+
+.hero-elite__media--behavior-ambient .hero-elite__img,
+.hero-elite__media--behavior-ambient .hero-elite__video {
+  animation: hero-ambient 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes hero-ambient {
+  0%   { transform: scale(1.06) translate(0%,    0%); }
+  25%  { transform: scale(1.09) translate(-1.2%, -0.6%); }
+  50%  { transform: scale(1.07) translate(0.8%,   0.6%); }
+  75%  { transform: scale(1.09) translate(-0.5%,  1.0%); }
+  100% { transform: scale(1.06) translate(0.7%,  -0.4%); }
+}
+
+.hero-elite__media--behavior-fixed {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 100vh;
+}
+
+.hero-elite__media--behavior-parallax .hero-elite__img,
+.hero-elite__media--behavior-parallax .hero-elite__video {
+  transform: scale(1.12) translateY(0);
+  will-change: transform;
+}
+
+/* ─── OVERLAY ─── */
+/* Overlay lives inside media-wrap, rendered via inline style.
+   This CSS is a safety-net fallback only. */
+.hero-elite__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ─── CONTENT OUTER ─── */
+.hero-elite__content-outer {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: inherit;
+  padding: var(--hero-content-padding, 48px);
+  pointer-events: none;
+}
+
+/* Desktop positions — vertical */
+.hero-elite--pos-top-left    .hero-elite__content-outer,
+.hero-elite--pos-top-center  .hero-elite__content-outer,
+.hero-elite--pos-top-right   .hero-elite__content-outer  { align-items: flex-start; }
+
+.hero-elite--pos-bottom-left   .hero-elite__content-outer,
+.hero-elite--pos-bottom-center .hero-elite__content-outer,
+.hero-elite--pos-bottom-right  .hero-elite__content-outer { align-items: flex-end; }
+
+/* Desktop positions — horizontal */
+.hero-elite--pos-top-left    .hero-elite__content-outer,
+.hero-elite--pos-middle-left .hero-elite__content-outer,
+.hero-elite--pos-bottom-left .hero-elite__content-outer   { justify-content: flex-start; }
+
+.hero-elite--pos-top-right    .hero-elite__content-outer,
+.hero-elite--pos-middle-right .hero-elite__content-outer,
+.hero-elite--pos-bottom-right .hero-elite__content-outer  { justify-content: flex-end; }
+
+/* Mobile positions (override desktop at ≤749px) */
+@media screen and (max-width: 749px) {
+  /* vertical */
+  .hero-elite--mobile-pos-top-left    .hero-elite__content-outer,
+  .hero-elite--mobile-pos-top-center  .hero-elite__content-outer,
+  .hero-elite--mobile-pos-top-right   .hero-elite__content-outer  { align-items: flex-start !important; }
+
+  .hero-elite--mobile-pos-middle-left   .hero-elite__content-outer,
+  .hero-elite--mobile-pos-middle-center .hero-elite__content-outer,
+  .hero-elite--mobile-pos-middle-right  .hero-elite__content-outer { align-items: center !important; }
+
+  .hero-elite--mobile-pos-bottom-left   .hero-elite__content-outer,
+  .hero-elite--mobile-pos-bottom-center .hero-elite__content-outer,
+  .hero-elite--mobile-pos-bottom-right  .hero-elite__content-outer { align-items: flex-end !important; }
+
+  /* horizontal */
+  .hero-elite--mobile-pos-top-left    .hero-elite__content-outer,
+  .hero-elite--mobile-pos-middle-left .hero-elite__content-outer,
+  .hero-elite--mobile-pos-bottom-left .hero-elite__content-outer   { justify-content: flex-start !important; }
+
+  .hero-elite--mobile-pos-top-center    .hero-elite__content-outer,
+  .hero-elite--mobile-pos-middle-center .hero-elite__content-outer,
+  .hero-elite--mobile-pos-bottom-center .hero-elite__content-outer { justify-content: center !important; }
+
+  .hero-elite--mobile-pos-top-right    .hero-elite__content-outer,
+  .hero-elite--mobile-pos-middle-right .hero-elite__content-outer,
+  .hero-elite--mobile-pos-bottom-right .hero-elite__content-outer  { justify-content: flex-end !important; }
+}
+
+/* ─── CONTENT BOX ─── */
+.hero-elite__content-box {
+  width: 100%;
+  max-width: var(--hero-content-max-width, 760px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--hero-content-gap, 24px);
+  background: transparent !important;
+  pointer-events: auto;
+}
+.hero-elite--has-box .hero-elite__content-box {
+  background: rgb(var(--color-background)) !important;
+  padding: 3.6rem 4rem;
+  border-radius: 2px;
+}
+
+/* ─── TEXT ALIGNMENT — desktop ─── */
+.hero-elite--align-center .hero-elite__content-box { text-align: center; align-items: center; }
+.hero-elite--align-left   .hero-elite__content-box { text-align: left;   align-items: flex-start; }
+.hero-elite--align-right  .hero-elite__content-box { text-align: right;  align-items: flex-end; }
+
+/* ─── TEXT ALIGNMENT — mobile ─── */
+@media screen and (max-width: 749px) {
+  .hero-elite--mobile-align-center .hero-elite__content-box { text-align: center !important; align-items: center !important; }
+  .hero-elite--mobile-align-left   .hero-elite__content-box { text-align: left !important;   align-items: flex-start !important; }
+  .hero-elite--mobile-align-right  .hero-elite__content-box { text-align: right !important;  align-items: flex-end !important; }
+}
+
+/* ─── ROUNDED BOTTOM ─── */
+.hero-elite--rounded-bottom {
+  border-bottom-left-radius: 2.4rem;
+  border-bottom-right-radius: 2.4rem;
+}
+
+/* ─── EYEBROW ─── */
+.hero-elite__eyebrow {
+  display: inline-block;
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+/* ─── HEADING ─── */
+.hero-elite__heading { margin: 0; line-height: 1.05; }
+
+/* ─── SUBHEADING ─── */
+.hero-elite__subheading { margin: 0; opacity: 0.88; }
+
+/* ─── BODY TEXT ─── */
+.hero-elite__text { margin: 0; max-width: 56ch; }
+
+/* ─── DIVIDER ─── */
+.hero-elite__divider {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  opacity: 0.5;
+}
+.hero-elite__divider-line { flex: 1; height: 1px; background: currentColor; }
+.hero-elite__divider-text {
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ─── BUTTONS WRAPPER ─── */
+.hero-elite__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 0.4rem;
+}
+.hero-elite--align-center .hero-elite__buttons { justify-content: center; }
+.hero-elite--align-right  .hero-elite__buttons { justify-content: flex-end; }
+
+@media screen and (max-width: 749px) {
+  .hero-elite--mobile-align-center .hero-elite__buttons { justify-content: center !important; }
+  .hero-elite--mobile-align-left   .hero-elite__buttons { justify-content: flex-start !important; }
+  .hero-elite--mobile-align-right  .hero-elite__buttons { justify-content: flex-end !important; }
+  .hero-elite__buttons { flex-direction: column; gap: 1rem; }
+}
+
+/* ─── HERO BUTTONS — custom styles ─── */
+/*
+  Each button uses CSS custom properties:
+    --hbtn-bg   : background / border color  (set inline via Liquid)
+    --hbtn-text : text color                 (set inline via Liquid)
+*/
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+  position: relative;
+}
+.hero-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+.hero-btn:active { transform: translateY(0); opacity: 1; }
+
+/* SOLID */
+.hero-btn--solid {
+  background: var(--hbtn-bg, #fff);
+  color: var(--hbtn-text, #111);
+  padding: 1.4rem 3.2rem;
+  border-radius: 2px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.18);
+  letter-spacing: 0.04em;
+}
+.hero-btn--solid:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,.25);
+  opacity: 1;
+}
+
+/* OUTLINE */
+.hero-btn--outline {
+  background: transparent;
+  color: var(--hbtn-bg, #fff);
+  padding: 1.3rem 3.0rem;
+  border: 1.5px solid var(--hbtn-bg, #fff);
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+.hero-btn--outline:hover {
+  background: var(--hbtn-bg, #fff);
+  color: var(--hbtn-text, #111);
+  opacity: 1;
+}
+
+/* PILL SOLID */
+.hero-btn--pill-solid {
+  background: var(--hbtn-bg, #fff);
+  color: var(--hbtn-text, #111);
+  padding: 1.3rem 3.6rem;
+  border-radius: 100px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.18);
+  letter-spacing: 0.04em;
+}
+.hero-btn--pill-solid:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,.28);
+  opacity: 1;
+}
+
+/* PILL OUTLINE */
+.hero-btn--pill-outline {
+  background: transparent;
+  color: var(--hbtn-bg, #fff);
+  padding: 1.2rem 3.4rem;
+  border: 1.5px solid var(--hbtn-bg, #fff);
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+.hero-btn--pill-outline:hover {
+  background: var(--hbtn-bg, #fff);
+  color: var(--hbtn-text, #111);
+  opacity: 1;
+}
+
+/* GHOST */
+.hero-btn--ghost {
+  background: transparent;
+  color: var(--hbtn-bg, #fff);
+  padding: 1.1rem 2.4rem;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 2px;
+  font-size: 1.15rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero-btn--ghost:hover {
+  border-color: var(--hbtn-bg, #fff);
+  background: rgba(255,255,255,0.08);
+  opacity: 1;
+}
+
+/* UNDERLINE */
+.hero-btn--underline {
+  background: transparent;
+  color: var(--hbtn-bg, #fff);
+  padding: 0.6rem 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--hbtn-bg, #fff);
+  border-radius: 0;
+  transition: letter-spacing 0.3s ease, opacity 0.25s ease;
+}
+.hero-btn--underline:hover {
+  letter-spacing: 0.12em;
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── SCROLL INDICATOR — anchored to bottom center ─── */
+.hero-elite__scroll-anchor {
+  position: absolute;
+  bottom: 2.8rem;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Content clearance — prevent overlap with scroll indicator */
+.hero-elite--has-scroll .hero-elite__content-outer {
+  padding-bottom: calc(var(--hero-scroll-size-desktop, 44px) + 4.5rem);
+}
+
+.hero-elite__scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hero-scroll-size-desktop, 44px);
+  height: var(--hero-scroll-size-desktop, 44px);
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.25s ease;
+}
+.hero-elite__scroll-btn svg {
+  width: calc(var(--hero-scroll-size-desktop, 44px) * 0.48);
+  height: calc(var(--hero-scroll-size-desktop, 44px) * 0.48);
+  will-change: transform, opacity;
+}
+.hero-elite__scroll-btn:hover { opacity: 0.65; }
+.hero-elite__scroll-anchor:has(.hero-elite__scroll-btn:hover) svg {
+  animation-play-state: paused;
+}
+
+/* ── Animation: bounce (default) ── */
+.hero-elite__scroll-anchor[data-scroll-anim="bounce"] .hero-elite__scroll-btn svg,
+.hero-elite__scroll-anchor:not([data-scroll-anim]) .hero-elite__scroll-btn svg {
+  animation: hero-scroll-bounce 3s ease-in-out infinite;
+}
+@keyframes hero-scroll-bounce {
+  0%, 100% { transform: translateY(-2px); opacity: 0.5; }
+  50%       { transform: translateY(4px);  opacity: 1;   }
+}
+
+/* ── Animation: pulse ── */
+.hero-elite__scroll-anchor[data-scroll-anim="pulse"] .hero-elite__scroll-btn {
+  animation: hero-scroll-pulse 2.2s ease-in-out infinite;
+}
+@keyframes hero-scroll-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.7; }
+  50%       { transform: scale(1.15); opacity: 1;   }
+}
+
+/* ── Animation: blink ── */
+.hero-elite__scroll-anchor[data-scroll-anim="blink"] .hero-elite__scroll-btn {
+  animation: hero-scroll-blink 2s ease-in-out infinite;
+}
+@keyframes hero-scroll-blink {
+  0%, 100% { opacity: 1;   }
+  50%       { opacity: 0.2; }
+}
+
+
+/* ─── RATING BADGE WRAPPER ─── */
+.hero-elite__rating-wrap {
+  display: flex;
+}
+.hero-elite--align-center .hero-elite__rating-wrap { justify-content: center; }
+.hero-elite--align-right  .hero-elite__rating-wrap { justify-content: flex-end; }
+
+@media screen and (max-width: 749px) {
+  .hero-elite--mobile-align-center .hero-elite__rating-wrap { justify-content: center; }
+  .hero-elite--mobile-align-left   .hero-elite__rating-wrap { justify-content: flex-start; }
+  .hero-elite--mobile-align-right  .hero-elite__rating-wrap { justify-content: flex-end; }
+}
+
+/* ─── ENTRANCE ANIMATIONS ─── */
+.hero-elite__anim {
+  opacity: 0;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-duration: var(--hero-anim-duration, 900ms);
+}
+
+@keyframes hero-fade-up    { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes hero-fade-in    { from { opacity: 0; }                               to { opacity: 1; } }
+@keyframes hero-fade-left  { from { opacity: 0; transform: translateX(50px); }  to { opacity: 1; transform: none; } }
+@keyframes hero-fade-right { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: none; } }
+@keyframes hero-zoom-in    { from { opacity: 0; transform: scale(0.88); }       to { opacity: 1; transform: none; } }
+
+.hero-elite--loaded.hero-elite--anim-fade-up    .hero-elite__anim { animation-name: hero-fade-up; }
+.hero-elite--loaded.hero-elite--anim-fade-in    .hero-elite__anim { animation-name: hero-fade-in; }
+.hero-elite--loaded.hero-elite--anim-fade-left  .hero-elite__anim { animation-name: hero-fade-left; }
+.hero-elite--loaded.hero-elite--anim-fade-right .hero-elite__anim { animation-name: hero-fade-right; }
+.hero-elite--loaded.hero-elite--anim-zoom-in    .hero-elite__anim { animation-name: hero-zoom-in; }
+
+/* ─── TEXT BELOW ON MOBILE ─── */
+@media screen and (max-width: 749px) {
+  .hero-elite--mobile-text-below {
+    flex-direction: column;
+    min-height: unset;
+  }
+  .hero-elite--mobile-text-below .hero-elite__media-wrap {
+    position: relative;
+    height: 56vw;
+    min-height: 260px;
+  }
+  .hero-elite--mobile-text-below .hero-elite__content-outer {
+    position: relative;
+    min-height: unset;
+    padding: 3.2rem 1.6rem;
+  }
+}
+
+/* ─── MOBILE GENERAL ─── */
+@media screen and (max-width: 749px) {
+  .hero-elite__content-outer { padding: 2.4rem 1.6rem; }
+  .hero-elite--has-box .hero-elite__content-box { padding: 2.8rem 2.4rem; }
+  .hero-elite__content-box { gap: var(--hero-content-gap-mobile, 16px); }
+  .hero-elite__scroll-anchor { bottom: 2rem; }
+  .hero-elite--has-scroll .hero-elite__content-outer {
+    padding-bottom: calc(var(--hero-scroll-size-mobile, 40px) + 4rem);
+  }
+  .hero-elite__scroll-btn {
+    width: var(--hero-scroll-size-mobile, 40px);
+    height: var(--hero-scroll-size-mobile, 40px);
+  }
+  .hero-elite__scroll-btn svg {
+    width: calc(var(--hero-scroll-size-mobile, 40px) * 0.48);
+    height: calc(var(--hero-scroll-size-mobile, 40px) * 0.48);
+  }
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-elite__anim { animation: none; opacity: 1; }
+  .hero-elite__media--behavior-ambient .hero-elite__img,
+  .hero-elite__media--behavior-ambient .hero-elite__video,
+  .hero-elite__media--behavior-zoom-in .hero-elite__img,
+  .hero-elite__media--behavior-zoom-in .hero-elite__video {
+    animation: none; transform: none; transition: none;
+  }
+  .hero-elite__scroll-btn svg { animation: none; }
+  .hero-btn { transition: none; }
+}
+
+/* =============================================================================
+   INLINE RATING BLOCK
+   ============================================================================= */
+
+.hero-elite__inline-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: nowrap;
+}
+
+.hero-elite__stars {
+  font-size: var(--ir-stars-desktop, 1.8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.hero-elite__rating-inline-text {
+  font-size: var(--ir-font-desktop, 1.35rem);
+  line-height: 1.4;
+}
+
+.hero-elite__rating-sep {
+  opacity: 0.5;
+}
+
+/* desktop/mobile number variants */
+.hero-elite__num--mobile { display: none; }
+@media screen and (max-width: 749px) {
+  .hero-elite__num--desktop { display: none; }
+  .hero-elite__num--mobile  { display: inline; }
+
+  .hero-elite__stars { font-size: var(--ir-stars-mobile, 1.4rem); }
+  .hero-elite__rating-inline-text { font-size: var(--ir-font-mobile, 12px); letter-spacing: -0.01em; }
+}
+
+/* =============================================================================
+   TRUST BADGES ROW BLOCK
+   ============================================================================= */
+
+/* Row wrapper — column on mobile, row on desktop */
+.hero-elite__trust-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-elite__trust-row--mobile-inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-elite__trust-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+
+/* Individual badge item */
+.hero-elite__trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--trust-font-desktop, 1.2rem);
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 749px) {
+  .hero-elite__trust-item {
+    font-size: var(--trust-font-mobile, 1.1rem);
+  }
+}
+
+.hero-elite__trust-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.hero-elite__trust-text {
+  line-height: 1.3;
+}
+
+.hero-elite__trust-info {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+  color: inherit;
+}
+.hero-elite__trust-info:hover { opacity: 1; }

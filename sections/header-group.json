@@ -1,0 +1,103 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "FREE SHIPPING ON ORDERS OVER $50",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0"
+      ],
+      "disabled": true,
+      "settings": {
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-3",
+        "show_line_separator": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-center",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "scheme-2",
+        "menu_color_scheme": "scheme-3",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "active_menu_text_decoration_color": "#ffd9b3",
+        "active_menu_text_decoration_thickness": "1.5px",
+        "active_menu_text_underline_offset": "4px",
+        "cart_count_bubble_bg_color": "#ffd9b3",
+        "cart_count_bubble_text_color": "#000000",
+        "margin_bottom": 0,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "header_island_86hHqf": {
+      "type": "header-island",
+      "disabled": true,
+      "name": "Island Header",
+      "settings": {
+        "logo": "shopify://shop_images/NaturenA_4.png",
+        "logo_width": 120,
+        "logo_width_mobile": 90,
+        "show_shop_name": true,
+        "menu": "main-menu",
+        "island_width": "page-width",
+        "logo_position": "left",
+        "overlap_pages": "homepage",
+        "bg_style": "glass",
+        "border_radius": "pill",
+        "shadow": "medium",
+        "top_offset": 12,
+        "top_offset_mobile": 10,
+        "padding_v": 10,
+        "padding_h": 16,
+        "sticky_type": "reveal-on-scroll-up",
+        "entrance_animation": "slide-down",
+        "island_bg_color": "#ffffff",
+        "island_text_color": "#1a1a1a",
+        "dropdown_bg_color": "#ffffff",
+        "dropdown_text_color": "#1a1a1a",
+        "badge_bg_color": "#10b981",
+        "badge_text_color": "#000000",
+        "show_search": true,
+        "show_account": true,
+        "show_cart": true,
+        "drawer_chevron_style": "plus"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "header_island_86hHqf"
+  ]
+}

@@ -1,0 +1,308 @@
+{% liquid
+  assign block_id = block.id | default: 'static'
+  assign badge_id = 'glass-rating-' | append: block_id
+
+  assign prefix = block.settings.badge_prefix | default: 'Rated'
+  assign rating_value = block.settings.rating_value | default: '4.8'
+  assign connector = block.settings.badge_connector | default: 'by'
+  assign customers_count = block.settings.customers_count | default: '10,000+'
+  assign customers_label = block.settings.customers_label | default: 'Happy Customers'
+
+  assign animation_color_fallback = block.settings.animation_color | default: '#669CD6'
+  assign tint1_base = block.settings.animation_color_1 | default: animation_color_fallback
+  assign tint2_base = block.settings.animation_color_2 | default: animation_color_fallback
+  assign tint1 = tint1_base | color_modify: 'alpha', block.settings.animation_color_1_opacity | default: 0.35
+  assign tint2 = tint2_base | color_modify: 'alpha', block.settings.animation_color_2_opacity | default: 0.22
+  assign glass_color = block.settings.glass_color | default: '#ffffff'
+  assign glassA = glass_color | color_modify: 'alpha', 0.14
+  assign glassB = glass_color | color_modify: 'alpha', 0.08
+  assign ring = block.settings.ring_color | default: '#ffffff' | color_modify: 'alpha', 0.18
+  assign avatar_ring = block.settings.avatar_ring_color | default: '#ffffff' | color_modify: 'alpha', 0.68
+  assign shadow = block.settings.shadow_color | default: '#000000' | color_modify: 'alpha', block.settings.shadow_opacity | default: 0.35
+  assign text_color = block.settings.text_color | default: '#ffffff'
+  assign star_color = block.settings.star_color | default: '#FFC300'
+  assign rating_color = block.settings.rating_value_color | default: text_color
+  assign rating_weight = block.settings.rating_value_weight | default: '500'
+  assign count_color = block.settings.customers_count_color | default: text_color
+  assign count_weight = block.settings.customers_count_weight | default: '500'
+  assign body_weight = block.settings.font_weight_text | default: 400
+
+  assign badge_h_desktop = block.settings.badge_height_desktop | default: 36
+  assign badge_h_tablet = block.settings.badge_height_tablet | default: 34
+  assign badge_h_mobile = block.settings.badge_height_mobile | default: 30
+
+  assign pad_desktop = block.settings.padding_horizontal_desktop | default: 16
+  assign pad_tablet = block.settings.padding_horizontal_tablet | default: 14
+  assign pad_mobile = block.settings.padding_horizontal_mobile | default: 12
+
+  assign gap_desktop = block.settings.gap_desktop | default: 10
+  assign gap_tablet = block.settings.gap_tablet | default: 9
+  assign gap_mobile = block.settings.gap_mobile | default: 8
+
+  assign font_desktop = block.settings.font_size_desktop | default: 14.5
+  assign font_tablet = block.settings.font_size_tablet | default: 13.5
+  assign font_mobile = block.settings.font_size_mobile | default: 12
+  assign font_xs = block.settings.font_size_xs | default: 11
+
+  assign avatar_desktop = block.settings.avatar_size_desktop | default: 26
+  assign avatar_tablet = block.settings.avatar_size_tablet | default: 24
+  assign avatar_mobile = block.settings.avatar_size_mobile | default: 22
+
+  assign xs_min = block.settings.xs_min_manual | default: 0 | plus: 0
+  assign xs_max = block.settings.xs_max_manual | default: 380 | plus: 0
+  assign mobile_min = block.settings.mobile_min_manual | default: 381 | plus: 0
+  assign mobile_max = block.settings.mobile_max_manual | default: 759 | plus: 0
+  assign tablet_min = block.settings.tablet_min_manual | default: 760 | plus: 0
+  assign tablet_max = block.settings.tablet_max_manual | default: 1180 | plus: 0
+  assign desktop_min = block.settings.desktop_min_manual | default: 1280 | plus: 0
+
+  assign animation_speed = block.settings.animation_speed | default: 8
+
+  assign hide_avatars_mobile = block.settings.hide_avatars_mobile | default: false
+  assign hide_avatars_tablet = block.settings.hide_avatars_tablet | default: false
+  assign hide_avatars_xs = block.settings.hide_avatars_xs | default: true
+  assign hide_avatars_desktop = block.settings.hide_avatars_desktop | default: false
+  assign hide_star_xs = block.settings.hide_star_xs | default: false
+  assign use_default_avatars = block.settings.use_default_avatars | default: true
+
+  capture avatar_placeholder_svg
+    echo '<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">'
+    echo '<defs>'
+    echo '<linearGradient id="g" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">'
+    echo '<stop stop-color="' | append: tint1_base | append: '"/>'
+    echo '<stop offset="1" stop-color="' | append: tint2_base | append: '"/>'
+    echo '</linearGradient>'
+    echo '</defs>'
+    echo '<rect width="96" height="96" rx="48" fill="url(#g)"/>'
+    echo '<text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui" font-size="38" font-weight="700" fill="#ffffff">★</text>'
+    echo '</svg>'
+  endcapture
+  assign avatar_placeholder = 'data:image/svg+xml;utf8,' | append: avatar_placeholder_svg | url_encode
+%}
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div id="{{ badge_id }}" class="gsap-item rating-badge badge-animated" {% if block %}{{ block.shopify_attributes }}{% endif %}>
+  <div class="avatars" aria-hidden="true">
+    {% for i in (1..4) %}
+      {% case i %}
+        {% when 1 %}
+          {% assign avatar = block.settings.avatar_1 %}
+          {% assign alt = block.settings.avatar_1_alt %}
+          {% assign fallback = '1.webp' %}
+        {% when 2 %}
+          {% assign avatar = block.settings.avatar_2 %}
+          {% assign alt = block.settings.avatar_2_alt %}
+          {% assign fallback = '6.webp' %}
+        {% when 3 %}
+          {% assign avatar = block.settings.avatar_3 %}
+          {% assign alt = block.settings.avatar_3_alt %}
+          {% assign fallback = '7.webp' %}
+        {% else %}
+          {% assign avatar = block.settings.avatar_4 %}
+          {% assign alt = block.settings.avatar_4_alt %}
+          {% assign fallback = '8.webp' %}
+      {% endcase %}
+      {% if alt == blank %}{% assign alt = 'Customer photo ' | append: i %}{% endif %}
+
+      {% if avatar != blank %}
+        {% assign img_src = avatar | image_url: width: 96 %}
+      {% elsif use_default_avatars %}
+        {% assign img_src = fallback | asset_url %}
+      {% else %}
+        {% assign img_src = '' %}
+      {% endif %}
+
+      {% if img_src != '' %}
+        <img src="{{ img_src }}" alt="{{ alt | escape }}" loading="lazy" onerror="this.onerror=null;this.src='{{ avatar_placeholder }}';">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <p>
+    {{ prefix }}
+    <strong class="hi rating-value">{{ rating_value }}</strong>
+    <svg class="star" viewBox="0 0 24 24" role="img" aria-label="Rating star">
+      <path d="M12 2L14.9 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L9.1 8.26L12 2Z"/>
+    </svg>
+    {{ connector }}
+    <strong class="hi customers-count">{{ customers_count }}</strong>
+    {{ customers_label }}
+  </p>
+</div>
+
+<style>
+#{{ badge_id }}{
+  margin:0;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:var(--gap);
+  height:var(--badge-h);
+  padding-inline:var(--pad-x);
+  border-radius:999px;
+  overflow:hidden;
+  box-sizing:border-box;
+  background:
+    linear-gradient(90deg,
+      {{ glassA }} 0%,
+      {{ glassB }} 20%,
+      {{ tint1 }} 40%,
+      {{ glassB }} 60%,
+      {{ tint2 }} 80%,
+      {{ glassA }} 100%);
+  background-size:220% 100%;
+  animation: badge-bg-move {{ animation_speed }}s ease-in-out infinite;
+  border:1px solid {{ ring }};
+  box-shadow:
+    inset 0 0 0 1px {{ tint1_base | color_modify: 'alpha', 0.18 }},
+    0 2px 10px {{ shadow }};
+  color:{{ text_color }};
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:var(--font-size);
+  font-weight:{{ body_weight }};
+  line-height:1.15;
+  white-space:nowrap;
+  transition: transform 220ms cubic-bezier(.22,.61,.36,1), box-shadow 220ms ease, background-position 220ms ease;
+  will-change: transform, box-shadow, background-position;
+  backface-visibility:hidden;
+  transform:translateZ(0);
+
+  --badge-h: {{ badge_h_desktop }}px;
+  --pad-x : {{ pad_desktop }}px;
+  --gap   : {{ gap_desktop }}px;
+  --font-size: {{ font_desktop }}px;
+  --avatar-size: {{ avatar_desktop }}px;
+}
+
+#{{ badge_id }}::after{
+  content:"";
+  position:absolute;
+  inset:-25% -15%;
+  background:
+    radial-gradient(60% 120% at 0% 50%, {{ text_color | color_modify: 'alpha', 0.25 }}, transparent 70%),
+    radial-gradient(55% 110% at 100% 50%, {{ tint1_base | color_modify: 'alpha', 0.28 }}, transparent 70%);
+  filter:blur(3px);
+  opacity:.45;
+  animation:sheen-drift 9s ease-in-out infinite;
+  pointer-events:none;
+}
+
+#{{ badge_id }} p{
+  position:relative;
+  z-index:1;
+  margin:0;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+#{{ badge_id }} .hi{
+  letter-spacing:.08px;
+}
+
+#{{ badge_id }} .rating-value{
+  font-weight:{{ rating_weight }};
+  color:{{ rating_color }};
+}
+
+#{{ badge_id }} .customers-count{
+  font-weight:{{ count_weight }};
+  color:{{ count_color }};
+}
+
+#{{ badge_id }} .avatars{
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+  position:relative;
+  z-index:1;
+}
+
+#{{ badge_id }} .avatars img{
+  width:var(--avatar-size);
+  height:var(--avatar-size);
+  border-radius:50%;
+  border:1.5px solid {{ avatar_ring }};
+  margin-left:-7px;
+  box-shadow:0 0 0 1px {{ glassA }};
+  object-fit:cover;
+  background:{{ glassB }};
+}
+
+#{{ badge_id }} .avatars img:first-child{margin-left:0;}
+
+#{{ badge_id }} .star{
+  width:calc(var(--font-size) * 0.95);
+  height:calc(var(--font-size) * 0.95);
+  flex-shrink:0;
+}
+
+#{{ badge_id }} .star path{fill:{{ star_color }};}
+
+@keyframes badge-bg-move{
+  0%{background-position:0% 0%}
+  50%{background-position:100% 0%}
+  100%{background-position:0% 0%}
+}
+@keyframes sheen-drift{
+  0%{transform:translateX(-6%);opacity:.35}
+  50%{transform:translateX(6%);opacity:.5}
+  100%{transform:translateX(-6%);opacity:.35}
+}
+
+/* Tablet (iPad/Air & small laptops) */
+@media (max-width: {{ tablet_max }}px) and (min-width: {{ tablet_min }}px){
+  #{{ badge_id }}{
+    --badge-h: {{ badge_h_tablet }}px;
+    --pad-x : {{ pad_tablet }}px;
+    --gap   : {{ gap_tablet }}px;
+    --font-size: {{ font_tablet }}px;
+    --avatar-size: {{ avatar_tablet }}px;
+  }
+  {% if hide_avatars_tablet %}
+  #{{ badge_id }} .avatars{display:none;}
+  {% endif %}
+}
+
+/* Mobile */
+@media (max-width: {{ mobile_max }}px) and (min-width: {{ mobile_min }}px){
+  #{{ badge_id }}{
+    --badge-h: {{ badge_h_mobile }}px;
+    --pad-x : {{ pad_mobile }}px;
+    --gap   : {{ gap_mobile }}px;
+    --font-size: {{ font_mobile }}px;
+    --avatar-size: {{ avatar_mobile }}px;
+  }
+  {% if hide_avatars_mobile %}
+  #{{ badge_id }} .avatars{display:none;}
+  {% endif %}
+}
+
+/* Mobile avatar visibility fallback (covers widths below mobile_min too) */
+@media (max-width: {{ mobile_max }}px){
+  {% if hide_avatars_mobile %}
+  #{{ badge_id }} .avatars{display:none;}
+  {% endif %}
+}
+
+/* Extra-small screens */
+@media (max-width: {{ xs_max }}px) and (min-width: {{ xs_min }}px){
+  #{{ badge_id }}{
+    --font-size: {{ font_xs }}px;
+    white-space:normal;
+  }
+  {% if hide_avatars_xs %}
+  #{{ badge_id }} .avatars{display:none;}
+  {% endif %}
+  {% if hide_star_xs %}
+  #{{ badge_id }} .star{display:none;}
+  {% endif %}
+}
+
+/* Desktop specific visibility */
+@media (min-width: {{ desktop_min }}px){
+  {% if hide_avatars_desktop %}
+  #{{ badge_id }} .avatars{display:none;}
+  {% endif %}
+}
+</style>

@@ -1,0 +1,290 @@
+{%- liquid
+  assign max_features = 8
+  assign requested_features = block.settings.visible_items | default: 4
+  assign requested_features = requested_features | at_most: max_features
+  assign shown_features = 0
+
+  assign glass_bg_alpha = block.settings.glass_background_opacity | times: 0.01
+  assign glass_border_alpha = block.settings.glass_border_opacity | times: 0.01
+  assign shadow_alpha = block.settings.card_shadow_opacity | times: 0.01
+  assign shadow_alpha_glass = shadow_alpha | times: 0.5
+-%}
+
+{%- style -%}
+  #FeatureCards-{{ section.id }}-{{ block.id }} {
+    --fc-cols-desktop: {{ block.settings.columns_desktop }};
+    --fc-cols-tablet: {{ block.settings.columns_tablet }};
+    --fc-cols-mobile: {{ block.settings.columns_mobile }};
+    --fc-gap-desktop: {{ block.settings.gap_desktop }}px;
+    --fc-gap-tablet: {{ block.settings.gap_tablet }}px;
+    --fc-gap-mobile: {{ block.settings.gap_mobile }}px;
+    --fc-radius: {{ block.settings.card_radius }}px;
+    --fc-padding-y-desktop: {{ block.settings.card_padding_y_desktop }}px;
+    --fc-padding-x-desktop: {{ block.settings.card_padding_x_desktop }}px;
+    --fc-padding-y-tablet: {{ block.settings.card_padding_y_tablet }}px;
+    --fc-padding-x-tablet: {{ block.settings.card_padding_x_tablet }}px;
+    --fc-padding-y-mobile: {{ block.settings.card_padding_y_mobile }}px;
+    --fc-padding-x-mobile: {{ block.settings.card_padding_x_mobile }}px;
+    --fc-font-desktop: {{ block.settings.text_size_desktop }}px;
+    --fc-font-tablet: {{ block.settings.text_size_tablet }}px;
+    --fc-font-mobile: {{ block.settings.text_size_mobile }}px;
+    --fc-icon-desktop: {{ block.settings.icon_size_desktop }}px;
+    --fc-icon-tablet: {{ block.settings.icon_size_tablet }}px;
+    --fc-icon-mobile: {{ block.settings.icon_size_mobile }}px;
+    --fc-font-weight: {{ block.settings.text_weight }};
+    --fc-text-color: {{ block.settings.text_color }};
+    --fc-icon-color: {{ block.settings.icon_color }};
+    --fc-solid-bg: {{ block.settings.solid_background }};
+    --fc-solid-border: {{ block.settings.solid_border_color }};
+    --fc-glass-bg: {{ block.settings.glass_background | color_modify: 'alpha', glass_bg_alpha }};
+    --fc-glass-bg-2: {{ block.settings.glass_secondary_tint | color_modify: 'alpha', glass_bg_alpha }};
+    --fc-glass-border: {{ block.settings.glass_border_color | color_modify: 'alpha', glass_border_alpha }};
+    --fc-shadow: 0 14px 30px {{ block.settings.card_shadow_color | color_modify: 'alpha', shadow_alpha }};
+    --fc-shadow-glass: 0 7px 15px {{ block.settings.card_shadow_color | color_modify: 'alpha', shadow_alpha_glass }};
+    margin-top: {{ block.settings.margin_top }}px;
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--fc-cols-desktop), minmax(0, 1fr));
+    gap: var(--fc-gap-desktop);
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: var(--fc-padding-y-desktop) var(--fc-padding-x-desktop);
+    border-radius: var(--fc-radius);
+    border: 1px solid var(--fc-solid-border);
+    background: var(--fc-solid-bg);
+    color: var(--fc-text-color);
+    overflow: hidden;
+    transition: transform 180ms ease, box-shadow 220ms ease, background-color 220ms ease;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-card:hover {
+    transform: translateY(-1px);
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-icon {
+    flex: 0 0 auto;
+    width: var(--fc-icon-desktop);
+    height: var(--fc-icon-desktop);
+    color: var(--fc-icon-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-icon svg,
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-icon__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-icon svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-icon__img {
+    object-fit: contain;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }} .fc-text {
+    font-size: var(--fc-font-desktop);
+    font-weight: var(--fc-font-weight);
+    line-height: 1.28;
+    letter-spacing: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }}.fc-wrap--align-center .fc-card {
+    justify-content: center;
+    text-align: center;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }}.fc-wrap--align-center .fc-text {
+    flex: 0 1 auto;
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }}.fc-wrap--glass .fc-card {
+    background: linear-gradient(145deg, var(--fc-glass-bg), var(--fc-glass-bg-2));
+    border-color: var(--fc-glass-border);
+    box-shadow: var(--fc-shadow-glass);
+    backdrop-filter: blur({{ block.settings.glass_blur }}px) saturate(155%);
+    -webkit-backdrop-filter: blur({{ block.settings.glass_blur }}px) saturate(155%);
+  }
+
+  #FeatureCards-{{ section.id }}-{{ block.id }}.fc-wrap--glass .fc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(125% 160% at 8% 0%, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0) 55%);
+  }
+
+  @media screen and (max-width: 989px) {
+    #FeatureCards-{{ section.id }}-{{ block.id }} .fc-grid {
+      grid-template-columns: repeat(var(--fc-cols-tablet), minmax(0, 1fr));
+      gap: var(--fc-gap-tablet);
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }} .fc-card {
+      padding: var(--fc-padding-y-tablet) var(--fc-padding-x-tablet);
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }} .fc-icon {
+      width: var(--fc-icon-tablet);
+      height: var(--fc-icon-tablet);
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }} .fc-text {
+      font-size: var(--fc-font-tablet);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #FeatureCards-{{ section.id }}-{{ block.id }} .fc-grid {
+      grid-template-columns: repeat(var(--fc-cols-mobile), minmax(0, 1fr));
+      gap: var(--fc-gap-mobile);
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }} .fc-card {
+      min-height: 40px;
+      padding: var(--fc-padding-y-mobile) var(--fc-padding-x-mobile);
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }} .fc-icon {
+      width: var(--fc-icon-mobile);
+      height: var(--fc-icon-mobile);
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }} .fc-text {
+      font-size: var(--fc-font-mobile);
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }}.fc-wrap--mobile-slider .fc-grid {
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - (var(--fc-cols-mobile) - 1) * var(--fc-gap-mobile)) / var(--fc-cols-mobile));
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+      padding-bottom: 4px;
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }}.fc-wrap--mobile-slider .fc-card {
+      scroll-snap-align: start;
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }}.fc-wrap--mobile-slider .fc-grid::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    #FeatureCards-{{ section.id }}-{{ block.id }}.fc-wrap--mobile-slider .fc-grid::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 100px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="FeatureCards-{{ section.id }}-{{ block.id }}"
+  class="fc-wrap fc-wrap--{{ block.settings.card_mode }} fc-wrap--align-{{ block.settings.text_align }}{% if block.settings.mobile_layout == 'slider' %} fc-wrap--mobile-slider{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="fc-grid">
+    {%- for i in (1..8) -%}
+      {%- capture text_key -%}feature_text_{{ i }}{%- endcapture -%}
+      {%- capture source_key -%}icon_source_{{ i }}{%- endcapture -%}
+      {%- capture icon_name_key -%}icon_name_{{ i }}{%- endcapture -%}
+      {%- capture icon_image_key -%}icon_image_{{ i }}{%- endcapture -%}
+      {%- capture icon_url_key -%}icon_url_{{ i }}{%- endcapture -%}
+
+      {%- assign feature_text = block.settings[text_key] | strip -%}
+      {%- if feature_text != blank -%}
+        {%- assign shown_features = shown_features | plus: 1 -%}
+        {%- if shown_features > requested_features -%}
+          {%- break -%}
+        {%- endif -%}
+
+        {%- assign icon_source = block.settings[source_key] | default: 'built_in' -%}
+        {%- assign icon_name = block.settings[icon_name_key] | default: 'leaf' -%}
+        {%- assign icon_image = block.settings[icon_image_key] -%}
+        {%- assign icon_url = block.settings[icon_url_key] | strip -%}
+
+        <article class="fc-card" aria-label="{{ feature_text | escape }}">
+          <span class="fc-icon" aria-hidden="true">
+            {%- if icon_source == 'upload' and icon_image != blank -%}
+              {{
+                icon_image
+                | image_url: width: 120
+                | image_tag: class: 'fc-icon__img', loading: 'lazy', widths: '40, 60, 80, 120', alt: ''
+              }}
+            {%- elsif icon_source == 'url' and icon_url != blank -%}
+              <img src="{{ icon_url | escape }}" class="fc-icon__img" loading="lazy" alt="">
+            {%- else -%}
+              {%- case icon_name -%}
+                {%- when 'leaf' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M20 4c-8 0-14 5-14 12v4h4c7 0 12-6 12-14V4z"/><path d="M7 17c2-2 5-4 9-6"/></svg>
+                {%- when 'spark' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M12 3l1.9 4.1L18 9l-4.1 1.9L12 15l-1.9-4.1L6 9l4.1-1.9L12 3z"/><path d="M5 18l.9 1.9L8 21l-2.1.9L5 24l-.9-2.1L2 21l2.1-.9L5 18z"/></svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M12 3l8 3v6c0 5-3.2 8-8 9-4.8-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+                {%- when 'heart' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M20.8 7.6c0 5.4-8.8 11.4-8.8 11.4S3.2 13 3.2 7.6A4.8 4.8 0 0 1 12 5.1a4.8 4.8 0 0 1 8.8 2.5z"/></svg>
+                {%- when 'bolt' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M13 2L5 14h6l-1 8 9-13h-6l1-7z"/></svg>
+                {%- when 'fire' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M12 3s3 2.8 3 6.5c0 1.8-1 3.1-2.2 4.3C11.8 15 11 16.2 11 18a3 3 0 0 0 6 0c0-3.8-2.2-6.4-5-9z"/><path d="M8 10c-1.8 1.9-3 4.1-3 7a7 7 0 0 0 14 0"/></svg>
+                {%- when 'sun' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+                {%- when 'drop' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M12 3s6 6.3 6 10.5A6 6 0 1 1 6 13.5C6 9.3 12 3 12 3z"/></svg>
+                {%- when 'check' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.4 2.4 4.6-4.8"/></svg>
+                {%- when 'star' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M12 3.5l2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17.4 6.6 20.3l1-6.1-4.4-4.3 6.1-.9L12 3.5z"/></svg>
+                {%- when 'clock' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                {%- when 'truck' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M2 6h12v9H2z"/><path d="M14 9h4l3 3v3h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="18" cy="17" r="2"/></svg>
+                {%- when 'globe' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17"/><path d="M12 3c2.8 2.5 4 5.5 4 9s-1.2 6.5-4 9c-2.8-2.5-4-5.5-4-9s1.2-6.5 4-9z"/></svg>
+                {%- when 'lock' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                {%- when 'chat' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M4 5h16v11H8l-4 3V5z"/><path d="M8 9h8M8 12h5"/></svg>
+                {%- when 'gift' -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M3 8h18v4H3z"/><path d="M4 12h16v8H4z"/><path d="M12 8v12"/><path d="M12 8c-3 0-4-1.2-4-2.7A2.3 2.3 0 0 1 12 4c0 1.3 0 2.6 0 4z"/><path d="M12 8c3 0 4-1.2 4-2.7A2.3 2.3 0 0 0 12 4"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" role="presentation"><path d="M20 4c-8 0-14 5-14 12v4h4c7 0 12-6 12-14V4z"/><path d="M7 17c2-2 5-4 9-6"/></svg>
+              {%- endcase -%}
+            {%- endif -%}
+          </span>
+          <span class="fc-text">{{ feature_text | escape }}</span>
+        </article>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if shown_features == 0 and request.design_mode -%}
+      <article class="fc-card">
+        <span class="fc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="presentation"><path d="M12 3l1.9 4.1L18 9l-4.1 1.9L12 15l-1.9-4.1L6 9l4.1-1.9L12 3z"/></svg>
+        </span>
+        <span class="fc-text">Add feature items in this block settings.</span>
+      </article>
+    {%- endif -%}
+  </div>
+</div>
