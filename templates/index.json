@@ -10,17 +10,18 @@
 {
   "sections": {
     "hero_elite_YMVm86": {
-      "type": "hero-elite",
+      "type": "tailspark-hero",
       "blocks": {
         "eyebrow_Qntce4": {
           "type": "eyebrow",
           "settings": {
-            "text": "Reconnect With Nature",
-            "text_color": "#fafafa"
+            "text": "Vet Formulated | Made in USA",
+            "text_color": "#FF6700"
           }
         },
         "inline_rating_neNARE": {
           "type": "inline_rating",
+          "disabled": true,
           "settings": {
             "rating_value": "4.9",
             "rating_label": "stars",
@@ -44,18 +45,17 @@
         "heading_4N3Rcj": {
           "type": "heading",
           "settings": {
-            "heading": "Elegant by Nature",
+            "heading": "Tail-Wagging Health, Made Simple.",
             "heading_size": "h0",
             "heading_tag": "h1",
-            "text_color": "#ffffff"
+            "text_color": "#333333"
           }
         },
         "subheading_NWb4tP": {
           "type": "subheading",
-          "disabled": true,
           "settings": {
-            "text": "Discover the new season",
-            "text_color": "#ffffff"
+            "text": "Soft chews your dog will love - backed by science, free of junk, and made for daily wellness.",
+            "text_color": "#333333"
           }
         },
         "rating_badge_fwLHHH": {
@@ -124,20 +124,21 @@
         "buttons_iixVk9": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "",
+            "button_label_1": "Shop Now",
             "button_link_1": "shopify://collections/all",
-            "button_style_1": "outline",
-            "button_color_bg_1": "#1b4a3d",
-            "button_color_text_1": "#1b4a3d",
-            "button_label_2": "Shop Now",
-            "button_link_2": "shopify://products/lions-mane-focus-extract-powder",
-            "button_style_2": "solid",
-            "button_color_bg_2": "#1b4a3d",
-            "button_color_text_2": "#ffffff"
+            "button_style_1": "pill-solid",
+            "button_color_bg_1": "#FF6700",
+            "button_color_text_1": "#ffffff",
+            "button_label_2": "Learn More",
+            "button_link_2": "shopify://pages/about",
+            "button_style_2": "pill-outline",
+            "button_color_bg_2": "#333333",
+            "button_color_text_2": "#333333"
           }
         },
         "trust_badge_jyYEmR": {
           "type": "trust_badge",
+          "disabled": true,
           "settings": {
             "icon_1": "check",
             "text_1": "Organic",
@@ -159,6 +160,7 @@
         },
         "scroll_indicator_aXzLBx": {
           "type": "scroll_indicator",
+          "disabled": true,
           "settings": {
             "scroll_icon_style": "arrow",
             "scroll_anim_style": "bounce",
@@ -185,18 +187,18 @@
         "video_autoplay": true,
         "video_loop": true,
         "image_behavior": "none",
-        "overlay_color": "#10b981",
-        "overlay_opacity": 25,
-        "overlay_gradient": "right",
+        "overlay_color": "#FFFFD2",
+        "overlay_opacity": 0,
+        "overlay_gradient": "left",
         "height_desktop": 95,
-        "height_mobile": 85,
+        "height_mobile": 100,
         "content_position": "middle-left",
         "content_alignment": "left",
-        "content_padding": 48,
-        "content_max_width": 960,
-        "content_gap": 30,
-        "content_gap_mobile": 16,
-        "mobile_content_position": "bottom-center",
+        "content_padding": 60,
+        "content_max_width": 640,
+        "content_gap": 22,
+        "content_gap_mobile": 14,
+        "mobile_content_position": "top-center",
         "mobile_content_alignment": "center",
         "show_text_below_on_mobile": false,
         "show_text_box": false,
