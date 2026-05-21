@@ -110,7 +110,7 @@
     "sold_out_badge_color_scheme": "scheme-3",
     "brand_headline": "Daily wellness for happy dogs",
     "brand_description": "<p>Clean, vet-formulated soft chews made for everyday dog wellness, from gut health and mobility to skin, coat, and daily nutrition.</p>",
-    "brand_image": "",
+    "brand_image": "shopify://shop_images/TAILSPARK_LOGO_CREAM_1.png",
     "brand_image_width": 185,
     "social_facebook_link": "facebook.com",
     "social_instagram_link": "instagram.com",
@@ -227,18 +227,18 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-            "background": "#fff8ed",
+          "background": "#fff8ed",
           "background_gradient": "",
-            "text": "#333333",
-            "button": "#ff6700",
-            "button_label": "#ffffff",
-            "secondary_button_label": "#ff6700",
-            "shadow": "#333333"
+          "text": "#333333",
+          "button": "#ff6700",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ff6700",
+          "shadow": "#333333"
         }
       },
       "scheme-2": {
         "settings": {
-            "background": "#ff6700",
+          "background": "#ff6700",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#ffffff",
@@ -249,33 +249,33 @@
       },
       "scheme-3": {
         "settings": {
-            "background": "#ffffd2",
+          "background": "#ffffd2",
           "background_gradient": "",
-            "text": "#333333",
-            "button": "#ff6700",
-            "button_label": "#ffffff",
-            "secondary_button_label": "#ff6700",
-            "shadow": "#333333"
+          "text": "#333333",
+          "button": "#ff6700",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ff6700",
+          "shadow": "#333333"
         }
       },
       "scheme-4": {
         "settings": {
-            "background": "#f6e7dc",
+          "background": "#f6e7dc",
           "background_gradient": "",
-            "text": "#333333",
-            "button": "#ff6700",
+          "text": "#333333",
+          "button": "#ff6700",
           "button_label": "#ffffff",
-            "secondary_button_label": "#ff6700",
-            "shadow": "#333333"
+          "secondary_button_label": "#ff6700",
+          "shadow": "#333333"
         }
       },
       "scheme-5": {
         "settings": {
-            "background": "#5ba870",
+          "background": "#5ba870",
           "background_gradient": "",
           "text": "#121212",
           "button": "#ffffff",
-            "button_label": "#5ba870",
+          "button_label": "#5ba870",
           "secondary_button_label": "#ffffff",
           "shadow": "#333333"
         }
