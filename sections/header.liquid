@@ -152,6 +152,16 @@
   -%}
   <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
+      assign use_tailspark_asset_logo = false
+      if settings.logo == blank
+        assign use_tailspark_asset_logo = true
+      else
+        assign current_logo_url = settings.logo | image_url: width: 300
+        if current_logo_url contains 'NaturenA'
+          assign use_tailspark_asset_logo = true
+        endif
+      endif
+
       if section.settings.menu != blank
         render 'header-drawer'
       endif
@@ -166,7 +176,18 @@
         <h1 class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
+        {%- if use_tailspark_asset_logo -%}
+          <div class="header__heading-logo-wrapper">
+            <img
+              src="{{ 'tailspark-logo-orange.png' | asset_url }}"
+              class="header__heading-logo motion-reduce"
+              width="{{ settings.logo_width }}"
+              height="60"
+              alt="{{ shop.name | escape }}"
+              loading="eager"
+            >
+          </div>
+        {%- elsif settings.logo != blank -%}
           <div class="header__heading-logo-wrapper">
             {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
             {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
@@ -209,7 +230,18 @@
         <h1 class="header__heading">
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
+        {%- if use_tailspark_asset_logo -%}
+          <div data-aos="flip-up" class="header__heading-logo-wrapper">
+            <img
+              src="{{ 'tailspark-logo-orange.png' | asset_url }}"
+              class="header__heading-logo"
+              width="{{ settings.logo_width }}"
+              height="60"
+              alt="{{ shop.name | escape }}"
+              loading="eager"
+            >
+          </div>
+        {%- elsif settings.logo != blank -%}
           <div data-aos="flip-up" class="header__heading-logo-wrapper">
             {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
             {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}

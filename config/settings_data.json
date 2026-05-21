@@ -9,10 +9,10 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/TAILSPARK_LOGO_CREAM_1.png",
-    "logo_width": 160,
+    "logo": "",
+    "logo_width": 210,
     "favicon": "shopify://shop_images/TAILSPARK_LOGO_ORANGE_2.png",
-    "type_header_font": "dm_serif_display_n4",
+    "type_header_font": "poppins_n7",
     "heading_scale": 100,
     "heading_font_weight": "700",
     "type_body_font": "poppins_n4",
@@ -25,7 +25,7 @@
     "animations_hover_elements": "none",
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
-    "buttons_radius": 16,
+    "buttons_radius": 40,
     "buttons_shadow_opacity": 0,
     "buttons_shadow_horizontal_offset": 0,
     "buttons_shadow_vertical_offset": 4,
@@ -108,9 +108,9 @@
     "badge_corner_radius": 30,
     "sale_badge_color_scheme": "scheme-2",
     "sold_out_badge_color_scheme": "scheme-3",
-    "brand_headline": "Balance in Every Dose",
-    "brand_description": "<p>Clean functional mushroom supplements designed to support focus, energy, and daily balance. Thoughtfully crafted formulas powered by nature and backed by science.</p>",
-    "brand_image": "shopify://shop_images/NaturenA_3.png",
+    "brand_headline": "Daily wellness for happy dogs",
+    "brand_description": "<p>Clean, vet-formulated soft chews made for everyday dog wellness, from gut health and mobility to skin, coat, and daily nutrition.</p>",
+    "brand_image": "",
     "brand_image_width": 185,
     "social_facebook_link": "facebook.com",
     "social_instagram_link": "instagram.com",
@@ -130,27 +130,20 @@
     "show_cart_note": true,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-4",
-    "free_shipping_bar_background": "#e6e3db",
-    "free_shipping_bar_text_color": "#606060",
-    "free_shipping_highlight_color": "#1aa375",
-    "free_shipping_upsell_enable": true,
-    "free_shipping_upsell_products": [
-      "amanita-muscaria-extract-powder",
-      "chaga-immune-shield-extract-powder",
-      "cordyceps-natural-energy-extract-powder",
-      "lions-mane-focus-extract-powder",
-      "reishi-calm-and-balance-extract-powder",
-      "spirulina-daily-greens-superfood-powder"
-    ],
+    "free_shipping_bar_background": "#FFF8ED",
+    "free_shipping_bar_text_color": "#333333",
+    "free_shipping_highlight_color": "#FF6700",
+    "free_shipping_upsell_enable": false,
+    "free_shipping_upsell_products": [],
     "free_shipping_upsell_slides_mobile": 1.2,
     "free_shipping_upsell_heading_color": "#606060",
     "free_shipping_upsell_price_color": "#606060",
-    "free_shipping_upsell_card_background": "#e6e3db",
-    "free_shipping_upsell_variant_bg_color": "#e6e3db",
-    "free_shipping_upsell_variant_text_color": "#606060",
-    "free_shipping_upsell_dot_color": "#1b4a3d",
-    "free_shipping_upsell_arrow_color": "#1b4a3d",
-    "click_spark_color": "#050505",
+    "free_shipping_upsell_card_background": "#FFF8ED",
+    "free_shipping_upsell_variant_bg_color": "#F6E7DC",
+    "free_shipping_upsell_variant_text_color": "#333333",
+    "free_shipping_upsell_dot_color": "#FF6700",
+    "free_shipping_upsell_arrow_color": "#FF6700",
+    "click_spark_color": "#FF6700",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -174,7 +167,7 @@
           "mobile_bottom_extra": 8,
           "size": 50,
           "radius": 100,
-          "bg_color": "#23594a",
+          "bg_color": "#ff6700",
           "icon_color": "#ffffff",
           "shadow": true,
           "z_index": 100,
@@ -223,75 +216,68 @@
           "button_padding_horizontal": 26,
           "button_radius": 12,
           "button_border_width": 1,
-          "button_border_color": "#23594a",
-          "button_gradient_start": "#1b4a3d",
-          "button_gradient_end": "#2b6b59",
-          "button_hover_glow_color": "#f7f5f0"
+          "button_border_color": "#ff6700",
+          "button_gradient_start": "#ff6700",
+          "button_gradient_end": "#e85e00",
+          "button_hover_glow_color": "#fff8ed"
         }
       }
     },
     "content_for_index": [],
-    "blocks": {
-      "6478312753674380289": {
-        "type": "shopify://apps//blocks/embed-gp-script-head/20b379d4-1b20-474c-a6ca-665c331919f3",
-        "disabled": false,
-        "settings": {}
-      }
-    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#f7f5f0",
+            "background": "#fff8ed",
           "background_gradient": "",
-          "text": "#4e4e4e",
-          "button": "#121212",
-          "button_label": "#4e4e4e",
-          "secondary_button_label": "#4e4e4e",
-          "shadow": "#4e4e4e"
+            "text": "#333333",
+            "button": "#ff6700",
+            "button_label": "#ffffff",
+            "secondary_button_label": "#ff6700",
+            "shadow": "#333333"
         }
       },
       "scheme-2": {
         "settings": {
-          "background": "#1b4a3d",
+            "background": "#ff6700",
           "background_gradient": "",
           "text": "#ffffff",
-          "button": "#121212",
+          "button": "#ffffff",
           "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "secondary_button_label": "#ffffff",
+          "shadow": "#333333"
         }
       },
       "scheme-3": {
         "settings": {
-          "background": "#ffffff",
+            "background": "#ffffd2",
           "background_gradient": "",
-          "text": "#1b4a3d",
-          "button": "#ffffff",
-          "button_label": "#000000",
-          "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+            "text": "#333333",
+            "button": "#ff6700",
+            "button_label": "#ffffff",
+            "secondary_button_label": "#ff6700",
+            "shadow": "#333333"
         }
       },
       "scheme-4": {
         "settings": {
-          "background": "#f7f5f0",
+            "background": "#f6e7dc",
           "background_gradient": "",
-          "text": "#4b4b4b",
-          "button": "#1b4a3d",
+            "text": "#333333",
+            "button": "#ff6700",
           "button_label": "#ffffff",
-          "secondary_button_label": "#1b4a3d",
-          "shadow": "#121212"
+            "secondary_button_label": "#ff6700",
+            "shadow": "#333333"
         }
       },
       "scheme-5": {
         "settings": {
-          "background": "#a78bfa",
+            "background": "#5ba870",
           "background_gradient": "",
           "text": "#121212",
           "button": "#ffffff",
-          "button_label": "#334fb4",
+            "button_label": "#5ba870",
           "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "shadow": "#333333"
         }
       },
       "scheme-db6fd108-d23f-4217-acfe-091744dcc0c4": {
