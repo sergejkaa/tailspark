@@ -133,6 +133,7 @@
       ],
       "name": "TailSpark Hero",
       "settings": {
+        "image_desktop": "shopify://shop_images/ig_081b6ca439297b15016a0f947783bc819a96ec8940c1ef99b2.png",
         "video_url_desktop": "",
         "video_url_mobile": "",
         "video_autoplay": true,
