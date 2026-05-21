@@ -1,0 +1,735 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .bs-section {
+    background: {{ section.settings.section_bg }};
+    padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .bs-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .bs-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  #shopify-section-{{ section.id }} .bs-heading {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: {{ section.settings.heading_size_mobile }}px;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 10px;
+    line-height: 1.15;
+  }
+
+  #shopify-section-{{ section.id }} .bs-subheading {
+    font-size: 14px;
+    line-height: 1.65;
+    color: {{ section.settings.text_color }};
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .bs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__image-link {
+    display: block;
+    text-decoration: none;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__image-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 14px;
+    box-sizing: border-box;
+    transition: transform 0.35s ease;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__image-link:hover img {
+    transform: scale(1.04);
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__placeholder svg {
+    width: 70%;
+    height: 70%;
+    opacity: 0.25;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__body {
+    padding: 12px 4px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__title {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: 16px;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 5px;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__subtitle {
+    font-size: 12px;
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 12px;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 10px;
+    margin-bottom: 14px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .bs-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 52px;
+  }
+
+  #shopify-section-{{ section.id }} .bs-icon-item__img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .bs-icon-item__svg {
+    width: 28px;
+    height: 28px;
+    color: {{ section.settings.icon_color }};
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .bs-icon-item__label {
+    font-size: 10px;
+    line-height: 1.3;
+    color: {{ section.settings.text_color }};
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__btn {
+    display: inline-block;
+    margin-top: auto;
+    padding: 9px 18px;
+    border-radius: 100px;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text }};
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid {{ section.settings.button_bg }};
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__btn:hover {
+    background: {{ section.settings.button_hover_bg }};
+    color: {{ section.settings.button_hover_text }};
+    border-color: {{ section.settings.button_hover_bg }};
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__price {
+    margin-top: 8px;
+    font-size: 12px;
+    color: {{ section.settings.text_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__price-compare {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  @media (min-width: 750px) {
+    #shopify-section-{{ section.id }} .bs-section {
+      padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-inner {
+      padding: 0 40px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-heading {
+      font-size: {{ section.settings.heading_size }}px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-subheading {
+      font-size: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__image-link {
+      border-radius: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__image-link img {
+      padding: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__body {
+      padding: 16px 4px 0;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__title {
+      font-size: 22px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__subtitle {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__icons {
+      gap: 8px 14px;
+      margin-bottom: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-icon-item {
+      width: 60px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-icon-item__img,
+    #shopify-section-{{ section.id }} .bs-icon-item__svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-icon-item__label {
+      font-size: 11px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__btn {
+      padding: 11px 26px;
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__price {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-header {
+      margin-bottom: 48px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="row best-sellers bs-section" data-section-id="{{ section.id }}">
+  <div class="bs-inner">
+
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="bs-header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="bs-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="bs-subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="bs-grid">
+      {%- for block in section.blocks -%}
+        {%- assign prod = block.settings.product -%}
+
+        <div class="bs-card" {{ block.shopify_attributes }}>
+
+          {%- if prod != blank -%}
+            <a href="{{ prod.url }}" class="bs-card__image-link" style="background-color: {{ block.settings.card_bg }};">
+              {%- if prod.featured_image != blank -%}
+                {{ prod.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: prod.title }}
+              {%- else -%}
+                <div class="bs-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+              {%- endif -%}
+            </a>
+          {%- else -%}
+            <div class="bs-card__image-link" style="background-color: {{ block.settings.card_bg }};">
+              <div class="bs-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+            </div>
+          {%- endif -%}
+
+          <div class="bs-card__body">
+
+            <h3 class="bs-card__title">
+              {%- if prod != blank -%}
+                <a href="{{ prod.url }}">{{ prod.title }}</a>
+              {%- else -%}
+                Product Name
+              {%- endif -%}
+            </h3>
+
+            {%- if block.settings.subtitle != blank -%}
+              <p class="bs-card__subtitle">{{ block.settings.subtitle }}</p>
+            {%- endif -%}
+
+            {%- comment -%} Icons — show if at least one icon slot has image or preset {%- endcomment -%}
+            {%- assign any_icon = false -%}
+            {%- for i in (1..4) -%}
+              {%- assign chk_img = 'icon_' | append: i | append: '_image' -%}
+              {%- assign chk_pre = 'icon_' | append: i | append: '_preset' -%}
+              {%- if block.settings[chk_img] != blank or block.settings[chk_pre] != 'none' -%}
+                {%- assign any_icon = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- if any_icon -%}
+              <div class="bs-card__icons">
+                {%- for i in (1..4) -%}
+                  {%- assign ik = 'icon_' | append: i | append: '_image' -%}
+                  {%- assign lk = 'icon_' | append: i | append: '_label' -%}
+                  {%- assign pk = 'icon_' | append: i | append: '_preset' -%}
+                  {%- assign icon_img    = block.settings[ik] -%}
+                  {%- assign icon_label  = block.settings[lk] -%}
+                  {%- assign icon_preset = block.settings[pk] -%}
+
+                  {%- if icon_img != blank or icon_preset != 'none' -%}
+                    <div class="bs-icon-item">
+                      {%- if icon_img != blank -%}
+                        {{ icon_img | image_url: width: 80 | image_tag: class: 'bs-icon-item__img', loading: 'lazy', alt: icon_label }}
+                      {%- else -%}
+                        {%- case icon_preset -%}
+                          {%- when 'paw' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="5.5" cy="7.5" rx="2" ry="2.5"/><ellipse cx="10" cy="4.5" rx="1.5" ry="2"/><ellipse cx="14" cy="4.5" rx="1.5" ry="2"/><ellipse cx="18.5" cy="7.5" rx="2" ry="2.5"/><path d="M12 22c-3.87 0-7-3-7-6 0-1.66 1.34-3 3-3h8c1.66 0 3 1.34 3 3 0 3-3.13 6-7 6z"/></svg>
+                          {%- when 'heart' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                          {%- when 'shield' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                          {%- when 'leaf' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 19.34L5.71 21l1-1C7.89 17.93 13 14 19 14c0-6-2-10-2-10z"/><path d="M3.82 19.34A10 10 0 0 1 7 14"/></svg>
+                          {%- when 'star' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                          {%- when 'bone' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-4.5.5 0 1 .5 1 1a2.5 2.5 0 0 0 2.5 2.5c1.38 0 2-.5 3-1 2.143-1.072 4.054-.224 4.5 2 0 .5-.5 1-1 1a2.5 2.5 0 0 0-2.5 2.5c0 1.38.5 2 1 3 1.072 2.143.224 4.054-2 4.5-.5 0-1-.5-1-1a2.5 2.5 0 0 0-2.5-2.5c-1.38 0-2 .5-3 1-2.143 1.072-4.054.224-4.5-2 0-.5.5-1 1-1z"/></svg>
+                          {%- when 'drop' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                          {%- when 'check' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+                          {%- when 'sun' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                          {%- when 'lightning' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                          {%- when 'gut' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1a2 2 0 0 0 2 2h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-3a2 2 0 0 0-2 2v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z"/></svg>
+                        {%- endcase -%}
+                      {%- endif -%}
+                      {%- if icon_label != blank -%}
+                        <span class="bs-icon-item__label">{{ icon_label }}</span>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            {%- if prod != blank -%}
+              <a href="{{ prod.url }}" class="bs-card__btn">{{ section.settings.button_label }}</a>
+              {%- if section.settings.show_price -%}
+                <div class="bs-card__price">
+                  {%- if prod.compare_at_price > prod.price -%}
+                    <span class="bs-card__price-compare">{{ prod.compare_at_price | money }}</span>
+                  {%- endif -%}
+                  <span>{{ prod.price | money }}</span>
+                </div>
+              {%- endif -%}
+            {%- else -%}
+              <span class="bs-card__btn">{{ section.settings.button_label }}</span>
+            {%- endif -%}
+
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Best Sellers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading text",
+      "default": "Our treats are as tasty as they look, but what's inside is even more impressive."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price below button",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1D1D1B"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Product title",
+      "default": "#1D1D1B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Preset icon color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#FF6700"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button hover background",
+      "default": "#CC5200"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text",
+      "label": "Button hover text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Heading size"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "default": 42,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Short description",
+          "default": "Short product benefit description"
+        },
+        {
+          "type": "color",
+          "id": "card_bg",
+          "label": "Card background color",
+          "default": "#FFF5F0"
+        },
+        {
+          "type": "header",
+          "content": "Icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_1_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "gut", "label": "Gut health" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "icon_1_label",
+          "label": "Icon 1 label",
+          "default": "Benefit 1"
+        },
+        {
+          "type": "header",
+          "content": "Icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_2_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "gut", "label": "Gut health" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "icon_2_label",
+          "label": "Icon 2 label",
+          "default": "Benefit 2"
+        },
+        {
+          "type": "header",
+          "content": "Icon 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_3_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "gut", "label": "Gut health" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "icon_3_label",
+          "label": "Icon 3 label",
+          "default": ""
+        },
+        {
+          "type": "header",
+          "content": "Icon 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_4_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_4_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "gut", "label": "Gut health" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "icon_4_label",
+          "label": "Icon 4 label",
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best Sellers",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ]
+}
+{% endschema %}
