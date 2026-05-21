@@ -1,665 +1,732 @@
-{%- liquid
-  assign product_handles = 'tailspark-skin-coat,tailspark-multivitamin,tailspark-hip-joint,tailspark-probiotic' | split: ','
-  assign product_titles = 'Skin & Coat Advanced Support,Multivitamin Daily Support,Hip & Joint Advanced Support,Probiotic Daily Support' | split: ','
-  assign product_tags = 'Softer coat, healthier skin|Complete daily nutrition|More movement, less stiffness|Happy tummy, happy dog' | split: '|'
-  assign benefit_pairs = 'Shiny Coat,Sensitive Skin|Daily Wellness,Immune Support|Joint Mobility,Active Lifestyle|Gut Health,Immune Balance' | split: '|'
--%}
-
-<section class="ts-home" aria-label="TailSpark homepage">
-  <section class="ts-hero">
-    <div class="ts-home__container ts-hero__grid">
-      <div class="ts-hero__copy">
-        <p class="ts-kicker">Vet Formulated &middot; Made in USA</p>
-        <h1>Tail-Wagging Health,<br>Made Simple.</h1>
-        <p class="ts-hero__text">Soft chews your dog will love, backed by science and free of junk. Formulated for all breeds and ages.</p>
-        <div class="ts-actions">
-          <a class="ts-button ts-button--primary" href="{{ routes.collections_url }}/all">Shop Now</a>
-          <a class="ts-button ts-button--text" href="{{ routes.root_url }}pages/about">Learn More</a>
-        </div>
-      </div>
-
-      <div class="ts-hero__visual" aria-label="TailSpark product preview">
-        <div class="ts-packshot">
-          <img src="{{ 'tailspark-logo-orange.png' | asset_url }}" alt="TailSpark" width="260" height="92" loading="eager">
-          <span>Daily wellness soft chews</span>
-        </div>
-        <div class="ts-chews" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ts-products">
-    <div class="ts-home__container">
-      <div class="ts-section-head">
-        <p class="ts-kicker">Our Products</p>
-        <h2>Soft chews with a real job to do.</h2>
-        <p>As tasty as they look, but what's inside is even more impressive: clean daily support for skin, coat, joints, digestion, and everyday wellness.</p>
-      </div>
-
-      <div class="ts-product-grid">
-        {%- for handle in product_handles -%}
-          {%- liquid
-            assign product = all_products[handle]
-            assign fallback_title = product_titles[forloop.index0]
-            assign tagline = product_tags[forloop.index0]
-            assign pair = benefit_pairs[forloop.index0] | split: ','
-          -%}
-          <article class="ts-product-card">
-            <a class="ts-product-card__media" href="{% if product != blank %}{{ product.url }}{% else %}{{ routes.collections_url }}/all{% endif %}" aria-label="{% if product != blank %}{{ product.title | escape }}{% else %}{{ fallback_title | escape }}{% endif %}">
-              {%- if product != blank and product.featured_image != blank -%}
-                {{ product.featured_image | image_url: width: 760 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 25vw, 90vw', widths: '360, 540, 760', alt: product.title }}
-              {%- else -%}
-                <div class="ts-product-card__placeholder">
-                  <img src="{{ 'tailspark-logo-orange.png' | asset_url }}" alt="" width="180" height="64" loading="lazy">
-                  <span>Product image coming soon</span>
-                </div>
-              {%- endif -%}
-            </a>
-            <div class="ts-product-card__body">
-              <h3>{% if product != blank %}{{ product.title }}{% else %}{{ fallback_title }}{% endif %}</h3>
-              <p>{{ tagline }}</p>
-              <div class="ts-product-card__benefits">
-                <span>{% render 'icon-leaf' %}{{ pair[0] }}</span>
-                <span>{% render 'icon-checkmark' %}{{ pair[1] }}</span>
-              </div>
-              <div class="ts-product-card__footer">
-                <a class="ts-button ts-button--outline" href="{% if product != blank %}{{ product.url }}{% else %}{{ routes.collections_url }}/all{% endif %}">View Product</a>
-                <small>{% if product != blank %}From {{ product.price | money }}{% else %}From $25{% endif %}</small>
-              </div>
-            </div>
-          </article>
-        {%- endfor -%}
-      </div>
-    </div>
-  </section>
-
-  <section class="ts-trust">
-    <div class="ts-home__container ts-trust__grid">
-      <span>Vet Formulated</span>
-      <span>For All Breeds</span>
-      <span>Made in USA</span>
-      <span>No Corn &middot; No Wheat</span>
-      <span>100% Satisfaction Guarantee</span>
-    </div>
-  </section>
-
-  <section class="ts-steps">
-    <div class="ts-home__container">
-      <div class="ts-section-head ts-section-head--compact">
-        <p class="ts-kicker">How It Works</p>
-        <h2>Simple as 1, 2, 3.</h2>
-      </div>
-      <div class="ts-step-grid">
-        <article>
-          <strong>01</strong>
-          <h3>Choose Your Dog's Need</h3>
-          <p>Pick the formula that matches your dog's health goal, or grab the Multivitamin for complete daily support.</p>
-        </article>
-        <article>
-          <strong>02</strong>
-          <h3>Give One Chew Daily</h3>
-          <p>Drop it in the bowl or give it by hand. Dogs love the taste, so there is no hiding in food required.</p>
-        </article>
-        <article>
-          <strong>03</strong>
-          <h3>Watch Them Thrive</h3>
-          <p>Real ingredients, real results. Most pet parents notice a difference within 4-6 weeks.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="ts-story">
-    <div class="ts-home__container ts-story__grid">
-      <div class="ts-story__visual">
-        <div class="ts-story__badge">Clean ingredients<br>for daily dog wellness</div>
-      </div>
-      <div>
-        <p class="ts-kicker">Why TailSpark</p>
-        <h2>Built different. Because your dog deserves it.</h2>
-        <p>We started TailSpark because we wanted the best for our own dog, and couldn't find a supplement we actually trusted.</p>
-        <ul>
-          <li>No corn, no wheat, no artificial flavors or colors.</li>
-          <li>Clean, effective ingredients in every single chew.</li>
-          <li>Backed by science. Loved by dogs.</li>
-        </ul>
-        <a class="ts-button ts-button--primary" href="{{ routes.root_url }}pages/about">Our Story</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="ts-reviews">
-    <div class="ts-home__container">
-      <div class="ts-section-head">
-        <p class="ts-kicker">Reviews</p>
-        <h2>Dogs love it. Pet parents trust it.</h2>
-      </div>
-      <div class="ts-review-grid">
-        <article>
-          <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <p>"Max has been on the Hip & Joint chews for 6 weeks and I can already see a difference in how he moves up the stairs."</p>
-          <strong>Sarah M. &middot; Golden Retriever owner</strong>
-        </article>
-        <article>
-          <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <p>"My picky eater loves these. The coat supplement has her looking gorgeous, and she eats it right out of my hand."</p>
-          <strong>Jamie K. &middot; Shiba Inu owner</strong>
-        </article>
-        <article>
-          <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <p>"Finally a supplement I can trust. Clean ingredients, no junk, and it actually works for our senior dog."</p>
-          <strong>Tom R. &middot; Lab owner</strong>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="ts-faq">
-    <div class="ts-home__container ts-faq__grid">
-      <div>
-        <p class="ts-kicker">FAQ</p>
-        <h2>Questions before the first chew?</h2>
-      </div>
-      <div class="ts-faq__items">
-        <details>
-          <summary>Are TailSpark supplements safe for all dogs?</summary>
-          <p>Yes. All formulas are vet formulated for dogs of all breeds and ages. Always consult your vet if your dog has a medical condition or is on medication.</p>
-        </details>
-        <details>
-          <summary>How long until I see results?</summary>
-          <p>Most pet parents notice improvements within 4-6 weeks of daily use. Consistency is key.</p>
-        </details>
-        <details>
-          <summary>Are these chews grain-free?</summary>
-          <p>Our chews are free of corn and wheat. Some formulas contain oat flour or rye flour as a base. Full ingredient lists are on each product page.</p>
-        </details>
-        <details>
-          <summary>Can I give multiple supplements together?</summary>
-          <p>Yes, our formulas are designed to complement each other. Many pet parents combine the Multivitamin with a targeted formula.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-</section>
-
-<style>
-  .ts-home {
-    --ts-orange: #ff6700;
-    --ts-cream: #ffffd2;
-    --ts-green: #5ba870;
-    --ts-charcoal: #333333;
-    --ts-blush: #f6e7dc;
-    --ts-soft: #fff8ed;
-    color: var(--ts-charcoal);
-    background: var(--ts-soft);
-    font-family: var(--font-body-family), "Poppins", sans-serif;
+{%- style -%}
+  #shopify-section-{{ section.id }} .bs-section {
+    background: {{ section.settings.section_bg }};
+    padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px;
   }
 
-  .ts-home__container {
-    width: min(100% - 32px, 1280px);
-    margin-inline: auto;
+  #shopify-section-{{ section.id }} .bs-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 
-  .ts-hero {
-    min-height: clamp(620px, 82dvh, 840px);
-    display: grid;
-    align-items: center;
-    background:
-      radial-gradient(circle at 82% 18%, rgba(91, 168, 112, .18), transparent 28%),
-      linear-gradient(135deg, var(--ts-cream), var(--ts-soft));
-  }
-
-  .ts-hero__grid,
-  .ts-story__grid,
-  .ts-faq__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, .86fr);
-    gap: clamp(32px, 7vw, 92px);
-    align-items: center;
-  }
-
-  .ts-kicker {
-    margin: 0 0 14px;
-    color: var(--ts-orange);
-    font: 700 1.2rem/1.2 var(--font-body-family), "Poppins", sans-serif;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-  }
-
-  .ts-home h1,
-  .ts-home h2,
-  .ts-home h3 {
-    margin: 0;
-    font-family: var(--font-heading-family), "Switzer", sans-serif;
-    color: var(--ts-charcoal);
-    text-wrap: balance;
-  }
-
-  .ts-home h1 {
-    font-size: clamp(4.8rem, 7vw, 8.4rem);
-    line-height: .92;
-    letter-spacing: 0;
-  }
-
-  .ts-home h2 {
-    font-size: clamp(3rem, 4.4vw, 5.6rem);
-    line-height: 1;
-  }
-
-  .ts-home h3 {
-    font-size: clamp(1.9rem, 2vw, 2.4rem);
-    line-height: 1.08;
-  }
-
-  .ts-hero__text,
-  .ts-section-head p,
-  .ts-story p,
-  .ts-step-grid p,
-  .ts-review-grid p,
-  .ts-faq p {
-    font-size: 1.65rem;
-    line-height: 1.6;
-    color: rgba(51, 51, 51, .78);
-  }
-
-  .ts-hero__text {
-    max-width: 58rem;
-    margin: 24px 0 0;
-  }
-
-  .ts-actions,
-  .ts-product-card__footer {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .ts-actions {
-    margin-top: 34px;
-  }
-
-  .ts-button {
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 24px;
-    border-radius: 999px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: transform .22s ease, background-color .22s ease, color .22s ease, border-color .22s ease;
-  }
-
-  .ts-button:hover {
-    transform: translateY(-2px);
-  }
-
-  .ts-button:active {
-    transform: translateY(0) scale(.98);
-  }
-
-  .ts-button--primary {
-    background: var(--ts-orange);
-    color: #fff;
-    box-shadow: 0 12px 30px rgba(255, 103, 0, .22);
-  }
-
-  .ts-button--outline {
-    border: 1px solid var(--ts-orange);
-    color: var(--ts-orange);
-    background: transparent;
-  }
-
-  .ts-button--text {
-    color: var(--ts-charcoal);
-    padding-inline: 4px;
-  }
-
-  .ts-hero__visual {
-    min-height: 440px;
-    position: relative;
-    display: grid;
-    place-items: center;
-  }
-
-  .ts-packshot {
-    width: min(100%, 430px);
-    aspect-ratio: 4 / 4.65;
-    border-radius: 36px;
-    display: grid;
-    place-items: center;
-    gap: 18px;
-    padding: 42px;
-    background: #fff;
-    box-shadow: 0 28px 90px rgba(51, 51, 51, .12);
+  #shopify-section-{{ section.id }} .bs-header {
     text-align: center;
-    transform: rotate(2deg);
-  }
-
-  .ts-packshot span {
-    font-weight: 700;
-    color: var(--ts-green);
-  }
-
-  .ts-chews {
-    position: absolute;
-    inset: auto 0 8px auto;
-    width: 180px;
-    height: 120px;
-  }
-
-  .ts-chews span,
-  .ts-product-card__placeholder:before {
-    position: absolute;
-    width: 56px;
-    height: 38px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #8b5326, #4a2a17);
-    box-shadow: inset 0 8px 12px rgba(255, 255, 255, .12);
-  }
-
-  .ts-chews span:nth-child(1) { right: 88px; bottom: 6px; rotate: -8deg; }
-  .ts-chews span:nth-child(2) { right: 42px; bottom: 26px; rotate: 7deg; }
-  .ts-chews span:nth-child(3) { right: 6px; bottom: 0; rotate: -3deg; }
-  .ts-chews span:nth-child(4) { right: 70px; bottom: 62px; rotate: 14deg; }
-  .ts-chews span:nth-child(5) { right: 116px; bottom: 48px; rotate: 4deg; }
-
-  .ts-products,
-  .ts-steps,
-  .ts-story,
-  .ts-reviews,
-  .ts-faq {
-    padding: clamp(56px, 8vw, 104px) 0;
-  }
-
-  .ts-section-head {
-    max-width: 820px;
     margin-bottom: 36px;
   }
 
-  .ts-section-head--compact {
-    max-width: 620px;
+  #shopify-section-{{ section.id }} .bs-heading {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: {{ section.settings.heading_size_mobile }}px;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 10px;
+    line-height: 1.15;
   }
 
-  .ts-product-grid,
-  .ts-step-grid,
-  .ts-review-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
+  #shopify-section-{{ section.id }} .bs-subheading {
+    font-size: 14px;
+    line-height: 1.65;
+    color: {{ section.settings.text_color }};
+    max-width: 580px;
+    margin: 0 auto;
   }
 
-  .ts-product-card {
+  #shopify-section-{{ section.id }} .bs-grid {
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__image-link {
+    display: block;
+    text-decoration: none;
+    border-radius: 14px;
     overflow: hidden;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 18px 50px rgba(51, 51, 51, .08);
+    aspect-ratio: 1 / 1;
+    position: relative;
   }
 
-  .ts-product-card__media {
-    min-height: 260px;
-    display: grid;
-    place-items: center;
-    background: var(--ts-blush);
+  #shopify-section-{{ section.id }} .bs-card__image-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 14px;
+    box-sizing: border-box;
+    transition: transform 0.35s ease;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__image-link:hover img {
+    transform: scale(1.04);
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__placeholder svg {
+    width: 70%;
+    height: 70%;
+    opacity: 0.25;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__body {
+    padding: 12px 4px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__title {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: 16px;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 5px;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .bs-card__title a {
+    color: inherit;
     text-decoration: none;
   }
 
-  .ts-product-card__media img {
-    max-width: 88%;
-    max-height: 260px;
-    object-fit: contain;
+  #shopify-section-{{ section.id }} .bs-card__subtitle {
+    font-size: 12px;
+    line-height: 1.5;
+    color: {{ section.settings.text_color }};
+    margin: 0 0 12px;
   }
 
-  .ts-product-card__placeholder {
-    min-height: 260px;
-    position: relative;
-    display: grid;
-    place-items: center;
-    gap: 18px;
-    text-align: center;
-    color: rgba(51, 51, 51, .62);
-    font-size: 1.25rem;
+  #shopify-section-{{ section.id }} .bs-card__icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 10px;
+    margin-bottom: 14px;
+    width: 100%;
   }
 
-  .ts-product-card__placeholder:before {
-    content: "";
-    left: calc(50% - 28px);
-    bottom: 38px;
-  }
-
-  .ts-product-card__body {
-    display: grid;
-    gap: 16px;
-    padding: 22px;
-  }
-
-  .ts-product-card__body p {
-    margin: 0;
-    color: rgba(51, 51, 51, .68);
-    line-height: 1.45;
-  }
-
-  .ts-product-card__benefits {
-    display: grid;
-    gap: 8px;
-  }
-
-  .ts-product-card__benefits span {
-    display: inline-flex;
+  #shopify-section-{{ section.id }} .bs-icon-item {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--ts-green);
+    gap: 4px;
+    width: 52px;
   }
 
-  .ts-product-card__benefits svg {
-    width: 18px;
-    height: 18px;
+  #shopify-section-{{ section.id }} .bs-icon-item__img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
   }
 
-  .ts-product-card__footer {
-    align-self: end;
-    justify-content: space-between;
-    margin-top: 8px;
+  #shopify-section-{{ section.id }} .bs-icon-item__svg {
+    width: 28px;
+    height: 28px;
+    color: {{ section.settings.icon_color }};
+    flex-shrink: 0;
   }
 
-  .ts-product-card__footer small {
-    color: rgba(51, 51, 51, .62);
-    font-weight: 700;
-  }
-
-  .ts-trust {
-    padding: 20px 0;
-    background: var(--ts-orange);
-    color: #fff;
-  }
-
-  .ts-trust__grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
+  #shopify-section-{{ section.id }} .bs-icon-item__label {
+    font-size: 10px;
+    line-height: 1.3;
+    color: {{ section.settings.text_color }};
     text-align: center;
-    font-weight: 800;
   }
 
-  .ts-step-grid,
-  .ts-review-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .ts-step-grid article,
-  .ts-review-grid article {
-    border-radius: 8px;
-    padding: 28px;
-    background: #fff;
-  }
-
-  .ts-step-grid strong {
+  #shopify-section-{{ section.id }} .bs-card__btn {
     display: inline-block;
-    margin-bottom: 42px;
-    color: var(--ts-green);
-    font-size: 3.4rem;
-    line-height: 1;
-  }
-
-  .ts-story {
-    background: var(--ts-cream);
-  }
-
-  .ts-story__visual {
-    min-height: 480px;
-    border-radius: 8px;
-    background:
-      radial-gradient(circle at 62% 36%, rgba(255, 103, 0, .16), transparent 22%),
-      linear-gradient(140deg, #ffffff, var(--ts-blush));
-    display: grid;
-    place-items: center;
-  }
-
-  .ts-story__badge {
-    width: min(74%, 360px);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    padding: 36px;
-    text-align: center;
-    background: var(--ts-green);
-    color: #fff;
-    font: 800 clamp(2.2rem, 3vw, 3.6rem)/1.05 var(--font-heading-family), "Switzer", sans-serif;
-  }
-
-  .ts-story ul {
-    display: grid;
-    gap: 12px;
-    margin: 26px 0 30px;
-    padding: 0;
-    list-style: none;
-  }
-
-  .ts-story li {
-    position: relative;
-    padding-left: 28px;
-    font-weight: 700;
-  }
-
-  .ts-story li:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: .55em;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--ts-orange);
-  }
-
-  .ts-review-grid span {
-    color: var(--ts-orange);
-    letter-spacing: .08em;
-  }
-
-  .ts-review-grid strong {
-    color: var(--ts-green);
-  }
-
-  .ts-faq {
-    background: #fff;
-  }
-
-  .ts-faq__grid {
-    grid-template-columns: .72fr 1fr;
-    align-items: start;
-  }
-
-  .ts-faq__items {
-    display: grid;
-    gap: 12px;
-  }
-
-  .ts-faq details {
-    border-top: 1px solid rgba(51, 51, 51, .16);
-    padding: 18px 0;
-  }
-
-  .ts-faq summary {
+    margin-top: auto;
+    padding: 9px 18px;
+    border-radius: 100px;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text }};
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid {{ section.settings.button_bg }};
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    letter-spacing: 0.03em;
     cursor: pointer;
-    font-weight: 800;
-    font-size: 1.8rem;
   }
 
-  .ts-faq details:last-child {
-    border-bottom: 1px solid rgba(51, 51, 51, .16);
+  #shopify-section-{{ section.id }} .bs-card__btn:hover {
+    background: {{ section.settings.button_hover_bg }};
+    color: {{ section.settings.button_hover_text }};
+    border-color: {{ section.settings.button_hover_bg }};
   }
 
-  @media screen and (max-width: 989px) {
-    .ts-hero__grid,
-    .ts-story__grid,
-    .ts-faq__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .ts-product-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .ts-step-grid,
-    .ts-review-grid,
-    .ts-trust__grid {
-      grid-template-columns: 1fr;
-    }
+  #shopify-section-{{ section.id }} .bs-card__price {
+    margin-top: 8px;
+    font-size: 12px;
+    color: {{ section.settings.text_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
   }
 
-  @media screen and (max-width: 640px) {
-    .ts-home__container {
-      width: min(100% - 24px, 1280px);
+  #shopify-section-{{ section.id }} .bs-card__price-compare {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  @media (min-width: 750px) {
+    #shopify-section-{{ section.id }} .bs-section {
+      padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
     }
 
-    .ts-hero {
-      min-height: auto;
-      padding: 52px 0 62px;
+    #shopify-section-{{ section.id }} .bs-inner {
+      padding: 0 40px;
     }
 
-    .ts-hero__visual {
-      min-height: 330px;
-      order: -1;
+    #shopify-section-{{ section.id }} .bs-heading {
+      font-size: {{ section.settings.heading_size }}px;
     }
 
-    .ts-packshot {
-      width: min(88vw, 320px);
-      padding: 28px;
-      border-radius: 24px;
+    #shopify-section-{{ section.id }} .bs-subheading {
+      font-size: 16px;
     }
 
-    .ts-product-grid {
-      grid-template-columns: 1fr;
+    #shopify-section-{{ section.id }} .bs-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
     }
 
-    .ts-actions,
-    .ts-product-card__footer {
-      align-items: stretch;
-      flex-direction: column;
+    #shopify-section-{{ section.id }} .bs-card__image-link {
+      border-radius: 18px;
     }
 
-    .ts-button {
-      width: 100%;
+    #shopify-section-{{ section.id }} .bs-card__image-link img {
+      padding: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__body {
+      padding: 16px 4px 0;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__title {
+      font-size: 22px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__subtitle {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__icons {
+      gap: 8px 14px;
+      margin-bottom: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-icon-item {
+      width: 60px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-icon-item__img,
+    #shopify-section-{{ section.id }} .bs-icon-item__svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-icon-item__label {
+      font-size: 11px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__btn {
+      padding: 11px 26px;
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-card__price {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .bs-header {
+      margin-bottom: 48px;
     }
   }
-</style>
+{%- endstyle -%}
+
+<section class="row best-sellers bs-section" data-section-id="{{ section.id }}">
+  <div class="bs-inner">
+
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="bs-header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="bs-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="bs-subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="bs-grid">
+      {%- for block in section.blocks -%}
+        {%- assign prod = block.settings.product -%}
+
+        <div class="bs-card" {{ block.shopify_attributes }}>
+
+          {%- if prod != blank -%}
+            <a href="{{ prod.url }}" class="bs-card__image-link" style="background-color: {{ block.settings.card_bg }};">
+              {%- if prod.featured_image != blank -%}
+                {{ prod.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: prod.title }}
+              {%- else -%}
+                <div class="bs-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+              {%- endif -%}
+            </a>
+          {%- else -%}
+            <div class="bs-card__image-link" style="background-color: {{ block.settings.card_bg }};">
+              <div class="bs-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+            </div>
+          {%- endif -%}
+
+          <div class="bs-card__body">
+
+            <h3 class="bs-card__title">
+              {%- if prod != blank -%}
+                <a href="{{ prod.url }}">{{ prod.title }}</a>
+              {%- else -%}
+                Product Name
+              {%- endif -%}
+            </h3>
+
+            {%- if block.settings.subtitle != blank -%}
+              <p class="bs-card__subtitle">{{ block.settings.subtitle }}</p>
+            {%- endif -%}
+
+            {%- comment -%} Icons — show if at least one icon slot has image or preset {%- endcomment -%}
+            {%- assign any_icon = false -%}
+            {%- for i in (1..4) -%}
+              {%- assign chk_img = 'icon_' | append: i | append: '_image' -%}
+              {%- assign chk_pre = 'icon_' | append: i | append: '_preset' -%}
+              {%- if block.settings[chk_img] != blank or block.settings[chk_pre] != 'none' -%}
+                {%- assign any_icon = true -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- if any_icon -%}
+              <div class="bs-card__icons">
+                {%- for i in (1..4) -%}
+                  {%- assign ik = 'icon_' | append: i | append: '_image' -%}
+                  {%- assign lk = 'icon_' | append: i | append: '_label' -%}
+                  {%- assign pk = 'icon_' | append: i | append: '_preset' -%}
+                  {%- assign icon_img    = block.settings[ik] -%}
+                  {%- assign icon_label  = block.settings[lk] -%}
+                  {%- assign icon_preset = block.settings[pk] -%}
+
+                  {%- if icon_img != blank or icon_preset != 'none' -%}
+                    <div class="bs-icon-item">
+                      {%- if icon_img != blank -%}
+                        {{ icon_img | image_url: width: 80 | image_tag: class: 'bs-icon-item__img', loading: 'lazy', alt: icon_label }}
+                      {%- else -%}
+                        {%- case icon_preset -%}
+                          {%- when 'paw' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="5.5" cy="7.5" rx="2" ry="2.5"/><ellipse cx="10" cy="4.5" rx="1.5" ry="2"/><ellipse cx="14" cy="4.5" rx="1.5" ry="2"/><ellipse cx="18.5" cy="7.5" rx="2" ry="2.5"/><path d="M12 22c-3.87 0-7-3-7-6 0-1.66 1.34-3 3-3h8c1.66 0 3 1.34 3 3 0 3-3.13 6-7 6z"/></svg>
+                          {%- when 'heart' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                          {%- when 'shield' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                          {%- when 'leaf' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 19.34L5.71 21l1-1C7.89 17.93 13 14 19 14c0-6-2-10-2-10z"/><path d="M3.82 19.34A10 10 0 0 1 7 14"/></svg>
+                          {%- when 'star' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                          {%- when 'bone' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-4.5.5 0 1 .5 1 1a2.5 2.5 0 0 0 2.5 2.5c1.38 0 2-.5 3-1 2.143-1.072 4.054-.224 4.5 2 0 .5-.5 1-1 1a2.5 2.5 0 0 0-2.5 2.5c0 1.38.5 2 1 3 1.072 2.143.224 4.054-2 4.5-.5 0-1-.5-1-1a2.5 2.5 0 0 0-2.5-2.5c-1.38 0-2 .5-3 1-2.143 1.072-4.054.224-4.5-2 0-.5.5-1 1-1z"/></svg>
+                          {%- when 'drop' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                          {%- when 'check' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+                          {%- when 'sun' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                          {%- when 'lightning' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                          {%- when 'gut' -%}
+                            <svg class="bs-icon-item__svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1a2 2 0 0 0 2 2h3a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-3a2 2 0 0 0-2 2v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z"/></svg>
+                        {%- endcase -%}
+                      {%- endif -%}
+                      {%- if icon_label != blank -%}
+                        <span class="bs-icon-item__label">{{ icon_label }}</span>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+
+            {%- if prod != blank -%}
+              <a href="{{ prod.url }}" class="bs-card__btn">{{ section.settings.button_label }}</a>
+              {%- if section.settings.show_price -%}
+                <div class="bs-card__price">
+                  {%- if prod.compare_at_price > prod.price -%}
+                    <span class="bs-card__price-compare">{{ prod.compare_at_price | money }}</span>
+                  {%- endif -%}
+                  <span>{{ prod.price | money }}</span>
+                </div>
+              {%- endif -%}
+            {%- else -%}
+              <span class="bs-card__btn">{{ section.settings.button_label }}</span>
+            {%- endif -%}
+
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
 
 {% schema %}
 {
-  "name": "TailSpark homepage",
-  "settings": [],
+  "name": "Best Sellers",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading text",
+      "default": "Our treats are as tasty as they look, but what's inside is even more impressive."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price below button",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1D1D1B"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Product title",
+      "default": "#1D1D1B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Preset icon color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#FF6700"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button hover background",
+      "default": "#CC5200"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text",
+      "label": "Button hover text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Heading size"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "default": 42,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Short description",
+          "default": "Short product benefit description"
+        },
+        {
+          "type": "color",
+          "id": "card_bg",
+          "label": "Card background color",
+          "default": "#FFF5F0"
+        },
+        {
+          "type": "header",
+          "content": "Icon 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_1_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "gut", "label": "Gut health" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "icon_1_label",
+          "label": "Icon 1 label",
+          "default": "Benefit 1"
+        },
+        {
+          "type": "header",
+          "content": "Icon 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_2_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "gut", "label": "Gut health" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "icon_2_label",
+          "label": "Icon 2 label",
+          "default": "Benefit 2"
+        },
+        {
+          "type": "header",
+          "content": "Icon 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_3_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "gut", "label": "Gut health" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "icon_3_label",
+          "label": "Icon 3 label"
+        },
+        {
+          "type": "header",
+          "content": "Icon 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_4_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_4_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "sun", "label": "Sun" },
+            { "value": "lightning", "label": "Lightning" },
+            { "value": "gut", "label": "Gut health" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "icon_4_label",
+          "label": "Icon 4 label"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "TailSpark homepage"
+      "name": "Best Sellers",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
     }
   ]
 }
