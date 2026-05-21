@@ -9,81 +9,57 @@
  */
 {
   "sections": {
-    "hero_elite_YMVm86": {
+    "tailspark_hero_jH9Fz6": {
       "type": "tailspark-hero",
       "blocks": {
-        "eyebrow_Qntce4": {
+        "eyebrow_FGHYTe": {
           "type": "eyebrow",
           "settings": {
-            "text": "Vet Formulated | Made in USA",
-            "text_color": "#FF6700"
+            "text": "New Collection",
+            "text_color": ""
           }
         },
-        "inline_rating_neNARE": {
-          "type": "inline_rating",
-          "disabled": true,
-          "settings": {
-            "rating_value": "4.9",
-            "rating_label": "stars",
-            "segment_1_number": "85,000",
-            "segment_1_label": "reviews",
-            "segment_2_number": "1,000,000+",
-            "segment_2_label": "members",
-            "segment_1_number_mobile": "85K",
-            "segment_2_number_mobile": "1M+",
-            "star_color": "#f4d625",
-            "rating_value_color": "#ffffff",
-            "segment_1_color": "#ffffff",
-            "segment_2_color": "#ffffff",
-            "text_color": "#dfdfdf",
-            "font_size_desktop": 15,
-            "stars_size_desktop": 22,
-            "font_size_mobile": 13,
-            "stars_size_mobile": 14
-          }
-        },
-        "heading_4N3Rcj": {
+        "heading_W83xg6": {
           "type": "heading",
           "settings": {
-            "heading": "Tail-Wagging Health, Made Simple.",
-            "heading_size": "h0",
+            "heading": "Elegant by Nature",
+            "heading_size": "hxl",
             "heading_tag": "h1",
-            "text_color": "#333333"
+            "text_color": ""
           }
         },
-        "subheading_NWb4tP": {
+        "subheading_3B64ym": {
           "type": "subheading",
           "settings": {
-            "text": "Soft chews your dog will love - backed by science, free of junk, and made for daily wellness.",
-            "text_color": "#333333"
+            "text": "Discover the new season",
+            "text_color": ""
           }
         },
-        "rating_badge_fwLHHH": {
+        "rating_badge_DCFTDc": {
           "type": "rating_badge",
-          "disabled": true,
           "settings": {
             "badge_prefix": "Rated",
             "rating_value": "4.8",
             "badge_connector": "by",
             "customers_count": "10,000+",
             "customers_label": "Happy Customers",
-            "animation_color": "#ffffff",
-            "animation_color_1": "#ffffff",
+            "animation_color": "#669CD6",
+            "animation_color_1": "#669CD6",
             "animation_color_1_opacity": 0.3,
-            "animation_color_2": "#f2dc5c",
+            "animation_color_2": "#669CD6",
             "animation_color_2_opacity": 0.2,
-            "text_color": "#ffffff",
-            "star_color": "#ffc300",
-            "glass_color": "#ffffff",
-            "ring_color": "#ffffff",
-            "avatar_ring_color": "#ffffff",
+            "text_color": "#FFFFFF",
+            "star_color": "#FFC300",
+            "glass_color": "#FFFFFF",
+            "ring_color": "#FFFFFF",
+            "avatar_ring_color": "#FFFFFF",
             "shadow_color": "#000000",
             "shadow_opacity": 0.3,
             "hover_shadow_opacity": 0.4,
             "animation_speed": 8,
-            "rating_value_color": "#ffffff",
+            "rating_value_color": "#FFFFFF",
             "rating_value_weight": "500",
-            "customers_count_color": "#ffffff",
+            "customers_count_color": "#FFFFFF",
             "customers_count_weight": "500",
             "avatar_1_alt": "Customer photo 1",
             "avatar_2_alt": "Customer photo 2",
@@ -108,10 +84,10 @@
             "avatar_size_tablet": 24,
             "avatar_size_mobile": 22,
             "xs_min_manual": "0",
-            "xs_max_manual": "380",
-            "mobile_min_manual": "381",
-            "mobile_max_manual": "759",
-            "tablet_min_manual": "760",
+            "xs_max_manual": "388",
+            "mobile_min_manual": "389",
+            "mobile_max_manual": "749",
+            "tablet_min_manual": "750",
             "tablet_max_manual": "1180",
             "desktop_min_manual": "1280",
             "hide_avatars_mobile": false,
@@ -121,90 +97,65 @@
             "hide_star_xs": false
           }
         },
-        "buttons_iixVk9": {
+        "buttons_zPiEkW": {
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "",
             "button_style_1": "pill-solid",
-            "button_color_bg_1": "#FF6700",
-            "button_color_text_1": "#ffffff",
-            "button_label_2": "Learn More",
-            "button_link_2": "shopify://pages/about",
+            "button_color_bg_1": "#ffffff",
+            "button_color_text_1": "#111111",
+            "button_label_2": "",
+            "button_link_2": "",
             "button_style_2": "pill-outline",
-            "button_color_bg_2": "#333333",
-            "button_color_text_2": "#333333"
+            "button_color_bg_2": "#ffffff",
+            "button_color_text_2": "#ffffff"
           }
         },
-        "trust_badge_jyYEmR": {
-          "type": "trust_badge",
-          "disabled": true,
-          "settings": {
-            "icon_1": "check",
-            "text_1": "Organic",
-            "tooltip_1": "",
-            "icon_color_1": "#10b981",
-            "icon_2": "check",
-            "text_2": "30-Day Guarantee",
-            "tooltip_2": "",
-            "icon_color_2": "#10b981",
-            "icon_3": "check",
-            "text_3": "Fast Shipping",
-            "tooltip_3": "",
-            "icon_color_3": "#10b981",
-            "mobile_inline": true,
-            "font_size_desktop": 14,
-            "font_size_mobile": 10.5,
-            "text_color": "#f7f5f0"
-          }
-        },
-        "scroll_indicator_aXzLBx": {
+        "scroll_indicator_UMR9cL": {
           "type": "scroll_indicator",
-          "disabled": true,
           "settings": {
             "scroll_icon_style": "arrow",
             "scroll_anim_style": "bounce",
             "arrow_color": "#ffffff",
             "scroll_size_desktop": 44,
-            "scroll_size_mobile": 32
+            "scroll_size_mobile": 40
           }
         }
       },
       "block_order": [
-        "eyebrow_Qntce4",
-        "inline_rating_neNARE",
-        "heading_4N3Rcj",
-        "subheading_NWb4tP",
-        "rating_badge_fwLHHH",
-        "buttons_iixVk9",
-        "trust_badge_jyYEmR",
-        "scroll_indicator_aXzLBx"
+        "eyebrow_FGHYTe",
+        "heading_W83xg6",
+        "subheading_3B64ym",
+        "rating_badge_DCFTDc",
+        "buttons_zPiEkW",
+        "scroll_indicator_UMR9cL"
       ],
-      "name": "Hero Elite",
+      "name": "TailSpark Hero",
       "settings": {
         "video_url_desktop": "",
         "video_url_mobile": "",
         "video_autoplay": true,
         "video_loop": true,
-        "image_behavior": "none",
-        "overlay_color": "#FFFFD2",
-        "overlay_opacity": 0,
-        "overlay_gradient": "left",
-        "height_desktop": 95,
-        "height_mobile": 100,
+        "image_behavior": "zoom-in",
+        "overlay_color": "#000000",
+        "overlay_opacity": 35,
+        "overlay_gradient": "none",
+        "height_desktop": 85,
+        "height_mobile": 70,
         "content_position": "middle-left",
         "content_alignment": "left",
-        "content_padding": 60,
-        "content_max_width": 640,
-        "content_gap": 22,
-        "content_gap_mobile": 14,
-        "mobile_content_position": "top-center",
+        "content_padding": 48,
+        "content_max_width": 760,
+        "content_gap": 24,
+        "content_gap_mobile": 16,
+        "mobile_content_position": "middle-center",
         "mobile_content_alignment": "center",
         "show_text_below_on_mobile": false,
         "show_text_box": false,
-        "color_scheme": "scheme-2",
+        "color_scheme": "",
         "animation_style": "fade-up",
-        "animation_duration": 800,
+        "animation_duration": 900,
         "rounded_bottom": false,
         "accessibility_info": "Hero section"
       }
@@ -1201,7 +1152,7 @@
     }
   },
   "order": [
-    "hero_elite_YMVm86",
+    "tailspark_hero_jH9Fz6",
     "slideshow_custom_UqM993",
     "logo_ticker_7XVqNT",
     "featured_collection_UHH8Wr",
