@@ -84,8 +84,8 @@
 }
 
 body {
-  background: var(--tailspark-soft-cream);
-  color: var(--tailspark-charcoal);
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
   letter-spacing: 0;
 }
 
@@ -104,7 +104,7 @@ h6,
   font-family: "Switzer", Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 0;
-  color: var(--tailspark-charcoal);
+  color: rgb(var(--color-foreground));
 }
 
 .button,
@@ -113,9 +113,9 @@ h6,
 button.shopify-payment-button__button--unbranded {
   min-height: 4.8rem;
   border-radius: 999px;
-  background: var(--tailspark-orange);
-  color: #fff;
-  border-color: var(--tailspark-orange);
+  background: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  border-color: rgb(var(--color-button));
   font-family: "Poppins TailSpark", Arial, sans-serif;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -127,17 +127,17 @@ button.shopify-payment-button__button--unbranded {
 .shopify-challenge__button:hover,
 .customer button:hover,
 button.shopify-payment-button__button--unbranded:hover {
-  background: #e85e00;
-  border-color: #e85e00;
-  box-shadow: 0 10px 24px rgba(255, 103, 0, 0.18);
+  background: color-mix(in srgb, rgb(var(--color-button)) 85%, black);
+  border-color: color-mix(in srgb, rgb(var(--color-button)) 85%, black);
+  box-shadow: 0 10px 24px rgba(var(--color-button), 0.18);
   transform: translateY(-1px);
 }
 
 .button.button--secondary,
 .button--secondary {
   background: transparent;
-  color: var(--tailspark-orange);
-  border-color: var(--tailspark-orange);
+  color: rgb(var(--color-button));
+  border-color: rgb(var(--color-button));
 }
 
 .announcement-bar-section,
@@ -156,13 +156,13 @@ button.shopify-payment-button__button--unbranded:hover {
 
 .section-header .header-wrapper,
 .shopify-section-header-sticky .header-wrapper {
-  border-bottom: 1px solid var(--tailspark-border);
-  background: rgba(255, 248, 237, 0.96);
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.12);
+  background: rgba(var(--color-background), 0.96);
   backdrop-filter: blur(10px);
 }
 
 .header {
-  color: var(--tailspark-charcoal);
+  color: rgb(var(--color-foreground));
 }
 
 .header__heading-logo-wrapper {
@@ -179,19 +179,19 @@ button.shopify-payment-button__button--unbranded:hover {
 .header__inline-menu .list-menu__item,
 .header__inline-menu .list-menu__item > a,
 .header__inline-menu .list-menu__item--link {
-  color: var(--tailspark-charcoal);
+  color: rgb(var(--color-foreground));
   font-family: "Poppins TailSpark", Arial, sans-serif !important;
   font-weight: 500;
   letter-spacing: 0;
 }
 
 .header__active-menu-item {
-  color: var(--tailspark-orange);
-  text-decoration-color: var(--tailspark-orange);
+  color: rgb(var(--color-button));
+  text-decoration-color: rgb(var(--color-button));
 }
 
 .cart-count-bubble {
-  background-color: var(--tailspark-orange);
+  background-color: rgb(var(--color-button));
 }
 
 .cart-count-bubble span {
@@ -227,7 +227,7 @@ button.shopify-payment-button__button--unbranded:hover {
 
 .price,
 .price-item {
-  color: var(--tailspark-charcoal);
+  color: rgb(var(--color-foreground));
   font-family: "Poppins TailSpark", Arial, sans-serif;
 }
 
@@ -237,15 +237,15 @@ header__inline-menu,
 .header__inline-menu .list-menu__item > a,
 .header__inline-menu .list-menu__item--link {
   font-family: "Poppins TailSpark", Arial, sans-serif !important;
-  font-synthesis-weight: none;                 
+  font-synthesis-weight: none;
   font-weight: 500;
 }
 
-.header__active-menu-item { 
-  text-decoration: underline; 
-  text-decoration-color: var(--tailspark-orange);
-  text-decoration-thickness: 1.5px; 
-  text-underline-offset: 4px; 
+.header__active-menu-item {
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-button));
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
 
 }
 
