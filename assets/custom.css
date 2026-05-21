@@ -136,8 +136,8 @@ button.shopify-payment-button__button--unbranded:hover {
 .button.button--secondary,
 .button--secondary {
   background: transparent;
-  color: rgb(var(--color-button));
-  border-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  border-color: rgb(var(--color-button-text));
 }
 
 .announcement-bar-section,
