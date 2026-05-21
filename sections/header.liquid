@@ -155,11 +155,6 @@
       assign use_tailspark_asset_logo = false
       if settings.logo == blank
         assign use_tailspark_asset_logo = true
-      else
-        assign current_logo_url = settings.logo | image_url: width: 300
-        if current_logo_url contains 'NaturenA'
-          assign use_tailspark_asset_logo = true
-        endif
       endif
 
       if section.settings.menu != blank
