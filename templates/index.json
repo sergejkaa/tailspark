@@ -1,11 +1,1229 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "tailspark_home": {
-      "type": "tailspark-home",
-      "settings": {}
+    "hero_elite_YMVm86": {
+      "type": "hero-elite",
+      "blocks": {
+        "eyebrow_Qntce4": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "Reconnect With Nature",
+            "text_color": "#fafafa"
+          }
+        },
+        "inline_rating_neNARE": {
+          "type": "inline_rating",
+          "settings": {
+            "rating_value": "4.9",
+            "rating_label": "stars",
+            "segment_1_number": "85,000",
+            "segment_1_label": "reviews",
+            "segment_2_number": "1,000,000+",
+            "segment_2_label": "members",
+            "segment_1_number_mobile": "85K",
+            "segment_2_number_mobile": "1M+",
+            "star_color": "#f4d625",
+            "rating_value_color": "#ffffff",
+            "segment_1_color": "#ffffff",
+            "segment_2_color": "#ffffff",
+            "text_color": "#dfdfdf",
+            "font_size_desktop": 15,
+            "stars_size_desktop": 22,
+            "font_size_mobile": 13,
+            "stars_size_mobile": 14
+          }
+        },
+        "heading_4N3Rcj": {
+          "type": "heading",
+          "settings": {
+            "heading": "Elegant by Nature",
+            "heading_size": "h0",
+            "heading_tag": "h1",
+            "text_color": "#ffffff"
+          }
+        },
+        "subheading_NWb4tP": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Discover the new season",
+            "text_color": "#ffffff"
+          }
+        },
+        "rating_badge_fwLHHH": {
+          "type": "rating_badge",
+          "disabled": true,
+          "settings": {
+            "badge_prefix": "Rated",
+            "rating_value": "4.8",
+            "badge_connector": "by",
+            "customers_count": "10,000+",
+            "customers_label": "Happy Customers",
+            "animation_color": "#ffffff",
+            "animation_color_1": "#ffffff",
+            "animation_color_1_opacity": 0.3,
+            "animation_color_2": "#f2dc5c",
+            "animation_color_2_opacity": 0.2,
+            "text_color": "#ffffff",
+            "star_color": "#ffc300",
+            "glass_color": "#ffffff",
+            "ring_color": "#ffffff",
+            "avatar_ring_color": "#ffffff",
+            "shadow_color": "#000000",
+            "shadow_opacity": 0.3,
+            "hover_shadow_opacity": 0.4,
+            "animation_speed": 8,
+            "rating_value_color": "#ffffff",
+            "rating_value_weight": "500",
+            "customers_count_color": "#ffffff",
+            "customers_count_weight": "500",
+            "avatar_1_alt": "Customer photo 1",
+            "avatar_2_alt": "Customer photo 2",
+            "avatar_3_alt": "Customer photo 3",
+            "avatar_4_alt": "Customer photo 4",
+            "use_default_avatars": true,
+            "font_size_desktop": 14.5,
+            "font_size_tablet": 13.5,
+            "font_size_mobile": 12,
+            "font_size_xs": 11,
+            "font_weight_text": "400",
+            "badge_height_desktop": 36,
+            "badge_height_tablet": 34,
+            "badge_height_mobile": 30,
+            "padding_horizontal_desktop": 16,
+            "padding_horizontal_tablet": 14,
+            "padding_horizontal_mobile": 12,
+            "gap_desktop": 10,
+            "gap_tablet": 9,
+            "gap_mobile": 8,
+            "avatar_size_desktop": 26,
+            "avatar_size_tablet": 24,
+            "avatar_size_mobile": 22,
+            "xs_min_manual": "0",
+            "xs_max_manual": "380",
+            "mobile_min_manual": "381",
+            "mobile_max_manual": "759",
+            "tablet_min_manual": "760",
+            "tablet_max_manual": "1180",
+            "desktop_min_manual": "1280",
+            "hide_avatars_mobile": false,
+            "hide_avatars_tablet": true,
+            "hide_avatars_xs": true,
+            "hide_avatars_desktop": false,
+            "hide_star_xs": false
+          }
+        },
+        "buttons_iixVk9": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "",
+            "button_link_1": "shopify://collections/all",
+            "button_style_1": "outline",
+            "button_color_bg_1": "#1b4a3d",
+            "button_color_text_1": "#1b4a3d",
+            "button_label_2": "Shop Now",
+            "button_link_2": "shopify://products/lions-mane-focus-extract-powder",
+            "button_style_2": "solid",
+            "button_color_bg_2": "#1b4a3d",
+            "button_color_text_2": "#ffffff"
+          }
+        },
+        "trust_badge_jyYEmR": {
+          "type": "trust_badge",
+          "settings": {
+            "icon_1": "check",
+            "text_1": "Organic",
+            "tooltip_1": "",
+            "icon_color_1": "#10b981",
+            "icon_2": "check",
+            "text_2": "30-Day Guarantee",
+            "tooltip_2": "",
+            "icon_color_2": "#10b981",
+            "icon_3": "check",
+            "text_3": "Fast Shipping",
+            "tooltip_3": "",
+            "icon_color_3": "#10b981",
+            "mobile_inline": true,
+            "font_size_desktop": 14,
+            "font_size_mobile": 10.5,
+            "text_color": "#f7f5f0"
+          }
+        },
+        "scroll_indicator_aXzLBx": {
+          "type": "scroll_indicator",
+          "settings": {
+            "scroll_icon_style": "arrow",
+            "scroll_anim_style": "bounce",
+            "arrow_color": "#ffffff",
+            "scroll_size_desktop": 44,
+            "scroll_size_mobile": 32
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_Qntce4",
+        "inline_rating_neNARE",
+        "heading_4N3Rcj",
+        "subheading_NWb4tP",
+        "rating_badge_fwLHHH",
+        "buttons_iixVk9",
+        "trust_badge_jyYEmR",
+        "scroll_indicator_aXzLBx"
+      ],
+      "name": "Hero Elite",
+      "settings": {
+        "image_desktop": "shopify://shop_images/weavy-Gemini_2.5_Flash_Nano_Banana_-2026-01-03_at_16.29.41.png",
+        "video_url_desktop": "",
+        "video_url_mobile": "",
+        "video_autoplay": true,
+        "video_loop": true,
+        "image_behavior": "none",
+        "overlay_color": "#10b981",
+        "overlay_opacity": 25,
+        "overlay_gradient": "right",
+        "height_desktop": 95,
+        "height_mobile": 85,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "content_padding": 48,
+        "content_max_width": 960,
+        "content_gap": 30,
+        "content_gap_mobile": 16,
+        "mobile_content_position": "bottom-center",
+        "mobile_content_alignment": "center",
+        "show_text_below_on_mobile": false,
+        "show_text_box": false,
+        "color_scheme": "scheme-2",
+        "animation_style": "fade-up",
+        "animation_duration": 800,
+        "rounded_bottom": false,
+        "accessibility_info": "Hero section"
+      }
+    },
+    "slideshow_custom_UqM993": {
+      "type": "slideshow-custom",
+      "blocks": {
+        "slide_6QmCLy": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/weavy-Gemini_2.5_Flash_Nano_Banana_-2025-12-07_at_18.42.04.png",
+            "image_overlay_opacity": 40,
+            "heading": "Daily Balance Starts Here",
+            "heading_size": "h1",
+            "subheading": "Clean functional mushroom supplements designed to support focus, energy, and everyday well-being.",
+            "button_label": "SHOP NOW",
+            "link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "bottom-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-2"
+          }
+        }
+      },
+      "block_order": [
+        "slide_6QmCLy"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (max-width: 480px) {.slideshow__text {padding-top: 85px !important; padding-bottom: 0 !important; }}"
+      ],
+      "name": "💜Slideshow Custom",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "ambient",
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our brand",
+        "btn_glow": "#1b4a3d"
+      }
+    },
+    "logo_ticker_7XVqNT": {
+      "type": "logo-ticker",
+      "blocks": {
+        "logo_N4M4qD": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 220,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_tfTdMh": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 220,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_cDWgUT": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 220,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_RRaHn4": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 220,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_bjqDxL": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 220,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_6t8akT": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 220,
+            "link": "",
+            "target_blank": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_N4M4qD",
+        "logo_tfTdMh",
+        "logo_cDWgUT",
+        "logo_RRaHn4",
+        "logo_bjqDxL",
+        "logo_6t8akT"
+      ],
+      "disabled": true,
+      "name": "Logo ticker (infinite)",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "constrain_width": false,
+        "speed": 57,
+        "gap": 44,
+        "max_height": 52,
+        "dim": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "featured_collection_UHH8Wr": {
+      "type": "featured-collection",
+      "custom_css": [],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "frontpage",
+        "products_to_show": 5,
+        "title": "New Arrivals",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": true,
+        "description_style": "body",
+        "columns_desktop": 5,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-4",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "mobile_carousel_dots_color": "#1b4a3d",
+        "padding_top": 28,
+        "padding_bottom": 20
+      }
+    },
+    "waves_EFN3kG": {
+      "type": "waves",
+      "name": "Animated Wave Divider",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "color_band": 50,
+        "wave1_color": "#1b4a3d",
+        "wave1_opacity": 20,
+        "front_wave_solid_floor": true,
+        "wave2_color": "#1b4a3d",
+        "wave2_opacity": 30,
+        "wave2_solid_floor": false,
+        "wave3_color": "#1b4a3d",
+        "wave3_opacity": 40,
+        "wave3_solid_floor": false,
+        "wave4_color": "#1b4a3d",
+        "wave4_opacity": 50,
+        "wave4_solid_floor": false,
+        "mobile_wave_height": 14,
+        "desktop_wave_height": 30,
+        "wave_speed": 14,
+        "flip_wave": false
+      }
+    },
+    "metrics_bar_Yi7TK9": {
+      "type": "metrics-bar",
+      "name": "Trust Metrics Bar",
+      "settings": {
+        "use_color_scheme": true,
+        "color_scheme": "scheme-2",
+        "grad_direction": "90deg",
+        "grad_left": "#121212",
+        "grad_right": "#a78bfa",
+        "grad_start": 68,
+        "grad_end": 100,
+        "use_page_width": true,
+        "pad_top": 36,
+        "pad_bottom": 36,
+        "gap": 0,
+        "right_gap": 56,
+        "right_inset": 108,
+        "kicker": "Trusted by 10,000+ people using functional mushroom supplements to support focus, energy, and daily balance.",
+        "kicker_size": 22,
+        "kicker_weight": 480,
+        "kicker_max_width": 83,
+        "kicker_color": "#ffffff",
+        "metric1_value": "4.9",
+        "metric1_decimals": 1,
+        "metric1_suffix": "+",
+        "value1_letter_spacing": 0,
+        "metric1_sub": "Last 12 months",
+        "show_stars": true,
+        "metric1_aria": "Average customer rating 4.7 out of 5",
+        "metric2_value": "256",
+        "metric2_decimals": 0,
+        "metric2_suffix": "K",
+        "metric2_sub": "Interactions each year",
+        "value_color": "#ffffff",
+        "value_size": 48,
+        "sub_color": "#ffffff",
+        "sub_size": 14,
+        "star_color": "#fbbf24",
+        "stars_size": 23,
+        "enable_anim": true,
+        "anim_duration": 1700
+      }
+    },
+    "waves_EPyJwQ": {
+      "type": "waves",
+      "name": "Animated Wave Divider",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "color_band": 50,
+        "wave1_color": "#1b4a3d",
+        "wave1_opacity": 20,
+        "front_wave_solid_floor": true,
+        "wave2_color": "#1b4a3d",
+        "wave2_opacity": 30,
+        "wave2_solid_floor": false,
+        "wave3_color": "#1b4a3d",
+        "wave3_opacity": 40,
+        "wave3_solid_floor": false,
+        "wave4_color": "#1b4a3d",
+        "wave4_opacity": 50,
+        "wave4_solid_floor": false,
+        "mobile_wave_height": 14,
+        "desktop_wave_height": 30,
+        "wave_speed": 14,
+        "flip_wave": true
+      }
+    },
+    "collection_list_wiKHpx": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_7f3DLK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "focus-mental-clarity"
+          }
+        },
+        "featured_collection_g73dtA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "calm-balance"
+          }
+        },
+        "featured_collection_zaE3DR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "daily-wellness-immunity"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_7f3DLK",
+        "featured_collection_g73dtA",
+        "featured_collection_zaE3DR"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Shop By Benefit",
+        "heading_size": "h1",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-4",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "mobile_carousel_dots_color": "#1b4a3d",
+        "padding_top": 36,
+        "padding_bottom": 52
+      }
+    },
+    "testimonials_slider_Th6Nzd": {
+      "type": "testimonials-slider",
+      "blocks": {
+        "review_ct8QcM": {
+          "type": "review",
+          "settings": {
+            "name": "Emma L.",
+            "city": "Paris",
+            "rating": 5,
+            "text": "Such a gentle formula - my skin became smoother within a week. Doesn’t clog pores and gives a soft natural glow."
+          }
+        },
+        "review_VxkCMA": {
+          "type": "review",
+          "settings": {
+            "name": "Sophia M.",
+            "city": "New York",
+            "rating": 5,
+            "text": "The scent is clean and subtle, the texture is amazing. My makeup sits so much better after using this cream."
+          }
+        },
+        "review_giUac7": {
+          "type": "review",
+          "settings": {
+            "name": "Isabella R.",
+            "city": "London",
+            "rating": 5,
+            "text": "I noticed a difference almost immediately - redness faded and my tone looks more even. Really impressed."
+          }
+        },
+        "review_ppQAGP": {
+          "type": "review",
+          "settings": {
+            "name": "Olivia K.",
+            "city": "Tokyo",
+            "rating": 5,
+            "text": "I use it morning and night. Lightweight but actually hydrating. My skin looks healthier overall."
+          }
+        },
+        "review_rrPKMB": {
+          "type": "review",
+          "settings": {
+            "name": "Ava S.",
+            "city": "Sydney",
+            "rating": 5,
+            "text": "My skin is very sensitive, but this cream worked perfectly. No irritation at all — finally something that suits me."
+          }
+        },
+        "review_nyTMML": {
+          "type": "review",
+          "settings": {
+            "name": "Charlotte B.",
+            "city": "Berlin",
+            "rating": 5,
+            "text": "After a week my skin feels softer and all dry patches disappeared. The formula actually delivers results."
+          }
+        },
+        "review_pUX7VQ": {
+          "type": "review",
+          "settings": {
+            "name": "Sam",
+            "city": "Kyiv",
+            "rating": 5,
+            "text": "Love that it’s non-greasy and absorbs quickly. Gives a nice glow without looking oily."
+          }
+        },
+        "review_4BH8Mw": {
+          "type": "review",
+          "settings": {
+            "name": "Amelia W.",
+            "city": "Rome",
+            "rating": 5,
+            "text": "Skin texture improved noticeably — small dry areas are gone. Super comfortable to use every day."
+          }
+        },
+        "review_iHAHeV": {
+          "type": "review",
+          "settings": {
+            "name": "Mia T.",
+            "city": "Barcelona",
+            "rating": 5,
+            "text": "Feels and performs like a luxury product. Packaging is beautiful. Definitely repurchasing."
+          }
+        }
+      },
+      "block_order": [
+        "review_ct8QcM",
+        "review_VxkCMA",
+        "review_giUac7",
+        "review_ppQAGP",
+        "review_rrPKMB",
+        "review_nyTMML",
+        "review_pUX7VQ",
+        "review_4BH8Mw",
+        "review_iHAHeV"
+      ],
+      "name": "Testimonials (Jade)",
+      "settings": {
+        "heading": "Real customer stories",
+        "heading_tag": "h1",
+        "anim_style": "rotate",
+        "enable_page_width": true,
+        "color_scheme": "scheme-4",
+        "dots_color": "#1b4a3d",
+        "show_nav": true,
+        "show_nav_mobile": false,
+        "nav_color": "#1b4a3d",
+        "nav_opacity": 80,
+        "max_chars": 180,
+        "content_max": 1200,
+        "cta_label": "",
+        "cta_link": "shopify://pages/leave-a-review",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "how_we_compare_7VpxCL": {
+      "type": "how-we-compare",
+      "blocks": {
+        "feature_xYDyr9": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Calms you down with L-theanine",
+            "primary_state": "check",
+            "primary_text": "",
+            "secondary_state": "cross",
+            "secondary_text": ""
+          }
+        },
+        "feature_eqPG7F": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Natural griffonia seed extract",
+            "primary_state": "check",
+            "primary_text": "",
+            "secondary_state": "cross",
+            "secondary_text": ""
+          }
+        },
+        "feature_GkPMhe": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "All natural melatonin",
+            "primary_state": "check",
+            "primary_text": "",
+            "secondary_state": "cross",
+            "secondary_text": ""
+          }
+        },
+        "feature_hDeanK": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "With soothing herbal extracts",
+            "primary_state": "check",
+            "primary_text": "",
+            "secondary_state": "cross",
+            "secondary_text": ""
+          }
+        },
+        "feature_RwjeVG": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Sugar free",
+            "primary_state": "check",
+            "primary_text": "",
+            "secondary_state": "cross",
+            "secondary_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_xYDyr9",
+        "feature_eqPG7F",
+        "feature_GkPMhe",
+        "feature_hDeanK",
+        "feature_RwjeVG"
+      ],
+      "name": "💜How we compare",
+      "settings": {
+        "heading_text": "How We Compare",
+        "heading_color": "#4b4b4b",
+        "heading_size": 42,
+        "heading_spacing": 58,
+        "heading_weight": "700",
+        "enable_lottie": false,
+        "lottie_position": "product",
+        "lottie_json_url": "",
+        "lottie_loop": true,
+        "lottie_autoplay": true,
+        "lottie_speed": 1,
+        "lottie_width": 140,
+        "lottie_height": 140,
+        "lottie_offset_top": -19,
+        "lottie_mobile_offset_top": 0,
+        "lottie_offset_right": -19,
+        "show_feature_label": false,
+        "feature_column_label": "Features",
+        "feature_color": "#123643",
+        "feature_size": 18,
+        "feature_size_mobile": 13,
+        "feature_weight": "500",
+        "row_divider_color": "#c6e0e8",
+        "row_padding": 18,
+        "row_padding_mobile": 14,
+        "primary_column_bg": "#e2f4f7",
+        "primary_column_radius": 18,
+        "primary_check_color": "#4a9a2c",
+        "primary_cross_color": "#f05577",
+        "secondary_check_color": "#4a9a2c",
+        "secondary_cross_color": "#f05577",
+        "primary_text_color": "#123643",
+        "secondary_text_color": "#123643",
+        "icon_size": 32,
+        "icon_stroke": 3,
+        "primary_image": "shopify://shop_images/Frame_342_1.png",
+        "primary_image_max_width": 140,
+        "primary_label": "Nutrii Deep Sleep",
+        "secondary_image_max_width": 80,
+        "secondary_label": "OTHERS",
+        "content_max_width": 1020,
+        "section_background": "#f7f5f0",
+        "padding_top": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom": 64,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "image_with_text_custom_PWwA4Y": {
+      "type": "image-with-text-custom",
+      "blocks": {
+        "heading_JGhbQB": {
+          "type": "heading",
+          "settings": {
+            "heading": "Carpathian Amanita Muscaria",
+            "heading_size": "h1"
+          }
+        },
+        "text_L3bmAb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sourced from the Carpathian region and prepared with care, this Amanita Muscaria supplement is designed to support calm, balance, and mindful well-being.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_zFtdAg": {
+          "type": "button",
+          "settings": {
+            "button_label": "Discover Amanita",
+            "button_link": "shopify://products/amanita-muscaria-extract-powder",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_JGhbQB",
+        "text_L3bmAb",
+        "button_zFtdAg"
+      ],
+      "custom_css": [
+        "img {border-radius: 10px;}"
+      ],
+      "name": "💜Image with text Custom",
+      "settings": {
+        "image": "shopify://shop_images/weavy-Gemini_2.5_Flash_Nano_Banana_-2026-01-01_at_15.53.41.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-4",
+        "color_scheme": "scheme-4",
+        "btn_glow": "#1b4a3d",
+        "padding_top": 40,
+        "padding_bottom": 36
+      }
+    },
+    "waves_49czhC": {
+      "type": "waves",
+      "name": "Animated Wave Divider",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "color_band": 46,
+        "wave1_color": "#1b4a3d",
+        "wave1_opacity": 48,
+        "front_wave_solid_floor": true,
+        "wave2_color": "#1b4a3d",
+        "wave2_opacity": 45,
+        "wave2_solid_floor": false,
+        "wave3_color": "#1b4a3d",
+        "wave3_opacity": 40,
+        "wave3_solid_floor": false,
+        "wave4_color": "#1b4a3d",
+        "wave4_opacity": 50,
+        "wave4_solid_floor": false,
+        "mobile_wave_height": 14,
+        "desktop_wave_height": 36,
+        "wave_speed": 14,
+        "flip_wave": false
+      }
+    },
+    "multicolumn_xaBPEm": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_7QHtRR": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/weavy-Gemini_2.5_Flash__Nano_Banana_-2026-01-03_at_14.49.57-removebg-preview_1.png",
+            "title": "Clean Mushroom Formula",
+            "text": "<p>No artificial fillers or additives. Carefully selected mushrooms and clean preparation keep our formulas simple and transparent.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Mcd67P": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/weavy-Gemini_2.5_Flash_Nano_Banana_-2026-01-03_at_14.42.54_2.png",
+            "title": "Trusted Quality",
+            "text": "<p>Every batch is prepared with attention to quality, consistency, and responsible sourcing.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ttCTqJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/weavy-Gemini_2.5_Flash_Nano_Banana_-2026-01-03_at_14.42.20_1.png",
+            "title": "Fast Shipping",
+            "text": "<p>Orders are processed quickly and shipped with care, so you receive your supplements fresh and on time, wherever you are.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_7QHtRR",
+        "column_Mcd67P",
+        "column_ttCTqJ"
+      ],
+      "custom_css": [
+        ".title {margin: auto !important;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "So, why Naturena?",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "dots_color": "#f7f5f0",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "waves_U4V6NX": {
+      "type": "waves",
+      "name": "Animated Wave Divider",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "color_band": 46,
+        "wave1_color": "#1b4a3d",
+        "wave1_opacity": 48,
+        "front_wave_solid_floor": true,
+        "wave2_color": "#1b4a3d",
+        "wave2_opacity": 45,
+        "wave2_solid_floor": false,
+        "wave3_color": "#1b4a3d",
+        "wave3_opacity": 40,
+        "wave3_solid_floor": false,
+        "wave4_color": "#1b4a3d",
+        "wave4_opacity": 50,
+        "wave4_solid_floor": false,
+        "mobile_wave_height": 14,
+        "desktop_wave_height": 36,
+        "wave_speed": 14,
+        "flip_wave": true
+      }
+    },
+    "rich_text_rD4GYe": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MYUMEk": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Philosophy",
+            "heading_size": "h1"
+          }
+        },
+        "text_Jy7cQN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We believe daily wellness should feel natural and sustainable. Our functional mushroom supplements are designed to support focus, calm, and balance - helping you feel your best every day.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MYUMEk",
+        "text_Jy7cQN"
+      ],
+      "custom_css": [],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "enable_gradient_text_animation": false,
+        "gradient_text_color_1": "#f0963c",
+        "gradient_text_color_2": "#2477ca",
+        "gradient_text_color_3": "#f38b23",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "looping_products_z7kqxX": {
+      "type": "looping-products",
+      "blocks": {
+        "product_xrF9ei": {
+          "type": "product",
+          "settings": {
+            "product": "amanita-muscaria-extract-powder"
+          }
+        },
+        "product_ERtQeQ": {
+          "type": "product",
+          "settings": {
+            "product": "chaga-immune-shield-extract-powder"
+          }
+        },
+        "product_bBjyTJ": {
+          "type": "product",
+          "settings": {
+            "product": "cordyceps-natural-energy-extract-powder"
+          }
+        },
+        "product_DfzzgE": {
+          "type": "product",
+          "settings": {
+            "product": "lions-mane-focus-extract-powder"
+          }
+        },
+        "product_kqRMpK": {
+          "type": "product",
+          "settings": {
+            "product": "reishi-calm-and-balance-extract-powder"
+          }
+        },
+        "product_wTUtzQ": {
+          "type": "product",
+          "settings": {
+            "product": "spirulina-daily-greens-superfood-powder"
+          }
+        }
+      },
+      "block_order": [
+        "product_xrF9ei",
+        "product_ERtQeQ",
+        "product_bBjyTJ",
+        "product_DfzzgE",
+        "product_kqRMpK",
+        "product_wTUtzQ"
+      ],
+      "name": "Looping Marquee Products",
+      "settings": {
+        "marquee_heading": "BESTSELLERS",
+        "heading_size": "h1",
+        "use_page_width": false,
+        "image_ratio": "3-4",
+        "focus_y": 12,
+        "product_title_color": "#4e4e4e",
+        "title_size": "1.6rem",
+        "price_size": "1.6rem",
+        "price_weight": "700",
+        "price_color": "#a8c6e5",
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "marquee_speed": 23,
+        "color_scheme": "scheme-4",
+        "item_gap": 14,
+        "hide_title": false,
+        "hide_price": true
+      }
+    },
+    "featured_blog_Aaf93p": {
+      "type": "featured-blog",
+      "custom_css": [],
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "news",
+        "post_limit": 3,
+        "heading": "Blog posts",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": false,
+        "show_author": false,
+        "mobile_dots_color": "#8fa4a3",
+        "color_scheme": "scheme-4",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "logo_ticker_U4xeMH": {
+      "type": "logo-ticker",
+      "blocks": {
+        "logo_f9aKz7": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 180,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_XRz8fN": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 180,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_DNP98N": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 180,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_afWmy9": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 180,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_xUtaBy": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 180,
+            "link": "",
+            "target_blank": false
+          }
+        },
+        "logo_epVree": {
+          "type": "logo",
+          "settings": {
+            "item_type": "logo",
+            "text": "Fast Shipping",
+            "text_size": 22,
+            "text_weight": "700",
+            "text_letter_spacing": 0,
+            "text_color": "#111111",
+            "text_uppercase": true,
+            "alt": "Brand logo",
+            "max_width": 180,
+            "link": "",
+            "target_blank": false
+          }
+        }
+      },
+      "block_order": [
+        "logo_f9aKz7",
+        "logo_XRz8fN",
+        "logo_DNP98N",
+        "logo_afWmy9",
+        "logo_xUtaBy",
+        "logo_epVree"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "name": "Logo ticker (infinite)",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "constrain_width": false,
+        "speed": 57,
+        "gap": 24,
+        "max_height": 38,
+        "dim": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "newsletter_BakW9V": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_hdzq4P": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_xDVKtj": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new products and exclusive offers.</p>"
+          }
+        },
+        "email_form_mjVVAk": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_hdzq4P",
+        "paragraph_xDVKtj",
+        "email_form_mjVVAk"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 32,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
-    "tailspark_home"
+    "hero_elite_YMVm86",
+    "slideshow_custom_UqM993",
+    "logo_ticker_7XVqNT",
+    "featured_collection_UHH8Wr",
+    "waves_EFN3kG",
+    "metrics_bar_Yi7TK9",
+    "waves_EPyJwQ",
+    "collection_list_wiKHpx",
+    "testimonials_slider_Th6Nzd",
+    "how_we_compare_7VpxCL",
+    "image_with_text_custom_PWwA4Y",
+    "waves_49czhC",
+    "multicolumn_xaBPEm",
+    "waves_U4V6NX",
+    "rich_text_rD4GYe",
+    "looping_products_z7kqxX",
+    "featured_blog_Aaf93p",
+    "logo_ticker_U4xeMH",
+    "newsletter_BakW9V"
   ]
 }
