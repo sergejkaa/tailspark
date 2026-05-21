@@ -43,23 +43,23 @@
             "badge_connector": "by",
             "customers_count": "10,000+",
             "customers_label": "Happy Customers",
-            "animation_color": "#669CD6",
-            "animation_color_1": "#669CD6",
+            "animation_color": "#669cd6",
+            "animation_color_1": "#669cd6",
             "animation_color_1_opacity": 0.3,
-            "animation_color_2": "#669CD6",
+            "animation_color_2": "#669cd6",
             "animation_color_2_opacity": 0.2,
-            "text_color": "#FFFFFF",
-            "star_color": "#FFC300",
-            "glass_color": "#FFFFFF",
-            "ring_color": "#FFFFFF",
-            "avatar_ring_color": "#FFFFFF",
+            "text_color": "#ffffff",
+            "star_color": "#ffc300",
+            "glass_color": "#ffffff",
+            "ring_color": "#ffffff",
+            "avatar_ring_color": "#ffffff",
             "shadow_color": "#000000",
             "shadow_opacity": 0.3,
             "hover_shadow_opacity": 0.4,
             "animation_speed": 8,
-            "rating_value_color": "#FFFFFF",
+            "rating_value_color": "#ffffff",
             "rating_value_weight": "500",
-            "customers_count_color": "#FFFFFF",
+            "customers_count_color": "#ffffff",
             "customers_count_weight": "500",
             "avatar_1_alt": "Customer photo 1",
             "avatar_2_alt": "Customer photo 2",
@@ -158,103 +158,6 @@
         "animation_duration": 900,
         "rounded_bottom": false,
         "accessibility_info": "Hero section"
-      }
-    },
-    "tailspark_home_jGLR6L": {
-      "type": "tailspark-home",
-      "blocks": {
-        "product_nNAA4B": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-hip-joint",
-            "subtitle": "Short product benefit description",
-            "card_bg": "#FFF5F0",
-            "icon_1_preset": "none",
-            "icon_1_label": "Benefit 1",
-            "icon_2_preset": "none",
-            "icon_2_label": "Benefit 2",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
-        "product_k7LDtN": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "subtitle": "Short product benefit description",
-            "card_bg": "#FFF5F0",
-            "icon_1_preset": "none",
-            "icon_1_label": "Benefit 1",
-            "icon_2_preset": "none",
-            "icon_2_label": "Benefit 2",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
-        "product_UNtrdJ": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "subtitle": "Short product benefit description",
-            "card_bg": "#FFF5F0",
-            "icon_1_preset": "none",
-            "icon_1_label": "Benefit 1",
-            "icon_2_preset": "none",
-            "icon_2_label": "Benefit 2",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
-        "product_97zaV7": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "subtitle": "Short product benefit description",
-            "card_bg": "#FFF5F0",
-            "icon_1_preset": "none",
-            "icon_1_label": "Benefit 1",
-            "icon_2_preset": "none",
-            "icon_2_label": "Benefit 2",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_nNAA4B",
-        "product_k7LDtN",
-        "product_UNtrdJ",
-        "product_97zaV7"
-      ],
-      "name": "Best Sellers",
-      "settings": {
-        "heading": "Best Sellers",
-        "subheading": "Our treats are as tasty as they look, but what's inside is even more impressive.",
-        "button_label": "Add to Cart",
-        "show_price": true,
-        "section_bg": "#FFFFFF",
-        "heading_color": "#1D1D1B",
-        "title_color": "#1D1D1B",
-        "text_color": "#555555",
-        "icon_color": "#333333",
-        "button_bg": "#FF6700",
-        "button_text": "#FFFFFF",
-        "button_hover_bg": "#CC5200",
-        "button_hover_text": "#FFFFFF",
-        "heading_size": 42,
-        "heading_size_mobile": 28,
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
       }
     },
     "slideshow_custom_UqM993": {
@@ -417,6 +320,103 @@
         "dim": true,
         "padding_top": 12,
         "padding_bottom": 12
+      }
+    },
+    "best_sellers_custom_GpGCrV": {
+      "type": "best-sellers-custom",
+      "blocks": {
+        "product_UP9mEb": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-hip-joint",
+            "subtitle": "Defends from allergies & boosts immunity",
+            "card_bg": "#edf6f0",
+            "icon_1_preset": "shield",
+            "icon_1_label": "Allergy Defence",
+            "icon_2_preset": "paw",
+            "icon_2_label": "Immunity Support",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
+        "product_dQzzDV": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-multivitamin",
+            "subtitle": "Maintains healthy digestive system",
+            "card_bg": "#eaf4f4",
+            "icon_1_preset": "gut",
+            "icon_1_label": "Promotes Gut Health",
+            "icon_2_preset": "heart",
+            "icon_2_label": "Immune Health Support",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
+        "product_a7PMHk": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-probiotic",
+            "subtitle": "Increases flexibility and strengthens joints",
+            "card_bg": "#fdecea",
+            "icon_1_preset": "bone",
+            "icon_1_label": "Supports Joint Health",
+            "icon_2_preset": "leaf",
+            "icon_2_label": "Natural Anti-Inflammatory",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
+        "product_NHd9EB": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-skin-coat",
+            "subtitle": "Softens coat and soothes dry skin",
+            "card_bg": "#fef9e7",
+            "icon_1_preset": "drop",
+            "icon_1_label": "Helps Restore Coat",
+            "icon_2_preset": "star",
+            "icon_2_label": "Natural Antihistamines",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_UP9mEb",
+        "product_dQzzDV",
+        "product_a7PMHk",
+        "product_NHd9EB"
+      ],
+      "name": "Best Sellers",
+      "settings": {
+        "heading": "Best Sellers",
+        "subheading": "Our treats are as tasty as they look, but what's inside is even more impressive.",
+        "button_label": "Add to Cart",
+        "show_price": true,
+        "section_bg": "#FFFFFF",
+        "heading_color": "#1D1D1B",
+        "title_color": "#1D1D1B",
+        "text_color": "#555555",
+        "icon_color": "#333333",
+        "button_bg": "#FF6700",
+        "button_text": "#FFFFFF",
+        "button_hover_bg": "#CC5200",
+        "button_hover_text": "#FFFFFF",
+        "heading_size": 42,
+        "heading_size_mobile": 28,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     },
     "featured_collection_UHH8Wr": {
@@ -1250,9 +1250,9 @@
   },
   "order": [
     "tailspark_hero_jH9Fz6",
-    "tailspark_home_jGLR6L",
     "slideshow_custom_UqM993",
     "logo_ticker_7XVqNT",
+    "best_sellers_custom_GpGCrV",
     "featured_collection_UHH8Wr",
     "waves_EFN3kG",
     "metrics_bar_Yi7TK9",
