@@ -9,12 +9,124 @@
  */
 {
   "sections": {
+    "hero_elite_9c9cim": {
+      "type": "hero-elite",
+      "blocks": {
+        "eyebrow_6m3tpg": {
+          "type": "eyebrow",
+          "disabled": true,
+          "settings": {
+            "text": "New Collection",
+            "text_color": ""
+          }
+        },
+        "inline_rating_EieFjF": {
+          "type": "inline_rating",
+          "settings": {
+            "rating_value": "4.8",
+            "rating_label": "stars",
+            "segment_1_number": "85,000",
+            "segment_1_label": "reviews",
+            "segment_2_number": "1,000,000+",
+            "segment_2_label": "members",
+            "segment_1_number_mobile": "85K",
+            "segment_2_number_mobile": "1M+",
+            "star_color": "#22a06b",
+            "rating_value_color": "",
+            "segment_1_color": "",
+            "segment_2_color": "",
+            "text_color": "",
+            "font_size_desktop": 13,
+            "stars_size_desktop": 18,
+            "font_size_mobile": 12,
+            "stars_size_mobile": 14
+          }
+        },
+        "heading_BqMQFN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Elegant by Nature",
+            "heading_size": "hxl",
+            "heading_tag": "h1",
+            "text_color": ""
+          }
+        },
+        "subheading_A7AYTP": {
+          "type": "subheading",
+          "settings": {
+            "text": "Discover the new season",
+            "text_color": ""
+          }
+        },
+        "buttons_XYMEPq": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "",
+            "button_style_1": "pill-solid",
+            "button_color_bg_1": "#ffffff",
+            "button_color_text_1": "#111111",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_2": "pill-outline",
+            "button_color_bg_2": "#ffffff",
+            "button_color_text_2": "#ffffff"
+          }
+        },
+        "scroll_indicator_iaiebJ": {
+          "type": "scroll_indicator",
+          "settings": {
+            "scroll_icon_style": "arrow",
+            "scroll_anim_style": "bounce",
+            "arrow_color": "#ffffff",
+            "scroll_size_desktop": 44,
+            "scroll_size_mobile": 40
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_6m3tpg",
+        "inline_rating_EieFjF",
+        "heading_BqMQFN",
+        "subheading_A7AYTP",
+        "buttons_XYMEPq",
+        "scroll_indicator_iaiebJ"
+      ],
+      "name": "Hero Elite",
+      "settings": {
+        "image_desktop": "shopify://shop_images/ig_081b6ca439297b15016a0f947783bc819a96ec8940c1ef99b2.png",
+        "video_url_desktop": "",
+        "video_url_mobile": "",
+        "video_autoplay": true,
+        "video_loop": true,
+        "image_behavior": "zoom-in",
+        "overlay_color": "#000000",
+        "overlay_opacity": 35,
+        "overlay_gradient": "none",
+        "height_desktop": 85,
+        "height_mobile": 70,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "content_padding": 48,
+        "content_max_width": 760,
+        "content_gap": 24,
+        "content_gap_mobile": 16,
+        "mobile_content_position": "bottom-center",
+        "mobile_content_alignment": "center",
+        "show_text_below_on_mobile": false,
+        "show_text_box": false,
+        "color_scheme": "scheme-2",
+        "animation_style": "fade-up",
+        "animation_duration": 900,
+        "rounded_bottom": false,
+        "accessibility_info": "Hero section"
+      }
+    },
     "tailspark_hero_jH9Fz6": {
       "type": "tailspark-hero",
       "blocks": {
         "inline_rating_WiQBiQ": {
           "type": "inline_rating",
-          "disabled": true,
           "settings": {
             "rating_value": "4.9",
             "rating_label": "stars",
@@ -38,22 +150,21 @@
         "heading_W83xg6": {
           "type": "heading",
           "settings": {
-            "heading": "Tail-Wagging Health, Made Simple.",
+            "heading": "Elegant by Nature",
             "heading_size": "hxl",
             "heading_tag": "h1",
-            "text_color": "#333333"
+            "text_color": ""
           }
         },
         "subheading_3B64ym": {
           "type": "subheading",
           "settings": {
-            "text": "Vet-formulated soft chews your dog will love - clean daily support for happy guts, healthy coats, strong joints, and everyday wellness.",
-            "text_color": "#333333"
+            "text": "Discover the new season",
+            "text_color": ""
           }
         },
         "rating_badge_DCFTDc": {
           "type": "rating_badge",
-          "disabled": true,
           "settings": {
             "badge_prefix": "Rated",
             "rating_value": "4.8",
@@ -118,20 +229,19 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "",
             "button_style_1": "pill-solid",
-            "button_color_bg_1": "#FF6700",
-            "button_color_text_1": "#ffffff",
-            "button_label_2": "Learn More",
-            "button_link_2": "shopify://pages/about",
+            "button_color_bg_1": "#ffffff",
+            "button_color_text_1": "#111111",
+            "button_label_2": "",
+            "button_link_2": "",
             "button_style_2": "pill-outline",
-            "button_color_bg_2": "#333333",
-            "button_color_text_2": "#333333"
+            "button_color_bg_2": "#ffffff",
+            "button_color_text_2": "#ffffff"
           }
         },
         "scroll_indicator_UMR9cL": {
           "type": "scroll_indicator",
-          "disabled": true,
           "settings": {
             "scroll_icon_style": "arrow",
             "scroll_anim_style": "bounce",
@@ -149,6 +259,7 @@
         "buttons_zPiEkW",
         "scroll_indicator_UMR9cL"
       ],
+      "disabled": true,
       "name": "TailSpark Hero",
       "settings": {
         "image_desktop": "shopify://shop_images/ig_081b6ca439297b15016a0f947783bc819a96ec8940c1ef99b2.png",
@@ -157,18 +268,18 @@
         "video_autoplay": true,
         "video_loop": true,
         "image_behavior": "zoom-in",
-        "overlay_color": "#FFFFD2",
-        "overlay_opacity": 0,
-        "overlay_gradient": "left",
+        "overlay_color": "#000000",
+        "overlay_opacity": 35,
+        "overlay_gradient": "none",
         "height_desktop": 85,
         "height_mobile": 70,
         "content_position": "middle-left",
         "content_alignment": "left",
         "content_padding": 48,
-        "content_max_width": 680,
-        "content_gap": 20,
-        "content_gap_mobile": 14,
-        "mobile_content_position": "top-center",
+        "content_max_width": 760,
+        "content_gap": 24,
+        "content_gap_mobile": 16,
+        "mobile_content_position": "middle-center",
         "mobile_content_alignment": "center",
         "show_text_below_on_mobile": false,
         "show_text_box": false,
@@ -339,71 +450,6 @@
         "dim": true,
         "padding_top": 12,
         "padding_bottom": 12
-      }
-    },
-    "home_icons_bar_Kx7mN2": {
-      "type": "home-icons-bar",
-      "blocks": {
-        "badge_aB1cD2": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "lab",
-            "heading": "Vet Formulated",
-            "description": "Developed with certified veterinarians"
-          }
-        },
-        "badge_eF3gH4": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "leaf",
-            "heading": "Clean Ingredients",
-            "description": "No fillers, no artificial additives"
-          }
-        },
-        "badge_iJ5kL6": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "truck",
-            "heading": "Free Shipping",
-            "description": "Always free, on every order"
-          }
-        },
-        "badge_mN7oP8": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "medal",
-            "heading": "Made in USA",
-            "description": "Manufactured in certified facilities"
-          }
-        }
-      },
-      "block_order": [
-        "badge_aB1cD2",
-        "badge_eF3gH4",
-        "badge_iJ5kL6",
-        "badge_mN7oP8"
-      ],
-      "name": "Home Icons Bar",
-      "settings": {
-        "item_direction": "row",
-        "item_align": "left",
-        "icon_size": 40,
-        "icon_size_mobile": 32,
-        "item_gap": 14,
-        "item_gap_mobile": 10,
-        "heading_size": 16,
-        "heading_size_mobile": 13,
-        "desc_size": 13,
-        "desc_size_mobile": 11,
-        "section_bg": "#FFFFD2",
-        "border_color": "#E8E5C8",
-        "icon_color": "#FF6700",
-        "heading_color": "#1D1D1B",
-        "text_color": "#666666",
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "padding_top_mobile": 16,
-        "padding_bottom_mobile": 16
       }
     },
     "best_sellers_custom_GpGCrV": {
@@ -661,10 +707,10 @@
     }
   },
   "order": [
+    "hero_elite_9c9cim",
     "tailspark_hero_jH9Fz6",
     "slideshow_custom_UqM993",
     "logo_ticker_7XVqNT",
-    "home_icons_bar_Kx7mN2",
     "best_sellers_custom_GpGCrV",
     "logo_ticker_U4xeMH",
     "newsletter_BakW9V"
