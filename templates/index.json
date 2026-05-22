@@ -12,11 +12,26 @@
     "tailspark_hero_jH9Fz6": {
       "type": "tailspark-hero",
       "blocks": {
-        "eyebrow_FGHYTe": {
-          "type": "eyebrow",
+        "inline_rating_WiQBiQ": {
+          "type": "inline_rating",
           "settings": {
-            "text": "New Collection",
-            "text_color": ""
+            "rating_value": "4.9",
+            "rating_label": "stars",
+            "segment_1_number": "5,000+",
+            "segment_1_label": "reviews",
+            "segment_2_number": "1,000,000+",
+            "segment_2_label": "members",
+            "segment_1_number_mobile": "85K",
+            "segment_2_number_mobile": "1M+",
+            "star_color": "#22a06b",
+            "rating_value_color": "",
+            "segment_1_color": "",
+            "segment_2_color": "",
+            "text_color": "",
+            "font_size_desktop": 15,
+            "stars_size_desktop": 21,
+            "font_size_mobile": 12,
+            "stars_size_mobile": 14
           }
         },
         "heading_W83xg6": {
@@ -124,7 +139,7 @@
         }
       },
       "block_order": [
-        "eyebrow_FGHYTe",
+        "inline_rating_WiQBiQ",
         "heading_W83xg6",
         "subheading_3B64ym",
         "rating_badge_DCFTDc",
