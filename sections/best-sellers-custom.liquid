@@ -99,6 +99,7 @@
     color: {{ section.settings.title_color }};
     margin: 0 0 5px;
     line-height: 1.2;
+    min-height: 2.4em;
   }
 
   #shopify-section-{{ section.id }} .bs-card__title a {
@@ -118,7 +119,6 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px 10px;
-    margin-top: auto;
     margin-bottom: 14px;
     width: 100%;
   }
@@ -154,6 +154,7 @@
 
   #shopify-section-{{ section.id }} .bs-card__btn {
     display: inline-block;
+    margin-top: auto;
     padding: 9px 18px;
     border-radius: 100px;
     background: {{ section.settings.button_bg }};
