@@ -1,0 +1,450 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .hib-section {
+    background: {{ section.settings.section_bg }};
+    padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px;
+    border-top: 1px solid {{ section.settings.border_color }};
+    border-bottom: 1px solid {{ section.settings.border_color }};
+  }
+
+  #shopify-section-{{ section.id }} .hib-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .hib-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 12px;
+  }
+
+  #shopify-section-{{ section.id }} .hib-item {
+    display: flex;
+    flex-direction: {{ section.settings.item_direction }};
+    align-items: center;
+    gap: {{ section.settings.item_gap_mobile }}px;
+    text-align: {{ section.settings.item_align }};
+  }
+
+  #shopify-section-{{ section.id }} .hib-item__icon-wrap {
+    flex-shrink: 0;
+    width: {{ section.settings.icon_size_mobile }}px;
+    height: {{ section.settings.icon_size_mobile }}px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .hib-item__icon-wrap img,
+  #shopify-section-{{ section.id }} .hib-item__icon-wrap svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    color: {{ section.settings.icon_color }};
+  }
+
+  #shopify-section-{{ section.id }} .hib-item__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .hib-item__heading {
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: {{ section.settings.heading_size_mobile }}px;
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .hib-item__desc {
+    font-size: {{ section.settings.desc_size_mobile }}px;
+    line-height: 1.45;
+    color: {{ section.settings.text_color }};
+    margin: 0;
+  }
+
+  @media (min-width: 750px) {
+    #shopify-section-{{ section.id }} .hib-section {
+      padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    }
+
+    #shopify-section-{{ section.id }} .hib-inner {
+      padding: 0 40px;
+    }
+
+    #shopify-section-{{ section.id }} .hib-grid {
+      grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
+      gap: 0;
+    }
+
+    #shopify-section-{{ section.id }} .hib-item {
+      gap: {{ section.settings.item_gap }}px;
+      padding: 0 24px;
+      border-right: 1px solid {{ section.settings.border_color }};
+    }
+
+    #shopify-section-{{ section.id }} .hib-item:first-child {
+      padding-left: 0;
+    }
+
+    #shopify-section-{{ section.id }} .hib-item:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    #shopify-section-{{ section.id }} .hib-item__icon-wrap {
+      width: {{ section.settings.icon_size }}px;
+      height: {{ section.settings.icon_size }}px;
+    }
+
+    #shopify-section-{{ section.id }} .hib-item__heading {
+      font-size: {{ section.settings.heading_size }}px;
+    }
+
+    #shopify-section-{{ section.id }} .hib-item__desc {
+      font-size: {{ section.settings.desc_size }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="row home-icons hib-section" data-section-id="{{ section.id }}">
+  <div class="hib-inner">
+    <div class="hib-grid">
+      {%- for block in section.blocks -%}
+        {%- assign icon_img    = block.settings.icon_image -%}
+        {%- assign icon_preset = block.settings.icon_preset -%}
+
+        <div class="hib-item" {{ block.shopify_attributes }}>
+          {%- if icon_img != blank or icon_preset != 'none' -%}
+            <div class="hib-item__icon-wrap">
+              {%- if icon_img != blank -%}
+                {{ icon_img | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.heading }}
+              {%- else -%}
+                {%- case icon_preset -%}
+                  {%- when 'paw' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="5.5" cy="7.5" rx="2" ry="2.5"/><ellipse cx="10" cy="4.5" rx="1.5" ry="2"/><ellipse cx="14" cy="4.5" rx="1.5" ry="2"/><ellipse cx="18.5" cy="7.5" rx="2" ry="2.5"/><path d="M12 22c-3.87 0-7-3-7-6 0-1.66 1.34-3 3-3h8c1.66 0 3 1.34 3 3 0 3-3.13 6-7 6z"/></svg>
+                  {%- when 'heart' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  {%- when 'shield' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                  {%- when 'leaf' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8C8 10 5.9 16.17 3.82 19.34L5.71 21l1-1C7.89 17.93 13 14 19 14c0-6-2-10-2-10z"/><path d="M3.82 19.34A10 10 0 0 1 7 14"/></svg>
+                  {%- when 'star' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  {%- when 'check' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+                  {%- when 'bone' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-4.5.5 0 1 .5 1 1a2.5 2.5 0 0 0 2.5 2.5c1.38 0 2-.5 3-1 2.143-1.072 4.054-.224 4.5 2 0 .5-.5 1-1 1a2.5 2.5 0 0 0-2.5 2.5c0 1.38.5 2 1 3 1.072 2.143.224 4.054-2 4.5-.5 0-1-.5-1-1a2.5 2.5 0 0 0-2.5-2.5c-1.38 0-2 .5-3 1-2.143 1.072-4.054.224-4.5-2 0-.5.5-1 1-1z"/></svg>
+                  {%- when 'drop' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                  {%- when 'lab' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M9 3v7l-5 9a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 19l-5-9V3"/><line x1="6.5" y1="14.5" x2="17.5" y2="14.5"/></svg>
+                  {%- when 'truck' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                  {%- when 'medal' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="15" r="6"/><path d="M8.56 2.9A7 7 0 0 1 19 9v5"/><path d="M5 9v5a7 7 0 0 0 5.7 6.88"/><polyline points="12 12 12 15 13.5 16"/></svg>
+                  {%- when 'smile' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                {%- endcase -%}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          <div class="hib-item__text">
+            {%- if block.settings.heading != blank -%}
+              <p class="hib-item__heading">{{ block.settings.heading }}</p>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="hib-item__desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Home Icons Bar",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "item_direction",
+      "label": "Icon and text layout",
+      "options": [
+        { "value": "row", "label": "Icon left, text right" },
+        { "value": "column", "label": "Icon top, text below" }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "select",
+      "id": "item_align",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size — desktop",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "label": "Icon size — mobile",
+      "min": 20,
+      "max": 60,
+      "step": 4,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "label": "Gap icon/text — desktop",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_gap_mobile",
+      "label": "Gap icon/text — mobile",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size — desktop",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading size — mobile",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "default": 13,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "desc_size",
+      "label": "Description size — desktop",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "default": 13,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "desc_size_mobile",
+      "label": "Description size — mobile",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "default": 11,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background",
+      "default": "#FFFFD2"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#E8E5C8"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#FF6700"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1D1D1B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Description text",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Upload icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_preset",
+          "label": "Or choose preset icon",
+          "info": "Used only if no image is uploaded",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "shield", "label": "Shield + Check" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "paw", "label": "Paw" },
+            { "value": "check", "label": "Check circle" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "star", "label": "Star" },
+            { "value": "bone", "label": "Bone" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "lab", "label": "Lab / Science" },
+            { "value": "truck", "label": "Shipping" },
+            { "value": "medal", "label": "Medal" },
+            { "value": "smile", "label": "Smile" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Trust Point"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Icons Bar",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "lab",
+            "heading": "Vet-Formulated",
+            "description": "Expert-crafted for real health results"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "leaf",
+            "heading": "Clean Ingredients",
+            "description": "No fillers, no shortcuts"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "paw",
+            "heading": "Dogs Love Them",
+            "description": "Soft chews they actually beg for"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "check",
+            "heading": "30-Day Guarantee",
+            "description": "Love it or your money back"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
