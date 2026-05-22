@@ -55,8 +55,8 @@
         "cart_count_bubble_bg_color": "#ff6700",
         "cart_count_bubble_text_color": "#ffffff",
         "margin_bottom": 0,
-        "padding_top": 8,
-        "padding_bottom": 8
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "header_island_86hHqf": {
@@ -64,7 +64,6 @@
       "disabled": true,
       "name": "Island Header",
       "settings": {
-        "logo": "",
         "logo_width": 120,
         "logo_width_mobile": 90,
         "show_shop_name": true,
