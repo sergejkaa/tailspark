@@ -6,24 +6,37 @@
     border-bottom: 1px solid {{ section.settings.border_color }};
   }
 
-  #shopify-section-{{ section.id }} .hib-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 20px;
+  /* Mobile: marquee wrapper clips overflow */
+  #shopify-section-{{ section.id }} .hib-marquee-wrapper {
+    overflow: hidden;
   }
 
-  #shopify-section-{{ section.id }} .hib-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px 12px;
+  /* Mobile: scrolling track */
+  #shopify-section-{{ section.id }} .hib-marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: hib-scroll-{{ section.id }} var(--hib-duration, 18s) linear infinite;
   }
 
+  #shopify-section-{{ section.id }} .hib-marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes hib-scroll-{{ section.id }} {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-1 * var(--hib-distance, 50%))); }
+  }
+
+  /* Items */
   #shopify-section-{{ section.id }} .hib-item {
     display: flex;
     flex-direction: {{ section.settings.item_direction }};
     align-items: center;
     gap: {{ section.settings.item_gap_mobile }}px;
     text-align: {{ section.settings.item_align }};
+    flex-shrink: 0;
+    padding: 0 20px;
   }
 
   #shopify-section-{{ section.id }} .hib-item__icon-wrap {
@@ -57,6 +70,7 @@
     color: {{ section.settings.heading_color }};
     margin: 0;
     line-height: 1.2;
+    white-space: nowrap;
   }
 
   #shopify-section-{{ section.id }} .hib-item__desc {
@@ -64,26 +78,39 @@
     line-height: 1.45;
     color: {{ section.settings.text_color }};
     margin: 0;
+    white-space: nowrap;
   }
 
+  /* Desktop: switch to static grid */
   @media (min-width: 750px) {
     #shopify-section-{{ section.id }} .hib-section {
       padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
     }
 
-    #shopify-section-{{ section.id }} .hib-inner {
+    #shopify-section-{{ section.id }} .hib-marquee-wrapper {
+      overflow: visible;
+      max-width: 1280px;
+      margin: 0 auto;
       padding: 0 40px;
     }
 
-    #shopify-section-{{ section.id }} .hib-grid {
+    #shopify-section-{{ section.id }} .hib-marquee-track {
+      display: grid;
       grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
-      gap: 0;
+      width: auto;
+      animation: none;
+    }
+
+    /* Hide cloned items on desktop */
+    #shopify-section-{{ section.id }} .hib-item.is-dup {
+      display: none;
     }
 
     #shopify-section-{{ section.id }} .hib-item {
       gap: {{ section.settings.item_gap }}px;
       padding: 0 24px;
       border-right: 1px solid {{ section.settings.border_color }};
+      white-space: normal;
     }
 
     #shopify-section-{{ section.id }} .hib-item:first-child {
@@ -102,17 +129,19 @@
 
     #shopify-section-{{ section.id }} .hib-item__heading {
       font-size: {{ section.settings.heading_size }}px;
+      white-space: normal;
     }
 
     #shopify-section-{{ section.id }} .hib-item__desc {
       font-size: {{ section.settings.desc_size }}px;
+      white-space: normal;
     }
   }
 {%- endstyle -%}
 
 <div class="hib-section" data-section-id="{{ section.id }}">
-  <div class="hib-inner">
-    <div class="hib-grid">
+  <div class="hib-marquee-wrapper" data-hib-wrapper>
+    <div class="hib-marquee-track" data-hib-track>
       {%- for block in section.blocks -%}
         {%- assign icon_img    = block.settings.icon_image -%}
         {%- assign icon_preset = block.settings.icon_preset -%}
@@ -166,6 +195,64 @@
     </div>
   </div>
 </div>
+
+<script>
+(function () {
+  var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+  if (!section) return;
+
+  var track = section.querySelector('[data-hib-track]');
+  if (!track) return;
+
+  function isMobile() {
+    return window.innerWidth < 750;
+  }
+
+  function setupMarquee() {
+    track.querySelectorAll('.hib-item.is-dup').forEach(function (el) { el.remove(); });
+
+    var origItems = Array.from(track.querySelectorAll('.hib-item:not(.is-dup)'));
+    if (!origItems.length) return;
+
+    origItems.forEach(function (item) {
+      var dup = item.cloneNode(true);
+      dup.classList.add('is-dup');
+      track.appendChild(dup);
+    });
+
+    var groupWidth = origItems.reduce(function (sum, el) {
+      return sum + el.getBoundingClientRect().width;
+    }, 0);
+
+    section.style.setProperty('--hib-distance', groupWidth + 'px');
+  }
+
+  function teardown() {
+    track.querySelectorAll('.hib-item.is-dup').forEach(function (el) { el.remove(); });
+    section.style.removeProperty('--hib-distance');
+  }
+
+  var prevMobile = isMobile();
+
+  if (prevMobile) setupMarquee();
+
+  var ro = new ResizeObserver(function () {
+    var nowMobile = isMobile();
+    if (nowMobile === prevMobile) {
+      if (nowMobile) setupMarquee();
+      return;
+    }
+    prevMobile = nowMobile;
+    if (nowMobile) {
+      setupMarquee();
+    } else {
+      teardown();
+    }
+  });
+
+  ro.observe(document.body);
+})();
+</script>
 
 {% schema %}
 {
