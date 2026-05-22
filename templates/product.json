@@ -119,6 +119,7 @@
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {}
         },
         "variant_picker": {
@@ -137,6 +138,26 @@
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
+          }
+        },
+        "yny_accordion_group_XnwLNx": {
+          "type": "yny_accordion_group",
+          "settings": {
+            "item_1_heading": "Descriere produs",
+            "item_1_source": "description",
+            "item_1_content": "<p>Add content here. </p>",
+            "item_2_heading": "Livrare si Transport",
+            "item_2_source": "custom",
+            "item_2_content": "<p>Add content here.</p>",
+            "item_3_heading": "Intrebari frecvente",
+            "item_3_source": "custom",
+            "item_3_content": "<p>Add content here.</p>",
+            "item_4_heading": "",
+            "item_4_source": "custom",
+            "item_4_content": "<p>Add content here.</p>",
+            "item_5_heading": "",
+            "item_5_source": "custom",
+            "item_5_content": "<p>Add content here.</p>"
           }
         },
         "collapsible_tab_pCUWk9": {
@@ -171,12 +192,10 @@
           "settings": {
             "free_shipping_upsell_source": "auto",
             "free_shipping_upsell_products": [
-              "chaga-immune-shield-extract-powder",
-              "cordyceps-natural-energy-extract-powder",
-              "amanita-muscaria-extract-powder",
-              "lions-mane-focus-extract-powder",
-              "reishi-calm-and-balance-extract-powder",
-              "spirulina-daily-greens-superfood-powder"
+              "tailspark-skin-coat",
+              "tailspark-probiotic",
+              "tailspark-multivitamin",
+              "tailspark-hip-joint"
             ],
             "free_shipping_upsell_collection": "",
             "free_shipping_upsell_limit": 6,
@@ -288,6 +307,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "yny_accordion_group_XnwLNx",
         "collapsible_tab_pCUWk9",
         "collapsible_tab_AVnp4f",
         "collapsible_tab_LkJYyF",
