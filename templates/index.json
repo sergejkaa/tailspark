@@ -14,6 +14,7 @@
       "blocks": {
         "inline_rating_WiQBiQ": {
           "type": "inline_rating",
+          "disabled": true,
           "settings": {
             "rating_value": "4.9",
             "rating_label": "stars",
@@ -37,21 +38,22 @@
         "heading_W83xg6": {
           "type": "heading",
           "settings": {
-            "heading": "Elegant by Nature",
+            "heading": "Tail-Wagging Health, Made Simple.",
             "heading_size": "hxl",
             "heading_tag": "h1",
-            "text_color": ""
+            "text_color": "#333333"
           }
         },
         "subheading_3B64ym": {
           "type": "subheading",
           "settings": {
-            "text": "Discover the new season",
-            "text_color": ""
+            "text": "Vet-formulated soft chews your dog will love - clean daily support for happy guts, healthy coats, strong joints, and everyday wellness.",
+            "text_color": "#333333"
           }
         },
         "rating_badge_DCFTDc": {
           "type": "rating_badge",
+          "disabled": true,
           "settings": {
             "badge_prefix": "Rated",
             "rating_value": "4.8",
@@ -116,19 +118,20 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "",
+            "button_link_1": "shopify://collections/all",
             "button_style_1": "pill-solid",
-            "button_color_bg_1": "#ffffff",
-            "button_color_text_1": "#111111",
-            "button_label_2": "",
-            "button_link_2": "",
+            "button_color_bg_1": "#FF6700",
+            "button_color_text_1": "#ffffff",
+            "button_label_2": "Learn More",
+            "button_link_2": "shopify://pages/about",
             "button_style_2": "pill-outline",
-            "button_color_bg_2": "#ffffff",
-            "button_color_text_2": "#ffffff"
+            "button_color_bg_2": "#333333",
+            "button_color_text_2": "#333333"
           }
         },
         "scroll_indicator_UMR9cL": {
           "type": "scroll_indicator",
+          "disabled": true,
           "settings": {
             "scroll_icon_style": "arrow",
             "scroll_anim_style": "bounce",
@@ -154,18 +157,18 @@
         "video_autoplay": true,
         "video_loop": true,
         "image_behavior": "zoom-in",
-        "overlay_color": "#000000",
-        "overlay_opacity": 35,
-        "overlay_gradient": "none",
+        "overlay_color": "#FFFFD2",
+        "overlay_opacity": 0,
+        "overlay_gradient": "left",
         "height_desktop": 85,
         "height_mobile": 70,
         "content_position": "middle-left",
         "content_alignment": "left",
         "content_padding": 48,
-        "content_max_width": 760,
-        "content_gap": 24,
-        "content_gap_mobile": 16,
-        "mobile_content_position": "middle-center",
+        "content_max_width": 680,
+        "content_gap": 20,
+        "content_gap_mobile": 14,
+        "mobile_content_position": "top-center",
         "mobile_content_alignment": "center",
         "show_text_below_on_mobile": false,
         "show_text_box": false,
