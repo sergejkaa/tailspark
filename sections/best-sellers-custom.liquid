@@ -337,21 +337,21 @@
                       {%- if icon_img != blank -%}
                         {{ icon_img | image_url: width: 80 | image_tag: class: 'bs-icon-item__img', loading: 'lazy', alt: icon_label }}
                       {%- elsif icon_preset == 'ts_coat' -%}
-                        <img src="{{ 'ts-icon-coat.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-coat-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_antihistamine' -%}
-                        <img src="{{ 'ts-icon-antihistamine.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-antihistamine-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_multivitamin' -%}
-                        <img src="{{ 'ts-icon-multivitamin.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-multivitamin-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_energy' -%}
-                        <img src="{{ 'ts-icon-energy.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-energy-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_joint' -%}
-                        <img src="{{ 'ts-icon-joint.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-joint-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_anti_inflammatory' -%}
-                        <img src="{{ 'ts-icon-anti-inflammatory.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-anti-inflammatory-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_gut' -%}
-                        <img src="{{ 'ts-icon-gut.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-gut-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_immune' -%}
-                        <img src="{{ 'ts-icon-immune.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-immune-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- else -%}
                         {%- case icon_preset -%}
                           {%- when 'paw' -%}
