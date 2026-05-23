@@ -362,6 +362,7 @@
           "settings": {
             "product": "tailspark-hip-joint",
             "title_override": "Hip & Joint",
+            "image_preset": "ts_hip_joint",
             "subtitle": "Increases flexibility and strengthens joints",
             "card_bg": "#fdecea",
             "icon_1_preset": "ts_joint",
@@ -379,6 +380,7 @@
           "settings": {
             "product": "tailspark-multivitamin",
             "title_override": "Daily Multivitamin",
+            "image_preset": "ts_multivitamin",
             "subtitle": "Daily support for overall vitality",
             "card_bg": "#eaf4f4",
             "icon_1_preset": "ts_multivitamin",
@@ -396,6 +398,7 @@
           "settings": {
             "product": "tailspark-probiotic",
             "title_override": "Probiotic",
+            "image_preset": "ts_probiotic",
             "subtitle": "Maintains healthy digestive system",
             "card_bg": "#edf6f0",
             "icon_1_preset": "ts_gut",
@@ -413,6 +416,7 @@
           "settings": {
             "product": "tailspark-skin-coat",
             "title_override": "Skin & Coat",
+            "image_preset": "ts_skin_coat",
             "subtitle": "Softens coat and soothes dry skin",
             "card_bg": "#fef9e7",
             "icon_1_preset": "ts_coat",
