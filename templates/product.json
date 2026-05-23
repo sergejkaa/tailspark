@@ -210,7 +210,7 @@
             "free_shipping_upsell_item_bg_color": "#f7f5f0",
             "free_shipping_upsell_item_border_color": "#9e9e9e",
             "free_shipping_upsell_chevron_color": "#0f172a",
-            "free_shipping_upsell_dot_active_color": "#1b4a3d",
+            "free_shipping_upsell_dot_active_color": "#ff6700",
             "free_shipping_upsell_dot_inactive_color": "#94a3b873",
             "free_shipping_upsell_focus_x": 50,
             "free_shipping_upsell_focus_y": 50
