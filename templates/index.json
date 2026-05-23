@@ -361,7 +361,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-hip-joint",
-            "image_preset": "ts_hip_joint",
+            "title_override": "",
             "subtitle": "Increases flexibility and strengthens joints",
             "card_bg": "#fdecea",
             "icon_1_preset": "ts_joint",
@@ -378,7 +378,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-multivitamin",
-            "image_preset": "ts_multivitamin",
+            "title_override": "",
             "subtitle": "Daily support for overall vitality",
             "card_bg": "#eaf4f4",
             "icon_1_preset": "ts_multivitamin",
@@ -395,7 +395,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-probiotic",
-            "image_preset": "ts_probiotic",
+            "title_override": "",
             "subtitle": "Maintains healthy digestive system",
             "card_bg": "#edf6f0",
             "icon_1_preset": "ts_gut",
@@ -412,7 +412,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-skin-coat",
-            "image_preset": "ts_skin_coat",
+            "title_override": "",
             "subtitle": "Softens coat and soothes dry skin",
             "card_bg": "#fef9e7",
             "icon_1_preset": "ts_coat",
@@ -513,9 +513,9 @@
         "image_position": "50% 50%",
         "heading": "Why Soft Chews?",
         "heading_size": "h1",
-        "open_first": false,
+        "open_first": true,
         "cta_label": "SHOP NOW",
-        "cta_link": "",
+        "cta_link": "shopify://collections/all",
         "max_width": 1400,
         "desktop_image_ratio": "11 / 12",
         "mobile_image_ratio": "4 / 5",
@@ -529,11 +529,11 @@
         "border_color": "#333333",
         "toggle_background": "#ff6700",
         "toggle_icon_color": "#ffffff",
-        "button_background": "#ffffff",
-        "button_border": "#696660",
-        "button_text_color": "#696660",
-        "button_hover_background": "#696660",
-        "button_text_hover_color": "#ffffff"
+        "button_background": "#ff6700",
+        "button_border": "#ff6700",
+        "button_text_color": "#fff8ed",
+        "button_hover_background": "#ffffff",
+        "button_text_hover_color": "#606060"
       }
     },
     "logo_ticker_U4xeMH": {
