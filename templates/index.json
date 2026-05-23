@@ -448,6 +448,8 @@
         "heading_size_mobile": 28,
         "icon_size": 36,
         "icon_size_mobile": 28,
+        "icon_label_size": 11,
+        "icon_label_size_mobile": 10,
         "padding_top": 60,
         "padding_bottom": 60,
         "padding_top_mobile": 40,
