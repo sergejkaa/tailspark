@@ -551,7 +551,7 @@
             "product": "tailspark-hip-joint",
             "title_override": "Hip & Joint",
             "image": "shopify://shop_images/ts-best-seller-hip-joint.png",
-            "card_bg": "#fdecea",
+            "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
         },
@@ -561,7 +561,7 @@
             "product": "tailspark-multivitamin",
             "title_override": "Daily Multivitamin",
             "image": "shopify://shop_images/ts-best-seller-multivitamin.png",
-            "card_bg": "#eaf4f4",
+            "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
         },
@@ -571,7 +571,7 @@
             "product": "tailspark-probiotic",
             "title_override": "Probiotic",
             "image": "shopify://shop_images/ts-best-seller-probiotic.png",
-            "card_bg": "#edf6f0",
+            "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
         },
@@ -581,7 +581,7 @@
             "product": "tailspark-skin-coat",
             "title_override": "Skin & Coat",
             "image": "shopify://shop_images/ts-best-seller-skin-coat.png",
-            "card_bg": "#fef9e7",
+            "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
         }
@@ -598,7 +598,7 @@
         "subheading": "Never run out. Cancel anytime.",
         "footnote": "Free shipping on every order. Cancel or pause anytime.",
         "discount_percent": 15,
-        "background_color": "#fff8ed",
+        "background_color": "#ffffff",
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
         "card_heading_color": "#1d1d1b",
