@@ -170,7 +170,7 @@
           "mobile_bottom_extra": 8,
           "size": 50,
           "radius": 100,
-          "bg_color": "#ff6700",
+          "bg_color": "#606060",
           "icon_color": "#ffffff",
           "shadow": true,
           "z_index": 100,

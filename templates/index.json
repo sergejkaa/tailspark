@@ -599,7 +599,7 @@
         "subheading": "Never run out. Cancel anytime.",
         "footnote": "Free shipping on every order. Cancel or pause anytime.",
         "discount_percent": 15,
-        "background_color": "#ffffff",
+        "background_color": "#fff8ed",
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
         "card_heading_color": "#1d1d1b",
@@ -766,7 +766,7 @@
       ],
       "name": "t:sections.newsletter.presets.name",
       "settings": {
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-ea69fb50-13e2-4d1f-a3ad-b165f47ad373",
         "full_width": true,
         "padding_top": 32,
         "padding_bottom": 52
