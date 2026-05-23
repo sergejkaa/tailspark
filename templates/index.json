@@ -16,7 +16,7 @@
           "type": "eyebrow",
           "settings": {
             "text": "Vet Formulated",
-            "text_color": "#FF6700"
+            "text_color": "#ff6700"
           }
         },
         "inline_rating_EieFjF": {
@@ -435,7 +435,7 @@
         "button_label": "Add to Cart",
         "show_price": true,
         "image_radius": 20,
-        "image_radius_mobile": 20,
+        "image_radius_mobile": 6,
         "section_bg": "#ffffff",
         "heading_color": "#1d1d1b",
         "title_color": "#1d1d1b",
