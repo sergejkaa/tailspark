@@ -434,6 +434,8 @@
         "subheading": "Our treats are as tasty as they look, but what's inside is even more impressive.",
         "button_label": "Add to Cart",
         "show_price": true,
+        "image_radius": 20,
+        "image_radius_mobile": 20,
         "section_bg": "#ffffff",
         "heading_color": "#1d1d1b",
         "title_color": "#1d1d1b",

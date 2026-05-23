@@ -48,7 +48,7 @@
   #shopify-section-{{ section.id }} .bs-card__image-link {
     display: block;
     text-decoration: none;
-    border-radius: 14px;
+    border-radius: {{ section.settings.image_radius_mobile }}px;
     overflow: hidden;
     aspect-ratio: 1 / 1;
     position: relative;
@@ -214,7 +214,7 @@
     }
 
     #shopify-section-{{ section.id }} .bs-card__image-link {
-      border-radius: 18px;
+      border-radius: {{ section.settings.image_radius }}px;
     }
 
     #shopify-section-{{ section.id }} .bs-card__image-link img {
@@ -446,6 +446,30 @@
       "id": "show_price",
       "label": "Show price below button",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Product images"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Desktop image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "image_radius_mobile",
+      "label": "Mobile image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
     },
     {
       "type": "header",
