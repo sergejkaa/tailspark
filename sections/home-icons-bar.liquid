@@ -151,6 +151,14 @@
             <div class="hib-item__icon-wrap">
               {%- if icon_img != blank -%}
                 {{ icon_img | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.heading }}
+              {%- elsif icon_preset == 'ts_vet' -%}
+                <img src="{{ 'ts-home-icon-vet-minimal.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
+              {%- elsif icon_preset == 'ts_clean' -%}
+                <img src="{{ 'ts-home-icon-clean-minimal.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
+              {%- elsif icon_preset == 'ts_shipping' -%}
+                <img src="{{ 'ts-home-icon-shipping-minimal.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
+              {%- elsif icon_preset == 'ts_usa' -%}
+                <img src="{{ 'ts-home-icon-usa-minimal.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
               {%- else -%}
                 {%- case icon_preset -%}
                   {%- when 'paw' -%}
@@ -476,7 +484,11 @@
             { "value": "lab", "label": "Lab / Science" },
             { "value": "truck", "label": "Shipping" },
             { "value": "medal", "label": "Medal" },
-            { "value": "smile", "label": "Smile" }
+            { "value": "smile", "label": "Smile" },
+            { "value": "ts_vet", "label": "TailSpark vet formulated" },
+            { "value": "ts_clean", "label": "TailSpark clean ingredients" },
+            { "value": "ts_shipping", "label": "TailSpark free shipping" },
+            { "value": "ts_usa", "label": "TailSpark made in USA" }
           ],
           "default": "none"
         },

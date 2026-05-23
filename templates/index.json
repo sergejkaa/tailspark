@@ -296,7 +296,7 @@
         "badge_w7xHV9": {
           "type": "badge",
           "settings": {
-            "icon_preset": "lab",
+            "icon_preset": "ts_vet",
             "heading": "Vet Formulated",
             "description": "Developed with certified veterinarians"
           }
@@ -304,7 +304,7 @@
         "badge_eWYnqm": {
           "type": "badge",
           "settings": {
-            "icon_preset": "leaf",
+            "icon_preset": "ts_clean",
             "heading": "Clean Ingredients",
             "description": "No fillers, no artificial additives"
           }
@@ -312,7 +312,7 @@
         "badge_km3VjH": {
           "type": "badge",
           "settings": {
-            "icon_preset": "truck",
+            "icon_preset": "ts_shipping",
             "heading": "Free Shipping",
             "description": "Always free, on every order"
           }
@@ -320,7 +320,7 @@
         "badge_QrKxP4": {
           "type": "badge",
           "settings": {
-            "icon_preset": "medal",
+            "icon_preset": "ts_usa",
             "heading": "Made in USA",
             "description": "Manufactured in certified facilities"
           }
