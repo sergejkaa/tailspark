@@ -110,7 +110,7 @@
         "content_padding": 48,
         "content_max_width": 760,
         "content_gap": 36,
-        "content_gap_mobile": 16,
+        "content_gap_mobile": 14,
         "mobile_content_position": "bottom-center",
         "mobile_content_alignment": "center",
         "show_text_below_on_mobile": false,
@@ -400,9 +400,9 @@
         "icon_size_mobile": 38,
         "icon_label_size": 11,
         "icon_label_size_mobile": 11,
-        "padding_top": 40,
+        "padding_top": 32,
         "padding_bottom": 60,
-        "padding_top_mobile": 40,
+        "padding_top_mobile": 20,
         "padding_bottom_mobile": 40
       }
     },
