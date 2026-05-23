@@ -361,6 +361,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-hip-joint",
+            "image_preset": "ts_hip_joint",
             "subtitle": "Increases flexibility and strengthens joints",
             "card_bg": "#fdecea",
             "icon_1_preset": "ts_joint",
@@ -377,6 +378,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-multivitamin",
+            "image_preset": "ts_multivitamin",
             "subtitle": "Daily support for overall vitality",
             "card_bg": "#eaf4f4",
             "icon_1_preset": "ts_multivitamin",
@@ -393,6 +395,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-probiotic",
+            "image_preset": "ts_probiotic",
             "subtitle": "Maintains healthy digestive system",
             "card_bg": "#edf6f0",
             "icon_1_preset": "ts_gut",
@@ -409,6 +412,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-skin-coat",
+            "image_preset": "ts_skin_coat",
             "subtitle": "Softens coat and soothes dry skin",
             "card_bg": "#fef9e7",
             "icon_1_preset": "ts_coat",
@@ -463,8 +467,8 @@
         "accordion_pWzCBT": {
           "type": "accordion",
           "settings": {
-            "title": "LITTLE PINEAPPLE REFRESH",
-            "text": "<p>A gently exfoliating daily cleanser that removes SPF and makeup while leaving skin clean, soft, and hydrated post-rinse.</p>",
+            "title": "DOGS LOVE THE TASTE",
+            "text": "<p>Soft chews taste like treats — your dog won't even know it's a supplement. No hiding pills in peanut butter, no mixing powders into food. Just give one chew and you're done.</p>",
             "button_label": "",
             "button_link": ""
           }
@@ -472,8 +476,8 @@
         "accordion_8DbeAW": {
           "type": "accordion",
           "settings": {
-            "title": "SPOTWEAR",
-            "text": "<p>Hydrocolloid stickers that absorb excess oil and shield spots from stressors when you are on the go.</p>",
+            "title": "PRECISE DAILY DOSING",
+            "text": "<p>Every chew delivers the exact amount your dog needs — no guessing, no waste. Each batch is carefully formulated so your dog gets consistent nutrition every single day.</p>",
             "button_label": "",
             "button_link": ""
           }
@@ -481,8 +485,17 @@
         "accordion_yBiadC": {
           "type": "accordion",
           "settings": {
-            "title": "GLAZING MIST",
-            "text": "<p>A superfine mist that hydrates, refreshes, and helps skin feel balanced over time.</p>",
+            "title": "CLEAN, SIMPLE INGREDIENTS",
+            "text": "<p>No fillers, no artificial colors, no additives your dog doesn't need. Just real, functional ingredients chosen for what they actually do — developed with certified veterinarians.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_ts4thQ": {
+          "type": "accordion",
+          "settings": {
+            "title": "EASY TO USE EVERY DAY",
+            "text": "<p>Toss one in the bowl or give it by hand — that's it. No special storage, no prep, no mess. Making daily wellness a simple habit your dog will actually look forward to.</p>",
             "button_label": "",
             "button_link": ""
           }
@@ -491,13 +504,14 @@
       "block_order": [
         "accordion_pWzCBT",
         "accordion_8DbeAW",
-        "accordion_yBiadC"
+        "accordion_yBiadC",
+        "accordion_ts4thQ"
       ],
       "name": "Image and Accordions",
       "settings": {
         "image_side": "left",
         "image_position": "50% 50%",
-        "heading": "High-performance essentials for your skin.",
+        "heading": "Why Soft Chews?",
         "heading_size": "h1",
         "open_first": false,
         "cta_label": "SHOP NOW",
