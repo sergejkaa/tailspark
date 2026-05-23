@@ -126,19 +126,19 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    width: 52px;
+    width: max(52px, {{ section.settings.icon_size_mobile }}px);
   }
 
   #shopify-section-{{ section.id }} .bs-icon-item__img {
-    width: 28px;
-    height: 28px;
+    width: {{ section.settings.icon_size_mobile }}px;
+    height: {{ section.settings.icon_size_mobile }}px;
     object-fit: contain;
     flex-shrink: 0;
   }
 
   #shopify-section-{{ section.id }} .bs-icon-item__svg {
-    width: 28px;
-    height: 28px;
+    width: {{ section.settings.icon_size_mobile }}px;
+    height: {{ section.settings.icon_size_mobile }}px;
     color: {{ section.settings.icon_color }};
     flex-shrink: 0;
   }
@@ -235,13 +235,13 @@
     }
 
     #shopify-section-{{ section.id }} .bs-icon-item {
-      width: 60px;
+      width: max(60px, {{ section.settings.icon_size }}px);
     }
 
     #shopify-section-{{ section.id }} .bs-icon-item__img,
     #shopify-section-{{ section.id }} .bs-icon-item__svg {
-      width: 36px;
-      height: 36px;
+      width: {{ section.settings.icon_size }}px;
+      height: {{ section.settings.icon_size }}px;
     }
 
     #shopify-section-{{ section.id }} .bs-icon-item__label {
@@ -337,21 +337,21 @@
                       {%- if icon_img != blank -%}
                         {{ icon_img | image_url: width: 80 | image_tag: class: 'bs-icon-item__img', loading: 'lazy', alt: icon_label }}
                       {%- elsif icon_preset == 'ts_coat' -%}
-                        <img src="{{ 'ts-icon-coat-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-coat-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_antihistamine' -%}
-                        <img src="{{ 'ts-icon-antihistamine-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-antihistamine-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_multivitamin' -%}
-                        <img src="{{ 'ts-icon-multivitamin-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-multivitamin-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_energy' -%}
-                        <img src="{{ 'ts-icon-energy-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-energy-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_joint' -%}
-                        <img src="{{ 'ts-icon-joint-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-joint-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_anti_inflammatory' -%}
-                        <img src="{{ 'ts-icon-anti-inflammatory-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-anti-inflammatory-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_gut' -%}
-                        <img src="{{ 'ts-icon-gut-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-gut-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_immune' -%}
-                        <img src="{{ 'ts-icon-immune-3d.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-immune-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- else -%}
                         {%- case icon_preset -%}
                           {%- when 'paw' -%}
@@ -517,6 +517,30 @@
       "label": "Mobile",
       "min": 20,
       "max": 48,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Benefit icon size"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Desktop icon size",
+      "min": 20,
+      "max": 96,
+      "step": 2,
+      "default": 36,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "label": "Mobile icon size",
+      "min": 18,
+      "max": 72,
       "step": 2,
       "default": 28,
       "unit": "px"
