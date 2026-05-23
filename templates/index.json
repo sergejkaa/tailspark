@@ -495,7 +495,7 @@
       ],
       "name": "Image and Accordions",
       "settings": {
-        "image_side": "right",
+        "image_side": "left",
         "image_position": "50% 50%",
         "heading": "High-performance essentials for your skin.",
         "heading_size": "h1",
