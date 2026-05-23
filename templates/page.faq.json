@@ -1,0 +1,201 @@
+{
+  "sections": {
+    "faq_accordion_main": {
+      "type": "faq-accordion-section",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": { "heading": "Products & Ingredients" }
+        },
+        "q_1_1": {
+          "type": "item",
+          "settings": {
+            "heading": "Are TailSpark supplements safe for all dogs?",
+            "content": "<p>Yes. All formulas are vet-formulated for dogs of all breeds and ages. If your dog has a medical condition, is pregnant, or is currently on medication, consult your veterinarian before starting any new supplement.</p>"
+          }
+        },
+        "q_1_2": {
+          "type": "item",
+          "settings": {
+            "heading": "What form do the supplements come in?",
+            "content": "<p>All TailSpark supplements are soft chews - a convenient, tasty format that's easy to give daily. No mixing into food, no capsules, no measuring. Most dogs love them straight from the bag.</p>"
+          }
+        },
+        "q_1_3": {
+          "type": "item",
+          "settings": {
+            "heading": "Are the chews grain-free?",
+            "content": "<p>Our chews are free of corn and wheat. Some formulas use oat flour or rye flour as a base ingredient. The full ingredient list for each product is available on its product page.</p>"
+          }
+        },
+        "q_1_4": {
+          "type": "item",
+          "settings": {
+            "heading": "Are there any artificial flavors or colors?",
+            "content": "<p>No. All TailSpark supplements are free of artificial flavors and colors. We use natural duck flavor in some formulas for palatability.</p>"
+          }
+        },
+        "q_1_5": {
+          "type": "item",
+          "settings": {
+            "heading": "Can I give my dog multiple TailSpark supplements at the same time?",
+            "content": "<p>Yes. Our formulas are designed to complement each other. Many pet parents pair the Multivitamin with a targeted formula like Hip & Joint, Skin & Coat, or Probiotic for complete daily support.</p>"
+          }
+        },
+        "q_1_6": {
+          "type": "item",
+          "settings": {
+            "heading": "Are these supplements suitable for puppies and senior dogs?",
+            "content": "<p>Yes, all formulas are designed for dogs of all ages. Dosing is based on weight - follow the directions on the product page for the appropriate serving size.</p>"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": { "heading": "Dosage & Results" }
+        },
+        "q_2_1": {
+          "type": "item",
+          "settings": {
+            "heading": "How do I know how many chews to give my dog?",
+            "content": "<p>Each product has a weight-based dosing guide on its product page. Generally: Skin & Coat / Probiotic: 1 chew (up to 25 lbs), 2 chews (25-50 lbs), 3 chews (50-75 lbs), 4 chews (75+ lbs). Multivitamin: 1/2 chew (up to 25 lbs), 1 chew (25-75 lbs), 2 chews (75+ lbs). Hip & Joint: 1 chew (up to 15 lbs), 2 chews (15-45 lbs), 3 chews (45-75 lbs), 4 chews (75+ lbs).</p>"
+          }
+        },
+        "q_2_2": {
+          "type": "item",
+          "settings": {
+            "heading": "When is the best time to give the chews?",
+            "content": "<p>Any time works. Most pet parents find it easiest to build it into an existing routine - morning feeding, an evening walk, or bedtime. Consistency matters more than timing.</p>"
+          }
+        },
+        "q_2_3": {
+          "type": "item",
+          "settings": {
+            "heading": "How long until I see results?",
+            "content": "<p>It depends on the formula and your dog. For joint and skin support, most pet parents notice a difference within 4-6 weeks of daily use. For the Probiotic and Multivitamin, you may notice digestive or coat improvements sooner. Consistency is key.</p>"
+          }
+        },
+        "q_2_4": {
+          "type": "item",
+          "settings": {
+            "heading": "Can I give more than the recommended dose?",
+            "content": "<p>We recommend sticking to the guidelines on the label. More is not always better with supplements - the doses are calibrated to be effective and safe.</p>"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": { "heading": "Quality & Manufacturing" }
+        },
+        "q_3_1": {
+          "type": "item",
+          "settings": {
+            "heading": "Where are TailSpark supplements made?",
+            "content": "<p>All products are made in the USA in a cGMP-certified, FDA-registered food facility. We hold our manufacturing partners to the same standards we'd demand for our own dog.</p>"
+          }
+        },
+        "q_3_2": {
+          "type": "item",
+          "settings": {
+            "heading": "Are the formulas vet-formulated?",
+            "content": "<p>Yes. Every TailSpark formula is developed and reviewed by veterinary professionals before we bring it to market.</p>"
+          }
+        },
+        "q_3_3": {
+          "type": "item",
+          "settings": {
+            "heading": "What does cGMP-certified mean?",
+            "content": "<p>cGMP stands for Current Good Manufacturing Practices - a standard set by the FDA to ensure products are consistently produced and controlled according to quality standards. It means every batch is made with proper testing, documentation, and safety protocols in place.</p>"
+          }
+        },
+        "q_3_4": {
+          "type": "item",
+          "settings": {
+            "heading": "Are TailSpark products tested for quality?",
+            "content": "<p>Yes. Products manufactured in cGMP-certified facilities undergo quality testing as part of the production process to ensure potency, purity, and consistency.</p>"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": { "heading": "Shipping & Orders" }
+        },
+        "q_4_1": {
+          "type": "item",
+          "settings": {
+            "heading": "How long does shipping take?",
+            "content": "<p>Standard shipping typically takes 5-7 business days within the United States. You'll receive a tracking number by email once your order ships.</p>"
+          }
+        },
+        "q_4_2": {
+          "type": "item",
+          "settings": {
+            "heading": "Do you offer free shipping?",
+            "content": "<p>Yes - free standard shipping on every order, always.</p>"
+          }
+        },
+        "q_4_3": {
+          "type": "item",
+          "settings": {
+            "heading": "Do you ship internationally?",
+            "content": "<p>Currently we ship within the United States. International shipping is something we're working toward - stay tuned.</p>"
+          }
+        },
+        "q_4_4": {
+          "type": "item",
+          "settings": {
+            "heading": "Can I change or cancel my order?",
+            "content": "<p>If you need to change or cancel your order, contact us as soon as possible at customercare@tailspark.com. We'll do our best to help, but orders that have already been processed for shipping may not be editable.</p>"
+          }
+        },
+        "cat_5": {
+          "type": "category",
+          "settings": { "heading": "Subscriptions & Returns" }
+        },
+        "q_5_1": {
+          "type": "item",
+          "settings": {
+            "heading": "Do you offer a subscription?",
+            "content": "<p>Yes - you can subscribe and save on any product. Subscribers receive a 15% discount and never run out. You can pause, skip, or cancel your subscription at any time from your account page.</p>"
+          }
+        },
+        "q_5_2": {
+          "type": "item",
+          "settings": {
+            "heading": "How do I cancel my subscription?",
+            "content": "<p>Log in to your account, go to Subscriptions, and select Cancel. You can also email us at customercare@tailspark.com and we'll handle it for you - no hassle.</p>"
+          }
+        },
+        "q_5_3": {
+          "type": "item",
+          "settings": {
+            "heading": "What is your return policy?",
+            "content": "<p>We offer a 100% satisfaction guarantee. If you or your dog aren't happy with the quality, contact us at customercare@tailspark.com and we'll make it right. We stand behind everything we sell.</p>"
+          }
+        },
+        "q_5_4": {
+          "type": "item",
+          "settings": {
+            "heading": "My dog doesn't like the taste - what can I do?",
+            "content": "<p>Some dogs take a day or two to warm up to new treats. Try breaking the chew into smaller pieces or placing it on top of their food. If your dog still won't eat them, reach out - our satisfaction guarantee has you covered.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1", "q_1_1", "q_1_2", "q_1_3", "q_1_4", "q_1_5", "q_1_6",
+        "cat_2", "q_2_1", "q_2_2", "q_2_3", "q_2_4",
+        "cat_3", "q_3_1", "q_3_2", "q_3_3", "q_3_4",
+        "cat_4", "q_4_1", "q_4_2", "q_4_3", "q_4_4",
+        "cat_5", "q_5_1", "q_5_2", "q_5_3", "q_5_4"
+      ],
+      "name": "FAQ Accordions",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "Everything you need to know about TailSpark supplements",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "faq_accordion_main"
+  ]
+}
