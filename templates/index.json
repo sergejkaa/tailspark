@@ -339,11 +339,11 @@
         "icon_size": 32,
         "icon_size_mobile": 32,
         "item_gap": 14,
-        "item_gap_mobile": 10,
+        "item_gap_mobile": 8,
         "heading_size": 15,
-        "heading_size_mobile": 13,
+        "heading_size_mobile": 12,
         "desc_size": 13,
-        "desc_size_mobile": 11,
+        "desc_size_mobile": 10,
         "section_bg": "#ffffd2",
         "border_color": "#e8e5c8",
         "icon_color": "#ff6700",
@@ -351,8 +351,8 @@
         "text_color": "#666666",
         "padding_top": 4,
         "padding_bottom": 4,
-        "padding_top_mobile": 16,
-        "padding_bottom_mobile": 16
+        "padding_top_mobile": 4,
+        "padding_bottom_mobile": 4
       }
     },
     "best_sellers_custom_GpGCrV": {
