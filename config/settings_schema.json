@@ -23,7 +23,17 @@
         "step": 10,
         "default": 100,
         "unit": "px",
-        "label": "t:settings_schema.logo.settings.logo_width.label"
+        "label": "Logo width — desktop"
+      },
+      {
+        "type": "range",
+        "id": "logo_width_mobile",
+        "min": 30,
+        "max": 200,
+        "step": 5,
+        "default": 80,
+        "unit": "px",
+        "label": "Logo width — mobile"
       },
       {
         "type": "image_picker",

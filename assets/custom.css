@@ -171,9 +171,17 @@ button.shopify-payment-button__button--unbranded:hover {
 }
 
 .header__heading-logo {
-  max-width: min(20rem, 42vw);
+  width: var(--logo-width-mobile, 80px);
+  max-width: 42vw;
   height: auto;
   object-fit: contain;
+}
+
+@media screen and (min-width: 750px) {
+  .header__heading-logo {
+    width: var(--logo-width-desktop, 100px);
+    max-width: 20rem;
+  }
 }
 
 .header__inline-menu .list-menu__item,

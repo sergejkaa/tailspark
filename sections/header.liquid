@@ -17,6 +17,11 @@
 {%- endif -%}
 
 <style>
+  :root {
+    --logo-width-desktop: {{ settings.logo_width }}px;
+    --logo-width-mobile: {{ settings.logo_width_mobile }}px;
+  }
+
   header-drawer {
     justify-self: start;
     margin-left: -1.2rem;
