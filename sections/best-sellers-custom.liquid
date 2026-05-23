@@ -287,6 +287,18 @@
         {%- assign product_title = block.settings.title_override | default: prod.title -%}
         {%- assign card_image = block.settings.image_override -%}
         {%- assign image_preset = block.settings.image_preset -%}
+        {%- if image_preset == blank or image_preset == 'none' -%}
+          {%- case prod.handle -%}
+            {%- when 'tailspark-hip-joint' -%}
+              {%- assign image_preset = 'ts_hip_joint' -%}
+            {%- when 'tailspark-multivitamin' -%}
+              {%- assign image_preset = 'ts_multivitamin' -%}
+            {%- when 'tailspark-probiotic' -%}
+              {%- assign image_preset = 'ts_probiotic' -%}
+            {%- when 'tailspark-skin-coat' -%}
+              {%- assign image_preset = 'ts_skin_coat' -%}
+          {%- endcase -%}
+        {%- endif -%}
 
         <div class="bs-card" {{ block.shopify_attributes }}>
 
