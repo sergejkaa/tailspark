@@ -14,10 +14,9 @@
       "blocks": {
         "eyebrow_6m3tpg": {
           "type": "eyebrow",
-          "disabled": true,
           "settings": {
-            "text": "New Collection",
-            "text_color": ""
+            "text": "Vet Formulated",
+            "text_color": "#FF6700"
           }
         },
         "inline_rating_EieFjF": {
@@ -25,10 +24,10 @@
           "settings": {
             "rating_value": "4.9",
             "rating_label": "stars",
-            "segment_1_number": "5000",
-            "segment_1_label": "reviews",
-            "segment_2_number": "1,000,000+",
-            "segment_2_label": "members",
+            "segment_1_number": "5,000+",
+            "segment_1_label": "happy dogs",
+            "segment_2_number": "500K+",
+            "segment_2_label": "chews served",
             "segment_1_number_mobile": "85K",
             "segment_2_number_mobile": "1M+",
             "star_color": "#ff6700",
@@ -45,7 +44,7 @@
         "heading_BqMQFN": {
           "type": "heading",
           "settings": {
-            "heading": "Elegant by Nature",
+            "heading": "Daily Wellness for Happy Dogs",
             "heading_size": "hxl",
             "heading_tag": "h1",
             "text_color": ""
@@ -54,7 +53,7 @@
         "subheading_A7AYTP": {
           "type": "subheading",
           "settings": {
-            "text": "Discover the new season",
+            "text": "Vet-formulated soft chews your dog will love — clean ingredients, real results.",
             "text_color": ""
           }
         },
@@ -62,7 +61,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "",
+            "button_link_1": "/collections/all",
             "button_style_1": "pill-solid",
             "button_color_bg_1": "#ffffff",
             "button_color_text_1": "#111111",
@@ -150,7 +149,7 @@
         "heading_W83xg6": {
           "type": "heading",
           "settings": {
-            "heading": "Elegant by Nature",
+            "heading": "Daily Wellness for Happy Dogs",
             "heading_size": "hxl",
             "heading_tag": "h1",
             "text_color": ""
@@ -159,7 +158,7 @@
         "subheading_3B64ym": {
           "type": "subheading",
           "settings": {
-            "text": "Discover the new season",
+            "text": "Vet-formulated soft chews your dog will love — clean ingredients, real results.",
             "text_color": ""
           }
         },
