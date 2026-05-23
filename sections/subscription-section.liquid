@@ -1,3 +1,6 @@
+{%- assign discount_pct = section.settings.discount_percent -%}
+{%- assign remaining = 100 | minus: discount_pct -%}
+
 {%- style -%}
   .subscription-section {
     background-color: {{ section.settings.background_color }};
@@ -86,7 +89,7 @@
   .subscription-card__title {
     font-size: 17px;
     font-weight: 700;
-    color: {{ section.settings.heading_color }};
+    color: {{ section.settings.card_heading_color }};
     margin: 0;
   }
 
@@ -99,7 +102,7 @@
 
   .subscription-card__price-original {
     font-size: 13px;
-    color: {{ section.settings.text_color }};
+    color: {{ section.settings.card_text_color }};
     text-decoration: line-through;
     opacity: 0.6;
   }
@@ -107,7 +110,7 @@
   .subscription-card__price-sub {
     font-size: 16px;
     font-weight: 700;
-    color: {{ section.settings.heading_color }};
+    color: {{ section.settings.card_heading_color }};
   }
 
   .subscription-card__badge {
@@ -131,7 +134,7 @@
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
     margin-top: auto;
   }
 
@@ -211,8 +214,7 @@
         {%- if block.type == 'product' -%}
           {%- assign prod = block.settings.product -%}
           {%- if prod != blank -%}
-            {%- assign regular_price = prod.price -%}
-            {%- assign discounted_price = prod.price | times: 0.85 | round -%}
+            {%- assign discounted_price = prod.price | times: remaining | divided_by: 100 -%}
           {%- endif -%}
 
           <div class="subscription-card" style="background-color: {{ block.settings.card_bg }};" {{ block.shopify_attributes }}>
@@ -242,10 +244,10 @@
 
               <div class="subscription-card__pricing">
                 {%- if prod != blank -%}
-                  <span class="subscription-card__price-original">{{ regular_price | money }}</span>
+                  <span class="subscription-card__price-original">{{ prod.price | money }}</span>
                   <span class="subscription-card__price-sub">{{ discounted_price | money }}/mo</span>
                 {%- endif -%}
-                <span class="subscription-card__badge">Save 15%</span>
+                <span class="subscription-card__badge">Save {{ discount_pct }}%</span>
               </div>
 
               <a
@@ -296,26 +298,52 @@
       "default": "Free shipping on every order. Cancel or pause anytime."
     },
     {
+      "type": "range",
+      "id": "discount_percent",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "label": "Subscription discount",
+      "default": 15
+    },
+    {
       "type": "header",
-      "content": "Colors"
+      "content": "Section colors"
     },
     {
       "type": "color",
       "id": "background_color",
       "label": "Section background",
-      "default": "#1d1d1b"
+      "default": "#fff8ed"
     },
     {
       "type": "color",
       "id": "heading_color",
       "label": "Heading color",
-      "default": "#ffffff"
+      "default": "#1d1d1b"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text color",
-      "default": "#cccccc"
+      "label": "Subheading / footnote color",
+      "default": "#555555"
+    },
+    {
+      "type": "header",
+      "content": "Card colors"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card title color",
+      "default": "#1d1d1b"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text color",
+      "default": "#555555"
     },
     {
       "type": "color",
@@ -345,13 +373,13 @@
       "type": "color",
       "id": "button_hover_bg",
       "label": "Button hover background",
-      "default": "#ffffff"
+      "default": "#1d1d1b"
     },
     {
       "type": "color",
       "id": "button_hover_text",
       "label": "Button hover text",
-      "default": "#1d1d1b"
+      "default": "#ffffff"
     },
     {
       "type": "header",
