@@ -336,6 +336,22 @@
                     <div class="bs-icon-item">
                       {%- if icon_img != blank -%}
                         {{ icon_img | image_url: width: 80 | image_tag: class: 'bs-icon-item__img', loading: 'lazy', alt: icon_label }}
+                      {%- elsif icon_preset == 'ts_coat' -%}
+                        <img src="{{ 'ts-icon-coat.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                      {%- elsif icon_preset == 'ts_antihistamine' -%}
+                        <img src="{{ 'ts-icon-antihistamine.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                      {%- elsif icon_preset == 'ts_multivitamin' -%}
+                        <img src="{{ 'ts-icon-multivitamin.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                      {%- elsif icon_preset == 'ts_energy' -%}
+                        <img src="{{ 'ts-icon-energy.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                      {%- elsif icon_preset == 'ts_joint' -%}
+                        <img src="{{ 'ts-icon-joint.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                      {%- elsif icon_preset == 'ts_anti_inflammatory' -%}
+                        <img src="{{ 'ts-icon-anti-inflammatory.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                      {%- elsif icon_preset == 'ts_gut' -%}
+                        <img src="{{ 'ts-icon-gut.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                      {%- elsif icon_preset == 'ts_immune' -%}
+                        <img src="{{ 'ts-icon-immune.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
                       {%- else -%}
                         {%- case icon_preset -%}
                           {%- when 'paw' -%}
@@ -598,7 +614,15 @@
             { "value": "check", "label": "Check circle" },
             { "value": "sun", "label": "Sun" },
             { "value": "lightning", "label": "Lightning" },
-            { "value": "gut", "label": "Gut health" }
+            { "value": "gut", "label": "Gut health" },
+            { "value": "ts_coat", "label": "TailSpark coat" },
+            { "value": "ts_antihistamine", "label": "TailSpark antihistamine" },
+            { "value": "ts_multivitamin", "label": "TailSpark multivitamin" },
+            { "value": "ts_energy", "label": "TailSpark energy" },
+            { "value": "ts_joint", "label": "TailSpark joint" },
+            { "value": "ts_anti_inflammatory", "label": "TailSpark anti-inflammatory" },
+            { "value": "ts_gut", "label": "TailSpark gut" },
+            { "value": "ts_immune", "label": "TailSpark immune" }
           ],
           "default": "none"
         },
@@ -634,7 +658,15 @@
             { "value": "check", "label": "Check circle" },
             { "value": "sun", "label": "Sun" },
             { "value": "lightning", "label": "Lightning" },
-            { "value": "gut", "label": "Gut health" }
+            { "value": "gut", "label": "Gut health" },
+            { "value": "ts_coat", "label": "TailSpark coat" },
+            { "value": "ts_antihistamine", "label": "TailSpark antihistamine" },
+            { "value": "ts_multivitamin", "label": "TailSpark multivitamin" },
+            { "value": "ts_energy", "label": "TailSpark energy" },
+            { "value": "ts_joint", "label": "TailSpark joint" },
+            { "value": "ts_anti_inflammatory", "label": "TailSpark anti-inflammatory" },
+            { "value": "ts_gut", "label": "TailSpark gut" },
+            { "value": "ts_immune", "label": "TailSpark immune" }
           ],
           "default": "none"
         },
@@ -670,7 +702,15 @@
             { "value": "check", "label": "Check circle" },
             { "value": "sun", "label": "Sun" },
             { "value": "lightning", "label": "Lightning" },
-            { "value": "gut", "label": "Gut health" }
+            { "value": "gut", "label": "Gut health" },
+            { "value": "ts_coat", "label": "TailSpark coat" },
+            { "value": "ts_antihistamine", "label": "TailSpark antihistamine" },
+            { "value": "ts_multivitamin", "label": "TailSpark multivitamin" },
+            { "value": "ts_energy", "label": "TailSpark energy" },
+            { "value": "ts_joint", "label": "TailSpark joint" },
+            { "value": "ts_anti_inflammatory", "label": "TailSpark anti-inflammatory" },
+            { "value": "ts_gut", "label": "TailSpark gut" },
+            { "value": "ts_immune", "label": "TailSpark immune" }
           ],
           "default": "none"
         },
@@ -705,7 +745,15 @@
             { "value": "check", "label": "Check circle" },
             { "value": "sun", "label": "Sun" },
             { "value": "lightning", "label": "Lightning" },
-            { "value": "gut", "label": "Gut health" }
+            { "value": "gut", "label": "Gut health" },
+            { "value": "ts_coat", "label": "TailSpark coat" },
+            { "value": "ts_antihistamine", "label": "TailSpark antihistamine" },
+            { "value": "ts_multivitamin", "label": "TailSpark multivitamin" },
+            { "value": "ts_energy", "label": "TailSpark energy" },
+            { "value": "ts_joint", "label": "TailSpark joint" },
+            { "value": "ts_anti_inflammatory", "label": "TailSpark anti-inflammatory" },
+            { "value": "ts_gut", "label": "TailSpark gut" },
+            { "value": "ts_immune", "label": "TailSpark immune" }
           ],
           "default": "none"
         },
