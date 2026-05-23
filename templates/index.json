@@ -336,7 +336,7 @@
       "settings": {
         "item_direction": "row",
         "item_align": "left",
-        "icon_size": 32,
+        "icon_size": 40,
         "icon_size_mobile": 32,
         "item_gap": 14,
         "item_gap_mobile": 8,
