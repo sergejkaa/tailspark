@@ -283,6 +283,12 @@
                   .yny-acc-group > .yny-acc { border: none; border-radius: 0; margin-bottom: 0; border-top: 1px solid rgba(0,0,0,.08); }
                   .yny-acc-group > .yny-acc:first-child { border-top: none; }
                 </style>
+                <style>
+                  #yny-acc-{{ block.id }} .yny-acc { background-color: {{ block.settings.acc_bg_color | default: '#fff' }}; border-color: {{ block.settings.acc_border_color | default: 'rgba(0,0,0,.1)' }}; }
+                  #yny-acc-{{ block.id }}.yny-acc-group { background-color: {{ block.settings.acc_bg_color | default: '#fff' }}; border-color: {{ block.settings.acc_border_color | default: 'rgba(0,0,0,.1)' }}; }
+                  #yny-acc-{{ block.id }} .yny-acc__summary { color: {{ block.settings.summary_color | default: 'inherit' }}; }
+                  #yny-acc-{{ block.id }} .yny-acc__inner { color: {{ block.settings.text_color | default: 'inherit' }}; }
+                </style>
                 <script>
                   (() => {
                     if (window.ynyAccordionReady) return;
@@ -296,7 +302,7 @@
                     document.addEventListener('shopify:section:load', (e) => init(e.target));
                   })();
                 </script>
-                <div class="yny-acc-group" {{ block.shopify_attributes }}>
+                <div id="yny-acc-{{ block.id }}" class="yny-acc-group" {{ block.shopify_attributes }}>
                   {%- for i in (1..5) -%}
                     {%- assign g_heading_key = 'item_' | append: i | append: '_heading' -%}
                     {%- assign g_source_key = 'item_' | append: i | append: '_source' -%}
@@ -5281,7 +5287,12 @@
         { "type": "header", "content": "Item 5 (optional)" },
         { "type": "text", "id": "item_5_heading", "label": "Title" },
         { "type": "select", "id": "item_5_source", "label": "Content source", "options": [{"value":"custom","label":"Custom text"},{"value":"description","label":"Product description"}], "default": "custom" },
-        { "type": "richtext", "id": "item_5_content", "label": "Content", "default": "<p>Add content here.</p>" }
+        { "type": "richtext", "id": "item_5_content", "label": "Content", "default": "<p>Add content here.</p>" },
+        { "type": "header", "content": "Colors" },
+        { "type": "color", "id": "acc_bg_color", "label": "Background color", "default": "#ffffff" },
+        { "type": "color", "id": "acc_border_color", "label": "Border color", "default": "#e8e8e8" },
+        { "type": "color", "id": "summary_color", "label": "Heading color", "default": "#1d1d1b" },
+        { "type": "color", "id": "text_color", "label": "Text color", "default": "#555555" }
       ]
     }
   ],
