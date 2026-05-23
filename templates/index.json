@@ -550,6 +550,7 @@
           "settings": {
             "product": "tailspark-hip-joint",
             "title_override": "Hip & Joint",
+            "image": "shopify://shop_images/ts-best-seller-hip-joint.png",
             "card_bg": "#fdecea",
             "button_label": "Subscribe & Save"
           }
@@ -559,6 +560,7 @@
           "settings": {
             "product": "tailspark-multivitamin",
             "title_override": "Daily Multivitamin",
+            "image": "shopify://shop_images/ts-best-seller-multivitamin.png",
             "card_bg": "#eaf4f4",
             "button_label": "Subscribe & Save"
           }
@@ -568,6 +570,7 @@
           "settings": {
             "product": "tailspark-probiotic",
             "title_override": "Probiotic",
+            "image": "shopify://shop_images/ts-best-seller-probiotic.png",
             "card_bg": "#edf6f0",
             "button_label": "Subscribe & Save"
           }
@@ -577,6 +580,7 @@
           "settings": {
             "product": "tailspark-skin-coat",
             "title_override": "Skin & Coat",
+            "image": "shopify://shop_images/ts-best-seller-skin-coat.png",
             "card_bg": "#fef9e7",
             "button_label": "Subscribe & Save"
           }
@@ -593,6 +597,7 @@
         "heading": "Subscribe & Save 15%",
         "subheading": "Never run out. Cancel anytime.",
         "footnote": "Free shipping on every order. Cancel or pause anytime.",
+        "discount_percent": 15,
         "background_color": "#fff8ed",
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
@@ -604,7 +609,6 @@
         "button_text": "#ffffff",
         "button_hover_bg": "#1d1d1b",
         "button_hover_text": "#ffffff",
-        "discount_percent": 15,
         "padding_top": 64,
         "padding_bottom": 64,
         "padding_top_mobile": 40,
