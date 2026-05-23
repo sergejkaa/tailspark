@@ -290,166 +290,69 @@
         "accessibility_info": "Hero section"
       }
     },
-    "slideshow_custom_UqM993": {
-      "type": "slideshow-custom",
+    "home_icons_bar_QDY8jh": {
+      "type": "home-icons-bar",
       "blocks": {
-        "slide_6QmCLy": {
-          "type": "slide",
+        "badge_w7xHV9": {
+          "type": "badge",
           "settings": {
-            "image_overlay_opacity": 40,
-            "heading": "Daily Balance Starts Here",
-            "heading_size": "h1",
-            "subheading": "Clean functional mushroom supplements designed to support focus, energy, and everyday well-being.",
-            "button_label": "SHOP NOW",
-            "link": "shopify://collections/all",
-            "button_style_secondary": false,
-            "show_text_box": false,
-            "box_align": "bottom-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-2"
+            "icon_preset": "lab",
+            "heading": "Vet Formulated",
+            "description": "Developed with certified veterinarians"
+          }
+        },
+        "badge_eWYnqm": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "leaf",
+            "heading": "Clean Ingredients",
+            "description": "No fillers, no artificial additives"
+          }
+        },
+        "badge_km3VjH": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "truck",
+            "heading": "Free Shipping",
+            "description": "Always free, on every order"
+          }
+        },
+        "badge_QrKxP4": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "medal",
+            "heading": "Made in USA",
+            "description": "Manufactured in certified facilities"
           }
         }
       },
       "block_order": [
-        "slide_6QmCLy"
+        "badge_w7xHV9",
+        "badge_eWYnqm",
+        "badge_km3VjH",
+        "badge_QrKxP4"
       ],
-      "disabled": true,
-      "custom_css": [
-        "@media (max-width: 480px) {.slideshow__text {padding-top: 85px !important; padding-bottom: 0 !important; }}"
-      ],
-      "name": "💜Slideshow Custom",
+      "name": "Home Icons Bar",
       "settings": {
-        "layout": "full_bleed",
-        "slide_height": "medium",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "ambient",
-        "show_text_below": false,
-        "accessibility_info": "Slideshow about our brand",
-        "btn_glow": "#1b4a3d"
-      }
-    },
-    "logo_ticker_7XVqNT": {
-      "type": "logo-ticker",
-      "blocks": {
-        "logo_N4M4qD": {
-          "type": "logo",
-          "settings": {
-            "item_type": "logo",
-            "text": "Fast Shipping",
-            "text_size": 22,
-            "text_weight": "700",
-            "text_letter_spacing": 0,
-            "text_color": "#111111",
-            "text_uppercase": true,
-            "alt": "Brand logo",
-            "max_width": 220,
-            "link": "",
-            "target_blank": false
-          }
-        },
-        "logo_tfTdMh": {
-          "type": "logo",
-          "settings": {
-            "item_type": "logo",
-            "text": "Fast Shipping",
-            "text_size": 22,
-            "text_weight": "700",
-            "text_letter_spacing": 0,
-            "text_color": "#111111",
-            "text_uppercase": true,
-            "alt": "Brand logo",
-            "max_width": 220,
-            "link": "",
-            "target_blank": false
-          }
-        },
-        "logo_cDWgUT": {
-          "type": "logo",
-          "settings": {
-            "item_type": "logo",
-            "text": "Fast Shipping",
-            "text_size": 22,
-            "text_weight": "700",
-            "text_letter_spacing": 0,
-            "text_color": "#111111",
-            "text_uppercase": true,
-            "alt": "Brand logo",
-            "max_width": 220,
-            "link": "",
-            "target_blank": false
-          }
-        },
-        "logo_RRaHn4": {
-          "type": "logo",
-          "settings": {
-            "item_type": "logo",
-            "text": "Fast Shipping",
-            "text_size": 22,
-            "text_weight": "700",
-            "text_letter_spacing": 0,
-            "text_color": "#111111",
-            "text_uppercase": true,
-            "alt": "Brand logo",
-            "max_width": 220,
-            "link": "",
-            "target_blank": false
-          }
-        },
-        "logo_bjqDxL": {
-          "type": "logo",
-          "settings": {
-            "item_type": "logo",
-            "text": "Fast Shipping",
-            "text_size": 22,
-            "text_weight": "700",
-            "text_letter_spacing": 0,
-            "text_color": "#111111",
-            "text_uppercase": true,
-            "alt": "Brand logo",
-            "max_width": 220,
-            "link": "",
-            "target_blank": false
-          }
-        },
-        "logo_6t8akT": {
-          "type": "logo",
-          "settings": {
-            "item_type": "logo",
-            "text": "Fast Shipping",
-            "text_size": 22,
-            "text_weight": "700",
-            "text_letter_spacing": 0,
-            "text_color": "#111111",
-            "text_uppercase": true,
-            "alt": "Brand logo",
-            "max_width": 220,
-            "link": "",
-            "target_blank": false
-          }
-        }
-      },
-      "block_order": [
-        "logo_N4M4qD",
-        "logo_tfTdMh",
-        "logo_cDWgUT",
-        "logo_RRaHn4",
-        "logo_bjqDxL",
-        "logo_6t8akT"
-      ],
-      "disabled": true,
-      "name": "Logo ticker (infinite)",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "constrain_width": false,
-        "speed": 57,
-        "gap": 44,
-        "max_height": 52,
-        "dim": true,
-        "padding_top": 12,
-        "padding_bottom": 12
+        "item_direction": "row",
+        "item_align": "left",
+        "icon_size": 24,
+        "icon_size_mobile": 32,
+        "item_gap": 14,
+        "item_gap_mobile": 10,
+        "heading_size": 16,
+        "heading_size_mobile": 13,
+        "desc_size": 13,
+        "desc_size_mobile": 11,
+        "section_bg": "#FFFFD2",
+        "border_color": "#E8E5C8",
+        "icon_color": "#FF6700",
+        "heading_color": "#1D1D1B",
+        "text_color": "#666666",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16
       }
     },
     "best_sellers_custom_GpGCrV": {
@@ -709,8 +612,7 @@
   "order": [
     "hero_elite_9c9cim",
     "tailspark_hero_jH9Fz6",
-    "slideshow_custom_UqM993",
-    "logo_ticker_7XVqNT",
+    "home_icons_bar_QDY8jh",
     "best_sellers_custom_GpGCrV",
     "logo_ticker_U4xeMH",
     "newsletter_BakW9V"
