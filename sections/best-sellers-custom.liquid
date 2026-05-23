@@ -116,7 +116,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px 10px;
+    gap: 8px 12px;
     margin-bottom: 14px;
     width: 100%;
   }
@@ -126,7 +126,7 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    width: max(52px, {{ section.settings.icon_size_mobile }}px);
+    width: min(84px, max(68px, {{ section.settings.icon_size_mobile | plus: 34 }}px));
   }
 
   #shopify-section-{{ section.id }} .bs-icon-item__img {
@@ -148,6 +148,7 @@
     line-height: 1.3;
     color: {{ section.settings.text_color }};
     text-align: center;
+    max-width: 100%;
   }
 
   #shopify-section-{{ section.id }} .bs-card__btn {
@@ -230,12 +231,12 @@
     }
 
     #shopify-section-{{ section.id }} .bs-card__icons {
-      gap: 8px 14px;
+      gap: 8px 18px;
       margin-bottom: 18px;
     }
 
     #shopify-section-{{ section.id }} .bs-icon-item {
-      width: max(60px, {{ section.settings.icon_size }}px);
+      width: min(96px, max(76px, {{ section.settings.icon_size | plus: 40 }}px));
     }
 
     #shopify-section-{{ section.id }} .bs-icon-item__img,
