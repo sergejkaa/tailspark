@@ -129,6 +129,10 @@
             "swatch_shape": "circle"
           }
         },
+        "recharge_subscriptions_subscription_widget_v2_C8trEK": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {}
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -305,6 +309,7 @@
         "feature_cards_LB4F4H",
         "description",
         "variant_picker",
+        "recharge_subscriptions_subscription_widget_v2_C8trEK",
         "quantity_selector",
         "buy_buttons",
         "yny_accordion_group_XnwLNx",
