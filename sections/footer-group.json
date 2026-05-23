@@ -48,18 +48,18 @@
             "menu": "footer-shop"
           }
         },
+        "link_list_m8DbC8": {
+          "type": "link_list",
+          "settings": {
+            "heading": "CUSTOMER SUPPORT",
+            "menu": "footer-support"
+          }
+        },
         "link_list_XQLArY": {
           "type": "link_list",
           "settings": {
             "heading": "POLICIES",
             "menu": ""
-          }
-        },
-        "link_list_m8DbC8": {
-          "type": "link_list",
-          "settings": {
-            "heading": "SUPPORT",
-            "menu": "footer-support"
           }
         },
         "brand_information_978yXB": {
@@ -71,8 +71,8 @@
       },
       "block_order": [
         "link_list_CjtrHf",
-        "link_list_XQLArY",
         "link_list_m8DbC8",
+        "link_list_XQLArY",
         "brand_information_978yXB"
       ],
       "settings": {
