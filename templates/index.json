@@ -336,11 +336,11 @@
       "settings": {
         "item_direction": "row",
         "item_align": "left",
-        "icon_size": 48,
+        "icon_size": 32,
         "icon_size_mobile": 32,
         "item_gap": 14,
         "item_gap_mobile": 10,
-        "heading_size": 16,
+        "heading_size": 15,
         "heading_size_mobile": 13,
         "desc_size": 13,
         "desc_size_mobile": 11,
@@ -349,8 +349,8 @@
         "icon_color": "#ff6700",
         "heading_color": "#1d1d1b",
         "text_color": "#666666",
-        "padding_top": 20,
-        "padding_bottom": 20,
+        "padding_top": 4,
+        "padding_bottom": 4,
         "padding_top_mobile": 16,
         "padding_bottom_mobile": 16
       }
