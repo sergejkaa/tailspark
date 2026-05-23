@@ -542,6 +542,72 @@
         "button_text_hover_color": "#606060"
       }
     },
+    "subscription_section_main": {
+      "type": "subscription-section",
+      "blocks": {
+        "sub_prod_1": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-hip-joint",
+            "title_override": "Hip & Joint",
+            "card_bg": "#fdecea",
+            "button_label": "Subscribe & Save"
+          }
+        },
+        "sub_prod_2": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-multivitamin",
+            "title_override": "Daily Multivitamin",
+            "card_bg": "#eaf4f4",
+            "button_label": "Subscribe & Save"
+          }
+        },
+        "sub_prod_3": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-probiotic",
+            "title_override": "Probiotic",
+            "card_bg": "#edf6f0",
+            "button_label": "Subscribe & Save"
+          }
+        },
+        "sub_prod_4": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-skin-coat",
+            "title_override": "Skin & Coat",
+            "card_bg": "#fef9e7",
+            "button_label": "Subscribe & Save"
+          }
+        }
+      },
+      "block_order": [
+        "sub_prod_1",
+        "sub_prod_2",
+        "sub_prod_3",
+        "sub_prod_4"
+      ],
+      "name": "Subscription Section",
+      "settings": {
+        "heading": "Subscribe & Save 15%",
+        "subheading": "Never run out. Cancel anytime.",
+        "footnote": "Free shipping on every order. Cancel or pause anytime.",
+        "background_color": "#1d1d1b",
+        "heading_color": "#ffffff",
+        "text_color": "#cccccc",
+        "badge_bg": "#ff6700",
+        "badge_text": "#ffffff",
+        "button_bg": "#ff6700",
+        "button_text": "#ffffff",
+        "button_hover_bg": "#ffffff",
+        "button_hover_text": "#1d1d1b",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
     "logo_ticker_U4xeMH": {
       "type": "logo-ticker",
       "blocks": {
@@ -746,6 +812,7 @@
     "home_icons_bar_QDY8jh",
     "best_sellers_custom_GpGCrV",
     "image_and_accordions_custom_wMM997",
+    "subscription_section_main",
     "logo_ticker_U4xeMH",
     "image_and_products_custom_mbWBKx",
     "newsletter_BakW9V"
