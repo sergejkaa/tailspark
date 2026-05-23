@@ -113,12 +113,13 @@
   }
 
   #shopify-section-{{ section.id }} .bs-card__icons {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: center;
     gap: 8px 12px;
     margin-bottom: 14px;
     width: 100%;
+    max-width: 178px;
   }
 
   #shopify-section-{{ section.id }} .bs-icon-item {
@@ -126,7 +127,8 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    width: min(84px, max(68px, {{ section.settings.icon_size_mobile | plus: 34 }}px));
+    width: 100%;
+    min-width: 0;
   }
 
   #shopify-section-{{ section.id }} .bs-icon-item__img {
@@ -231,8 +233,11 @@
     }
 
     #shopify-section-{{ section.id }} .bs-card__icons {
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px 18px;
       margin-bottom: 18px;
+      max-width: none;
     }
 
     #shopify-section-{{ section.id }} .bs-icon-item {
