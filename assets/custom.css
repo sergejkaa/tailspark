@@ -171,7 +171,7 @@ button.shopify-payment-button__button--unbranded:hover {
 }
 
 .header__heading-logo {
-  width: min(20rem, 42vw);
+  max-width: min(20rem, 42vw);
   height: auto;
   object-fit: contain;
 }
