@@ -292,7 +292,7 @@
         <div class="bs-card" {{ block.shopify_attributes }}>
 
           {%- if prod != blank -%}
-            <a href="{{ prod.url }}" class="bs-card__image-link" style="background-color: {{ block.settings.card_bg }};">
+            <a href="{{ prod.url }}" class="bs-card__image-link">
               {%- if prod.featured_image != blank -%}
                 {{ prod.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: prod.title }}
               {%- else -%}
@@ -300,7 +300,7 @@
               {%- endif -%}
             </a>
           {%- else -%}
-            <div class="bs-card__image-link" style="background-color: {{ block.settings.card_bg }};">
+            <div class="bs-card__image-link">
               <div class="bs-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
             </div>
           {%- endif -%}
