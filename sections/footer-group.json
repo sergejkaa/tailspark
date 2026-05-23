@@ -51,8 +51,15 @@
         "link_list_XQLArY": {
           "type": "link_list",
           "settings": {
-            "heading": "CUSTOMER CARE",
+            "heading": "POLICIES",
             "menu": ""
+          }
+        },
+        "link_list_m8DbC8": {
+          "type": "link_list",
+          "settings": {
+            "heading": "SUPPORT",
+            "menu": "footer"
           }
         },
         "brand_information_978yXB": {
@@ -65,6 +72,7 @@
       "block_order": [
         "link_list_CjtrHf",
         "link_list_XQLArY",
+        "link_list_m8DbC8",
         "brand_information_978yXB"
       ],
       "settings": {
