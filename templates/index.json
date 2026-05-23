@@ -348,8 +348,8 @@
         "icon_color": "#ff6700",
         "heading_color": "#333333",
         "text_color": "#666666",
-        "padding_top": 4,
-        "padding_bottom": 4,
+        "padding_top": 12,
+        "padding_bottom": 8,
         "padding_top_mobile": 4,
         "padding_bottom_mobile": 4
       }
