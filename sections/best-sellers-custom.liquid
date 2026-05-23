@@ -217,10 +217,6 @@
       border-radius: {{ section.settings.image_radius }}px;
     }
 
-    #shopify-section-{{ section.id }} .bs-card__image-link img {
-      padding: 20px;
-    }
-
     #shopify-section-{{ section.id }} .bs-card__body {
       padding: 16px 4px 0;
     }
@@ -288,6 +284,7 @@
     <div class="bs-grid">
       {%- for block in section.blocks -%}
         {%- assign prod = block.settings.product -%}
+        {%- assign product_title = block.settings.title_override | default: prod.title -%}
 
         <div class="bs-card" {{ block.shopify_attributes }}>
 
@@ -309,9 +306,9 @@
 
             <h3 class="bs-card__title">
               {%- if prod != blank -%}
-                <a href="{{ prod.url }}">{{ prod.title }}</a>
+                <a href="{{ prod.url }}">{{ product_title }}</a>
               {%- else -%}
-                Product Name
+                {{ product_title | default: 'Product Name' }}
               {%- endif -%}
             </h3>
 
@@ -651,6 +648,12 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "title_override",
+          "label": "Product title override",
+          "info": "Leave blank to use the Shopify product title."
         },
         {
           "type": "text",
