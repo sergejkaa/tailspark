@@ -45,7 +45,7 @@
           "type": "heading",
           "settings": {
             "heading": "Daily Wellness for Happy Dogs",
-            "heading_size": "h0",
+            "heading_size": "hxl",
             "heading_tag": "h1",
             "text_color": ""
           }
@@ -53,7 +53,7 @@
         "subheading_A7AYTP": {
           "type": "subheading",
           "settings": {
-            "text": "Vet-formulated soft chews your dog will love - clean ingredients, real results.",
+            "text": "Vet-formulated soft chews your dog will love — clean ingredients, real results.",
             "text_color": ""
           }
         },
@@ -344,11 +344,11 @@
         "desc_size": 13,
         "desc_size_mobile": 10,
         "section_bg": "#ffffff",
-        "border_color": "#ffffff",
+        "border_color": "#e8e5c8",
         "icon_color": "#ff6700",
         "heading_color": "#333333",
         "text_color": "#666666",
-        "padding_top": 4,
+        "padding_top": 12,
         "padding_bottom": 4,
         "padding_top_mobile": 4,
         "padding_bottom_mobile": 4
@@ -361,7 +361,6 @@
           "type": "product",
           "settings": {
             "product": "tailspark-hip-joint",
-            "title_override": "Hip & Joint",
             "subtitle": "Increases flexibility and strengthens joints",
             "card_bg": "#fdecea",
             "icon_1_preset": "ts_joint",
@@ -378,7 +377,6 @@
           "type": "product",
           "settings": {
             "product": "tailspark-multivitamin",
-            "title_override": "Daily Multivitamin",
             "subtitle": "Daily support for overall vitality",
             "card_bg": "#eaf4f4",
             "icon_1_preset": "ts_multivitamin",
@@ -395,7 +393,6 @@
           "type": "product",
           "settings": {
             "product": "tailspark-probiotic",
-            "title_override": "Probiotic",
             "subtitle": "Maintains healthy digestive system",
             "card_bg": "#edf6f0",
             "icon_1_preset": "ts_gut",
@@ -412,7 +409,6 @@
           "type": "product",
           "settings": {
             "product": "tailspark-skin-coat",
-            "title_override": "Skin & Coat",
             "subtitle": "Softens coat and soothes dry skin",
             "card_bg": "#fef9e7",
             "icon_1_preset": "ts_coat",
@@ -439,7 +435,7 @@
         "button_label": "Add to Cart",
         "show_price": true,
         "image_radius": 20,
-        "image_radius_mobile": 6,
+        "image_radius_mobile": 20,
         "section_bg": "#ffffff",
         "heading_color": "#1d1d1b",
         "title_color": "#1d1d1b",
@@ -459,81 +455,6 @@
         "padding_bottom": 60,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
-      }
-    },
-    "image_and_accordions_custom_wMM997": {
-      "type": "image-and-accordions-custom",
-      "blocks": {
-        "accordion_pWzCBT": {
-          "type": "accordion",
-          "settings": {
-            "title": "DOGS LOVE THE TASTE",
-            "text": "<p>Soft chews taste like treats, so your dog won't even know it's a supplement. No hiding pills in peanut butter, no mixing powders into food. Just give one chew and you're done.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_8DbeAW": {
-          "type": "accordion",
-          "settings": {
-            "title": "PRECISE DAILY DOSING",
-            "text": "<p>Every chew delivers the exact amount your dog needs: no guessing, no waste. Each batch is carefully formulated so your dog gets consistent nutrition every single day.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_yBiadC": {
-          "type": "accordion",
-          "settings": {
-            "title": "CLEAN, SIMPLE INGREDIENTS",
-            "text": "<p>No fillers, no artificial colors, no additives your dog doesn't need. Just real, functional ingredients chosen for what they actually do, developed with certified veterinarians.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_ts4thQ": {
-          "type": "accordion",
-          "settings": {
-            "title": "EASY TO USE EVERY DAY",
-            "text": "<p>Toss one in the bowl or give it by hand, that's it. No special storage, no prep, no mess. Making daily wellness a simple habit your dog will actually look forward to.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "accordion_pWzCBT",
-        "accordion_8DbeAW",
-        "accordion_yBiadC",
-        "accordion_ts4thQ"
-      ],
-      "name": "Image and Accordions",
-      "settings": {
-        "image_side": "left",
-        "image_position": "50% 50%",
-        "heading": "Why Soft Chews?",
-        "heading_size": "h1",
-        "open_first": true,
-        "cta_label": "SHOP NOW",
-        "cta_link": "shopify://collections/all",
-        "max_width": 1400,
-        "desktop_image_ratio": "11 / 12",
-        "mobile_image_ratio": "4 / 5",
-        "image_radius": 0,
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36,
-        "background_color": "#fff8ed",
-        "text_color": "#333333",
-        "border_color": "#333333",
-        "toggle_background": "#ff6700",
-        "toggle_icon_color": "#ffffff",
-        "button_background": "#ff6700",
-        "button_border": "#ff6700",
-        "button_text_color": "#fff8ed",
-        "button_hover_background": "#ffffff",
-        "button_text_hover_color": "#606060"
       }
     },
     "logo_ticker_U4xeMH": {
@@ -698,7 +619,6 @@
     "tailspark_hero_jH9Fz6",
     "home_icons_bar_QDY8jh",
     "best_sellers_custom_GpGCrV",
-    "image_and_accordions_custom_wMM997",
     "logo_ticker_U4xeMH",
     "newsletter_BakW9V"
   ]
