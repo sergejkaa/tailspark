@@ -608,7 +608,7 @@
           "settings": {
             "product": "tailspark-hip-joint",
             "title_override": "Hip & Joint",
-            "image": "shopify://shop_images/ts-best-seller-hip-joint.png",
+            "image": "shopify://shop_images/Frame_391.png",
             "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
@@ -618,7 +618,7 @@
           "settings": {
             "product": "tailspark-multivitamin",
             "title_override": "Daily Multivitamin",
-            "image": "shopify://shop_images/ts-best-seller-multivitamin.png",
+            "image": "shopify://shop_images/Frame_389.png",
             "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
@@ -628,7 +628,7 @@
           "settings": {
             "product": "tailspark-probiotic",
             "title_override": "Probiotic",
-            "image": "shopify://shop_images/ts-best-seller-probiotic.png",
+            "image": "shopify://shop_images/Frame_388.png",
             "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
@@ -638,7 +638,7 @@
           "settings": {
             "product": "tailspark-skin-coat",
             "title_override": "Skin & Coat",
-            "image": "shopify://shop_images/ts-best-seller-skin-coat.png",
+            "image": "shopify://shop_images/Frame_390.png",
             "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
@@ -661,8 +661,8 @@
         "text_color": "#555555",
         "card_heading_color": "#1d1d1b",
         "card_text_color": "#555555",
-        "badge_bg": "#ff6700",
-        "badge_text": "#ffffff",
+        "badge_bg": "#fff8ed",
+        "badge_text": "#333333",
         "button_bg": "#ff6700",
         "button_text": "#ffffff",
         "button_hover_bg": "#1d1d1b",
