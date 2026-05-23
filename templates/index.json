@@ -16,7 +16,7 @@
           "type": "eyebrow",
           "settings": {
             "text": "Vet Formulated",
-            "text_color": "#ff6700"
+            "text_color": "#fff8ed"
           }
         },
         "inline_rating_EieFjF": {
@@ -30,7 +30,7 @@
             "segment_2_label": "chews served",
             "segment_1_number_mobile": "85K",
             "segment_2_number_mobile": "1M+",
-            "star_color": "#ff6700",
+            "star_color": "#10b981",
             "rating_value_color": "",
             "segment_1_color": "",
             "segment_2_color": "",
@@ -100,7 +100,7 @@
         "video_loop": true,
         "image_behavior": "zoom-in",
         "overlay_color": "#000000",
-        "overlay_opacity": 35,
+        "overlay_opacity": 45,
         "overlay_gradient": "none",
         "height_desktop": 85,
         "height_mobile": 70,
@@ -362,7 +362,7 @@
           "settings": {
             "product": "tailspark-hip-joint",
             "title_override": "Hip & Joint",
-            "image_preset": "ts_hip_joint",
+            "image_preset": "none",
             "subtitle": "Increases flexibility and strengthens joints",
             "card_bg": "#fdecea",
             "icon_1_preset": "ts_joint",
@@ -380,7 +380,7 @@
           "settings": {
             "product": "tailspark-multivitamin",
             "title_override": "Daily Multivitamin",
-            "image_preset": "ts_multivitamin",
+            "image_preset": "none",
             "subtitle": "Daily support for overall vitality",
             "card_bg": "#eaf4f4",
             "icon_1_preset": "ts_multivitamin",
@@ -398,7 +398,7 @@
           "settings": {
             "product": "tailspark-probiotic",
             "title_override": "Probiotic",
-            "image_preset": "ts_probiotic",
+            "image_preset": "none",
             "subtitle": "Maintains healthy digestive system",
             "card_bg": "#edf6f0",
             "icon_1_preset": "ts_gut",
@@ -416,7 +416,7 @@
           "settings": {
             "product": "tailspark-skin-coat",
             "title_override": "Skin & Coat",
-            "image_preset": "ts_skin_coat",
+            "image_preset": "none",
             "subtitle": "Softens coat and soothes dry skin",
             "card_bg": "#fef9e7",
             "icon_1_preset": "ts_coat",
