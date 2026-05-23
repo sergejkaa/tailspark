@@ -1,0 +1,325 @@
+{%- liquid
+  assign banner_image = section.settings.image
+  assign image_alt = banner_image.alt | default: section.settings.heading | escape
+  assign image_preset = section.settings.image_preset
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .dog-cta {
+    background: {{ section.settings.section_background }};
+    padding: {{ section.settings.padding_top_mobile }}px 1.6rem {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__inner {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__panel {
+    position: relative;
+    overflow: hidden;
+    min-height: {{ section.settings.mobile_height }}px;
+    border-radius: {{ section.settings.border_radius }}px;
+    background: {{ section.settings.image_background }};
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: {{ section.settings.image_position_mobile }};
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, {{ section.settings.content_width }}px);
+    min-height: {{ section.settings.mobile_height }}px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: {{ section.settings.content_padding_mobile }}px;
+    color: {{ section.settings.text_color }};
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__heading {
+    margin: 0 0 24px;
+    color: {{ section.settings.heading_color }};
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: {{ section.settings.heading_size_mobile }}px;
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__icons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px 22px;
+    margin-bottom: 28px;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__item {
+    display: grid;
+    grid-template-columns: {{ section.settings.icon_size_mobile }}px 1fr;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__icon {
+    width: {{ section.settings.icon_size_mobile }}px;
+    height: {{ section.settings.icon_size_mobile }}px;
+    border: 1px solid {{ section.settings.icon_border_color }};
+    border-radius: 999px;
+    color: {{ section.settings.icon_color }};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__icon svg {
+    width: 52%;
+    height: 52%;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__icon img {
+    width: 58%;
+    height: 58%;
+    display: block;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__item-title {
+    margin: 0;
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.icon_text_size_mobile }}px;
+    line-height: 1.28;
+    font-weight: 600;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__button {
+    width: fit-content;
+    min-width: 148px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: {{ section.settings.button_background }};
+    color: {{ section.settings.button_text_color }};
+    border: 1px solid {{ section.settings.button_border_color }};
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .dog-cta__button:hover {
+    transform: translateY(-1px);
+    background: {{ section.settings.button_hover_background }};
+    color: {{ section.settings.button_hover_text_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .dog-cta {
+      padding: {{ section.settings.padding_top }}px 4rem {{ section.settings.padding_bottom }}px;
+    }
+
+    #shopify-section-{{ section.id }} .dog-cta__panel {
+      min-height: {{ section.settings.desktop_height }}px;
+    }
+
+    #shopify-section-{{ section.id }} .dog-cta__media img {
+      object-position: {{ section.settings.image_position }};
+    }
+
+    #shopify-section-{{ section.id }} .dog-cta__content {
+      min-height: {{ section.settings.desktop_height }}px;
+      padding: {{ section.settings.content_padding }}px;
+    }
+
+    #shopify-section-{{ section.id }} .dog-cta__heading {
+      font-size: {{ section.settings.heading_size }}px;
+      margin-bottom: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .dog-cta__icons {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 46px;
+      max-width: 560px;
+    }
+
+    #shopify-section-{{ section.id }} .dog-cta__item {
+      grid-template-columns: {{ section.settings.icon_size }}px 1fr;
+      gap: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .dog-cta__icon {
+      width: {{ section.settings.icon_size }}px;
+      height: {{ section.settings.icon_size }}px;
+    }
+
+    #shopify-section-{{ section.id }} .dog-cta__item-title {
+      font-size: {{ section.settings.icon_text_size }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="dog-cta">
+  <div class="dog-cta__inner">
+    <div class="dog-cta__panel">
+      <div class="dog-cta__media">
+        {%- if banner_image != blank -%}
+          {{ banner_image | image_url: width: 2200 | image_tag: loading: 'lazy', alt: image_alt }}
+        {%- elsif image_preset == 'hip_joint' -%}
+          <img src="{{ 'ts-dog-cta-hip-joint.png' | asset_url }}" width="2070" height="731" loading="lazy" alt="{{ image_alt }}">
+        {%- elsif image_preset == 'multivitamin' -%}
+          <img src="{{ 'ts-dog-cta-multivitamin.png' | asset_url }}" width="2070" height="731" loading="lazy" alt="{{ image_alt }}">
+        {%- elsif image_preset == 'probiotic' -%}
+          <img src="{{ 'ts-dog-cta-probiotic.png' | asset_url }}" width="2070" height="731" loading="lazy" alt="{{ image_alt }}">
+        {%- else -%}
+          <img src="{{ 'ts-dog-cta-skin-coat.png' | asset_url }}" width="2070" height="731" loading="lazy" alt="{{ image_alt }}">
+        {%- endif -%}
+      </div>
+
+      <div class="dog-cta__content">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="dog-cta__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="dog-cta__icons">
+            {%- for block in section.blocks limit: 4 -%}
+              <div class="dog-cta__item" {{ block.shopify_attributes }}>
+                <span class="dog-cta__icon" aria-hidden="true">
+                  {%- if block.settings.icon_image != blank -%}
+                    {{ block.settings.icon_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}
+                  {%- elsif block.settings.icon == 'lab' -%}
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M12 4v4m0 8v4M4 12h4m8 0h4M6.3 6.3l2.8 2.8m5.8 5.8 2.8 2.8m0-11.4-2.8 2.8m-5.8 5.8-2.8 2.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  {%- elsif block.settings.icon == 'gmp' -%}
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M7 4h10l3 5-8 11L4 9l3-5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12h6M9 9h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  {%- elsif block.settings.icon == 'leaf' -%}
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 19c1-7 6-12 14-14-1 8-6 13-14 14Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 19l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  {%- else -%}
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4.5 6.2v5.6c0 4.8 3.1 7.8 7.5 9.2 4.4-1.4 7.5-4.4 7.5-9.2V6.2L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m8.7 12 2.2 2.2 4.6-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  {%- endif -%}
+                </span>
+                {%- if block.settings.title != blank -%}
+                  <p class="dog-cta__item-title">{{ block.settings.title }}</p>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <a class="dog-cta__button" href="{{ section.settings.button_link | default: '#' }}">
+            {{ section.settings.button_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dog CTA Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Custom image" },
+    {
+      "type": "select",
+      "id": "image_preset",
+      "label": "TailSpark image preset",
+      "options": [
+        { "value": "skin_coat", "label": "Skin & Coat" },
+        { "value": "hip_joint", "label": "Hip & Joint" },
+        { "value": "multivitamin", "label": "Multivitamin" },
+        { "value": "probiotic", "label": "Probiotic" }
+      ],
+      "default": "skin_coat"
+    },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Their new favorite healthy soft chew." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Buy Now" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 900, "max": 1600, "step": 20, "default": 1200, "unit": "px" },
+    { "type": "range", "id": "desktop_height", "label": "Desktop height", "min": 280, "max": 620, "step": 10, "default": 390, "unit": "px" },
+    { "type": "range", "id": "mobile_height", "label": "Mobile height", "min": 420, "max": 760, "step": 10, "default": 560, "unit": "px" },
+    { "type": "range", "id": "border_radius", "label": "Border radius", "min": 0, "max": 32, "step": 1, "default": 6, "unit": "px" },
+    { "type": "text", "id": "image_position", "label": "Image position desktop", "default": "center center" },
+    { "type": "text", "id": "image_position_mobile", "label": "Image position mobile", "default": "70% center" },
+    { "type": "range", "id": "content_width", "label": "Content width", "min": 320, "max": 720, "step": 20, "default": 560, "unit": "px" },
+    { "type": "range", "id": "content_padding", "label": "Content padding desktop", "min": 24, "max": 96, "step": 4, "default": 60, "unit": "px" },
+    { "type": "range", "id": "content_padding_mobile", "label": "Content padding mobile", "min": 20, "max": 56, "step": 4, "default": 28, "unit": "px" },
+    { "type": "range", "id": "heading_size", "label": "Heading size desktop", "min": 24, "max": 56, "step": 1, "default": 34, "unit": "px" },
+    { "type": "range", "id": "heading_size_mobile", "label": "Heading size mobile", "min": 22, "max": 42, "step": 1, "default": 30, "unit": "px" },
+    { "type": "range", "id": "icon_size", "label": "Icon size desktop", "min": 32, "max": 72, "step": 2, "default": 46, "unit": "px" },
+    { "type": "range", "id": "icon_size_mobile", "label": "Icon size mobile", "min": 28, "max": 62, "step": 2, "default": 42, "unit": "px" },
+    { "type": "range", "id": "icon_text_size", "label": "Icon text size desktop", "min": 11, "max": 20, "step": 1, "default": 14, "unit": "px" },
+    { "type": "range", "id": "icon_text_size_mobile", "label": "Icon text size mobile", "min": 11, "max": 18, "step": 1, "default": 13, "unit": "px" },
+    { "type": "color", "id": "section_background", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "image_background", "label": "Image background", "default": "#f7d7b7" },
+    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#171b3f" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#171b3f" },
+    { "type": "color", "id": "icon_color", "label": "Icon color", "default": "#171b3f" },
+    { "type": "color", "id": "icon_border_color", "label": "Icon border color", "default": "#171b3f" },
+    { "type": "color", "id": "button_background", "label": "Button background", "default": "#171b3f" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#ffffff" },
+    { "type": "color", "id": "button_border_color", "label": "Button border", "default": "#171b3f" },
+    { "type": "color", "id": "button_hover_background", "label": "Button hover background", "default": "#ff6700" },
+    { "type": "color", "id": "button_hover_text_color", "label": "Button hover text", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Top padding desktop", "min": 0, "max": 120, "step": 4, "default": 48, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom padding desktop", "min": 0, "max": 120, "step": 4, "default": 48, "unit": "px" },
+    { "type": "range", "id": "padding_top_mobile", "label": "Top padding mobile", "min": 0, "max": 90, "step": 3, "default": 36, "unit": "px" },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Bottom padding mobile", "min": 0, "max": 90, "step": 3, "default": 36, "unit": "px" }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "limit": 4,
+      "settings": [
+        { "type": "image_picker", "id": "icon_image", "label": "Custom icon image" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Preset icon",
+          "options": [
+            { "value": "lab", "label": "Lab tested" },
+            { "value": "gmp", "label": "GMP" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "shield", "label": "Shield check" }
+          ],
+          "default": "shield"
+        },
+        { "type": "text", "id": "title", "label": "Text", "default": "Clean ingredient benefit" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dog CTA Banner",
+      "blocks": [
+        { "type": "icon", "settings": { "icon": "lab", "title": "3rd Party Lab Tested" } },
+        { "type": "icon", "settings": { "icon": "gmp", "title": "GMP/SQF Certified" } },
+        { "type": "icon", "settings": { "icon": "shield", "title": "GMO, Hormone & Antibiotic free" } },
+        { "type": "icon", "settings": { "icon": "leaf", "title": "No Artificial Colors or Flavors" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
