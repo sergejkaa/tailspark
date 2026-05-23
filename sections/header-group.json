@@ -14,15 +14,23 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_FJPaym": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free Shipping on Every Order - Always!",
+            "link": "shopify://collections/all"
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Free shipping on orders over $50 · Vet-formulated soft chews for happy dogs",
+            "text": "Vet Formulated · Made in USA · Clean Ingredients",
             "link": ""
           }
         }
       },
       "block_order": [
+        "announcement_FJPaym",
         "announcement-bar-0"
       ],
       "settings": {
