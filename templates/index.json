@@ -45,7 +45,7 @@
           "type": "heading",
           "settings": {
             "heading": "Daily Wellness for Happy Dogs",
-            "heading_size": "h0",
+            "heading_size": "h1",
             "heading_tag": "h1",
             "text_color": ""
           }
@@ -111,7 +111,7 @@
         "content_max_width": 760,
         "content_gap": 24,
         "content_gap_mobile": 16,
-        "mobile_content_position": "middle-center",
+        "mobile_content_position": "top-center",
         "mobile_content_alignment": "center",
         "show_text_below_on_mobile": false,
         "show_text_box": false,
