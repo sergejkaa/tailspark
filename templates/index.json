@@ -54,7 +54,9 @@
           "type": "subheading",
           "settings": {
             "text": "Vet-formulated soft chews your dog will love - clean ingredients, real results.",
-            "text_color": ""
+            "text_color": "",
+            "font_size_desktop": 16,
+            "font_size_mobile": 14
           }
         },
         "buttons_XYMEPq": {
@@ -65,11 +67,13 @@
             "button_style_1": "pill-solid",
             "button_color_bg_1": "#ffffff",
             "button_color_text_1": "#111111",
+            "button_icon_1": "paw",
             "button_label_2": "",
             "button_link_2": "",
             "button_style_2": "pill-outline",
             "button_color_bg_2": "#ffffff",
-            "button_color_text_2": "#ffffff"
+            "button_color_text_2": "#ffffff",
+            "button_icon_2": "none"
           }
         },
         "scroll_indicator_iaiebJ": {

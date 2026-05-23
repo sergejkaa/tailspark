@@ -213,7 +213,17 @@
 .hero-elite__heading { margin: 0; line-height: 1.05; }
 
 /* ─── SUBHEADING ─── */
-.hero-elite__subheading { margin: 0; opacity: 0.88; }
+.hero-elite__subheading {
+  margin: 0;
+  opacity: 0.88;
+  font-size: var(--hero-subheading-size-desktop, inherit);
+}
+
+@media screen and (max-width: 749px) {
+  .hero-elite__subheading {
+    font-size: var(--hero-subheading-size-mobile, var(--hero-subheading-size-desktop, inherit));
+  }
+}
 
 /* ─── BODY TEXT ─── */
 .hero-elite__text { margin: 0; max-width: 56ch; }
@@ -277,6 +287,19 @@
 }
 .hero-btn:hover { opacity: 0.88; transform: translateY(-2px); }
 .hero-btn:active { transform: translateY(0); opacity: 1; }
+
+.hero-btn__icon {
+  display: inline-flex;
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+}
+
+.hero-btn__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
 /* SOLID */
 .hero-btn--solid {

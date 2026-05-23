@@ -653,6 +653,26 @@
           "id": "text_color",
           "label": "Text color",
           "info": "Leave empty to use color scheme"
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "label": "Font size desktop",
+          "min": 12,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "label": "Font size mobile",
+          "min": 10,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
         }
       ]
     },
@@ -1012,6 +1032,16 @@
           "default": "#111111"
         },
         {
+          "type": "select",
+          "id": "button_icon_1",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Dog paw" }
+          ],
+          "default": "none"
+        },
+        {
           "type": "header",
           "content": "Button 2"
         },
@@ -1050,6 +1080,16 @@
           "id": "button_color_text_2",
           "label": "Text color",
           "default": "#ffffff"
+        },
+        {
+          "type": "select",
+          "id": "button_icon_2",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "paw", "label": "Dog paw" }
+          ],
+          "default": "none"
         }
       ]
     },

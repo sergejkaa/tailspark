@@ -26,7 +26,7 @@
   {%- when 'subheading' -%}
     <p
       class="hero-elite__subheading hero-elite__anim subtitle"
-      style="animation-delay: {{ delay_s }}{% if block.settings.text_color != blank %}; color: {{ block.settings.text_color }}{% endif %}"
+      style="animation-delay: {{ delay_s }}; --hero-subheading-size-desktop: {{ block.settings.font_size_desktop | default: 20 }}px; --hero-subheading-size-mobile: {{ block.settings.font_size_mobile | default: 16 }}px{% if block.settings.text_color != blank %}; color: {{ block.settings.text_color }}{% endif %}"
       {{ block.shopify_attributes }}
     >
       {{- block.settings.text -}}
@@ -185,6 +185,17 @@
           class="hero-btn hero-btn--{{ btn1_style }}"
           style="--hbtn-bg: {{ btn1_bg }}; --hbtn-text: {{ btn1_text }};"
         >
+          {%- if block.settings.button_icon_1 == 'paw' -%}
+            <span class="hero-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5.8 10.4c1.1 0 2-1.1 2-2.5s-.9-2.5-2-2.5-2 1.1-2 2.5.9 2.5 2 2.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 8.2c1 0 1.8-1.1 1.8-2.4S11 3.4 10 3.4 8.2 4.5 8.2 5.8 9 8.2 10 8.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 8.2c1 0 1.8-1.1 1.8-2.4S15 3.4 14 3.4s-1.8 1.1-1.8 2.4S13 8.2 14 8.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18.2 10.4c1.1 0 2-1.1 2-2.5s-.9-2.5-2-2.5-2 1.1-2 2.5.9 2.5 2 2.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.8 18.8c0-3 1.9-5.2 4.2-5.2s4.2 2.2 4.2 5.2c0 1.2-.9 1.8-2 1.4a6 6 0 0 0-4.4 0c-1.1.4-2-.2-2-1.4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          {%- endif -%}
           <span>{{- block.settings.button_label_1 | escape -}}</span>
         </a>
       {%- endif -%}
@@ -198,6 +209,17 @@
           class="hero-btn hero-btn--{{ btn2_style }}"
           style="--hbtn-bg: {{ btn2_bg }}; --hbtn-text: {{ btn2_text }};"
         >
+          {%- if block.settings.button_icon_2 == 'paw' -%}
+            <span class="hero-btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5.8 10.4c1.1 0 2-1.1 2-2.5s-.9-2.5-2-2.5-2 1.1-2 2.5.9 2.5 2 2.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 8.2c1 0 1.8-1.1 1.8-2.4S11 3.4 10 3.4 8.2 4.5 8.2 5.8 9 8.2 10 8.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 8.2c1 0 1.8-1.1 1.8-2.4S15 3.4 14 3.4s-1.8 1.1-1.8 2.4S13 8.2 14 8.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M18.2 10.4c1.1 0 2-1.1 2-2.5s-.9-2.5-2-2.5-2 1.1-2 2.5.9 2.5 2 2.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.8 18.8c0-3 1.9-5.2 4.2-5.2s4.2 2.2 4.2 5.2c0 1.2-.9 1.8-2 1.4a6 6 0 0 0-4.4 0c-1.1.4-2-.2-2-1.4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          {%- endif -%}
           <span>{{- block.settings.button_label_2 | escape -}}</span>
         </a>
       {%- endif -%}
