@@ -119,6 +119,8 @@
     assign gallery_side_arrows_button_size_mobile = section.settings.gallery_side_arrows_button_size_mobile | default: 36
     assign gallery_side_arrows_icon_size = section.settings.gallery_side_arrows_icon_size | default: 12
     assign gallery_side_arrows_icon_size_mobile = section.settings.gallery_side_arrows_icon_size_mobile | default: 10
+    assign gallery_side_arrows_offset_y = section.settings.gallery_side_arrows_offset_y | default: 0
+    assign gallery_side_arrows_offset_y_mobile = section.settings.gallery_side_arrows_offset_y_mobile | default: 0
     assign gallery_side_arrows_style = section.settings.gallery_side_arrows_style | default: 'soft'
     assign gallery_side_arrows_offset = section.settings.gallery_side_arrows_offset | default: 10
     assign gallery_side_arrows_icon_color = section.settings.gallery_side_arrows_icon_color | default: '#1F2937'
@@ -240,9 +242,15 @@
     #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--prev,
     #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--next {
       position: absolute;
-      top: 50%;
+      top: calc(50% - {{ gallery_side_arrows_offset_y }}px);
       transform: translateY(-50%);
       z-index: 4;
+    }
+    @media screen and (max-width: 749px) {
+      #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--prev,
+      #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--next {
+        top: calc(50% - {{ gallery_side_arrows_offset_y_mobile }}px);
+      }
     }
 
     #GalleryViewer-{{ section.id }} .slider-buttons .slider-button--prev {

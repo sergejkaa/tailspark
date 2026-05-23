@@ -12,30 +12,17 @@
     "main": {
       "type": "liquid-studio-product-page",
       "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
+        "title": { "type": "title", "settings": {} },
         "inline_rating_iifCgL": {
           "type": "inline_rating",
           "settings": {
-            "rating_value": "4.9",
-            "rating_label": "stars",
-            "segment_1_number": "1,200",
-            "segment_1_label": "reviews",
-            "segment_2_number": "57,000+",
-            "segment_2_label": "members",
-            "segment_1_number_mobile": "1.2K",
-            "segment_2_number_mobile": "57K+",
-            "font_size_desktop": 13,
-            "stars_size_desktop": 18,
-            "font_size_mobile": 12,
-            "stars_size_mobile": 14,
-            "star_color": "#ff6700",
-            "rating_value_color": "",
-            "segment_1_color": "",
-            "segment_2_color": "",
-            "text_color": ""
+            "rating_value": "4.9", "rating_label": "stars",
+            "segment_1_number": "1,200", "segment_1_label": "reviews",
+            "segment_2_number": "57,000+", "segment_2_label": "members",
+            "segment_1_number_mobile": "1.2K", "segment_2_number_mobile": "57K+",
+            "font_size_desktop": 13, "stars_size_desktop": 18,
+            "font_size_mobile": 12, "stars_size_mobile": 14,
+            "star_color": "#ff6700", "rating_value_color": "", "segment_1_color": "", "segment_2_color": "", "text_color": ""
           }
         },
         "weight_badge_sc": {
@@ -44,107 +31,48 @@
             "custom_liquid": "<div style=\"display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:50px;background:#fff8ed;font-size:13px;font-weight:600;color:#555;border:1px solid rgba(0,0,0,.1);margin:4px 0;\">4.94 OZ (140g) &bull; 70 Soft Chews</div>"
           }
         },
-        "price": {
-          "type": "price",
-          "settings": {}
+        "short_desc_sc": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p style=\"font-size:14px;color:#555;line-height:1.6;margin:8px 0 4px;\">These tasty chews nourish your dog's skin from within for a shinier coat and less shedding.</p>"
+          }
         },
+        "price": { "type": "price", "settings": {} },
         "feature_cards_LB4F4H": {
           "type": "feature-cards",
           "settings": {
-            "visible_items": 4,
-            "columns_desktop": 2,
-            "columns_tablet": 2,
-            "columns_mobile": 2,
-            "mobile_layout": "grid",
-            "text_align": "left",
-            "gap_desktop": 8,
-            "gap_tablet": 8,
-            "gap_mobile": 8,
-            "margin_top": 10,
-            "margin_bottom": 10,
-            "card_mode": "solid",
-            "card_radius": 8,
-            "card_padding_x_desktop": 11,
-            "card_padding_y_desktop": 10,
-            "card_padding_x_tablet": 11,
-            "card_padding_y_tablet": 10,
-            "card_padding_x_mobile": 9,
-            "card_padding_y_mobile": 7,
-            "text_size_desktop": 15,
-            "text_size_tablet": 13,
-            "text_size_mobile": 12,
-            "text_weight": "500",
-            "icon_size_desktop": 21,
-            "icon_size_tablet": 18,
-            "icon_size_mobile": 17,
-            "text_color": "#243126",
-            "icon_color": "#ff6700",
-            "solid_background": "#fff8ed",
-            "solid_border_color": "#f0d9c0",
-            "card_shadow_color": "#000000",
-            "card_shadow_opacity": 8,
-            "glass_background": "#ffffff",
-            "glass_secondary_tint": "#fff8ed",
-            "glass_background_opacity": 28,
-            "glass_border_color": "#ffffff",
-            "glass_border_opacity": 60,
-            "glass_blur": 10,
-            "feature_text_1": "Softens coat & reduces shedding",
-            "icon_source_1": "built_in",
-            "icon_name_1": "leaf",
-            "icon_url_1": "",
-            "feature_text_2": "Soothes dry & itchy skin",
-            "icon_source_2": "built_in",
-            "icon_name_2": "heart",
-            "icon_url_2": "",
-            "feature_text_3": "Omega-3, 6 & 9 fatty acids",
-            "icon_source_3": "built_in",
-            "icon_name_3": "leaf",
-            "icon_url_3": "",
-            "feature_text_4": "Vitamin E & Biotin support",
-            "icon_source_4": "built_in",
-            "icon_name_4": "star",
-            "icon_url_4": "",
-            "feature_text_5": "Feature item 5",
-            "icon_source_5": "built_in",
-            "icon_name_5": "shield",
-            "icon_url_5": "",
-            "feature_text_6": "Feature item 6",
-            "icon_source_6": "built_in",
-            "icon_name_6": "star",
-            "icon_url_6": "",
-            "feature_text_7": "Feature item 7",
-            "icon_source_7": "built_in",
-            "icon_name_7": "globe",
-            "icon_url_7": "",
-            "feature_text_8": "Feature item 8",
-            "icon_source_8": "built_in",
-            "icon_name_8": "check",
-            "icon_url_8": ""
+            "visible_items": 4, "columns_desktop": 2, "columns_tablet": 2, "columns_mobile": 2,
+            "mobile_layout": "grid", "text_align": "left",
+            "gap_desktop": 8, "gap_tablet": 8, "gap_mobile": 8,
+            "margin_top": 10, "margin_bottom": 10,
+            "card_mode": "solid", "card_radius": 8,
+            "card_padding_x_desktop": 11, "card_padding_y_desktop": 10,
+            "card_padding_x_tablet": 11, "card_padding_y_tablet": 10,
+            "card_padding_x_mobile": 9, "card_padding_y_mobile": 7,
+            "text_size_desktop": 15, "text_size_tablet": 13, "text_size_mobile": 12,
+            "text_weight": "500", "icon_size_desktop": 21, "icon_size_tablet": 18, "icon_size_mobile": 17,
+            "text_color": "#243126", "icon_color": "#ff6700",
+            "solid_background": "#fff8ed", "solid_border_color": "#f0d9c0",
+            "card_shadow_color": "#000000", "card_shadow_opacity": 8,
+            "glass_background": "#ffffff", "glass_secondary_tint": "#fff8ed",
+            "glass_background_opacity": 28, "glass_border_color": "#ffffff", "glass_border_opacity": 60, "glass_blur": 10,
+            "feature_text_1": "Softens coat & reduces shedding", "icon_source_1": "built_in", "icon_name_1": "leaf", "icon_url_1": "",
+            "feature_text_2": "Soothes dry & itchy skin", "icon_source_2": "built_in", "icon_name_2": "heart", "icon_url_2": "",
+            "feature_text_3": "Omega-3, 6 & 9 fatty acids", "icon_source_3": "built_in", "icon_name_3": "leaf", "icon_url_3": "",
+            "feature_text_4": "Vitamin E & Biotin support", "icon_source_4": "built_in", "icon_name_4": "star", "icon_url_4": "",
+            "feature_text_5": "Feature item 5", "icon_source_5": "built_in", "icon_name_5": "shield", "icon_url_5": "",
+            "feature_text_6": "Feature item 6", "icon_source_6": "built_in", "icon_name_6": "star", "icon_url_6": "",
+            "feature_text_7": "Feature item 7", "icon_source_7": "built_in", "icon_name_7": "globe", "icon_url_7": "",
+            "feature_text_8": "Feature item 8", "icon_source_8": "built_in", "icon_name_8": "check", "icon_url_8": ""
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
+        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button", "swatch_shape": "circle" } },
         "recharge_subscriptions_subscription_widget_v2_C8trEK": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": true
-          }
-        },
+        "quantity_selector": { "type": "quantity_selector", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": false, "show_gift_card_recipient": true } },
         "yny_accordion_group_XnwLNx": {
           "type": "yny_accordion_group",
           "settings": {
@@ -157,206 +85,103 @@
             "item_3_heading": "Directions",
             "item_3_source": "custom",
             "item_3_content": "<p>Give daily based on your dog's weight:</p><ul><li><strong>Up to 25 lbs:</strong> 1 chew per day</li><li><strong>25-50 lbs:</strong> 2 chews per day</li><li><strong>50-75 lbs:</strong> 3 chews per day</li><li><strong>75+ lbs:</strong> 4 chews per day</li></ul><p>Can be given as a treat or crumbled over food. Store in a cool, dry place.</p>",
-            "item_4_heading": "",
+            "item_4_heading": "Full Ingredient List",
             "item_4_source": "custom",
-            "item_4_content": "<p></p>",
-            "item_5_heading": "",
+            "item_4_content": "<p>Fish Oil, Flaxseed (Linum usitatissimum), Sunflower Oil, Vitamin E Supplement, Vitamin A Supplement, Biotin, Brewer's Yeast, Chicken Liver, Sweet Potato, Coconut Oil, Rosemary Extract.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
+            "item_5_heading": "Shipping Info",
             "item_5_source": "custom",
-            "item_5_content": "<p></p>",
+            "item_5_content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li><li>Contact support if your order hasn't arrived within 8 business days</li></ul>",
             "acc_bg_color": "#ffffff",
             "acc_border_color": "#ede8e3",
             "summary_color": "#1d1d1b",
             "text_color": "#555555"
           }
         },
-        "collapsible_tab_pCUWk9": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Full Ingredient List",
-            "icon": "leaf",
-            "content": "<p>Fish Oil, Flaxseed (Linum usitatissimum), Sunflower Oil, Vitamin E Supplement, Vitamin A Supplement, Biotin, Brewer's Yeast, Chicken Liver, Sweet Potato, Coconut Oil, Rosemary Extract.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_AVnp4f": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Shipping Info",
-            "icon": "truck",
-            "content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li><li>Contact support if your order hasn't arrived within 8 business days</li></ul>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_LkJYyF": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "F.A.Q.",
-            "icon": "check_mark",
-            "content": "<p><strong>How long before I see results?</strong><br/>Most dogs show noticeable improvements in coat shine and reduced shedding within 4-6 weeks of consistent daily use.</p><p><strong>Is this safe for dogs with fish allergies?</strong><br/>Our Skin &amp; Coat chews contain fish oil as the primary Omega-3 source. If your dog has a known fish allergy, please consult your veterinarian before use.</p><p><strong>Can I give this alongside other supplements?</strong><br/>Yes, TailSpark Skin &amp; Coat can be combined with our other supplements. Consult your vet if combining with other Omega-3 sources.</p><p><strong>What age dogs can take these?</strong><br/>Suitable for dogs 6 months and older. For puppies under 6 months, please consult your veterinarian.</p>",
-            "page": ""
-          }
-        },
         "upsell_snippet_XMJqBJ": {
           "type": "upsell_snippet",
           "settings": {
             "free_shipping_upsell_source": "auto",
-            "free_shipping_upsell_products": [
-              "tailspark-hip-joint",
-              "tailspark-probiotic",
-              "tailspark-multivitamin"
-            ],
+            "free_shipping_upsell_products": ["tailspark-hip-joint", "tailspark-probiotic", "tailspark-multivitamin"],
             "free_shipping_upsell_collection": "",
             "free_shipping_upsell_limit": 6,
-            "free_shipping_upsell_slides_desktop": 1.1,
-            "free_shipping_upsell_slides_mobile": 1,
+            "free_shipping_upsell_slides_desktop": 1.1, "free_shipping_upsell_slides_mobile": 1,
             "free_shipping_upsell_heading": "Recommended for you",
-            "free_shipping_upsell_heading_color": "#64748b",
-            "free_shipping_upsell_heading_weight": "600",
-            "free_shipping_upsell_heading_letter_spacing": 0.2,
-            "free_shipping_upsell_heading_size": 13,
-            "free_shipping_upsell_meta_gap": 6,
-            "free_shipping_upsell_title_size": 13,
-            "free_shipping_upsell_title_color": "#606060",
-            "free_shipping_upsell_title_weight": "600",
-            "free_shipping_upsell_price_size": 12,
-            "free_shipping_upsell_price_color": "#64748b",
-            "free_shipping_upsell_price_weight": "500",
-            "free_shipping_upsell_variant_size": 11,
-            "free_shipping_upsell_variant_text_color": "#0f172a",
-            "free_shipping_upsell_variant_bg_color": "#f7f5f0",
-            "free_shipping_upsell_variant_border_color": "#cbd5e1",
-            "free_shipping_upsell_button_size": 12,
-            "free_shipping_upsell_button_text_color": "#0f172a",
-            "free_shipping_upsell_button_bg_color": "#f7f5f0",
-            "free_shipping_upsell_button_border_color": "#cbd5e1",
-            "free_shipping_upsell_button_weight": "600",
-            "free_shipping_upsell_button": "Add",
-            "free_shipping_upsell_arrows_desktop": true,
-            "free_shipping_upsell_arrows_mobile": true,
-            "free_shipping_upsell_hide_in_cart": true,
-            "free_shipping_upsell_hide_current_product": true,
-            "free_shipping_upsell_show_image": true,
-            "free_shipping_upsell_image_size": 56,
-            "free_shipping_upsell_block_border_color": "#1e293b1a",
-            "free_shipping_upsell_item_bg_color": "#f7f5f0",
-            "free_shipping_upsell_item_border_color": "#9e9e9e",
-            "free_shipping_upsell_chevron_color": "#0f172a",
-            "free_shipping_upsell_dot_active_color": "#ff6700",
-            "free_shipping_upsell_dot_inactive_color": "#94a3b873",
-            "free_shipping_upsell_focus_x": 50,
-            "free_shipping_upsell_focus_y": 50
+            "free_shipping_upsell_heading_color": "#64748b", "free_shipping_upsell_heading_weight": "600",
+            "free_shipping_upsell_heading_letter_spacing": 0.2, "free_shipping_upsell_heading_size": 13,
+            "free_shipping_upsell_meta_gap": 6, "free_shipping_upsell_title_size": 13,
+            "free_shipping_upsell_title_color": "#606060", "free_shipping_upsell_title_weight": "600",
+            "free_shipping_upsell_price_size": 12, "free_shipping_upsell_price_color": "#64748b", "free_shipping_upsell_price_weight": "500",
+            "free_shipping_upsell_variant_size": 11, "free_shipping_upsell_variant_text_color": "#0f172a",
+            "free_shipping_upsell_variant_bg_color": "#f7f5f0", "free_shipping_upsell_variant_border_color": "#cbd5e1",
+            "free_shipping_upsell_button_size": 12, "free_shipping_upsell_button_text_color": "#0f172a",
+            "free_shipping_upsell_button_bg_color": "#f7f5f0", "free_shipping_upsell_button_border_color": "#cbd5e1",
+            "free_shipping_upsell_button_weight": "600", "free_shipping_upsell_button": "Add",
+            "free_shipping_upsell_arrows_desktop": true, "free_shipping_upsell_arrows_mobile": true,
+            "free_shipping_upsell_hide_in_cart": true, "free_shipping_upsell_hide_current_product": true,
+            "free_shipping_upsell_show_image": true, "free_shipping_upsell_image_size": 56,
+            "free_shipping_upsell_block_border_color": "#1e293b1a", "free_shipping_upsell_item_bg_color": "#f7f5f0",
+            "free_shipping_upsell_item_border_color": "#9e9e9e", "free_shipping_upsell_chevron_color": "#0f172a",
+            "free_shipping_upsell_dot_active_color": "#ff6700", "free_shipping_upsell_dot_inactive_color": "#94a3b873",
+            "free_shipping_upsell_focus_x": 50, "free_shipping_upsell_focus_y": 50
           }
         },
         "est_delivery_simple_4JBzgx": {
           "type": "est_delivery_simple",
           "settings": {
-            "dispatch_min": 1,
-            "dispatch_max": 1,
-            "delivery_min": 5,
-            "delivery_max": 6,
+            "dispatch_min": 1, "dispatch_max": 1, "delivery_min": 5, "delivery_max": 6,
             "heading_text": "estimated delivery",
-            "bg_color": "#f7f5f0",
-            "border_color": "#ff6700",
-            "border_style": "dashed",
-            "title_color": "#4e4e4e",
-            "summary_color": "#4b4b4b",
-            "label_color": "#ff6700",
-            "date_color": "#ff6700",
-            "ring_color": "#c7c7c7",
-            "connector_color": "#e6e6e6",
-            "connector_style": "dashed",
+            "bg_color": "#f7f5f0", "border_color": "#ff6700", "border_style": "dashed",
+            "title_color": "#4e4e4e", "summary_color": "#4b4b4b",
+            "label_color": "#ff6700", "date_color": "#ff6700",
+            "ring_color": "#c7c7c7", "connector_color": "#e6e6e6", "connector_style": "dashed",
             "accent_color": "#ff6700",
-            "label_order": "Order placed",
-            "label_dispatched": "Dispatched",
-            "label_delivered": "Delivered"
+            "label_order": "Order placed", "label_dispatched": "Dispatched", "label_delivered": "Delivered"
           }
         },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        }
+        "share": { "type": "share", "settings": { "share_label": "Share" } }
       },
       "block_order": [
-        "title",
-        "inline_rating_iifCgL",
-        "weight_badge_sc",
-        "price",
-        "feature_cards_LB4F4H",
-        "variant_picker",
-        "recharge_subscriptions_subscription_widget_v2_C8trEK",
-        "quantity_selector",
-        "buy_buttons",
-        "yny_accordion_group_XnwLNx",
-        "collapsible_tab_pCUWk9",
-        "collapsible_tab_AVnp4f",
-        "collapsible_tab_LkJYyF",
-        "upsell_snippet_XMJqBJ",
-        "est_delivery_simple_4JBzgx",
-        "share"
+        "title", "inline_rating_iifCgL", "weight_badge_sc", "short_desc_sc", "price",
+        "variant_picker", "recharge_subscriptions_subscription_widget_v2_C8trEK",
+        "quantity_selector", "buy_buttons", "yny_accordion_group_XnwLNx",
+        "upsell_snippet_XMJqBJ", "est_delivery_simple_4JBzgx", "share"
       ],
-      "custom_css": [
-        ".product__tax {display: none;}",
-        ".product__media-icon {display: none;}"
-      ],
+      "custom_css": [".product__tax {display: none;}", ".product__media-icon {display: none;}"],
       "settings": {
-        "enable_sticky_info": false,
-        "color_scheme": "scheme-1",
-        "media_size": "small",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "thumbnail",
-        "mobile_thumbnails": "hide",
-        "media_position": "left",
-        "image_zoom": "none",
-        "hide_variants": true,
-        "enable_video_looping": false,
-        "gallery_side_arrows_desktop": true,
-        "gallery_side_arrows_mobile": true,
-        "gallery_side_arrows_style": "glass",
-        "gallery_side_arrows_button_size": 38,
-        "gallery_side_arrows_button_size_mobile": 36,
-        "gallery_side_arrows_icon_size": 12,
-        "gallery_side_arrows_icon_size_mobile": 10,
-        "price_color": "#ff6700",
-        "price_font_size": 1.8,
-        "price_font_weight": "500",
-        "variant_checked_background": "#ff6700",
-        "variant_checked_text_color": "#ffffff",
-        "variant_checked_border_color": "#ff6700",
-        "variant_checked_border_width": 0,
-        "padding_top": 36,
-        "padding_bottom": 8
+        "enable_sticky_info": false, "color_scheme": "scheme-1",
+        "media_size": "small", "constrain_to_viewport": true, "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider", "mobile_thumbnails": "hide",
+        "media_position": "left", "image_zoom": "none", "hide_variants": true, "enable_video_looping": false,
+        "gallery_side_arrows_desktop": true, "gallery_side_arrows_mobile": true, "gallery_side_arrows_style": "glass",
+        "gallery_side_arrows_button_size": 38, "gallery_side_arrows_button_size_mobile": 36,
+        "gallery_side_arrows_icon_size": 12, "gallery_side_arrows_icon_size_mobile": 10,
+        "gallery_side_arrows_offset_y": 0, "gallery_side_arrows_offset_y_mobile": 0,
+        "price_color": "#ff6700", "price_font_size": 1.8, "price_font_weight": "500",
+        "variant_checked_background": "#ff6700", "variant_checked_text_color": "#ffffff",
+        "variant_checked_border_color": "#ff6700", "variant_checked_border_width": 0,
+        "padding_top": 36, "padding_bottom": 8
       }
     },
     "feeding_guide_sc": {
       "type": "feeding-guide",
       "blocks": {
-        "row_sc1": { "type": "row", "settings": { "icon": "🐩", "size_label": "Small", "weight_range": "Up to 25 lbs", "chews_count": "1 chew / day" } },
-        "row_sc2": { "type": "row", "settings": { "icon": "🐕", "size_label": "Medium", "weight_range": "25 - 50 lbs", "chews_count": "2 chews / day" } },
-        "row_sc3": { "type": "row", "settings": { "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "50 - 75 lbs", "chews_count": "3 chews / day" } },
-        "row_sc4": { "type": "row", "settings": { "icon": "🦮", "size_label": "X-Large", "weight_range": "75+ lbs", "chews_count": "4 chews / day" } }
+        "row_sc1": { "type": "row", "settings": { "icon": "🐩", "size_label": "Small", "weight_range": "Up to 25 lbs", "chews_count": "1 chew" } },
+        "row_sc2": { "type": "row", "settings": { "icon": "🐕", "size_label": "Medium", "weight_range": "25 - 50 lbs", "chews_count": "2 chews" } },
+        "row_sc3": { "type": "row", "settings": { "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "50 - 75 lbs", "chews_count": "3 chews" } },
+        "row_sc4": { "type": "row", "settings": { "icon": "🦮", "size_label": "X-Large", "weight_range": "Over 75 lbs", "chews_count": "4 chews" } }
       },
       "block_order": ["row_sc1", "row_sc2", "row_sc3", "row_sc4"],
       "name": "Feeding Guide",
       "settings": {
-        "heading": "Feeding Guide",
-        "subheading": "Give daily based on your dog's weight",
+        "heading": "Feeding Guide", "subheading": "Give daily based on your dog's weight",
         "note": "For best results, give chews consistently each day. Always provide fresh water.",
-        "bg_color": "#fef9e7",
-        "card_bg": "#ffffff",
-        "heading_color": "#1d1d1b",
-        "text_color": "#555555",
-        "accent_color": "#ff6700",
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36
+        "bg_color": "#fef9e7", "card_bg": "#ffffff",
+        "heading_color": "#1d1d1b", "text_color": "#555555", "accent_color": "#ff6700",
+        "padding_top": 56, "padding_bottom": 56, "padding_top_mobile": 36, "padding_bottom_mobile": 36
       }
     },
     "what_inside_sc": {
-      "type": "what-inside-section",
+      "type": "ts-whats-inside",
       "blocks": {
         "item_sc1": { "type": "item", "settings": { "title": "Fish Oil (Omega-3)", "description": "Rich source of DHA and EPA essential fatty acids that support healthy skin moisture and a shiny, lustrous coat." } },
         "item_sc2": { "type": "item", "settings": { "title": "Flaxseed (Omega-6 & 9)", "description": "Plant-based essential fatty acids that strengthen the skin barrier, reduce inflammation, and support coat thickness." } },
@@ -370,10 +195,12 @@
         "heading": "What's Inside",
         "background_color": "#fef9e7",
         "heading_color": "#ff6700",
+        "accent_color": "#ff6700",
         "item_title_color": "#1d1d1b",
         "item_text_color": "#555555",
         "flavor_title": "Real. Clean. Effective.",
-        "flavor_subtitle": "Salmon & Chicken Flavor"
+        "flavor_subtitle": "Salmon & Chicken Flavor",
+        "padding_desktop": 60, "padding_mobile": 40
       }
     },
     "faq_sc": {
@@ -387,49 +214,28 @@
       },
       "block_order": ["cat_sc1", "faq_sc1", "faq_sc2", "faq_sc3", "faq_sc4"],
       "name": "Product FAQ",
-      "settings": {
-        "heading": "Frequently Asked Questions",
-        "subheading": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
+      "settings": { "heading": "Frequently Asked Questions", "subheading": "", "color_scheme": "scheme-1", "padding_top": 60, "padding_bottom": 60 }
     },
     "best_sellers_sc": {
       "type": "best-sellers-custom",
       "blocks": {
-        "product_UP9mEb": { "type": "product", "settings": { "product": "tailspark-hip-joint", "title_override": "Hip & Joint", "image_preset": "none", "subtitle": "Increases flexibility and strengthens joints", "card_bg": "#fdecea", "icon_1_preset": "ts_joint", "icon_1_label": "Supports Joint Health", "icon_2_preset": "ts_anti_inflammatory", "icon_2_label": "Natural Anti-Inflammatory", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
-        "product_dQzzDV": { "type": "product", "settings": { "product": "tailspark-multivitamin", "title_override": "Daily Multivitamin", "image_preset": "none", "subtitle": "Daily support for overall vitality", "card_bg": "#eaf4f4", "icon_1_preset": "ts_multivitamin", "icon_1_label": "Multivitamin Support", "icon_2_preset": "ts_energy", "icon_2_label": "Energy & Vitality", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
-        "product_a7PMHk": { "type": "product", "settings": { "product": "tailspark-probiotic", "title_override": "Probiotic", "image_preset": "none", "subtitle": "Maintains healthy digestive system", "card_bg": "#edf6f0", "icon_1_preset": "ts_gut", "icon_1_label": "Promotes Gut Health", "icon_2_preset": "ts_immune", "icon_2_label": "Immune Health Support", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } }
+        "product_UP9mEb": { "type": "product", "settings": { "product": "tailspark-hip-joint", "title_override": "Hip & Joint", "image_preset": "none", "subtitle": "Increases flexibility and strengthens joints", "card_bg": "#fdecea", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
+        "product_dQzzDV": { "type": "product", "settings": { "product": "tailspark-multivitamin", "title_override": "Daily Multivitamin", "image_preset": "none", "subtitle": "Daily support for overall vitality", "card_bg": "#eaf4f4", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
+        "product_a7PMHk": { "type": "product", "settings": { "product": "tailspark-probiotic", "title_override": "Probiotic", "image_preset": "none", "subtitle": "Maintains healthy digestive system", "card_bg": "#edf6f0", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } }
       },
       "block_order": ["product_UP9mEb", "product_dQzzDV", "product_a7PMHk"],
       "name": "You Might Also Like",
       "settings": {
-        "heading": "You Might Also Like",
-        "subheading": "Complete your dog's daily wellness routine.",
-        "button_label": "Add to Cart",
-        "show_price": true,
-        "image_radius": 20,
-        "image_radius_mobile": 6,
-        "section_bg": "#ffffff",
-        "heading_color": "#1d1d1b",
-        "title_color": "#1d1d1b",
-        "text_color": "#555555",
-        "icon_color": "#333333",
-        "button_bg": "#ff6700",
-        "button_text": "#ffffff",
-        "button_hover_bg": "#cc5200",
-        "button_hover_text": "#ffffff",
-        "heading_size": 32,
-        "heading_size_mobile": 24,
-        "icon_size": 48,
-        "icon_size_mobile": 34,
-        "icon_label_size": 11,
-        "icon_label_size_mobile": 10,
-        "padding_top": 40,
-        "padding_bottom": 60,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 40
+        "heading": "You Might Also Like", "subheading": "Complete your dog's daily wellness routine.",
+        "button_label": "Add to Cart", "show_price": true,
+        "image_radius": 20, "image_radius_mobile": 6,
+        "section_bg": "#ffffff", "heading_color": "#1d1d1b", "title_color": "#1d1d1b",
+        "text_color": "#555555", "icon_color": "#333333",
+        "button_bg": "#ff6700", "button_text": "#ffffff",
+        "button_hover_bg": "#cc5200", "button_hover_text": "#ffffff",
+        "heading_size": 32, "heading_size_mobile": 24,
+        "icon_size": 48, "icon_size_mobile": 34, "icon_label_size": 11, "icon_label_size_mobile": 10,
+        "padding_top": 40, "padding_bottom": 60, "padding_top_mobile": 32, "padding_bottom_mobile": 40
       }
     }
   },

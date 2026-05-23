@@ -269,7 +269,12 @@
 
   @media (min-width: 990px) {
     #shopify-section-{{ section.id }} .bs-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat({{ section.blocks.size | at_most: 4 }}, minmax(0, 1fr));
+      {%- if section.blocks.size < 4 -%}
+      max-width: {{ section.blocks.size | times: 340 | plus: 80 }}px;
+      margin-left: auto;
+      margin-right: auto;
+      {%- endif -%}
     }
   }
 {%- endstyle -%}

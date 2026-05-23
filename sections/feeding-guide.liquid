@@ -1,139 +1,121 @@
 {%- style -%}
-  .feeding-guide {
-    background-color: {{ section.settings.bg_color }};
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
+  .fg-section {
+    background: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px;
   }
-
-  @media (max-width: 749px) {
-    .feeding-guide {
-      padding-top: {{ section.settings.padding_top_mobile }}px;
-      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-    }
+  @media (min-width: 750px) {
+    .fg-section { padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px; }
   }
-
-  .feeding-guide__inner {
-    max-width: 900px;
+  .fg-inner {
+    max-width: 600px;
     margin: 0 auto;
     padding: 0 20px;
   }
-
-  .feeding-guide__header {
+  .fg-header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
-
-  .feeding-guide__heading {
-    font-size: 30px;
+  .fg-heading {
+    font-size: 28px;
     font-weight: 700;
     color: {{ section.settings.heading_color }};
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     line-height: 1.2;
   }
-
-  .feeding-guide__subheading {
-    font-size: 15px;
+  @media (min-width: 750px) { .fg-heading { font-size: 34px; } }
+  .fg-subheading {
+    font-size: 14px;
     color: {{ section.settings.text_color }};
+    opacity: 0.7;
     margin: 0;
-    opacity: 0.75;
   }
-
-  .feeding-guide__grid {
-    display: grid;
-    grid-template-columns: repeat({{ section.blocks.size | at_most: 4 }}, 1fr);
-    gap: 16px;
+  .fg-list {
+    background: {{ section.settings.card_bg }};
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.07);
   }
-
-  @media (max-width: 749px) {
-    .feeding-guide__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    .feeding-guide__heading { font-size: 24px; }
-    .feeding-guide__header { margin-bottom: 24px; }
-    .feeding-guide__card { padding: 16px 12px; }
-    .feeding-guide__icon { font-size: 32px; }
-  }
-
-  .feeding-guide__card {
-    background-color: {{ section.settings.card_bg }};
-    border-radius: 16px;
-    padding: 22px 16px;
-    text-align: center;
+  .fg-row {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
   }
-
-  .feeding-guide__icon {
-    font-size: 44px;
-    line-height: 1;
+  .fg-row:last-child { border-bottom: none; }
+  .fg-icon-circle {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 50%;
+    border: 2px dashed {{ section.settings.accent_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    background: rgba(255,255,255,0.55);
+    flex-shrink: 0;
   }
-
-  .feeding-guide__size-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    color: {{ section.settings.accent_color }};
-  }
-
-  .feeding-guide__weight {
-    font-size: 13px;
-    font-weight: 600;
+  .fg-weight {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
     color: {{ section.settings.heading_color }};
-    margin: 0;
+    min-width: 80px;
   }
-
-  .feeding-guide__chews-wrap {
-    background-color: {{ section.settings.accent_color }};
-    border-radius: 50px;
-    padding: 6px 14px;
-    margin-top: 2px;
+  .fg-dots {
+    flex: 2;
+    height: 0;
+    border-top: 2px dotted {{ section.settings.accent_color }};
+    opacity: 0.25;
+    min-width: 20px;
   }
-
-  .feeding-guide__chews {
-    font-size: 13px;
+  .fg-chews {
+    font-size: 16px;
     font-weight: 700;
-    color: #ffffff;
+    color: {{ section.settings.accent_color }};
     white-space: nowrap;
+    text-align: right;
+    min-width: 70px;
   }
-
-  .feeding-guide__note {
+  .fg-note {
     text-align: center;
-    margin-top: 20px;
-    font-size: 13px;
+    margin-top: 16px;
+    font-size: 12px;
     color: {{ section.settings.text_color }};
-    opacity: 0.6;
+    opacity: 0.55;
+    line-height: 1.5;
+  }
+  @media (max-width: 479px) {
+    .fg-row { padding: 14px 16px; gap: 10px; }
+    .fg-icon-circle { width: 44px; height: 44px; min-width: 44px; font-size: 22px; }
+    .fg-weight { font-size: 13px; }
+    .fg-chews { font-size: 14px; min-width: 60px; }
   }
 {%- endstyle -%}
 
-<section class="feeding-guide">
-  <div class="feeding-guide__inner">
-
+<section class="fg-section">
+  <div class="fg-inner">
     {%- if section.settings.heading != blank -%}
-      <div class="feeding-guide__header">
-        <h2 class="feeding-guide__heading">{{ section.settings.heading }}</h2>
+      <div class="fg-header">
+        <h2 class="fg-heading">{{ section.settings.heading }}</h2>
         {%- if section.settings.subheading != blank -%}
-          <p class="feeding-guide__subheading">{{ section.settings.subheading }}</p>
+          <p class="fg-subheading">{{ section.settings.subheading }}</p>
         {%- endif -%}
       </div>
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="feeding-guide__grid">
+      <div class="fg-list">
         {%- for block in section.blocks -%}
           {%- if block.type == 'row' -%}
-            <div class="feeding-guide__card" {{ block.shopify_attributes }}>
+            <div class="fg-row" {{ block.shopify_attributes }}>
               {%- if block.settings.icon != blank -%}
-                <div class="feeding-guide__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+                <div class="fg-icon-circle" aria-hidden="true">{{ block.settings.icon }}</div>
               {%- endif -%}
-              <span class="feeding-guide__size-label">{{ block.settings.size_label }}</span>
-              <p class="feeding-guide__weight">{{ block.settings.weight_range }}</p>
-              <div class="feeding-guide__chews-wrap">
-                <span class="feeding-guide__chews">{{ block.settings.chews_count }}</span>
-              </div>
+              <span class="fg-weight">{{ block.settings.weight_range }}</span>
+              <div class="fg-dots" aria-hidden="true"></div>
+              <span class="fg-chews">{{ block.settings.chews_count }}</span>
             </div>
           {%- endif -%}
         {%- endfor -%}
@@ -141,9 +123,8 @@
     {%- endif -%}
 
     {%- if section.settings.note != blank -%}
-      <p class="feeding-guide__note">{{ section.settings.note }}</p>
+      <p class="fg-note">{{ section.settings.note }}</p>
     {%- endif -%}
-
   </div>
 </section>
 
@@ -156,13 +137,13 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Feeding Guide" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Give daily based on your dog's weight" },
-    { "type": "textarea", "id": "note", "label": "Footer note (optional)", "default": "For best results, give chews consistently each day. Always provide fresh water. Consult your vet before adding supplements." },
+    { "type": "textarea", "id": "note", "label": "Footer note (optional)", "default": "For best results, give chews consistently each day. Always provide fresh water." },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
-    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#fff8ed" },
-    { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#1d1d1b" },
+    { "type": "color", "id": "card_bg", "label": "List background", "default": "#fff8ed" },
+    { "type": "color", "id": "heading_color", "label": "Heading & weight text", "default": "#1d1d1b" },
     { "type": "color", "id": "text_color", "label": "Text color", "default": "#555555" },
-    { "type": "color", "id": "accent_color", "label": "Accent color (label + chew badge)", "default": "#ff6700" },
+    { "type": "color", "id": "accent_color", "label": "Accent color (icon border + chews)", "default": "#ff6700" },
     { "type": "header", "content": "Spacing" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top (desktop)", "default": 56 },
     { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom (desktop)", "default": 56 },
@@ -175,9 +156,9 @@
       "name": "Dog Size",
       "settings": [
         { "type": "text", "id": "icon", "label": "Emoji icon", "default": "🐕" },
-        { "type": "text", "id": "size_label", "label": "Size label (e.g. Small)", "default": "Small" },
+        { "type": "text", "id": "size_label", "label": "Size label (optional)", "default": "Small" },
         { "type": "text", "id": "weight_range", "label": "Weight range", "default": "Up to 25 lbs" },
-        { "type": "text", "id": "chews_count", "label": "Daily chews", "default": "1 chew / day" }
+        { "type": "text", "id": "chews_count", "label": "Daily chews", "default": "1 chew" }
       ]
     }
   ],
@@ -186,10 +167,10 @@
     {
       "name": "Feeding Guide",
       "blocks": [
-        { "type": "row", "settings": { "icon": "🐩", "size_label": "Small", "weight_range": "Up to 25 lbs", "chews_count": "1 chew / day" } },
-        { "type": "row", "settings": { "icon": "🐕", "size_label": "Medium", "weight_range": "25 - 50 lbs", "chews_count": "2 chews / day" } },
-        { "type": "row", "settings": { "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "50 - 75 lbs", "chews_count": "3 chews / day" } },
-        { "type": "row", "settings": { "icon": "🦮", "size_label": "X-Large", "weight_range": "75+ lbs", "chews_count": "4 chews / day" } }
+        { "type": "row", "settings": { "icon": "🐩", "size_label": "Small", "weight_range": "Up to 25 lbs", "chews_count": "1 chew" } },
+        { "type": "row", "settings": { "icon": "🐕", "size_label": "Medium", "weight_range": "25 - 50 lbs", "chews_count": "2 chews" } },
+        { "type": "row", "settings": { "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "50 - 75 lbs", "chews_count": "3 chews" } },
+        { "type": "row", "settings": { "icon": "🦮", "size_label": "X-Large", "weight_range": "Over 75 lbs", "chews_count": "4 chews" } }
       ]
     }
   ]

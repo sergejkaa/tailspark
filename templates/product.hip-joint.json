@@ -1,41 +1,19 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "liquid-studio-product-page",
       "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
+        "title": { "type": "title", "settings": {} },
         "inline_rating_iifCgL": {
           "type": "inline_rating",
           "settings": {
-            "rating_value": "4.9",
-            "rating_label": "stars",
-            "segment_1_number": "1,200",
-            "segment_1_label": "reviews",
-            "segment_2_number": "57,000+",
-            "segment_2_label": "members",
-            "segment_1_number_mobile": "1.2K",
-            "segment_2_number_mobile": "57K+",
-            "font_size_desktop": 13,
-            "stars_size_desktop": 18,
-            "font_size_mobile": 12,
-            "stars_size_mobile": 14,
-            "star_color": "#ff6700",
-            "rating_value_color": "",
-            "segment_1_color": "",
-            "segment_2_color": "",
-            "text_color": ""
+            "rating_value": "4.9", "rating_label": "stars",
+            "segment_1_number": "1,200", "segment_1_label": "reviews",
+            "segment_2_number": "57,000+", "segment_2_label": "members",
+            "segment_1_number_mobile": "1.2K", "segment_2_number_mobile": "57K+",
+            "font_size_desktop": 13, "stars_size_desktop": 18,
+            "font_size_mobile": 12, "stars_size_mobile": 14,
+            "star_color": "#ff6700", "rating_value_color": "", "segment_1_color": "", "segment_2_color": "", "text_color": ""
           }
         },
         "weight_badge_hj": {
@@ -44,107 +22,48 @@
             "custom_liquid": "<div style=\"display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:50px;background:#fdecea;font-size:13px;font-weight:600;color:#555;border:1px solid rgba(0,0,0,.1);margin:4px 0;\">8.47 OZ (240g) &bull; 60 Soft Chews</div>"
           }
         },
-        "price": {
-          "type": "price",
-          "settings": {}
+        "short_desc_hj": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p style=\"font-size:14px;color:#555;line-height:1.6;margin:8px 0 4px;\">These tasty chews restore flexibility and ease discomfort so your dog can move freely every day.</p>"
+          }
         },
+        "price": { "type": "price", "settings": {} },
         "feature_cards_LB4F4H": {
           "type": "feature-cards",
           "settings": {
-            "visible_items": 4,
-            "columns_desktop": 2,
-            "columns_tablet": 2,
-            "columns_mobile": 2,
-            "mobile_layout": "grid",
-            "text_align": "left",
-            "gap_desktop": 8,
-            "gap_tablet": 8,
-            "gap_mobile": 8,
-            "margin_top": 10,
-            "margin_bottom": 10,
-            "card_mode": "solid",
-            "card_radius": 8,
-            "card_padding_x_desktop": 11,
-            "card_padding_y_desktop": 10,
-            "card_padding_x_tablet": 11,
-            "card_padding_y_tablet": 10,
-            "card_padding_x_mobile": 9,
-            "card_padding_y_mobile": 7,
-            "text_size_desktop": 15,
-            "text_size_tablet": 13,
-            "text_size_mobile": 12,
-            "text_weight": "500",
-            "icon_size_desktop": 21,
-            "icon_size_tablet": 18,
-            "icon_size_mobile": 17,
-            "text_color": "#243126",
-            "icon_color": "#ff6700",
-            "solid_background": "#fdecea",
-            "solid_border_color": "#f0c8c4",
-            "card_shadow_color": "#000000",
-            "card_shadow_opacity": 8,
-            "glass_background": "#ffffff",
-            "glass_secondary_tint": "#fdecea",
-            "glass_background_opacity": 28,
-            "glass_border_color": "#ffffff",
-            "glass_border_opacity": 60,
-            "glass_blur": 10,
-            "feature_text_1": "Reduces joint discomfort",
-            "icon_source_1": "built_in",
-            "icon_name_1": "heart",
-            "icon_url_1": "",
-            "feature_text_2": "Improves flexibility & mobility",
-            "icon_source_2": "built_in",
-            "icon_name_2": "leaf",
-            "icon_url_2": "",
-            "feature_text_3": "Natural anti-inflammatory",
-            "icon_source_3": "built_in",
-            "icon_name_3": "check",
-            "icon_url_3": "",
-            "feature_text_4": "Supports healthy cartilage",
-            "icon_source_4": "built_in",
-            "icon_name_4": "shield",
-            "icon_url_4": "",
-            "feature_text_5": "Feature item 5",
-            "icon_source_5": "built_in",
-            "icon_name_5": "shield",
-            "icon_url_5": "",
-            "feature_text_6": "Feature item 6",
-            "icon_source_6": "built_in",
-            "icon_name_6": "star",
-            "icon_url_6": "",
-            "feature_text_7": "Feature item 7",
-            "icon_source_7": "built_in",
-            "icon_name_7": "globe",
-            "icon_url_7": "",
-            "feature_text_8": "Feature item 8",
-            "icon_source_8": "built_in",
-            "icon_name_8": "check",
-            "icon_url_8": ""
+            "visible_items": 4, "columns_desktop": 2, "columns_tablet": 2, "columns_mobile": 2,
+            "mobile_layout": "grid", "text_align": "left",
+            "gap_desktop": 8, "gap_tablet": 8, "gap_mobile": 8,
+            "margin_top": 10, "margin_bottom": 10,
+            "card_mode": "solid", "card_radius": 8,
+            "card_padding_x_desktop": 11, "card_padding_y_desktop": 10,
+            "card_padding_x_tablet": 11, "card_padding_y_tablet": 10,
+            "card_padding_x_mobile": 9, "card_padding_y_mobile": 7,
+            "text_size_desktop": 15, "text_size_tablet": 13, "text_size_mobile": 12,
+            "text_weight": "500", "icon_size_desktop": 21, "icon_size_tablet": 18, "icon_size_mobile": 17,
+            "text_color": "#243126", "icon_color": "#ff6700",
+            "solid_background": "#fdecea", "solid_border_color": "#f0c8c4",
+            "card_shadow_color": "#000000", "card_shadow_opacity": 8,
+            "glass_background": "#ffffff", "glass_secondary_tint": "#fdecea",
+            "glass_background_opacity": 28, "glass_border_color": "#ffffff", "glass_border_opacity": 60, "glass_blur": 10,
+            "feature_text_1": "Reduces joint discomfort", "icon_source_1": "built_in", "icon_name_1": "heart", "icon_url_1": "",
+            "feature_text_2": "Improves flexibility & mobility", "icon_source_2": "built_in", "icon_name_2": "leaf", "icon_url_2": "",
+            "feature_text_3": "Natural anti-inflammatory", "icon_source_3": "built_in", "icon_name_3": "check", "icon_url_3": "",
+            "feature_text_4": "Supports healthy cartilage", "icon_source_4": "built_in", "icon_name_4": "shield", "icon_url_4": "",
+            "feature_text_5": "Feature item 5", "icon_source_5": "built_in", "icon_name_5": "shield", "icon_url_5": "",
+            "feature_text_6": "Feature item 6", "icon_source_6": "built_in", "icon_name_6": "star", "icon_url_6": "",
+            "feature_text_7": "Feature item 7", "icon_source_7": "built_in", "icon_name_7": "globe", "icon_url_7": "",
+            "feature_text_8": "Feature item 8", "icon_source_8": "built_in", "icon_name_8": "check", "icon_url_8": ""
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
+        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button", "swatch_shape": "circle" } },
         "recharge_subscriptions_subscription_widget_v2_C8trEK": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": true
-          }
-        },
+        "quantity_selector": { "type": "quantity_selector", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": false, "show_gift_card_recipient": true } },
         "yny_accordion_group_XnwLNx": {
           "type": "yny_accordion_group",
           "settings": {
@@ -153,491 +72,160 @@
             "item_1_content": "<ul><li>Supports healthy joint function</li><li>Reduces joint stiffness and discomfort</li><li>Improves flexibility and mobility</li><li>Maintains healthy cartilage</li><li>Provides natural anti-inflammatory support</li><li>Suitable for active and senior dogs</li></ul>",
             "item_2_heading": "Key Ingredients",
             "item_2_source": "custom",
-            "item_2_content": "<ul><li><strong>Glucosamine HCl 500mg</strong> - Primary building block of cartilage that helps maintain cushioning in joints</li><li><strong>MSM 400mg</strong> - Natural sulfur compound that reduces joint inflammation and supports connective tissue repair</li><li><strong>Green-Lipped Mussel 150mg</strong> - Unique New Zealand shellfish rich in Omega-3s and glycosaminoglycans for joint lubrication</li><li><strong>Chondroitin Sulfate 110mg</strong> - Retains water in cartilage, maintaining joint flexibility and shock absorption</li></ul>",
+            "item_2_content": "<ul><li><strong>Glucosamine HCl 500mg</strong> - Primary building block of cartilage that helps maintain cushioning in joints</li><li><strong>MSM 400mg</strong> - Natural sulfur compound that reduces joint inflammation and supports connective tissue repair</li><li><strong>Green-Lipped Mussel 150mg</strong> - Unique New Zealand shellfish rich in Omega-3s and glycosaminoglycans for joint lubrication</li><li><strong>Chondroitin Sulfate 110mg</strong> - Retains water in cartilage, maintaining joint flexibility and shock absorption</li><li><strong>Turmeric &amp; Boswellia</strong> - Powerful natural anti-inflammatory botanicals that reduce pain and support mobility</li></ul>",
             "item_3_heading": "Directions",
             "item_3_source": "custom",
             "item_3_content": "<p>Give daily based on your dog's weight:</p><ul><li><strong>Up to 15 lbs:</strong> 1 chew per day</li><li><strong>15-45 lbs:</strong> 2 chews per day</li><li><strong>45-75 lbs:</strong> 3 chews per day</li><li><strong>75+ lbs:</strong> 4 chews per day</li></ul><p>Can be given as a treat or crumbled over food. Store in a cool, dry place.</p>",
-            "item_4_heading": "",
+            "item_4_heading": "Full Ingredient List",
             "item_4_source": "custom",
-            "item_4_content": "",
-            "item_5_heading": "",
+            "item_4_content": "<p>Glucosamine Hydrochloride (500mg), Methylsulfonylmethane - MSM (400mg), Green-Lipped Mussel Powder (150mg), Chondroitin Sulfate (110mg), Chicken Liver, Sweet Potato, Brewer's Yeast, Turmeric Root Powder, Boswellia Serrata Extract.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
+            "item_5_heading": "Shipping Info",
             "item_5_source": "custom",
-            "item_5_content": "",
-            "acc_bg_color": "#ffffff",
-            "acc_border_color": "#f0dbd9",
-            "summary_color": "#1d1d1b",
-            "text_color": "#555555"
-          }
-        },
-        "collapsible_tab_pCUWk9": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Full Ingredient List",
-            "icon": "leaf",
-            "content": "<p>Glucosamine Hydrochloride (500mg), Methylsulfonylmethane - MSM (400mg), Green-Lipped Mussel Powder (150mg), Chondroitin Sulfate (110mg), Chicken Liver, Sweet Potato, Brewer's Yeast, Turmeric Root Powder, Boswellia Serrata Extract.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_AVnp4f": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Shipping Info",
-            "icon": "truck",
-            "content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li></ul>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_LkJYyF": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "F.A.Q.",
-            "icon": "check_mark",
-            "content": "<p><strong>How long until I see improvement in my dog's mobility?</strong><br/>Many pet parents notice improvements within 4-8 weeks of consistent daily use. Senior dogs or those with advanced joint issues may take longer.</p><p><strong>Is this safe for dogs already on joint medication?</strong><br/>Please consult your veterinarian if your dog is taking prescription joint medications. Natural supplements can often complement prescribed treatments safely.</p><p><strong>What breeds benefit most?</strong><br/>While any dog can benefit, breeds prone to joint issues - like German Shepherds, Golden Retrievers, Labs, and large breeds - tend to see the most significant improvements.</p>",
-            "page": ""
+            "item_5_content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li></ul>",
+            "acc_bg_color": "#ffffff", "acc_border_color": "#f0dbd9",
+            "summary_color": "#1d1d1b", "text_color": "#555555"
           }
         },
         "upsell_snippet_XMJqBJ": {
           "type": "upsell_snippet",
           "settings": {
             "free_shipping_upsell_source": "auto",
-            "free_shipping_upsell_products": [
-              "tailspark-multivitamin",
-              "tailspark-probiotic",
-              "tailspark-skin-coat"
-            ],
-            "free_shipping_upsell_collection": "",
-            "free_shipping_upsell_limit": 6,
-            "free_shipping_upsell_slides_desktop": 1.1,
-            "free_shipping_upsell_slides_mobile": 1,
+            "free_shipping_upsell_products": ["tailspark-multivitamin", "tailspark-probiotic", "tailspark-skin-coat"],
+            "free_shipping_upsell_collection": "", "free_shipping_upsell_limit": 6,
+            "free_shipping_upsell_slides_desktop": 1.1, "free_shipping_upsell_slides_mobile": 1,
             "free_shipping_upsell_heading": "Recommended for you",
-            "free_shipping_upsell_heading_color": "#64748b",
-            "free_shipping_upsell_heading_weight": "600",
-            "free_shipping_upsell_heading_letter_spacing": 0.2,
-            "free_shipping_upsell_heading_size": 13,
-            "free_shipping_upsell_meta_gap": 6,
-            "free_shipping_upsell_title_size": 13,
-            "free_shipping_upsell_title_color": "#606060",
-            "free_shipping_upsell_title_weight": "600",
-            "free_shipping_upsell_price_size": 12,
-            "free_shipping_upsell_price_color": "#64748b",
-            "free_shipping_upsell_price_weight": "500",
-            "free_shipping_upsell_variant_size": 11,
-            "free_shipping_upsell_variant_text_color": "#0f172a",
-            "free_shipping_upsell_variant_bg_color": "#f7f5f0",
-            "free_shipping_upsell_variant_border_color": "#cbd5e1",
-            "free_shipping_upsell_button_size": 12,
-            "free_shipping_upsell_button_text_color": "#0f172a",
-            "free_shipping_upsell_button_bg_color": "#f7f5f0",
-            "free_shipping_upsell_button_border_color": "#cbd5e1",
-            "free_shipping_upsell_button_weight": "600",
-            "free_shipping_upsell_button": "Add",
-            "free_shipping_upsell_arrows_desktop": true,
-            "free_shipping_upsell_arrows_mobile": true,
-            "free_shipping_upsell_hide_in_cart": true,
-            "free_shipping_upsell_hide_current_product": true,
-            "free_shipping_upsell_show_image": true,
-            "free_shipping_upsell_image_size": 56,
-            "free_shipping_upsell_block_border_color": "#1e293b1a",
-            "free_shipping_upsell_item_bg_color": "#f7f5f0",
-            "free_shipping_upsell_item_border_color": "#9e9e9e",
-            "free_shipping_upsell_chevron_color": "#0f172a",
-            "free_shipping_upsell_dot_active_color": "#ff6700",
-            "free_shipping_upsell_dot_inactive_color": "#94a3b873",
-            "free_shipping_upsell_focus_x": 50,
-            "free_shipping_upsell_focus_y": 50
+            "free_shipping_upsell_heading_color": "#64748b", "free_shipping_upsell_heading_weight": "600",
+            "free_shipping_upsell_heading_letter_spacing": 0.2, "free_shipping_upsell_heading_size": 13,
+            "free_shipping_upsell_meta_gap": 6, "free_shipping_upsell_title_size": 13,
+            "free_shipping_upsell_title_color": "#606060", "free_shipping_upsell_title_weight": "600",
+            "free_shipping_upsell_price_size": 12, "free_shipping_upsell_price_color": "#64748b", "free_shipping_upsell_price_weight": "500",
+            "free_shipping_upsell_variant_size": 11, "free_shipping_upsell_variant_text_color": "#0f172a",
+            "free_shipping_upsell_variant_bg_color": "#f7f5f0", "free_shipping_upsell_variant_border_color": "#cbd5e1",
+            "free_shipping_upsell_button_size": 12, "free_shipping_upsell_button_text_color": "#0f172a",
+            "free_shipping_upsell_button_bg_color": "#f7f5f0", "free_shipping_upsell_button_border_color": "#cbd5e1",
+            "free_shipping_upsell_button_weight": "600", "free_shipping_upsell_button": "Add",
+            "free_shipping_upsell_arrows_desktop": true, "free_shipping_upsell_arrows_mobile": true,
+            "free_shipping_upsell_hide_in_cart": true, "free_shipping_upsell_hide_current_product": true,
+            "free_shipping_upsell_show_image": true, "free_shipping_upsell_image_size": 56,
+            "free_shipping_upsell_block_border_color": "#1e293b1a", "free_shipping_upsell_item_bg_color": "#f7f5f0",
+            "free_shipping_upsell_item_border_color": "#9e9e9e", "free_shipping_upsell_chevron_color": "#0f172a",
+            "free_shipping_upsell_dot_active_color": "#ff6700", "free_shipping_upsell_dot_inactive_color": "#94a3b873",
+            "free_shipping_upsell_focus_x": 50, "free_shipping_upsell_focus_y": 50
           }
         },
         "est_delivery_simple_4JBzgx": {
           "type": "est_delivery_simple",
           "settings": {
-            "dispatch_min": 1,
-            "dispatch_max": 1,
-            "delivery_min": 5,
-            "delivery_max": 6,
+            "dispatch_min": 1, "dispatch_max": 1, "delivery_min": 5, "delivery_max": 6,
             "heading_text": "estimated delivery",
-            "bg_color": "#f7f5f0",
-            "border_color": "#ff6700",
-            "border_style": "dashed",
-            "title_color": "#4e4e4e",
-            "summary_color": "#4b4b4b",
-            "label_color": "#ff6700",
-            "date_color": "#ff6700",
-            "ring_color": "#c7c7c7",
-            "connector_color": "#e6e6e6",
-            "connector_style": "dashed",
+            "bg_color": "#f7f5f0", "border_color": "#ff6700", "border_style": "dashed",
+            "title_color": "#4e4e4e", "summary_color": "#4b4b4b",
+            "label_color": "#ff6700", "date_color": "#ff6700",
+            "ring_color": "#c7c7c7", "connector_color": "#e6e6e6", "connector_style": "dashed",
             "accent_color": "#ff6700",
-            "label_order": "Order placed",
-            "label_dispatched": "Dispatched",
-            "label_delivered": "Delivered"
+            "label_order": "Order placed", "label_dispatched": "Dispatched", "label_delivered": "Delivered"
           }
         },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        }
+        "share": { "type": "share", "settings": { "share_label": "Share" } }
       },
       "block_order": [
-        "title",
-        "inline_rating_iifCgL",
-        "weight_badge_hj",
-        "price",
-        "feature_cards_LB4F4H",
-        "variant_picker",
-        "recharge_subscriptions_subscription_widget_v2_C8trEK",
-        "quantity_selector",
-        "buy_buttons",
-        "yny_accordion_group_XnwLNx",
-        "collapsible_tab_pCUWk9",
-        "collapsible_tab_AVnp4f",
-        "collapsible_tab_LkJYyF",
-        "upsell_snippet_XMJqBJ",
-        "est_delivery_simple_4JBzgx",
-        "share"
+        "title", "inline_rating_iifCgL", "weight_badge_hj", "short_desc_hj", "price",
+        "variant_picker", "recharge_subscriptions_subscription_widget_v2_C8trEK",
+        "quantity_selector", "buy_buttons", "yny_accordion_group_XnwLNx",
+        "upsell_snippet_XMJqBJ", "est_delivery_simple_4JBzgx", "share"
       ],
-      "custom_css": [
-        ".product__tax {display: none;}",
-        ".product__media-icon {display: none;}"
-      ],
+      "custom_css": [".product__tax {display: none;}", ".product__media-icon {display: none;}"],
       "settings": {
-        "enable_sticky_info": false,
-        "color_scheme": "scheme-1",
-        "media_size": "small",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "thumbnail_slider",
-        "mobile_thumbnails": "hide",
-        "mobile_hide_dots_color": "#ff6700",
-        "media_position": "left",
-        "image_zoom": "none",
-        "hide_variants": true,
-        "enable_video_looping": false,
-        "gallery_side_arrows_desktop": true,
-        "gallery_side_arrows_mobile": true,
-        "gallery_side_arrows_style": "glass",
-        "gallery_side_arrows_button_size": 38,
-        "gallery_side_arrows_button_size_mobile": 36,
-        "gallery_side_arrows_icon_size": 9,
-        "gallery_side_arrows_icon_size_mobile": 8,
-        "price_color": "#ff6700",
-        "price_font_size": 1.8,
-        "price_font_weight": "500",
-        "variant_checked_background": "#ff6700",
-        "variant_checked_text_color": "#ffffff",
-        "variant_checked_border_color": "#ff6700",
-        "variant_checked_border_width": 0,
-        "padding_top": 36,
-        "padding_bottom": 8
+        "enable_sticky_info": false, "color_scheme": "scheme-1",
+        "media_size": "small", "constrain_to_viewport": true, "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider", "mobile_thumbnails": "hide",
+        "media_position": "left", "image_zoom": "none", "hide_variants": true, "enable_video_looping": false,
+        "gallery_side_arrows_desktop": true, "gallery_side_arrows_mobile": true, "gallery_side_arrows_style": "glass",
+        "gallery_side_arrows_button_size": 38, "gallery_side_arrows_button_size_mobile": 36,
+        "gallery_side_arrows_icon_size": 12, "gallery_side_arrows_icon_size_mobile": 10,
+        "gallery_side_arrows_offset_y": 0, "gallery_side_arrows_offset_y_mobile": 0,
+        "price_color": "#ff6700", "price_font_size": 1.8, "price_font_weight": "500",
+        "variant_checked_background": "#ff6700", "variant_checked_text_color": "#ffffff",
+        "variant_checked_border_color": "#ff6700", "variant_checked_border_width": 0,
+        "padding_top": 36, "padding_bottom": 8
       }
     },
     "feeding_guide_hj": {
       "type": "feeding-guide",
       "blocks": {
-        "row_hj1": {
-          "type": "row",
-          "settings": {
-            "icon": "🐩",
-            "size_label": "Small",
-            "weight_range": "Up to 15 lbs",
-            "chews_count": "1 chew / day"
-          }
-        },
-        "row_hj2": {
-          "type": "row",
-          "settings": {
-            "icon": "🐕",
-            "size_label": "Medium",
-            "weight_range": "15 - 45 lbs",
-            "chews_count": "2 chews / day"
-          }
-        },
-        "row_hj3": {
-          "type": "row",
-          "settings": {
-            "icon": "🐕‍🦺",
-            "size_label": "Large",
-            "weight_range": "45 - 75 lbs",
-            "chews_count": "3 chews / day"
-          }
-        },
-        "row_hj4": {
-          "type": "row",
-          "settings": {
-            "icon": "🦮",
-            "size_label": "X-Large",
-            "weight_range": "75+ lbs",
-            "chews_count": "4 chews / day"
-          }
-        }
+        "row_hj1": { "type": "row", "settings": { "icon": "🐩", "size_label": "Small", "weight_range": "Up to 15 lbs", "chews_count": "1 chew" } },
+        "row_hj2": { "type": "row", "settings": { "icon": "🐕", "size_label": "Medium", "weight_range": "15 - 45 lbs", "chews_count": "2 chews" } },
+        "row_hj3": { "type": "row", "settings": { "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "45 - 75 lbs", "chews_count": "3 chews" } },
+        "row_hj4": { "type": "row", "settings": { "icon": "🦮", "size_label": "X-Large", "weight_range": "Over 75 lbs", "chews_count": "4 chews" } }
       },
-      "block_order": [
-        "row_hj1",
-        "row_hj2",
-        "row_hj3",
-        "row_hj4"
-      ],
+      "block_order": ["row_hj1", "row_hj2", "row_hj3", "row_hj4"],
       "name": "Feeding Guide",
       "settings": {
-        "heading": "Feeding Guide",
-        "subheading": "Give daily based on your dog's weight",
+        "heading": "Feeding Guide", "subheading": "Give daily based on your dog's weight",
         "note": "For best results, give chews consistently each day. Always provide fresh water.",
-        "bg_color": "#fdecea",
-        "card_bg": "#ffffff",
-        "heading_color": "#1d1d1b",
-        "text_color": "#555555",
-        "accent_color": "#ff6700",
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36
+        "bg_color": "#fdecea", "card_bg": "#ffffff",
+        "heading_color": "#1d1d1b", "text_color": "#555555", "accent_color": "#ff6700",
+        "padding_top": 56, "padding_bottom": 56, "padding_top_mobile": 36, "padding_bottom_mobile": 36
       }
     },
     "what_inside_hj": {
-      "type": "what-inside-section",
+      "type": "ts-whats-inside",
       "blocks": {
-        "item_hj1": {
-          "type": "item",
-          "settings": {
-            "title": "Glucosamine HCl 500mg",
-            "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health."
-          }
-        },
-        "item_hj2": {
-          "type": "item",
-          "settings": {
-            "title": "MSM 400mg",
-            "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair."
-          }
-        },
-        "item_hj3": {
-          "type": "item",
-          "settings": {
-            "title": "Green-Lipped Mussel 150mg",
-            "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation."
-          }
-        },
-        "item_hj4": {
-          "type": "item",
-          "settings": {
-            "title": "Chondroitin Sulfate 110mg",
-            "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience."
-          }
-        },
-        "item_hj5": {
-          "type": "item",
-          "settings": {
-            "title": "Turmeric & Boswellia",
-            "description": "Powerful natural anti-inflammatory botanicals that work synergistically with the joint complex to reduce pain and support mobility."
-          }
-        }
+        "item_hj1": { "type": "item", "settings": { "title": "Glucosamine HCl 500mg", "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health." } },
+        "item_hj2": { "type": "item", "settings": { "title": "MSM 400mg", "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair." } },
+        "item_hj3": { "type": "item", "settings": { "title": "Green-Lipped Mussel 150mg", "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation." } },
+        "item_hj4": { "type": "item", "settings": { "title": "Chondroitin Sulfate 110mg", "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience." } },
+        "item_hj5": { "type": "item", "settings": { "title": "Turmeric & Boswellia", "description": "Powerful natural anti-inflammatory botanicals that work synergistically with the joint complex to reduce pain and support mobility." } }
       },
-      "block_order": [
-        "item_hj1",
-        "item_hj2",
-        "item_hj3",
-        "item_hj4",
-        "item_hj5"
-      ],
+      "block_order": ["item_hj1", "item_hj2", "item_hj3", "item_hj4", "item_hj5"],
       "name": "What's Inside",
       "settings": {
         "heading": "What's Inside",
         "background_color": "#fdecea",
         "heading_color": "#ff6700",
+        "accent_color": "#ff6700",
         "item_title_color": "#1d1d1b",
         "item_text_color": "#555555",
-        "right_title_color": "#0f3b3f",
-        "right_text_color": "#2f2f2f",
-        "divider_color": "#ffffffb3",
-        "accent_color": "#e85b71",
-        "button_background": "#e85b71",
-        "button_background_hover": "#d14f64",
-        "button_text_color": "#ffffff",
-        "heading_size": "h2",
-        "heading_letter_spacing": 1,
-        "item_heading_letter_spacing": 1,
-        "right_heading_letter_spacing": 1,
-        "item_title_size": 28,
-        "item_text_size": 16,
-        "right_title_size": 28,
-        "right_text_size": 16,
-        "icon_size": 96,
-        "icon_size_mobile": 86,
-        "flavor_image_width": 340,
-        "flavor_image_width_mobile": 220,
-        "flavor_image_radius": 0,
-        "expand_animation": "height",
-        "initial_visible": 3,
-        "max_width": 1320,
-        "row_gap": 28,
-        "section_padding_desktop": 60,
-        "section_padding_mobile": 48,
-        "card_radius": 12,
-        "button_radius": 28,
-        "view_more_label": "View More",
-        "view_less_label": "View Less",
         "flavor_title": "Move More. Live More.",
         "flavor_subtitle": "Chicken Liver Flavor",
-        "enable_aos": true,
-        "aos_offset": 200,
-        "aos_effect": "fade-up",
-        "aos_anchor_placement": "top-bottom",
-        "aos_duration": 800,
-        "aos_delay": 0
+        "padding_desktop": 60, "padding_mobile": 40
       }
     },
     "faq_hj": {
       "type": "faq-accordion-section",
       "blocks": {
-        "cat_hj1": {
-          "type": "category",
-          "settings": {
-            "heading": "Hip & Joint"
-          }
-        },
-        "faq_hj1": {
-          "type": "item",
-          "settings": {
-            "heading": "How long until I see improvement in my dog's mobility?",
-            "content": "<p>Many pet parents notice improvements in mobility and comfort within 4-8 weeks of consistent daily use. Senior dogs or those with advanced joint issues may take longer to show significant improvement.</p>"
-          }
-        },
-        "faq_hj2": {
-          "type": "item",
-          "settings": {
-            "heading": "Is this safe for dogs already on joint medication?",
-            "content": "<p>Please consult your veterinarian if your dog is taking prescription joint medications. Natural supplements can often complement prescribed treatments safely, but your vet should confirm for your specific dog.</p>"
-          }
-        },
-        "faq_hj3": {
-          "type": "item",
-          "settings": {
-            "heading": "What breeds benefit most?",
-            "content": "<p>While any dog can benefit, breeds prone to joint issues - like German Shepherds, Golden Retrievers, Labradors, and large/giant breeds - tend to see the most significant improvements in mobility and comfort.</p>"
-          }
-        },
-        "faq_hj4": {
-          "type": "item",
-          "settings": {
-            "heading": "Can younger dogs take Hip & Joint as prevention?",
-            "content": "<p>Yes! Starting joint support early is a great proactive strategy, especially for large breeds. Prevention is always easier than treatment, and our formula is safe for ongoing daily use.</p>"
-          }
-        }
+        "cat_hj1": { "type": "category", "settings": { "heading": "Hip & Joint" } },
+        "faq_hj1": { "type": "item", "settings": { "heading": "How long until I see improvement in my dog's mobility?", "content": "<p>Many pet parents notice improvements in mobility and comfort within 4-8 weeks of consistent daily use. Senior dogs or those with advanced joint issues may take longer to show significant improvement.</p>" } },
+        "faq_hj2": { "type": "item", "settings": { "heading": "Is this safe for dogs already on joint medication?", "content": "<p>Please consult your veterinarian if your dog is taking prescription joint medications. Natural supplements can often complement prescribed treatments safely, but your vet should confirm for your specific dog.</p>" } },
+        "faq_hj3": { "type": "item", "settings": { "heading": "What breeds benefit most?", "content": "<p>While any dog can benefit, breeds prone to joint issues - like German Shepherds, Golden Retrievers, Labradors, and large/giant breeds - tend to see the most significant improvements in mobility and comfort.</p>" } },
+        "faq_hj4": { "type": "item", "settings": { "heading": "Can younger dogs take Hip & Joint as prevention?", "content": "<p>Yes! Starting joint support early is a great proactive strategy, especially for large breeds. Prevention is always easier than treatment, and our formula is safe for ongoing daily use.</p>" } }
       },
-      "block_order": [
-        "cat_hj1",
-        "faq_hj1",
-        "faq_hj2",
-        "faq_hj3",
-        "faq_hj4"
-      ],
+      "block_order": ["cat_hj1", "faq_hj1", "faq_hj2", "faq_hj3", "faq_hj4"],
       "name": "Product FAQ",
-      "settings": {
-        "heading": "Frequently Asked Questions",
-        "subheading": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
+      "settings": { "heading": "Frequently Asked Questions", "subheading": "", "color_scheme": "scheme-1", "padding_top": 60, "padding_bottom": 60 }
     },
     "best_sellers_hj": {
       "type": "best-sellers-custom",
       "blocks": {
-        "product_dQzzDV": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-multivitamin",
-            "title_override": "Daily Multivitamin",
-            "image_preset": "none",
-            "subtitle": "Daily support for overall vitality",
-            "card_bg": "#eaf4f4",
-            "icon_1_preset": "ts_multivitamin",
-            "icon_1_label": "Multivitamin Support",
-            "icon_2_preset": "ts_energy",
-            "icon_2_label": "Energy & Vitality",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
-        "product_a7PMHk": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-probiotic",
-            "title_override": "Probiotic",
-            "image_preset": "none",
-            "subtitle": "Maintains healthy digestive system",
-            "card_bg": "#edf6f0",
-            "icon_1_preset": "ts_gut",
-            "icon_1_label": "Promotes Gut Health",
-            "icon_2_preset": "ts_immune",
-            "icon_2_label": "Immune Health Support",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
-        "product_NHd9EB": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-skin-coat",
-            "title_override": "Skin & Coat",
-            "image_preset": "none",
-            "subtitle": "Softens coat and soothes dry skin",
-            "card_bg": "#fef9e7",
-            "icon_1_preset": "ts_coat",
-            "icon_1_label": "Helps Restore Coat",
-            "icon_2_preset": "ts_antihistamine",
-            "icon_2_label": "Natural Antihistamines",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        }
+        "product_dQzzDV": { "type": "product", "settings": { "product": "tailspark-multivitamin", "title_override": "Daily Multivitamin", "image_preset": "none", "subtitle": "Daily support for overall vitality", "card_bg": "#eaf4f4", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
+        "product_a7PMHk": { "type": "product", "settings": { "product": "tailspark-probiotic", "title_override": "Probiotic", "image_preset": "none", "subtitle": "Maintains healthy digestive system", "card_bg": "#edf6f0", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
+        "product_NHd9EB": { "type": "product", "settings": { "product": "tailspark-skin-coat", "title_override": "Skin & Coat", "image_preset": "none", "subtitle": "Softens coat and soothes dry skin", "card_bg": "#fef9e7", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } }
       },
-      "block_order": [
-        "product_dQzzDV",
-        "product_a7PMHk",
-        "product_NHd9EB"
-      ],
+      "block_order": ["product_dQzzDV", "product_a7PMHk", "product_NHd9EB"],
       "name": "You Might Also Like",
       "settings": {
-        "heading": "You Might Also Like",
-        "subheading": "Complete your dog's daily wellness routine.",
-        "button_label": "Add to Cart",
-        "show_price": true,
-        "image_radius": 20,
-        "image_radius_mobile": 6,
-        "section_bg": "#ffffff",
-        "heading_color": "#1d1d1b",
-        "title_color": "#1d1d1b",
-        "text_color": "#555555",
-        "icon_color": "#333333",
-        "button_bg": "#ff6700",
-        "button_text": "#ffffff",
-        "button_hover_bg": "#cc5200",
-        "button_hover_text": "#ffffff",
-        "heading_size": 32,
-        "heading_size_mobile": 24,
-        "icon_size": 48,
-        "icon_size_mobile": 34,
-        "icon_label_size": 11,
-        "icon_label_size_mobile": 10,
-        "padding_top": 40,
-        "padding_bottom": 60,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 40
+        "heading": "You Might Also Like", "subheading": "Complete your dog's daily wellness routine.",
+        "button_label": "Add to Cart", "show_price": true,
+        "image_radius": 20, "image_radius_mobile": 6,
+        "section_bg": "#ffffff", "heading_color": "#1d1d1b", "title_color": "#1d1d1b",
+        "text_color": "#555555", "icon_color": "#333333",
+        "button_bg": "#ff6700", "button_text": "#ffffff",
+        "button_hover_bg": "#cc5200", "button_hover_text": "#ffffff",
+        "heading_size": 32, "heading_size_mobile": 24,
+        "icon_size": 48, "icon_size_mobile": 34, "icon_label_size": 11, "icon_label_size_mobile": 10,
+        "padding_top": 40, "padding_bottom": 60, "padding_top_mobile": 32, "padding_bottom_mobile": 40
       }
     }
   },
-  "order": [
-    "main",
-    "feeding_guide_hj",
-    "what_inside_hj",
-    "faq_hj",
-    "best_sellers_hj"
-  ]
+  "order": ["main", "feeding_guide_hj", "what_inside_hj", "faq_hj", "best_sellers_hj"]
 }
