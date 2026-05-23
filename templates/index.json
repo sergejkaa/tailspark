@@ -457,6 +457,71 @@
         "padding_bottom_mobile": 40
       }
     },
+    "image_and_accordions_custom_wMM997": {
+      "type": "image-and-accordions-custom",
+      "blocks": {
+        "accordion_pWzCBT": {
+          "type": "accordion",
+          "settings": {
+            "title": "LITTLE PINEAPPLE REFRESH",
+            "text": "<p>A gently exfoliating daily cleanser that removes SPF and makeup while leaving skin clean, soft, and hydrated post-rinse.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_8DbeAW": {
+          "type": "accordion",
+          "settings": {
+            "title": "SPOTWEAR",
+            "text": "<p>Hydrocolloid stickers that absorb excess oil and shield spots from stressors when you are on the go.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_yBiadC": {
+          "type": "accordion",
+          "settings": {
+            "title": "GLAZING MIST",
+            "text": "<p>A superfine mist that hydrates, refreshes, and helps skin feel balanced over time.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_pWzCBT",
+        "accordion_8DbeAW",
+        "accordion_yBiadC"
+      ],
+      "name": "Image and Accordions",
+      "settings": {
+        "image_side": "right",
+        "image_position": "50% 50%",
+        "heading": "High-performance essentials for your skin.",
+        "heading_size": "h1",
+        "open_first": false,
+        "cta_label": "SHOP NOW",
+        "cta_link": "",
+        "max_width": 1400,
+        "desktop_image_ratio": "11 / 12",
+        "mobile_image_ratio": "4 / 5",
+        "image_radius": 0,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36,
+        "background_color": "#fff8ed",
+        "text_color": "#333333",
+        "border_color": "#333333",
+        "toggle_background": "#ff6700",
+        "toggle_icon_color": "#ffffff",
+        "button_background": "#ffffff",
+        "button_border": "#696660",
+        "button_text_color": "#696660",
+        "button_hover_background": "#696660",
+        "button_text_hover_color": "#ffffff"
+      }
+    },
     "logo_ticker_U4xeMH": {
       "type": "logo-ticker",
       "blocks": {
@@ -579,6 +644,61 @@
         "padding_bottom": 12
       }
     },
+    "multicolumn_YFnwpM": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_H4KfCd": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_TCBA3Y": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_wmg9Fh": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_H4KfCd",
+        "column_TCBA3Y",
+        "column_wmg9Fh"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Why Soft Chews?",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "Button label",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "dots_color": "#000000",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "newsletter_BakW9V": {
       "type": "newsletter",
       "blocks": {
@@ -619,7 +739,9 @@
     "tailspark_hero_jH9Fz6",
     "home_icons_bar_QDY8jh",
     "best_sellers_custom_GpGCrV",
+    "image_and_accordions_custom_wMM997",
     "logo_ticker_U4xeMH",
+    "multicolumn_YFnwpM",
     "newsletter_BakW9V"
   ]
 }
