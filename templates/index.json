@@ -534,7 +534,7 @@
         "max_width": 1400,
         "desktop_image_ratio": "11 / 12",
         "mobile_image_ratio": "4 / 5",
-        "image_radius": 0,
+        "image_radius": 11,
         "padding_top": 56,
         "padding_bottom": 56,
         "padding_top_mobile": 36,
@@ -547,8 +547,8 @@
         "button_background": "#ff6700",
         "button_border": "#ff6700",
         "button_text_color": "#fff8ed",
-        "button_hover_background": "#ffffff",
-        "button_text_hover_color": "#606060"
+        "button_hover_background": "#ff6700",
+        "button_text_hover_color": "#333333"
       }
     },
     "customer_reviews_main": {
