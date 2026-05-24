@@ -280,19 +280,90 @@
     "what_inside_pb": {
       "type": "ts-whats-inside",
       "blocks": {
-        "item_pb1": { "type": "item", "settings": { "title": "Bacillus coagulans", "dosage": "120 Million CFU", "description": "A spore-forming probiotic strain that survives the harsh digestive process and successfully colonizes the gut to restore healthy bacterial balance." } },
-        "item_pb2": { "type": "item", "settings": { "title": "FOS (Fructooligosaccharides)", "dosage": "200mg", "description": "Prebiotic fiber that acts as food for beneficial gut bacteria, enhancing probiotic activity and promoting a thriving gut microbiome." } },
-        "item_pb3": { "type": "item", "settings": { "title": "Inulin (Chicory Root)", "dosage": "100mg", "description": "Soluble fiber that promotes healthy bowel movements, reduces gas, and supports overall digestive comfort in sensitive dogs." } },
-        "item_pb4": { "type": "item", "settings": { "title": "Brewer's Yeast", "dosage": "50mg", "description": "Natural source of B-vitamins and prebiotics that further support gut health, skin condition, and immune function." } },
-        "item_pb5": { "type": "item", "settings": { "title": "Chicken Liver & Sweet Potato", "dosage": "natural ingredients", "description": "Natural palatability enhancers that make chews irresistibly tasty. No artificial flavors, no fillers - just real ingredients." } },
-        "nutri_pb1": { "type": "nutrition_item", "settings": { "ingredient": "Bacillus coagulans (guaranteed viable)", "amount": "120M CFU" } },
-        "nutri_pb2": { "type": "nutrition_item", "settings": { "ingredient": "Fructooligosaccharides (FOS)", "amount": "200mg" } },
-        "nutri_pb3": { "type": "nutrition_item", "settings": { "ingredient": "Inulin (Chicory Root Extract)", "amount": "100mg" } },
-        "nutri_pb4": { "type": "nutrition_item", "settings": { "ingredient": "Brewer's Yeast", "amount": "50mg" } }
+        "item_pb1": {
+          "type": "item",
+          "settings": {
+            "title": "Bacillus coagulans",
+            "dosage": "120 Million CFU",
+            "description": "A spore-forming probiotic strain that survives the harsh digestive process and successfully colonizes the gut to restore healthy bacterial balance.",
+            "image_asset": "ts-ing-bacillus-coagulans.png"
+          }
+        },
+        "item_pb2": {
+          "type": "item",
+          "settings": {
+            "title": "FOS (Fructooligosaccharides)",
+            "dosage": "200mg",
+            "description": "Prebiotic fiber that acts as food for beneficial gut bacteria, enhancing probiotic activity and promoting a thriving gut microbiome.",
+            "image_asset": "ts-ing-fos.png"
+          }
+        },
+        "item_pb3": {
+          "type": "item",
+          "settings": {
+            "title": "Inulin (Chicory Root)",
+            "dosage": "100mg",
+            "description": "Soluble fiber that promotes healthy bowel movements, reduces gas, and supports overall digestive comfort in sensitive dogs.",
+            "image_asset": "ts-ing-inulin-chicory.png"
+          }
+        },
+        "item_pb4": {
+          "type": "item",
+          "settings": {
+            "title": "Brewer's Yeast",
+            "dosage": "50mg",
+            "description": "Natural source of B-vitamins and prebiotics that further support gut health, skin condition, and immune function.",
+            "image_asset": "ts-ing-brewers-yeast.png"
+          }
+        },
+        "item_pb5": {
+          "type": "item",
+          "settings": {
+            "title": "Chicken Liver & Sweet Potato",
+            "dosage": "natural ingredients",
+            "description": "Natural palatability enhancers that make chews irresistibly tasty. No artificial flavors, no fillers - just real ingredients.",
+            "image_asset": "ts-ing-chicken-sweet-potato.png"
+          }
+        },
+        "nutri_pb1": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Bacillus coagulans (guaranteed viable)",
+            "amount": "120M CFU"
+          }
+        },
+        "nutri_pb2": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Fructooligosaccharides (FOS)",
+            "amount": "200mg"
+          }
+        },
+        "nutri_pb3": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Inulin (Chicory Root Extract)",
+            "amount": "100mg"
+          }
+        },
+        "nutri_pb4": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Brewer's Yeast",
+            "amount": "50mg"
+          }
+        }
       },
       "block_order": [
-        "item_pb1", "item_pb2", "item_pb3", "item_pb4", "item_pb5",
-        "nutri_pb1", "nutri_pb2", "nutri_pb3", "nutri_pb4"
+        "item_pb1",
+        "item_pb2",
+        "item_pb3",
+        "item_pb4",
+        "item_pb5",
+        "nutri_pb1",
+        "nutri_pb2",
+        "nutri_pb3",
+        "nutri_pb4"
       ],
       "name": "What's Inside",
       "settings": {

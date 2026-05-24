@@ -378,21 +378,106 @@
     "what_inside_hj": {
       "type": "ts-whats-inside",
       "blocks": {
-        "item_hj1": { "type": "item", "settings": { "title": "Glucosamine HCl", "dosage": "500mg", "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health." } },
-        "item_hj2": { "type": "item", "settings": { "title": "MSM", "dosage": "400mg", "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair." } },
-        "item_hj3": { "type": "item", "settings": { "title": "Green-Lipped Mussel", "dosage": "150mg", "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation." } },
-        "item_hj4": { "type": "item", "settings": { "title": "Chondroitin Sulfate", "dosage": "110mg", "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience." } },
-        "item_hj5": { "type": "item", "settings": { "title": "Turmeric & Boswellia", "dosage": "50mg / 50mg", "description": "Powerful natural anti-inflammatory botanicals that work synergistically to reduce pain and support mobility." } },
-        "nutri_hj1": { "type": "nutrition_item", "settings": { "ingredient": "Glucosamine Hydrochloride", "amount": "500mg" } },
-        "nutri_hj2": { "type": "nutrition_item", "settings": { "ingredient": "MSM (Methylsulfonylmethane)", "amount": "400mg" } },
-        "nutri_hj3": { "type": "nutrition_item", "settings": { "ingredient": "Green-Lipped Mussel Powder", "amount": "150mg" } },
-        "nutri_hj4": { "type": "nutrition_item", "settings": { "ingredient": "Chondroitin Sulfate", "amount": "110mg" } },
-        "nutri_hj5": { "type": "nutrition_item", "settings": { "ingredient": "Turmeric Root Powder", "amount": "50mg" } },
-        "nutri_hj6": { "type": "nutrition_item", "settings": { "ingredient": "Boswellia Serrata Extract", "amount": "50mg" } }
+        "item_hj1": {
+          "type": "item",
+          "settings": {
+            "title": "Glucosamine HCl",
+            "dosage": "500mg",
+            "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health.",
+            "image_asset": "ts-ing-glucosamine.png"
+          }
+        },
+        "item_hj2": {
+          "type": "item",
+          "settings": {
+            "title": "MSM",
+            "dosage": "400mg",
+            "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair.",
+            "image_asset": "ts-ing-msm.png"
+          }
+        },
+        "item_hj3": {
+          "type": "item",
+          "settings": {
+            "title": "Green-Lipped Mussel",
+            "dosage": "150mg",
+            "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation.",
+            "image_asset": "ts-ing-green-lipped-mussel.png"
+          }
+        },
+        "item_hj4": {
+          "type": "item",
+          "settings": {
+            "title": "Chondroitin Sulfate",
+            "dosage": "110mg",
+            "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience.",
+            "image_asset": "ts-ing-chondroitin.png"
+          }
+        },
+        "item_hj5": {
+          "type": "item",
+          "settings": {
+            "title": "Turmeric & Boswellia",
+            "dosage": "50mg / 50mg",
+            "description": "Powerful natural anti-inflammatory botanicals that work synergistically to reduce pain and support mobility.",
+            "image_asset": "ts-ing-turmeric.png"
+          }
+        },
+        "nutri_hj1": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Glucosamine Hydrochloride",
+            "amount": "500mg"
+          }
+        },
+        "nutri_hj2": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "MSM (Methylsulfonylmethane)",
+            "amount": "400mg"
+          }
+        },
+        "nutri_hj3": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Green-Lipped Mussel Powder",
+            "amount": "150mg"
+          }
+        },
+        "nutri_hj4": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Chondroitin Sulfate",
+            "amount": "110mg"
+          }
+        },
+        "nutri_hj5": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Turmeric Root Powder",
+            "amount": "50mg"
+          }
+        },
+        "nutri_hj6": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Boswellia Serrata Extract",
+            "amount": "50mg"
+          }
+        }
       },
       "block_order": [
-        "item_hj1", "item_hj2", "item_hj3", "item_hj4", "item_hj5",
-        "nutri_hj1", "nutri_hj2", "nutri_hj3", "nutri_hj4", "nutri_hj5", "nutri_hj6"
+        "item_hj1",
+        "item_hj2",
+        "item_hj3",
+        "item_hj4",
+        "item_hj5",
+        "nutri_hj1",
+        "nutri_hj2",
+        "nutri_hj3",
+        "nutri_hj4",
+        "nutri_hj5",
+        "nutri_hj6"
       ],
       "name": "What's Inside",
       "settings": {

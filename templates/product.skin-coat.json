@@ -320,21 +320,106 @@
     "what_inside_sc": {
       "type": "ts-whats-inside",
       "blocks": {
-        "item_sc1": { "type": "item", "settings": { "title": "Fish Oil (Omega-3)", "dosage": "150mg", "description": "Rich source of DHA and EPA essential fatty acids that support healthy skin moisture and a shiny, lustrous coat." } },
-        "item_sc2": { "type": "item", "settings": { "title": "Flaxseed (Omega-6 & 9)", "dosage": "100mg", "description": "Plant-based essential fatty acids that strengthen the skin barrier, reduce inflammation, and support coat thickness." } },
-        "item_sc3": { "type": "item", "settings": { "title": "Vitamin E", "dosage": "30 IU", "description": "Powerful antioxidant that protects skin cells from damage and promotes a glossy, healthy coat with natural shine." } },
-        "item_sc4": { "type": "item", "settings": { "title": "Biotin", "dosage": "500mcg", "description": "Essential B-vitamin that strengthens hair follicles, reduces excessive shedding, and supports thick, healthy fur growth." } },
-        "item_sc5": { "type": "item", "settings": { "title": "Vitamin A & Coconut Oil", "dosage": "2500 IU / 50mg", "description": "Supports skin cell regeneration and maintains healthy, hydrated skin. Coconut oil adds natural moisturizing benefit." } },
-        "nutri_sc1": { "type": "nutrition_item", "settings": { "ingredient": "Fish Oil (Omega-3)", "amount": "150mg" } },
-        "nutri_sc2": { "type": "nutrition_item", "settings": { "ingredient": "Flaxseed", "amount": "100mg" } },
-        "nutri_sc3": { "type": "nutrition_item", "settings": { "ingredient": "Vitamin E", "amount": "30 IU" } },
-        "nutri_sc4": { "type": "nutrition_item", "settings": { "ingredient": "Biotin", "amount": "500mcg" } },
-        "nutri_sc5": { "type": "nutrition_item", "settings": { "ingredient": "Vitamin A", "amount": "2500 IU" } },
-        "nutri_sc6": { "type": "nutrition_item", "settings": { "ingredient": "Coconut Oil", "amount": "50mg" } }
+        "item_sc1": {
+          "type": "item",
+          "settings": {
+            "title": "Fish Oil (Omega-3)",
+            "dosage": "150mg",
+            "description": "Rich source of DHA and EPA essential fatty acids that support healthy skin moisture and a shiny, lustrous coat.",
+            "image_asset": "ts-ing-fish-oil.png"
+          }
+        },
+        "item_sc2": {
+          "type": "item",
+          "settings": {
+            "title": "Flaxseed (Omega-6 & 9)",
+            "dosage": "100mg",
+            "description": "Plant-based essential fatty acids that strengthen the skin barrier, reduce inflammation, and support coat thickness.",
+            "image_asset": "ts-ing-flaxseed.png"
+          }
+        },
+        "item_sc3": {
+          "type": "item",
+          "settings": {
+            "title": "Vitamin E",
+            "dosage": "30 IU",
+            "description": "Powerful antioxidant that protects skin cells from damage and promotes a glossy, healthy coat with natural shine.",
+            "image_asset": "ts-ing-vitamin-e.png"
+          }
+        },
+        "item_sc4": {
+          "type": "item",
+          "settings": {
+            "title": "Biotin",
+            "dosage": "500mcg",
+            "description": "Essential B-vitamin that strengthens hair follicles, reduces excessive shedding, and supports thick, healthy fur growth.",
+            "image_asset": "ts-ing-biotin.png"
+          }
+        },
+        "item_sc5": {
+          "type": "item",
+          "settings": {
+            "title": "Vitamin A & Coconut Oil",
+            "dosage": "2500 IU / 50mg",
+            "description": "Supports skin cell regeneration and maintains healthy, hydrated skin. Coconut oil adds natural moisturizing benefit.",
+            "image_asset": "ts-ing-coconut-oil.png"
+          }
+        },
+        "nutri_sc1": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Fish Oil (Omega-3)",
+            "amount": "150mg"
+          }
+        },
+        "nutri_sc2": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Flaxseed",
+            "amount": "100mg"
+          }
+        },
+        "nutri_sc3": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Vitamin E",
+            "amount": "30 IU"
+          }
+        },
+        "nutri_sc4": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Biotin",
+            "amount": "500mcg"
+          }
+        },
+        "nutri_sc5": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Vitamin A",
+            "amount": "2500 IU"
+          }
+        },
+        "nutri_sc6": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Coconut Oil",
+            "amount": "50mg"
+          }
+        }
       },
       "block_order": [
-        "item_sc1", "item_sc2", "item_sc3", "item_sc4", "item_sc5",
-        "nutri_sc1", "nutri_sc2", "nutri_sc3", "nutri_sc4", "nutri_sc5", "nutri_sc6"
+        "item_sc1",
+        "item_sc2",
+        "item_sc3",
+        "item_sc4",
+        "item_sc5",
+        "nutri_sc1",
+        "nutri_sc2",
+        "nutri_sc3",
+        "nutri_sc4",
+        "nutri_sc5",
+        "nutri_sc6"
       ],
       "name": "What's Inside",
       "settings": {

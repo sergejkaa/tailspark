@@ -306,26 +306,146 @@
     "what_inside_mv": {
       "type": "ts-whats-inside",
       "blocks": {
-        "item_mv1": { "type": "item", "settings": { "title": "Vitamins A, C, D3 & E", "dosage": "Vitamin complex", "description": "Essential antioxidant vitamins that protect cells, support immune function, and maintain healthy vision and skin." } },
-        "item_mv2": { "type": "item", "settings": { "title": "Full B-Complex", "dosage": "B1-B12", "description": "Complete spectrum of B vitamins that support energy metabolism, nerve health, and red blood cell production." } },
-        "item_mv3": { "type": "item", "settings": { "title": "Calcium & Phosphorus", "dosage": "100mg / 80mg", "description": "The essential bone-building mineral duo that supports strong teeth, healthy joints, and structural integrity." } },
-        "item_mv4": { "type": "item", "settings": { "title": "Magnesium & Potassium", "dosage": "30mg / 20mg", "description": "Essential minerals for muscle function, nerve signal transmission, and maintaining proper fluid balance." } },
-        "item_mv5": { "type": "item", "settings": { "title": "Zinc, Iodine & Selenium", "dosage": "Trace minerals", "description": "Vital trace minerals that support immune response, wound healing, thyroid function, and reproductive health." } },
-        "nutri_mv1": { "type": "nutrition_item", "settings": { "ingredient": "Vitamin A", "amount": "2500 IU" } },
-        "nutri_mv2": { "type": "nutrition_item", "settings": { "ingredient": "Vitamin C", "amount": "30mg" } },
-        "nutri_mv3": { "type": "nutrition_item", "settings": { "ingredient": "Vitamin D3", "amount": "200 IU" } },
-        "nutri_mv4": { "type": "nutrition_item", "settings": { "ingredient": "Vitamin E", "amount": "20 IU" } },
-        "nutri_mv5": { "type": "nutrition_item", "settings": { "ingredient": "B-Complex (B1-B12)", "amount": "10mg" } },
-        "nutri_mv6": { "type": "nutrition_item", "settings": { "ingredient": "Calcium", "amount": "100mg" } },
-        "nutri_mv7": { "type": "nutrition_item", "settings": { "ingredient": "Phosphorus", "amount": "80mg" } },
-        "nutri_mv8": { "type": "nutrition_item", "settings": { "ingredient": "Magnesium", "amount": "30mg" } },
-        "nutri_mv9": { "type": "nutrition_item", "settings": { "ingredient": "Zinc", "amount": "5mg" } },
-        "nutri_mv10": { "type": "nutrition_item", "settings": { "ingredient": "Iodine", "amount": "100mcg" } },
-        "nutri_mv11": { "type": "nutrition_item", "settings": { "ingredient": "Selenium", "amount": "20mcg" } }
+        "item_mv1": {
+          "type": "item",
+          "settings": {
+            "title": "Vitamins A, C, D3 & E",
+            "dosage": "Vitamin complex",
+            "description": "Essential antioxidant vitamins that protect cells, support immune function, and maintain healthy vision and skin.",
+            "image_asset": "ts-ing-vitamins-acd-e.png"
+          }
+        },
+        "item_mv2": {
+          "type": "item",
+          "settings": {
+            "title": "Full B-Complex",
+            "dosage": "B1-B12",
+            "description": "Complete spectrum of B vitamins that support energy metabolism, nerve health, and red blood cell production.",
+            "image_asset": "ts-ing-b-complex.png"
+          }
+        },
+        "item_mv3": {
+          "type": "item",
+          "settings": {
+            "title": "Calcium & Phosphorus",
+            "dosage": "100mg / 80mg",
+            "description": "The essential bone-building mineral duo that supports strong teeth, healthy joints, and structural integrity.",
+            "image_asset": "ts-ing-calcium-phosphorus.png"
+          }
+        },
+        "item_mv4": {
+          "type": "item",
+          "settings": {
+            "title": "Magnesium & Potassium",
+            "dosage": "30mg / 20mg",
+            "description": "Essential minerals for muscle function, nerve signal transmission, and maintaining proper fluid balance.",
+            "image_asset": "ts-ing-magnesium-potassium.png"
+          }
+        },
+        "item_mv5": {
+          "type": "item",
+          "settings": {
+            "title": "Zinc, Iodine & Selenium",
+            "dosage": "Trace minerals",
+            "description": "Vital trace minerals that support immune response, wound healing, thyroid function, and reproductive health.",
+            "image_asset": "ts-ing-zinc-selenium.png"
+          }
+        },
+        "nutri_mv1": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Vitamin A",
+            "amount": "2500 IU"
+          }
+        },
+        "nutri_mv2": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Vitamin C",
+            "amount": "30mg"
+          }
+        },
+        "nutri_mv3": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Vitamin D3",
+            "amount": "200 IU"
+          }
+        },
+        "nutri_mv4": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Vitamin E",
+            "amount": "20 IU"
+          }
+        },
+        "nutri_mv5": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "B-Complex (B1-B12)",
+            "amount": "10mg"
+          }
+        },
+        "nutri_mv6": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Calcium",
+            "amount": "100mg"
+          }
+        },
+        "nutri_mv7": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Phosphorus",
+            "amount": "80mg"
+          }
+        },
+        "nutri_mv8": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Magnesium",
+            "amount": "30mg"
+          }
+        },
+        "nutri_mv9": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Zinc",
+            "amount": "5mg"
+          }
+        },
+        "nutri_mv10": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Iodine",
+            "amount": "100mcg"
+          }
+        },
+        "nutri_mv11": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Selenium",
+            "amount": "20mcg"
+          }
+        }
       },
       "block_order": [
-        "item_mv1", "item_mv2", "item_mv3", "item_mv4", "item_mv5",
-        "nutri_mv1", "nutri_mv2", "nutri_mv3", "nutri_mv4", "nutri_mv5", "nutri_mv6", "nutri_mv7", "nutri_mv8", "nutri_mv9", "nutri_mv10", "nutri_mv11"
+        "item_mv1",
+        "item_mv2",
+        "item_mv3",
+        "item_mv4",
+        "item_mv5",
+        "nutri_mv1",
+        "nutri_mv2",
+        "nutri_mv3",
+        "nutri_mv4",
+        "nutri_mv5",
+        "nutri_mv6",
+        "nutri_mv7",
+        "nutri_mv8",
+        "nutri_mv9",
+        "nutri_mv10",
+        "nutri_mv11"
       ],
       "name": "What's Inside",
       "settings": {

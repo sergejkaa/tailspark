@@ -235,6 +235,8 @@
                 <div class="ts-wi__card-img-wrap">
                   {%- if block.settings.image != blank -%}
                     {{ block.settings.image | image_url: width: 180 | image_tag: class: 'ts-wi__card-img', loading: 'lazy', alt: block.settings.title }}
+                  {%- elsif block.settings.image_asset != blank -%}
+                    <img src="{{ block.settings.image_asset | asset_url }}" alt="{{ block.settings.title | escape }}" class="ts-wi__card-img" loading="lazy" width="180" height="180">
                   {%- else -%}
                     <div class="ts-wi__card-placeholder" aria-hidden="true">🌿</div>
                   {%- endif -%}
@@ -329,7 +331,8 @@
       "type": "item",
       "name": "Ingredient",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Ingredient image" },
+        { "type": "image_picker", "id": "image", "label": "Ingredient image (Shopify upload)" },
+        { "type": "text", "id": "image_asset", "label": "Image asset filename (e.g. ts-ing-glucosamine.png)" },
         { "type": "text", "id": "title", "label": "Ingredient name", "default": "Ingredient Name" },
         { "type": "text", "id": "dosage", "label": "Dosage (e.g. 375mg)" },
         { "type": "textarea", "id": "description", "label": "Description", "default": "A short description of what this ingredient does for your dog." }
