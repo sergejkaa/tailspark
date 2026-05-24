@@ -66,7 +66,7 @@
   .ts-wi__card {
     background: {{ section.settings.card_bg }};
     border-radius: 16px;
-    padding: 20px 20px 20px 20px;
+    padding: 20px;
     display: flex;
     align-items: flex-start;
     gap: 0;
@@ -129,17 +129,56 @@
   }
 
   /* Nutritional info panel */
-  .ts-wi__nutri {
-    font-size: 13.5px;
-    line-height: 1.7;
-    color: {{ section.settings.item_text_color }};
+  .ts-wi__nutri-panel {
     background: {{ section.settings.card_bg }};
     border-radius: 16px;
     padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
   }
-  .ts-wi__nutri p { margin: 0 0 10px; }
-  .ts-wi__nutri p:last-child { margin: 0; }
-  .ts-wi__nutri strong { color: {{ section.settings.item_title_color }}; font-weight: 700; }
+  @media (max-width: 600px) {
+    .ts-wi__nutri-panel { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+  }
+  .ts-wi__nutri-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: {{ section.settings.item_title_color }};
+    margin: 0 0 12px;
+    letter-spacing: 0.01em;
+  }
+  .ts-wi__nutri-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    padding: 4px 0;
+    border-bottom: 1px dotted rgba(0,0,0,0.13);
+  }
+  .ts-wi__nutri-row:last-child { border-bottom: none; }
+  .ts-wi__nutri-name {
+    font-size: 12.5px;
+    color: {{ section.settings.item_text_color }};
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .ts-wi__nutri-spacer {
+    flex: 1;
+    min-width: 8px;
+  }
+  .ts-wi__nutri-amount {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: {{ section.settings.item_text_color }};
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .ts-wi__nutri-inactive-text {
+    font-size: 12.5px;
+    color: {{ section.settings.item_text_color }};
+    line-height: 1.65;
+    margin: 0;
+    opacity: 0.85;
+  }
 
   /* Footer */
   .ts-wi__footer {
@@ -162,6 +201,11 @@
   }
 {%- endstyle -%}
 
+{%- assign has_nutrition = false -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'nutrition_item' -%}{%- assign has_nutrition = true -%}{%- endif -%}
+{%- endfor -%}
+
 <section class="ts-wi">
   <div class="ts-wi__inner">
 
@@ -171,7 +215,7 @@
 
     <div class="ts-wi__tabs" role="tablist">
       <button class="ts-wi__tab is-active" role="tab" aria-selected="true" data-ts-wi-tab="ingredients">Ingredients</button>
-      {%- if section.settings.nutritional_info != blank -%}
+      {%- if has_nutrition -%}
         <button class="ts-wi__tab" role="tab" aria-selected="false" data-ts-wi-tab="nutrition">Nutritional Information</button>
       {%- endif -%}
     </div>
@@ -205,9 +249,28 @@
       {%- endif -%}
     </div>
 
-    {%- if section.settings.nutritional_info != blank -%}
+    {%- if has_nutrition -%}
       <div class="ts-wi__panel" data-ts-wi-panel="nutrition">
-        <div class="ts-wi__nutri">{{ section.settings.nutritional_info }}</div>
+        <div class="ts-wi__nutri-panel">
+          <div>
+            <p class="ts-wi__nutri-title">Active Ingredients (per 1 chew)</p>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'nutrition_item' -%}
+                <div class="ts-wi__nutri-row" {{ block.shopify_attributes }}>
+                  <span class="ts-wi__nutri-name">{{ block.settings.ingredient }}</span>
+                  <span class="ts-wi__nutri-spacer"></span>
+                  <span class="ts-wi__nutri-amount">{{ block.settings.amount }}</span>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          {%- if section.settings.inactive_ingredients != blank -%}
+            <div>
+              <p class="ts-wi__nutri-title">Inactive Ingredients:</p>
+              <p class="ts-wi__nutri-inactive-text">{{ section.settings.inactive_ingredients }}</p>
+            </div>
+          {%- endif -%}
+        </div>
       </div>
     {%- endif -%}
 
@@ -253,7 +316,7 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "What's Inside" },
     { "type": "text", "id": "flavor_title", "label": "Footer title", "default": "Real. Clean. Effective." },
     { "type": "text", "id": "flavor_subtitle", "label": "Footer subtitle", "default": "Chicken Liver & Sweet Potato Flavor" },
-    { "type": "richtext", "id": "nutritional_info", "label": "Nutritional Information tab content" },
+    { "type": "textarea", "id": "inactive_ingredients", "label": "Inactive ingredients (for Nutritional tab)" },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "background_color", "label": "Section background", "default": "#fff8ed" },
     { "type": "color", "id": "card_bg", "label": "Card background", "default": "#eef2f8" },
@@ -274,9 +337,17 @@
         { "type": "text", "id": "dosage", "label": "Dosage (e.g. 375mg)" },
         { "type": "textarea", "id": "description", "label": "Description", "default": "A short description of what this ingredient does for your dog." }
       ]
+    },
+    {
+      "type": "nutrition_item",
+      "name": "Nutrition Row",
+      "settings": [
+        { "type": "text", "id": "ingredient", "label": "Ingredient name", "default": "Ingredient" },
+        { "type": "text", "id": "amount", "label": "Amount (e.g. 50mg)", "default": "50mg" }
+      ]
     }
   ],
-  "max_blocks": 10,
+  "max_blocks": 20,
   "presets": [
     {
       "name": "What's Inside",
