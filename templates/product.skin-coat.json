@@ -524,8 +524,8 @@
   },
   "order": [
     "main",
-    "feeding_guide_sc",
     "what_inside_sc",
+    "feeding_guide_sc",
     "faq_sc",
     "best_sellers_sc"
   ]

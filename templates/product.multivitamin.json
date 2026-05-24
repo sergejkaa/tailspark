@@ -515,8 +515,8 @@
   },
   "order": [
     "main",
-    "feeding_guide_mv",
     "what_inside_mv",
+    "feeding_guide_mv",
     "faq_mv",
     "best_sellers_mv"
   ]

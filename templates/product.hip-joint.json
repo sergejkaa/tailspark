@@ -582,8 +582,8 @@
   },
   "order": [
     "main",
-    "feeding_guide_hj",
     "what_inside_hj",
+    "feeding_guide_hj",
     "faq_hj",
     "best_sellers_hj"
   ]
