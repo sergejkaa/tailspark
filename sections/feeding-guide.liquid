@@ -44,9 +44,9 @@
   }
   .fg-row:last-child { border-bottom: none; }
   .fg-icon-circle {
-    width: 52px;
-    height: 52px;
-    min-width: 52px;
+    width: {{ section.settings.icon_size | plus: 16 }}px;
+    height: {{ section.settings.icon_size | plus: 16 }}px;
+    min-width: {{ section.settings.icon_size | plus: 16 }}px;
     border-radius: 50%;
     border: 2px dashed {{ section.settings.accent_color }};
     display: flex;
@@ -57,8 +57,8 @@
     flex-shrink: 0;
   }
   .fg-dog-img {
-    width: 34px;
-    height: 34px;
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
     object-fit: contain;
     display: block;
   }
@@ -94,7 +94,8 @@
   }
   @media (max-width: 479px) {
     .fg-row { padding: 14px 16px; gap: 10px; }
-    .fg-icon-circle { width: 44px; height: 44px; min-width: 44px; font-size: 22px; }
+    .fg-icon-circle { width: {{ section.settings.icon_size | plus: 8 }}px; height: {{ section.settings.icon_size | plus: 8 }}px; min-width: {{ section.settings.icon_size | plus: 8 }}px; font-size: 22px; }
+    .fg-dog-img { width: {{ section.settings.icon_size | minus: 8 }}px; height: {{ section.settings.icon_size | minus: 8 }}px; }
     .fg-weight { font-size: 13px; }
     .fg-chews { font-size: 14px; min-width: 60px; }
   }
@@ -155,6 +156,8 @@
     { "type": "color", "id": "heading_color", "label": "Heading & weight text", "default": "#1d1d1b" },
     { "type": "color", "id": "text_color", "label": "Text color", "default": "#555555" },
     { "type": "color", "id": "accent_color", "label": "Accent color (icon border + chews)", "default": "#ff6700" },
+    { "type": "header", "content": "Icon" },
+    { "type": "range", "id": "icon_size", "min": 24, "max": 72, "step": 4, "unit": "px", "label": "Dog icon size", "default": 48 },
     { "type": "header", "content": "Spacing" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top (desktop)", "default": 56 },
     { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom (desktop)", "default": 56 },
