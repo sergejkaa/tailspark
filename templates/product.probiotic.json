@@ -268,7 +268,8 @@
         "card_bg": "#ffffff",
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
-        "accent_color": "#fff8ed",
+        "accent_color": "#ff6700",
+        "chews_color": "#606060",
         "icon_size": 72,
         "padding_top": 56,
         "padding_bottom": 56,
@@ -457,6 +458,27 @@
             "heading": "Is this suitable for dogs with sensitive stomachs?",
             "content": "<p>Absolutely. Our Probiotic is specifically designed to be gentle and beneficial for dogs with sensitive stomachs. It's an ideal choice for dogs that experience regular digestive discomfort.</p>"
           }
+        },
+        "faq_pb5": {
+          "type": "item",
+          "settings": {
+            "heading": "Do I need to refrigerate the Probiotic chews?",
+            "content": "<p>No refrigeration needed. Our Probiotic uses Bacillus coagulans, a spore-forming strain that is naturally shelf-stable. Simply store in a cool, dry place out of direct sunlight. The sealed bag keeps freshness for the full shelf life of the product.</p>"
+          }
+        },
+        "faq_pb6": {
+          "type": "item",
+          "settings": {
+            "heading": "How fast does delivery arrive?",
+            "content": "<p>We ship free on every order. Orders are processed within 1-2 business days and delivered within 5-6 business days. You will get a tracking email as soon as your package is on its way. If anything goes wrong with delivery, contact us and we will resolve it.</p>"
+          }
+        },
+        "faq_pb7": {
+          "type": "item",
+          "settings": {
+            "heading": "Can I subscribe and save on Probiotic?",
+            "content": "<p>Absolutely. Subscribe &amp; Save gets you 15% off every order and free shipping on each delivery. Gut health works best with consistent daily use, so subscribing means your dog never misses a day. Skip, pause, or cancel anytime - no commitment required.</p>"
+          }
         }
       },
       "block_order": [
@@ -464,7 +486,10 @@
         "faq_pb1",
         "faq_pb2",
         "faq_pb3",
-        "faq_pb4"
+        "faq_pb4",
+        "faq_pb5",
+        "faq_pb6",
+        "faq_pb7"
       ],
       "name": "Product FAQ",
       "settings": {

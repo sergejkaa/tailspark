@@ -295,6 +295,8 @@
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
         "accent_color": "#ff6700",
+        "chews_color": "#606060",
+        "icon_size": 72,
         "padding_top": 56,
         "padding_bottom": 56,
         "padding_top_mobile": 36,
@@ -489,6 +491,27 @@
             "heading": "How long before I notice a difference?",
             "content": "<p>Most pet parents notice improvements in energy levels and overall vitality within 4-6 weeks of consistent daily use. Immune benefits build gradually over 8-12 weeks.</p>"
           }
+        },
+        "faq_mv5": {
+          "type": "item",
+          "settings": {
+            "heading": "Can Multivitamin interact with prescription medications?",
+            "content": "<p>Our Multivitamin uses natural vitamins and minerals at safe daily doses. It is generally compatible with most medications. However, if your dog is on prescription treatments, we recommend checking with your veterinarian before adding any supplement to the routine.</p>"
+          }
+        },
+        "faq_mv6": {
+          "type": "item",
+          "settings": {
+            "heading": "How does shipping and delivery work?",
+            "content": "<p>Free shipping on every order with no minimum. Orders process within 1-2 business days and typically arrive within 5-6 business days. A tracking email is sent once dispatched. If your order has not arrived within 8 business days, reach out to our support team and we will take care of it.</p>"
+          }
+        },
+        "faq_mv7": {
+          "type": "item",
+          "settings": {
+            "heading": "Is there a subscription option to save money?",
+            "content": "<p>Yes - Subscribe &amp; Save gives you 15% off every order automatically plus free shipping on every delivery. You can choose your preferred frequency, skip a delivery, pause, or cancel anytime. It is the easiest way to keep your dog's daily nutrition consistent without running out.</p>"
+          }
         }
       },
       "block_order": [
@@ -496,7 +519,10 @@
         "faq_mv1",
         "faq_mv2",
         "faq_mv3",
-        "faq_mv4"
+        "faq_mv4",
+        "faq_mv5",
+        "faq_mv6",
+        "faq_mv7"
       ],
       "name": "Product FAQ",
       "settings": {

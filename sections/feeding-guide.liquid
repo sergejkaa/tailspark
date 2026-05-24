@@ -48,7 +48,6 @@
     height: {{ section.settings.icon_size | plus: 16 }}px;
     min-width: {{ section.settings.icon_size | plus: 16 }}px;
     border-radius: 50%;
-    border: 2px dashed {{ section.settings.accent_color }};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,7 +78,7 @@
   .fg-chews {
     font-size: 16px;
     font-weight: 700;
-    color: {{ section.settings.accent_color }};
+    color: {{ section.settings.chews_color }};
     white-space: nowrap;
     text-align: right;
     min-width: 70px;
@@ -120,7 +119,7 @@
               <div class="fg-icon-circle" aria-hidden="true">
                 {%- if block.settings.icon_image_preset != 'none' and block.settings.icon_image_preset != blank -%}
                   {%- assign dog_img = 'ts-dog-dose-' | append: block.settings.icon_image_preset | append: '.png' -%}
-                  <img src="{{ dog_img | asset_url }}" class="fg-dog-img" loading="lazy" alt="{{ block.settings.size_label | escape }}">
+                  <img src="{{ dog_img | asset_url }}" class="fg-dog-img" width="{{ section.settings.icon_size }}" height="{{ section.settings.icon_size }}" loading="lazy" alt="{{ block.settings.size_label | escape }}">
                 {%- elsif block.settings.icon != blank -%}
                   {{ block.settings.icon }}
                 {%- endif -%}
@@ -155,7 +154,8 @@
     { "type": "color", "id": "card_bg", "label": "List background", "default": "#fff8ed" },
     { "type": "color", "id": "heading_color", "label": "Heading & weight text", "default": "#1d1d1b" },
     { "type": "color", "id": "text_color", "label": "Text color", "default": "#555555" },
-    { "type": "color", "id": "accent_color", "label": "Accent color (icon border + chews)", "default": "#ff6700" },
+    { "type": "color", "id": "accent_color", "label": "Accent color (dots line)", "default": "#ff6700" },
+    { "type": "color", "id": "chews_color", "label": "Chews text color", "default": "#606060" },
     { "type": "header", "content": "Icon" },
     { "type": "range", "id": "icon_size", "min": 24, "max": 72, "step": 4, "unit": "px", "label": "Dog icon size", "default": 48 },
     { "type": "header", "content": "Spacing" },

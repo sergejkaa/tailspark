@@ -256,6 +256,7 @@
           "type": "row",
           "settings": {
             "icon": "🐩",
+            "icon_image_preset": "small",
             "size_label": "Small",
             "weight_range": "Up to 25 lbs",
             "chews_count": "1 chew / day"
@@ -265,6 +266,7 @@
           "type": "row",
           "settings": {
             "icon": "🐕",
+            "icon_image_preset": "medium",
             "size_label": "Medium",
             "weight_range": "25 - 50 lbs",
             "chews_count": "2 chews / day"
@@ -274,6 +276,7 @@
           "type": "row",
           "settings": {
             "icon": "🐕‍🦺",
+            "icon_image_preset": "large",
             "size_label": "Large",
             "weight_range": "50 - 75 lbs",
             "chews_count": "3 chews / day"
@@ -283,6 +286,7 @@
           "type": "row",
           "settings": {
             "icon": "🦮",
+            "icon_image_preset": "xlarge",
             "size_label": "X-Large",
             "weight_range": "Over 75 lbs",
             "chews_count": "4 chews / day"
@@ -305,6 +309,8 @@
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
         "accent_color": "#ff6700",
+        "chews_color": "#606060",
+        "icon_size": 72,
         "padding_top": 56,
         "padding_bottom": 56,
         "padding_top_mobile": 36,
@@ -494,6 +500,27 @@
             "heading": "What age dogs can take these?",
             "content": "<p>Suitable for dogs 6 months and older. For puppies under 6 months or dogs with specific health conditions, please consult your veterinarian.</p>"
           }
+        },
+        "faq_sc5": {
+          "type": "item",
+          "settings": {
+            "heading": "Will Skin & Coat help with my dog's itching and allergies?",
+            "content": "<p>Yes. The Omega-3 fatty acids from fish oil are well-documented for reducing skin inflammation, which relieves itching and irritation. Biotin and Vitamin E further support skin barrier function. Many pet parents see noticeable relief from dry, itchy skin within 3-4 weeks of daily use.</p>"
+          }
+        },
+        "faq_sc6": {
+          "type": "item",
+          "settings": {
+            "heading": "How long does shipping take?",
+            "content": "<p>All orders ship free with no minimum purchase. Processing takes 1-2 business days and delivery typically arrives within 5-6 business days. You will receive a tracking number by email once your order ships. Contact our support team if your order has not arrived after 8 business days.</p>"
+          }
+        },
+        "faq_sc7": {
+          "type": "item",
+          "settings": {
+            "heading": "Do you offer a subscription plan?",
+            "content": "<p>Yes! Subscribe &amp; Save gives you 15% off every delivery automatically plus free shipping every time. Skin and coat health improves with consistent daily nutrition, so subscribing is the best way to maintain results long-term. You can skip, pause, or cancel anytime with no hassle.</p>"
+          }
         }
       },
       "block_order": [
@@ -501,7 +528,10 @@
         "faq_sc1",
         "faq_sc2",
         "faq_sc3",
-        "faq_sc4"
+        "faq_sc4",
+        "faq_sc5",
+        "faq_sc6",
+        "faq_sc7"
       ],
       "name": "Product FAQ",
       "settings": {

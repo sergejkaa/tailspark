@@ -314,6 +314,7 @@
           "type": "row",
           "settings": {
             "icon": "🐩",
+            "icon_image_preset": "small",
             "size_label": "Small",
             "weight_range": "Up to 15 lbs",
             "chews_count": "1 chew / day"
@@ -323,6 +324,7 @@
           "type": "row",
           "settings": {
             "icon": "🐕",
+            "icon_image_preset": "medium",
             "size_label": "Medium",
             "weight_range": "15 - 45 lbs",
             "chews_count": "2 chews / day"
@@ -332,6 +334,7 @@
           "type": "row",
           "settings": {
             "icon": "🐕‍🦺",
+            "icon_image_preset": "large",
             "size_label": "Large",
             "weight_range": "45 - 75 lbs",
             "chews_count": "3 chews / day"
@@ -341,6 +344,7 @@
           "type": "row",
           "settings": {
             "icon": "🦮",
+            "icon_image_preset": "xlarge",
             "size_label": "X-Large",
             "weight_range": "Over 75 lbs",
             "chews_count": "4 chews / day"
@@ -363,6 +367,8 @@
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
         "accent_color": "#ff6700",
+        "chews_color": "#606060",
+        "icon_size": 72,
         "padding_top": 56,
         "padding_bottom": 56,
         "padding_top_mobile": 36,
@@ -552,6 +558,27 @@
             "heading": "Can younger dogs take Hip & Joint as prevention?",
             "content": "<p>Yes! Starting joint support early is a great proactive strategy, especially for large breeds. Prevention is always easier than treatment, and our formula is safe for ongoing daily use.</p>"
           }
+        },
+        "faq_hj5": {
+          "type": "item",
+          "settings": {
+            "heading": "Is this safe for dogs with shellfish sensitivities?",
+            "content": "<p>Our Hip &amp; Joint formula contains Green-Lipped Mussel, which is a shellfish. If your dog has a known shellfish sensitivity or allergy, please consult your veterinarian before use. The remaining ingredients are shellfish-free.</p>"
+          }
+        },
+        "faq_hj6": {
+          "type": "item",
+          "settings": {
+            "heading": "How fast does shipping and delivery work?",
+            "content": "<p>We offer free shipping on every order with no minimum purchase. Orders are processed within 1-2 business days and typically arrive within 5-6 business days. You will receive a tracking email once your order is dispatched. If your order has not arrived within 8 business days, please contact our support team.</p>"
+          }
+        },
+        "faq_hj7": {
+          "type": "item",
+          "settings": {
+            "heading": "Can I subscribe to save on Hip & Joint?",
+            "content": "<p>Yes! Our Subscribe &amp; Save program gives you 15% off every delivery plus free shipping included. You choose the delivery frequency and can skip, pause, or cancel anytime with no penalties. Never run out and never pay full price again.</p>"
+          }
         }
       },
       "block_order": [
@@ -559,7 +586,10 @@
         "faq_hj1",
         "faq_hj2",
         "faq_hj3",
-        "faq_hj4"
+        "faq_hj4",
+        "faq_hj5",
+        "faq_hj6",
+        "faq_hj7"
       ],
       "name": "Product FAQ",
       "settings": {
