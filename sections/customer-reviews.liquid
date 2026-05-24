@@ -191,6 +191,30 @@
     gap: 3px;
     white-space: nowrap;
   }
+
+  /* Dot indicators */
+  .ts-reviews__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .ts-reviews__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.18);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+    flex-shrink: 0;
+  }
+  .ts-reviews__dot.is-active {
+    background: {{ section.settings.star_color }};
+    transform: scale(1.4);
+  }
 {%- endstyle -%}
 
 <section class="ts-reviews">
@@ -260,6 +284,20 @@
       </button>
     </div>
 
+    {%- assign review_count = 0 -%}
+    {%- for block in section.blocks -%}{%- if block.type == 'review' -%}{%- assign review_count = review_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+    {%- if review_count > 1 -%}
+      <div class="ts-reviews__dots" id="ts-reviews-dots-{{ section.id }}">
+        {%- assign dot_i = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'review' -%}
+            <button class="ts-reviews__dot{% if dot_i == 0 %} is-active{% endif %}" data-index="{{ dot_i }}" aria-label="Review {{ dot_i | plus: 1 }}"></button>
+            {%- assign dot_i = dot_i | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
   </div>
 </section>
 
@@ -284,6 +322,25 @@
   if (nextBtn) nextBtn.addEventListener('click', function() {
     slider.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
   });
+
+  // Dot indicators
+  var dotsWrap = document.getElementById('ts-reviews-dots-{{ section.id }}');
+  if (dotsWrap) {
+    var dots = dotsWrap.querySelectorAll('.ts-reviews__dot');
+    function updateDots() {
+      var cw = getCardWidth();
+      if (!cw) return;
+      var active = Math.round(slider.scrollLeft / cw);
+      dots.forEach(function(d, i) { d.classList.toggle('is-active', i === active); });
+    }
+    slider.addEventListener('scroll', updateDots, { passive: true });
+    dots.forEach(function(d, i) {
+      d.addEventListener('click', function() {
+        slider.scrollTo({ left: i * getCardWidth(), behavior: 'smooth' });
+      });
+    });
+    updateDots();
+  }
 })();
 </script>
 

@@ -253,15 +253,17 @@
           "type": "row",
           "settings": {
             "icon": "🐩",
+            "icon_image_preset": "small",
             "size_label": "Small",
             "weight_range": "Under 25 lbs",
-            "chews_count": "1/2 chew / day"
+            "chews_count": "1-2 chew / day"
           }
         },
         "row_mv2": {
           "type": "row",
           "settings": {
             "icon": "🐕",
+            "icon_image_preset": "medium",
             "size_label": "Medium",
             "weight_range": "25 - 75 lbs",
             "chews_count": "1 chew / day"
@@ -271,6 +273,7 @@
           "type": "row",
           "settings": {
             "icon": "🦮",
+            "icon_image_preset": "large",
             "size_label": "Large",
             "weight_range": "Over 75 lbs",
             "chews_count": "2 chews / day"
