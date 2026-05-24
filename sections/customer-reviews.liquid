@@ -1,36 +1,33 @@
 {%- style -%}
   .ts-reviews {
     background-color: {{ section.settings.bg_color }};
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
   }
-
-  @media (max-width: 749px) {
+  @media (min-width: 750px) {
     .ts-reviews {
-      padding-top: {{ section.settings.padding_top_mobile }}px;
-      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-
   .ts-reviews__inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
   }
-
   .ts-reviews__header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
   }
-
   .ts-reviews__heading {
-    font-size: 42px;
+    font-size: 26px;
     font-weight: 700;
     color: {{ section.settings.heading_color }};
     margin: 0 0 14px;
     line-height: 1.15;
   }
-
+  @media (min-width: 750px) { .ts-reviews__heading { font-size: 40px; } }
+  @media (min-width: 1024px) { .ts-reviews__heading { font-size: 42px; } }
   .ts-reviews__overall {
     display: inline-flex;
     align-items: center;
@@ -38,45 +35,76 @@
     font-size: 15px;
     color: {{ section.settings.text_color }};
   }
-
   .ts-reviews__stars {
     display: flex;
     gap: 2px;
   }
-
   .ts-reviews__star {
     width: 18px;
     height: 18px;
     fill: {{ section.settings.star_color }};
   }
-
   .ts-reviews__rating-num {
     font-weight: 700;
     color: {{ section.settings.heading_color }};
   }
 
-  .ts-reviews__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+  /* Slider wrapper */
+  .ts-reviews__slider-wrap {
+    position: relative;
+  }
+  .ts-reviews__slider {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .ts-reviews__slider::-webkit-scrollbar { display: none; }
+
+  /* Nav arrows */
+  .ts-reviews__nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: {{ section.settings.bg_color }};
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s, transform 0.2s;
+    padding: 0;
+  }
+  .ts-reviews__nav-btn:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transform: translateY(calc(-50% - 1px));
+  }
+  .ts-reviews__nav-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: {{ section.settings.heading_color }};
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .ts-reviews__nav-btn--prev { left: -20px; }
+  .ts-reviews__nav-btn--next { right: -20px; }
+  @media (max-width: 479px) {
+    .ts-reviews__nav-btn--prev { left: 0; }
+    .ts-reviews__nav-btn--next { right: 0; }
   }
 
-  @media (max-width: 1023px) {
-    .ts-reviews__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .ts-reviews__heading { font-size: 32px; }
-  }
-
-  @media (max-width: 749px) {
-    .ts-reviews__grid {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    .ts-reviews__heading { font-size: 26px; }
-    .ts-reviews__header { margin-bottom: 28px; }
-  }
-
+  /* Cards */
   .ts-review-card {
     background-color: {{ section.settings.card_bg }};
     border-radius: 16px;
@@ -84,19 +112,29 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    flex: 0 0 calc(100% - 0px);
+    scroll-snap-align: start;
+    box-sizing: border-box;
   }
-
+  @media (min-width: 600px) {
+    .ts-review-card {
+      flex: 0 0 calc(50% - 8px);
+    }
+  }
+  @media (min-width: 900px) {
+    .ts-review-card {
+      flex: 0 0 calc(33.333% - 11px);
+    }
+  }
   .ts-review-card__stars {
     display: flex;
     gap: 3px;
   }
-
   .ts-review-card__star {
     width: 16px;
     height: 16px;
     fill: {{ section.settings.star_color }};
   }
-
   .ts-review-card__text {
     font-size: 15px;
     line-height: 1.65;
@@ -104,7 +142,6 @@
     margin: 0;
     flex: 1;
   }
-
   .ts-review-card__footer {
     border-top: 1px solid rgba(0,0,0,0.07);
     padding-top: 14px;
@@ -112,7 +149,6 @@
     align-items: center;
     gap: 10px;
   }
-
   .ts-review-card__avatar {
     width: 40px;
     height: 40px;
@@ -125,32 +161,27 @@
     flex-shrink: 0;
     overflow: hidden;
   }
-
   .ts-review-card__avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
   .ts-review-card__meta {
     display: flex;
     flex-direction: column;
     gap: 2px;
     flex: 1;
   }
-
   .ts-review-card__name {
     font-weight: 700;
     font-size: 14px;
     color: {{ section.settings.heading_color }};
   }
-
   .ts-review-card__info {
     font-size: 12px;
     color: {{ section.settings.text_color }};
     opacity: 0.65;
   }
-
   .ts-review-card__badge {
     font-size: 11px;
     font-weight: 600;
@@ -182,49 +213,79 @@
       {%- endif -%}
     </div>
 
-    <div class="ts-reviews__grid">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'review' -%}
-          <div class="ts-review-card" {{ block.shopify_attributes }}>
+    <div class="ts-reviews__slider-wrap">
+      <button class="ts-reviews__nav-btn ts-reviews__nav-btn--prev" aria-label="Previous reviews">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
 
-            <div class="ts-review-card__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
-              {%- assign rating = block.settings.rating | default: 5 -%}
-              {%- for i in (1..rating) -%}
-                <svg viewBox="0 0 20 20" class="ts-review-card__star" aria-hidden="true"><path d="M10 1.5l2.3 4.65 5.14.75-3.72 3.62.88 5.1L10 13.15l-4.6 2.47.88-5.1L2.56 6.9l5.14-.75z"/></svg>
-              {%- endfor -%}
-            </div>
+      <div class="ts-reviews__slider" id="ts-reviews-slider-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'review' -%}
+            <div class="ts-review-card" {{ block.shopify_attributes }}>
 
-            <p class="ts-review-card__text">&ldquo;{{ block.settings.review_text }}&rdquo;</p>
-
-            <div class="ts-review-card__footer">
-              <div class="ts-review-card__avatar">
-                {%- if block.settings.avatar != blank -%}
-                  {{
-                    block.settings.avatar
-                    | image_url: width: 80
-                    | image_tag: loading: 'lazy', alt: block.settings.reviewer_name
-                  }}
-                {%- else -%}
-                  🐾
-                {%- endif -%}
+              <div class="ts-review-card__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+                {%- assign rating = block.settings.rating | default: 5 -%}
+                {%- for i in (1..rating) -%}
+                  <svg viewBox="0 0 20 20" class="ts-review-card__star" aria-hidden="true"><path d="M10 1.5l2.3 4.65 5.14.75-3.72 3.62.88 5.1L10 13.15l-4.6 2.47.88-5.1L2.56 6.9l5.14-.75z"/></svg>
+                {%- endfor -%}
               </div>
-              <div class="ts-review-card__meta">
-                <span class="ts-review-card__name">{{ block.settings.reviewer_name | default: 'Dog Parent' }}</span>
-                <span class="ts-review-card__info">{{ block.settings.reviewer_info }}</span>
-              </div>
-              <span class="ts-review-card__badge" aria-label="Verified purchase">
-                <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg>
-                Verified
-              </span>
-            </div>
 
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
+              <p class="ts-review-card__text">&ldquo;{{ block.settings.review_text }}&rdquo;</p>
+
+              <div class="ts-review-card__footer">
+                <div class="ts-review-card__avatar">
+                  {%- if block.settings.avatar != blank -%}
+                    {{ block.settings.avatar | image_url: width: 80 | image_tag: loading: 'lazy', alt: block.settings.reviewer_name }}
+                  {%- else -%}
+                    🐾
+                  {%- endif -%}
+                </div>
+                <div class="ts-review-card__meta">
+                  <span class="ts-review-card__name">{{ block.settings.reviewer_name | default: 'Dog Parent' }}</span>
+                  <span class="ts-review-card__info">{{ block.settings.reviewer_info }}</span>
+                </div>
+                <span class="ts-review-card__badge" aria-label="Verified purchase">
+                  <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg>
+                  Verified
+                </span>
+              </div>
+
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <button class="ts-reviews__nav-btn ts-reviews__nav-btn--next" aria-label="Next reviews">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
 
   </div>
 </section>
+
+<script>
+(function() {
+  var slider = document.getElementById('ts-reviews-slider-{{ section.id }}');
+  if (!slider) return;
+  var wrap = slider.closest('.ts-reviews__slider-wrap');
+  var prevBtn = wrap.querySelector('.ts-reviews__nav-btn--prev');
+  var nextBtn = wrap.querySelector('.ts-reviews__nav-btn--next');
+
+  function getCardWidth() {
+    var card = slider.querySelector('.ts-review-card');
+    if (!card) return 0;
+    var gap = parseInt(window.getComputedStyle(slider).gap) || 16;
+    return card.offsetWidth + gap;
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    slider.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+  });
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    slider.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+  });
+})();
+</script>
 
 {% schema %}
 {
@@ -234,7 +295,7 @@
   "disabled_on": { "groups": ["header", "footer"] },
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "What Dog Parents Are Saying" },
-    { "type": "checkbox", "id": "show_overall_rating", "label": "Show overall rating bar", "default": true },
+    { "type": "checkbox", "id": "show_overall_rating", "label": "Show overall rating", "default": true },
     { "type": "text", "id": "overall_rating", "label": "Overall rating number", "default": "4.9" },
     { "type": "text", "id": "reviews_count", "label": "Reviews count label", "default": "1,200+" },
     { "type": "header", "content": "Colors" },
@@ -262,38 +323,14 @@
       ]
     }
   ],
-  "max_blocks": 6,
+  "max_blocks": 9,
   "presets": [
     {
       "name": "Customer Reviews",
       "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Our golden retriever Max has been on the Hip & Joint chews for 2 months and the difference is incredible. He moves like a puppy again - running, jumping, playing fetch. Worth every penny!",
-            "reviewer_name": "Sarah M.",
-            "reviewer_info": "Texas - Mom to Max, 8yr Golden Retriever"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Love that I can give my dog something healthy that she actually wants to eat. The Probiotic chews completely solved her sensitive stomach issues. No more upset tummy after meals!",
-            "reviewer_name": "Jennifer K.",
-            "reviewer_info": "California - Mom to Bella, Labrador Mix"
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Three of my dogs take different TailSpark supplements and they all go crazy for the chews. The Multivitamin has given my 11-year-old so much more energy. Clean ingredients, real results.",
-            "reviewer_name": "Mark R.",
-            "reviewer_info": "Florida - Dad to 3 rescue dogs"
-          }
-        }
+        { "type": "review", "settings": { "rating": 5, "review_text": "Our golden retriever Max has been on the Hip & Joint chews for 2 months and the difference is incredible. He moves like a puppy again!", "reviewer_name": "Sarah M.", "reviewer_info": "Texas - Mom to Max, 8yr Golden Retriever" } },
+        { "type": "review", "settings": { "rating": 5, "review_text": "The Probiotic chews completely solved her sensitive stomach issues. No more upset tummy after meals!", "reviewer_name": "Jennifer K.", "reviewer_info": "California - Mom to Bella, Labrador Mix" } },
+        { "type": "review", "settings": { "rating": 5, "review_text": "Three of my dogs take TailSpark supplements and they all go crazy for the chews. Clean ingredients, real results.", "reviewer_name": "Mark R.", "reviewer_info": "Florida - Dad to 3 rescue dogs" } }
       ]
     }
   ]

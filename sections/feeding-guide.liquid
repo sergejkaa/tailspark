@@ -56,6 +56,12 @@
     background: rgba(255,255,255,0.55);
     flex-shrink: 0;
   }
+  .fg-dog-img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    display: block;
+  }
   .fg-weight {
     flex: 1;
     font-size: 15px;
@@ -110,9 +116,14 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'row' -%}
             <div class="fg-row" {{ block.shopify_attributes }}>
-              {%- if block.settings.icon != blank -%}
-                <div class="fg-icon-circle" aria-hidden="true">{{ block.settings.icon }}</div>
-              {%- endif -%}
+              <div class="fg-icon-circle" aria-hidden="true">
+                {%- if block.settings.icon_image_preset != 'none' and block.settings.icon_image_preset != blank -%}
+                  {%- assign dog_img = 'ts-dog-dose-' | append: block.settings.icon_image_preset | append: '.png' -%}
+                  <img src="{{ dog_img | asset_url }}" class="fg-dog-img" loading="lazy" alt="{{ block.settings.size_label | escape }}">
+                {%- elsif block.settings.icon != blank -%}
+                  {{ block.settings.icon }}
+                {%- endif -%}
+              </div>
               <span class="fg-weight">{{ block.settings.weight_range }}</span>
               <div class="fg-dots" aria-hidden="true"></div>
               <span class="fg-chews">{{ block.settings.chews_count }}</span>
@@ -155,10 +166,17 @@
       "type": "row",
       "name": "Dog Size",
       "settings": [
-        { "type": "text", "id": "icon", "label": "Emoji icon", "default": "🐕" },
+        { "type": "select", "id": "icon_image_preset", "label": "Dog size image", "default": "none", "options": [
+            { "value": "none", "label": "None (use emoji below)" },
+            { "value": "small", "label": "Small dog" },
+            { "value": "medium", "label": "Medium dog" },
+            { "value": "large", "label": "Large dog" },
+            { "value": "xlarge", "label": "X-Large dog" }
+          ] },
+        { "type": "text", "id": "icon", "label": "Emoji icon (fallback)", "default": "🐕" },
         { "type": "text", "id": "size_label", "label": "Size label (optional)", "default": "Small" },
         { "type": "text", "id": "weight_range", "label": "Weight range", "default": "Up to 25 lbs" },
-        { "type": "text", "id": "chews_count", "label": "Daily chews", "default": "1 chew" }
+        { "type": "text", "id": "chews_count", "label": "Daily chews", "default": "1 chew / day" }
       ]
     }
   ],

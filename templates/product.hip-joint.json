@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -79,18 +70,18 @@
             "item_1_heading": "Key Benefits",
             "item_1_source": "custom",
             "item_1_content": "<ul><li>Supports healthy joint function</li><li>Reduces joint stiffness and discomfort</li><li>Improves flexibility and mobility</li><li>Maintains healthy cartilage</li><li>Provides natural anti-inflammatory support</li><li>Suitable for active and senior dogs</li></ul>",
-            "item_2_heading": "Key Ingredients",
+            "item_2_heading": "Ingredients",
             "item_2_source": "custom",
-            "item_2_content": "<ul><li><strong>Glucosamine HCl 500mg</strong> - Primary building block of cartilage that helps maintain cushioning in joints</li><li><strong>MSM 400mg</strong> - Natural sulfur compound that reduces joint inflammation and supports connective tissue repair</li><li><strong>Green-Lipped Mussel 150mg</strong> - Unique New Zealand shellfish rich in Omega-3s and glycosaminoglycans for joint lubrication</li><li><strong>Chondroitin Sulfate 110mg</strong> - Retains water in cartilage, maintaining joint flexibility and shock absorption</li><li><strong>Turmeric &amp; Boswellia</strong> - Powerful natural anti-inflammatory botanicals that reduce pain and support mobility</li></ul>",
-            "item_3_heading": "Directions",
+            "item_2_content": "<ul><li><strong>Glucosamine HCl 500mg</strong> - Primary building block of cartilage that helps maintain cushioning in joints</li><li><strong>MSM 400mg</strong> - Natural sulfur compound that reduces joint inflammation and supports connective tissue repair</li><li><strong>Green-Lipped Mussel 150mg</strong> - Unique New Zealand shellfish rich in Omega-3s and glycosaminoglycans for joint lubrication</li><li><strong>Chondroitin Sulfate 110mg</strong> - Retains water in cartilage, maintaining joint flexibility and shock absorption</li><li><strong>Turmeric &amp; Boswellia</strong> - Powerful natural anti-inflammatory botanicals that reduce pain and support mobility</li></ul><p><strong>Full ingredient list:</strong> Glucosamine Hydrochloride, MSM, Green-Lipped Mussel Powder, Chondroitin Sulfate, Chicken Liver, Sweet Potato, Brewer's Yeast, Turmeric Root Powder, Boswellia Serrata Extract.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
+            "item_3_heading": "How to Use",
             "item_3_source": "custom",
             "item_3_content": "<p>Give daily based on your dog's weight:</p><ul><li><strong>Up to 15 lbs:</strong> 1 chew per day</li><li><strong>15-45 lbs:</strong> 2 chews per day</li><li><strong>45-75 lbs:</strong> 3 chews per day</li><li><strong>75+ lbs:</strong> 4 chews per day</li></ul><p>Can be given as a treat or crumbled over food. Store in a cool, dry place.</p>",
-            "item_4_heading": "Full Ingredient List",
+            "item_4_heading": "Shipping Info",
             "item_4_source": "custom",
-            "item_4_content": "<p>Glucosamine Hydrochloride (500mg), Methylsulfonylmethane - MSM (400mg), Green-Lipped Mussel Powder (150mg), Chondroitin Sulfate (110mg), Chicken Liver, Sweet Potato, Brewer's Yeast, Turmeric Root Powder, Boswellia Serrata Extract.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
-            "item_5_heading": "Shipping Info",
+            "item_4_content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li></ul>",
+            "item_5_heading": "",
             "item_5_source": "custom",
-            "item_5_content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li></ul>",
+            "item_5_content": "",
             "acc_bg_color": "#ffffff", "acc_border_color": "#f0dbd9",
             "summary_color": "#1d1d1b", "text_color": "#555555"
           }
@@ -141,7 +132,7 @@
         "title", "inline_rating_iifCgL", "weight_badge_hj", "short_desc_hj", "price",
         "variant_picker", "recharge_subscriptions_subscription_widget_v2_C8trEK",
         "quantity_selector", "buy_buttons", "yny_accordion_group_XnwLNx",
-        "upsell_snippet_XMJqBJ", "est_delivery_simple_4JBzgx", "share"
+        "upsell_snippet_XMJqBJ", "share"
       ],
       "custom_css": [".product__tax {display: none;}", ".product__media-icon {display: none;}"],
       "settings": {
@@ -162,10 +153,10 @@
     "feeding_guide_hj": {
       "type": "feeding-guide",
       "blocks": {
-        "row_hj1": { "type": "row", "settings": { "icon": "🐩", "size_label": "Small", "weight_range": "Up to 15 lbs", "chews_count": "1 chew" } },
-        "row_hj2": { "type": "row", "settings": { "icon": "🐕", "size_label": "Medium", "weight_range": "15 - 45 lbs", "chews_count": "2 chews" } },
-        "row_hj3": { "type": "row", "settings": { "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "45 - 75 lbs", "chews_count": "3 chews" } },
-        "row_hj4": { "type": "row", "settings": { "icon": "🦮", "size_label": "X-Large", "weight_range": "Over 75 lbs", "chews_count": "4 chews" } }
+        "row_hj1": { "type": "row", "settings": { "icon_image_preset": "small", "icon": "🐩", "size_label": "Small", "weight_range": "Up to 15 lbs", "chews_count": "1 chew / day" } },
+        "row_hj2": { "type": "row", "settings": { "icon_image_preset": "medium", "icon": "🐕", "size_label": "Medium", "weight_range": "15 - 45 lbs", "chews_count": "2 chews / day" } },
+        "row_hj3": { "type": "row", "settings": { "icon_image_preset": "large", "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "45 - 75 lbs", "chews_count": "3 chews / day" } },
+        "row_hj4": { "type": "row", "settings": { "icon_image_preset": "xlarge", "icon": "🦮", "size_label": "X-Large", "weight_range": "Over 75 lbs", "chews_count": "4 chews / day" } }
       },
       "block_order": ["row_hj1", "row_hj2", "row_hj3", "row_hj4"],
       "name": "Feeding Guide",
@@ -180,24 +171,48 @@
     "what_inside_hj": {
       "type": "ts-whats-inside",
       "blocks": {
-        "item_hj1": { "type": "item", "settings": { "title": "Glucosamine HCl 500mg", "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health." } },
-        "item_hj2": { "type": "item", "settings": { "title": "MSM 400mg", "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair." } },
-        "item_hj3": { "type": "item", "settings": { "title": "Green-Lipped Mussel 150mg", "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation." } },
-        "item_hj4": { "type": "item", "settings": { "title": "Chondroitin Sulfate 110mg", "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience." } },
-        "item_hj5": { "type": "item", "settings": { "title": "Turmeric & Boswellia", "description": "Powerful natural anti-inflammatory botanicals that work synergistically with the joint complex to reduce pain and support mobility." } }
+        "item_hj1": { "type": "item", "settings": { "title": "Glucosamine HCl", "dosage": "500mg", "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health." } },
+        "item_hj2": { "type": "item", "settings": { "title": "MSM", "dosage": "400mg", "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair." } },
+        "item_hj3": { "type": "item", "settings": { "title": "Green-Lipped Mussel", "dosage": "150mg", "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation." } },
+        "item_hj4": { "type": "item", "settings": { "title": "Chondroitin Sulfate", "dosage": "110mg", "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience." } },
+        "item_hj5": { "type": "item", "settings": { "title": "Turmeric & Boswellia", "dosage": "50mg / 50mg", "description": "Powerful natural anti-inflammatory botanicals that work synergistically to reduce pain and support mobility." } }
       },
       "block_order": ["item_hj1", "item_hj2", "item_hj3", "item_hj4", "item_hj5"],
       "name": "What's Inside",
       "settings": {
         "heading": "What's Inside",
+        "nutritional_info": "<p><strong>Active Ingredients per chew:</strong></p><p>Glucosamine Hydrochloride 500mg (from shellfish), MSM (Methylsulfonylmethane) 400mg, Green-Lipped Mussel Powder 150mg, Chondroitin Sulfate 110mg (Porcine), Turmeric Root Powder 50mg, Boswellia Serrata Extract 50mg</p><p><em>Inactive Ingredients:</em> Chicken Liver, Sweet Potato, Brewer's Yeast, Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
         "background_color": "#fdecea",
+        "card_bg": "#fce8e6",
         "heading_color": "#ff6700",
-        "accent_color": "#ff6700",
         "item_title_color": "#1d1d1b",
         "item_text_color": "#555555",
         "flavor_title": "Move More. Live More.",
         "flavor_subtitle": "Chicken Liver Flavor",
         "padding_desktop": 60, "padding_mobile": 40
+      }
+    },
+    "reviews_hj": {
+      "type": "customer-reviews",
+      "blocks": {
+        "rev_hj1": { "type": "review", "settings": { "rating": 5, "review_text": "My 9-year-old Golden was struggling to get up the stairs. After 6 weeks on TailSpark Hip & Joint he's moving like he did at 5. Absolutely incredible difference.", "reviewer_name": "Patricia L.", "reviewer_info": "Texas - Mom to Cooper, 9yr Golden Retriever" } },
+        "rev_hj2": { "type": "review", "settings": { "rating": 5, "review_text": "Our German Shepherd was diagnosed with hip dysplasia. The vet approved us trying these alongside his treatment and the improvement in his gait has been remarkable.", "reviewer_name": "David K.", "reviewer_info": "Ohio - Dad to Thor, German Shepherd" } },
+        "rev_hj3": { "type": "review", "settings": { "rating": 5, "review_text": "I was skeptical but after 2 months my Lab mix is running and playing fetch again. He used to limp after walks. These chews are the real deal!", "reviewer_name": "Sandra M.", "reviewer_info": "Florida - Mom to Buddy, 7yr Lab Mix" } },
+        "rev_hj4": { "type": "review", "settings": { "rating": 5, "review_text": "My senior Rottweiler loves the taste and the results speak for themselves. She's more active and comfortable than she's been in years.", "reviewer_name": "James R.", "reviewer_info": "California - Dad to Roxy, 10yr Rottweiler" } },
+        "rev_hj5": { "type": "review", "settings": { "rating": 5, "review_text": "Vet recommended joint supplements and these ticked every box. My dog actually eats them like treats. Win-win for both of us!", "reviewer_name": "Karen B.", "reviewer_info": "New York - Mom to Duke, Labrador" } },
+        "rev_hj6": { "type": "review", "settings": { "rating": 5, "review_text": "Started giving these to my young Husky as prevention since large breeds are prone to joint issues. He loves them and I feel great knowing I'm protecting his joints early.", "reviewer_name": "Michael T.", "reviewer_info": "Colorado - Dad to Blizzard, 2yr Husky" } },
+        "rev_hj7": { "type": "review", "settings": { "rating": 5, "review_text": "Three bottles in and my Bernese Mountain Dog is back to hiking with us. We thought those days were over. So grateful for this product!", "reviewer_name": "Lisa H.", "reviewer_info": "Washington - Mom to Biscuit, 8yr Berner" } },
+        "rev_hj8": { "type": "review", "settings": { "rating": 5, "review_text": "My Dachshund has back and joint issues common to the breed. These chews have made a noticeable difference in how he moves and how much he's willing to play.", "reviewer_name": "Christine W.", "reviewer_info": "Illinois - Mom to Pretzel, Dachshund" } },
+        "rev_hj9": { "type": "review", "settings": { "rating": 5, "review_text": "Tried three other joint supplements with no results. TailSpark was different from week three. My senior mix is more comfortable and happier. Will never switch.", "reviewer_name": "Robert A.", "reviewer_info": "Georgia - Dad to Luna, 11yr Mixed Breed" } }
+      },
+      "block_order": ["rev_hj1", "rev_hj2", "rev_hj3", "rev_hj4", "rev_hj5", "rev_hj6", "rev_hj7", "rev_hj8", "rev_hj9"],
+      "name": "Customer Reviews",
+      "settings": {
+        "heading": "What Dog Parents Are Saying",
+        "show_overall_rating": true, "overall_rating": "4.9", "reviews_count": "1,200+",
+        "bg_color": "#ffffff", "card_bg": "#fdecea",
+        "heading_color": "#1d1d1b", "text_color": "#555555", "star_color": "#ff6700",
+        "padding_top": 64, "padding_bottom": 64, "padding_top_mobile": 40, "padding_bottom_mobile": 40
       }
     },
     "faq_hj": {
@@ -216,9 +231,9 @@
     "best_sellers_hj": {
       "type": "best-sellers-custom",
       "blocks": {
-        "product_dQzzDV": { "type": "product", "settings": { "product": "tailspark-multivitamin", "title_override": "Daily Multivitamin", "image_preset": "none", "subtitle": "Daily support for overall vitality", "card_bg": "#eaf4f4", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
-        "product_a7PMHk": { "type": "product", "settings": { "product": "tailspark-probiotic", "title_override": "Probiotic", "image_preset": "none", "subtitle": "Maintains healthy digestive system", "card_bg": "#edf6f0", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
-        "product_NHd9EB": { "type": "product", "settings": { "product": "tailspark-skin-coat", "title_override": "Skin & Coat", "image_preset": "none", "subtitle": "Softens coat and soothes dry skin", "card_bg": "#fef9e7", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } }
+        "product_dQzzDV": { "type": "product", "settings": { "product": "tailspark-multivitamin", "title_override": "Daily Multivitamin", "image_preset": "none", "subtitle": "Daily support for overall vitality", "card_bg": "#eaf4f4", "icon_1_preset": "ts_multivitamin", "icon_1_label": "Multivitamin", "icon_2_preset": "ts_energy", "icon_2_label": "Energy", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
+        "product_a7PMHk": { "type": "product", "settings": { "product": "tailspark-probiotic", "title_override": "Probiotic", "image_preset": "none", "subtitle": "Maintains healthy digestive system", "card_bg": "#edf6f0", "icon_1_preset": "ts_gut", "icon_1_label": "Gut Health", "icon_2_preset": "ts_immune", "icon_2_label": "Immune", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
+        "product_NHd9EB": { "type": "product", "settings": { "product": "tailspark-skin-coat", "title_override": "Skin & Coat", "image_preset": "none", "subtitle": "Softens coat and soothes dry skin", "card_bg": "#fef9e7", "icon_1_preset": "ts_coat", "icon_1_label": "Coat", "icon_2_preset": "ts_antihistamine", "icon_2_label": "Allergy", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } }
       },
       "block_order": ["product_dQzzDV", "product_a7PMHk", "product_NHd9EB"],
       "name": "You Might Also Like",
@@ -236,5 +251,5 @@
       }
     }
   },
-  "order": ["main", "feeding_guide_hj", "what_inside_hj", "faq_hj", "best_sellers_hj"]
+  "order": ["main", "feeding_guide_hj", "what_inside_hj", "reviews_hj", "faq_hj", "best_sellers_hj"]
 }

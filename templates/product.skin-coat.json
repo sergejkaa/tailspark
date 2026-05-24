@@ -42,28 +42,10 @@
           "type": "feature-cards",
           "settings": {
             "visible_items": 4, "columns_desktop": 2, "columns_tablet": 2, "columns_mobile": 2,
-            "mobile_layout": "grid", "text_align": "left",
-            "gap_desktop": 8, "gap_tablet": 8, "gap_mobile": 8,
-            "margin_top": 10, "margin_bottom": 10,
-            "card_mode": "solid", "card_radius": 8,
-            "card_padding_x_desktop": 11, "card_padding_y_desktop": 10,
-            "card_padding_x_tablet": 11, "card_padding_y_tablet": 10,
-            "card_padding_x_mobile": 9, "card_padding_y_mobile": 7,
-            "text_size_desktop": 15, "text_size_tablet": 13, "text_size_mobile": 12,
-            "text_weight": "500", "icon_size_desktop": 21, "icon_size_tablet": 18, "icon_size_mobile": 17,
-            "text_color": "#243126", "icon_color": "#ff6700",
-            "solid_background": "#fff8ed", "solid_border_color": "#f0d9c0",
-            "card_shadow_color": "#000000", "card_shadow_opacity": 8,
-            "glass_background": "#ffffff", "glass_secondary_tint": "#fff8ed",
-            "glass_background_opacity": 28, "glass_border_color": "#ffffff", "glass_border_opacity": 60, "glass_blur": 10,
             "feature_text_1": "Softens coat & reduces shedding", "icon_source_1": "built_in", "icon_name_1": "leaf", "icon_url_1": "",
             "feature_text_2": "Soothes dry & itchy skin", "icon_source_2": "built_in", "icon_name_2": "heart", "icon_url_2": "",
             "feature_text_3": "Omega-3, 6 & 9 fatty acids", "icon_source_3": "built_in", "icon_name_3": "leaf", "icon_url_3": "",
-            "feature_text_4": "Vitamin E & Biotin support", "icon_source_4": "built_in", "icon_name_4": "star", "icon_url_4": "",
-            "feature_text_5": "Feature item 5", "icon_source_5": "built_in", "icon_name_5": "shield", "icon_url_5": "",
-            "feature_text_6": "Feature item 6", "icon_source_6": "built_in", "icon_name_6": "star", "icon_url_6": "",
-            "feature_text_7": "Feature item 7", "icon_source_7": "built_in", "icon_name_7": "globe", "icon_url_7": "",
-            "feature_text_8": "Feature item 8", "icon_source_8": "built_in", "icon_name_8": "check", "icon_url_8": ""
+            "feature_text_4": "Vitamin E & Biotin support", "icon_source_4": "built_in", "icon_name_4": "star", "icon_url_4": ""
           }
         },
         "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button", "swatch_shape": "circle" } },
@@ -79,22 +61,20 @@
             "item_1_heading": "Key Benefits",
             "item_1_source": "custom",
             "item_1_content": "<ul><li>Promotes a shiny, healthy coat</li><li>Reduces excessive shedding</li><li>Soothes dry and itchy skin</li><li>Supports skin barrier function</li><li>Rich in essential fatty acids (Omega-3, 6, 9)</li><li>Contains Vitamin E and Biotin for skin and coat health</li></ul>",
-            "item_2_heading": "Key Ingredients",
+            "item_2_heading": "Ingredients",
             "item_2_source": "custom",
-            "item_2_content": "<ul><li><strong>Fish Oil</strong> - Rich source of Omega-3 fatty acids (DHA &amp; EPA) for skin moisture and coat shine</li><li><strong>Flaxseed</strong> - Plant-based Omega-6 &amp; Omega-9 fatty acids that strengthen skin barrier</li><li><strong>Vitamin E</strong> - Antioxidant that protects skin cells and promotes a glossy coat</li><li><strong>Biotin</strong> - Strengthens hair follicles and supports healthy fur growth</li><li><strong>Vitamin A</strong> - Supports skin cell regeneration and hydration</li><li><strong>Coconut Oil</strong> - Natural moisturizer with antimicrobial properties</li></ul>",
-            "item_3_heading": "Directions",
+            "item_2_content": "<ul><li><strong>Fish Oil</strong> - Rich source of Omega-3 fatty acids (DHA &amp; EPA) for skin moisture and coat shine</li><li><strong>Flaxseed</strong> - Plant-based Omega-6 &amp; Omega-9 fatty acids that strengthen skin barrier</li><li><strong>Vitamin E</strong> - Antioxidant that protects skin cells and promotes a glossy coat</li><li><strong>Biotin</strong> - Strengthens hair follicles and supports healthy fur growth</li><li><strong>Vitamin A</strong> - Supports skin cell regeneration and hydration</li><li><strong>Coconut Oil</strong> - Natural moisturizer with antimicrobial properties</li></ul><p><strong>Full ingredient list:</strong> Fish Oil, Flaxseed (Linum usitatissimum), Sunflower Oil, Vitamin E Supplement, Vitamin A Supplement, Biotin, Brewer's Yeast, Chicken Liver, Sweet Potato, Coconut Oil, Rosemary Extract.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
+            "item_3_heading": "How to Use",
             "item_3_source": "custom",
             "item_3_content": "<p>Give daily based on your dog's weight:</p><ul><li><strong>Up to 25 lbs:</strong> 1 chew per day</li><li><strong>25-50 lbs:</strong> 2 chews per day</li><li><strong>50-75 lbs:</strong> 3 chews per day</li><li><strong>75+ lbs:</strong> 4 chews per day</li></ul><p>Can be given as a treat or crumbled over food. Store in a cool, dry place.</p>",
-            "item_4_heading": "Full Ingredient List",
+            "item_4_heading": "Shipping Info",
             "item_4_source": "custom",
-            "item_4_content": "<p>Fish Oil, Flaxseed (Linum usitatissimum), Sunflower Oil, Vitamin E Supplement, Vitamin A Supplement, Biotin, Brewer's Yeast, Chicken Liver, Sweet Potato, Coconut Oil, Rosemary Extract.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
-            "item_5_heading": "Shipping Info",
+            "item_4_content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li><li>Contact support if your order hasn't arrived within 8 business days</li></ul>",
+            "item_5_heading": "",
             "item_5_source": "custom",
-            "item_5_content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li><li>Contact support if your order hasn't arrived within 8 business days</li></ul>",
-            "acc_bg_color": "#ffffff",
-            "acc_border_color": "#ede8e3",
-            "summary_color": "#1d1d1b",
-            "text_color": "#555555"
+            "item_5_content": "",
+            "acc_bg_color": "#ffffff", "acc_border_color": "#ede8e3",
+            "summary_color": "#1d1d1b", "text_color": "#555555"
           }
         },
         "upsell_snippet_XMJqBJ": {
@@ -131,10 +111,6 @@
             "dispatch_min": 1, "dispatch_max": 1, "delivery_min": 5, "delivery_max": 6,
             "heading_text": "estimated delivery",
             "bg_color": "#f7f5f0", "border_color": "#ff6700", "border_style": "dashed",
-            "title_color": "#4e4e4e", "summary_color": "#4b4b4b",
-            "label_color": "#ff6700", "date_color": "#ff6700",
-            "ring_color": "#c7c7c7", "connector_color": "#e6e6e6", "connector_style": "dashed",
-            "accent_color": "#ff6700",
             "label_order": "Order placed", "label_dispatched": "Dispatched", "label_delivered": "Delivered"
           }
         },
@@ -144,7 +120,7 @@
         "title", "inline_rating_iifCgL", "weight_badge_sc", "short_desc_sc", "price",
         "variant_picker", "recharge_subscriptions_subscription_widget_v2_C8trEK",
         "quantity_selector", "buy_buttons", "yny_accordion_group_XnwLNx",
-        "upsell_snippet_XMJqBJ", "est_delivery_simple_4JBzgx", "share"
+        "upsell_snippet_XMJqBJ", "share"
       ],
       "custom_css": [".product__tax {display: none;}", ".product__media-icon {display: none;}"],
       "settings": {
@@ -165,10 +141,10 @@
     "feeding_guide_sc": {
       "type": "feeding-guide",
       "blocks": {
-        "row_sc1": { "type": "row", "settings": { "icon": "🐩", "size_label": "Small", "weight_range": "Up to 25 lbs", "chews_count": "1 chew" } },
-        "row_sc2": { "type": "row", "settings": { "icon": "🐕", "size_label": "Medium", "weight_range": "25 - 50 lbs", "chews_count": "2 chews" } },
-        "row_sc3": { "type": "row", "settings": { "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "50 - 75 lbs", "chews_count": "3 chews" } },
-        "row_sc4": { "type": "row", "settings": { "icon": "🦮", "size_label": "X-Large", "weight_range": "Over 75 lbs", "chews_count": "4 chews" } }
+        "row_sc1": { "type": "row", "settings": { "icon_image_preset": "small", "icon": "🐩", "size_label": "Small", "weight_range": "Up to 25 lbs", "chews_count": "1 chew / day" } },
+        "row_sc2": { "type": "row", "settings": { "icon_image_preset": "medium", "icon": "🐕", "size_label": "Medium", "weight_range": "25 - 50 lbs", "chews_count": "2 chews / day" } },
+        "row_sc3": { "type": "row", "settings": { "icon_image_preset": "large", "icon": "🐕‍🦺", "size_label": "Large", "weight_range": "50 - 75 lbs", "chews_count": "3 chews / day" } },
+        "row_sc4": { "type": "row", "settings": { "icon_image_preset": "xlarge", "icon": "🦮", "size_label": "X-Large", "weight_range": "Over 75 lbs", "chews_count": "4 chews / day" } }
       },
       "block_order": ["row_sc1", "row_sc2", "row_sc3", "row_sc4"],
       "name": "Feeding Guide",
@@ -183,24 +159,48 @@
     "what_inside_sc": {
       "type": "ts-whats-inside",
       "blocks": {
-        "item_sc1": { "type": "item", "settings": { "title": "Fish Oil (Omega-3)", "description": "Rich source of DHA and EPA essential fatty acids that support healthy skin moisture and a shiny, lustrous coat." } },
-        "item_sc2": { "type": "item", "settings": { "title": "Flaxseed (Omega-6 & 9)", "description": "Plant-based essential fatty acids that strengthen the skin barrier, reduce inflammation, and support coat thickness." } },
-        "item_sc3": { "type": "item", "settings": { "title": "Vitamin E", "description": "Powerful antioxidant that protects skin cells from damage and promotes a glossy, healthy coat with natural shine." } },
-        "item_sc4": { "type": "item", "settings": { "title": "Biotin", "description": "Essential B-vitamin that strengthens hair follicles, reduces excessive shedding, and supports thick, healthy fur growth." } },
-        "item_sc5": { "type": "item", "settings": { "title": "Vitamin A & Coconut Oil", "description": "Supports skin cell regeneration and maintains healthy, hydrated skin tissue. Coconut oil adds natural moisturizing benefit." } }
+        "item_sc1": { "type": "item", "settings": { "title": "Fish Oil (Omega-3)", "dosage": "150mg", "description": "Rich source of DHA and EPA essential fatty acids that support healthy skin moisture and a shiny, lustrous coat." } },
+        "item_sc2": { "type": "item", "settings": { "title": "Flaxseed (Omega-6 & 9)", "dosage": "100mg", "description": "Plant-based essential fatty acids that strengthen the skin barrier, reduce inflammation, and support coat thickness." } },
+        "item_sc3": { "type": "item", "settings": { "title": "Vitamin E", "dosage": "30 IU", "description": "Powerful antioxidant that protects skin cells from damage and promotes a glossy, healthy coat with natural shine." } },
+        "item_sc4": { "type": "item", "settings": { "title": "Biotin", "dosage": "500 mcg", "description": "Essential B-vitamin that strengthens hair follicles, reduces excessive shedding, and supports thick, healthy fur growth." } },
+        "item_sc5": { "type": "item", "settings": { "title": "Vitamin A & Coconut Oil", "dosage": "2500 IU / 50mg", "description": "Supports skin cell regeneration and maintains healthy, hydrated skin. Coconut oil adds natural moisturizing benefit." } }
       },
       "block_order": ["item_sc1", "item_sc2", "item_sc3", "item_sc4", "item_sc5"],
       "name": "What's Inside",
       "settings": {
         "heading": "What's Inside",
         "background_color": "#fef9e7",
+        "card_bg": "#fef0d3",
         "heading_color": "#ff6700",
-        "accent_color": "#ff6700",
         "item_title_color": "#1d1d1b",
         "item_text_color": "#555555",
         "flavor_title": "Real. Clean. Effective.",
         "flavor_subtitle": "Salmon & Chicken Flavor",
+        "nutritional_info": "<p><strong>Active Ingredients (per chew):</strong></p><p>Fish Oil 150mg (providing Omega-3 DHA &amp; EPA), Flaxseed 100mg (Omega-6 &amp; Omega-9), Vitamin E 30 IU (dl-Alpha Tocopheryl Acetate), Biotin 500mcg, Vitamin A 2500 IU (Vitamin A Acetate), Coconut Oil 50mg.</p><p><strong>Inactive Ingredients:</strong></p><p>Chicken Liver, Sweet Potato, Brewer's Yeast, Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
         "padding_desktop": 60, "padding_mobile": 40
+      }
+    },
+    "reviews_sc": {
+      "type": "customer-reviews",
+      "blocks": {
+        "rev_sc1": { "type": "review", "settings": { "rating": 5, "review_text": "Our golden retriever Max has been on the Hip & Joint chews for 2 months and the difference is incredible. He moves like a puppy again - running, jumping, playing fetch. Worth every penny!", "reviewer_name": "Sarah M.", "reviewer_info": "Texas - Mom to Max, 8yr Golden Retriever" } },
+        "rev_sc2": { "type": "review", "settings": { "rating": 5, "review_text": "The Probiotic chews completely solved her sensitive stomach issues. No more upset tummy after meals. Love that I can give my dog something healthy that she actually wants to eat!", "reviewer_name": "Jennifer K.", "reviewer_info": "California - Mom to Bella, Labrador Mix" } },
+        "rev_sc3": { "type": "review", "settings": { "rating": 5, "review_text": "Three of my dogs take different TailSpark supplements and they all go crazy for the chews. The Multivitamin has given my 11-year-old so much more energy. Clean ingredients, real results.", "reviewer_name": "Mark R.", "reviewer_info": "Florida - Dad to 3 rescue dogs" } },
+        "rev_sc4": { "type": "review", "settings": { "rating": 5, "review_text": "My dachshund started limping after a rough play session. Within 3 weeks of the Hip & Joint chews she is back to her zoomie self. Honestly amazed at how fast it worked.", "reviewer_name": "Lisa T.", "reviewer_info": "New York - Mom to Bella, 6yr Dachshund" } },
+        "rev_sc5": { "type": "review", "settings": { "rating": 5, "review_text": "My working dog needs real nutrition to stay sharp. The Multivitamin keeps his coat shiny, his energy consistent, and his vet says his bloodwork looks great. Total game changer.", "reviewer_name": "Carlos M.", "reviewer_info": "Texas - Dad to Rex, German Shepherd" } },
+        "rev_sc6": { "type": "review", "settings": { "rating": 5, "review_text": "My poodle always had dry, flaky skin and I tried everything. After 6 weeks on the Skin and Coat chews, her coat is silky and the flaking stopped completely. She loves them too!", "reviewer_name": "Amanda W.", "reviewer_info": "Ohio - Mom to Luna, Poodle Mix" } },
+        "rev_sc7": { "type": "review", "settings": { "rating": 5, "review_text": "Our 9-year-old Husky was slowing down and struggling on hikes. After 5 weeks of Hip & Joint chews he is back leading the pack on our trails. My vet recommended these - they work!", "reviewer_name": "David H.", "reviewer_info": "Colorado - Dad to Zeus, 9yr Husky" } },
+        "rev_sc8": { "type": "review", "settings": { "rating": 5, "review_text": "My beagle had chronic digestive issues for years. The Probiotic chews changed everything. Within 2 weeks his digestion stabilized completely. No more accidents and he is so much happier.", "reviewer_name": "Nicole B.", "reviewer_info": "Georgia - Mom to Biscuit, Beagle" } },
+        "rev_sc9": { "type": "review", "settings": { "rating": 5, "review_text": "Border collies are known for shedding and Luna was no exception. Since starting the Skin and Coat chews 2 months ago, the shedding dropped dramatically and her coat looks amazing.", "reviewer_name": "Rachel P.", "reviewer_info": "California - Mom to Luna, Border Collie" } }
+      },
+      "block_order": ["rev_sc1", "rev_sc2", "rev_sc3", "rev_sc4", "rev_sc5", "rev_sc6", "rev_sc7", "rev_sc8", "rev_sc9"],
+      "name": "Customer Reviews",
+      "settings": {
+        "heading": "What Dog Parents Are Saying",
+        "show_overall_rating": true, "overall_rating": "4.9", "reviews_count": "1,200+",
+        "bg_color": "#ffffff", "card_bg": "#fff8ed", "heading_color": "#1d1d1b",
+        "text_color": "#555555", "star_color": "#ff6700",
+        "padding_top": 60, "padding_bottom": 60, "padding_top_mobile": 40, "padding_bottom_mobile": 40
       }
     },
     "faq_sc": {
@@ -219,9 +219,9 @@
     "best_sellers_sc": {
       "type": "best-sellers-custom",
       "blocks": {
-        "product_UP9mEb": { "type": "product", "settings": { "product": "tailspark-hip-joint", "title_override": "Hip & Joint", "image_preset": "none", "subtitle": "Increases flexibility and strengthens joints", "card_bg": "#fdecea", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
-        "product_dQzzDV": { "type": "product", "settings": { "product": "tailspark-multivitamin", "title_override": "Daily Multivitamin", "image_preset": "none", "subtitle": "Daily support for overall vitality", "card_bg": "#eaf4f4", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
-        "product_a7PMHk": { "type": "product", "settings": { "product": "tailspark-probiotic", "title_override": "Probiotic", "image_preset": "none", "subtitle": "Maintains healthy digestive system", "card_bg": "#edf6f0", "icon_1_preset": "none", "icon_1_label": "", "icon_2_preset": "none", "icon_2_label": "", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } }
+        "product_UP9mEb": { "type": "product", "settings": { "product": "tailspark-hip-joint", "title_override": "Hip & Joint", "image_preset": "none", "subtitle": "Increases flexibility and strengthens joints", "card_bg": "#fdecea", "icon_1_preset": "ts_joint", "icon_1_label": "Supports Joint Health", "icon_2_preset": "ts_anti_inflammatory", "icon_2_label": "Natural Anti-Inflammatory", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
+        "product_dQzzDV": { "type": "product", "settings": { "product": "tailspark-multivitamin", "title_override": "Daily Multivitamin", "image_preset": "none", "subtitle": "Daily support for overall vitality", "card_bg": "#eaf4f4", "icon_1_preset": "ts_multivitamin", "icon_1_label": "Multivitamin Support", "icon_2_preset": "ts_energy", "icon_2_label": "Energy & Vitality", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
+        "product_a7PMHk": { "type": "product", "settings": { "product": "tailspark-probiotic", "title_override": "Probiotic", "image_preset": "none", "subtitle": "Maintains healthy digestive system", "card_bg": "#edf6f0", "icon_1_preset": "ts_gut", "icon_1_label": "Gut Health", "icon_2_preset": "ts_immune", "icon_2_label": "Immune Support", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } }
       },
       "block_order": ["product_UP9mEb", "product_dQzzDV", "product_a7PMHk"],
       "name": "You Might Also Like",
@@ -239,5 +239,5 @@
       }
     }
   },
-  "order": ["main", "feeding_guide_sc", "what_inside_sc", "faq_sc", "best_sellers_sc"]
+  "order": ["main", "feeding_guide_sc", "what_inside_sc", "reviews_sc", "faq_sc", "best_sellers_sc"]
 }
