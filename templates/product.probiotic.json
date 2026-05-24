@@ -309,119 +309,6 @@
         "padding_mobile": 40
       }
     },
-    "reviews_pb": {
-      "type": "customer-reviews",
-      "blocks": {
-        "rev_pb1": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "My dog had constant diarrhea and the vet couldn't find a cause. Started TailSpark Probiotic and within 10 days his stomach completely settled. This is a lifesaver!",
-            "reviewer_name": "Amanda F.",
-            "reviewer_info": "Texas - Mom to Biscuit, Beagle Mix"
-          }
-        },
-        "rev_pb2": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Our Lab was scooting every single day. Two weeks on these chews and the scooting stopped completely. Vet was impressed with the improvement too.",
-            "reviewer_name": "Jason K.",
-            "reviewer_info": "Florida - Dad to Zeus, Labrador"
-          }
-        },
-        "rev_pb3": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "After antibiotics my Goldendoodle had terrible digestive issues. These probiotics restored his gut so fast. Gave them during the treatment and no issues at all.",
-            "reviewer_name": "Nicole P.",
-            "reviewer_info": "California - Mom to Charlie, Goldendoodle"
-          }
-        },
-        "rev_pb4": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "My senior Poodle had chronic gas and soft stools for years. Tried every food. These chews solved it in 3 weeks. Wish I had found them sooner!",
-            "reviewer_name": "Barbara S.",
-            "reviewer_info": "New York - Mom to Pierre, 10yr Poodle"
-          }
-        },
-        "rev_pb5": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Rescue dog with a history of stress-related gut issues. TailSpark Probiotic made a huge difference in her digestive health and even her mood seems better.",
-            "reviewer_name": "Rachel M.",
-            "reviewer_info": "Oregon - Mom to Daisy, Rescue Mix"
-          }
-        },
-        "rev_pb6": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Three dogs, three different stomach types. All three improved on TailSpark Probiotic. It's now a permanent part of their daily routine.",
-            "reviewer_name": "Thomas W.",
-            "reviewer_info": "Georgia - Dad to 3 mixed breed dogs"
-          }
-        },
-        "rev_pb7": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "My Frenchie is prone to digestive problems because of the breed. These chews have been a game changer. Firm stools, no gas, happy pup!",
-            "reviewer_name": "Stephanie L.",
-            "reviewer_info": "Illinois - Mom to Gus, French Bulldog"
-          }
-        },
-        "rev_pb8": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Vet recommended probiotics and this product checked every box. My Shepherd loves the taste and his digestion has been perfect since we started.",
-            "reviewer_name": "Kevin R.",
-            "reviewer_info": "Ohio - Dad to Rex, German Shepherd"
-          }
-        },
-        "rev_pb9": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "My dog had recurring yeast infections related to gut imbalance. Since starting TailSpark Probiotic the infections have stopped. Gut health really does affect everything!",
-            "reviewer_name": "Michelle T.",
-            "reviewer_info": "Arizona - Mom to Coco, Cocker Spaniel"
-          }
-        }
-      },
-      "block_order": [
-        "rev_pb1",
-        "rev_pb2",
-        "rev_pb3",
-        "rev_pb4",
-        "rev_pb5",
-        "rev_pb6",
-        "rev_pb7",
-        "rev_pb8",
-        "rev_pb9"
-      ],
-      "name": "Customer Reviews",
-      "settings": {
-        "heading": "What Dog Parents Are Saying",
-        "show_overall_rating": true,
-        "overall_rating": "4.9",
-        "reviews_count": "1,200+",
-        "bg_color": "#ffffff",
-        "card_bg": "#edf6f0",
-        "heading_color": "#1d1d1b",
-        "text_color": "#555555",
-        "star_color": "#ff6700",
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
     "faq_pb": {
       "type": "faq-accordion-section",
       "blocks": {
@@ -597,7 +484,6 @@
     "main",
     "feeding_guide_pb",
     "what_inside_pb",
-    "reviews_pb",
     "faq_pb",
     "best_sellers_pb"
   ]

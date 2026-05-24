@@ -409,119 +409,6 @@
         "padding_mobile": 40
       }
     },
-    "reviews_hj": {
-      "type": "customer-reviews",
-      "blocks": {
-        "rev_hj1": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "My 9-year-old Golden was struggling to get up the stairs. After 6 weeks on TailSpark Hip & Joint he's moving like he did at 5. Absolutely incredible difference.",
-            "reviewer_name": "Patricia L.",
-            "reviewer_info": "Texas - Mom to Cooper, 9yr Golden Retriever"
-          }
-        },
-        "rev_hj2": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Our German Shepherd was diagnosed with hip dysplasia. The vet approved us trying these alongside his treatment and the improvement in his gait has been remarkable.",
-            "reviewer_name": "David K.",
-            "reviewer_info": "Ohio - Dad to Thor, German Shepherd"
-          }
-        },
-        "rev_hj3": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "I was skeptical but after 2 months my Lab mix is running and playing fetch again. He used to limp after walks. These chews are the real deal!",
-            "reviewer_name": "Sandra M.",
-            "reviewer_info": "Florida - Mom to Buddy, 7yr Lab Mix"
-          }
-        },
-        "rev_hj4": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "My senior Rottweiler loves the taste and the results speak for themselves. She's more active and comfortable than she's been in years.",
-            "reviewer_name": "James R.",
-            "reviewer_info": "California - Dad to Roxy, 10yr Rottweiler"
-          }
-        },
-        "rev_hj5": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Vet recommended joint supplements and these ticked every box. My dog actually eats them like treats. Win-win for both of us!",
-            "reviewer_name": "Karen B.",
-            "reviewer_info": "New York - Mom to Duke, Labrador"
-          }
-        },
-        "rev_hj6": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Started giving these to my young Husky as prevention since large breeds are prone to joint issues. He loves them and I feel great knowing I'm protecting his joints early.",
-            "reviewer_name": "Michael T.",
-            "reviewer_info": "Colorado - Dad to Blizzard, 2yr Husky"
-          }
-        },
-        "rev_hj7": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Three bottles in and my Bernese Mountain Dog is back to hiking with us. We thought those days were over. So grateful for this product!",
-            "reviewer_name": "Lisa H.",
-            "reviewer_info": "Washington - Mom to Biscuit, 8yr Berner"
-          }
-        },
-        "rev_hj8": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "My Dachshund has back and joint issues common to the breed. These chews have made a noticeable difference in how he moves and how much he's willing to play.",
-            "reviewer_name": "Christine W.",
-            "reviewer_info": "Illinois - Mom to Pretzel, Dachshund"
-          }
-        },
-        "rev_hj9": {
-          "type": "review",
-          "settings": {
-            "rating": 5,
-            "review_text": "Tried three other joint supplements with no results. TailSpark was different from week three. My senior mix is more comfortable and happier. Will never switch.",
-            "reviewer_name": "Robert A.",
-            "reviewer_info": "Georgia - Dad to Luna, 11yr Mixed Breed"
-          }
-        }
-      },
-      "block_order": [
-        "rev_hj1",
-        "rev_hj2",
-        "rev_hj3",
-        "rev_hj4",
-        "rev_hj5",
-        "rev_hj6",
-        "rev_hj7",
-        "rev_hj8",
-        "rev_hj9"
-      ],
-      "name": "Customer Reviews",
-      "settings": {
-        "heading": "What Dog Parents Are Saying",
-        "show_overall_rating": true,
-        "overall_rating": "4.9",
-        "reviews_count": "1,200+",
-        "bg_color": "#ffffff",
-        "card_bg": "#fdecea",
-        "heading_color": "#1d1d1b",
-        "text_color": "#555555",
-        "star_color": "#ff6700",
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
     "faq_hj": {
       "type": "faq-accordion-section",
       "blocks": {
@@ -697,7 +584,6 @@
     "main",
     "feeding_guide_hj",
     "what_inside_hj",
-    "reviews_hj",
     "faq_hj",
     "best_sellers_hj"
   ]
