@@ -283,7 +283,7 @@
   <div class="bs-inner">
 
     {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
-      <div class="bs-header">
+      <div class="bs-header" data-aos="fade-up">
         {%- if section.settings.heading != blank -%}
           <h2 class="bs-heading">{{ section.settings.heading }}</h2>
         {%- endif -%}
@@ -312,7 +312,8 @@
           {%- endcase -%}
         {%- endif -%}
 
-        <div class="bs-card" {{ block.shopify_attributes }}>
+        {%- assign bs_delay = forloop.index0 | times: 100 | at_most: 300 -%}
+        <div class="bs-card" data-aos="fade-up" data-aos-delay="{{ bs_delay }}" {{ block.shopify_attributes }}>
 
           {%- if prod != blank -%}
             <a href="{{ prod.url }}" class="bs-card__image-link" style="background-color: {{ block.settings.card_bg }};">

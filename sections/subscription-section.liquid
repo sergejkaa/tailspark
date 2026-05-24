@@ -212,7 +212,7 @@
 <section class="subscription-section">
   <div class="page-width">
 
-    <div class="subscription-section__header">
+    <div class="subscription-section__header" data-aos="fade-up">
       <h2 class="subscription-section__heading">{{ section.settings.heading }}</h2>
       {%- if section.settings.subheading != blank -%}
         <p class="subscription-section__subheading">{{ section.settings.subheading }}</p>
@@ -228,7 +228,8 @@
           {%- endif -%}
 
           {%- assign card_url = prod.url | default: '/collections/all' -%}
-          <div class="subscription-card" style="background-color: {{ block.settings.card_bg }};" {{ block.shopify_attributes }}>
+          {%- assign sub_delay = forloop.index0 | times: 100 | at_most: 300 -%}
+          <div class="subscription-card" data-aos="fade-up" data-aos-delay="{{ sub_delay }}" style="background-color: {{ block.settings.card_bg }};" {{ block.shopify_attributes }}>
 
             <a href="{{ card_url }}" class="subscription-card__image" aria-label="{{ block.settings.title_override | default: prod.title }}">
               {%- if block.settings.image != blank -%}

@@ -441,7 +441,7 @@
 
 <section class="iap-custom iap-custom--image-{{ section.settings.image_side }}">
   <div class="iap-custom__inner">
-    <div class="iap-custom__media">
+    <div class="iap-custom__media" data-aos="fade-up">
       {%- if section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', alt: image_alt }}
       {%- else -%}
@@ -451,7 +451,7 @@
 
     <div class="iap-custom__content">
       {%- if section.settings.heading != blank -%}
-        <h2 class="iap-custom__heading inline-richtext {{ section.settings.heading_size }}">
+        <h2 class="iap-custom__heading inline-richtext {{ section.settings.heading_size }}" data-aos="fade-up">
           {{ section.settings.heading }}
         </h2>
       {%- endif -%}

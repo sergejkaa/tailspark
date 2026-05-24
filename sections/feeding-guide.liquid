@@ -103,7 +103,7 @@
 <section class="fg-section">
   <div class="fg-inner">
     {%- if section.settings.heading != blank -%}
-      <div class="fg-header">
+      <div class="fg-header" data-aos="fade-up">
         <h2 class="fg-heading">{{ section.settings.heading }}</h2>
         {%- if section.settings.subheading != blank -%}
           <p class="fg-subheading">{{ section.settings.subheading }}</p>
@@ -115,7 +115,8 @@
       <div class="fg-list">
         {%- for block in section.blocks -%}
           {%- if block.type == 'row' -%}
-            <div class="fg-row" {{ block.shopify_attributes }}>
+            {%- assign fg_delay = forloop.index0 | times: 100 | at_most: 300 -%}
+            <div class="fg-row" data-aos="fade-up" data-aos-delay="{{ fg_delay }}" {{ block.shopify_attributes }}>
               <div class="fg-icon-circle" aria-hidden="true">
                 {%- if block.settings.icon_image_preset != 'none' and block.settings.icon_image_preset != blank -%}
                   {%- assign dog_img = 'ts-dog-dose-' | append: block.settings.icon_image_preset | append: '.png' -%}
@@ -134,7 +135,7 @@
     {%- endif -%}
 
     {%- if section.settings.note != blank -%}
-      <p class="fg-note">{{ section.settings.note }}</p>
+      <p class="fg-note" data-aos="fade-up">{{ section.settings.note }}</p>
     {%- endif -%}
   </div>
 </section>

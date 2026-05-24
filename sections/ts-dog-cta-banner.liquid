@@ -180,7 +180,7 @@
 <section class="dog-cta">
   <div class="dog-cta__inner">
     <div class="dog-cta__panel">
-      <div class="dog-cta__media">
+      <div class="dog-cta__media" data-aos="fade-up" data-aos-duration="900">
         {%- if banner_image != blank -%}
           {{ banner_image | image_url: width: 2200 | image_tag: loading: 'lazy', alt: image_alt }}
         {%- elsif image_preset == 'hip_joint' -%}
@@ -196,13 +196,14 @@
 
       <div class="dog-cta__content">
         {%- if section.settings.heading != blank -%}
-          <h2 class="dog-cta__heading">{{ section.settings.heading }}</h2>
+          <h2 class="dog-cta__heading" data-aos="fade-up">{{ section.settings.heading }}</h2>
         {%- endif -%}
 
         {%- if section.blocks.size > 0 -%}
           <div class="dog-cta__icons">
             {%- for block in section.blocks limit: 4 -%}
-              <div class="dog-cta__item" {{ block.shopify_attributes }}>
+              {%- assign cta_delay = forloop.index0 | times: 80 | at_most: 240 -%}
+              <div class="dog-cta__item" data-aos="fade-up" data-aos-delay="{{ cta_delay }}" {{ block.shopify_attributes }}>
                 <span class="dog-cta__icon" aria-hidden="true">
                   {%- if block.settings.icon_image != blank -%}
                     {{ block.settings.icon_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}
@@ -225,7 +226,7 @@
         {%- endif -%}
 
         {%- if section.settings.button_label != blank -%}
-          <a class="dog-cta__button" href="{{ section.settings.button_link | default: '#' }}">
+          <a class="dog-cta__button" data-aos="fade-up" data-aos-delay="300" href="{{ section.settings.button_link | default: '#' }}">
             {{ section.settings.button_label }}
           </a>
         {%- endif -%}

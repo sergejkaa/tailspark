@@ -207,10 +207,10 @@
   <div class="ts-wi__inner page-width">
 
     {%- if section.settings.heading != blank -%}
-      <h2 class="ts-wi__heading">{{ section.settings.heading }}</h2>
+      <h2 class="ts-wi__heading" data-aos="fade-up">{{ section.settings.heading }}</h2>
     {%- endif -%}
 
-    <div class="ts-wi__tabs" role="tablist">
+    <div class="ts-wi__tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
       <button class="ts-wi__tab is-active" role="tab" aria-selected="true" data-ts-wi-tab="ingredients">Ingredients</button>
       {%- if has_nutrition -%}
         <button class="ts-wi__tab" role="tab" aria-selected="false" data-ts-wi-tab="nutrition">Nutritional Information</button>
@@ -222,7 +222,8 @@
         <div class="ts-wi__grid">
           {%- for block in section.blocks -%}
             {%- if block.type == 'item' -%}
-              <div class="ts-wi__card" {{ block.shopify_attributes }}>
+              {%- assign wi_delay = forloop.index0 | times: 80 | at_most: 320 -%}
+              <div class="ts-wi__card" data-aos="fade-up" data-aos-delay="{{ wi_delay }}" {{ block.shopify_attributes }}>
                 <div class="ts-wi__card-text">
                   <p class="ts-wi__card-name">{{ block.settings.title }}</p>
                   {%- if block.settings.dosage != blank -%}

@@ -218,7 +218,7 @@
 <section class="ts-reviews">
   <div class="ts-reviews__inner page-width">
 
-    <div class="ts-reviews__header">
+    <div class="ts-reviews__header" data-aos="fade-up">
       <h2 class="ts-reviews__heading">{{ section.settings.heading }}</h2>
       {%- if section.settings.show_overall_rating -%}
         <div class="ts-reviews__overall">
@@ -243,7 +243,8 @@
       <div class="ts-reviews__slider" id="ts-reviews-slider-{{ section.id }}">
         {%- for block in section.blocks -%}
           {%- if block.type == 'review' -%}
-            <div class="ts-review-card" {{ block.shopify_attributes }}>
+            {%- assign card_delay = forloop.index0 | times: 100 | at_most: 300 -%}
+            <div class="ts-review-card" data-aos="fade-up" data-aos-delay="{{ card_delay }}" {{ block.shopify_attributes }}>
 
               <div class="ts-review-card__footer">
                 <div class="ts-review-card__avatar">

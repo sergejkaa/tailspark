@@ -305,6 +305,7 @@
     {{ 'custom.css' | asset_url | stylesheet_tag }}
     {{ 'custom-button.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {{ 'aos.css' | asset_url | stylesheet_tag }}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -432,6 +433,19 @@
     });
   </script>
   {% endif %}
+
+  <script defer src="{{ 'aos.js' | asset_url }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 700, easing: 'ease-out-quart', once: true, offset: 60, disable: 'mobile' });
+      } else {
+        window.addEventListener('load', function() {
+          if (typeof AOS !== 'undefined') AOS.init({ duration: 700, easing: 'ease-out-quart', once: true, offset: 60, disable: 'mobile' });
+        });
+      }
+    });
+  </script>
 
   </body>
 </html>

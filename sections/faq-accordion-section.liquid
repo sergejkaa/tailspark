@@ -122,19 +122,20 @@
   <div class="faq-section__inner">
 
     {%- if section.settings.heading != blank -%}
-      <h1 class="faq-section__heading">{{ section.settings.heading | escape }}</h1>
+      <h1 class="faq-section__heading" data-aos="fade-up">{{ section.settings.heading | escape }}</h1>
     {%- endif -%}
     {%- if section.settings.subheading != blank -%}
-      <p class="faq-section__subheading">{{ section.settings.subheading | escape }}</p>
+      <p class="faq-section__subheading" data-aos="fade-up" data-aos-delay="100">{{ section.settings.subheading | escape }}</p>
     {%- endif -%}
 
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'category' -%}
-          <h2 class="faq-category" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+          <h2 class="faq-category" data-aos="fade-up" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
 
         {%- when 'item' -%}
-          <details class="faq-acc" data-faq-accordion {{ block.shopify_attributes }}>
+          {%- assign faq_delay = forloop.index0 | times: 60 | at_most: 300 -%}
+          <details class="faq-acc" data-aos="fade-up" data-aos-delay="{{ faq_delay }}" data-faq-accordion {{ block.shopify_attributes }}>
             <summary class="faq-acc__summary">
               <span>{{ block.settings.heading | escape }}</span>
               <span class="faq-acc__icon" aria-hidden="true"></span>
