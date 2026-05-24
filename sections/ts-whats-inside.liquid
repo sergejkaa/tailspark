@@ -7,9 +7,6 @@
     .ts-wi { padding: {{ section.settings.padding_desktop }}px 0; }
   }
   .ts-wi__inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
   }
   .ts-wi__heading {
     font-size: 28px;
@@ -207,7 +204,7 @@
 {%- endfor -%}
 
 <section class="ts-wi">
-  <div class="ts-wi__inner">
+  <div class="ts-wi__inner page-width">
 
     {%- if section.settings.heading != blank -%}
       <h2 class="ts-wi__heading">{{ section.settings.heading }}</h2>

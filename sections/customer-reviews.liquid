@@ -11,9 +11,6 @@
     }
   }
   .ts-reviews__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
   }
   .ts-reviews__header {
     text-align: center;
@@ -219,7 +216,7 @@
 {%- endstyle -%}
 
 <section class="ts-reviews">
-  <div class="ts-reviews__inner">
+  <div class="ts-reviews__inner page-width">
 
     <div class="ts-reviews__header">
       <h2 class="ts-reviews__heading">{{ section.settings.heading }}</h2>
@@ -285,19 +282,7 @@
       </button>
     </div>
 
-    {%- assign review_count = 0 -%}
-    {%- for block in section.blocks -%}{%- if block.type == 'review' -%}{%- assign review_count = review_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-    {%- if review_count > 1 -%}
-      <div class="ts-reviews__dots" id="ts-reviews-dots-{{ section.id }}">
-        {%- assign dot_i = 0 -%}
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'review' -%}
-            <button class="ts-reviews__dot{% if dot_i == 0 %} is-active{% endif %}" data-index="{{ dot_i }}" aria-label="Review {{ dot_i | plus: 1 }}"></button>
-            {%- assign dot_i = dot_i | plus: 1 -%}
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
+    <div class="ts-reviews__dots" id="ts-reviews-dots-{{ section.id }}"></div>
 
   </div>
 </section>
@@ -309,6 +294,7 @@
   var wrap = slider.closest('.ts-reviews__slider-wrap');
   var prevBtn = wrap.querySelector('.ts-reviews__nav-btn--prev');
   var nextBtn = wrap.querySelector('.ts-reviews__nav-btn--next');
+  var dotsWrap = document.getElementById('ts-reviews-dots-{{ section.id }}');
 
   function getCardWidth() {
     var card = slider.querySelector('.ts-review-card');
@@ -317,36 +303,65 @@
     return card.offsetWidth + gap;
   }
 
+  function getPerPage() {
+    return window.innerWidth >= 900 ? 3 : 1;
+  }
+
   if (prevBtn) prevBtn.addEventListener('click', function() {
-    slider.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+    slider.scrollBy({ left: -(getCardWidth() * getPerPage()), behavior: 'smooth' });
   });
   if (nextBtn) nextBtn.addEventListener('click', function() {
-    slider.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    slider.scrollBy({ left: getCardWidth() * getPerPage(), behavior: 'smooth' });
   });
 
-  // Dot indicators
-  var dotsWrap = document.getElementById('ts-reviews-dots-{{ section.id }}');
-  if (dotsWrap) {
-    var dots = dotsWrap.querySelectorAll('.ts-reviews__dot');
-    function updateDots() {
-      var cw = getCardWidth();
-      if (!cw) return;
-      var active;
-      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 4) {
-        active = dots.length - 1;
-      } else {
-        active = Math.round(slider.scrollLeft / cw);
-      }
-      dots.forEach(function(d, i) { d.classList.toggle('is-active', i === active); });
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    var perPage = getPerPage();
+    if (perPage === 1) return;
+    var totalCards = slider.querySelectorAll('.ts-review-card').length;
+    var pageCount = Math.ceil(totalCards / perPage);
+    if (pageCount <= 1) return;
+    for (var i = 0; i < pageCount; i++) {
+      var dot = document.createElement('button');
+      dot.className = 'ts-reviews__dot' + (i === 0 ? ' is-active' : '');
+      dot.setAttribute('aria-label', 'Page ' + (i + 1));
+      dot.setAttribute('data-page', String(i));
+      (function(pageIndex) {
+        dot.addEventListener('click', function() {
+          slider.scrollTo({ left: pageIndex * getCardWidth() * getPerPage(), behavior: 'smooth' });
+        });
+      })(i);
+      dotsWrap.appendChild(dot);
     }
-    slider.addEventListener('scroll', updateDots, { passive: true });
-    dots.forEach(function(d, i) {
-      d.addEventListener('click', function() {
-        slider.scrollTo({ left: i * getCardWidth(), behavior: 'smooth' });
-      });
-    });
-    updateDots();
   }
+
+  function updateDots() {
+    if (!dotsWrap) return;
+    var dots = dotsWrap.querySelectorAll('.ts-reviews__dot');
+    if (!dots.length) return;
+    var perPage = getPerPage();
+    var cw = getCardWidth();
+    if (!cw) return;
+    var currentCard;
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 4) {
+      currentCard = slider.querySelectorAll('.ts-review-card').length - 1;
+    } else {
+      currentCard = Math.round(slider.scrollLeft / cw);
+    }
+    var activePage = Math.floor(currentCard / perPage);
+    dots.forEach(function(d, i) { d.classList.toggle('is-active', i === activePage); });
+  }
+
+  slider.addEventListener('scroll', updateDots, { passive: true });
+
+  buildDots();
+
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() { buildDots(); updateDots(); }, 200);
+  });
 })();
 </script>
 
