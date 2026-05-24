@@ -12,17 +12,30 @@
     "main": {
       "type": "liquid-studio-product-page",
       "blocks": {
-        "title": { "type": "title", "settings": {} },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
         "inline_rating_iifCgL": {
           "type": "inline_rating",
           "settings": {
-            "rating_value": "4.9", "rating_label": "stars",
-            "segment_1_number": "1,200", "segment_1_label": "reviews",
-            "segment_2_number": "57,000+", "segment_2_label": "members",
-            "segment_1_number_mobile": "1.2K", "segment_2_number_mobile": "57K+",
-            "font_size_desktop": 13, "stars_size_desktop": 18,
-            "font_size_mobile": 12, "stars_size_mobile": 14,
-            "star_color": "#ff6700", "rating_value_color": "", "segment_1_color": "", "segment_2_color": "", "text_color": ""
+            "rating_value": "4.9",
+            "rating_label": "stars",
+            "segment_1_number": "1,200",
+            "segment_1_label": "reviews",
+            "segment_2_number": "57,000+",
+            "segment_2_label": "members",
+            "segment_1_number_mobile": "1.2K",
+            "segment_2_number_mobile": "57K+",
+            "font_size_desktop": 13,
+            "stars_size_desktop": 18,
+            "font_size_mobile": 12,
+            "stars_size_mobile": 14,
+            "star_color": "#ff6700",
+            "rating_value_color": "",
+            "segment_1_color": "",
+            "segment_2_color": "",
+            "text_color": ""
           }
         },
         "weight_badge_mv": {
@@ -37,24 +50,57 @@
             "custom_liquid": "<p style=\"font-size:14px;color:#555;line-height:1.6;margin:8px 0 4px;\">These tasty chews deliver complete daily nutrition to keep your dog energized, healthy and thriving.</p>"
           }
         },
-        "price": { "type": "price", "settings": {} },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
         "feature_cards_LB4F4H": {
           "type": "feature-cards",
           "settings": {
-            "visible_items": 4, "columns_desktop": 2, "columns_tablet": 2, "columns_mobile": 2,
-            "feature_text_1": "Complete daily nutrition", "icon_source_1": "built_in", "icon_name_1": "star", "icon_url_1": "",
-            "feature_text_2": "Supports immune system", "icon_source_2": "built_in", "icon_name_2": "shield", "icon_url_2": "",
-            "feature_text_3": "Strong bones & teeth", "icon_source_3": "built_in", "icon_name_3": "check", "icon_url_3": "",
-            "feature_text_4": "Energy & vitality boost", "icon_source_4": "built_in", "icon_name_4": "lightning", "icon_url_4": ""
+            "visible_items": 4,
+            "columns_desktop": 2,
+            "columns_tablet": 2,
+            "columns_mobile": 2,
+            "feature_text_1": "Complete daily nutrition",
+            "icon_source_1": "built_in",
+            "icon_name_1": "star",
+            "icon_url_1": "",
+            "feature_text_2": "Supports immune system",
+            "icon_source_2": "built_in",
+            "icon_name_2": "shield",
+            "icon_url_2": "",
+            "feature_text_3": "Strong bones & teeth",
+            "icon_source_3": "built_in",
+            "icon_name_3": "check",
+            "icon_url_3": "",
+            "feature_text_4": "Energy & vitality boost",
+            "icon_source_4": "built_in",
+            "icon_name_4": "lightning",
+            "icon_url_4": ""
           }
         },
-        "variant_picker": { "type": "variant_picker", "settings": { "picker_type": "button", "swatch_shape": "circle" } },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
         "recharge_subscriptions_subscription_widget_v2_C8trEK": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
         },
-        "quantity_selector": { "type": "quantity_selector", "settings": {} },
-        "buy_buttons": { "type": "buy_buttons", "settings": { "show_dynamic_checkout": false, "show_gift_card_recipient": true } },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
         "yny_accordion_group_XnwLNx": {
           "type": "yny_accordion_group",
           "settings": {
@@ -73,169 +119,510 @@
             "item_5_heading": "",
             "item_5_source": "custom",
             "item_5_content": "",
-            "acc_bg_color": "#ffffff", "acc_border_color": "#ddeaea",
-            "summary_color": "#1d1d1b", "text_color": "#555555"
+            "acc_bg_color": "#ffffff",
+            "acc_border_color": "#ddeaea",
+            "summary_color": "#1d1d1b",
+            "text_color": "#555555"
           }
         },
         "upsell_snippet_XMJqBJ": {
           "type": "upsell_snippet",
           "settings": {
             "free_shipping_upsell_source": "auto",
-            "free_shipping_upsell_products": ["tailspark-hip-joint", "tailspark-probiotic", "tailspark-skin-coat"],
+            "free_shipping_upsell_products": [
+              "tailspark-hip-joint",
+              "tailspark-probiotic",
+              "tailspark-skin-coat"
+            ],
             "free_shipping_upsell_collection": "",
             "free_shipping_upsell_limit": 6,
-            "free_shipping_upsell_slides_desktop": 1.1, "free_shipping_upsell_slides_mobile": 1,
+            "free_shipping_upsell_slides_desktop": 1.1,
+            "free_shipping_upsell_slides_mobile": 1,
             "free_shipping_upsell_heading": "Recommended for you",
-            "free_shipping_upsell_heading_color": "#64748b", "free_shipping_upsell_heading_weight": "600",
-            "free_shipping_upsell_heading_letter_spacing": 0.2, "free_shipping_upsell_heading_size": 13,
-            "free_shipping_upsell_meta_gap": 6, "free_shipping_upsell_title_size": 13,
-            "free_shipping_upsell_title_color": "#606060", "free_shipping_upsell_title_weight": "600",
-            "free_shipping_upsell_price_size": 12, "free_shipping_upsell_price_color": "#64748b", "free_shipping_upsell_price_weight": "500",
-            "free_shipping_upsell_variant_size": 11, "free_shipping_upsell_variant_text_color": "#0f172a",
-            "free_shipping_upsell_variant_bg_color": "#f7f5f0", "free_shipping_upsell_variant_border_color": "#cbd5e1",
-            "free_shipping_upsell_button_size": 12, "free_shipping_upsell_button_text_color": "#0f172a",
-            "free_shipping_upsell_button_bg_color": "#f7f5f0", "free_shipping_upsell_button_border_color": "#cbd5e1",
-            "free_shipping_upsell_button_weight": "600", "free_shipping_upsell_button": "Add",
-            "free_shipping_upsell_arrows_desktop": true, "free_shipping_upsell_arrows_mobile": true,
-            "free_shipping_upsell_hide_in_cart": true, "free_shipping_upsell_hide_current_product": true,
-            "free_shipping_upsell_show_image": true, "free_shipping_upsell_image_size": 56,
-            "free_shipping_upsell_block_border_color": "#1e293b1a", "free_shipping_upsell_item_bg_color": "#f7f5f0",
-            "free_shipping_upsell_item_border_color": "#9e9e9e", "free_shipping_upsell_chevron_color": "#0f172a",
-            "free_shipping_upsell_dot_active_color": "#ff6700", "free_shipping_upsell_dot_inactive_color": "#94a3b873",
-            "free_shipping_upsell_focus_x": 50, "free_shipping_upsell_focus_y": 50
+            "free_shipping_upsell_heading_color": "#64748b",
+            "free_shipping_upsell_heading_weight": "600",
+            "free_shipping_upsell_heading_letter_spacing": 0.2,
+            "free_shipping_upsell_heading_size": 13,
+            "free_shipping_upsell_meta_gap": 6,
+            "free_shipping_upsell_title_size": 13,
+            "free_shipping_upsell_title_color": "#606060",
+            "free_shipping_upsell_title_weight": "600",
+            "free_shipping_upsell_price_size": 12,
+            "free_shipping_upsell_price_color": "#64748b",
+            "free_shipping_upsell_price_weight": "500",
+            "free_shipping_upsell_variant_size": 11,
+            "free_shipping_upsell_variant_text_color": "#0f172a",
+            "free_shipping_upsell_variant_bg_color": "#f7f5f0",
+            "free_shipping_upsell_variant_border_color": "#cbd5e1",
+            "free_shipping_upsell_button_size": 12,
+            "free_shipping_upsell_button_text_color": "#0f172a",
+            "free_shipping_upsell_button_bg_color": "#f7f5f0",
+            "free_shipping_upsell_button_border_color": "#cbd5e1",
+            "free_shipping_upsell_button_weight": "600",
+            "free_shipping_upsell_button": "Add",
+            "free_shipping_upsell_arrows_desktop": true,
+            "free_shipping_upsell_arrows_mobile": true,
+            "free_shipping_upsell_hide_in_cart": true,
+            "free_shipping_upsell_hide_current_product": true,
+            "free_shipping_upsell_show_image": true,
+            "free_shipping_upsell_image_size": 56,
+            "free_shipping_upsell_block_border_color": "#1e293b1a",
+            "free_shipping_upsell_item_bg_color": "#f7f5f0",
+            "free_shipping_upsell_item_border_color": "#9e9e9e",
+            "free_shipping_upsell_chevron_color": "#0f172a",
+            "free_shipping_upsell_dot_active_color": "#ff6700",
+            "free_shipping_upsell_dot_inactive_color": "#94a3b873",
+            "free_shipping_upsell_focus_x": 50,
+            "free_shipping_upsell_focus_y": 50
           }
         },
         "est_delivery_simple_4JBzgx": {
           "type": "est_delivery_simple",
           "settings": {
-            "dispatch_min": 1, "dispatch_max": 1, "delivery_min": 5, "delivery_max": 6,
+            "dispatch_min": 1,
+            "dispatch_max": 1,
+            "delivery_min": 5,
+            "delivery_max": 6,
             "heading_text": "estimated delivery",
-            "label_order": "Order placed", "label_dispatched": "Dispatched", "label_delivered": "Delivered"
+            "label_order": "Order placed",
+            "label_dispatched": "Dispatched",
+            "label_delivered": "Delivered"
           }
         },
-        "share": { "type": "share", "settings": { "share_label": "Share" } }
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
       },
       "block_order": [
-        "title", "inline_rating_iifCgL", "weight_badge_mv", "short_desc_mv", "price",
-        "variant_picker", "recharge_subscriptions_subscription_widget_v2_C8trEK",
-        "quantity_selector", "buy_buttons", "yny_accordion_group_XnwLNx",
-        "upsell_snippet_XMJqBJ", "share"
+        "title",
+        "inline_rating_iifCgL",
+        "weight_badge_mv",
+        "short_desc_mv",
+        "price",
+        "variant_picker",
+        "recharge_subscriptions_subscription_widget_v2_C8trEK",
+        "quantity_selector",
+        "buy_buttons",
+        "yny_accordion_group_XnwLNx",
+        "upsell_snippet_XMJqBJ",
+        "share"
       ],
-      "custom_css": [".product__tax {display: none;}", ".product__media-icon {display: none;}"],
+      "custom_css": [
+        ".product__tax {display: none;}",
+        ".product__media-icon {display: none;}"
+      ],
       "settings": {
-        "enable_sticky_info": false, "color_scheme": "scheme-1",
-        "media_size": "small", "constrain_to_viewport": true, "media_fit": "contain",
-        "gallery_layout": "thumbnail_slider", "mobile_thumbnails": "hide",
-        "media_position": "left", "image_zoom": "none", "hide_variants": true, "enable_video_looping": false,
-        "gallery_side_arrows_desktop": true, "gallery_side_arrows_mobile": true, "gallery_side_arrows_style": "glass",
-        "gallery_side_arrows_button_size": 38, "gallery_side_arrows_button_size_mobile": 36,
-        "gallery_side_arrows_icon_size": 12, "gallery_side_arrows_icon_size_mobile": 10,
-        "gallery_side_arrows_offset_y": 0, "gallery_side_arrows_offset_y_mobile": 0,
-        "price_color": "#ff6700", "price_font_size": 1.8, "price_font_weight": "500",
-        "variant_checked_background": "#ff6700", "variant_checked_text_color": "#ffffff",
-        "variant_checked_border_color": "#ff6700", "variant_checked_border_width": 0,
-        "padding_top": 36, "padding_bottom": 8
+        "enable_sticky_info": false,
+        "color_scheme": "scheme-1",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "gallery_side_arrows_desktop": true,
+        "gallery_side_arrows_mobile": true,
+        "gallery_side_arrows_style": "glass",
+        "gallery_side_arrows_button_size": 38,
+        "gallery_side_arrows_button_size_mobile": 36,
+        "gallery_side_arrows_icon_size": 12,
+        "gallery_side_arrows_icon_size_mobile": 10,
+        "gallery_side_arrows_offset_y": 0,
+        "gallery_side_arrows_offset_y_mobile": 0,
+        "price_color": "#ff6700",
+        "price_font_size": 1.8,
+        "price_font_weight": "500",
+        "variant_checked_background": "#ff6700",
+        "variant_checked_text_color": "#ffffff",
+        "variant_checked_border_color": "#ff6700",
+        "variant_checked_border_width": 0,
+        "padding_top": 36,
+        "padding_bottom": 8
       }
     },
     "feeding_guide_mv": {
       "type": "feeding-guide",
       "blocks": {
-        "row_mv1": { "type": "row", "settings": { "icon_image_preset": "small", "icon": "🐩", "size_label": "Small", "weight_range": "Under 25 lbs", "chews_count": "1/2 chew / day" } },
-        "row_mv2": { "type": "row", "settings": { "icon_image_preset": "medium", "icon": "🐕", "size_label": "Medium", "weight_range": "25 - 75 lbs", "chews_count": "1 chew / day" } },
-        "row_mv3": { "type": "row", "settings": { "icon_image_preset": "xlarge", "icon": "🦮", "size_label": "Large", "weight_range": "Over 75 lbs", "chews_count": "2 chews / day" } }
+        "row_mv1": {
+          "type": "row",
+          "settings": {
+            "icon": "🐩",
+            "size_label": "Small",
+            "weight_range": "Under 25 lbs",
+            "chews_count": "1/2 chew / day"
+          }
+        },
+        "row_mv2": {
+          "type": "row",
+          "settings": {
+            "icon": "🐕",
+            "size_label": "Medium",
+            "weight_range": "25 - 75 lbs",
+            "chews_count": "1 chew / day"
+          }
+        },
+        "row_mv3": {
+          "type": "row",
+          "settings": {
+            "icon": "🦮",
+            "size_label": "Large",
+            "weight_range": "Over 75 lbs",
+            "chews_count": "2 chews / day"
+          }
+        }
       },
-      "block_order": ["row_mv1", "row_mv2", "row_mv3"],
+      "block_order": [
+        "row_mv1",
+        "row_mv2",
+        "row_mv3"
+      ],
       "name": "Feeding Guide",
       "settings": {
-        "heading": "Feeding Guide", "subheading": "Give daily based on your dog's weight",
+        "heading": "Feeding Guide",
+        "subheading": "Give daily based on your dog's weight",
         "note": "For best results, give chews consistently each day. Always provide fresh water.",
-        "bg_color": "#eaf4f4", "card_bg": "#ffffff",
-        "heading_color": "#1d1d1b", "text_color": "#555555", "accent_color": "#ff6700",
-        "padding_top": 56, "padding_bottom": 56, "padding_top_mobile": 36, "padding_bottom_mobile": 36
+        "bg_color": "#eaf4f4",
+        "card_bg": "#ffffff",
+        "heading_color": "#1d1d1b",
+        "text_color": "#555555",
+        "accent_color": "#ff6700",
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36
       }
     },
     "what_inside_mv": {
       "type": "ts-whats-inside",
       "blocks": {
-        "item_mv1": { "type": "item", "settings": { "title": "Vitamins A, C, D3 & E", "dosage": "Vitamin complex", "description": "Essential antioxidant vitamins that protect cells, support immune function, and maintain healthy vision and skin." } },
-        "item_mv2": { "type": "item", "settings": { "title": "Full B-Complex", "dosage": "B1-B12", "description": "Complete spectrum of B vitamins that support energy metabolism, nerve health, and red blood cell production." } },
-        "item_mv3": { "type": "item", "settings": { "title": "Calcium & Phosphorus", "dosage": "100mg / 80mg", "description": "The essential bone-building mineral duo that supports strong teeth, healthy joints, and structural integrity." } },
-        "item_mv4": { "type": "item", "settings": { "title": "Magnesium & Potassium", "dosage": "30mg / 20mg", "description": "Essential minerals for muscle function, nerve signal transmission, and maintaining proper fluid balance." } },
-        "item_mv5": { "type": "item", "settings": { "title": "Zinc, Iodine & Selenium", "dosage": "Trace minerals", "description": "Vital trace minerals that support immune response, wound healing, thyroid function, and reproductive health." } }
+        "item_mv1": {
+          "type": "item",
+          "settings": {
+            "title": "Vitamins A, C, D3 & E",
+            "description": "Essential antioxidant vitamins that protect cells, support immune function, and maintain healthy vision and skin."
+          }
+        },
+        "item_mv2": {
+          "type": "item",
+          "settings": {
+            "title": "Full B-Complex",
+            "description": "Complete spectrum of B vitamins that support energy metabolism, nerve health, and red blood cell production."
+          }
+        },
+        "item_mv3": {
+          "type": "item",
+          "settings": {
+            "title": "Calcium & Phosphorus",
+            "description": "The essential bone-building mineral duo that supports strong teeth, healthy joints, and structural integrity."
+          }
+        },
+        "item_mv4": {
+          "type": "item",
+          "settings": {
+            "title": "Magnesium & Potassium",
+            "description": "Essential minerals for muscle function, nerve signal transmission, and maintaining proper fluid balance."
+          }
+        },
+        "item_mv5": {
+          "type": "item",
+          "settings": {
+            "title": "Zinc, Iodine & Selenium",
+            "description": "Vital trace minerals that support immune response, wound healing, thyroid function, and reproductive health."
+          }
+        }
       },
-      "block_order": ["item_mv1", "item_mv2", "item_mv3", "item_mv4", "item_mv5"],
+      "block_order": [
+        "item_mv1",
+        "item_mv2",
+        "item_mv3",
+        "item_mv4",
+        "item_mv5"
+      ],
       "name": "What's Inside",
       "settings": {
         "heading": "What's Inside",
+        "flavor_title": "Complete Daily Nutrition",
+        "flavor_subtitle": "Chicken Liver & Sweet Potato",
         "background_color": "#eaf4f4",
-        "card_bg": "#d6ecea",
         "heading_color": "#ff6700",
         "item_title_color": "#1d1d1b",
         "item_text_color": "#555555",
-        "flavor_title": "Complete Daily Nutrition",
-        "flavor_subtitle": "Chicken Liver & Sweet Potato",
-        "nutritional_info": "<p><strong>Active Ingredients (per chew):</strong></p><p>Vitamin A 2500 IU, Vitamin C 30mg, Vitamin D3 200 IU, Vitamin E 10 IU, Thiamine (B1) 1mg, Riboflavin (B2) 1mg, Niacinamide (B3) 5mg, Pantothenic Acid (B5) 2mg, Pyridoxine (B6) 0.5mg, Cyanocobalamin (B12) 4mcg, Folic Acid 100mcg, Biotin 100mcg, Calcium 100mg, Phosphorus 80mg, Magnesium 30mg, Potassium 20mg, Zinc 5mg, Iodine 150mcg, Iron 3mg, Manganese 1mg, Selenium 10mcg.</p><p><strong>Inactive Ingredients:</strong></p><p>Chicken Liver, Sweet Potato, Brewer's Yeast, Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
-        "padding_desktop": 60, "padding_mobile": 40
+        "padding_desktop": 60,
+        "padding_mobile": 40
       }
     },
     "reviews_mv": {
       "type": "customer-reviews",
       "blocks": {
-        "rev_mv1": { "type": "review", "settings": { "rating": 5, "review_text": "Our golden retriever Max has been on the Hip & Joint chews for 2 months and the difference is incredible. He moves like a puppy again - running, jumping, playing fetch. Worth every penny!", "reviewer_name": "Sarah M.", "reviewer_info": "Texas - Mom to Max, 8yr Golden Retriever" } },
-        "rev_mv2": { "type": "review", "settings": { "rating": 5, "review_text": "The Probiotic chews completely solved her sensitive stomach issues. No more upset tummy after meals. Love that I can give my dog something healthy that she actually wants to eat!", "reviewer_name": "Jennifer K.", "reviewer_info": "California - Mom to Bella, Labrador Mix" } },
-        "rev_mv3": { "type": "review", "settings": { "rating": 5, "review_text": "Three of my dogs take different TailSpark supplements and they all go crazy for the chews. The Multivitamin has given my 11-year-old so much more energy. Clean ingredients, real results.", "reviewer_name": "Mark R.", "reviewer_info": "Florida - Dad to 3 rescue dogs" } },
-        "rev_mv4": { "type": "review", "settings": { "rating": 5, "review_text": "My dachshund started limping after a rough play session. Within 3 weeks of the Hip & Joint chews she is back to her zoomie self. Honestly amazed at how fast it worked.", "reviewer_name": "Lisa T.", "reviewer_info": "New York - Mom to Bella, 6yr Dachshund" } },
-        "rev_mv5": { "type": "review", "settings": { "rating": 5, "review_text": "My working dog needs real nutrition to stay sharp. The Multivitamin keeps his coat shiny, his energy consistent, and his vet says his bloodwork looks great. Total game changer.", "reviewer_name": "Carlos M.", "reviewer_info": "Texas - Dad to Rex, German Shepherd" } },
-        "rev_mv6": { "type": "review", "settings": { "rating": 5, "review_text": "My poodle always had dry, flaky skin and I tried everything. After 6 weeks on the Skin and Coat chews, her coat is silky and the flaking stopped completely. She loves them too!", "reviewer_name": "Amanda W.", "reviewer_info": "Ohio - Mom to Luna, Poodle Mix" } },
-        "rev_mv7": { "type": "review", "settings": { "rating": 5, "review_text": "Our 9-year-old Husky was slowing down and struggling on hikes. After 5 weeks of Hip & Joint chews he is back leading the pack on our trails. My vet recommended these - they work!", "reviewer_name": "David H.", "reviewer_info": "Colorado - Dad to Zeus, 9yr Husky" } },
-        "rev_mv8": { "type": "review", "settings": { "rating": 5, "review_text": "My beagle had chronic digestive issues for years. The Probiotic chews changed everything. Within 2 weeks his digestion stabilized completely. No more accidents and he is so much happier.", "reviewer_name": "Nicole B.", "reviewer_info": "Georgia - Mom to Biscuit, Beagle" } },
-        "rev_mv9": { "type": "review", "settings": { "rating": 5, "review_text": "Border collies are known for shedding and Luna was no exception. Since starting the Skin and Coat chews 2 months ago, the shedding dropped dramatically and her coat looks amazing.", "reviewer_name": "Rachel P.", "reviewer_info": "California - Mom to Luna, Border Collie" } }
+        "rev_mv1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Our golden retriever Max has been on the Hip & Joint chews for 2 months and the difference is incredible. He moves like a puppy again - running, jumping, playing fetch. Worth every penny!",
+            "reviewer_name": "Sarah M.",
+            "reviewer_info": "Texas - Mom to Max, 8yr Golden Retriever"
+          }
+        },
+        "rev_mv2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "The Probiotic chews completely solved her sensitive stomach issues. No more upset tummy after meals. Love that I can give my dog something healthy that she actually wants to eat!",
+            "reviewer_name": "Jennifer K.",
+            "reviewer_info": "California - Mom to Bella, Labrador Mix"
+          }
+        },
+        "rev_mv3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Three of my dogs take different TailSpark supplements and they all go crazy for the chews. The Multivitamin has given my 11-year-old so much more energy. Clean ingredients, real results.",
+            "reviewer_name": "Mark R.",
+            "reviewer_info": "Florida - Dad to 3 rescue dogs"
+          }
+        },
+        "rev_mv4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "My dachshund started limping after a rough play session. Within 3 weeks of the Hip & Joint chews she is back to her zoomie self. Honestly amazed at how fast it worked.",
+            "reviewer_name": "Lisa T.",
+            "reviewer_info": "New York - Mom to Bella, 6yr Dachshund"
+          }
+        },
+        "rev_mv5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "My working dog needs real nutrition to stay sharp. The Multivitamin keeps his coat shiny, his energy consistent, and his vet says his bloodwork looks great. Total game changer.",
+            "reviewer_name": "Carlos M.",
+            "reviewer_info": "Texas - Dad to Rex, German Shepherd"
+          }
+        },
+        "rev_mv6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "My poodle always had dry, flaky skin and I tried everything. After 6 weeks on the Skin and Coat chews, her coat is silky and the flaking stopped completely. She loves them too!",
+            "reviewer_name": "Amanda W.",
+            "reviewer_info": "Ohio - Mom to Luna, Poodle Mix"
+          }
+        },
+        "rev_mv7": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Our 9-year-old Husky was slowing down and struggling on hikes. After 5 weeks of Hip & Joint chews he is back leading the pack on our trails. My vet recommended these - they work!",
+            "reviewer_name": "David H.",
+            "reviewer_info": "Colorado - Dad to Zeus, 9yr Husky"
+          }
+        },
+        "rev_mv8": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "My beagle had chronic digestive issues for years. The Probiotic chews changed everything. Within 2 weeks his digestion stabilized completely. No more accidents and he is so much happier.",
+            "reviewer_name": "Nicole B.",
+            "reviewer_info": "Georgia - Mom to Biscuit, Beagle"
+          }
+        },
+        "rev_mv9": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Border collies are known for shedding and Luna was no exception. Since starting the Skin and Coat chews 2 months ago, the shedding dropped dramatically and her coat looks amazing.",
+            "reviewer_name": "Rachel P.",
+            "reviewer_info": "California - Mom to Luna, Border Collie"
+          }
+        }
       },
-      "block_order": ["rev_mv1", "rev_mv2", "rev_mv3", "rev_mv4", "rev_mv5", "rev_mv6", "rev_mv7", "rev_mv8", "rev_mv9"],
+      "block_order": [
+        "rev_mv1",
+        "rev_mv2",
+        "rev_mv3",
+        "rev_mv4",
+        "rev_mv5",
+        "rev_mv6",
+        "rev_mv7",
+        "rev_mv8",
+        "rev_mv9"
+      ],
       "name": "Customer Reviews",
       "settings": {
         "heading": "What Dog Parents Are Saying",
-        "show_overall_rating": true, "overall_rating": "4.9", "reviews_count": "1,200+",
-        "bg_color": "#ffffff", "card_bg": "#fff8ed", "heading_color": "#1d1d1b",
-        "text_color": "#555555", "star_color": "#ff6700",
-        "padding_top": 60, "padding_bottom": 60, "padding_top_mobile": 40, "padding_bottom_mobile": 40
+        "show_overall_rating": true,
+        "overall_rating": "4.9",
+        "reviews_count": "1,200+",
+        "bg_color": "#ffffff",
+        "card_bg": "#fff8ed",
+        "heading_color": "#1d1d1b",
+        "text_color": "#555555",
+        "star_color": "#ff6700",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     },
     "faq_mv": {
       "type": "faq-accordion-section",
       "blocks": {
-        "cat_mv1": { "type": "category", "settings": { "heading": "Daily Multivitamin" } },
-        "faq_mv1": { "type": "item", "settings": { "heading": "Do I still need other supplements if I use the Multivitamin?", "content": "<p>Our Daily Multivitamin provides comprehensive nutritional support. Dogs with specific conditions may benefit from targeted supplements alongside it - like Hip &amp; Joint for mobility or Probiotic for digestive health.</p>" } },
-        "faq_mv2": { "type": "item", "settings": { "heading": "Can puppies take the Multivitamin?", "content": "<p>Suitable for dogs 6 months and older. Young puppies on growth-specific formulas should consult a veterinarian before adding any supplements.</p>" } },
-        "faq_mv3": { "type": "item", "settings": { "heading": "Will it cause any digestive issues?", "content": "<p>Our formula is gentle and designed for daily use. Some dogs may experience a brief adjustment period. Giving the chew with a meal helps minimize any sensitivity.</p>" } },
-        "faq_mv4": { "type": "item", "settings": { "heading": "How long before I notice a difference?", "content": "<p>Most pet parents notice improvements in energy levels and overall vitality within 4-6 weeks of consistent daily use. Immune benefits build gradually over 8-12 weeks.</p>" } }
+        "cat_mv1": {
+          "type": "category",
+          "settings": {
+            "heading": "Daily Multivitamin"
+          }
+        },
+        "faq_mv1": {
+          "type": "item",
+          "settings": {
+            "heading": "Do I still need other supplements if I use the Multivitamin?",
+            "content": "<p>Our Daily Multivitamin provides comprehensive nutritional support. Dogs with specific conditions may benefit from targeted supplements alongside it - like Hip &amp; Joint for mobility or Probiotic for digestive health.</p>"
+          }
+        },
+        "faq_mv2": {
+          "type": "item",
+          "settings": {
+            "heading": "Can puppies take the Multivitamin?",
+            "content": "<p>Suitable for dogs 6 months and older. Young puppies on growth-specific formulas should consult a veterinarian before adding any supplements.</p>"
+          }
+        },
+        "faq_mv3": {
+          "type": "item",
+          "settings": {
+            "heading": "Will it cause any digestive issues?",
+            "content": "<p>Our formula is gentle and designed for daily use. Some dogs may experience a brief adjustment period. Giving the chew with a meal helps minimize any sensitivity.</p>"
+          }
+        },
+        "faq_mv4": {
+          "type": "item",
+          "settings": {
+            "heading": "How long before I notice a difference?",
+            "content": "<p>Most pet parents notice improvements in energy levels and overall vitality within 4-6 weeks of consistent daily use. Immune benefits build gradually over 8-12 weeks.</p>"
+          }
+        }
       },
-      "block_order": ["cat_mv1", "faq_mv1", "faq_mv2", "faq_mv3", "faq_mv4"],
+      "block_order": [
+        "cat_mv1",
+        "faq_mv1",
+        "faq_mv2",
+        "faq_mv3",
+        "faq_mv4"
+      ],
       "name": "Product FAQ",
-      "settings": { "heading": "Frequently Asked Questions", "subheading": "", "color_scheme": "scheme-1", "padding_top": 60, "padding_bottom": 60 }
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     },
     "best_sellers_mv": {
       "type": "best-sellers-custom",
       "blocks": {
-        "product_UP9mEb": { "type": "product", "settings": { "product": "tailspark-hip-joint", "title_override": "Hip & Joint", "image_preset": "none", "subtitle": "Increases flexibility and strengthens joints", "card_bg": "#fdecea", "icon_1_preset": "ts_joint", "icon_1_label": "Supports Joint Health", "icon_2_preset": "ts_anti_inflammatory", "icon_2_label": "Natural Anti-Inflammatory", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
-        "product_a7PMHk": { "type": "product", "settings": { "product": "tailspark-probiotic", "title_override": "Probiotic", "image_preset": "none", "subtitle": "Maintains healthy digestive system", "card_bg": "#edf6f0", "icon_1_preset": "ts_gut", "icon_1_label": "Gut Health", "icon_2_preset": "ts_immune", "icon_2_label": "Immune Support", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } },
-        "product_NHd9EB": { "type": "product", "settings": { "product": "tailspark-skin-coat", "title_override": "Skin & Coat", "image_preset": "none", "subtitle": "Softens coat and soothes dry skin", "card_bg": "#fef9e7", "icon_1_preset": "ts_coat", "icon_1_label": "Helps Restore Coat", "icon_2_preset": "ts_antihistamine", "icon_2_label": "Natural Antihistamines", "icon_3_preset": "none", "icon_3_label": "", "icon_4_preset": "none", "icon_4_label": "" } }
+        "product_UP9mEb": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-hip-joint",
+            "title_override": "Hip & Joint",
+            "image_preset": "none",
+            "subtitle": "Increases flexibility and strengthens joints",
+            "card_bg": "#fdecea",
+            "icon_1_preset": "ts_joint",
+            "icon_1_label": "Supports Joint Health",
+            "icon_2_preset": "ts_anti_inflammatory",
+            "icon_2_label": "Natural Anti-Inflammatory",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
+        "product_a7PMHk": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-probiotic",
+            "title_override": "Probiotic",
+            "image_preset": "none",
+            "subtitle": "Maintains healthy digestive system",
+            "card_bg": "#edf6f0",
+            "icon_1_preset": "ts_gut",
+            "icon_1_label": "Gut Health",
+            "icon_2_preset": "ts_immune",
+            "icon_2_label": "Immune Support",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
+        "product_NHd9EB": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-skin-coat",
+            "title_override": "Skin & Coat",
+            "image_preset": "none",
+            "subtitle": "Softens coat and soothes dry skin",
+            "card_bg": "#fef9e7",
+            "icon_1_preset": "ts_coat",
+            "icon_1_label": "Helps Restore Coat",
+            "icon_2_preset": "ts_antihistamine",
+            "icon_2_label": "Natural Antihistamines",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        }
       },
-      "block_order": ["product_UP9mEb", "product_a7PMHk", "product_NHd9EB"],
+      "block_order": [
+        "product_UP9mEb",
+        "product_a7PMHk",
+        "product_NHd9EB"
+      ],
       "name": "You Might Also Like",
       "settings": {
-        "heading": "You Might Also Like", "subheading": "Complete your dog's daily wellness routine.",
-        "button_label": "Add to Cart", "show_price": true,
-        "image_radius": 20, "image_radius_mobile": 6,
-        "section_bg": "#ffffff", "heading_color": "#1d1d1b", "title_color": "#1d1d1b",
-        "text_color": "#555555", "icon_color": "#333333",
-        "button_bg": "#ff6700", "button_text": "#ffffff",
-        "button_hover_bg": "#cc5200", "button_hover_text": "#ffffff",
-        "heading_size": 32, "heading_size_mobile": 24,
-        "icon_size": 48, "icon_size_mobile": 34, "icon_label_size": 11, "icon_label_size_mobile": 10,
-        "padding_top": 40, "padding_bottom": 60, "padding_top_mobile": 32, "padding_bottom_mobile": 40
+        "heading": "You Might Also Like",
+        "subheading": "Complete your dog's daily wellness routine.",
+        "button_label": "Add to Cart",
+        "show_price": true,
+        "image_radius": 20,
+        "image_radius_mobile": 6,
+        "section_bg": "#ffffff",
+        "heading_color": "#1d1d1b",
+        "title_color": "#1d1d1b",
+        "text_color": "#555555",
+        "icon_color": "#333333",
+        "button_bg": "#ff6700",
+        "button_text": "#ffffff",
+        "button_hover_bg": "#cc5200",
+        "button_hover_text": "#ffffff",
+        "heading_size": 32,
+        "heading_size_mobile": 24,
+        "icon_size": 48,
+        "icon_size_mobile": 34,
+        "icon_label_size": 11,
+        "icon_label_size_mobile": 10,
+        "padding_top": 40,
+        "padding_bottom": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 40
       }
     }
   },
-  "order": ["main", "feeding_guide_mv", "what_inside_mv", "reviews_mv", "faq_mv", "best_sellers_mv"]
+  "order": [
+    "main",
+    "feeding_guide_mv",
+    "what_inside_mv",
+    "reviews_mv",
+    "faq_mv",
+    "best_sellers_mv"
+  ]
 }
