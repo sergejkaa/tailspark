@@ -41,7 +41,7 @@
         "weight_badge_sc": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"display:flex;flex-wrap:wrap;gap:8px;margin:4px 0;\"><div style=\"display:inline-flex;align-items:center;padding:7px 14px;border-radius:50px;background:#fff8ed;font-size:13px;font-weight:600;color:#555;border:1px solid rgba(0,0,0,.1);\">4.94 OZ (140g)</div><div style=\"display:inline-flex;align-items:center;padding:7px 14px;border-radius:50px;background:#fff8ed;font-size:13px;font-weight:600;color:#555;border:1px solid rgba(0,0,0,.1);\">70 Soft Chews</div></div>"
+            "custom_liquid": "<div style=\"display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:50px;background:#fff8ed;font-size:13px;font-weight:600;color:#555;border:1px solid rgba(0,0,0,.1);margin:4px 0;\">4.94 OZ (140g) &bull; 70 Soft Chews</div>"
           }
         },
         "short_desc_sc": {
@@ -485,6 +485,7 @@
           "settings": {
             "product": "tailspark-hip-joint",
             "title_override": "Hip & Joint",
+            "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
             "subtitle": "Increases flexibility and strengthens joints",
             "card_bg": "#fdecea",
@@ -503,6 +504,7 @@
           "settings": {
             "product": "tailspark-multivitamin",
             "title_override": "Daily Multivitamin",
+            "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",
             "subtitle": "Daily support for overall vitality",
             "card_bg": "#eaf4f4",
@@ -521,6 +523,7 @@
           "settings": {
             "product": "tailspark-probiotic",
             "title_override": "Probiotic",
+            "image_override": "shopify://shop_images/Frame_388.png",
             "image_preset": "none",
             "subtitle": "Maintains healthy digestive system",
             "card_bg": "#edf6f0",
@@ -568,26 +571,6 @@
         "padding_top_mobile": 32,
         "padding_bottom_mobile": 40
       }
-    },
-    "177967287919bbf876": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_i4WThm": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "real_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_i4WThm"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
@@ -595,7 +578,6 @@
     "what_inside_sc",
     "feeding_guide_sc",
     "faq_sc",
-    "best_sellers_sc",
-    "177967287919bbf876"
+    "best_sellers_sc"
   ]
 }
