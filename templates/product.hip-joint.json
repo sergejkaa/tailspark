@@ -52,82 +52,8 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {}
-        },
-        "feature_cards_LB4F4H": {
-          "type": "feature-cards",
-          "settings": {
-            "visible_items": 4,
-            "columns_desktop": 2,
-            "columns_tablet": 2,
-            "columns_mobile": 2,
-            "mobile_layout": "grid",
-            "text_align": "left",
-            "gap_desktop": 8,
-            "gap_tablet": 8,
-            "gap_mobile": 8,
-            "margin_top": 10,
-            "margin_bottom": 10,
-            "card_mode": "solid",
-            "card_radius": 8,
-            "card_padding_x_desktop": 11,
-            "card_padding_y_desktop": 10,
-            "card_padding_x_tablet": 11,
-            "card_padding_y_tablet": 10,
-            "card_padding_x_mobile": 9,
-            "card_padding_y_mobile": 7,
-            "text_size_desktop": 15,
-            "text_size_tablet": 13,
-            "text_size_mobile": 12,
-            "text_weight": "500",
-            "icon_size_desktop": 21,
-            "icon_size_tablet": 18,
-            "icon_size_mobile": 17,
-            "text_color": "#243126",
-            "icon_color": "#ff6700",
-            "solid_background": "#fdecea",
-            "solid_border_color": "#f0c8c4",
-            "card_shadow_color": "#000000",
-            "card_shadow_opacity": 8,
-            "glass_background": "#ffffff",
-            "glass_secondary_tint": "#fdecea",
-            "glass_background_opacity": 28,
-            "glass_border_color": "#ffffff",
-            "glass_border_opacity": 60,
-            "glass_blur": 10,
-            "feature_text_1": "Reduces joint discomfort",
-            "icon_source_1": "built_in",
-            "icon_name_1": "heart",
-            "icon_url_1": "",
-            "feature_text_2": "Improves flexibility & mobility",
-            "icon_source_2": "built_in",
-            "icon_name_2": "leaf",
-            "icon_url_2": "",
-            "feature_text_3": "Natural anti-inflammatory",
-            "icon_source_3": "built_in",
-            "icon_name_3": "check",
-            "icon_url_3": "",
-            "feature_text_4": "Supports healthy cartilage",
-            "icon_source_4": "built_in",
-            "icon_name_4": "shield",
-            "icon_url_4": "",
-            "feature_text_5": "Feature item 5",
-            "icon_source_5": "built_in",
-            "icon_name_5": "shield",
-            "icon_url_5": "",
-            "feature_text_6": "Feature item 6",
-            "icon_source_6": "built_in",
-            "icon_name_6": "star",
-            "icon_url_6": "",
-            "feature_text_7": "Feature item 7",
-            "icon_source_7": "built_in",
-            "icon_name_7": "globe",
-            "icon_url_7": "",
-            "feature_text_8": "Feature item 8",
-            "icon_source_8": "built_in",
-            "icon_name_8": "check",
-            "icon_url_8": ""
-          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -142,6 +68,7 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
@@ -226,30 +153,6 @@
             "free_shipping_upsell_focus_y": 50
           }
         },
-        "est_delivery_simple_4JBzgx": {
-          "type": "est_delivery_simple",
-          "settings": {
-            "dispatch_min": 1,
-            "dispatch_max": 1,
-            "delivery_min": 5,
-            "delivery_max": 6,
-            "heading_text": "estimated delivery",
-            "bg_color": "#f7f5f0",
-            "border_color": "#ff6700",
-            "border_style": "dashed",
-            "title_color": "#4e4e4e",
-            "summary_color": "#4b4b4b",
-            "label_color": "#ff6700",
-            "date_color": "#ff6700",
-            "ring_color": "#c7c7c7",
-            "connector_color": "#e6e6e6",
-            "connector_style": "dashed",
-            "accent_color": "#ff6700",
-            "label_order": "Order placed",
-            "label_dispatched": "Dispatched",
-            "label_delivered": "Delivered"
-          }
-        },
         "share": {
           "type": "share",
           "settings": {
@@ -283,6 +186,7 @@
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "hide",
+        "mobile_hide_dots_color": "#1b4a3d",
         "media_position": "left",
         "image_zoom": "none",
         "hide_variants": true,
@@ -307,120 +211,52 @@
         "padding_bottom": 8
       }
     },
-    "feeding_guide_hj": {
-      "type": "feeding-guide",
-      "blocks": {
-        "row_hj1": {
-          "type": "row",
-          "settings": {
-            "icon": "🐩",
-            "icon_image_preset": "small",
-            "size_label": "Small",
-            "weight_range": "Up to 15 lbs",
-            "chews_count": "1 chew / day"
-          }
-        },
-        "row_hj2": {
-          "type": "row",
-          "settings": {
-            "icon": "🐕",
-            "icon_image_preset": "medium",
-            "size_label": "Medium",
-            "weight_range": "15 - 45 lbs",
-            "chews_count": "2 chews / day"
-          }
-        },
-        "row_hj3": {
-          "type": "row",
-          "settings": {
-            "icon": "🐕‍🦺",
-            "icon_image_preset": "large",
-            "size_label": "Large",
-            "weight_range": "45 - 75 lbs",
-            "chews_count": "3 chews / day"
-          }
-        },
-        "row_hj4": {
-          "type": "row",
-          "settings": {
-            "icon": "🦮",
-            "icon_image_preset": "xlarge",
-            "size_label": "X-Large",
-            "weight_range": "Over 75 lbs",
-            "chews_count": "4 chews / day"
-          }
-        }
-      },
-      "block_order": [
-        "row_hj1",
-        "row_hj2",
-        "row_hj3",
-        "row_hj4"
-      ],
-      "name": "Feeding Guide",
-      "settings": {
-        "heading": "Feeding Guide",
-        "subheading": "Give daily based on your dog's weight",
-        "note": "For best results, give chews consistently each day. Always provide fresh water.",
-        "bg_color": "#fdecea",
-        "card_bg": "#ffffff",
-        "heading_color": "#1d1d1b",
-        "text_color": "#555555",
-        "accent_color": "#ff6700",
-        "chews_color": "#606060",
-        "icon_size": 72,
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36
-      }
-    },
     "what_inside_hj": {
       "type": "ts-whats-inside",
       "blocks": {
         "item_hj1": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-glucosamine.png",
             "title": "Glucosamine HCl",
             "dosage": "500mg",
-            "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health.",
-            "image_asset": "ts-ing-glucosamine.png"
+            "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health."
           }
         },
         "item_hj2": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-msm.png",
             "title": "MSM",
             "dosage": "400mg",
-            "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair.",
-            "image_asset": "ts-ing-msm.png"
+            "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair."
           }
         },
         "item_hj3": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-green-lipped-mussel.png",
             "title": "Green-Lipped Mussel",
             "dosage": "150mg",
-            "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation.",
-            "image_asset": "ts-ing-green-lipped-mussel.png"
+            "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation."
           }
         },
         "item_hj4": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-chondroitin.png",
             "title": "Chondroitin Sulfate",
             "dosage": "110mg",
-            "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience.",
-            "image_asset": "ts-ing-chondroitin.png"
+            "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience."
           }
         },
         "item_hj5": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-turmeric.png",
             "title": "Turmeric & Boswellia",
             "dosage": "50mg / 50mg",
-            "description": "Powerful natural anti-inflammatory botanicals that work synergistically to reduce pain and support mobility.",
-            "image_asset": "ts-ing-turmeric.png"
+            "description": "Powerful natural anti-inflammatory botanicals that work synergistically to reduce pain and support mobility."
           }
         },
         "nutri_hj1": {
@@ -492,6 +328,74 @@
         "item_text_color": "#555555",
         "padding_desktop": 60,
         "padding_mobile": 40
+      }
+    },
+    "feeding_guide_hj": {
+      "type": "feeding-guide",
+      "blocks": {
+        "row_hj1": {
+          "type": "row",
+          "settings": {
+            "icon_image_preset": "small",
+            "icon": "🐩",
+            "size_label": "Small",
+            "weight_range": "Up to 15 lbs",
+            "chews_count": "1 chew / day"
+          }
+        },
+        "row_hj2": {
+          "type": "row",
+          "settings": {
+            "icon_image_preset": "medium",
+            "icon": "🐕",
+            "size_label": "Medium",
+            "weight_range": "15 - 45 lbs",
+            "chews_count": "2 chews / day"
+          }
+        },
+        "row_hj3": {
+          "type": "row",
+          "settings": {
+            "icon_image_preset": "large",
+            "icon": "🐕‍🦺",
+            "size_label": "Large",
+            "weight_range": "45 - 75 lbs",
+            "chews_count": "3 chews / day"
+          }
+        },
+        "row_hj4": {
+          "type": "row",
+          "settings": {
+            "icon_image_preset": "xlarge",
+            "icon": "🦮",
+            "size_label": "X-Large",
+            "weight_range": "Over 75 lbs",
+            "chews_count": "4 chews / day"
+          }
+        }
+      },
+      "block_order": [
+        "row_hj1",
+        "row_hj2",
+        "row_hj3",
+        "row_hj4"
+      ],
+      "name": "Feeding Guide",
+      "settings": {
+        "heading": "Feeding Guide",
+        "subheading": "Give daily based on your dog's weight",
+        "note": "For best results, give chews consistently each day. Always provide fresh water.",
+        "bg_color": "#fdecea",
+        "card_bg": "#ffffff",
+        "heading_color": "#1d1d1b",
+        "text_color": "#555555",
+        "accent_color": "#ff6700",
+        "chews_color": "#606060",
+        "icon_size": 72,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36
       }
     },
     "faq_hj": {
