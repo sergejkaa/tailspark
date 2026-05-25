@@ -11,7 +11,7 @@
   .ts-wi__heading {
     font-size: 28px;
     font-weight: 700;
-    color: {{ section.settings.heading_color }};
+    color: {{ section.settings.item_title_color }};
     margin: 0 0 24px;
     line-height: 1.2;
     text-align: center;
@@ -23,6 +23,7 @@
     display: flex;
     border-bottom: 2px solid rgba(0,0,0,0.1);
     margin-bottom: 28px;
+    position: relative;
   }
   .ts-wi__tab {
     padding: 10px 20px 12px;
@@ -32,18 +33,23 @@
     opacity: 0.5;
     cursor: pointer;
     border: none;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
     background: none;
-    transition: opacity 0.2s, border-color 0.2s, color 0.2s;
+    transition: opacity 0.25s, color 0.25s;
     letter-spacing: 0.02em;
   }
   .ts-wi__tab.is-active {
-    color: {{ section.settings.heading_color }};
+    color: {{ section.settings.item_title_color }};
     opacity: 1;
-    border-bottom-color: {{ section.settings.heading_color }};
   }
   .ts-wi__tab:hover:not(.is-active) { opacity: 0.75; }
+  .ts-wi__tab-indicator {
+    position: absolute;
+    bottom: -2px;
+    height: 2px;
+    background: {{ section.settings.heading_color }};
+    transition: left 0.3s ease-out, width 0.3s ease-out;
+    pointer-events: none;
+  }
 
   /* Panels */
   .ts-wi__panel { display: none; }
@@ -215,6 +221,7 @@
       {%- if has_nutrition -%}
         <button class="ts-wi__tab" role="tab" aria-selected="false" data-ts-wi-tab="nutrition">Nutritional Information</button>
       {%- endif -%}
+      <div class="ts-wi__tab-indicator" aria-hidden="true"></div>
     </div>
 
     <div class="ts-wi__panel is-active" data-ts-wi-panel="ingredients">
@@ -291,6 +298,23 @@
   document.querySelectorAll('.ts-wi').forEach(function(sec) {
     var tabs = sec.querySelectorAll('[data-ts-wi-tab]');
     var panels = sec.querySelectorAll('[data-ts-wi-panel]');
+    var indicator = sec.querySelector('.ts-wi__tab-indicator');
+
+    function moveIndicator(tab) {
+      if (!indicator) return;
+      indicator.style.left = tab.offsetLeft + 'px';
+      indicator.style.width = tab.offsetWidth + 'px';
+    }
+
+    var initActive = sec.querySelector('.ts-wi__tab.is-active');
+    if (initActive) {
+      indicator && (indicator.style.transition = 'none');
+      moveIndicator(initActive);
+      requestAnimationFrame(function() {
+        if (indicator) indicator.style.transition = '';
+      });
+    }
+
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() {
         var target = tab.dataset.tsWiTab;
@@ -300,6 +324,7 @@
         tab.setAttribute('aria-selected', 'true');
         var panel = sec.querySelector('[data-ts-wi-panel="' + target + '"]');
         if (panel) panel.classList.add('is-active');
+        moveIndicator(tab);
       });
     });
   });
