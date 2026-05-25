@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -55,33 +55,9 @@
           "disabled": true,
           "settings": {}
         },
-        "feature_cards_LB4F4H": {
-          "type": "feature-cards",
-          "settings": {
-            "visible_items": 4,
-            "columns_desktop": 2,
-            "columns_tablet": 2,
-            "columns_mobile": 2,
-            "feature_text_1": "Softens coat & reduces shedding",
-            "icon_source_1": "built_in",
-            "icon_name_1": "leaf",
-            "icon_url_1": "",
-            "feature_text_2": "Soothes dry & itchy skin",
-            "icon_source_2": "built_in",
-            "icon_name_2": "heart",
-            "icon_url_2": "",
-            "feature_text_3": "Omega-3, 6 & 9 fatty acids",
-            "icon_source_3": "built_in",
-            "icon_name_3": "leaf",
-            "icon_url_3": "",
-            "feature_text_4": "Vitamin E & Biotin support",
-            "icon_source_4": "built_in",
-            "icon_name_4": "star",
-            "icon_url_4": ""
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
@@ -178,22 +154,6 @@
             "free_shipping_upsell_focus_y": 50
           }
         },
-        "est_delivery_simple_4JBzgx": {
-          "type": "est_delivery_simple",
-          "settings": {
-            "dispatch_min": 1,
-            "dispatch_max": 1,
-            "delivery_min": 5,
-            "delivery_max": 6,
-            "heading_text": "estimated delivery",
-            "bg_color": "#f7f5f0",
-            "border_color": "#ff6700",
-            "border_style": "dashed",
-            "label_order": "Order placed",
-            "label_dispatched": "Dispatched",
-            "label_delivered": "Delivered"
-          }
-        },
         "share": {
           "type": "share",
           "settings": {
@@ -227,6 +187,7 @@
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "hide",
+        "mobile_hide_dots_color": "#1b4a3d",
         "media_position": "left",
         "image_zoom": "none",
         "hide_variants": true,
@@ -251,120 +212,52 @@
         "padding_bottom": 8
       }
     },
-    "feeding_guide_sc": {
-      "type": "feeding-guide",
-      "blocks": {
-        "row_sc1": {
-          "type": "row",
-          "settings": {
-            "icon": "🐩",
-            "icon_image_preset": "small",
-            "size_label": "Small",
-            "weight_range": "Up to 25 lbs",
-            "chews_count": "1 chew / day"
-          }
-        },
-        "row_sc2": {
-          "type": "row",
-          "settings": {
-            "icon": "🐕",
-            "icon_image_preset": "medium",
-            "size_label": "Medium",
-            "weight_range": "25 - 50 lbs",
-            "chews_count": "2 chews / day"
-          }
-        },
-        "row_sc3": {
-          "type": "row",
-          "settings": {
-            "icon": "🐕‍🦺",
-            "icon_image_preset": "large",
-            "size_label": "Large",
-            "weight_range": "50 - 75 lbs",
-            "chews_count": "3 chews / day"
-          }
-        },
-        "row_sc4": {
-          "type": "row",
-          "settings": {
-            "icon": "🦮",
-            "icon_image_preset": "xlarge",
-            "size_label": "X-Large",
-            "weight_range": "Over 75 lbs",
-            "chews_count": "4 chews / day"
-          }
-        }
-      },
-      "block_order": [
-        "row_sc1",
-        "row_sc2",
-        "row_sc3",
-        "row_sc4"
-      ],
-      "name": "Feeding Guide",
-      "settings": {
-        "heading": "Feeding Guide",
-        "subheading": "Give daily based on your dog's weight",
-        "note": "For best results, give chews consistently each day. Always provide fresh water.",
-        "bg_color": "#fef9e7",
-        "card_bg": "#ffffff",
-        "heading_color": "#1d1d1b",
-        "text_color": "#555555",
-        "accent_color": "#ff6700",
-        "chews_color": "#606060",
-        "icon_size": 72,
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36
-      }
-    },
     "what_inside_sc": {
       "type": "ts-whats-inside",
       "blocks": {
         "item_sc1": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-fish-oil.png",
             "title": "Fish Oil (Omega-3)",
             "dosage": "150mg",
-            "description": "Rich source of DHA and EPA essential fatty acids that support healthy skin moisture and a shiny, lustrous coat.",
-            "image_asset": "ts-ing-fish-oil.png"
+            "description": "Rich source of DHA and EPA essential fatty acids that support healthy skin moisture and a shiny, lustrous coat."
           }
         },
         "item_sc2": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-flaxseed.png",
             "title": "Flaxseed (Omega-6 & 9)",
             "dosage": "100mg",
-            "description": "Plant-based essential fatty acids that strengthen the skin barrier, reduce inflammation, and support coat thickness.",
-            "image_asset": "ts-ing-flaxseed.png"
+            "description": "Plant-based essential fatty acids that strengthen the skin barrier, reduce inflammation, and support coat thickness."
           }
         },
         "item_sc3": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-vitamin-e.png",
             "title": "Vitamin E",
             "dosage": "30 IU",
-            "description": "Powerful antioxidant that protects skin cells from damage and promotes a glossy, healthy coat with natural shine.",
-            "image_asset": "ts-ing-vitamin-e.png"
+            "description": "Powerful antioxidant that protects skin cells from damage and promotes a glossy, healthy coat with natural shine."
           }
         },
         "item_sc4": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-biotin.png",
             "title": "Biotin",
             "dosage": "500mcg",
-            "description": "Essential B-vitamin that strengthens hair follicles, reduces excessive shedding, and supports thick, healthy fur growth.",
-            "image_asset": "ts-ing-biotin.png"
+            "description": "Essential B-vitamin that strengthens hair follicles, reduces excessive shedding, and supports thick, healthy fur growth."
           }
         },
         "item_sc5": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-coconut-oil.png",
             "title": "Vitamin A & Coconut Oil",
             "dosage": "2500 IU / 50mg",
-            "description": "Supports skin cell regeneration and maintains healthy, hydrated skin. Coconut oil adds natural moisturizing benefit.",
-            "image_asset": "ts-ing-coconut-oil.png"
+            "description": "Supports skin cell regeneration and maintains healthy, hydrated skin. Coconut oil adds natural moisturizing benefit."
           }
         },
         "nutri_sc1": {
@@ -436,6 +329,74 @@
         "item_text_color": "#555555",
         "padding_desktop": 60,
         "padding_mobile": 40
+      }
+    },
+    "feeding_guide_sc": {
+      "type": "feeding-guide",
+      "blocks": {
+        "row_sc1": {
+          "type": "row",
+          "settings": {
+            "icon_image_preset": "small",
+            "icon": "🐩",
+            "size_label": "Small",
+            "weight_range": "Up to 25 lbs",
+            "chews_count": "1 chew / day"
+          }
+        },
+        "row_sc2": {
+          "type": "row",
+          "settings": {
+            "icon_image_preset": "medium",
+            "icon": "🐕",
+            "size_label": "Medium",
+            "weight_range": "25 - 50 lbs",
+            "chews_count": "2 chews / day"
+          }
+        },
+        "row_sc3": {
+          "type": "row",
+          "settings": {
+            "icon_image_preset": "large",
+            "icon": "🐕‍🦺",
+            "size_label": "Large",
+            "weight_range": "50 - 75 lbs",
+            "chews_count": "3 chews / day"
+          }
+        },
+        "row_sc4": {
+          "type": "row",
+          "settings": {
+            "icon_image_preset": "xlarge",
+            "icon": "🦮",
+            "size_label": "X-Large",
+            "weight_range": "Over 75 lbs",
+            "chews_count": "4 chews / day"
+          }
+        }
+      },
+      "block_order": [
+        "row_sc1",
+        "row_sc2",
+        "row_sc3",
+        "row_sc4"
+      ],
+      "name": "Feeding Guide",
+      "settings": {
+        "heading": "Feeding Guide",
+        "subheading": "Give daily based on your dog's weight",
+        "note": "For best results, give chews consistently each day. Always provide fresh water.",
+        "bg_color": "#fef9e7",
+        "card_bg": "#ffffff",
+        "heading_color": "#1d1d1b",
+        "text_color": "#555555",
+        "accent_color": "#ff6700",
+        "chews_color": "#606060",
+        "icon_size": 72,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36
       }
     },
     "faq_sc": {
