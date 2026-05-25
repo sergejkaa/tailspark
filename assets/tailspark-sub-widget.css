@@ -6,11 +6,6 @@
   display: none !important;
 }
 
-/* ── Hide default price and quantity blocks ──────────────────────────────── */
-[id^="price-"][role="status"],
-.product-form__quantity {
-  display: none !important;
-}
 
 /* ── Widget container ───────────────────────────────────────────────────── */
 .ts-sub-widget {
