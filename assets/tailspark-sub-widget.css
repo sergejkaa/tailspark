@@ -6,6 +6,12 @@
   display: none !important;
 }
 
+/* ── Hide default price block and quantity selector ──────────────────────── */
+[id^="price-"][role="status"],
+.product-form__quantity {
+  display: none !important;
+}
+
 /* ── Widget container ───────────────────────────────────────────────────── */
 .ts-sub-widget {
   display: flex;
@@ -24,10 +30,10 @@
 }
 
 .ts-label {
-  font-size: 13px;
-  color: #666;
+  font-size: 15px;
+  color: #1a1a1a;
   margin: 0 0 10px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 /* ── Pills ───────────────────────────────────────────────────────────────── */
@@ -81,7 +87,9 @@
   height: 32px;
   border: 1.5px solid #d5d5d5;
   border-radius: 8px;
-  background: #fff;
+  background: #fff !important;
+  background-color: #fff !important;
+  color: #333333 !important;
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
@@ -93,6 +101,7 @@
 
 .ts-qty-btn:hover {
   border-color: #FF6700;
+  color: #333333 !important;
 }
 
 .ts-qty-unit {
@@ -217,6 +226,15 @@
   color: #999;
   text-align: center;
   margin: 0;
+}
+
+.ts-account-link {
+  color: #999;
+  text-decoration: underline;
+}
+
+.ts-account-link:hover {
+  color: #555;
 }
 
 /* ── Trust bar ───────────────────────────────────────────────────────────── */
