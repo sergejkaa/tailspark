@@ -650,7 +650,7 @@
       "name": "Customer Reviews",
       "settings": {
         "heading": "What Dog Parents Are Saying",
-        "show_overall_rating": true,
+        "show_overall_rating": false,
         "overall_rating": "4.9",
         "reviews_count": "1,200+",
         "bg_color": "#ffffff",
