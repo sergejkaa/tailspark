@@ -597,6 +597,26 @@
         "padding_top_mobile": 32,
         "padding_bottom_mobile": 40
       }
+    },
+    "1779673014538494a0": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_DU3gJP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_DU3gJP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -604,6 +624,7 @@
     "what_inside_mv",
     "feeding_guide_mv",
     "faq_mv",
-    "best_sellers_mv"
+    "best_sellers_mv",
+    "1779673014538494a0"
   ]
 }
