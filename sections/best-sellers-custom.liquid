@@ -379,21 +379,21 @@
                       {%- if icon_img != blank -%}
                         {{ icon_img | image_url: width: 80 | image_tag: class: 'bs-icon-item__img', loading: 'lazy', alt: icon_label }}
                       {%- elsif icon_preset == 'ts_coat' -%}
-                        <img src="{{ 'ts-icon-coat-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-coat.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" width="40" height="40" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_antihistamine' -%}
-                        <img src="{{ 'ts-icon-antihistamine-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-antihistamine.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" width="40" height="40" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_multivitamin' -%}
-                        <img src="{{ 'ts-icon-multivitamin-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-multivitamin.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" width="40" height="40" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_energy' -%}
-                        <img src="{{ 'ts-icon-energy-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-energy.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" width="40" height="40" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_joint' -%}
-                        <img src="{{ 'ts-icon-joint-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-joint.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" width="40" height="40" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_anti_inflammatory' -%}
-                        <img src="{{ 'ts-icon-anti-inflammatory-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-anti-inflammatory.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" width="40" height="40" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_gut' -%}
-                        <img src="{{ 'ts-icon-gut-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-gut.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" width="40" height="40" alt="{{ icon_label | escape }}">
                       {%- elsif icon_preset == 'ts_immune' -%}
-                        <img src="{{ 'ts-icon-immune-minimal.png' | asset_url }}" class="bs-icon-item__img" loading="lazy" alt="{{ icon_label | escape }}">
+                        <img src="{{ 'ts-icon-immune.svg' | asset_url }}" class="bs-icon-item__img" loading="lazy" width="40" height="40" alt="{{ icon_label | escape }}">
                       {%- else -%}
                         {%- case icon_preset -%}
                           {%- when 'paw' -%}
@@ -909,9 +909,9 @@
           "settings": {
             "subtitle": "Defends from allergies & boosts immunity",
             "card_bg": "#EDF6F0",
-            "icon_1_preset": "shield",
-            "icon_1_label": "Allergy Defence",
-            "icon_2_preset": "paw",
+            "icon_1_preset": "ts_gut",
+            "icon_1_label": "Promotes Gut Health",
+            "icon_2_preset": "ts_immune",
             "icon_2_label": "Immunity Support"
           }
         },
@@ -920,10 +920,10 @@
           "settings": {
             "subtitle": "Maintains healthy digestive system",
             "card_bg": "#EAF4F4",
-            "icon_1_preset": "gut",
-            "icon_1_label": "Promotes Gut Health",
-            "icon_2_preset": "heart",
-            "icon_2_label": "Immune Health Support"
+            "icon_1_preset": "ts_multivitamin",
+            "icon_1_label": "Complete Daily Vitamins",
+            "icon_2_preset": "ts_energy",
+            "icon_2_label": "Boosts Energy & Vitality"
           }
         },
         {
@@ -931,9 +931,9 @@
           "settings": {
             "subtitle": "Increases flexibility and strengthens joints",
             "card_bg": "#FDECEA",
-            "icon_1_preset": "bone",
+            "icon_1_preset": "ts_joint",
             "icon_1_label": "Supports Joint Health",
-            "icon_2_preset": "leaf",
+            "icon_2_preset": "ts_anti_inflammatory",
             "icon_2_label": "Natural Anti-Inflammatory"
           }
         },
@@ -942,9 +942,9 @@
           "settings": {
             "subtitle": "Softens coat and soothes dry skin",
             "card_bg": "#FEF9E7",
-            "icon_1_preset": "drop",
+            "icon_1_preset": "ts_coat",
             "icon_1_label": "Helps Restore Coat",
-            "icon_2_preset": "star",
+            "icon_2_preset": "ts_antihistamine",
             "icon_2_label": "Natural Antihistamines"
           }
         }
