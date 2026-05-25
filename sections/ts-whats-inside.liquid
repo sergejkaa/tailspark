@@ -36,20 +36,27 @@
     background: none;
     transition: opacity 0.25s, color 0.25s;
     letter-spacing: 0.02em;
+    position: relative;
+  }
+  .ts-wi__tab::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: {{ section.settings.heading_color }};
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
   }
   .ts-wi__tab.is-active {
     color: {{ section.settings.item_title_color }};
     opacity: 1;
   }
-  .ts-wi__tab:hover:not(.is-active) { opacity: 0.75; }
-  .ts-wi__tab-indicator {
-    position: absolute;
-    bottom: -2px;
-    height: 2px;
-    background: {{ section.settings.heading_color }};
-    transition: left 0.3s ease-out, width 0.3s ease-out;
-    pointer-events: none;
+  .ts-wi__tab.is-active::after {
+    transform: scaleX(1);
   }
+  .ts-wi__tab:hover:not(.is-active) { opacity: 0.75; }
 
   /* Panels */
   .ts-wi__panel { display: none; }
@@ -221,7 +228,6 @@
       {%- if has_nutrition -%}
         <button class="ts-wi__tab" role="tab" aria-selected="false" data-ts-wi-tab="nutrition">Nutritional Information</button>
       {%- endif -%}
-      <div class="ts-wi__tab-indicator" aria-hidden="true"></div>
     </div>
 
     <div class="ts-wi__panel is-active" data-ts-wi-panel="ingredients">
@@ -298,23 +304,6 @@
   document.querySelectorAll('.ts-wi').forEach(function(sec) {
     var tabs = sec.querySelectorAll('[data-ts-wi-tab]');
     var panels = sec.querySelectorAll('[data-ts-wi-panel]');
-    var indicator = sec.querySelector('.ts-wi__tab-indicator');
-
-    function moveIndicator(tab) {
-      if (!indicator) return;
-      indicator.style.left = tab.offsetLeft + 'px';
-      indicator.style.width = tab.offsetWidth + 'px';
-    }
-
-    var initActive = sec.querySelector('.ts-wi__tab.is-active');
-    if (initActive) {
-      indicator && (indicator.style.transition = 'none');
-      moveIndicator(initActive);
-      requestAnimationFrame(function() {
-        if (indicator) indicator.style.transition = '';
-      });
-    }
-
     tabs.forEach(function(tab) {
       tab.addEventListener('click', function() {
         var target = tab.dataset.tsWiTab;
@@ -324,7 +313,6 @@
         tab.setAttribute('aria-selected', 'true');
         var panel = sec.querySelector('[data-ts-wi-panel="' + target + '"]');
         if (panel) panel.classList.add('is-active');
-        moveIndicator(tab);
       });
     });
   });
