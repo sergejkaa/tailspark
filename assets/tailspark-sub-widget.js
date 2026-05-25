@@ -69,11 +69,11 @@
 
   function findPlanByDays(days) {
     return state.sellingPlans.find((plan) => {
-      const bp = plan.billing_policy;
-      if (!bp) return false;
-      if (bp.interval === 'day') return bp.interval_count === days;
-      if (bp.interval === 'month') return bp.interval_count * 30 === days;
-      return false;
+      const freqOption = plan.options && plan.options.find((o) => o.name === 'Order Frequency and Unit');
+      if (!freqOption) return false;
+      // value looks like "30-day", "45-day", etc.
+      const planDays = parseInt(freqOption.value, 10);
+      return planDays === days;
     });
   }
 
