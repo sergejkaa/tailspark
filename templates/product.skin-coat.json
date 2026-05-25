@@ -41,7 +41,7 @@
         "weight_badge_sc": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:50px;background:#fff8ed;font-size:13px;font-weight:600;color:#555;border:1px solid rgba(0,0,0,.1);margin:4px 0;\">4.94 OZ (140g) &bull; 70 Soft Chews</div>"
+            "custom_liquid": "<div style=\"display:flex;flex-wrap:wrap;gap:8px;margin:4px 0;\"><div style=\"display:inline-flex;align-items:center;padding:7px 14px;border-radius:50px;background:#fff8ed;font-size:13px;font-weight:600;color:#555;border:1px solid rgba(0,0,0,.1);\">4.94 OZ (140g)</div><div style=\"display:inline-flex;align-items:center;padding:7px 14px;border-radius:50px;background:#fff8ed;font-size:13px;font-weight:600;color:#555;border:1px solid rgba(0,0,0,.1);\">70 Soft Chews</div></div>"
           }
         },
         "short_desc_sc": {

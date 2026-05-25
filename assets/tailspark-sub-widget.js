@@ -157,7 +157,7 @@
 
   function checkWarning() {
     const warning = $('ts-warning');
-    if (!state.intervalDays) { warning.classList.add('ts-hidden'); return; }
+    if (!state.intervalDays) { warning.classList.remove('ts-warning--visible'); return; }
 
     const { chewsPerDay } = SIZES[state.size];
     const actualSupply = Math.floor((state.qty * CHEWS_PER_JAR) / chewsPerDay);
@@ -168,9 +168,9 @@
       $('ts-warn-jars-unit').textContent = unit;
       $('ts-warn-supply').textContent = actualSupply;
       $('ts-warn-interval').textContent = state.intervalDays;
-      warning.classList.remove('ts-hidden');
+      warning.classList.add('ts-warning--visible');
     } else {
-      warning.classList.add('ts-hidden');
+      warning.classList.remove('ts-warning--visible');
     }
   }
 

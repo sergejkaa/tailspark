@@ -6,7 +6,6 @@
   display: none !important;
 }
 
-
 /* ── Widget container ───────────────────────────────────────────────────── */
 .ts-sub-widget {
   display: flex;
@@ -17,7 +16,7 @@
   color: #333333;
 }
 
-/* ── Box (each card section) ─────────────────────────────────────────────── */
+/* ── Box ─────────────────────────────────────────────────────────────────── */
 .ts-box {
   border: 1px solid #e5e5e5;
   border-radius: 12px;
@@ -51,14 +50,28 @@
   line-height: 1;
 }
 
-.ts-pill:hover {
-  border-color: #FF6700;
-}
+.ts-pill:hover { border-color: #FF6700; }
 
 .ts-pill--active {
   border-color: #FF6700;
   color: #FF6700;
   font-weight: 600;
+}
+
+/* 2x2 grid on mobile for size + interval pills */
+@media (max-width: 600px) {
+  .ts-size-pills,
+  .ts-interval-pills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .ts-size-pills .ts-pill,
+  .ts-interval-pills .ts-pill {
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 /* ── Quantity row ─────────────────────────────────────────────────────────── */
@@ -123,7 +136,7 @@
   font-size: 14px;
 }
 
-/* ── Warning ─────────────────────────────────────────────────────────────── */
+/* ── Warning (animated) ──────────────────────────────────────────────────── */
 .ts-warning {
   display: flex;
   align-items: center;
@@ -131,27 +144,29 @@
   background: #FEF3E2;
   border: 1px solid #F5C97A;
   border-radius: 8px;
-  padding: 10px 14px;
   font-size: 13px;
-  margin-top: 10px;
   line-height: 1.4;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  padding: 0 14px;
+  margin-top: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease, margin-top 0.35s ease;
+}
+
+.ts-warning--visible {
+  max-height: 80px;
+  opacity: 1;
+  padding: 10px 14px;
+  margin-top: 10px;
 }
 
 .ts-warning-icon {
   font-size: 15px;
   flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.ts-hidden {
-  display: none !important;
 }
 
 /* ── Price box ───────────────────────────────────────────────────────────── */
-.ts-price-box {
-  border: 1px solid #e5e5e5;
-}
-
 .ts-price-row {
   display: flex;
   align-items: center;
@@ -200,54 +215,41 @@
   display: block;
 }
 
-.ts-cta:hover {
-  opacity: 0.85;
-}
+.ts-cta:hover { opacity: 0.85; }
 
-.ts-cta--sub {
-  background: #333;
-  color: #fff;
-  border-color: #333;
-}
-
-.ts-cta--otp {
-  background: #fff;
-  color: #333;
-  border-color: #333;
-}
+.ts-cta--sub { background: #333; color: #fff; border-color: #333; }
+.ts-cta--otp { background: #fff; color: #333; border-color: #333; }
 
 .ts-fine-print {
   font-size: 12px;
   color: #999;
   text-align: center;
-  margin: 0;
+  margin: 0 0 10px;
 }
 
-.ts-account-link {
-  color: #999;
-  text-decoration: underline;
-}
+.ts-account-link { color: #999; text-decoration: underline; }
+.ts-account-link:hover { color: #555; }
 
-.ts-account-link:hover {
-  color: #555;
-}
-
-/* ── Trust bar ───────────────────────────────────────────────────────────── */
+/* ── Trust bar (inside price box) ────────────────────────────────────────── */
 .ts-trust {
   display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #555;
-  padding: 4px 0;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
 }
 
-@media (max-width: 480px) {
-  .ts-trust {
-    flex-direction: column;
-    gap: 6px;
-    align-items: center;
-  }
+.ts-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #555;
+}
 
+/* ── Mobile ──────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
   .ts-qty-row {
     flex-direction: column;
     align-items: flex-start;

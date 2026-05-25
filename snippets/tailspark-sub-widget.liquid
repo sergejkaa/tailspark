@@ -1,6 +1,5 @@
 {%- comment -%}
   TailSpark Subscription Widget
-  Replaces Recharge's default UI. Render this before buy-buttons in main-product.liquid.
   Usage: {% render 'tailspark-sub-widget', product: product, product_form_id: product_form_id, section_id: section.id %}
 {%- endcomment -%}
 
@@ -43,7 +42,7 @@
         <span><span id="ts-supply-days">60</span>-day supply · <span id="ts-chews-day">1</span> chew/day</span>
       </div>
     </div>
-    <div class="ts-warning ts-hidden" id="ts-warning">
+    <div class="ts-warning" id="ts-warning">
       <span class="ts-warning-icon">&#9888;</span>
       <span>At this dose, <span id="ts-warn-jars">1</span> <span id="ts-warn-jars-unit">jar</span> will last ~<span id="ts-warn-supply">60</span> days. Your next delivery arrives in <span id="ts-warn-interval">30</span> days.</span>
     </div>
@@ -75,13 +74,16 @@
       One-time purchase · <span id="ts-cta-otp-price"></span>
     </button>
     <p class="ts-fine-print">Quantity and interval can be changed anytime in <a href="https://tailspark.com/tools/recurring/get-subscription-access" class="ts-account-link">your account</a></p>
-  </div>
-
-  <!-- Trust bar -->
-  <div class="ts-trust">
-    <span>&#9737; 90-day guarantee</span>
-    <span>&#10227; Cancel anytime</span>
-    <span>&#128666; Free shipping</span>
+    <div class="ts-trust">
+      <span class="ts-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        Cancel anytime
+      </span>
+      <span class="ts-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Free shipping
+      </span>
+    </div>
   </div>
 
 </div>
