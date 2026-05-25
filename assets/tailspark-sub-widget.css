@@ -6,11 +6,6 @@
   display: none !important;
 }
 
-/* ── Hide default price block and quantity selector ──────────────────────── */
-[id^="price-"][role="status"],
-.product-form__quantity {
-  display: none !important;
-}
 
 /* ── Widget container ───────────────────────────────────────────────────── */
 .ts-sub-widget {
@@ -131,7 +126,7 @@
 /* ── Warning ─────────────────────────────────────────────────────────────── */
 .ts-warning {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 8px;
   background: #FEF3E2;
   border: 1px solid #F5C97A;
