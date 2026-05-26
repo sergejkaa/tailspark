@@ -177,12 +177,126 @@
         "button_hover_background": "#ff6700",
         "button_text_hover_color": "#333333"
       }
+    },
+    "customer_reviews_main": {
+      "type": "customer-reviews",
+      "blocks": {
+        "review_ts1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Our golden retriever Max has been on the Hip & Joint chews for 2 months and the difference is incredible. He moves like a puppy again - running, jumping, playing fetch. Worth every penny!",
+            "reviewer_name": "Sarah M.",
+            "reviewer_info": "Texas - Mom to Max, 8yr Golden Retriever"
+          }
+        },
+        "review_ts2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Love that I can give my dog something healthy that she actually wants to eat. The Probiotic chews completely solved her sensitive stomach issues. No more upset tummy after meals!",
+            "reviewer_name": "Jennifer K.",
+            "reviewer_info": "California - Mom to Bella, Labrador Mix"
+          }
+        },
+        "review_ts3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Three of my dogs take different TailSpark supplements and they all go crazy for the chews. The Multivitamin has given my 11-year-old so much more energy. Clean ingredients, real results.",
+            "reviewer_name": "Mark R.",
+            "reviewer_info": "Florida - Dad to 3 rescue dogs"
+          }
+        },
+        "review_ts4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Mochi's coat used to be so dull and she was scratching constantly. After 6 weeks on the Skin and Coat chews her fur is shiny and the itching stopped. She goes crazy when she hears the bag!",
+            "reviewer_name": "Emily T.",
+            "reviewer_info": "Oregon - Mom to Mochi, 4yr Shiba Inu"
+          }
+        },
+        "review_ts5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Bruno was always tired for a young dog. Started him on the Daily Multivitamin and within a month he is like a different dog - playful, active, wants to run. Incredible difference.",
+            "reviewer_name": "Carlos D.",
+            "reviewer_info": "New York - Dad to Bruno, 3yr French Bulldog"
+          }
+        },
+        "review_ts6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Bailey was limping on cold mornings and I hated seeing her in pain. The Hip and Joint chews made a real difference in just 3 weeks. She is back to her morning walks without any trouble.",
+            "reviewer_name": "Lisa W.",
+            "reviewer_info": "Arizona - Mom to Bailey, 10yr German Shepherd"
+          }
+        },
+        "review_ts7": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Remy had chronic loose stools and nothing seemed to help. The Probiotic chews fixed it in under two weeks. Solid stools, no gas, happy dog. I wish I had found these sooner.",
+            "reviewer_name": "James H.",
+            "reviewer_info": "Washington - Dad to Remy, 5yr Border Collie"
+          }
+        },
+        "review_ts8": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "I was skeptical at first but the quality of the ingredients convinced me to try. Penny has been on the Multivitamin for 3 months and her vet actually noticed the improvement at her checkup.",
+            "reviewer_name": "Amy C.",
+            "reviewer_info": "Colorado - Mom to Penny, 7yr Beagle Mix"
+          }
+        },
+        "review_ts9": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "Archie gets his Hip and Joint chews every month automatically and I never have to worry about running out. His mobility has improved so much this year. Best subscription I have ever set up.",
+            "reviewer_name": "Tom B.",
+            "reviewer_info": "Michigan - Dad to Archie, 9yr Labrador"
+          }
+        }
+      },
+      "block_order": [
+        "review_ts1",
+        "review_ts2",
+        "review_ts3",
+        "review_ts4",
+        "review_ts5",
+        "review_ts6",
+        "review_ts7",
+        "review_ts8",
+        "review_ts9"
+      ],
+      "name": "Customer Reviews",
+      "settings": {
+        "heading": "What Dog Parents Are Saying",
+        "show_overall_rating": false,
+        "overall_rating": "4.9",
+        "reviews_count": "1,200+",
+        "bg_color": "#ffffff",
+        "card_bg": "#fff8ed",
+        "heading_color": "#1d1d1b",
+        "text_color": "#555555",
+        "star_color": "#ff6700",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
     "home_icons_bar_QDY8jh",
-    "image_and_accordions_custom_wMM997"
+    "image_and_accordions_custom_wMM997",
+    "customer_reviews_main"
   ]
 }
