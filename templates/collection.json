@@ -36,10 +36,153 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "home_icons_bar_QDY8jh": {
+      "type": "home-icons-bar",
+      "blocks": {
+        "badge_w7xHV9": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_vet",
+            "heading": "Vet Formulated",
+            "description": "Developed with certified veterinarians"
+          }
+        },
+        "badge_eWYnqm": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_clean",
+            "heading": "Clean Ingredients",
+            "description": "No fillers, no artificial additives"
+          }
+        },
+        "badge_km3VjH": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_shipping",
+            "heading": "Free Shipping",
+            "description": "Always free, on every order"
+          }
+        },
+        "badge_QrKxP4": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_usa",
+            "heading": "Made in USA",
+            "description": "Manufactured in certified facilities"
+          }
+        }
+      },
+      "block_order": [
+        "badge_w7xHV9",
+        "badge_eWYnqm",
+        "badge_km3VjH",
+        "badge_QrKxP4"
+      ],
+      "name": "Home Icons Bar",
+      "settings": {
+        "item_direction": "row",
+        "item_align": "left",
+        "icon_size": 36,
+        "icon_size_mobile": 36,
+        "item_gap": 8,
+        "item_gap_mobile": 4,
+        "heading_size": 15,
+        "heading_size_mobile": 14,
+        "desc_size": 13,
+        "desc_size_mobile": 12,
+        "section_bg": "#fff8ed",
+        "border_color": "#ffffff",
+        "icon_color": "#ff6700",
+        "heading_color": "#333333",
+        "text_color": "#666666",
+        "padding_top": 12,
+        "padding_bottom": 8,
+        "padding_top_mobile": 8,
+        "padding_bottom_mobile": 8
+      }
+    },
+    "image_and_accordions_custom_wMM997": {
+      "type": "image-and-accordions-custom",
+      "blocks": {
+        "accordion_pWzCBT": {
+          "type": "accordion",
+          "settings": {
+            "title": "DOGS LOVE THE TASTE",
+            "text": "<p>Soft chews taste like treats — your dog won't even know it's a supplement. No hiding pills in peanut butter, no mixing powders into food. Just give one chew and you're done.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_8DbeAW": {
+          "type": "accordion",
+          "settings": {
+            "title": "PRECISE DAILY DOSING",
+            "text": "<p>Every chew delivers the exact amount your dog needs — no guessing, no waste. Each batch is carefully formulated so your dog gets consistent nutrition every single day.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_yBiadC": {
+          "type": "accordion",
+          "settings": {
+            "title": "CLEAN, SIMPLE INGREDIENTS",
+            "text": "<p>No fillers, no artificial colors, no additives your dog doesn't need. Just real, functional ingredients chosen for what they actually do — developed with certified veterinarians.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_ts4thQ": {
+          "type": "accordion",
+          "settings": {
+            "title": "EASY TO USE EVERY DAY",
+            "text": "<p>Toss one in the bowl or give it by hand — that's it. No special storage, no prep, no mess. Making daily wellness a simple habit your dog will actually look forward to.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_pWzCBT",
+        "accordion_8DbeAW",
+        "accordion_yBiadC",
+        "accordion_ts4thQ"
+      ],
+      "name": "Image and Accordions",
+      "settings": {
+        "image": "shopify://shop_images/ig_081b6ca439297b15016a0f947783bc819a96ec8940c1ef99b2_3a169c80-696e-4303-b91d-1674fe3e1640.png",
+        "image_side": "left",
+        "image_position": "50% 50%",
+        "heading": "Why Soft Chews?",
+        "heading_size": "h1",
+        "open_first": true,
+        "cta_label": "SHOP NOW",
+        "cta_link": "shopify://collections/all",
+        "max_width": 1400,
+        "desktop_image_ratio": "11 / 12",
+        "mobile_image_ratio": "4 / 5",
+        "image_radius": 11,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36,
+        "background_color": "#ffffff",
+        "text_color": "#333333",
+        "border_color": "#333333",
+        "toggle_background": "#ff6700",
+        "toggle_icon_color": "#ffffff",
+        "button_background": "#ff6700",
+        "button_border": "#ff6700",
+        "button_text_color": "#fff8ed",
+        "button_hover_background": "#ff6700",
+        "button_text_hover_color": "#333333"
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "home_icons_bar_QDY8jh",
+    "image_and_accordions_custom_wMM997"
   ]
 }
