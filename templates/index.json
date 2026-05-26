@@ -526,7 +526,7 @@
         "heading_size": "h1",
         "open_first": true,
         "cta_label": "SHOP NOW",
-        "cta_link": "shopify://collections/all",
+        "cta_link": "shopify://collections/frontpage",
         "max_width": 1400,
         "desktop_image_ratio": "11 / 12",
         "mobile_image_ratio": "4 / 5",
