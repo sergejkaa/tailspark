@@ -107,7 +107,7 @@
         "overlay_color": "#000000",
         "overlay_opacity": 45,
         "overlay_gradient": "none",
-        "height_desktop": 75,
+        "height_desktop": 80,
         "height_mobile": 85,
         "content_position": "middle-left",
         "content_alignment": "left",
