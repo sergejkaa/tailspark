@@ -68,36 +68,32 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    background: {{ section.settings.bg_color }};
-    border: 1px solid rgba(0,0,0,0.12);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: box-shadow 0.2s, transform 0.2s;
     padding: 0;
+    opacity: 0.55;
+    transition: opacity 0.2s;
   }
-  .ts-reviews__nav-btn:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    transform: translateY(calc(-50% - 1px));
-  }
+  .ts-reviews__nav-btn:hover { opacity: 1; }
   .ts-reviews__nav-btn svg {
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
     stroke: {{ section.settings.heading_color }};
     fill: none;
-    stroke-width: 2;
+    stroke-width: 2.2;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  .ts-reviews__nav-btn--prev { left: -20px; }
-  .ts-reviews__nav-btn--next { right: -20px; }
+  .ts-reviews__nav-btn--prev { left: -28px; }
+  .ts-reviews__nav-btn--next { right: -28px; }
   @media (max-width: 479px) {
-    .ts-reviews__slider-wrap { padding: 0 44px; }
+    .ts-reviews__slider-wrap { padding: 0 32px; }
     .ts-reviews__nav-btn--prev { left: 0; }
     .ts-reviews__nav-btn--next { right: 0; }
   }
@@ -319,7 +315,6 @@
     if (!dotsWrap) return;
     dotsWrap.innerHTML = '';
     var perPage = getPerPage();
-    if (perPage === 1) return;
     var totalCards = slider.querySelectorAll('.ts-review-card').length;
     var pageCount = Math.ceil(totalCards / perPage);
     if (pageCount <= 1) return;
