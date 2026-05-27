@@ -406,71 +406,6 @@
         "padding_bottom_mobile": 40
       }
     },
-    "home_icons_bar_QDY8jh": {
-      "type": "home-icons-bar",
-      "blocks": {
-        "badge_w7xHV9": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "ts_vet",
-            "heading": "Vet Formulated",
-            "description": "Developed with certified veterinarians"
-          }
-        },
-        "badge_eWYnqm": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "ts_clean",
-            "heading": "Clean Ingredients",
-            "description": "No fillers, no artificial additives"
-          }
-        },
-        "badge_km3VjH": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "ts_shipping",
-            "heading": "Free Shipping",
-            "description": "Always free, on every order"
-          }
-        },
-        "badge_QrKxP4": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "ts_usa",
-            "heading": "Made in USA",
-            "description": "Manufactured in certified facilities"
-          }
-        }
-      },
-      "block_order": [
-        "badge_w7xHV9",
-        "badge_eWYnqm",
-        "badge_km3VjH",
-        "badge_QrKxP4"
-      ],
-      "name": "Home Icons Bar",
-      "settings": {
-        "item_direction": "row",
-        "item_align": "left",
-        "icon_size": 36,
-        "icon_size_mobile": 36,
-        "item_gap": 8,
-        "item_gap_mobile": 4,
-        "heading_size": 15,
-        "heading_size_mobile": 14,
-        "desc_size": 13,
-        "desc_size_mobile": 12,
-        "section_bg": "#fff8ed",
-        "border_color": "#ffffff",
-        "icon_color": "#ff6700",
-        "heading_color": "#333333",
-        "text_color": "#666666",
-        "padding_top": 12,
-        "padding_bottom": 8,
-        "padding_top_mobile": 8,
-        "padding_bottom_mobile": 8
-      }
-    },
     "image_and_accordions_custom_wMM997": {
       "type": "image-and-accordions-custom",
       "blocks": {
@@ -545,6 +480,71 @@
         "button_text_color": "#fff8ed",
         "button_hover_background": "#ff6700",
         "button_text_hover_color": "#333333"
+      }
+    },
+    "home_icons_bar_QDY8jh": {
+      "type": "home-icons-bar",
+      "blocks": {
+        "badge_w7xHV9": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_vet",
+            "heading": "Vet Formulated",
+            "description": "Developed with certified veterinarians"
+          }
+        },
+        "badge_eWYnqm": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_clean",
+            "heading": "Clean Ingredients",
+            "description": "No fillers, no artificial additives"
+          }
+        },
+        "badge_km3VjH": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_shipping",
+            "heading": "Free Shipping",
+            "description": "Always free, on every order"
+          }
+        },
+        "badge_QrKxP4": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_usa",
+            "heading": "Made in USA",
+            "description": "Manufactured in certified facilities"
+          }
+        }
+      },
+      "block_order": [
+        "badge_w7xHV9",
+        "badge_eWYnqm",
+        "badge_km3VjH",
+        "badge_QrKxP4"
+      ],
+      "name": "Home Icons Bar",
+      "settings": {
+        "item_direction": "row",
+        "item_align": "left",
+        "icon_size": 36,
+        "icon_size_mobile": 36,
+        "item_gap": 8,
+        "item_gap_mobile": 4,
+        "heading_size": 15,
+        "heading_size_mobile": 14,
+        "desc_size": 13,
+        "desc_size_mobile": 12,
+        "section_bg": "#fff8ed",
+        "border_color": "#ffffff",
+        "icon_color": "#ff6700",
+        "heading_color": "#333333",
+        "text_color": "#666666",
+        "padding_top": 12,
+        "padding_bottom": 8,
+        "padding_top_mobile": 8,
+        "padding_bottom_mobile": 8
       }
     },
     "customer_reviews_main": {
@@ -894,8 +894,8 @@
     "hero_elite_9c9cim",
     "tailspark_hero_jH9Fz6",
     "best_sellers_custom_GpGCrV",
-    "home_icons_bar_QDY8jh",
     "image_and_accordions_custom_wMM997",
+    "home_icons_bar_QDY8jh",
     "customer_reviews_main",
     "subscription_section_main",
     "logo_ticker_U4xeMH",
