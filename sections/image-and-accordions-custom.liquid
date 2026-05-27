@@ -23,19 +23,14 @@
 
   #shopify-section-{{ section.id }} .ia-custom__media {
     position: relative;
-    overflow: hidden;
     border-radius: {{ section.settings.image_radius }}px;
-    aspect-ratio: {{ section.settings.mobile_image_ratio }};
-    background: rgba(0, 0, 0, 0.04);
   }
 
   #shopify-section-{{ section.id }} .ia-custom__media img,
   #shopify-section-{{ section.id }} .ia-custom__media svg {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
-    object-fit: cover;
-    object-position: {{ section.settings.image_position }};
   }
 
   #shopify-section-{{ section.id }} .ia-custom__content {
@@ -186,7 +181,7 @@
 
     #shopify-section-{{ section.id }} .ia-custom__inner {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      align-items: stretch;
+      align-items: center;
       gap: 40px;
     }
 
@@ -199,8 +194,7 @@
     }
 
     #shopify-section-{{ section.id }} .ia-custom__media {
-      aspect-ratio: {{ section.settings.desktop_image_ratio }};
-      min-height: 520px;
+      min-height: unset;
     }
 
     #shopify-section-{{ section.id }} .ia-custom__heading {
