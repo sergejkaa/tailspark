@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -322,7 +322,7 @@
           "type": "row",
           "settings": {
             "icon_image_preset": "small",
-            "icon": "🐩",
+            "icon": "ðŸ©",
             "size_label": "Small",
             "weight_range": "Up to 25 lbs",
             "chews_count": "1 chew / day"
@@ -332,7 +332,7 @@
           "type": "row",
           "settings": {
             "icon_image_preset": "medium",
-            "icon": "🐕",
+            "icon": "ðŸ•",
             "size_label": "Medium",
             "weight_range": "25 - 50 lbs",
             "chews_count": "2 chews / day"
@@ -342,7 +342,7 @@
           "type": "row",
           "settings": {
             "icon_image_preset": "large",
-            "icon": "🐕‍🦺",
+            "icon": "ðŸ•â€ðŸ¦º",
             "size_label": "Large",
             "weight_range": "50 - 75 lbs",
             "chews_count": "3 chews / day"
@@ -352,7 +352,7 @@
           "type": "row",
           "settings": {
             "icon_image_preset": "xlarge",
-            "icon": "🦮",
+            "icon": "ðŸ¦®",
             "size_label": "X-Large",
             "weight_range": "75+ lbs",
             "chews_count": "4 chews / day"
@@ -475,7 +475,7 @@
             "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
             "subtitle": "Increases flexibility and strengthens joints",
-            "card_bg": "#fdecea",
+            "card_bg": "#f6e7dc",
             "icon_1_preset": "ts_joint",
             "icon_1_label": "Joint Health",
             "icon_2_preset": "ts_anti_inflammatory",
