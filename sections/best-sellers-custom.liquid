@@ -319,16 +319,16 @@
             <a href="{{ prod.url }}" class="bs-card__image-link" style="background-color: {{ block.settings.card_bg }};">
               {%- if card_image != blank -%}
                 {{ card_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: product_title }}
-              {%- elsif image_preset == 'ts_hip_joint' -%}
-                <img src="{{ 'ts-best-seller-hip-joint.png' | asset_url }}" loading="lazy" alt="{{ product_title | escape }}">
-              {%- elsif image_preset == 'ts_multivitamin' -%}
-                <img src="{{ 'ts-best-seller-multivitamin.png' | asset_url }}" loading="lazy" alt="{{ product_title | escape }}">
-              {%- elsif image_preset == 'ts_probiotic' -%}
-                <img src="{{ 'ts-best-seller-probiotic.png' | asset_url }}" loading="lazy" alt="{{ product_title | escape }}">
-              {%- elsif image_preset == 'ts_skin_coat' -%}
-                <img src="{{ 'ts-best-seller-skin-coat.png' | asset_url }}" loading="lazy" alt="{{ product_title | escape }}">
               {%- elsif prod.featured_image != blank -%}
                 {{ prod.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: prod.title }}
+              {%- elsif image_preset == 'ts_hip_joint' -%}
+                <img src="{{ 'ts-best-seller-hip-joint.png' | asset_url }}" loading="lazy" width="600" height="600" alt="{{ product_title | escape }}">
+              {%- elsif image_preset == 'ts_multivitamin' -%}
+                <img src="{{ 'ts-best-seller-multivitamin.png' | asset_url }}" loading="lazy" width="600" height="600" alt="{{ product_title | escape }}">
+              {%- elsif image_preset == 'ts_probiotic' -%}
+                <img src="{{ 'ts-best-seller-probiotic.png' | asset_url }}" loading="lazy" width="600" height="600" alt="{{ product_title | escape }}">
+              {%- elsif image_preset == 'ts_skin_coat' -%}
+                <img src="{{ 'ts-best-seller-skin-coat.png' | asset_url }}" loading="lazy" width="600" height="600" alt="{{ product_title | escape }}">
               {%- else -%}
                 <div class="bs-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
               {%- endif -%}
