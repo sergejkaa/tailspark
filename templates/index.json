@@ -528,7 +528,7 @@
         "cta_label": "SHOP NOW",
         "cta_link": "shopify://collections/frontpage",
         "max_width": 1400,
-        "desktop_image_ratio": "11 / 12",
+        "desktop_image_ratio": "19/ 19",
         "mobile_image_ratio": "4 / 5",
         "image_radius": 11,
         "padding_top": 56,
