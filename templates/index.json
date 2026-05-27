@@ -454,7 +454,7 @@
       ],
       "name": "Image and Accordions",
       "settings": {
-        "image": "shopify://shop_images/Frame_392_3.png",
+        "image": "shopify://shop_images/Frame_392_1.png",
         "image_side": "left",
         "image_position": "50% 50%",
         "heading": "Why Soft Chews?",
@@ -545,161 +545,6 @@
         "padding_bottom": 8,
         "padding_top_mobile": 8,
         "padding_bottom_mobile": 8
-      }
-    },
-    "faq_tailspark_main": {
-      "type": "faq-accordion-section",
-      "blocks": {
-        "faq_item_which": {
-          "type": "item",
-          "settings": {
-            "heading": "Which supplement is right for my dog?",
-            "content": "<p>It depends on your dog's needs. Hip & Joint is great for older or active dogs with mobility concerns. Probiotic helps with digestive issues and sensitive stomachs. Skin & Coat is ideal for dull fur, dry skin, or dogs that scratch a lot. Daily Multivitamin is the best all-around choice for everyday wellness.</p>"
-          }
-        },
-        "faq_item_multiple": {
-          "type": "item",
-          "settings": {
-            "heading": "Can my dog take more than one supplement at a time?",
-            "content": "<p>Yes — TailSpark supplements are designed to work well together. Many customers combine Hip & Joint with Multivitamin, or Probiotic with Skin & Coat. All formulas use complementary ingredients with no overlapping doses.</p>"
-          }
-        },
-        "faq_item_dose": {
-          "type": "item",
-          "settings": {
-            "heading": "How many chews should I give per day?",
-            "content": "<p>For dogs under 50 lbs: 1 chew per day. For dogs over 50 lbs: 2 chews per day. Give them by hand as a treat or mix into your dog's food — either works great.</p>"
-          }
-        },
-        "faq_item_results": {
-          "type": "item",
-          "settings": {
-            "heading": "How long until I see results?",
-            "content": "<p>Most dog parents notice a difference within 2 to 4 weeks of consistent daily use. Joint and mobility improvements may take 4 to 6 weeks. Digestive and coat results are often visible sooner — sometimes within the first week.</p>"
-          }
-        },
-        "faq_item_natural": {
-          "type": "item",
-          "settings": {
-            "heading": "Are the ingredients natural and safe?",
-            "content": "<p>Yes. Every TailSpark formula uses natural, functional ingredients with no artificial colors, flavors, or preservatives. No fillers, no junk. Developed with certified veterinarians and manufactured in FDA-registered, GMP-certified facilities in the USA.</p>"
-          }
-        },
-        "faq_item_shipping": {
-          "type": "item",
-          "settings": {
-            "heading": "How long does shipping take? Is it free?",
-            "content": "<p>Free shipping on every order — no minimum required. Orders are processed within 1 business day and standard shipping takes 3 to 5 business days. You will receive a tracking email as soon as your order ships.</p>"
-          }
-        },
-        "faq_item_sub_cancel": {
-          "type": "item",
-          "settings": {
-            "heading": "Can I cancel my subscription anytime?",
-            "content": "<p>Absolutely. No contracts, no cancellation fees. You can cancel, pause, or skip a delivery anytime from your customer account — no need to contact support.</p>"
-          }
-        },
-        "faq_item_guarantee": {
-          "type": "item",
-          "settings": {
-            "heading": "Is there a money-back guarantee?",
-            "content": "<p>Yes — every order is backed by a 30-day money-back guarantee. If you or your dog are not satisfied for any reason, contact us within 30 days and we will make it right. No hoops, no hassle.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_which",
-        "faq_item_multiple",
-        "faq_item_dose",
-        "faq_item_results",
-        "faq_item_natural",
-        "faq_item_shipping",
-        "faq_item_sub_cancel",
-        "faq_item_guarantee"
-      ],
-      "name": "FAQ",
-      "settings": {
-        "heading": "Frequently Asked Questions",
-        "subheading": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "image_and_accordions_custom_wMM997": {
-      "type": "image-and-accordions-custom",
-      "blocks": {
-        "accordion_pWzCBT": {
-          "type": "accordion",
-          "settings": {
-            "title": "DOGS LOVE THE TASTE",
-            "text": "<p>Soft chews taste like treats — your dog won't even know it's a supplement. No hiding pills in peanut butter, no mixing powders into food. Just give one chew and you're done.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_8DbeAW": {
-          "type": "accordion",
-          "settings": {
-            "title": "PRECISE DAILY DOSING",
-            "text": "<p>Every chew delivers the exact amount your dog needs — no guessing, no waste. Each batch is carefully formulated so your dog gets consistent nutrition every single day.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_yBiadC": {
-          "type": "accordion",
-          "settings": {
-            "title": "CLEAN, SIMPLE INGREDIENTS",
-            "text": "<p>No fillers, no artificial colors, no additives your dog doesn't need. Just real, functional ingredients chosen for what they actually do — developed with certified veterinarians.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_ts4thQ": {
-          "type": "accordion",
-          "settings": {
-            "title": "EASY TO USE EVERY DAY",
-            "text": "<p>Toss one in the bowl or give it by hand — that's it. No special storage, no prep, no mess. Making daily wellness a simple habit your dog will actually look forward to.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "accordion_pWzCBT",
-        "accordion_8DbeAW",
-        "accordion_yBiadC",
-        "accordion_ts4thQ"
-      ],
-      "name": "Image and Accordions",
-      "settings": {
-        "image": "shopify://shop_images/Frame_392_1.png",
-        "image_side": "left",
-        "image_position": "50% 50%",
-        "heading": "Why Soft Chews?",
-        "heading_size": "h1",
-        "open_first": true,
-        "cta_label": "SHOP NOW",
-        "cta_link": "shopify://collections/frontpage",
-        "max_width": 1400,
-        "desktop_image_ratio": "19/ 19",
-        "mobile_image_ratio": "4 / 5",
-        "image_radius": 11,
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36,
-        "background_color": "#ffffff",
-        "text_color": "#333333",
-        "border_color": "#333333",
-        "toggle_background": "#ff6700",
-        "toggle_icon_color": "#ffffff",
-        "button_background": "#ff6700",
-        "button_border": "#ff6700",
-        "button_text_color": "#fff8ed",
-        "button_hover_background": "#ff6700",
-        "button_text_hover_color": "#333333"
       }
     },
     "customer_reviews_main": {
@@ -888,6 +733,85 @@
         "padding_bottom_mobile": 40
       }
     },
+    "faq_tailspark_main": {
+      "type": "faq-accordion-section",
+      "blocks": {
+        "faq_item_which": {
+          "type": "item",
+          "settings": {
+            "heading": "Which supplement is right for my dog?",
+            "content": "<p>It depends on your dog's needs. Hip & Joint is great for older or active dogs with mobility concerns. Probiotic helps with digestive issues and sensitive stomachs. Skin & Coat is ideal for dull fur, dry skin, or dogs that scratch a lot. Daily Multivitamin is the best all-around choice for everyday wellness.</p>"
+          }
+        },
+        "faq_item_multiple": {
+          "type": "item",
+          "settings": {
+            "heading": "Can my dog take more than one supplement at a time?",
+            "content": "<p>Yes — TailSpark supplements are designed to work well together. Many customers combine Hip & Joint with Multivitamin, or Probiotic with Skin & Coat. All formulas use complementary ingredients with no overlapping doses.</p>"
+          }
+        },
+        "faq_item_dose": {
+          "type": "item",
+          "settings": {
+            "heading": "How many chews should I give per day?",
+            "content": "<p>For dogs under 50 lbs: 1 chew per day. For dogs over 50 lbs: 2 chews per day. Give them by hand as a treat or mix into your dog's food — either works great.</p>"
+          }
+        },
+        "faq_item_results": {
+          "type": "item",
+          "settings": {
+            "heading": "How long until I see results?",
+            "content": "<p>Most dog parents notice a difference within 2 to 4 weeks of consistent daily use. Joint and mobility improvements may take 4 to 6 weeks. Digestive and coat results are often visible sooner — sometimes within the first week.</p>"
+          }
+        },
+        "faq_item_natural": {
+          "type": "item",
+          "settings": {
+            "heading": "Are the ingredients natural and safe?",
+            "content": "<p>Yes. Every TailSpark formula uses natural, functional ingredients with no artificial colors, flavors, or preservatives. No fillers, no junk. Developed with certified veterinarians and manufactured in FDA-registered, GMP-certified facilities in the USA.</p>"
+          }
+        },
+        "faq_item_shipping": {
+          "type": "item",
+          "settings": {
+            "heading": "How long does shipping take? Is it free?",
+            "content": "<p>Free shipping on every order — no minimum required. Orders are processed within 1 business day and standard shipping takes 3 to 5 business days. You will receive a tracking email as soon as your order ships.</p>"
+          }
+        },
+        "faq_item_sub_cancel": {
+          "type": "item",
+          "settings": {
+            "heading": "Can I cancel my subscription anytime?",
+            "content": "<p>Absolutely. No contracts, no cancellation fees. You can cancel, pause, or skip a delivery anytime from your customer account — no need to contact support.</p>"
+          }
+        },
+        "faq_item_guarantee": {
+          "type": "item",
+          "settings": {
+            "heading": "Is there a money-back guarantee?",
+            "content": "<p>Yes — every order is backed by a 30-day money-back guarantee. If you or your dog are not satisfied for any reason, contact us within 30 days and we will make it right. No hoops, no hassle.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_which",
+        "faq_item_multiple",
+        "faq_item_dose",
+        "faq_item_results",
+        "faq_item_natural",
+        "faq_item_shipping",
+        "faq_item_sub_cancel",
+        "faq_item_guarantee"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "logo_ticker_U4xeMH": {
       "type": "logo-ticker",
       "blocks": {
@@ -1051,9 +975,9 @@
     "best_sellers_custom_GpGCrV",
     "image_and_accordions_custom_wMM997",
     "home_icons_bar_QDY8jh",
-    "faq_tailspark_main",
     "customer_reviews_main",
     "subscription_section_main",
+    "faq_tailspark_main",
     "logo_ticker_U4xeMH",
     "newsletter_BakW9V"
   ]
