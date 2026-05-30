@@ -7,11 +7,22 @@
   {{ product.selling_plan_groups | json }}
 </script>
 
+{%- liquid
+  case product.handle
+    when 'tailspark-skin-coat'
+      assign chews_per_jar = 70
+    when 'tailspark-probiotic'
+      assign chews_per_jar = 90
+    else
+      assign chews_per_jar = 60
+  endcase
+-%}
 <div id="ts-sub-widget"
   class="ts-sub-widget"
   data-product-form-id="{{ product_form_id }}"
   data-base-price="{{ product.selected_or_first_available_variant.price }}"
   data-compare-price="{{ product.selected_or_first_available_variant.compare_at_price | default: product.selected_or_first_available_variant.price }}"
+  data-chews-per-jar="{{ chews_per_jar }}"
 >
 
   {{- 'tailspark-sub-widget.css' | asset_url | stylesheet_tag -}}

@@ -1,5 +1,5 @@
 (function () {
-  const CHEWS_PER_JAR = 60;
+  let CHEWS_PER_JAR = 60;
   const SUB_DISCOUNT = 0.15;
 
   // chewsPerDay + recommendedJars per dog size
@@ -35,6 +35,7 @@
 
     state.basePrice = parseInt(widget.dataset.basePrice, 10) || 0;
     state.comparePrice = parseInt(widget.dataset.comparePrice, 10) || state.basePrice;
+    CHEWS_PER_JAR = parseInt(widget.dataset.chewsPerJar, 10) || 60;
 
     parsePlans();
     bindIntervalPlanIds();
@@ -181,9 +182,12 @@
     const subTotal = Math.round(fullTotal * (1 - SUB_DISCOUNT));
     const perJar = Math.round(subTotal / state.qty);
 
+    const totalChews = state.qty * CHEWS_PER_JAR;
+    const perChew = Math.round(subTotal / totalChews);
+
     $('ts-price-sale').textContent = fmt(subTotal);
     $('ts-price-compare').textContent = fmt(fullTotal);
-    $('ts-price-per').textContent = fmt(perJar) + '/jar';
+    $('ts-price-per').textContent = '~' + fmt(perChew) + '/chew';
     $('ts-cta-sub-price').textContent = fmt(subTotal);
     $('ts-cta-otp-price').textContent = fmt(fullTotal);
   }
