@@ -654,6 +654,7 @@
       }
     },
     "177975981999b3130a": {
+      "disabled": true,
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_TCtbzT": {

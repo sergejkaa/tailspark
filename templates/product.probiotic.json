@@ -527,6 +527,7 @@
       }
     },
     "17797598381b02573c": {
+      "disabled": true,
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_MrrMCL": {

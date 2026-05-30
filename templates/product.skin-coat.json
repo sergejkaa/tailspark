@@ -565,6 +565,7 @@
       }
     },
     "177975988040b7ad96": {
+      "disabled": true,
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_PAmqWz": {
