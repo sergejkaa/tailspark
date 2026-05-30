@@ -21,6 +21,11 @@
         <div class="menu-drawer__navigation-container">
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+              <li style="--item-index: 0">
+                <a href="{{ routes.root_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if request.path == '/' %} menu-drawer__menu-item--active{% endif %}">
+                  Home
+                </a>
+              </li>
               {%- for link in section.settings.menu.links -%}
                 <li style="--item-index: {{ forloop.index0 }}">
                   {%- if link.links != blank -%}
