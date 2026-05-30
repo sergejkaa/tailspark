@@ -122,6 +122,8 @@
                           }}
                         </div>
                       {%- endif -%}
+                      <p class="footer-brand-tagline">For dogs who are family</p>
+                      <p class="footer-brand-tagline footer-brand-tagline--sub">Powered by love, backed by science</p>
                       {%- if settings.brand_headline != blank -%}
                         <h2 class="footer-block__heading rte ">{{ settings.brand_headline }}</h2>
                       {%- endif -%}
@@ -299,9 +301,7 @@
     </div>
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
-        <small class="copyright__content"
-          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-        </small>
+        <small class="copyright__content">Copyright &copy; {{ 'now' | date: '%Y' }} Tailspark. All rights reserved.</small>
         <small class="copyright__content">{{ powered_by_link }}</small>
         {%- if section.settings.show_policy -%}
           <ul class="policies list-unstyled">
@@ -316,6 +316,9 @@
             {%- endfor -%}
           </ul>
         {%- endif -%}
+      </div>
+      <div class="footer__fda-disclaimer">
+        <small>Statements on tailspark.com have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</small>
       </div>
     </div>
   </div>
