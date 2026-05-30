@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -398,7 +398,7 @@
         "flavor_title": "Complete Daily Nutrition",
         "flavor_subtitle": "Chicken Liver & Sweet Potato",
         "inactive_ingredients": "Chicken Liver, Sweet Potato, Brewer's Yeast, Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.",
-        "background_color": "#eaf4f4",
+        "background_color": "#fff8ed",
         "card_bg": "#d6ecea",
         "heading_color": "#ff6700",
         "item_title_color": "#1d1d1b",
@@ -454,7 +454,7 @@
         "image": "shopify://shop_images/0afbd9da-bb35-448e-b2db-a470f8278ce4.png",
         "image_position": "left",
         "image_border_radius": 14,
-        "bg_color": "#eaf4f4",
+        "bg_color": "#fff8ed",
         "card_bg": "#ffffff",
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
@@ -569,7 +569,7 @@
             "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
             "subtitle": "Supports healthy joints, mobility & connective tissue",
-            "card_bg": "#f6e7dc",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_joint",
             "icon_1_label": "Supports Joint Health",
             "icon_2_preset": "ts_anti_inflammatory",
@@ -607,7 +607,7 @@
             "image_override": "shopify://shop_images/Frame_390.png",
             "image_preset": "none",
             "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
-            "card_bg": "#fef9e7",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_coat",
             "icon_1_label": "Helps Restore Coat",
             "icon_2_preset": "ts_antihistamine",

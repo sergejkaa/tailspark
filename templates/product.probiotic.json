@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -442,7 +442,7 @@
             "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
             "subtitle": "Supports healthy joints, mobility & connective tissue",
-            "card_bg": "#f6e7dc",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_joint",
             "icon_1_label": "Joint Health",
             "icon_2_preset": "ts_anti_inflammatory",
@@ -461,7 +461,7 @@
             "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",
             "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
-            "card_bg": "#eaf4f4",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_multivitamin",
             "icon_1_label": "Multivitamin",
             "icon_2_preset": "ts_energy",
@@ -480,7 +480,7 @@
             "image_override": "shopify://shop_images/Frame_390.png",
             "image_preset": "none",
             "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
-            "card_bg": "#fef9e7",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_coat",
             "icon_1_label": "Coat",
             "icon_2_preset": "ts_antihistamine",

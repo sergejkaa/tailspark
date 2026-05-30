@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -296,8 +296,8 @@
         "flavor_title": "Move More. Live More.",
         "flavor_subtitle": "Chicken Liver Flavor",
         "inactive_ingredients": "Chicken Liver, Sweet Potato, Brewer's Yeast, Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.",
-        "background_color": "#f6e7dc",
-        "card_bg": "#f6e7dc",
+        "background_color": "#fff8ed",
+        "card_bg": "#fff8ed",
         "heading_color": "#ff6700",
         "item_title_color": "#1d1d1b",
         "item_text_color": "#555555",
@@ -478,7 +478,7 @@
             "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",
             "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
-            "card_bg": "#eaf4f4",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_multivitamin",
             "icon_1_label": "Multivitamin",
             "icon_2_preset": "ts_energy",
@@ -516,7 +516,7 @@
             "image_override": "shopify://shop_images/Frame_390.png",
             "image_preset": "none",
             "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
-            "card_bg": "#fef9e7",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_coat",
             "icon_1_label": "Coat",
             "icon_2_preset": "ts_antihistamine",

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -298,7 +298,7 @@
         "flavor_title": "Real. Clean. Effective.",
         "flavor_subtitle": "Salmon & Chicken Flavor",
         "inactive_ingredients": "Chicken Liver, Sweet Potato, Brewer's Yeast, Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.",
-        "background_color": "#fef9e7",
+        "background_color": "#fff8ed",
         "card_bg": "#fef0d3",
         "heading_color": "#ff6700",
         "item_title_color": "#1d1d1b",
@@ -365,7 +365,7 @@
         "image": "shopify://shop_images/ChatGPT_Image_May_25_2026_08_15_38_PM.png",
         "image_position": "left",
         "image_border_radius": 16,
-        "bg_color": "#fef9e7",
+        "bg_color": "#fff8ed",
         "card_bg": "#ffffff",
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
@@ -499,7 +499,7 @@
             "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",
             "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
-            "card_bg": "#eaf4f4",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_multivitamin",
             "icon_1_label": "Multivitamin Support",
             "icon_2_preset": "ts_energy",
