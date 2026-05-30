@@ -301,6 +301,18 @@
   }
 }
 
+.footer__fda-disclaimer {
+  width: 100%;
+  text-align: center;
+  padding: 12px 20px 16px;
+  opacity: 0.55;
+}
+
+.footer__fda-disclaimer small {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
 @keyframes appear-down {
   0% {
     opacity: 0;
