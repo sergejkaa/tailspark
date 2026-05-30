@@ -233,33 +233,6 @@
             "description": "Prebiotic fiber that acts as food for beneficial gut bacteria, enhancing probiotic activity and promoting a thriving gut microbiome."
           }
         },
-        "item_pb3": {
-          "type": "item",
-          "settings": {
-            "image_asset": "ts-ing-inulin-chicory.png",
-            "title": "Inulin (Chicory Root)",
-            "dosage": "100mg",
-            "description": "Soluble fiber that promotes healthy bowel movements, reduces gas, and supports overall digestive comfort in sensitive dogs."
-          }
-        },
-        "item_pb4": {
-          "type": "item",
-          "settings": {
-            "image_asset": "ts-ing-brewers-yeast.png",
-            "title": "Brewer's Yeast",
-            "dosage": "50mg",
-            "description": "Natural source of B-vitamins and prebiotics that further support gut health, skin condition, and immune function."
-          }
-        },
-        "item_pb5": {
-          "type": "item",
-          "settings": {
-            "image_asset": "ts-ing-chicken-sweet-potato.png",
-            "title": "Chicken Liver & Sweet Potato",
-            "dosage": "natural ingredients",
-            "description": "Natural palatability enhancers that make chews irresistibly tasty. No artificial flavors, no fillers - just real ingredients."
-          }
-        },
         "nutri_pb1": {
           "type": "nutrition_item",
           "settings": {
@@ -273,32 +246,13 @@
             "ingredient": "Fructooligosaccharides (FOS)",
             "amount": "200mg"
           }
-        },
-        "nutri_pb3": {
-          "type": "nutrition_item",
-          "settings": {
-            "ingredient": "Inulin (Chicory Root Extract)",
-            "amount": "100mg"
-          }
-        },
-        "nutri_pb4": {
-          "type": "nutrition_item",
-          "settings": {
-            "ingredient": "Brewer's Yeast",
-            "amount": "50mg"
-          }
         }
       },
       "block_order": [
         "item_pb1",
         "item_pb2",
-        "item_pb3",
-        "item_pb4",
-        "item_pb5",
         "nutri_pb1",
-        "nutri_pb2",
-        "nutri_pb3",
-        "nutri_pb4"
+        "nutri_pb2"
       ],
       "name": "What's Inside",
       "settings": {

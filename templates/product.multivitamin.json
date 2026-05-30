@@ -228,7 +228,7 @@
           "type": "item",
           "settings": {
             "image_asset": "ts-ing-b-complex.png",
-            "title": "Full B-Complex",
+            "title": "B-Complex Vitamins",
             "dosage": "B1-B12",
             "description": "Complete spectrum of B vitamins that support energy metabolism, nerve health, and red blood cell production."
           }
@@ -245,19 +245,37 @@
         "item_mv4": {
           "type": "item",
           "settings": {
+            "image_asset": "ts-ing-copper-manganese.png",
+            "title": "Copper & Manganese",
+            "dosage": "Trace minerals",
+            "description": "Essential trace minerals that support bone formation, collagen production, and healthy enzyme function throughout the body."
+          }
+        },
+        "item_mv5": {
+          "type": "item",
+          "settings": {
             "image_asset": "ts-ing-magnesium-potassium.png",
             "title": "Magnesium & Potassium",
             "dosage": "30mg / 20mg",
             "description": "Essential minerals for muscle function, nerve signal transmission, and maintaining proper fluid balance."
           }
         },
-        "item_mv5": {
+        "item_mv6": {
           "type": "item",
           "settings": {
-            "image_asset": "ts-ing-zinc-selenium.png",
-            "title": "Zinc, Iodine & Selenium",
+            "image_asset": "ts-ing-methionine.png",
+            "title": "Methionine",
+            "dosage": "Essential amino acid",
+            "description": "An essential sulfur-containing amino acid that supports liver function, joint health, and healthy urinary tract maintenance."
+          }
+        },
+        "item_mv7": {
+          "type": "item",
+          "settings": {
+            "image_asset": "ts-ing-zinc-iodine-iron.png",
+            "title": "Zinc, Iodine & Iron",
             "dosage": "Trace minerals",
-            "description": "Vital trace minerals that support immune response, wound healing, thyroid function, and reproductive health."
+            "description": "Vital trace minerals that support immune response, thyroid function, wound healing, and healthy oxygen transport in the blood."
           }
         },
         "nutri_mv1": {
@@ -333,8 +351,29 @@
         "nutri_mv11": {
           "type": "nutrition_item",
           "settings": {
-            "ingredient": "Selenium",
-            "amount": "20mcg"
+            "ingredient": "Iron",
+            "amount": "8mg"
+          }
+        },
+        "nutri_mv12": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Copper",
+            "amount": "1mg"
+          }
+        },
+        "nutri_mv13": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Manganese",
+            "amount": "0.5mg"
+          }
+        },
+        "nutri_mv14": {
+          "type": "nutrition_item",
+          "settings": {
+            "ingredient": "Methionine",
+            "amount": "75mg"
           }
         }
       },
@@ -344,6 +383,8 @@
         "item_mv3",
         "item_mv4",
         "item_mv5",
+        "item_mv6",
+        "item_mv7",
         "nutri_mv1",
         "nutri_mv2",
         "nutri_mv3",
@@ -354,7 +395,10 @@
         "nutri_mv8",
         "nutri_mv9",
         "nutri_mv10",
-        "nutri_mv11"
+        "nutri_mv11",
+        "nutri_mv12",
+        "nutri_mv13",
+        "nutri_mv14"
       ],
       "name": "What's Inside",
       "settings": {

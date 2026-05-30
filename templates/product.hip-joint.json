@@ -220,9 +220,9 @@
           "settings": {
             "image": "shopify://shop_images/Omega-3_Salmon_-_fillet.png",
             "image_asset": "ts-ing-glucosamine.png",
-            "title": "Glucosamine HCl",
+            "title": "Glucosamine (Shrimp & Crab)",
             "dosage": "500mg",
-            "description": "The primary building block of cartilage that helps maintain cushioning between joints and supports long-term joint health."
+            "description": "A primary building block of cartilage sourced from shrimp and crab. Helps maintain cushioning between joints and supports long-term joint health."
           }
         },
         "item_hj2": {
@@ -247,18 +247,9 @@
           "type": "item",
           "settings": {
             "image_asset": "ts-ing-chondroitin.png",
-            "title": "Chondroitin Sulfate",
+            "title": "Chondroitin (Porcine)",
             "dosage": "110mg",
-            "description": "Structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience."
-          }
-        },
-        "item_hj5": {
-          "type": "item",
-          "settings": {
-            "image_asset": "ts-ing-turmeric.png",
-            "title": "Turmeric & Boswellia",
-            "dosage": "50mg / 50mg",
-            "description": "Powerful natural anti-inflammatory botanicals that work synergistically to reduce pain and support mobility."
+            "description": "Porcine-sourced structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience."
           }
         },
         "nutri_hj1": {
@@ -288,20 +279,6 @@
             "ingredient": "Chondroitin Sulfate",
             "amount": "110mg"
           }
-        },
-        "nutri_hj5": {
-          "type": "nutrition_item",
-          "settings": {
-            "ingredient": "Turmeric Root Powder",
-            "amount": "50mg"
-          }
-        },
-        "nutri_hj6": {
-          "type": "nutrition_item",
-          "settings": {
-            "ingredient": "Boswellia Serrata Extract",
-            "amount": "50mg"
-          }
         }
       },
       "block_order": [
@@ -309,13 +286,10 @@
         "item_hj2",
         "item_hj3",
         "item_hj4",
-        "item_hj5",
         "nutri_hj1",
         "nutri_hj2",
         "nutri_hj3",
-        "nutri_hj4",
-        "nutri_hj5",
-        "nutri_hj6"
+        "nutri_hj4"
       ],
       "name": "What's Inside",
       "settings": {

@@ -220,88 +220,65 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Omega-3_Salmon_-_fillet.png",
-            "image_asset": "ts-ing-fish-oil.png",
-            "title": "Fish Oil (Omega-3)",
+            "image_asset": "ts-ing-omega3.png",
+            "title": "Omega-3 (Salmon)",
             "dosage": "150mg",
-            "description": "Rich source of DHA and EPA essential fatty acids that support healthy skin moisture and a shiny, lustrous coat."
+            "description": "Rich source of DHA and EPA from wild salmon that supports healthy skin moisture, reduces inflammation, and promotes a shiny, lustrous coat."
           }
         },
         "item_sc2": {
           "type": "item",
           "settings": {
-            "image_asset": "ts-ing-flaxseed.png",
-            "title": "Flaxseed (Omega-6 & 9)",
+            "image_asset": "ts-ing-omega6.png",
+            "title": "Omega-6 (Linoleic Acid)",
             "dosage": "100mg",
-            "description": "Plant-based essential fatty acids that strengthen the skin barrier, reduce inflammation, and support coat thickness."
+            "description": "Essential linoleic acid that strengthens the skin barrier, reduces moisture loss, and supports a thick, healthy coat."
           }
         },
         "item_sc3": {
           "type": "item",
           "settings": {
-            "image_asset": "ts-ing-vitamin-e.png",
-            "title": "Vitamin E",
-            "dosage": "30 IU",
-            "description": "Powerful antioxidant that protects skin cells from damage and promotes a glossy, healthy coat with natural shine."
+            "image_asset": "ts-ing-omega9.png",
+            "title": "Omega-9",
+            "dosage": "50mg",
+            "description": "Oleic acid that provides deep nourishment to skin cells, reduces dryness and irritation, and enhances overall coat softness and shine."
           }
         },
         "item_sc4": {
           "type": "item",
           "settings": {
-            "image_asset": "ts-ing-biotin.png",
-            "title": "Biotin",
-            "dosage": "500mcg",
-            "description": "Essential B-vitamin that strengthens hair follicles, reduces excessive shedding, and supports thick, healthy fur growth."
-          }
-        },
-        "item_sc5": {
-          "type": "item",
-          "settings": {
-            "image_asset": "ts-ing-coconut-oil.png",
-            "title": "Vitamin A & Coconut Oil",
-            "dosage": "2500 IU / 50mg",
-            "description": "Supports skin cell regeneration and maintains healthy, hydrated skin. Coconut oil adds natural moisturizing benefit."
+            "image_asset": "ts-ing-vitamin-e.png",
+            "title": "Vitamin E",
+            "dosage": "30 IU",
+            "description": "Powerful antioxidant that protects skin cells from oxidative damage and promotes a glossy, healthy coat with natural shine."
           }
         },
         "nutri_sc1": {
           "type": "nutrition_item",
           "settings": {
-            "ingredient": "Fish Oil (Omega-3)",
+            "ingredient": "Omega-3 Fatty Acids (Salmon Oil)",
             "amount": "150mg"
           }
         },
         "nutri_sc2": {
           "type": "nutrition_item",
           "settings": {
-            "ingredient": "Flaxseed",
+            "ingredient": "Omega-6 Fatty Acids (Linoleic Acid)",
             "amount": "100mg"
           }
         },
         "nutri_sc3": {
           "type": "nutrition_item",
           "settings": {
-            "ingredient": "Vitamin E",
-            "amount": "30 IU"
+            "ingredient": "Omega-9 Fatty Acids",
+            "amount": "50mg"
           }
         },
         "nutri_sc4": {
           "type": "nutrition_item",
           "settings": {
-            "ingredient": "Biotin",
-            "amount": "500mcg"
-          }
-        },
-        "nutri_sc5": {
-          "type": "nutrition_item",
-          "settings": {
-            "ingredient": "Vitamin A",
-            "amount": "2500 IU"
-          }
-        },
-        "nutri_sc6": {
-          "type": "nutrition_item",
-          "settings": {
-            "ingredient": "Coconut Oil",
-            "amount": "50mg"
+            "ingredient": "Vitamin E",
+            "amount": "30 IU"
           }
         }
       },
@@ -310,13 +287,10 @@
         "item_sc2",
         "item_sc3",
         "item_sc4",
-        "item_sc5",
         "nutri_sc1",
         "nutri_sc2",
         "nutri_sc3",
-        "nutri_sc4",
-        "nutri_sc5",
-        "nutri_sc6"
+        "nutri_sc4"
       ],
       "name": "What's Inside",
       "settings": {
