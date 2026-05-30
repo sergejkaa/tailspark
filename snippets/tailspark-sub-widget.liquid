@@ -31,10 +31,16 @@
   <div class="ts-box">
     <p class="ts-label">Dog size</p>
     <div class="ts-pills ts-size-pills" role="group" aria-label="Dog size">
-      <button type="button" class="ts-pill ts-pill--active" data-size="under-15">Under 15 lbs</button>
-      <button type="button" class="ts-pill" data-size="15-45">15 – 45 lbs</button>
-      <button type="button" class="ts-pill" data-size="45-75">45 – 75 lbs</button>
-      <button type="button" class="ts-pill" data-size="over-75">Over 75 lbs</button>
+      {%- if product.handle == 'tailspark-multivitamin' -%}
+        <button type="button" class="ts-pill ts-pill--active" data-size="under-25">Under 25 lbs</button>
+        <button type="button" class="ts-pill" data-size="25-75">25 – 75 lbs</button>
+        <button type="button" class="ts-pill" data-size="over-75">Over 75 lbs</button>
+      {%- else -%}
+        <button type="button" class="ts-pill ts-pill--active" data-size="under-15">Under 15 lbs</button>
+        <button type="button" class="ts-pill" data-size="15-45">15 – 45 lbs</button>
+        <button type="button" class="ts-pill" data-size="45-75">45 – 75 lbs</button>
+        <button type="button" class="ts-pill" data-size="over-75">Over 75 lbs</button>
+      {%- endif -%}
     </div>
   </div>
 

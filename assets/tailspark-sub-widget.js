@@ -10,6 +10,8 @@
     '15-45':    { chewsPerDay: 2, recommendedJars: 1 },
     '45-75':    { chewsPerDay: 3, recommendedJars: 2 },
     'over-75':  { chewsPerDay: 4, recommendedJars: 3 },
+    'under-25': { chewsPerDay: 0.5, recommendedJars: 1 },
+    '25-75':    { chewsPerDay: 1, recommendedJars: 1 },
   };
 
   const state = {
