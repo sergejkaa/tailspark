@@ -369,13 +369,6 @@
             "amount": "0.5mg"
           }
         },
-        "nutri_mv14": {
-          "type": "nutrition_item",
-          "settings": {
-            "ingredient": "Methionine",
-            "amount": "75mg"
-          }
-        }
       },
       "block_order": [
         "item_mv1",
@@ -397,8 +390,7 @@
         "nutri_mv10",
         "nutri_mv11",
         "nutri_mv12",
-        "nutri_mv13",
-        "nutri_mv14"
+        "nutri_mv13"
       ],
       "name": "What's Inside",
       "settings": {
