@@ -218,6 +218,7 @@
         "item_hj1": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Omega-3_Salmon_-_fillet.png",
             "image_asset": "ts-ing-glucosamine.png",
             "title": "Glucosamine HCl",
             "dosage": "500mg",
