@@ -217,7 +217,7 @@
 
 .ts-cta:hover { opacity: 0.85; }
 
-.ts-cta--sub { background: #333; color: #fff; border-color: #333; }
+.ts-cta--sub { background: #ff6700; color: #fff; border-color: #ff6700; }
 .ts-cta--otp { background: #fff; color: #333; border-color: #333; }
 
 .ts-fine-print {
