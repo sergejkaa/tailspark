@@ -21,12 +21,12 @@
           "settings": {
             "rating_value": "4.9",
             "rating_label": "stars",
-            "segment_1_number": "Family",
-            "segment_1_label": "Founded",
-            "segment_2_number": "Real",
-            "segment_2_label": "Ingredients",
-            "segment_1_number_mobile": "Family",
-            "segment_2_number_mobile": "Real",
+            "segment_1_number": "Vet Formulated",
+            "segment_1_label": "Made in USA",
+            "segment_2_number": "No Artificial Flavors or Colors",
+            "segment_2_label": "",
+            "segment_1_number_mobile": "Vet Formulated",
+            "segment_2_number_mobile": "No Artificial Flavors",
             "font_size_desktop": 13,
             "stars_size_desktop": 18,
             "font_size_mobile": 12,
@@ -47,7 +47,7 @@
         "short_desc_mv": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<p style=\"font-size:14px;color:#555;line-height:1.6;margin:8px 0 4px;\">These tasty chews deliver complete daily nutrition to keep your dog energized, healthy and thriving.</p>"
+            "custom_liquid": "<p style=\"font-size:14px;color:#555;line-height:1.6;margin:8px 0 4px;\">One chew. Complete daily support. Formulated to help your dog stay healthy, vibrant, and full of life — every single day.</p>"
           }
         },
         "price": {
@@ -84,16 +84,16 @@
           "settings": {
             "item_1_heading": "Key Benefits",
             "item_1_source": "custom",
-            "item_1_content": "<ul><li>Provides complete daily nutritional support</li><li>Strengthens immune system function</li><li>Supports strong bones and healthy teeth</li><li>Boosts energy levels and overall vitality</li><li>Full spectrum of essential vitamins and minerals</li><li>Suitable for dogs of all ages 6 months and older</li></ul>",
-            "item_2_heading": "Ingredients",
+            "item_1_content": "<ul><li>Helps support daily wellness and balanced nutrition</li><li>Supports healthy skin and a shiny coat</li><li>Helps maintain immune and digestive health</li><li>Supports heart, brain, and overall vitality</li><li>Ideal for everyday wellness and travel support</li></ul>",
+            "item_2_heading": "Key Ingredients",
             "item_2_source": "custom",
-            "item_2_content": "<ul><li><strong>Vitamins A, C, D3 &amp; E</strong> - Essential antioxidant vitamins that protect cells, support immune function, and maintain healthy vision and skin</li><li><strong>Full B-Complex</strong> - B1, B2, B3, B5, B6, B12 vitamins that support energy metabolism, nerve health, and red blood cell production</li><li><strong>Calcium &amp; Phosphorus</strong> - The essential bone-building mineral duo for strong teeth and healthy joints</li><li><strong>Magnesium &amp; Potassium</strong> - Essential minerals for muscle function and nerve signal transmission</li><li><strong>Zinc, Iodine &amp; Selenium</strong> - Vital trace minerals supporting immune response, wound healing, and thyroid function</li></ul><p><strong>Full ingredient list:</strong> Vitamins: A (Vitamin A Acetate), C (Ascorbic Acid), D3 (Cholecalciferol), E (dl-Alpha Tocopheryl Acetate), B1 (Thiamine Mononitrate), B2 (Riboflavin), B3 (Niacinamide), B5 (d-Calcium Pantothenate), B6 (Pyridoxine HCl), B12 (Cyanocobalamin), Folic Acid, Biotin. Minerals: Calcium Carbonate, Dicalcium Phosphate, Magnesium Oxide, Potassium Chloride, Zinc Sulfate, Iodine (Kelp), Iron, Manganese Sulfate, Selenium Yeast.</p><p><em>Inactive ingredients:</em> Chicken Liver, Sweet Potato, Brewer's Yeast, Maltodextrin, Glycerin, Natural Flavors.</p>",
+            "item_2_content": "<p><strong>Key Ingredients Per Chew (3.5g):</strong></p><ul><li>Methionine — 10 mg</li><li>Calcium — 112 mg</li><li>Phosphorus — 56 mg</li><li>Potassium — 15 mg</li><li>Magnesium — 5 mg</li><li>Iron — 3 mg</li><li>Copper — 0.3 mg</li><li>Manganese — 1 mg</li><li>Zinc — 3 mg</li><li>Iodine — 0.05 mg</li><li>Vitamin A — 1000 IU</li><li>Vitamin D3 — 100 IU</li><li>Vitamin E — 15 IU</li><li>Thiamine (B1) — 0.2 mg</li><li>Riboflavin (B2) — 1 mg</li><li>Pantothenic Acid — 4 mg</li><li>Niacin — 5 mg</li><li>Pyridoxine (B6) — 0.4 mg</li><li>Folic Acid — 0.08 mg</li><li>Vitamin B12 — 0.008 mg</li><li>Ascorbic Acid (Vitamin C) — 25 mg</li></ul>",
             "item_3_heading": "How to Use",
             "item_3_source": "custom",
-            "item_3_content": "<p>Give daily based on your dog's weight:</p><ul><li><strong>Under 25 lbs:</strong> 1/2 chew per day</li><li><strong>25-75 lbs:</strong> 1 chew per day</li><li><strong>75+ lbs:</strong> 2 chews per day</li></ul><p>Can be given as a treat or crumbled over food. Store in a cool, dry place.</p>",
-            "item_4_heading": "Shipping Info",
+            "item_3_content": "<p>Give daily based on your dog's weight:</p><ul><li><strong>Under 25 lbs:</strong> 1/2 chew per day</li><li><strong>25–75 lbs:</strong> 1 chew per day</li><li><strong>75+ lbs:</strong> 2 chews per day</li></ul><p>Can be given as a treat or crumbled over food. If giving more than 1 chew daily, divide between morning and evening. Store in a cool, dry place.</p>",
+            "item_4_heading": "Shipping",
             "item_4_source": "custom",
-            "item_4_content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li></ul>",
+            "item_4_content": "<p>Free standard shipping on every order — no minimum. Orders are processed within 1 business day and typically arrive within 3–5 business days. Tracking details sent by email once your order ships.</p>",
             "item_5_heading": "",
             "item_5_source": "custom",
             "item_5_content": "",
@@ -480,49 +480,49 @@
           "type": "item",
           "settings": {
             "heading": "Do I still need other supplements if I use the Multivitamin?",
-            "content": "<p>Our Daily Multivitamin provides comprehensive nutritional support. Dogs with specific conditions may benefit from targeted supplements alongside it - like Hip &amp; Joint for mobility or Probiotic for digestive health.</p>"
+            "content": "<p>Our Daily Multivitamin provides broad daily nutritional support. Some dogs may benefit from additional targeted support — for example, Hip &amp; Joint for joint health or Probiotic for digestive wellness — alongside the Multivitamin.</p>"
           }
         },
         "faq_mv2": {
           "type": "item",
           "settings": {
             "heading": "Can puppies take the Multivitamin?",
-            "content": "<p>Suitable for dogs 6 months and older. Young puppies on growth-specific formulas should consult a veterinarian before adding any supplements.</p>"
+            "content": "<p>The Multivitamin is formulated for dogs of all ages. If your puppy has specific nutritional needs or is on a growth formula, we recommend consulting your veterinarian before adding any supplement.</p>"
           }
         },
         "faq_mv3": {
           "type": "item",
           "settings": {
             "heading": "Will it cause any digestive issues?",
-            "content": "<p>Our formula is gentle and designed for daily use. Some dogs may experience a brief adjustment period. Giving the chew with a meal helps minimize any sensitivity.</p>"
+            "content": "<p>Our formula is designed for gentle daily use. Some dogs may experience a brief adjustment period when starting a new supplement. Giving the chew with a meal can help minimize any sensitivity.</p>"
           }
         },
         "faq_mv4": {
           "type": "item",
           "settings": {
-            "heading": "How long before I notice a difference?",
-            "content": "<p>Most pet parents notice improvements in energy levels and overall vitality within 4-6 weeks of consistent daily use. Immune benefits build gradually over 8-12 weeks.</p>"
+            "heading": "How long before I see a difference?",
+            "content": "<p>Every dog is different and individual results may vary. We recommend consistent daily use for at least 4 to 6 weeks to allow the ingredients to build up in your dog's system.</p>"
           }
         },
         "faq_mv5": {
           "type": "item",
           "settings": {
-            "heading": "Can Multivitamin interact with prescription medications?",
-            "content": "<p>Our Multivitamin uses natural vitamins and minerals at safe daily doses. It is generally compatible with most medications. However, if your dog is on prescription treatments, we recommend checking with your veterinarian before adding any supplement to the routine.</p>"
+            "heading": "Can the Multivitamin interact with prescription medications?",
+            "content": "<p>If your dog is currently on prescription medication, we recommend consulting your veterinarian before adding any supplement to their routine.</p>"
           }
         },
         "faq_mv6": {
           "type": "item",
           "settings": {
-            "heading": "How does shipping and delivery work?",
-            "content": "<p>Free shipping on every order with no minimum. Orders process within 1-2 business days and typically arrive within 5-6 business days. A tracking email is sent once dispatched. If your order has not arrived within 8 business days, reach out to our support team and we will take care of it.</p>"
+            "heading": "How long does shipping take?",
+            "content": "<p>Standard shipping is free on every order with no minimum. Orders are processed within 1 business day and typically arrive within 3 to 5 business days. You will receive a tracking email once your order ships.</p>"
           }
         },
         "faq_mv7": {
           "type": "item",
           "settings": {
-            "heading": "Is there a subscription option to save money?",
-            "content": "<p>Yes - Subscribe &amp; Save gives you 15% off every order automatically plus free shipping on every delivery. You can choose your preferred frequency, skip a delivery, pause, or cancel anytime. It is the easiest way to keep your dog's daily nutrition consistent without running out.</p>"
+            "heading": "Can I subscribe and save on the Multivitamin?",
+            "content": "<p>Yes — our Subscribe &amp; Save program gives you 15% off every delivery plus free standard shipping. You can skip, pause, or cancel anytime from your account with no fees or penalties.</p>"
           }
         }
       },

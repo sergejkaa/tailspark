@@ -21,12 +21,12 @@
           "settings": {
             "rating_value": "4.9",
             "rating_label": "stars",
-            "segment_1_number": "Family",
-            "segment_1_label": "Founded",
-            "segment_2_number": "Real",
-            "segment_2_label": "Ingredients",
-            "segment_1_number_mobile": "Family",
-            "segment_2_number_mobile": "Real",
+            "segment_1_number": "Vet Formulated",
+            "segment_1_label": "Made in USA",
+            "segment_2_number": "No Artificial Flavors or Colors",
+            "segment_2_label": "",
+            "segment_1_number_mobile": "Vet Formulated",
+            "segment_2_number_mobile": "No Artificial Flavors or Colors",
             "font_size_desktop": 13,
             "stars_size_desktop": 18,
             "font_size_mobile": 12,
@@ -47,7 +47,7 @@
         "short_desc_pb": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<p style=\"font-size:14px;color:#555;line-height:1.6;margin:8px 0 4px;\">These tasty chews will banish the scooting and boost your dog's digestive and anal gland health.</p>"
+            "custom_liquid": "<p style=\"font-size:14px;color:#555;line-height:1.6;margin:8px 0 4px;\">A happy gut makes for a happy dog. These chews support digestive health and gut balance for better daily wellness from the inside out.</p>"
           }
         },
         "price": {
@@ -84,16 +84,16 @@
           "settings": {
             "item_1_heading": "Key Benefits",
             "item_1_source": "custom",
-            "item_1_content": "<ul><li>Supports healthy digestion</li><li>Reduces bloating, gas, and diarrhea</li><li>Promotes balanced gut microbiome</li><li>Boosts immune system naturally</li><li>Contains prebiotic FOS for enhanced probiotic activity</li><li>Ideal for sensitive stomachs and post-antibiotic recovery</li></ul>",
-            "item_2_heading": "Ingredients",
+            "item_1_content": "<ul><li>Supports healthy digestion and gut comfort</li><li>Restores and maintains balanced gut flora</li><li>Promotes digestive regularity</li><li>Boosts immune function naturally</li><li>Formulated for consistent daily wellness</li></ul>",
+            "item_2_heading": "Key Ingredients",
             "item_2_source": "custom",
-            "item_2_content": "<ul><li><strong>Bacillus coagulans 120M CFU</strong> - Spore-forming probiotic strain that survives digestion and colonizes the gut effectively</li><li><strong>FOS (Fructooligosaccharides) 200mg</strong> - Prebiotic fiber that feeds beneficial gut bacteria and enhances probiotic activity</li><li><strong>Inulin</strong> - Soluble fiber from chicory root that promotes healthy bowel movements and digestive comfort</li><li><strong>Brewer's Yeast</strong> - Rich in B-vitamins and natural prebiotics that further support gut health</li></ul><p><strong>Full ingredient list:</strong> Bacillus coagulans 120M CFU, Fructooligosaccharides (FOS), Inulin (Chicory Root Extract), Chicken Liver, Sweet Potato, Brewer's Yeast.</p><p><em>Inactive ingredients:</em> Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.</p>",
+            "item_2_content": "<p><strong>Key Ingredients Per Chew (1.5g):</strong></p><ul><li><strong>FOS (Fructooligosaccharides):</strong> 200mg</li><li><strong>Bacillus coagulans:</strong> 120M CFU</li></ul>",
             "item_3_heading": "How to Use",
             "item_3_source": "custom",
-            "item_3_content": "<p>Give daily based on your dog's weight:</p><ul><li><strong>Up to 25 lbs:</strong> 1 chew per day</li><li><strong>25-50 lbs:</strong> 2 chews per day</li><li><strong>50-75 lbs:</strong> 3 chews per day</li><li><strong>75+ lbs:</strong> 4 chews per day</li></ul><p>Can be given as a treat or crumbled over food. Store in a cool, dry place. For best results, give consistently at the same time each day.</p>",
-            "item_4_heading": "Shipping Info",
+            "item_3_content": "<p>Give daily based on your dog's weight:</p><ul><li><strong>Up to 25 lbs:</strong> 1 chew / day</li><li><strong>25-50 lbs:</strong> 2 chews / day</li><li><strong>50-75 lbs:</strong> 3 chews / day</li><li><strong>75+ lbs:</strong> 4 chews / day</li></ul><p>Can be given as a treat or crumbled over food. For best results, give in the morning or with a meal.</p>",
+            "item_4_heading": "Shipping",
             "item_4_source": "custom",
-            "item_4_content": "<p>Free shipping on all orders. Orders are processed within 1-2 business days and typically arrive within 5-6 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li></ul>",
+            "item_4_content": "<p>Free standard shipping on every order. Orders are processed within 1 business day and typically arrive within 3-5 business days.</p><ul><li>Tracking details sent by email after dispatch</li><li>Free shipping on every order - no minimum</li></ul>",
             "item_5_heading": "",
             "item_5_source": "custom",
             "item_5_content": "",
@@ -388,7 +388,7 @@
           "type": "item",
           "settings": {
             "heading": "How fast does delivery arrive?",
-            "content": "<p>We ship free on every order. Orders are processed within 1-2 business days and delivered within 5-6 business days. You will get a tracking email as soon as your package is on its way. If anything goes wrong with delivery, contact us and we will resolve it.</p>"
+            "content": "<p>We ship free on every order. Orders are processed within 1 business day and delivered within 3-5 business days. You will get a tracking email as soon as your package is on its way. If anything goes wrong with delivery, contact us at hello@tailspark.com and we will resolve it.</p>"
           }
         },
         "faq_pb7": {
