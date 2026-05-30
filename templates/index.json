@@ -947,25 +947,18 @@
         "paragraph_xDVKtj": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>New products, exclusive offers, and tips for your dog — straight to your inbox.</p>"
+            "text": "<p>New products, exclusive offers, and tips for your dog — straight to your inbox.</p><p>No spam. Unsubscribe anytime.</p>"
           }
         },
         "email_form_mjVVAk": {
           "type": "email_form",
           "settings": {}
-        },
-        "paragraph_no_spam": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>No spam. Unsubscribe anytime.</p>"
-          }
         }
       },
       "block_order": [
         "heading_hdzq4P",
         "paragraph_xDVKtj",
-        "email_form_mjVVAk",
-        "paragraph_no_spam"
+        "email_form_mjVVAk"
       ],
       "name": "t:sections.newsletter.presets.name",
       "settings": {
