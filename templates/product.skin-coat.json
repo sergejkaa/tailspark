@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -466,7 +466,7 @@
             "title_override": "Hip & Joint",
             "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
-            "subtitle": "Increases flexibility and strengthens joints",
+            "subtitle": "Supports healthy joints, mobility & connective tissue",
             "card_bg": "#fdecea",
             "icon_1_preset": "ts_joint",
             "icon_1_label": "Supports Joint Health",
@@ -485,7 +485,7 @@
             "title_override": "Daily Multivitamin",
             "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",
-            "subtitle": "Daily support for overall vitality",
+            "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
             "card_bg": "#eaf4f4",
             "icon_1_preset": "ts_multivitamin",
             "icon_1_label": "Multivitamin Support",
@@ -504,7 +504,7 @@
             "title_override": "Probiotic",
             "image_override": "shopify://shop_images/Frame_388.png",
             "image_preset": "none",
-            "subtitle": "Maintains healthy digestive system",
+            "subtitle": "Supports gut flora, digestive health & immune function",
             "card_bg": "#edf6f0",
             "icon_1_preset": "ts_gut",
             "icon_1_label": "Gut Health",

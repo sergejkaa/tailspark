@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -428,7 +428,7 @@
             "title_override": "Hip & Joint",
             "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
-            "subtitle": "Increases flexibility and strengthens joints",
+            "subtitle": "Supports healthy joints, mobility & connective tissue",
             "card_bg": "#f6e7dc",
             "icon_1_preset": "ts_joint",
             "icon_1_label": "Joint Health",
@@ -447,7 +447,7 @@
             "title_override": "Daily Multivitamin",
             "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",
-            "subtitle": "Daily support for overall vitality",
+            "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
             "card_bg": "#eaf4f4",
             "icon_1_preset": "ts_multivitamin",
             "icon_1_label": "Multivitamin",
@@ -466,7 +466,7 @@
             "title_override": "Skin & Coat",
             "image_override": "shopify://shop_images/Frame_390.png",
             "image_preset": "none",
-            "subtitle": "Softens coat and soothes dry skin",
+            "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
             "card_bg": "#fef9e7",
             "icon_1_preset": "ts_coat",
             "icon_1_label": "Coat",
