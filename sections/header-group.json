@@ -17,12 +17,13 @@
         "announcement_FJPaym": {
           "type": "announcement",
           "settings": {
-            "text": "Free Shipping on Every Order - Always!",
+            "text": "Free Standard Shipping on Every Order!",
             "link": "shopify://collections/all"
           }
         },
         "announcement-bar-0": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
             "text": "Vet Formulated · Made in USA · Clean Ingredients",
             "link": ""
