@@ -15,7 +15,7 @@
         "eyebrow_6m3tpg": {
           "type": "eyebrow",
           "settings": {
-            "text": "Vet Formulated",
+            "text": "Premium Dog Supplements",
             "text_color": "#fff8ed"
           }
         },
@@ -44,7 +44,7 @@
         "heading_BqMQFN": {
           "type": "heading",
           "settings": {
-            "heading": "Daily Wellness for Happy Dogs",
+            "heading": "For dogs who are family",
             "heading_size": "h1",
             "heading_tag": "h1",
             "text_color": ""
@@ -53,7 +53,7 @@
         "subheading_A7AYTP": {
           "type": "subheading",
           "settings": {
-            "text": "Vet-formulated soft chews your dog will love - clean ingredients, real results.",
+            "text": "Powered by love, backed by science",
             "text_color": "",
             "font_size_desktop": 16,
             "font_size_mobile": 14
@@ -304,7 +304,7 @@
             "product": "tailspark-hip-joint",
             "title_override": "Hip & Joint",
             "image_preset": "none",
-            "subtitle": "Increases flexibility and strengthens joints",
+            "subtitle": "Supports healthy joints, mobility & connective tissue",
             "card_bg": "#fff8ed",
             "icon_1_preset": "ts_joint",
             "icon_1_label": "Supports Joint Health",
@@ -322,7 +322,7 @@
             "product": "tailspark-multivitamin",
             "title_override": "Daily Multivitamin",
             "image_preset": "none",
-            "subtitle": "Daily support for overall vitality",
+            "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
             "card_bg": "#fff8ed",
             "icon_1_preset": "ts_multivitamin",
             "icon_1_label": "Multivitamin Support",
@@ -340,7 +340,7 @@
             "product": "tailspark-probiotic",
             "title_override": "Probiotic",
             "image_preset": "none",
-            "subtitle": "Maintains healthy digestive system",
+            "subtitle": "Supports gut flora, digestive health & immune function",
             "card_bg": "#fff8ed",
             "icon_1_preset": "ts_gut",
             "icon_1_label": "Promotes Gut Health",
@@ -358,7 +358,7 @@
             "product": "tailspark-skin-coat",
             "title_override": "Skin & Coat",
             "image_preset": "none",
-            "subtitle": "Softens coat and soothes dry skin",
+            "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
             "card_bg": "#fff8ed",
             "icon_1_preset": "ts_coat",
             "icon_1_label": "Helps Restore Coat",
@@ -380,7 +380,7 @@
       "name": "Best Sellers",
       "settings": {
         "heading": "Best Sellers",
-        "subheading": "Our treats are as tasty as they look, but what's inside is even more impressive.",
+        "subheading": "Soft chews dogs love. Nutrition you can trust.",
         "button_label": "Add to Cart",
         "show_price": true,
         "image_radius": 20,
@@ -413,7 +413,7 @@
           "type": "accordion",
           "settings": {
             "title": "DOGS LOVE THE TASTE",
-            "text": "<p>Soft chews taste like treats — your dog won't even know it's a supplement. No hiding pills in peanut butter, no mixing powders into food. Just give one chew and you're done.</p>",
+            "text": "<p>Soft chews taste like treats — your dog won't even know it's a supplement. No hiding pills in peanut butter, no mixing powders into food. Just give a chew and you're done.</p>",
             "button_label": "",
             "button_link": ""
           }
@@ -431,7 +431,7 @@
           "type": "accordion",
           "settings": {
             "title": "CLEAN, SIMPLE INGREDIENTS",
-            "text": "<p>No fillers, no artificial colors, no additives your dog doesn't need. Just real, functional ingredients chosen for what they actually do — developed with certified veterinarians.</p>",
+            "text": "<p>No artificial flavors, no artificial colors, no corn, no wheat. Just high-quality, research-backed ingredients formulated by veterinarians.</p>",
             "button_label": "",
             "button_link": ""
           }
@@ -440,7 +440,7 @@
           "type": "accordion",
           "settings": {
             "title": "EASY TO USE EVERY DAY",
-            "text": "<p>Toss one in the bowl or give it by hand — that's it. No special storage, no prep, no mess. Making daily wellness a simple habit your dog will actually look forward to.</p>",
+            "text": "<p>Toss it in the bowl or give it by hand — that's it. No special storage, no prep, no mess. It makes daily wellness a simple habit your dog will actually look forward to.</p>",
             "button_label": "",
             "button_link": ""
           }
@@ -713,8 +713,8 @@
       "name": "Subscription Section",
       "settings": {
         "heading": "Subscribe & Save 15%",
-        "subheading": "Save 15% on every delivery - free shipping included - skip, pause, or cancel anytime.",
-        "footnote": "Free shipping on every order. Cancel or pause anytime.",
+        "subheading": "Save 15% on every delivery · Free standard shipping included · Skip, pause, or cancel anytime",
+        "footnote": "",
         "discount_percent": 15,
         "background_color": "#fff8ed",
         "heading_color": "#1d1d1b",
@@ -740,56 +740,56 @@
           "type": "item",
           "settings": {
             "heading": "Which supplement is right for my dog?",
-            "content": "<p>It depends on your dog's needs. Hip & Joint is great for older or active dogs with mobility concerns. Probiotic helps with digestive issues and sensitive stomachs. Skin & Coat is ideal for dull fur, dry skin, or dogs that scratch a lot. Daily Multivitamin is the best all-around choice for everyday wellness.</p>"
+            "content": "<p>It depends on your dog's needs. Hip & Joint is great for active dogs or those needing extra joint support. Skin & Coat is ideal for dogs with a dull coat, dry skin, or those that need extra skin support. Probiotic helps dogs with sensitive digestion or occasional stomach upset. Daily Multivitamin is the best all-around choice for everyday wellness.</p>"
           }
         },
         "faq_item_multiple": {
           "type": "item",
           "settings": {
             "heading": "Can my dog take more than one supplement at a time?",
-            "content": "<p>Yes — TailSpark supplements are designed to work well together. Many customers combine Hip & Joint with Multivitamin, or Probiotic with Skin & Coat. All formulas use complementary ingredients with no overlapping doses.</p>"
+            "content": "<p>Yes — Tailspark supplements are designed to work well together. Many customers combine Hip & Joint with Skin & Coat, or Probiotic with Multivitamin. All formulas are carefully developed to complement each other.</p>"
           }
         },
         "faq_item_dose": {
           "type": "item",
           "settings": {
             "heading": "How many chews should I give per day?",
-            "content": "<p>For dogs under 50 lbs: 1 chew per day. For dogs over 50 lbs: 2 chews per day. Give them by hand as a treat or mix into your dog's food — either works great.</p>"
+            "content": "<p>It depends on your dog's size and the specific supplement. You'll find exact dosing instructions on each product page and on the label.</p>"
           }
         },
         "faq_item_results": {
           "type": "item",
           "settings": {
             "heading": "How long until I see results?",
-            "content": "<p>Most dog parents notice a difference within 2 to 4 weeks of consistent daily use. Joint and mobility improvements may take 4 to 6 weeks. Digestive and coat results are often visible sooner — sometimes within the first week.</p>"
+            "content": "<p>Every dog is different, so experiences may vary. We recommend giving any supplement at least 4 to 6 weeks of consistent daily use to allow the ingredients to build up in your dog's system. As with any supplement, individual results will vary.</p>"
           }
         },
         "faq_item_natural": {
           "type": "item",
           "settings": {
-            "heading": "Are the ingredients natural and safe?",
-            "content": "<p>Yes. Every TailSpark formula uses natural, functional ingredients with no artificial colors, flavors, or preservatives. No fillers, no junk. Developed with certified veterinarians and manufactured in FDA-registered, GMP-certified facilities in the USA.</p>"
+            "heading": "What's in your supplements?",
+            "content": "<p>Every Tailspark formula uses high-quality, functional ingredients with no artificial colors, flavors, or unnecessary additives. Veterinarian formulated and made in a cGMP, FDA-Registered Food Facility in the USA.</p>"
           }
         },
         "faq_item_shipping": {
           "type": "item",
           "settings": {
             "heading": "How long does shipping take? Is it free?",
-            "content": "<p>Free shipping on every order — no minimum required. Orders are processed within 1 business day and standard shipping takes 3 to 5 business days. You will receive a tracking email as soon as your order ships.</p>"
+            "content": "<p>Standard shipping is free on every order — no minimum required. Orders are processed within 1 business day and typically arrive within 3 to 5 business days. You will receive a tracking email as soon as your order ships.</p>"
           }
         },
         "faq_item_sub_cancel": {
           "type": "item",
           "settings": {
             "heading": "Can I cancel my subscription anytime?",
-            "content": "<p>Absolutely. No contracts, no cancellation fees. You can cancel, pause, or skip a delivery anytime from your customer account — no need to contact support.</p>"
+            "content": "<p>Absolutely. No contracts, no cancellation fees. You can skip, pause, or cancel a delivery anytime from your customer account — no need to contact support.</p>"
           }
         },
         "faq_item_guarantee": {
           "type": "item",
           "settings": {
             "heading": "Is there a money-back guarantee?",
-            "content": "<p>Yes — every order is backed by a 30-day money-back guarantee. If you or your dog are not satisfied for any reason, contact us within 30 days and we will make it right. No hoops, no hassle.</p>"
+            "content": "<p>Yes — we offer a 60-day money-back guarantee on your first order. If you're not happy with the quality, contact us within 60 days and we'll issue a full refund. No hoops, no hassle.</p>"
           }
         }
       },
@@ -819,13 +819,13 @@
           "type": "logo",
           "settings": {
             "item_type": "logo",
-            "text": "Fast Shipping",
+            "text": "Vet Formulated",
             "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
             "text_uppercase": true,
-            "alt": "Brand logo",
+            "alt": "Vet Formulated",
             "max_width": 180,
             "link": "",
             "target_blank": false
@@ -835,13 +835,13 @@
           "type": "logo",
           "settings": {
             "item_type": "logo",
-            "text": "Fast Shipping",
+            "text": "Clean Ingredients",
             "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
             "text_uppercase": true,
-            "alt": "Brand logo",
+            "alt": "Clean Ingredients",
             "max_width": 180,
             "link": "",
             "target_blank": false
@@ -851,13 +851,13 @@
           "type": "logo",
           "settings": {
             "item_type": "logo",
-            "text": "Fast Shipping",
+            "text": "Made in USA",
             "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
             "text_uppercase": true,
-            "alt": "Brand logo",
+            "alt": "Made in USA",
             "max_width": 180,
             "link": "",
             "target_blank": false
@@ -867,13 +867,13 @@
           "type": "logo",
           "settings": {
             "item_type": "logo",
-            "text": "Fast Shipping",
+            "text": "Made in a cGMP, FDA-Registered Food Facility",
             "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
             "text_uppercase": true,
-            "alt": "Brand logo",
+            "alt": "cGMP FDA-Registered",
             "max_width": 180,
             "link": "",
             "target_blank": false
@@ -883,13 +883,13 @@
           "type": "logo",
           "settings": {
             "item_type": "logo",
-            "text": "Fast Shipping",
+            "text": "Free Standard Shipping",
             "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
             "text_uppercase": true,
-            "alt": "Brand logo",
+            "alt": "Free Standard Shipping",
             "max_width": 180,
             "link": "",
             "target_blank": false
@@ -899,13 +899,13 @@
           "type": "logo",
           "settings": {
             "item_type": "logo",
-            "text": "Fast Shipping",
+            "text": "60-Day Money Back Guarantee",
             "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
             "text_uppercase": true,
-            "alt": "Brand logo",
+            "alt": "60-Day Money Back Guarantee",
             "max_width": 180,
             "link": "",
             "target_blank": false
@@ -940,25 +940,32 @@
         "heading_hdzq4P": {
           "type": "heading",
           "settings": {
-            "heading": "Subscribe to our emails",
+            "heading": "Be the first to know",
             "heading_size": "h1"
           }
         },
         "paragraph_xDVKtj": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Be the first to know about new products and exclusive offers.</p>"
+            "text": "<p>New products, exclusive offers, and tips for your dog — straight to your inbox.</p>"
           }
         },
         "email_form_mjVVAk": {
           "type": "email_form",
           "settings": {}
+        },
+        "paragraph_no_spam": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>No spam. Unsubscribe anytime.</p>"
+          }
         }
       },
       "block_order": [
         "heading_hdzq4P",
         "paragraph_xDVKtj",
-        "email_form_mjVVAk"
+        "email_form_mjVVAk",
+        "paragraph_no_spam"
       ],
       "name": "t:sections.newsletter.presets.name",
       "settings": {
