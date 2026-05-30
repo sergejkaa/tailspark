@@ -368,7 +368,7 @@
             "ingredient": "Manganese",
             "amount": "0.5mg"
           }
-        },
+        }
       },
       "block_order": [
         "item_mv1",
@@ -466,6 +466,19 @@
         "padding_top_mobile": 36,
         "padding_bottom_mobile": 36
       }
+    },
+    "product_ticker_mv": {
+      "type": "logo-ticker",
+      "blocks": {
+        "pt_1_mv": { "type": "logo", "settings": { "item_type": "logo", "text": "Vet Formulated", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Vet Formulated", "max_width": 180, "link": "", "target_blank": false } },
+        "pt_2_mv": { "type": "logo", "settings": { "item_type": "logo", "text": "Clean Ingredients", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Clean Ingredients", "max_width": 180, "link": "", "target_blank": false } },
+        "pt_3_mv": { "type": "logo", "settings": { "item_type": "logo", "text": "Made in USA", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Made in USA", "max_width": 180, "link": "", "target_blank": false } },
+        "pt_4_mv": { "type": "logo", "settings": { "item_type": "logo", "text": "Free Standard Shipping", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Free Standard Shipping", "max_width": 180, "link": "", "target_blank": false } },
+        "pt_5_mv": { "type": "logo", "settings": { "item_type": "logo", "text": "60-Day Money Back Guarantee", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "60-Day Guarantee", "max_width": 180, "link": "", "target_blank": false } }
+      },
+      "block_order": ["pt_1_mv", "pt_2_mv", "pt_3_mv", "pt_4_mv", "pt_5_mv"],
+      "name": "Product Ticker",
+      "settings": { "color_scheme": "scheme-2", "constrain_width": false, "speed": 40, "gap": 40, "max_height": 20, "dim": false, "padding_top": 8, "padding_bottom": 8 }
     },
     "faq_mv": {
       "type": "faq-accordion-section",
@@ -665,6 +678,7 @@
     "main",
     "what_inside_mv",
     "feeding_guide_mv",
+    "product_ticker_mv",
     "faq_mv",
     "best_sellers_mv",
     "177975981999b3130a"

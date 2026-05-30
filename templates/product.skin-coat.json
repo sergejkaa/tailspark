@@ -378,6 +378,19 @@
         "padding_bottom_mobile": 36
       }
     },
+    "product_ticker_sc": {
+      "type": "logo-ticker",
+      "blocks": {
+        "pt_1_sc": { "type": "logo", "settings": { "item_type": "logo", "text": "Vet Formulated", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Vet Formulated", "max_width": 180, "link": "", "target_blank": false } },
+        "pt_2_sc": { "type": "logo", "settings": { "item_type": "logo", "text": "Clean Ingredients", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Clean Ingredients", "max_width": 180, "link": "", "target_blank": false } },
+        "pt_3_sc": { "type": "logo", "settings": { "item_type": "logo", "text": "Made in USA", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Made in USA", "max_width": 180, "link": "", "target_blank": false } },
+        "pt_4_sc": { "type": "logo", "settings": { "item_type": "logo", "text": "Free Standard Shipping", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Free Standard Shipping", "max_width": 180, "link": "", "target_blank": false } },
+        "pt_5_sc": { "type": "logo", "settings": { "item_type": "logo", "text": "60-Day Money Back Guarantee", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "60-Day Guarantee", "max_width": 180, "link": "", "target_blank": false } }
+      },
+      "block_order": ["pt_1_sc", "pt_2_sc", "pt_3_sc", "pt_4_sc", "pt_5_sc"],
+      "name": "Product Ticker",
+      "settings": { "color_scheme": "scheme-2", "constrain_width": false, "speed": 40, "gap": 40, "max_height": 20, "dim": false, "padding_top": 8, "padding_bottom": 8 }
+    },
     "faq_sc": {
       "type": "faq-accordion-section",
       "blocks": {
@@ -576,6 +589,7 @@
     "main",
     "what_inside_sc",
     "feeding_guide_sc",
+    "product_ticker_sc",
     "faq_sc",
     "best_sellers_sc",
     "177975988040b7ad96"
