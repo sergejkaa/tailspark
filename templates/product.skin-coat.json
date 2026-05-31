@@ -423,7 +423,7 @@
       "name": "Home Icons Bar",
       "settings": {
         "item_direction": "row",
-        "item_align": "center",
+        "item_align": "left",
         "icon_size": 36,
         "icon_size_mobile": 36,
         "item_gap": 8,
@@ -437,10 +437,10 @@
         "icon_color": "#ff6700",
         "heading_color": "#333333",
         "text_color": "#666666",
-        "padding_top": 16,
-        "padding_bottom": 16,
-        "padding_top_mobile": 12,
-        "padding_bottom_mobile": 12
+        "padding_top": 12,
+        "padding_bottom": 8,
+        "padding_top_mobile": 8,
+        "padding_bottom_mobile": 8
       }
     },
     "faq_sc": {
