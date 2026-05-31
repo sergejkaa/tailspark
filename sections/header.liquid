@@ -33,26 +33,6 @@
     }
   {%- endif -%}
 
-  .header-wrapper {
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .scrolled-past-header .header-wrapper {
-    background-color: #ff6700 !important;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  }
-  .scrolled-past-header .header-wrapper .header__heading-link,
-  .scrolled-past-header .header-wrapper .header__menu-item,
-  .scrolled-past-header .header-wrapper .header__icon svg,
-  .scrolled-past-header .header-wrapper .header__icon path,
-  .scrolled-past-header .header-wrapper .list-menu__item {
-    color: #fff8ed !important;
-    fill: #fff8ed !important;
-    stroke: #fff8ed !important;
-  }
-  .scrolled-past-header .header-wrapper svg {
-    color: #fff8ed !important;
-  }
-
   {%- if section.settings.menu_type_desktop != "drawer" -%}
     @media screen and (min-width: 990px) {
       header-drawer {
