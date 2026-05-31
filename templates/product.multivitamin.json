@@ -41,13 +41,19 @@
         "weight_badge_mv": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"display:flex;flex-wrap:wrap;gap:8px;margin:4px 0;\"><div style=\"display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 10px;border-radius:50px;background:#FFF5EF;font-size:13px;font-weight:600;color:#333;border:1px solid #FFD4B8;\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FF6700\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex-shrink:0\"><path d=\"M8 2h8l1 4H7z\"/><rect x=\"5\" y=\"6\" width=\"14\" height=\"15\" rx=\"2\"/></svg>4.94 OZ (140g)</div><div style=\"display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 10px;border-radius:50px;background:#FFF5EF;font-size:13px;font-weight:600;color:#333;border:1px solid #FFD4B8;\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FF6700\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex-shrink:0\"><path d=\"M9.06 11.9l5.04-5.04a2 2 0 0 1 2.83 0l1.14 1.14a2 2 0 0 1 0 2.83L12.9 16.94\"/><path d=\"M6.3 9.19a2 2 0 1 0 2.83-2.83 2 2 0 0 0-2.83 2.83z\"/><path d=\"M14.88 17.73a2 2 0 1 0 2.83-2.83 2 2 0 0 0-2.83 2.83z\"/></svg>90 Soft Chews</div><div style="display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 10px;border-radius:50px;background:#FFF5EF;font-size:13px;font-weight:600;color:#333;border:1px solid #FFD4B8;"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FF6700\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex-shrink:0\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z\"/><path d=\"M8 14s1.5 2 4 2 4-2 4-2\"/><circle cx=\"9\" cy=\"9\" r=\"1.2\" fill=\"#FF6700\" stroke=\"none\"/><circle cx=\"15\" cy=\"9\" r=\"1.2\" fill=\"#FF6700\" stroke=\"none\"/></svg>Natural duck flavor</div></div>"
+            "custom_liquid": "<div style=\"display:flex;flex-wrap:wrap;gap:8px;margin:4px 0;\"><div style=\"display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 10px;border-radius:50px;background:#FFF5EF;font-size:13px;font-weight:600;color:#333;border:1px solid #FFD4B8;\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FF6700\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex-shrink:0\"><path d=\"M8 2h8l1 4H7z\"/><rect x=\"5\" y=\"6\" width=\"14\" height=\"15\" rx=\"2\"/></svg>4.94 OZ (140g)</div><div style=\"display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 10px;border-radius:50px;background:#FFF5EF;font-size:13px;font-weight:600;color:#333;border:1px solid #FFD4B8;\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FF6700\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex-shrink:0\"><path d=\"M9.06 11.9l5.04-5.04a2 2 0 0 1 2.83 0l1.14 1.14a2 2 0 0 1 0 2.83L12.9 16.94\"/><path d=\"M6.3 9.19a2 2 0 1 0 2.83-2.83 2 2 0 0 0-2.83 2.83z\"/><path d=\"M14.88 17.73a2 2 0 1 0 2.83-2.83 2 2 0 0 0-2.83 2.83z\"/></svg>90 Soft Chews</div><div style=\"display:inline-flex;align-items:center;gap:7px;padding:6px 14px 6px 10px;border-radius:50px;background:#FFF5EF;font-size:13px;font-weight:600;color:#333;border:1px solid #FFD4B8;\"><svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#FF6700\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"flex-shrink:0\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z\"/><path d=\"M8 14s1.5 2 4 2 4-2 4-2\"/><circle cx=\"9\" cy=\"9\" r=\"1.2\" fill=\"#FF6700\" stroke=\"none\"/><circle cx=\"15\" cy=\"9\" r=\"1.2\" fill=\"#FF6700\" stroke=\"none\"/></svg>Natural duck flavor</div></div>"
           }
         },
         "short_desc_mv": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<p style=\"font-size:14px;color:#555;line-height:1.6;margin:8px 0 4px;\">One chew. Complete daily support. Formulated to help your dog stay healthy, vibrant, and full of life — every single day.</p>"
+          }
+        },
+        "coming_soon_notice": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"background:#fff8ed;border:1.5px solid #FFD4B8;border-radius:12px;padding:22px 20px;margin:12px 0;text-align:center;\"><span style=\"display:inline-block;background:#ff6700;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;\">Coming Soon</span><p style=\"font-size:15px;color:#1d1d1b;font-weight:600;margin:0 0 6px;\">This product is almost ready.</p><p style=\"font-size:13px;color:#777;margin:0 0 14px;\">Enter your email to be notified when it launches.</p><a href=\"mailto:hello@tailspark.com?subject=Notify Me\" style=\"display:inline-block;padding:10px 22px;background:#1d1d1b;color:#fff;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;\">Notify Me</a></div>"
           }
         },
         "price": {
@@ -64,6 +70,7 @@
           }
         },
         "recharge_subscriptions_subscription_widget_v2_C8trEK": {
+          "disabled": true,
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
         },
@@ -73,6 +80,7 @@
           "settings": {}
         },
         "buy_buttons": {
+          "disabled": true,
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": false,
@@ -166,6 +174,7 @@
         "inline_rating_iifCgL",
         "weight_badge_mv",
         "short_desc_mv",
+        "coming_soon_notice",
         "price",
         "variant_picker",
         "recharge_subscriptions_subscription_widget_v2_C8trEK",
