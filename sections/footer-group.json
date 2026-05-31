@@ -48,11 +48,18 @@
             "menu": "footer-shop"
           }
         },
-        "link_list_m8DbC8": {
+        "link_list_mytailspark": {
           "type": "link_list",
           "settings": {
-            "heading": "CUSTOMER SUPPORT",
-            "menu": "footer-support"
+            "heading": "MY TAILSPARK",
+            "menu": "footer-my-tailspark"
+          }
+        },
+        "link_list_helpsupport": {
+          "type": "link_list",
+          "settings": {
+            "heading": "HELP & SUPPORT",
+            "menu": "footer-help-support"
           }
         },
         "link_list_XQLArY": {
@@ -71,7 +78,8 @@
       },
       "block_order": [
         "link_list_CjtrHf",
-        "link_list_m8DbC8",
+        "link_list_mytailspark",
+        "link_list_helpsupport",
         "link_list_XQLArY",
         "brand_information_978yXB"
       ],
