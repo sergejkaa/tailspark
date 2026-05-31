@@ -378,18 +378,70 @@
         "padding_bottom_mobile": 36
       }
     },
-    "product_ticker_sc": {
-      "type": "logo-ticker",
+    "home_icons_bar_sc": {
+      "type": "home-icons-bar",
       "blocks": {
-        "pt_1_sc": { "type": "logo", "settings": { "item_type": "text", "text": "Vet Formulated", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Vet Formulated", "max_width": 180, "link": "", "target_blank": false } },
-        "pt_2_sc": { "type": "logo", "settings": { "item_type": "text", "text": "Clean Ingredients", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Clean Ingredients", "max_width": 180, "link": "", "target_blank": false } },
-        "pt_3_sc": { "type": "logo", "settings": { "item_type": "text", "text": "Made in USA", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Made in USA", "max_width": 180, "link": "", "target_blank": false } },
-        "pt_4_sc": { "type": "logo", "settings": { "item_type": "text", "text": "Free Standard Shipping", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "Free Standard Shipping", "max_width": 180, "link": "", "target_blank": false } },
-        "pt_5_sc": { "type": "logo", "settings": { "item_type": "text", "text": "60-Day Money Back Guarantee", "text_size": 13, "text_weight": "700", "text_letter_spacing": 0, "text_color": "#111111", "text_uppercase": true, "alt": "60-Day Guarantee", "max_width": 180, "link": "", "target_blank": false } }
+        "hib_1_sc": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_vet",
+            "heading": "Vet Formulated",
+            "description": "Developed with certified veterinarians"
+          }
+        },
+        "hib_2_sc": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_clean",
+            "heading": "Clean Ingredients",
+            "description": "No fillers, no artificial additives"
+          }
+        },
+        "hib_3_sc": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_shipping",
+            "heading": "Free Shipping",
+            "description": "Always free, on every order"
+          }
+        },
+        "hib_4_sc": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_usa",
+            "heading": "Made in USA",
+            "description": "Manufactured in certified facilities"
+          }
+        }
       },
-      "block_order": ["pt_1_sc", "pt_2_sc", "pt_3_sc", "pt_4_sc", "pt_5_sc"],
-      "name": "Product Ticker",
-      "settings": { "color_scheme": "scheme-2", "constrain_width": false, "speed": 40, "gap": 40, "max_height": 20, "dim": false, "padding_top": 8, "padding_bottom": 8 }
+      "block_order": [
+        "hib_1_sc",
+        "hib_2_sc",
+        "hib_3_sc",
+        "hib_4_sc"
+      ],
+      "name": "Home Icons Bar",
+      "settings": {
+        "item_direction": "row",
+        "item_align": "center",
+        "icon_size": 36,
+        "icon_size_mobile": 36,
+        "item_gap": 8,
+        "item_gap_mobile": 4,
+        "heading_size": 15,
+        "heading_size_mobile": 14,
+        "desc_size": 13,
+        "desc_size_mobile": 12,
+        "section_bg": "#fff8ed",
+        "border_color": "#ffffff",
+        "icon_color": "#ff6700",
+        "heading_color": "#333333",
+        "text_color": "#666666",
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "padding_top_mobile": 12,
+        "padding_bottom_mobile": 12
+      }
     },
     "faq_sc": {
       "type": "faq-accordion-section",
@@ -590,7 +642,7 @@
     "main",
     "what_inside_sc",
     "feeding_guide_sc",
-    "product_ticker_sc",
+    "home_icons_bar_sc",
     "faq_sc",
     "best_sellers_sc",
     "177975988040b7ad96"

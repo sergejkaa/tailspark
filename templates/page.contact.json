@@ -17,15 +17,6 @@
         "padding_bottom": 4
       }
     },
-    "contact_info": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"max-width:640px;margin:0 auto;padding:0 20px;\"><p style=\"font-size:16px;color:#555;line-height:1.6;margin-bottom:20px;\">Have a question about your order, subscription, or our products? We're here to help.</p><p style=\"font-size:15px;color:#333;margin-bottom:4px;\"><strong>Email:</strong> <a href=\"mailto:hello@tailspark.com\" style=\"color:#ff6700;\">hello@tailspark.com</a></p><p style=\"font-size:14px;color:#777;margin-bottom:20px;\">We typically reply within 1 business day.</p><p style=\"font-size:15px;color:#555;margin-bottom:0;\">Or use the form below.</p></div>",
-        "color_scheme": "scheme-1",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
     "form": {
       "type": "contact-form",
       "settings": {
@@ -39,7 +30,6 @@
   },
   "order": [
     "main",
-    "contact_info",
     "form"
   ]
 }
