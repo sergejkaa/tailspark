@@ -25,8 +25,14 @@
     </a>
   </div>
 
+  <nav class="account-nav" style="display:flex;gap:24px;flex-wrap:wrap;margin:8px 0 28px;font-weight:600;">
+    <a href="#account-orders" style="text-decoration:underline;">Orders</a>
+    <a href="{{ routes.account_addresses_url }}">Profile</a>
+    <a href="/tools/recurring/get-subscription-access" target="_blank" rel="noopener">My Subscriptions</a>
+  </nav>
+
   <div>
-    <div>
+    <div id="account-orders">
       <h2>{{ 'customer.orders.title' | t }}</h2>
 
       {% paginate customer.orders by 20 %}
@@ -87,7 +93,7 @@
             </tbody>
           </table>
         {%- else -%}
-          <p>{{ 'customer.orders.none' | t }}</p>
+          <p>You haven't placed any orders yet. <a href="{{ routes.root_url }}" style="text-decoration:underline;">Go to store</a> to place an order.</p>
         {%- endif -%}
 
         {%- if paginate.pages > 1 -%}

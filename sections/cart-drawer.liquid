@@ -63,7 +63,12 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <div class="drawer__header-text">
+          <h2 class="drawer__heading">Your shopping cart</h2>
+          {%- if shop.customer_accounts_enabled and customer == null -%}
+            <p class="drawer__heading-sub" style="font-size:1.3rem;margin:4px 0 0;opacity:0.8;">Have an account? <a href="{{ routes.account_login_url }}" style="text-decoration:underline;">Log in</a> to check out faster.</p>
+          {%- endif -%}
+        </div>
         <button
           class="drawer__close"
           type="button"

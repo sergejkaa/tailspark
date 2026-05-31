@@ -28,11 +28,14 @@
 <cart-items class="gradient color-{{ section.settings.color_scheme }} isolate{% if cart == empty %} is-empty{% else %} section-{{ section.id }}-padding{% endif %}">
   <div class="page-width">
     <div class="title-wrapper-with-link">
-      <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
+      <h1 class="title title--primary">Your shopping cart</h1>
       <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
         {{- 'general.continue_shopping' | t -}}
       </a>
     </div>
+    {%- if shop.customer_accounts_enabled and customer == null -%}
+      <p class="cart__login-note" style="margin:-8px 0 16px;font-size:1.4rem;opacity:0.8;">Have an account? <a href="{{ routes.account_login_url }}" style="text-decoration:underline;">Log in</a> to check out faster.</p>
+    {%- endif -%}
 
     <div class="cart__warnings">
       <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
