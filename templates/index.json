@@ -827,7 +827,7 @@
         "logo_f9aKz7": {
           "type": "logo",
           "settings": {
-            "item_type": "logo",
+            "item_type": "text",
             "text": "Vet Formulated",
             "text_size": 13,
             "text_weight": "700",
@@ -843,7 +843,7 @@
         "logo_XRz8fN": {
           "type": "logo",
           "settings": {
-            "item_type": "logo",
+            "item_type": "text",
             "text": "Clean Ingredients",
             "text_size": 13,
             "text_weight": "700",
@@ -859,7 +859,7 @@
         "logo_DNP98N": {
           "type": "logo",
           "settings": {
-            "item_type": "logo",
+            "item_type": "text",
             "text": "Made in USA",
             "text_size": 13,
             "text_weight": "700",
@@ -875,7 +875,7 @@
         "logo_afWmy9": {
           "type": "logo",
           "settings": {
-            "item_type": "logo",
+            "item_type": "text",
             "text": "Made in a cGMP, FDA-Registered Food Facility",
             "text_size": 13,
             "text_weight": "700",
@@ -891,7 +891,7 @@
         "logo_xUtaBy": {
           "type": "logo",
           "settings": {
-            "item_type": "logo",
+            "item_type": "text",
             "text": "Free Standard Shipping",
             "text_size": 13,
             "text_weight": "700",
@@ -907,7 +907,7 @@
         "logo_epVree": {
           "type": "logo",
           "settings": {
-            "item_type": "logo",
+            "item_type": "text",
             "text": "60-Day Money Back Guarantee",
             "text_size": 13,
             "text_weight": "700",
