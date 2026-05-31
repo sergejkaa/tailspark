@@ -33,6 +33,31 @@
     }
   {%- endif -%}
 
+  /* Sticky header — color inversion on scroll (client request: like Pawfy) */
+  .header-wrapper {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .scrolled-past-header .header-wrapper {
+    background-color: #ff6700 !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+  .scrolled-past-header .header-wrapper .header__menu-item,
+  .scrolled-past-header .header-wrapper .header__active-menu-item,
+  .scrolled-past-header .header-wrapper .header__icon svg,
+  .scrolled-past-header .header-wrapper .header__icon path,
+  .scrolled-past-header .header-wrapper .list-menu__item,
+  .scrolled-past-header .header-wrapper .header__icon,
+  .scrolled-past-header .header-wrapper svg {
+    color: #fff8ed !important;
+    fill: #fff8ed !important;
+    stroke: #fff8ed !important;
+  }
+
+  /* Logo swap: orange -> cream on scroll */
+  .header__heading-logo--cream { display: none; }
+  .scrolled-past-header .header__heading-logo--default { display: none; }
+  .scrolled-past-header .header__heading-logo--cream { display: inline-block; }
+
   {%- if section.settings.menu_type_desktop != "drawer" -%}
     @media screen and (min-width: 990px) {
       header-drawer {
@@ -180,7 +205,15 @@
           <div class="header__heading-logo-wrapper">
             <img
               src="{{ 'tailspark-logo-orange.png' | asset_url }}"
-              class="header__heading-logo motion-reduce"
+              class="header__heading-logo header__heading-logo--default motion-reduce"
+              width="{{ settings.logo_width }}"
+              height="60"
+              alt="{{ shop.name | escape }}"
+              loading="eager"
+            >
+            <img
+              src="{{ 'tailspark-logo-cream.png' | asset_url }}"
+              class="header__heading-logo header__heading-logo--cream motion-reduce"
               width="{{ settings.logo_width }}"
               height="60"
               alt="{{ shop.name | escape }}"
@@ -234,7 +267,15 @@
           <div data-aos="flip-up" class="header__heading-logo-wrapper">
             <img
               src="{{ 'tailspark-logo-orange.png' | asset_url }}"
-              class="header__heading-logo"
+              class="header__heading-logo header__heading-logo--default"
+              width="{{ settings.logo_width }}"
+              height="60"
+              alt="{{ shop.name | escape }}"
+              loading="eager"
+            >
+            <img
+              src="{{ 'tailspark-logo-cream.png' | asset_url }}"
+              class="header__heading-logo header__heading-logo--cream"
               width="{{ settings.logo_width }}"
               height="60"
               alt="{{ shop.name | escape }}"
