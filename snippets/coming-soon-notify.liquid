@@ -1,0 +1,36 @@
+{%- comment -%}
+  Coming Soon + working Notify Me email capture (Shopify customer form).
+  Usage: {% render 'coming-soon-notify' %}
+  Captures email into Customers with tag "coming-soon" + product handle.
+{%- endcomment -%}
+<div class="coming-soon" style="background:#fff8ed;border:1.5px solid #FFD4B8;border-radius:12px;padding:22px 20px;margin:12px 0;text-align:center;">
+  <span style="display:inline-block;background:#ff6700;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">Coming Soon</span>
+  <p style="font-size:15px;color:#1d1d1b;font-weight:600;margin:0 0 6px;">This product is almost ready.</p>
+
+  {%- form 'customer' -%}
+    {%- if form.posted_successfully? -%}
+      <p style="font-size:14px;color:#5BA870;font-weight:600;margin:8px 0 0;">Thank you! We'll email you the moment it launches.</p>
+    {%- else -%}
+      <p style="font-size:13px;color:#777;margin:0 0 14px;">Enter your email to be notified when it launches.</p>
+      <input type="hidden" name="contact[tags]" value="coming-soon, notify-{{ product.handle }}">
+      <input type="hidden" name="contact[note]" value="Coming Soon notify request: {{ product.title }}">
+      <div style="display:flex;gap:8px;max-width:340px;margin:0 auto;">
+        <input
+          type="email"
+          name="contact[email]"
+          placeholder="your@email.com"
+          required
+          aria-label="Email"
+          style="flex:1;min-width:0;padding:10px 14px;border:1px solid #FFD4B8;border-radius:8px;font-size:14px;"
+        >
+        <button
+          type="submit"
+          style="padding:10px 20px;background:#1d1d1b;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;"
+        >Notify Me</button>
+      </div>
+      {%- if form.errors -%}
+        <p style="font-size:13px;color:#c0392b;margin:8px 0 0;">{{ form.errors.translated_fields.email }} {{ form.errors.messages.email }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endform -%}
+</div>

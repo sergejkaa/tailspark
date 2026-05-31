@@ -373,9 +373,9 @@
       },
       "block_order": [
         "product_UP9mEb",
+        "product_NHd9EB",
         "product_dQzzDV",
-        "product_a7PMHk",
-        "product_NHd9EB"
+        "product_a7PMHk"
       ],
       "name": "Best Sellers",
       "settings": {
@@ -706,9 +706,9 @@
       },
       "block_order": [
         "sub_prod_1",
+        "sub_prod_4",
         "sub_prod_2",
-        "sub_prod_3",
-        "sub_prod_4"
+        "sub_prod_3"
       ],
       "name": "Subscription Section",
       "settings": {
