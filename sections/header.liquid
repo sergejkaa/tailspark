@@ -43,14 +43,13 @@
   }
   .scrolled-past-header .header-wrapper .header__menu-item,
   .scrolled-past-header .header-wrapper .header__active-menu-item,
-  .scrolled-past-header .header-wrapper .header__icon svg,
-  .scrolled-past-header .header-wrapper .header__icon path,
   .scrolled-past-header .header-wrapper .list-menu__item,
-  .scrolled-past-header .header-wrapper .header__icon,
-  .scrolled-past-header .header-wrapper svg {
+  .scrolled-past-header .header-wrapper .header__icon {
     color: #fff8ed !important;
-    fill: #fff8ed !important;
-    stroke: #fff8ed !important;
+  }
+  /* Icons use currentColor — set color only so outline (cart) stays outline, fill icons (search/account) turn cream */
+  .scrolled-past-header .header-wrapper .header__icon svg {
+    color: #fff8ed !important;
   }
 
   /* Logo swap: orange -> cream on scroll */
@@ -58,10 +57,10 @@
   .scrolled-past-header .header__heading-logo--default { display: none; }
   .scrolled-past-header .header__heading-logo--cream { display: inline-block; }
 
-  /* Header icons — bolder lines (client request: чуть пожирнее) */
+  /* Header cart icon — slightly bolder than default (1), not heavy */
   .header__icon .icon-cart path,
   .header__icon--cart svg path {
-    stroke-width: 1.7;
+    stroke-width: 1.3;
   }
 
   {%- if section.settings.menu_type_desktop != "drawer" -%}
