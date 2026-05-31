@@ -58,6 +58,12 @@
   .scrolled-past-header .header__heading-logo--default { display: none; }
   .scrolled-past-header .header__heading-logo--cream { display: inline-block; }
 
+  /* Header icons — bolder lines (client request: чуть пожирнее) */
+  .header__icon .icon-cart path,
+  .header__icon--cart svg path {
+    stroke-width: 1.7;
+  }
+
   {%- if section.settings.menu_type_desktop != "drawer" -%}
     @media screen and (min-width: 990px) {
       header-drawer {
