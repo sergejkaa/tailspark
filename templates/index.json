@@ -316,6 +316,24 @@
             "icon_4_label": ""
           }
         },
+        "product_NHd9EB": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-skin-coat",
+            "title_override": "Skin & Coat",
+            "image_preset": "none",
+            "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
+            "card_bg": "#fff8ed",
+            "icon_1_preset": "ts_coat",
+            "icon_1_label": "Helps Restore Coat",
+            "icon_2_preset": "ts_antihistamine",
+            "icon_2_label": "Natural Antihistamines",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
         "product_dQzzDV": {
           "type": "product",
           "settings": {
@@ -351,31 +369,13 @@
             "icon_4_preset": "none",
             "icon_4_label": ""
           }
-        },
-        "product_NHd9EB": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-skin-coat",
-            "title_override": "Skin & Coat",
-            "image_preset": "none",
-            "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
-            "card_bg": "#fff8ed",
-            "icon_1_preset": "ts_coat",
-            "icon_1_label": "Helps Restore Coat",
-            "icon_2_preset": "ts_antihistamine",
-            "icon_2_label": "Natural Antihistamines",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
         }
       },
       "block_order": [
         "product_UP9mEb",
+        "product_NHd9EB",
         "product_dQzzDV",
-        "product_a7PMHk",
-        "product_NHd9EB"
+        "product_a7PMHk"
       ],
       "name": "Best Sellers",
       "settings": {
