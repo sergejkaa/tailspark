@@ -1,6 +1,6 @@
-﻿/*
+/*
  * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated. Updated: 2026-05-31 ticker-resync
+ * IMPORTANT: The contents of this file are auto-generated.
  *
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
@@ -373,9 +373,9 @@
       },
       "block_order": [
         "product_UP9mEb",
-        "product_NHd9EB",
         "product_dQzzDV",
-        "product_a7PMHk"
+        "product_a7PMHk",
+        "product_NHd9EB"
       ],
       "name": "Best Sellers",
       "settings": {
@@ -383,6 +383,7 @@
         "subheading": "Soft chews dogs love. Nutrition you can trust.",
         "button_label": "Add to Cart",
         "show_price": true,
+        "show_card_icons": false,
         "image_radius": 20,
         "image_radius_mobile": 6,
         "section_bg": "#ffffff",
@@ -454,7 +455,7 @@
       ],
       "name": "Image and Accordions",
       "settings": {
-        "image": "shopify://shop_images/Frame_392_1.png",
+        "image": "shopify://shop_images/Frame_393.png",
         "image_side": "left",
         "image_position": "50% 50%",
         "heading": "Why Soft Chews?",
@@ -706,9 +707,9 @@
       },
       "block_order": [
         "sub_prod_1",
-        "sub_prod_4",
         "sub_prod_2",
-        "sub_prod_3"
+        "sub_prod_3",
+        "sub_prod_4"
       ],
       "name": "Subscription Section",
       "settings": {
@@ -827,9 +828,9 @@
         "logo_f9aKz7": {
           "type": "logo",
           "settings": {
-            "item_type": "text",
+            "item_type": "logo",
             "text": "Vet Formulated",
-            "text_size": 13,
+            "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
@@ -843,9 +844,9 @@
         "logo_XRz8fN": {
           "type": "logo",
           "settings": {
-            "item_type": "text",
+            "item_type": "logo",
             "text": "Clean Ingredients",
-            "text_size": 13,
+            "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
@@ -859,9 +860,9 @@
         "logo_DNP98N": {
           "type": "logo",
           "settings": {
-            "item_type": "text",
+            "item_type": "logo",
             "text": "Made in USA",
-            "text_size": 13,
+            "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
@@ -875,9 +876,9 @@
         "logo_afWmy9": {
           "type": "logo",
           "settings": {
-            "item_type": "text",
+            "item_type": "logo",
             "text": "Made in a cGMP, FDA-Registered Food Facility",
-            "text_size": 13,
+            "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
@@ -891,9 +892,9 @@
         "logo_xUtaBy": {
           "type": "logo",
           "settings": {
-            "item_type": "text",
+            "item_type": "logo",
             "text": "Free Standard Shipping",
-            "text_size": 13,
+            "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
@@ -907,9 +908,9 @@
         "logo_epVree": {
           "type": "logo",
           "settings": {
-            "item_type": "text",
+            "item_type": "logo",
             "text": "60-Day Money Back Guarantee",
-            "text_size": 13,
+            "text_size": 22,
             "text_weight": "700",
             "text_letter_spacing": 0,
             "text_color": "#111111",
@@ -929,19 +930,19 @@
         "logo_xUtaBy",
         "logo_epVree"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "Logo ticker (infinite)",
       "settings": {
         "color_scheme": "scheme-2",
         "constrain_width": false,
-        "speed": 40,
-        "gap": 40,
-        "max_height": 20,
-        "dim": false,
-        "padding_top": 8,
-        "padding_bottom": 8
-      },
-      "disabled": true
+        "speed": 57,
+        "gap": 24,
+        "max_height": 38,
+        "dim": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
     },
     "newsletter_BakW9V": {
       "type": "newsletter",
