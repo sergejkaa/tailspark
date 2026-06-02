@@ -674,6 +674,16 @@
             "button_label": "Subscribe & Save"
           }
         },
+        "sub_prod_4": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-skin-coat",
+            "title_override": "Skin & Coat",
+            "image": "shopify://shop_images/Frame_390.png",
+            "card_bg": "#f6e7dc",
+            "button_label": "Subscribe & Save"
+          }
+        },
         "sub_prod_2": {
           "type": "product",
           "settings": {
@@ -693,23 +703,13 @@
             "card_bg": "#f6e7dc",
             "button_label": "Subscribe & Save"
           }
-        },
-        "sub_prod_4": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-skin-coat",
-            "title_override": "Skin & Coat",
-            "image": "shopify://shop_images/Frame_390.png",
-            "card_bg": "#f6e7dc",
-            "button_label": "Subscribe & Save"
-          }
         }
       },
       "block_order": [
         "sub_prod_1",
+        "sub_prod_4",
         "sub_prod_2",
-        "sub_prod_3",
-        "sub_prod_4"
+        "sub_prod_3"
       ],
       "name": "Subscription Section",
       "settings": {
