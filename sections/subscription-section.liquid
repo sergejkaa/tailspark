@@ -241,8 +241,7 @@
 
           {%- assign card_url = prod.url | default: '/collections/all' -%}
           {%- assign sub_delay = forloop.index0 | times: 100 | at_most: 300 -%}
-          {%- assign sub_coming_soon = false -%}
-          {%- if prod != blank and prod.tags contains 'coming-soon' -%}{%- assign sub_coming_soon = true -%}{%- endif -%}
+          {%- assign sub_coming_soon = block.settings.coming_soon -%}
           <div class="subscription-card{% if sub_coming_soon %} subscription-card--soon{% endif %}" data-aos="fade-up" data-aos-delay="{{ sub_delay }}" style="background-color: {{ block.settings.card_bg }};" {{ block.shopify_attributes }}>
 
             <a href="{{ card_url }}" class="subscription-card__image" aria-label="{{ block.settings.title_override | default: prod.title }}">
@@ -473,6 +472,13 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "checkbox",
+          "id": "coming_soon",
+          "label": "Mark as Coming Soon",
+          "info": "Shows a Coming Soon badge, hides the price and replaces the button. The card stays clickable. Uncheck when the product launches.",
+          "default": false
         },
         {
           "type": "text",

@@ -107,8 +107,7 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-          {%- assign is_coming_soon = false -%}
-          {%- if product.tags contains 'coming-soon' -%}{%- assign is_coming_soon = true -%}{%- endif -%}
+          {%- assign is_coming_soon = section.settings.coming_soon -%}
 
           {%- for block in section.blocks -%}
             {%- if is_coming_soon -%}
@@ -5309,6 +5308,13 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "coming_soon",
+      "label": "Coming Soon mode",
+      "info": "Hides the price, quantity, variant picker, buy buttons and subscription widget, and shows the Coming Soon notice instead. Turn off when the product launches.",
+      "default": false
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_info",

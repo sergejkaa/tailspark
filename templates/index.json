@@ -338,6 +338,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-multivitamin",
+            "coming_soon": true,
             "title_override": "Daily Multivitamin",
             "image_preset": "none",
             "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
@@ -356,6 +357,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-probiotic",
+            "coming_soon": true,
             "title_override": "Probiotic",
             "image_preset": "none",
             "subtitle": "Supports gut flora, digestive health & immune function",
@@ -707,6 +709,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-multivitamin",
+            "coming_soon": true,
             "title_override": "Daily Multivitamin",
             "image": "shopify://shop_images/Frame_389.png",
             "card_bg": "#f6e7dc",
@@ -717,6 +720,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-probiotic",
+            "coming_soon": true,
             "title_override": "Probiotic",
             "image": "shopify://shop_images/Frame_388.png",
             "card_bg": "#f6e7dc",

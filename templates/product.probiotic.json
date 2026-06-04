@@ -53,7 +53,7 @@
         "coming_soon_notice": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'coming-soon-notify' %}"
+            "custom_liquid": "{% render 'coming-soon-notify', coming_soon: section.settings.coming_soon %}"
           }
         },
         "price": {
@@ -186,6 +186,7 @@
         ".product__media-icon {display: none;}"
       ],
       "settings": {
+        "coming_soon": true,
         "enable_sticky_info": false,
         "color_scheme": "scheme-1",
         "media_size": "small",
@@ -555,6 +556,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-multivitamin",
+            "coming_soon": true,
             "title_override": "Daily Multivitamin",
             "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",

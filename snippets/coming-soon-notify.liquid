@@ -1,9 +1,10 @@
 {%- comment -%}
   Coming Soon + working Notify Me email capture (Shopify customer form).
-  Renders ONLY if the product has the "coming-soon" tag (toggle in admin: Products > Tags).
-  Usage: {% render 'coming-soon-notify' %}
+  Renders ONLY when "Coming Soon mode" is on for the product section.
+  Usage (inside a custom_liquid block on the product section):
+    {% render 'coming-soon-notify', coming_soon: section.settings.coming_soon %}
 {%- endcomment -%}
-{%- if product.tags contains 'coming-soon' -%}
+{%- if coming_soon -%}
 <div class="coming-soon" style="background:#fff8ed;border:1.5px solid #FFD4B8;border-radius:12px;padding:22px 20px;margin:12px 0;text-align:center;">
   <span style="display:inline-block;background:#ff6700;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:12px;">Coming Soon</span>
   <p style="font-size:15px;color:#1d1d1b;font-weight:600;margin:0 0 6px;">This product is almost ready.</p>

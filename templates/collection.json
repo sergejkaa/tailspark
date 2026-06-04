@@ -317,6 +317,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-multivitamin",
+            "coming_soon": true,
             "title_override": "Daily Multivitamin",
             "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",
@@ -336,6 +337,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-probiotic",
+            "coming_soon": true,
             "title_override": "Probiotic",
             "image_override": "shopify://shop_images/Frame_388.png",
             "image_preset": "none",

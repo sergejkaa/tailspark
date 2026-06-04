@@ -332,8 +332,7 @@
         {%- endif -%}
 
         {%- assign bs_delay = forloop.index0 | times: 100 | at_most: 300 -%}
-        {%- assign bs_coming_soon = false -%}
-        {%- if prod != blank and prod.tags contains 'coming-soon' -%}{%- assign bs_coming_soon = true -%}{%- endif -%}
+        {%- assign bs_coming_soon = block.settings.coming_soon -%}
         <div class="bs-card{% if bs_coming_soon %} bs-card--soon{% endif %}" data-aos="fade-up" data-aos-delay="{{ bs_delay }}" {{ block.shopify_attributes }}>
 
           {%- if prod != blank -%}
@@ -717,6 +716,13 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "checkbox",
+          "id": "coming_soon",
+          "label": "Mark as Coming Soon",
+          "info": "Shows a Coming Soon badge, hides the price and replaces the button. The card stays clickable. Uncheck when the product launches.",
+          "default": false
         },
         {
           "type": "text",
