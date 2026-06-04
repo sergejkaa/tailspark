@@ -218,6 +218,7 @@
         "item_hj1": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Glucosamine_Shrimp_Crab.png",
             "image_asset": "ts-ing-glucosamine.png",
             "title": "Glucosamine (Shrimp & Crab)",
             "dosage": "500mg",
@@ -227,6 +228,7 @@
         "item_hj2": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/MSM.png",
             "image_asset": "ts-ing-msm.png",
             "title": "MSM",
             "dosage": "400mg",
@@ -236,6 +238,7 @@
         "item_hj3": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Green-Lipped_Mussel.png",
             "image_asset": "ts-ing-green-lipped-mussel.png",
             "title": "Green-Lipped Mussel",
             "dosage": "150mg",
