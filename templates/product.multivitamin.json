@@ -70,8 +70,8 @@
           }
         },
         "recharge_subscriptions_subscription_widget_v2_C8trEK": {
-          "disabled": true,
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "disabled": true,
           "settings": {}
         },
         "quantity_selector": {
@@ -80,8 +80,8 @@
           "settings": {}
         },
         "buy_buttons": {
-          "disabled": true,
           "type": "buy_buttons",
+          "disabled": true,
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
@@ -236,6 +236,7 @@
         "item_mv2": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/B-Complex_Vitamins.png",
             "image_asset": "ts-ing-b-complex.png",
             "title": "B-Complex Vitamins",
             "dosage": "B1-B12",
@@ -245,6 +246,7 @@
         "item_mv3": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Calcium_Phosphorus.png",
             "image_asset": "ts-ing-calcium-phosphorus.png",
             "title": "Calcium & Phosphorus",
             "dosage": "100mg / 80mg",
@@ -254,6 +256,7 @@
         "item_mv4": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Copper_Manganese.png",
             "image_asset": "ts-ing-copper-manganese.png",
             "title": "Copper & Manganese",
             "dosage": "Trace minerals",
@@ -641,25 +644,6 @@
             "icon_4_label": ""
           }
         },
-        "product_a7PMHk": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-probiotic",
-            "title_override": "Probiotic",
-            "image_override": "shopify://shop_images/Frame_388.png",
-            "image_preset": "none",
-            "subtitle": "Supports gut flora, digestive health & immune function",
-            "card_bg": "#edf6f0",
-            "icon_1_preset": "ts_gut",
-            "icon_1_label": "Gut Health",
-            "icon_2_preset": "ts_immune",
-            "icon_2_label": "Immune Support",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
         "product_NHd9EB": {
           "type": "product",
           "settings": {
@@ -678,6 +662,25 @@
             "icon_4_preset": "none",
             "icon_4_label": ""
           }
+        },
+        "product_a7PMHk": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-probiotic",
+            "title_override": "Probiotic",
+            "image_override": "shopify://shop_images/Frame_388.png",
+            "image_preset": "none",
+            "subtitle": "Supports gut flora, digestive health & immune function",
+            "card_bg": "#edf6f0",
+            "icon_1_preset": "ts_gut",
+            "icon_1_label": "Gut Health",
+            "icon_2_preset": "ts_immune",
+            "icon_2_label": "Immune Support",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
         }
       },
       "block_order": [
@@ -691,6 +694,7 @@
         "subheading": "Complete your dog's daily wellness routine.",
         "button_label": "Add to Cart",
         "show_price": true,
+        "show_card_icons": false,
         "image_radius": 20,
         "image_radius_mobile": 6,
         "section_bg": "#ffffff",
@@ -715,7 +719,6 @@
       }
     },
     "177975981999b3130a": {
-      "disabled": true,
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_TCtbzT": {
@@ -731,6 +734,7 @@
       "block_order": [
         "judge_me_reviews_review_widget_TCtbzT"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
