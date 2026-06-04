@@ -114,7 +114,8 @@
               {%- if block.type == 'price' or block.type == 'quantity_selector' or block.type == 'variant_picker' or block.type == 'buy_buttons' -%}
                 {%- continue -%}
               {%- endif -%}
-              {%- if block.type contains 'subscription-widget' or block.type contains 'recharge' -%}
+              {%- comment -%} App blocks have type '@app', so also match by block id (e.g. recharge / subscription widget) {%- endcomment -%}
+              {%- if block.type contains 'subscription-widget' or block.type contains 'recharge' or block.id contains 'recharge' or block.id contains 'subscription' or block.id contains 'selling_plan' -%}
                 {%- continue -%}
               {%- endif -%}
             {%- endif -%}
