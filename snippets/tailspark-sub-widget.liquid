@@ -26,6 +26,46 @@
 >
 
   {{- 'tailspark-sub-widget.css' | asset_url | stylesheet_tag -}}
+  <style>
+    @media screen and (max-width: 640px) {
+      #ts-sub-widget .ts-trust {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        justify-content: stretch;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 103, 0, 0.12);
+      }
+
+      #ts-sub-widget .ts-trust-item {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        min-height: 38px;
+        padding: 8px 10px;
+        border: 1px solid rgba(255, 103, 0, 0.12);
+        border-radius: 10px;
+        background: #fffaf1;
+        color: #333333;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.35;
+        text-align: left;
+      }
+
+      #ts-sub-widget .ts-trust-item svg {
+        width: 24px;
+        height: 24px;
+        padding: 5px;
+        border-radius: 50%;
+        background: rgba(255, 103, 0, 0.1);
+        color: #ff6700;
+        stroke-width: 2;
+      }
+    }
+  </style>
 
   <!-- Dog size -->
   <div class="ts-box">
