@@ -227,6 +227,7 @@
         "item_mv1": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Vitamins_A_C_D3_E.png",
             "image_asset": "ts-ing-vitamins-acd-e.png",
             "title": "Vitamins A, C, D3 & E",
             "dosage": "Vitamin complex",
@@ -266,6 +267,7 @@
         "item_mv5": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Magnesium_Potassium.png",
             "image_asset": "ts-ing-magnesium-potassium.png",
             "title": "Magnesium & Potassium",
             "dosage": "30mg / 20mg",
@@ -275,6 +277,7 @@
         "item_mv6": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Methionine.png",
             "image_asset": "ts-ing-methionine.png",
             "title": "Methionine",
             "dosage": "Essential amino acid",
