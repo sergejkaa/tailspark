@@ -454,7 +454,7 @@
         "desc_size_mobile": 12,
         "section_bg": "#fff8ed",
         "border_color": "#ffffff",
-        "icon_color": "#ff6700",
+        "icon_color": "#333333",
         "heading_color": "#333333",
         "text_color": "#666666",
         "padding_top": 12,
