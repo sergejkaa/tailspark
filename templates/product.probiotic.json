@@ -237,6 +237,7 @@
         "item_pb2": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/FOS_Co_Fructooligosaccharides.png",
             "image_asset": "ts-ing-fos.png",
             "title": "FOS (Fructooligosaccharides)",
             "dosage": "200mg",
