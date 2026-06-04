@@ -486,44 +486,62 @@
     "home_icons_bar_QDY8jh": {
       "type": "home-icons-bar",
       "blocks": {
-        "badge_w7xHV9": {
+        "hib_1": {
           "type": "badge",
           "settings": {
             "icon_preset": "ts_vet",
             "heading": "Vet Formulated",
-            "description": "Developed with certified veterinarians"
+            "description": ""
           }
         },
-        "badge_eWYnqm": {
+        "hib_2": {
           "type": "badge",
           "settings": {
             "icon_preset": "ts_clean",
             "heading": "Clean Ingredients",
-            "description": "No fillers, no artificial additives"
+            "description": ""
           }
         },
-        "badge_km3VjH": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "ts_shipping",
-            "heading": "Free Shipping",
-            "description": "Always free, on every order"
-          }
-        },
-        "badge_QrKxP4": {
+        "hib_3": {
           "type": "badge",
           "settings": {
             "icon_preset": "ts_usa",
             "heading": "Made in USA",
-            "description": "Manufactured in certified facilities"
+            "description": ""
+          }
+        },
+        "hib_4": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "factory",
+            "heading": "Made in a cGMP, FDA-Registered Food Facility",
+            "description": ""
+          }
+        },
+        "hib_5": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_shipping",
+            "heading": "Free Standard Shipping",
+            "description": ""
+          }
+        },
+        "hib_6": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "shield",
+            "heading": "60-Day Money Back Guarantee",
+            "description": ""
           }
         }
       },
       "block_order": [
-        "badge_w7xHV9",
-        "badge_eWYnqm",
-        "badge_km3VjH",
-        "badge_QrKxP4"
+        "hib_1",
+        "hib_2",
+        "hib_3",
+        "hib_4",
+        "hib_5",
+        "hib_6"
       ],
       "name": "Home Icons Bar",
       "settings": {
