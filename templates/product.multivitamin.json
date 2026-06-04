@@ -433,7 +433,7 @@
             "icon": "ðŸ©",
             "size_label": "Small",
             "weight_range": "Under 25 lbs",
-            "chews_count": "1-2 chew / day"
+            "chews_count": "1/2 chew / day"
           }
         },
         "row_mv2": {
@@ -467,7 +467,7 @@
         "heading": "Feeding Guide",
         "subheading": "Give daily based on your dog's weight",
         "note": "For best results, give chews consistently each day. Always provide fresh water.",
-        "image": "shopify://shop_images/0afbd9da-bb35-448e-b2db-a470f8278ce4.png",
+        "image": "",
         "image_position": "left",
         "image_border_radius": 14,
         "bg_color": "#fff8ed",
