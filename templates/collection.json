@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -301,7 +301,7 @@
             "title_override": "Hip & Joint",
             "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
-            "subtitle": "Supports healthy joints, mobility & connective tissue",
+            "subtitle": "Increases flexibility and strengthens joints",
             "card_bg": "#fff8ed",
             "icon_1_preset": "ts_joint",
             "icon_1_label": "Supports Joint Health",
@@ -321,7 +321,7 @@
             "title_override": "Daily Multivitamin",
             "image_override": "shopify://shop_images/Frame_389.png",
             "image_preset": "none",
-            "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
+            "subtitle": "Daily support for overall vitality",
             "card_bg": "#fff8ed",
             "icon_1_preset": "ts_multivitamin",
             "icon_1_label": "Multivitamin Support",
@@ -341,7 +341,7 @@
             "title_override": "Probiotic",
             "image_override": "shopify://shop_images/Frame_388.png",
             "image_preset": "none",
-            "subtitle": "Supports gut flora, digestive health & immune function",
+            "subtitle": "Maintains healthy digestive system",
             "card_bg": "#fff8ed",
             "icon_1_preset": "ts_gut",
             "icon_1_label": "Promotes Gut Health",
@@ -360,7 +360,7 @@
             "title_override": "Skin & Coat",
             "image_override": "shopify://shop_images/Frame_390.png",
             "image_preset": "none",
-            "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
+            "subtitle": "Softens coat and soothes dry skin",
             "card_bg": "#fff8ed",
             "icon_1_preset": "ts_coat",
             "icon_1_label": "Helps Restore Coat",
