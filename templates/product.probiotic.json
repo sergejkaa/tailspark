@@ -70,8 +70,8 @@
           }
         },
         "recharge_subscriptions_subscription_widget_v2_C8trEK": {
-          "disabled": true,
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "disabled": true,
           "settings": {}
         },
         "quantity_selector": {
@@ -80,8 +80,8 @@
           "settings": {}
         },
         "buy_buttons": {
-          "disabled": true,
           "type": "buy_buttons",
+          "disabled": true,
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
@@ -227,6 +227,7 @@
         "item_pb1": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Bacillus_coagulans.png",
             "image_asset": "ts-ing-bacillus-coagulans.png",
             "title": "Bacillus coagulans",
             "dosage": "120 Million CFU",
@@ -514,25 +515,6 @@
             "icon_4_label": ""
           }
         },
-        "product_dQzzDV": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-multivitamin",
-            "title_override": "Daily Multivitamin",
-            "image_override": "shopify://shop_images/Frame_389.png",
-            "image_preset": "none",
-            "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
-            "card_bg": "#fff8ed",
-            "icon_1_preset": "ts_multivitamin",
-            "icon_1_label": "Multivitamin",
-            "icon_2_preset": "ts_energy",
-            "icon_2_label": "Energy",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
         "product_NHd9EB": {
           "type": "product",
           "settings": {
@@ -551,6 +533,25 @@
             "icon_4_preset": "none",
             "icon_4_label": ""
           }
+        },
+        "product_dQzzDV": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-multivitamin",
+            "title_override": "Daily Multivitamin",
+            "image_override": "shopify://shop_images/Frame_389.png",
+            "image_preset": "none",
+            "subtitle": "Daily nutritional support for immunity, vitality, heart & brain",
+            "card_bg": "#fff8ed",
+            "icon_1_preset": "ts_multivitamin",
+            "icon_1_label": "Multivitamin",
+            "icon_2_preset": "ts_energy",
+            "icon_2_label": "Energy",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
         }
       },
       "block_order": [
@@ -564,6 +565,7 @@
         "subheading": "Complete your dog's daily wellness routine.",
         "button_label": "Add to Cart",
         "show_price": true,
+        "show_card_icons": false,
         "image_radius": 20,
         "image_radius_mobile": 6,
         "section_bg": "#ffffff",
@@ -588,7 +590,6 @@
       }
     },
     "17797598381b02573c": {
-      "disabled": true,
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_MrrMCL": {
@@ -604,6 +605,7 @@
       "block_order": [
         "judge_me_reviews_review_widget_MrrMCL"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
