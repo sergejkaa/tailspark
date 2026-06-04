@@ -39,7 +39,7 @@
 
       #ts-sub-widget .ts-trust-item {
         display: grid;
-        grid-template-columns: 24px 1fr;
+        grid-template-columns: 32px 1fr;
         align-items: center;
         gap: 10px;
         width: 100%;
@@ -56,12 +56,14 @@
       }
 
       #ts-sub-widget .ts-trust-item svg {
-        width: 24px;
-        height: 24px;
-        padding: 5px;
+        box-sizing: border-box;
+        width: 32px;
+        height: 32px;
+        padding: 7px;
         border-radius: 50%;
         background: rgba(255, 103, 0, 0.1);
         color: #ff6700;
+        overflow: visible;
         stroke-width: 2;
       }
     }
