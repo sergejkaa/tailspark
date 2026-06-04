@@ -513,6 +513,7 @@
         "hib_4": {
           "type": "badge",
           "settings": {
+            "icon_image": "shopify://shop_images/image2_1.png",
             "icon_preset": "factory",
             "heading": "Made in a cGMP, FDA-Registered Food Facility",
             "description": ""
