@@ -287,6 +287,7 @@
         "item_mv7": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Zinc_Iodine_Iron.png",
             "image_asset": "ts-ing-zinc-iodine-iron.png",
             "title": "Zinc, Iodine & Iron",
             "dosage": "Trace minerals",
