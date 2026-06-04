@@ -459,7 +459,7 @@
                 {%- if section.settings.show_price -%}
                   {%- assign bs_sub_price = prod.price_min | times: 0.85 | round -%}
                   <div class="bs-card__price">
-                    <span class="bs-card__price-from">From</span>
+                    <span class="bs-card__price-from">Starting from</span>
                     <span>{{ bs_sub_price | money }}</span>
                   </div>
                 {%- endif -%}

@@ -281,7 +281,7 @@
                 <div class="subscription-card__pricing">
                   {%- if prod != blank -%}
                     <span class="subscription-card__price-original">{{ prod.price | money }}</span>
-                    <span class="subscription-card__price-sub">{{ discounted_price | money }}/mo</span>
+                    <span class="subscription-card__price-sub">{{ discounted_price | money }}</span>
                   {%- endif -%}
                   <span class="subscription-card__badge">Save {{ discount_pct }}%</span>
                 </div>
