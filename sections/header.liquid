@@ -43,7 +43,7 @@
   }
   .scrolled-past-header .header-wrapper .header__menu-item,
   .scrolled-past-header .header-wrapper .header__active-menu-item,
-  .scrolled-past-header .header-wrapper .list-menu__item,
+  .scrolled-past-header .header-wrapper .list-menu__item:not(.menu-drawer__menu-item),
   .scrolled-past-header .header-wrapper .header__icon {
     color: #fff8ed !important;
   }
@@ -51,6 +51,21 @@
   .scrolled-past-header .header-wrapper .header__icon svg {
     color: #fff8ed !important;
   }
+  /* Mobile drawer menu must stay dark/readable even when header is scrolled (orange) */
+  .scrolled-past-header .header-wrapper .menu-drawer .menu-drawer__menu-item,
+  .scrolled-past-header .header-wrapper .menu-drawer .list-menu__item {
+    color: rgb(var(--color-foreground)) !important;
+  }
+  /* Cart count bubble — cream bg + orange number on scroll (was orange-on-orange) */
+  .scrolled-past-header .header-wrapper .cart-count-bubble {
+    background-color: #fff8ed !important;
+  }
+  .scrolled-past-header .header-wrapper .cart-count-bubble span {
+    color: #ff6700 !important;
+  }
+
+  /* Header icons — slightly bigger */
+  .header__icon .svg-wrapper svg { width: 25px; height: 25px; }
 
   /* Logo swap: orange -> cream on scroll */
   .header__heading-logo--cream { display: none; }
