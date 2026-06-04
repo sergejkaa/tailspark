@@ -39,6 +39,14 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+
+    assign card_coming_soon = false
+    if settings.coming_soon_handles != blank
+      assign cs_list = settings.coming_soon_handles | downcase | replace: ' ', '' | split: ','
+      if cs_list contains card_product.handle
+        assign card_coming_soon = true
+      endif
+    endif
   -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
@@ -57,6 +65,9 @@
         class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
+        {%- if card_coming_soon -%}
+          <span class="card__coming-soon-badge" style="position:absolute;top:10px;left:10px;z-index:3;background:#1d1d1b;color:#fff8ed;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:30px;line-height:1;">Coming Soon</span>
+        {%- endif -%}
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
             <div class="media media--transparent media--hover-effect">
@@ -125,7 +136,9 @@
             </h3>
           </div>
           <div class="card__badge {{ settings.badge_position }}">
-            {%- if card_product.available == false -%}
+            {%- if card_coming_soon -%}
+            {%- comment -%} No sold-out/sale badge while Coming Soon {%- endcomment -%}
+          {%- elsif card_product.available == false -%}
               <span
                 id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
                 class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
@@ -204,7 +217,11 @@
               </p>
             {%- endif -%}
 
-            {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {%- if card_coming_soon -%}
+              <span class="price card__coming-soon-price" style="color:#999;font-style:italic;">Available soon</span>
+            {%- else -%}
+              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {%- endif -%}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                 {% liquid
@@ -289,7 +306,7 @@
           </div>
         </div>
         {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
-        {% if quick_add == 'standard' %}
+        {% if quick_add == 'standard' and card_coming_soon == false %}
           <div class="quick-add no-js-hidden">
             {%- liquid
               assign qty_rules = false
@@ -388,7 +405,7 @@
               </product-form>
             {%- endif -%}
           </div>
-        {% elsif quick_add == 'bulk' %}
+        {% elsif quick_add == 'bulk' and card_coming_soon == false %}
           {% if card_product.variants_count == 1 %}
             <quick-add-bulk
               data-min="{{ card_product.selected_or_first_available_variant.quantity_rule.min }}"
@@ -549,7 +566,9 @@
           {% endif %}
         {% endif %}
         <div class="card__badge {{ settings.badge_position }}">
-          {%- if card_product.available == false -%}
+          {%- if card_coming_soon -%}
+            {%- comment -%} No sold-out/sale badge while Coming Soon {%- endcomment -%}
+          {%- elsif card_product.available == false -%}
             <span
               id="Badge-{{ section_id }}-{{ card_product.id }}"
               class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"

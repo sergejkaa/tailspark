@@ -8,6 +8,21 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Coming Soon",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Mark products as Coming Soon in product grids, search and related products. Enter product handles separated by commas (e.g. tailspark-multivitamin, tailspark-probiotic). Remove a handle when the product launches."
+      },
+      {
+        "type": "textarea",
+        "id": "coming_soon_handles",
+        "label": "Coming Soon product handles",
+        "default": "tailspark-multivitamin, tailspark-probiotic"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.logo.name",
     "settings": [
       {
