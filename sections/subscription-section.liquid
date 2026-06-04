@@ -143,6 +143,18 @@
     color: {{ section.settings.button_hover_text }};
   }
 
+  /* Coming Soon state */
+  .subscription-card__image { position: relative; }
+  .subscription-card__soon-badge {
+    position: absolute; top: 10px; left: 10px; z-index: 2;
+    background: #1d1d1b; color: #fff8ed; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 11px; border-radius: 30px;
+  }
+  .subscription-card--soon .subscription-card__image img { opacity: 0.82; }
+  .subscription-card__price-soon { color: #999; font-style: italic; font-size: 14px; }
+  .subscription-card__btn--soon { background-color: #1d1d1b !important; color: #fff !important; }
+  .subscription-card__btn--soon:hover { background-color: #000 !important; }
+
   .subscription-card__title-link {
     text-decoration: none;
     color: inherit;
@@ -229,9 +241,12 @@
 
           {%- assign card_url = prod.url | default: '/collections/all' -%}
           {%- assign sub_delay = forloop.index0 | times: 100 | at_most: 300 -%}
-          <div class="subscription-card" data-aos="fade-up" data-aos-delay="{{ sub_delay }}" style="background-color: {{ block.settings.card_bg }};" {{ block.shopify_attributes }}>
+          {%- assign sub_coming_soon = false -%}
+          {%- if prod != blank and prod.tags contains 'coming-soon' -%}{%- assign sub_coming_soon = true -%}{%- endif -%}
+          <div class="subscription-card{% if sub_coming_soon %} subscription-card--soon{% endif %}" data-aos="fade-up" data-aos-delay="{{ sub_delay }}" style="background-color: {{ block.settings.card_bg }};" {{ block.shopify_attributes }}>
 
             <a href="{{ card_url }}" class="subscription-card__image" aria-label="{{ block.settings.title_override | default: prod.title }}">
+              {%- if sub_coming_soon -%}<span class="subscription-card__soon-badge">Coming Soon</span>{%- endif -%}
               {%- if block.settings.image != blank -%}
                 {{
                   block.settings.image
@@ -256,20 +271,29 @@
                 </h3>
               </a>
 
-              <div class="subscription-card__pricing">
-                {%- if prod != blank -%}
-                  <span class="subscription-card__price-original">{{ prod.price | money }}</span>
-                  <span class="subscription-card__price-sub">{{ discounted_price | money }}/mo</span>
-                {%- endif -%}
-                <span class="subscription-card__badge">Save {{ discount_pct }}%</span>
-              </div>
+              {%- if sub_coming_soon -%}
+                <div class="subscription-card__pricing">
+                  <span class="subscription-card__price-soon">Available soon</span>
+                </div>
+                <a href="{{ card_url }}" class="subscription-card__btn subscription-card__btn--soon">
+                  Coming Soon
+                </a>
+              {%- else -%}
+                <div class="subscription-card__pricing">
+                  {%- if prod != blank -%}
+                    <span class="subscription-card__price-original">{{ prod.price | money }}</span>
+                    <span class="subscription-card__price-sub">{{ discounted_price | money }}/mo</span>
+                  {%- endif -%}
+                  <span class="subscription-card__badge">Save {{ discount_pct }}%</span>
+                </div>
 
-              <a
-                href="{%- if prod != blank -%}{{ prod.url }}{%- else -%}/collections/all{%- endif -%}"
-                class="subscription-card__btn"
-              >
-                {{- block.settings.button_label | default: 'Subscribe & Save' -}}
-              </a>
+                <a
+                  href="{%- if prod != blank -%}{{ prod.url }}{%- else -%}/collections/all{%- endif -%}"
+                  class="subscription-card__btn"
+                >
+                  {{- block.settings.button_label | default: 'Subscribe & Save' -}}
+                </a>
+              {%- endif -%}
             </div>
 
           </div>

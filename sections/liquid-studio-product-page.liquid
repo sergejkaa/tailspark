@@ -107,7 +107,18 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+          {%- assign is_coming_soon = false -%}
+          {%- if product.tags contains 'coming-soon' -%}{%- assign is_coming_soon = true -%}{%- endif -%}
+
           {%- for block in section.blocks -%}
+            {%- if is_coming_soon -%}
+              {%- if block.type == 'price' or block.type == 'quantity_selector' or block.type == 'variant_picker' or block.type == 'buy_buttons' -%}
+                {%- continue -%}
+              {%- endif -%}
+              {%- if block.type contains 'subscription-widget' or block.type contains 'recharge' -%}
+                {%- continue -%}
+              {%- endif -%}
+            {%- endif -%}
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
