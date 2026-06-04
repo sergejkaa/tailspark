@@ -229,6 +229,7 @@
         "item_sc2": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Omega-6_Linoleic_Acid.png",
             "image_asset": "ts-ing-omega6.png",
             "title": "Omega-6 (Linoleic Acid)",
             "dosage": "100mg",
@@ -238,6 +239,7 @@
         "item_sc3": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Omega-9.png",
             "image_asset": "ts-ing-omega9.png",
             "title": "Omega-9",
             "dosage": "50mg",
@@ -247,6 +249,7 @@
         "item_sc4": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Vitamin_E.png",
             "image_asset": "ts-ing-vitamin-e.png",
             "title": "Vitamin E",
             "dosage": "30 IU",
@@ -593,6 +596,7 @@
         "subheading": "Complete your dog's daily wellness routine.",
         "button_label": "Add to Cart",
         "show_price": true,
+        "show_card_icons": false,
         "image_radius": 20,
         "image_radius_mobile": 6,
         "section_bg": "#ffffff",
@@ -617,7 +621,6 @@
       }
     },
     "177975988040b7ad96": {
-      "disabled": true,
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_PAmqWz": {
@@ -633,6 +636,7 @@
       "block_order": [
         "judge_me_reviews_review_widget_PAmqWz"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
