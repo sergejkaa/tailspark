@@ -245,6 +245,7 @@
         "item_hj4": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Chondroitin_Porcine.png",
             "image_asset": "ts-ing-chondroitin.png",
             "title": "Chondroitin (Porcine)",
             "dosage": "110mg",
@@ -522,6 +523,25 @@
     "best_sellers_hj": {
       "type": "best-sellers-custom",
       "blocks": {
+        "product_NHd9EB": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-skin-coat",
+            "title_override": "Skin & Coat",
+            "image_override": "shopify://shop_images/Frame_390.png",
+            "image_preset": "none",
+            "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
+            "card_bg": "#fff8ed",
+            "icon_1_preset": "ts_coat",
+            "icon_1_label": "Coat",
+            "icon_2_preset": "ts_antihistamine",
+            "icon_2_label": "Allergy",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
         "product_dQzzDV": {
           "type": "product",
           "settings": {
@@ -559,25 +579,6 @@
             "icon_4_preset": "none",
             "icon_4_label": ""
           }
-        },
-        "product_NHd9EB": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-skin-coat",
-            "title_override": "Skin & Coat",
-            "image_override": "shopify://shop_images/Frame_390.png",
-            "image_preset": "none",
-            "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
-            "card_bg": "#fff8ed",
-            "icon_1_preset": "ts_coat",
-            "icon_1_label": "Coat",
-            "icon_2_preset": "ts_antihistamine",
-            "icon_2_label": "Allergy",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
         }
       },
       "block_order": [
@@ -591,6 +592,7 @@
         "subheading": "Complete your dog's daily wellness routine.",
         "button_label": "Add to Cart",
         "show_price": true,
+        "show_card_icons": false,
         "image_radius": 20,
         "image_radius_mobile": 6,
         "section_bg": "#ffffff",
@@ -615,7 +617,6 @@
       }
     },
     "17797592696c74c42e": {
-      "disabled": true,
       "type": "apps",
       "blocks": {
         "judge_me_reviews_review_widget_w4MQNG": {
@@ -631,6 +632,7 @@
       "block_order": [
         "judge_me_reviews_review_widget_w4MQNG"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true
       }
