@@ -17,129 +17,8 @@
         "color_scheme": "scheme-1"
       }
     },
-    "best_sellers_custom_GpGCrV": {
-      "type": "best-sellers-custom",
-      "blocks": {
-        "product_UP9mEb": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-hip-joint",
-            "coming_soon": false,
-            "title_override": "Hip & Joint",
-            "image_override": "shopify://shop_images/Frame_391.png",
-            "image_preset": "none",
-            "subtitle": "Increases flexibility and strengthens joints",
-            "card_bg": "#fff8ed",
-            "icon_1_preset": "ts_joint",
-            "icon_1_label": "Supports Joint Health",
-            "icon_2_preset": "ts_anti_inflammatory",
-            "icon_2_label": "Natural Anti-Inflammatory",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
-        "product_NHd9EB": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-skin-coat",
-            "coming_soon": false,
-            "title_override": "Skin & Coat",
-            "image_override": "shopify://shop_images/Frame_390.png",
-            "image_preset": "none",
-            "subtitle": "Softens coat and soothes dry skin",
-            "card_bg": "#fff8ed",
-            "icon_1_preset": "ts_coat",
-            "icon_1_label": "Helps Restore Coat",
-            "icon_2_preset": "ts_antihistamine",
-            "icon_2_label": "Natural Antihistamines",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
-        "product_dQzzDV": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-multivitamin",
-            "coming_soon": true,
-            "title_override": "Daily Multivitamin",
-            "image_override": "shopify://shop_images/Frame_389.png",
-            "image_preset": "none",
-            "subtitle": "Daily support for overall vitality",
-            "card_bg": "#fff8ed",
-            "icon_1_preset": "ts_multivitamin",
-            "icon_1_label": "Multivitamin Support",
-            "icon_2_preset": "ts_energy",
-            "icon_2_label": "Energy & Vitality",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        },
-        "product_a7PMHk": {
-          "type": "product",
-          "settings": {
-            "product": "tailspark-probiotic",
-            "coming_soon": true,
-            "title_override": "Probiotic",
-            "image_override": "shopify://shop_images/Frame_388.png",
-            "image_preset": "none",
-            "subtitle": "Maintains healthy digestive system",
-            "card_bg": "#fff8ed",
-            "icon_1_preset": "ts_gut",
-            "icon_1_label": "Promotes Gut Health",
-            "icon_2_preset": "ts_immune",
-            "icon_2_label": "Immune Support",
-            "icon_3_preset": "none",
-            "icon_3_label": "",
-            "icon_4_preset": "none",
-            "icon_4_label": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_UP9mEb",
-        "product_NHd9EB",
-        "product_dQzzDV",
-        "product_a7PMHk"
-      ],
-      "name": "Best Sellers",
-      "settings": {
-        "heading": "Best Sellers",
-        "subheading": "Our treats are as tasty as they look, but what's inside is even more impressive.",
-        "button_label": "Add to Cart",
-        "show_price": true,
-        "show_card_icons": false,
-        "image_radius": 20,
-        "image_radius_mobile": 6,
-        "section_bg": "#ffffff",
-        "heading_color": "#1d1d1b",
-        "title_color": "#1d1d1b",
-        "text_color": "#555555",
-        "icon_color": "#333333",
-        "button_bg": "#ff6700",
-        "button_text": "#ffffff",
-        "button_hover_bg": "#cc5200",
-        "button_hover_text": "#ffffff",
-        "heading_size": 42,
-        "heading_size_mobile": 28,
-        "icon_size": 48,
-        "icon_size_mobile": 38,
-        "icon_label_size": 11,
-        "icon_label_size_mobile": 11,
-        "padding_top": 32,
-        "padding_bottom": 60,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 40
-      }
-    },
     "product-grid": {
       "type": "main-collection-product-grid",
-      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -161,44 +40,63 @@
     "home_icons_bar_QDY8jh": {
       "type": "home-icons-bar",
       "blocks": {
-        "badge_w7xHV9": {
+        "hib_1": {
           "type": "badge",
           "settings": {
             "icon_preset": "ts_vet",
             "heading": "Vet Formulated",
-            "description": "Developed with certified veterinarians"
+            "description": ""
           }
         },
-        "badge_eWYnqm": {
+        "hib_2": {
           "type": "badge",
           "settings": {
             "icon_preset": "ts_clean",
             "heading": "Clean Ingredients",
-            "description": "No fillers, no artificial additives"
+            "description": ""
           }
         },
-        "badge_km3VjH": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "ts_shipping",
-            "heading": "Free Shipping",
-            "description": "Always free, on every order"
-          }
-        },
-        "badge_QrKxP4": {
+        "hib_3": {
           "type": "badge",
           "settings": {
             "icon_preset": "ts_usa",
             "heading": "Made in USA",
-            "description": "Manufactured in certified facilities"
+            "description": ""
+          }
+        },
+        "hib_4": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/image2_1.png",
+            "icon_preset": "factory",
+            "heading": "cGMP & FDA-Registered Facility",
+            "description": ""
+          }
+        },
+        "hib_5": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_shipping",
+            "heading": "Free Standard Shipping",
+            "description": ""
+          }
+        },
+        "hib_6": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "shield",
+            "heading": "60-Day Money Back Guarantee",
+            "description": ""
           }
         }
       },
       "block_order": [
-        "badge_w7xHV9",
-        "badge_eWYnqm",
-        "badge_km3VjH",
-        "badge_QrKxP4"
+        "hib_1",
+        "hib_2",
+        "hib_3",
+        "hib_4",
+        "hib_5",
+        "hib_6"
       ],
       "name": "Home Icons Bar",
       "settings": {
@@ -212,9 +110,9 @@
         "heading_size_mobile": 14,
         "desc_size": 13,
         "desc_size_mobile": 12,
-        "section_bg": "#ffffff",
+        "section_bg": "#fff8ed",
         "border_color": "#ffffff",
-        "icon_color": "#ff6700",
+        "icon_color": "#333333",
         "heading_color": "#333333",
         "text_color": "#666666",
         "padding_top": 12,
@@ -411,14 +309,131 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40
       }
+    },
+    "best_sellers_custom_GpGCrV": {
+      "type": "best-sellers-custom",
+      "blocks": {
+        "product_UP9mEb": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-hip-joint",
+            "title_override": "Hip & Joint",
+            "image_override": "shopify://shop_images/Frame_391.png",
+            "image_preset": "none",
+            "subtitle": "Increases flexibility and strengthens joints",
+            "card_bg": "#fff8ed",
+            "icon_1_preset": "ts_joint",
+            "icon_1_label": "Supports Joint Health",
+            "icon_2_preset": "ts_anti_inflammatory",
+            "icon_2_label": "Natural Anti-Inflammatory",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
+        "product_dQzzDV": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-multivitamin",
+            "coming_soon": true,
+            "title_override": "Daily Multivitamin",
+            "image_override": "shopify://shop_images/Frame_389.png",
+            "image_preset": "none",
+            "subtitle": "Daily support for overall vitality",
+            "card_bg": "#fff8ed",
+            "icon_1_preset": "ts_multivitamin",
+            "icon_1_label": "Multivitamin Support",
+            "icon_2_preset": "ts_energy",
+            "icon_2_label": "Energy & Vitality",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
+        "product_a7PMHk": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-probiotic",
+            "coming_soon": true,
+            "title_override": "Probiotic",
+            "image_override": "shopify://shop_images/Frame_388.png",
+            "image_preset": "none",
+            "subtitle": "Maintains healthy digestive system",
+            "card_bg": "#fff8ed",
+            "icon_1_preset": "ts_gut",
+            "icon_1_label": "Promotes Gut Health",
+            "icon_2_preset": "ts_immune",
+            "icon_2_label": "Immune Support",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        },
+        "product_NHd9EB": {
+          "type": "product",
+          "settings": {
+            "product": "tailspark-skin-coat",
+            "title_override": "Skin & Coat",
+            "image_override": "shopify://shop_images/Frame_390.png",
+            "image_preset": "none",
+            "subtitle": "Softens coat and soothes dry skin",
+            "card_bg": "#fff8ed",
+            "icon_1_preset": "ts_coat",
+            "icon_1_label": "Helps Restore Coat",
+            "icon_2_preset": "ts_antihistamine",
+            "icon_2_label": "Natural Antihistamines",
+            "icon_3_preset": "none",
+            "icon_3_label": "",
+            "icon_4_preset": "none",
+            "icon_4_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_UP9mEb",
+        "product_dQzzDV",
+        "product_a7PMHk",
+        "product_NHd9EB"
+      ],
+      "name": "Best Sellers",
+      "settings": {
+        "heading": "Best Sellers",
+        "subheading": "Our treats are as tasty as they look, but what's inside is even more impressive.",
+        "button_label": "Add to Cart",
+        "show_price": true,
+        "image_radius": 20,
+        "image_radius_mobile": 6,
+        "section_bg": "#ffffff",
+        "heading_color": "#1d1d1b",
+        "title_color": "#1d1d1b",
+        "text_color": "#555555",
+        "icon_color": "#333333",
+        "button_bg": "#ff6700",
+        "button_text": "#ffffff",
+        "button_hover_bg": "#cc5200",
+        "button_hover_text": "#ffffff",
+        "heading_size": 42,
+        "heading_size_mobile": 28,
+        "icon_size": 48,
+        "icon_size_mobile": 38,
+        "icon_label_size": 11,
+        "icon_label_size_mobile": 11,
+        "padding_top": 32,
+        "padding_bottom": 60,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 40
+      }
     }
   },
   "order": [
     "banner",
-    "best_sellers_custom_GpGCrV",
     "product-grid",
     "home_icons_bar_QDY8jh",
     "image_and_accordions_custom_wMM997",
-    "customer_reviews_main"
+    "customer_reviews_main",
+    "best_sellers_custom_GpGCrV"
   ]
 }
