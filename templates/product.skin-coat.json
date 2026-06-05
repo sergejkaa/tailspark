@@ -108,9 +108,7 @@
           "settings": {
             "free_shipping_upsell_source": "auto",
             "free_shipping_upsell_products": [
-              "tailspark-hip-joint",
-              "tailspark-probiotic",
-              "tailspark-multivitamin"
+              "tailspark-hip-joint"
             ],
             "free_shipping_upsell_collection": "",
             "free_shipping_upsell_limit": 6,

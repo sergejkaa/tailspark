@@ -113,7 +113,6 @@
           "settings": {
             "free_shipping_upsell_source": "auto",
             "free_shipping_upsell_products": [
-              "tailspark-multivitamin",
               "tailspark-hip-joint",
               "tailspark-skin-coat"
             ],
