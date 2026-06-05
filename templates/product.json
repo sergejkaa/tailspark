@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
@@ -21,12 +21,12 @@
           "settings": {
             "rating_value": "4.9",
             "rating_label": "stars",
-            "segment_1_number": "Family",
-            "segment_1_label": "Founded",
-            "segment_2_number": "Real",
-            "segment_2_label": "Ingredients",
-            "segment_1_number_mobile": "Family",
-            "segment_2_number_mobile": "Real",
+            "segment_1_number": "1,200",
+            "segment_1_label": "reviews",
+            "segment_2_number": "57,000+",
+            "segment_2_label": "members",
+            "segment_1_number_mobile": "1.2K",
+            "segment_2_number_mobile": "57K+",
             "font_size_desktop": 13,
             "stars_size_desktop": 18,
             "font_size_mobile": 12,
@@ -40,7 +40,6 @@
         },
         "price": {
           "type": "price",
-          "disabled": true,
           "settings": {}
         },
         "feature_cards_LB4F4H": {
@@ -136,7 +135,6 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
