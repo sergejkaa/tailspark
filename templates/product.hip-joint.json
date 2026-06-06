@@ -593,7 +593,7 @@
             "image_override": "shopify://shop_images/Frame_388.png",
             "image_preset": "none",
             "subtitle": "Supports gut flora, digestive health & immune function",
-            "card_bg": "#edf6f0",
+            "card_bg": "#fff8ed",
             "icon_1_preset": "ts_gut",
             "icon_1_label": "Gut Health",
             "icon_2_preset": "ts_immune",
