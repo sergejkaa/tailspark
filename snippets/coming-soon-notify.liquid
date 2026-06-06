@@ -27,12 +27,13 @@
         >
         <button
           type="submit"
-          style="padding:10px 20px;background:#1d1d1b;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;"
+          style="padding:10px 20px;background:#5BA870;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;"
         >Notify Me</button>
       </div>
       {%- if form.errors -%}
         <p style="font-size:13px;color:#c0392b;margin:8px 0 0;">{{ form.errors.translated_fields.email }} {{ form.errors.messages.email }}</p>
       {%- endif -%}
+      <p style="font-size:12px;color:#999;margin:10px 0 0;">By subscribing you agree to our <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}" style="text-decoration:underline;color:inherit;">Privacy Policy</a>.</p>
     {%- endif -%}
   {%- endform -%}
 </div>
