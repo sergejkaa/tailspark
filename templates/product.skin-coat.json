@@ -620,7 +620,7 @@
         "show_card_icons": false,
         "image_radius": 20,
         "image_radius_mobile": 6,
-        "section_bg": "#ffffff",
+        "section_bg": "#fff8ed",
         "heading_color": "#1d1d1b",
         "title_color": "#1d1d1b",
         "text_color": "#555555",
