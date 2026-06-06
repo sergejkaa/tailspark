@@ -19,6 +19,7 @@
         "inline_rating_iifCgL": {
           "type": "inline_rating",
           "settings": {
+            "show_stars": false,
             "rating_value": "4.9",
             "rating_label": "stars",
             "segment_1_number": "Vet Formulated",
