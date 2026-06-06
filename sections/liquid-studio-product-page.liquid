@@ -1164,6 +1164,8 @@
                   @media screen and (max-width: 749px) {
                     #{{ ir_id }} { --ir-font-mobile: {{ block.settings.font_size_mobile }}px; --ir-stars-mobile: {{ block.settings.stars_size_mobile }}px; }
                   }
+                  #{{ ir_id }} .inline-rating__badge { font-weight: 600; }
+                  #{{ ir_id }} .inline-rating__badge:not(:last-child)::after { content: "·"; margin: 0 0.5em; opacity: 0.45; font-weight: 400; }
                 </style>
                 <div
                   id="{{ ir_id }}"
@@ -1171,38 +1173,33 @@
                   style="{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }};{% endif %}"
                   {{ block.shopify_attributes }}
                 >
-                  <span
-                    class="inline-rating__stars"
-                    style="color: {{ block.settings.star_color | default: '#22a06b' }}"
-                    aria-label="{{ block.settings.rating_value }} out of 5 stars"
-                  >★★★★★</span>
-                  <span class="inline-rating__text">
-                    <strong style="color: {{ block.settings.rating_value_color | default: 'inherit' }}">{{ block.settings.rating_value }}</strong>
-                    {%- if block.settings.rating_label != blank %} {{ block.settings.rating_label }}{%- endif -%}
-                    {%- if block.settings.segment_1_number != blank or block.settings.segment_1_label != blank -%}
+                  {%- if block.settings.show_stars != false -%}
+                    <span
+                      class="inline-rating__stars"
+                      style="color: {{ block.settings.star_color | default: '#22a06b' }}"
+                      aria-label="{{ block.settings.rating_value }} out of 5 stars"
+                    >★★★★★</span>
+                    <span class="inline-rating__text">
+                      <strong style="color: {{ block.settings.rating_value_color | default: 'inherit' }}">{{ block.settings.rating_value }}</strong>
+                      {%- if block.settings.rating_label != blank %} {{ block.settings.rating_label }}{%- endif -%}
+                    </span>
+                    {%- if block.settings.segment_1_number != blank or block.settings.segment_2_number != blank or block.settings.segment_1_label != blank -%}
                       <span class="inline-rating__sep" aria-hidden="true"> | </span>
-                      {%- if block.settings.segment_1_number != blank -%}
-                        {%- if block.settings.segment_1_number_mobile != blank -%}
-                          <strong class="inline-rating__num--desktop" style="color: {{ block.settings.segment_1_color | default: 'inherit' }}">{{ block.settings.segment_1_number }}</strong>
-                          <strong class="inline-rating__num--mobile" style="color: {{ block.settings.segment_1_color | default: 'inherit' }}">{{ block.settings.segment_1_number_mobile }}</strong>
-                        {%- else -%}
-                          <strong style="color: {{ block.settings.segment_1_color | default: 'inherit' }}">{{ block.settings.segment_1_number }}</strong>
-                        {%- endif -%}
-                      {%- endif -%}
-                      {%- if block.settings.segment_1_label != blank %} {{ block.settings.segment_1_label }}{%- endif -%}
                     {%- endif -%}
-                    {%- if block.settings.segment_2_number != blank or block.settings.segment_2_label != blank -%}
-                      <span class="inline-rating__sep" aria-hidden="true"> | </span>
-                      {%- if block.settings.segment_2_number != blank -%}
-                        {%- if block.settings.segment_2_number_mobile != blank -%}
-                          <strong class="inline-rating__num--desktop" style="color: {{ block.settings.segment_2_color | default: 'inherit' }}">{{ block.settings.segment_2_number }}</strong>
-                          <strong class="inline-rating__num--mobile" style="color: {{ block.settings.segment_2_color | default: 'inherit' }}">{{ block.settings.segment_2_number_mobile }}</strong>
-                        {%- else -%}
-                          <strong style="color: {{ block.settings.segment_2_color | default: 'inherit' }}">{{ block.settings.segment_2_number }}</strong>
-                        {%- endif -%}
-                      {%- endif -%}
-                      {%- if block.settings.segment_2_label != blank %} {{ block.settings.segment_2_label }}{%- endif -%}
+                  {%- endif -%}
+                  <span class="inline-rating__text inline-rating__badges">
+                    {%- if block.settings.segment_1_number != blank -%}
+                      <span class="inline-rating__badge" style="color: {{ block.settings.segment_1_color | default: 'inherit' }}">
+                        {%- if block.settings.segment_1_number_mobile != blank -%}<span class="inline-rating__num--desktop">{{ block.settings.segment_1_number }}</span><span class="inline-rating__num--mobile">{{ block.settings.segment_1_number_mobile }}</span>{%- else -%}{{ block.settings.segment_1_number }}{%- endif -%}
+                      </span>
                     {%- endif -%}
+                    {%- if block.settings.segment_1_label != blank -%}<span class="inline-rating__badge">{{ block.settings.segment_1_label }}</span>{%- endif -%}
+                    {%- if block.settings.segment_2_number != blank -%}
+                      <span class="inline-rating__badge" style="color: {{ block.settings.segment_2_color | default: 'inherit' }}">
+                        {%- if block.settings.segment_2_number_mobile != blank -%}<span class="inline-rating__num--desktop">{{ block.settings.segment_2_number }}</span><span class="inline-rating__num--mobile">{{ block.settings.segment_2_number_mobile }}</span>{%- else -%}{{ block.settings.segment_2_number }}{%- endif -%}
+                      </span>
+                    {%- endif -%}
+                    {%- if block.settings.segment_2_label != blank -%}<span class="inline-rating__badge">{{ block.settings.segment_2_label }}</span>{%- endif -%}
                   </span>
                 </div>
             {%- endcase -%}
@@ -2975,6 +2972,13 @@
       "name": "Inline Rating",
       "limit": 1,
       "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_stars",
+          "label": "Show star rating",
+          "info": "Off = show only the badge text (Vet Formulated etc.) without stars.",
+          "default": true
+        },
         {
           "type": "header",
           "content": "Rating value"
