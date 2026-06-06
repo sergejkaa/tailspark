@@ -112,7 +112,7 @@
         "content_alignment": "left",
         "content_padding": 48,
         "content_max_width": 760,
-        "content_gap": 36,
+        "content_gap": 24,
         "content_gap_mobile": 14,
         "mobile_content_position": "bottom-center",
         "mobile_content_alignment": "center",

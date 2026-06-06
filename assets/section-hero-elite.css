@@ -203,7 +203,8 @@
 .hero-elite__eyebrow {
   display: inline-block;
   margin: 0;
-  font-size: 1.1rem;
+  font-family: "Poppins TailSpark", Arial, sans-serif;
+  font-size: 1.3rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   opacity: 0.75;
@@ -216,6 +217,7 @@
 .hero-elite__subheading {
   margin: 0;
   opacity: 0.88;
+  font-family: "Poppins TailSpark", Arial, sans-serif;
   font-size: var(--hero-subheading-size-desktop, inherit);
 }
 

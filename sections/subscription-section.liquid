@@ -58,7 +58,7 @@
   .subscription-card__image {
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    background-color: rgba(255,255,255,0.5);
+    background-color: {{ section.settings.card_image_bg | default: '#fbf3ee' }};
   }
 
   .subscription-card__image img {
@@ -366,6 +366,13 @@
     {
       "type": "header",
       "content": "Card colors"
+    },
+    {
+      "type": "color",
+      "id": "card_image_bg",
+      "label": "Card image background",
+      "info": "Color behind product images (transparent PNGs). Match the card color.",
+      "default": "#fbf3ee"
     },
     {
       "type": "color",
