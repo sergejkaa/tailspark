@@ -159,6 +159,8 @@
                 <img src="{{ 'ts-home-icon-shipping-minimal.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
               {%- elsif icon_preset == 'ts_usa' -%}
                 <img src="{{ 'ts-home-icon-usa-minimal.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
+              {%- elsif icon_preset == 'factory' -%}
+                <img src="{{ 'ts-facility-icon.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
               {%- else -%}
                 {%- case icon_preset -%}
                   {%- when 'paw' -%}

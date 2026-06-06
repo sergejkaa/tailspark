@@ -514,9 +514,9 @@
         "hib_4": {
           "type": "badge",
           "settings": {
-            "icon_image": "shopify://shop_images/image2_1.png",
+            "icon_image": "",
             "icon_preset": "factory",
-            "heading": "cGMP & FDA-Registered Facility",
+            "heading": "Made in a cGMP, FDA-Registered Food Facility",
             "description": ""
           }
         },
@@ -1005,8 +1005,8 @@
     "hero_elite_9c9cim",
     "tailspark_hero_jH9Fz6",
     "best_sellers_custom_GpGCrV",
-    "image_and_accordions_custom_wMM997",
     "home_icons_bar_QDY8jh",
+    "image_and_accordions_custom_wMM997",
     "customer_reviews_main",
     "subscription_section_main",
     "guarantee_section_main",
