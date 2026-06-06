@@ -759,7 +759,7 @@
     "guarantee_section_main": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div style=\"text-align:center;padding:48px 24px;background:#fff8ed;\"><p style=\"font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ff6700;margin-bottom:12px;\">Our Promise</p><h2 style=\"font-size:clamp(24px,4vw,36px);font-weight:700;color:#1d1d1b;margin-bottom:16px;\">100% Satisfaction Guarantee</h2><p style=\"font-size:16px;color:#555;max-width:540px;margin:0 auto;line-height:1.65;\">We stand behind our product with a 100% satisfaction guarantee. If you're not happy with the quality, please reach out and we'll make it right.</p></div>",
+        "custom_liquid": "<div style=\"text-align:center;padding:48px 24px;background:#fff8ed;\"><img src=\"{{ 'ts-100-satisfaction.png' | asset_url }}\" alt=\"100% Satisfaction Guarantee\" width=\"96\" height=\"96\" style=\"width:96px;height:auto;margin:0 auto 16px;display:block;\" loading=\"lazy\"><p style=\"font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#ff6700;margin-bottom:12px;\">Our Promise</p><h2 style=\"font-size:clamp(24px,4vw,36px);font-weight:700;color:#1d1d1b;margin-bottom:16px;\">100% Satisfaction Guarantee</h2><p style=\"font-size:16px;color:#555;max-width:540px;margin:0 auto;line-height:1.65;\">We stand behind our product with a 100% satisfaction guarantee. If you're not happy with the quality, please reach out and we'll make it right.</p></div>",
         "color_scheme": "scheme-1",
         "padding_top": 0,
         "padding_bottom": 0
