@@ -219,9 +219,9 @@
           "settings": {
             "image": "shopify://shop_images/Glucosamine_Shrimp_Crab.png",
             "image_asset": "ts-ing-glucosamine.png",
-            "title": "Glucosamine (Shrimp & Crab)",
+            "title": "Glucosamine HCl (from Shrimp & Crab)",
             "dosage": "500mg",
-            "description": "A primary building block of cartilage sourced from shrimp and crab. Helps maintain cushioning between joints and supports long-term joint health."
+            "description": "A naturally occurring compound that serves as a primary building block of cartilage. Helps support cartilage structure and normal joint function in dogs."
           }
         },
         "item_hj2": {
@@ -229,9 +229,9 @@
           "settings": {
             "image": "shopify://shop_images/MSM.png",
             "image_asset": "ts-ing-msm.png",
-            "title": "MSM",
+            "title": "MSM (Methylsulfonylmethane)",
             "dosage": "400mg",
-            "description": "Natural sulfur compound (Methylsulfonylmethane) that reduces joint inflammation, eases stiffness, and supports connective tissue repair."
+            "description": "A natural source of sulfur that helps support connective tissue structure and everyday mobility."
           }
         },
         "item_hj3": {
@@ -239,9 +239,9 @@
           "settings": {
             "image": "shopify://shop_images/Green-Lipped_Mussel.png",
             "image_asset": "ts-ing-green-lipped-mussel.png",
-            "title": "Green-Lipped Mussel",
+            "title": "Green-Lipped Mussel (Perna canaliculus, New Zealand)",
             "dosage": "150mg",
-            "description": "A unique New Zealand shellfish rich in Omega-3 fatty acids and glycosaminoglycans that lubricate joints and reduce inflammation."
+            "description": "A unique shellfish naturally rich in omega-3 fatty acids and bioactive compounds. Helps support joint health and mobility."
           }
         },
         "item_hj4": {
@@ -249,9 +249,9 @@
           "settings": {
             "image": "shopify://shop_images/Chondroitin_Porcine.png",
             "image_asset": "ts-ing-chondroitin.png",
-            "title": "Chondroitin (Porcine)",
+            "title": "Chondroitin Sulfate (Porcine)",
             "dosage": "110mg",
-            "description": "Porcine-sourced structural component that retains water in cartilage, maintaining joint flexibility, shock absorption, and resilience."
+            "description": "Helps support cartilage structure, joint flexibility, and overall mobility in dogs."
           }
         },
         "nutri_hj1": {

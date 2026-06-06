@@ -228,8 +228,8 @@
             "image": "shopify://shop_images/Vitamins_A_C_D3_E.png",
             "image_asset": "ts-ing-vitamins-acd-e.png",
             "title": "Vitamins A, C, D3 & E",
-            "dosage": "Vitamin complex",
-            "description": "Essential antioxidant vitamins that protect cells, support immune function, and maintain healthy vision and skin."
+            "dosage": "1000 IU / 25mg / 100 IU / 15 IU",
+            "description": "Essential vitamins that help support immune health, antioxidant defense, and overall daily wellness."
           }
         },
         "item_mv2": {
@@ -238,8 +238,8 @@
             "image": "shopify://shop_images/B-Complex_Vitamins.png",
             "image_asset": "ts-ing-b-complex.png",
             "title": "B-Complex Vitamins",
-            "dosage": "B1-B12",
-            "description": "Complete spectrum of B vitamins that support energy metabolism, nerve health, and red blood cell production."
+            "dosage": "0.2 / 1 / 0.4 / 0.008 / 5 / 4 / 0.08 mg",
+            "description": "A complete spectrum of B vitamins that help support energy metabolism and nervous system health."
           }
         },
         "item_mv3": {
@@ -248,8 +248,8 @@
             "image": "shopify://shop_images/Calcium_Phosphorus.png",
             "image_asset": "ts-ing-calcium-phosphorus.png",
             "title": "Calcium & Phosphorus",
-            "dosage": "100mg / 80mg",
-            "description": "The essential bone-building mineral duo that supports strong teeth, healthy joints, and structural integrity."
+            "dosage": "112mg / 56mg",
+            "description": "Essential minerals that help support strong bones and teeth structure."
           }
         },
         "item_mv4": {
@@ -258,8 +258,8 @@
             "image": "shopify://shop_images/Copper_Manganese.png",
             "image_asset": "ts-ing-copper-manganese.png",
             "title": "Copper & Manganese",
-            "dosage": "Trace minerals",
-            "description": "Essential trace minerals that support bone formation, collagen production, and healthy enzyme function throughout the body."
+            "dosage": "0.3mg / 1mg",
+            "description": "Help support normal blood health and metabolic function."
           }
         },
         "item_mv5": {
@@ -268,8 +268,8 @@
             "image": "shopify://shop_images/Magnesium_Potassium.png",
             "image_asset": "ts-ing-magnesium-potassium.png",
             "title": "Magnesium & Potassium",
-            "dosage": "30mg / 20mg",
-            "description": "Essential minerals for muscle function, nerve signal transmission, and maintaining proper fluid balance."
+            "dosage": "5mg / 15mg",
+            "description": "Help support healthy muscle and heart function."
           }
         },
         "item_mv6": {
@@ -278,8 +278,8 @@
             "image": "shopify://shop_images/Methionine.png",
             "image_asset": "ts-ing-methionine.png",
             "title": "Methionine",
-            "dosage": "Essential amino acid",
-            "description": "An essential sulfur-containing amino acid that supports liver function, joint health, and healthy urinary tract maintenance."
+            "dosage": "10mg",
+            "description": "An essential amino acid that helps support overall metabolic health."
           }
         },
         "item_mv7": {
@@ -288,8 +288,8 @@
             "image": "shopify://shop_images/Zinc_Iodine_Iron.png",
             "image_asset": "ts-ing-zinc-iodine-iron.png",
             "title": "Zinc, Iodine & Iron",
-            "dosage": "Trace minerals",
-            "description": "Vital trace minerals that support immune response, thyroid function, wound healing, and healthy oxygen transport in the blood."
+            "dosage": "3mg / 0.05mg / 3mg",
+            "description": "Trace minerals that help support immune function and normal metabolic processes."
           }
         },
         "nutri_mv1": {

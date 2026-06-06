@@ -220,9 +220,9 @@
           "settings": {
             "image": "shopify://shop_images/Omega-3_Salmon_-_fillet.png",
             "image_asset": "ts-ing-omega3.png",
-            "title": "Omega-3 (Salmon)",
-            "dosage": "150mg",
-            "description": "Rich source of DHA and EPA from wild salmon that supports healthy skin moisture, reduces inflammation, and promotes a shiny, lustrous coat."
+            "title": "Omega-3 Fatty Acids (Flaxseed & Salmon Oil)",
+            "dosage": "20mg",
+            "description": "Essential fatty acids that help support healthy skin moisture, a soft texture, and a shiny-looking coat."
           }
         },
         "item_sc2": {
@@ -230,9 +230,9 @@
           "settings": {
             "image": "shopify://shop_images/Omega-6_Linoleic_Acid.png",
             "image_asset": "ts-ing-omega6.png",
-            "title": "Omega-6 (Linoleic Acid)",
-            "dosage": "100mg",
-            "description": "Essential linoleic acid that strengthens the skin barrier, reduces moisture loss, and supports a thick, healthy coat."
+            "title": "Omega-6 Fatty Acids (Linoleic Acid, Flaxseed & Safflower Oil)",
+            "dosage": "60mg",
+            "description": "An essential fatty acid that helps support the skin barrier and contributes to coat thickness and overall skin health."
           }
         },
         "item_sc3": {
@@ -240,9 +240,9 @@
           "settings": {
             "image": "shopify://shop_images/Omega-9.png",
             "image_asset": "ts-ing-omega9.png",
-            "title": "Omega-9",
-            "dosage": "50mg",
-            "description": "Oleic acid that provides deep nourishment to skin cells, reduces dryness and irritation, and enhances overall coat softness and shine."
+            "title": "Omega-9 Fatty Acids (Oleic Acid, Canola & Safflower Oil)",
+            "dosage": "26mg",
+            "description": "Helps support heart health, skin condition, and immune function as part of a balanced fatty acid profile."
           }
         },
         "item_sc4": {
@@ -251,8 +251,8 @@
             "image": "shopify://shop_images/Vitamin_E.png",
             "image_asset": "ts-ing-vitamin-e.png",
             "title": "Vitamin E",
-            "dosage": "30 IU",
-            "description": "Powerful antioxidant that protects skin cells from oxidative damage and promotes a glossy, healthy coat with natural shine."
+            "dosage": "25 IU",
+            "description": "A fat-soluble antioxidant that helps support immune health and contributes to healthy skin and coat appearance."
           }
         },
         "nutri_sc1": {

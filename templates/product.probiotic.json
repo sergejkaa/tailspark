@@ -229,7 +229,7 @@
             "image_asset": "ts-ing-bacillus-coagulans.png",
             "title": "Bacillus coagulans",
             "dosage": "120 Million CFU",
-            "description": "A spore-forming probiotic strain that survives the harsh digestive process and successfully colonizes the gut to restore healthy bacterial balance."
+            "description": "A heat-stable probiotic strain that helps support healthy gut flora balance and digestive regularity."
           }
         },
         "item_pb2": {
@@ -239,7 +239,7 @@
             "image_asset": "ts-ing-fos.png",
             "title": "FOS (Fructooligosaccharides)",
             "dosage": "200mg",
-            "description": "Prebiotic fiber that acts as food for beneficial gut bacteria, enhancing probiotic activity and promoting a thriving gut microbiome."
+            "description": "A prebiotic fiber that acts as nourishment for beneficial gut bacteria, helping support a balanced digestive environment."
           }
         },
         "nutri_pb1": {
