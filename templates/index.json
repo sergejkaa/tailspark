@@ -89,7 +89,6 @@
       },
       "block_order": [
         "eyebrow_6m3tpg",
-        "inline_rating_EieFjF",
         "heading_BqMQFN",
         "subheading_A7AYTP",
         "buttons_XYMEPq",
@@ -691,7 +690,7 @@
             "product": "tailspark-hip-joint",
             "title_override": "Hip & Joint",
             "image": "shopify://shop_images/Frame_391.png",
-            "card_bg": "#f6e7dc",
+            "card_bg": "#fbf3ee",
             "button_label": "Subscribe & Save"
           }
         },
@@ -701,7 +700,7 @@
             "product": "tailspark-skin-coat",
             "title_override": "Skin & Coat",
             "image": "shopify://shop_images/Frame_390.png",
-            "card_bg": "#f6e7dc",
+            "card_bg": "#fbf3ee",
             "button_label": "Subscribe & Save"
           }
         },
@@ -712,7 +711,7 @@
             "coming_soon": true,
             "title_override": "Daily Multivitamin",
             "image": "shopify://shop_images/Frame_389.png",
-            "card_bg": "#f6e7dc",
+            "card_bg": "#fbf3ee",
             "button_label": "Subscribe & Save"
           }
         },
@@ -723,7 +722,7 @@
             "coming_soon": true,
             "title_override": "Probiotic",
             "image": "shopify://shop_images/Frame_388.png",
-            "card_bg": "#f6e7dc",
+            "card_bg": "#fbf3ee",
             "button_label": "Subscribe & Save"
           }
         }
