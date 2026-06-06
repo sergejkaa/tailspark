@@ -453,6 +453,7 @@
             {%- if prod != blank -%}
               {%- if bs_coming_soon -%}
                 <a href="{{ prod.url }}" class="bs-card__btn bs-card__btn--soon">Notify Me</a>
+                {%- if section.settings.show_price -%}<div class="bs-card__price" aria-hidden="true" style="visibility:hidden;">&nbsp;</div>{%- endif -%}
               {%- else -%}
                 <a href="{{ prod.url }}" class="bs-card__btn">{{ section.settings.button_label }}</a>
                 {%- if section.settings.show_price -%}
