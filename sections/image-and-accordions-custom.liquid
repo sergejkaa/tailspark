@@ -221,7 +221,9 @@
 <section class="ia-custom ia-custom--image-{{ section.settings.image_side }}" data-ia-section="{{ section.id }}">
   <div class="ia-custom__inner">
     <div class="ia-custom__media">
-      {%- if section.settings.image != blank -%}
+      {%- if section.settings.image_asset != blank -%}
+        <img src="{{ section.settings.image_asset | asset_url }}" alt="{{ image_alt }}" loading="lazy">
+      {%- elsif section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', alt: image_alt }}
       {%- else -%}
         {{ 'lifestyle-1' | placeholder_svg_tag }}
@@ -320,6 +322,12 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Or theme asset filename",
+      "info": "If set, overrides the image above. e.g. ts-soft-chews.png"
     },
     {
       "type": "select",
