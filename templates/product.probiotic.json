@@ -270,7 +270,7 @@
         "flavor_title": "",
         "flavor_subtitle": "",
         "inactive_ingredients": "Chicken Liver, Sweet Potato, Maltodextrin, Glycerin, Stearic Acid, Natural Flavors.",
-        "background_color": "#edf6f0",
+        "background_color": "#fff8ed",
         "card_bg": "#dceee3",
         "heading_color": "#ff6700",
         "item_title_color": "#1d1d1b",
@@ -334,10 +334,9 @@
         "heading": "Feeding Guide",
         "subheading": "Give daily based on your dog's weight",
         "note": "Can be given as a treat or crumbled over food. If giving more than 1 chew daily, divide between morning and evening. Store in a cool, dry place.",
-        "image": "",
         "image_position": "left",
         "image_border_radius": 16,
-        "bg_color": "#edf6f0",
+        "bg_color": "#fff8ed",
         "card_bg": "#ffffff",
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
@@ -380,7 +379,6 @@
         "hib_4": {
           "type": "badge",
           "settings": {
-            "icon_image": "",
             "icon_preset": "factory",
             "heading": "Made in a cGMP, FDA-Registered Food Facility",
             "description": ""
@@ -519,6 +517,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-hip-joint",
+            "coming_soon": false,
             "title_override": "Hip & Joint",
             "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
@@ -538,6 +537,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-skin-coat",
+            "coming_soon": false,
             "title_override": "Skin & Coat",
             "image_override": "shopify://shop_images/Frame_390.png",
             "image_preset": "none",
