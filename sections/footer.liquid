@@ -37,6 +37,10 @@
       width: calc(20% - 23px);
       max-width: calc(20% - 23px);
     }
+    /* brand block logo sits flush at top; nudge it down to align tops with the menu headings */
+    .footer__blocks-wrapper.grid > .grid__item:not(.footer-block--menu) {
+      margin-top: 12px;
+    }
   }
   .footer__content-top { padding-bottom: 0; }
 {%- endstyle -%}
