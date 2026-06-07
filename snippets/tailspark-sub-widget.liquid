@@ -32,14 +32,19 @@
     <p class="ts-label">Dog size</p>
     <div class="ts-pills ts-size-pills" role="group" aria-label="Dog size">
       {%- if product.handle == 'tailspark-multivitamin' -%}
-        <button type="button" class="ts-pill ts-pill--active" data-size="under-25">Under 25 lbs</button>
-        <button type="button" class="ts-pill" data-size="25-75">25 – 75 lbs</button>
-        <button type="button" class="ts-pill" data-size="over-75">Over 75 lbs</button>
+        <button type="button" class="ts-pill ts-pill--active" data-size="under-25" data-chews="0.5" data-jars="1">Under 25 lbs</button>
+        <button type="button" class="ts-pill" data-size="25-75" data-chews="1" data-jars="1">25 – 75 lbs</button>
+        <button type="button" class="ts-pill" data-size="over-75" data-chews="2" data-jars="1">Over 75 lbs</button>
+      {%- elsif product.handle == 'tailspark-skin-coat' or product.handle == 'tailspark-probiotic' -%}
+        <button type="button" class="ts-pill ts-pill--active" data-size="under-25" data-chews="1" data-jars="1">Under 25 lbs</button>
+        <button type="button" class="ts-pill" data-size="25-50" data-chews="2" data-jars="1">25 – 50 lbs</button>
+        <button type="button" class="ts-pill" data-size="50-75" data-chews="3" data-jars="2">50 – 75 lbs</button>
+        <button type="button" class="ts-pill" data-size="over-75" data-chews="4" data-jars="3">Over 75 lbs</button>
       {%- else -%}
-        <button type="button" class="ts-pill ts-pill--active" data-size="under-15">Under 15 lbs</button>
-        <button type="button" class="ts-pill" data-size="15-45">15 – 45 lbs</button>
-        <button type="button" class="ts-pill" data-size="45-75">45 – 75 lbs</button>
-        <button type="button" class="ts-pill" data-size="over-75">Over 75 lbs</button>
+        <button type="button" class="ts-pill ts-pill--active" data-size="under-15" data-chews="1" data-jars="1">Under 15 lbs</button>
+        <button type="button" class="ts-pill" data-size="15-45" data-chews="2" data-jars="1">15 – 45 lbs</button>
+        <button type="button" class="ts-pill" data-size="45-75" data-chews="3" data-jars="2">45 – 75 lbs</button>
+        <button type="button" class="ts-pill" data-size="over-75" data-chews="4" data-jars="3">Over 75 lbs</button>
       {%- endif -%}
     </div>
   </div>

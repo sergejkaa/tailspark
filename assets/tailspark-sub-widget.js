@@ -2,20 +2,13 @@
   let CHEWS_PER_JAR = 60;
   const SUB_DISCOUNT = 0.15;
 
-  // chewsPerDay + recommendedJars per dog size
-  // Supply days = (qty * 60) / chewsPerDay
-  // Over 75 lbs — confirm with client, currently assumed 4 chews/day, 3 jars
-  const SIZES = {
-    'under-15': { chewsPerDay: 1, recommendedJars: 1 },
-    '15-45':    { chewsPerDay: 2, recommendedJars: 1 },
-    '45-75':    { chewsPerDay: 3, recommendedJars: 2 },
-    'over-75':  { chewsPerDay: 4, recommendedJars: 3 },
-    'under-25': { chewsPerDay: 0.5, recommendedJars: 1 },
-    '25-75':    { chewsPerDay: 1, recommendedJars: 1 },
-  };
+  // chewsPerDay + recommendedJars per dog size — built per page from the
+  // size pills (data-size / data-chews / data-jars), so each product can have
+  // its own weight categories without key collisions.
+  const SIZES = {};
 
   const state = {
-    size: 'under-15',
+    size: null,
     qty: 1,
     intervalDays: null,
     sellingPlanId: null,
@@ -43,7 +36,9 @@
     bindIntervalPlanIds();
     bindEvents();
 
-    selectSize('under-15');
+    buildSizes();
+    var startPill = document.querySelector('.ts-size-pills .ts-pill--active') || document.querySelector('.ts-size-pills .ts-pill');
+    if (startPill) selectSize(startPill.dataset.size);
 
     // Auto-select first available interval
     const firstInterval = document.querySelector('#ts-interval-pills .ts-pill');
@@ -99,6 +94,15 @@
   }
 
   // ── Size ─────────────────────────────────────────────────────────────────────
+
+  function buildSizes() {
+    document.querySelectorAll('.ts-size-pills .ts-pill').forEach((b) => {
+      SIZES[b.dataset.size] = {
+        chewsPerDay: parseFloat(b.dataset.chews) || 1,
+        recommendedJars: parseInt(b.dataset.jars, 10) || 1,
+      };
+    });
+  }
 
   function selectSize(size) {
     state.size = size;
