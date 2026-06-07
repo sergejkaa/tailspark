@@ -134,6 +134,7 @@
           {{ 'templates.contact.form.send' | t }}
         </button>
       </div>
+      <p class="contact__fineprint" style="font-size:12px;color:#999;margin-top:10px;">By submitting this form you agree to our <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}" style="text-decoration:underline;color:inherit;">Privacy Policy</a>.</p>
     {%- endform -%}
   </div>
 </div>
