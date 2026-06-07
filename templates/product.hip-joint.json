@@ -179,6 +179,7 @@
         ".product__media-icon {display: none;}"
       ],
       "settings": {
+        "coming_soon": false,
         "enable_sticky_info": false,
         "color_scheme": "scheme-1",
         "media_size": "small",
@@ -364,7 +365,6 @@
         "heading": "Feeding Guide",
         "subheading": "Give daily based on your dog's weight",
         "note": "For best results, give chews consistently each day. Always provide fresh water.",
-        "image": "",
         "image_position": "left",
         "image_border_radius": 16,
         "bg_color": "#fff8ed",
@@ -410,7 +410,6 @@
         "hib_4": {
           "type": "badge",
           "settings": {
-            "icon_image": "",
             "icon_preset": "factory",
             "heading": "Made in a cGMP, FDA-Registered Food Facility",
             "description": ""
@@ -549,6 +548,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-skin-coat",
+            "coming_soon": false,
             "title_override": "Skin & Coat",
             "image_override": "shopify://shop_images/Frame_390.png",
             "image_preset": "none",
