@@ -186,7 +186,7 @@
         ".product__media-icon {display: none;}"
       ],
       "settings": {
-        "coming_soon": false,
+        "coming_soon": true,
         "enable_sticky_info": false,
         "color_scheme": "scheme-1",
         "media_size": "small",
