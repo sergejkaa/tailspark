@@ -186,7 +186,7 @@
         ".product__media-icon {display: none;}"
       ],
       "settings": {
-        "coming_soon": true,
+        "coming_soon": false,
         "enable_sticky_info": false,
         "color_scheme": "scheme-1",
         "media_size": "small",
@@ -466,7 +466,6 @@
         "heading": "Feeding Guide",
         "subheading": "Give daily based on your dog's weight",
         "note": "Can be given as a treat or crumbled over food. If giving more than 1 chew daily, divide between morning and evening. Store in a cool, dry place.",
-        "image": "",
         "image_position": "left",
         "image_border_radius": 14,
         "bg_color": "#fff8ed",
@@ -512,7 +511,6 @@
         "hib_4": {
           "type": "badge",
           "settings": {
-            "icon_image": "",
             "icon_preset": "factory",
             "heading": "Made in a cGMP, FDA-Registered Food Facility",
             "description": ""
@@ -651,6 +649,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-hip-joint",
+            "coming_soon": false,
             "title_override": "Hip & Joint",
             "image_override": "shopify://shop_images/Frame_391.png",
             "image_preset": "none",
@@ -670,6 +669,7 @@
           "type": "product",
           "settings": {
             "product": "tailspark-skin-coat",
+            "coming_soon": false,
             "title_override": "Skin & Coat",
             "image_override": "shopify://shop_images/Frame_390.png",
             "image_preset": "none",
