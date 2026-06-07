@@ -481,7 +481,8 @@
         "button_border": "#ff6700",
         "button_text_color": "#fff8ed",
         "button_hover_background": "#ff6700",
-        "button_text_hover_color": "#333333"
+        "button_text_hover_color": "#333333",
+        "image_asset": "ts-soft-chews.png"
       }
     },
     "home_icons_bar_QDY8jh": {
