@@ -19,6 +19,28 @@
             "text_color": "#fff8ed"
           }
         },
+        "inline_rating_EieFjF": {
+          "type": "inline_rating",
+          "settings": {
+            "rating_value": "4.9",
+            "rating_label": "stars",
+            "segment_1_number": "5,000+",
+            "segment_1_label": "happy dogs",
+            "segment_2_number": "500K+",
+            "segment_2_label": "chews served",
+            "segment_1_number_mobile": "85K",
+            "segment_2_number_mobile": "1M+",
+            "star_color": "#10b981",
+            "rating_value_color": "",
+            "segment_1_color": "",
+            "segment_2_color": "",
+            "text_color": "",
+            "font_size_desktop": 13,
+            "stars_size_desktop": 18,
+            "font_size_mobile": 12,
+            "stars_size_mobile": 14
+          }
+        },
         "heading_BqMQFN": {
           "type": "heading",
           "settings": {
@@ -279,7 +301,6 @@
           "type": "product",
           "settings": {
             "product": "tailspark-hip-joint",
-            "coming_soon": false,
             "title_override": "Hip & Joint",
             "image_preset": "none",
             "subtitle": "Supports healthy joints, mobility & connective tissue",
@@ -298,7 +319,6 @@
           "type": "product",
           "settings": {
             "product": "tailspark-skin-coat",
-            "coming_soon": false,
             "title_override": "Skin & Coat",
             "image_preset": "none",
             "subtitle": "Omega-rich care for a soft, shiny coat & healthy skin",
@@ -388,6 +408,83 @@
         "padding_bottom_mobile": 40
       }
     },
+    "image_and_accordions_custom_wMM997": {
+      "type": "image-and-accordions-custom",
+      "blocks": {
+        "accordion_pWzCBT": {
+          "type": "accordion",
+          "settings": {
+            "title": "DOGS LOVE THE TASTE",
+            "text": "<p>Soft chews taste like treats — your dog won't even know it's a supplement. No hiding pills in peanut butter, no mixing powders into food. Just give a chew and you're done.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_8DbeAW": {
+          "type": "accordion",
+          "settings": {
+            "title": "PRECISE DAILY DOSING",
+            "text": "<p>Every chew delivers the exact amount your dog needs — no guessing, no waste. Each batch is carefully formulated so your dog gets consistent nutrition every single day.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_yBiadC": {
+          "type": "accordion",
+          "settings": {
+            "title": "CLEAN, SIMPLE INGREDIENTS",
+            "text": "<p>No artificial flavors, no artificial colors, no corn, no wheat. Just high-quality, research-backed ingredients formulated by veterinarians.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "accordion_ts4thQ": {
+          "type": "accordion",
+          "settings": {
+            "title": "EASY TO USE EVERY DAY",
+            "text": "<p>Toss it in the bowl or give it by hand — that's it. No special storage, no prep, no mess. It makes daily wellness a simple habit your dog will actually look forward to.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "accordion_pWzCBT",
+        "accordion_8DbeAW",
+        "accordion_yBiadC",
+        "accordion_ts4thQ"
+      ],
+      "name": "Image and Accordions",
+      "settings": {
+        "image": "shopify://shop_images/Frame_393.png",
+        "image_side": "left",
+        "image_position": "50% 50%",
+        "heading": "Why Soft Chews?",
+        "heading_size": "h1",
+        "open_first": true,
+        "cta_label": "SHOP NOW",
+        "cta_link": "shopify://collections/frontpage",
+        "max_width": 1400,
+        "desktop_image_ratio": "19/ 19",
+        "mobile_image_ratio": "4 / 5",
+        "image_radius": 14,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36,
+        "background_color": "#fff8ed",
+        "text_color": "#333333",
+        "border_color": "#333333",
+        "toggle_background": "#ff6700",
+        "toggle_icon_color": "#ffffff",
+        "button_background": "#ff6700",
+        "button_border": "#ff6700",
+        "button_text_color": "#fff8ed",
+        "button_hover_background": "#ff6700",
+        "button_text_hover_color": "#333333",
+        "image_asset": "ts-soft-chews.png"
+      }
+    },
     "home_icons_bar_QDY8jh": {
       "type": "home-icons-bar",
       "blocks": {
@@ -418,6 +515,7 @@
         "hib_4": {
           "type": "badge",
           "settings": {
+            "icon_image": "",
             "icon_preset": "factory",
             "heading": "Made in a cGMP, FDA-Registered Food Facility",
             "description": ""
@@ -469,82 +567,6 @@
         "padding_bottom": 8,
         "padding_top_mobile": 8,
         "padding_bottom_mobile": 8
-      }
-    },
-    "image_and_accordions_custom_wMM997": {
-      "type": "image-and-accordions-custom",
-      "blocks": {
-        "accordion_pWzCBT": {
-          "type": "accordion",
-          "settings": {
-            "title": "DOGS LOVE THE TASTE",
-            "text": "<p>Soft chews taste like treats — your dog won't even know it's a supplement. No hiding pills in peanut butter, no mixing powders into food. Just give a chew and you're done.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_8DbeAW": {
-          "type": "accordion",
-          "settings": {
-            "title": "PRECISE DAILY DOSING",
-            "text": "<p>Every chew delivers the exact amount your dog needs — no guessing, no waste. Each batch is carefully formulated so your dog gets consistent nutrition every single day.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_yBiadC": {
-          "type": "accordion",
-          "settings": {
-            "title": "CLEAN, SIMPLE INGREDIENTS",
-            "text": "<p>No artificial flavors, no artificial colors, no corn, no wheat. Just high-quality, research-backed ingredients formulated by veterinarians.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        },
-        "accordion_ts4thQ": {
-          "type": "accordion",
-          "settings": {
-            "title": "EASY TO USE EVERY DAY",
-            "text": "<p>Toss it in the bowl or give it by hand — that's it. No special storage, no prep, no mess. It makes daily wellness a simple habit your dog will actually look forward to.</p>",
-            "button_label": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "accordion_pWzCBT",
-        "accordion_8DbeAW",
-        "accordion_yBiadC",
-        "accordion_ts4thQ"
-      ],
-      "name": "Image and Accordions",
-      "settings": {
-        "image_asset": "ts-soft-chews.png",
-        "image_side": "left",
-        "image_position": "50% 50%",
-        "heading": "Why Soft Chews?",
-        "heading_size": "h1",
-        "open_first": true,
-        "cta_label": "SHOP NOW",
-        "cta_link": "shopify://collections/frontpage",
-        "max_width": 1400,
-        "desktop_image_ratio": "19/ 19",
-        "mobile_image_ratio": "4 / 5",
-        "image_radius": 11,
-        "padding_top": 56,
-        "padding_bottom": 56,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36,
-        "background_color": "#fff8ed",
-        "text_color": "#333333",
-        "border_color": "#333333",
-        "toggle_background": "#ff6700",
-        "toggle_icon_color": "#ffffff",
-        "button_background": "#ff6700",
-        "button_border": "#ff6700",
-        "button_text_color": "#fff8ed",
-        "button_hover_background": "#ff6700",
-        "button_text_hover_color": "#333333"
       }
     },
     "customer_reviews_main": {
@@ -667,7 +689,6 @@
           "type": "product",
           "settings": {
             "product": "tailspark-hip-joint",
-            "coming_soon": false,
             "title_override": "Hip & Joint",
             "image": "shopify://shop_images/Frame_391.png",
             "card_bg": "#fbf3ee",
@@ -678,7 +699,6 @@
           "type": "product",
           "settings": {
             "product": "tailspark-skin-coat",
-            "coming_soon": false,
             "title_override": "Skin & Coat",
             "image": "shopify://shop_images/Frame_390.png",
             "card_bg": "#fbf3ee",
@@ -723,7 +743,6 @@
         "background_color": "#fff8ed",
         "heading_color": "#1d1d1b",
         "text_color": "#555555",
-        "card_image_bg": "#fbf3ee",
         "card_heading_color": "#1d1d1b",
         "card_text_color": "#555555",
         "badge_bg": "#fff8ed",
