@@ -21,10 +21,24 @@
     }
 
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top | times: 0.55 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.55 | round: 0 }}px;
     }
   }
+
+  /* Compact footer: fit all blocks in one row on desktop, smaller gaps */
+  @media screen and (min-width: 990px) {
+    .footer__blocks-wrapper.grid {
+      row-gap: 20px;
+      column-gap: 28px;
+      align-items: start;
+    }
+    .footer__blocks-wrapper.grid > .grid__item {
+      width: calc(20% - 23px);
+      max-width: calc(20% - 23px);
+    }
+  }
+  .footer__content-top { padding-bottom: 0; }
 {%- endstyle -%}
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
