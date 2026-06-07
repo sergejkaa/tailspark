@@ -61,8 +61,9 @@
             name="contact[{{ 'templates.contact.form.name' | t }}]"
             value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
             placeholder="{{ 'templates.contact.form.name' | t }}"
+            required
           >
-          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
+          <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }} <span aria-hidden="true">*</span></label>
         </div>
         <div class="field field--with-error">
           <input
@@ -75,6 +76,7 @@
             autocapitalize="off"
             value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
             aria-required="true"
+            required
             {% if form.errors contains 'email' %}
               aria-invalid="true"
               aria-describedby="ContactForm-email-error"
@@ -119,11 +121,12 @@
           class="text-area field__input"
           name="contact[Message]"
           placeholder="Message"
+          required
         >
           {{- form.body -}}
         </textarea>
         <label class="form__label field__label" for="ContactForm-body">
-          Message
+          Message <span aria-hidden="true">*</span>
         </label>
       </div>
       <div class="contact__button">
