@@ -18,10 +18,10 @@
     margin: 18px auto 4px;
     text-align: center;
   }
-  .share-button > details { display: inline-block; position: relative; }
+  .share-button > details:not([hidden]) { display: inline-block; position: relative; }
   .share-button summary { list-style: none; }
   .share-button summary::-webkit-details-marker { display: none; }
-  .share-button .share-button__button {
+  .share-button .share-button__button:not(.hidden) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
