@@ -156,7 +156,7 @@
           "type": "share",
           "disabled": true,
           "settings": {
-            "share_label": "Share"
+            "share_label": "Share with a friend"
           }
         }
       },
@@ -394,12 +394,20 @@
         "hib_2": {
           "type": "badge",
           "settings": {
+            "icon_preset": "seal_100",
+            "heading": "60-Day Money Back Guarantee",
+            "description": ""
+          }
+        },
+        "hib_3": {
+          "type": "badge",
+          "settings": {
             "icon_preset": "ts_clean",
             "heading": "Clean Ingredients",
             "description": ""
           }
         },
-        "hib_3": {
+        "hib_4": {
           "type": "badge",
           "settings": {
             "icon_preset": "ts_usa",
@@ -407,27 +415,27 @@
             "description": ""
           }
         },
-        "hib_4": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "factory",
-            "heading": "Made in a cGMP, FDA-Registered Food Facility",
-            "description": ""
-          }
-        },
         "hib_5": {
           "type": "badge",
           "settings": {
-            "icon_preset": "ts_shipping",
-            "heading": "Free Standard Shipping",
+            "icon_preset": "microscope",
+            "heading": "Made in a cGMP facility",
             "description": ""
           }
         },
         "hib_6": {
           "type": "badge",
           "settings": {
-            "icon_preset": "shield",
-            "heading": "60-Day Money Back Guarantee",
+            "icon_preset": "fda_factory",
+            "heading": "Made in an FDA Registered Food Facility",
+            "description": ""
+          }
+        },
+        "hib_7": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_shipping",
+            "heading": "Free Standard Shipping",
             "description": ""
           }
         }
@@ -438,7 +446,8 @@
         "hib_3",
         "hib_4",
         "hib_5",
-        "hib_6"
+        "hib_6",
+        "hib_7"
       ],
       "name": "Home Icons Bar",
       "settings": {

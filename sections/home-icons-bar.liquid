@@ -81,45 +81,15 @@
     white-space: nowrap;
   }
 
-  /* Desktop: switch to static grid */
+  /* Desktop: keep marquee scrolling, just larger sizing */
   @media (min-width: 750px) {
     #shopify-section-{{ section.id }} .hib-section {
       padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
     }
 
-    #shopify-section-{{ section.id }} .hib-marquee-wrapper {
-      overflow: visible;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
-    #shopify-section-{{ section.id }} .hib-marquee-track {
-      display: grid;
-      grid-template-columns: repeat({{ section.blocks.size }}, 1fr);
-      width: auto;
-      animation: none;
-    }
-
-    /* Hide cloned items on desktop */
-    #shopify-section-{{ section.id }} .hib-item.is-dup {
-      display: none;
-    }
-
     #shopify-section-{{ section.id }} .hib-item {
       gap: {{ section.settings.item_gap }}px;
-      padding: 0 24px;
-      border-right: 1px solid {{ section.settings.border_color }};
-      white-space: normal;
-    }
-
-    #shopify-section-{{ section.id }} .hib-item:first-child {
-      padding-left: 0;
-    }
-
-    #shopify-section-{{ section.id }} .hib-item:last-child {
-      border-right: none;
-      padding-right: 0;
+      padding: 0 32px;
     }
 
     #shopify-section-{{ section.id }} .hib-item__icon-wrap {
@@ -129,12 +99,10 @@
 
     #shopify-section-{{ section.id }} .hib-item__heading {
       font-size: {{ section.settings.heading_size }}px;
-      white-space: normal;
     }
 
     #shopify-section-{{ section.id }} .hib-item__desc {
       font-size: {{ section.settings.desc_size }}px;
-      white-space: normal;
     }
   }
 {%- endstyle -%}
@@ -161,6 +129,12 @@
                 <img src="{{ 'ts-home-icon-usa-minimal.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
               {%- elsif icon_preset == 'factory' -%}
                 <img src="{{ 'ts-facility-icon.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
+              {%- elsif icon_preset == 'seal_100' -%}
+                <img src="{{ 'ts-icon-100-seal.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
+              {%- elsif icon_preset == 'microscope' -%}
+                <img src="{{ 'ts-icon-microscope.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
+              {%- elsif icon_preset == 'fda_factory' -%}
+                <img src="{{ 'ts-icon-fda-factory.png' | asset_url }}" loading="lazy" alt="{{ block.settings.heading | escape }}">
               {%- else -%}
                 {%- case icon_preset -%}
                   {%- when 'paw' -%}
@@ -216,53 +190,49 @@
   var track = section.querySelector('[data-hib-track]');
   if (!track) return;
 
-  function isMobile() {
-    return window.innerWidth < 750;
-  }
-
   function setupMarquee() {
     track.querySelectorAll('.hib-item.is-dup').forEach(function (el) { el.remove(); });
 
     var origItems = Array.from(track.querySelectorAll('.hib-item:not(.is-dup)'));
     if (!origItems.length) return;
 
-    origItems.forEach(function (item) {
-      var dup = item.cloneNode(true);
-      dup.classList.add('is-dup');
-      track.appendChild(dup);
-    });
-
     var groupWidth = origItems.reduce(function (sum, el) {
       return sum + el.getBoundingClientRect().width;
     }, 0);
+    if (!groupWidth) return;
+
+    // Clone the group enough times to cover the screen + one group (seamless loop on any width)
+    var containerWidth = section.getBoundingClientRect().width;
+    var needed = containerWidth + groupWidth;
+    var current = groupWidth;
+    var guard = 0;
+    while (current < needed && guard < 20) {
+      origItems.forEach(function (item) {
+        var dup = item.cloneNode(true);
+        dup.classList.add('is-dup');
+        track.appendChild(dup);
+      });
+      current += groupWidth;
+      guard++;
+    }
 
     section.style.setProperty('--hib-distance', groupWidth + 'px');
+    // consistent scroll speed (~70px per second)
+    section.style.setProperty('--hib-duration', Math.max(12, Math.round(groupWidth / 70)) + 's');
   }
 
-  function teardown() {
-    track.querySelectorAll('.hib-item.is-dup').forEach(function (el) { el.remove(); });
-    section.style.removeProperty('--hib-distance');
-  }
+  setupMarquee();
 
-  var prevMobile = isMobile();
-
-  if (prevMobile) setupMarquee();
-
+  var rt;
   var ro = new ResizeObserver(function () {
-    var nowMobile = isMobile();
-    if (nowMobile === prevMobile) {
-      if (nowMobile) setupMarquee();
-      return;
-    }
-    prevMobile = nowMobile;
-    if (nowMobile) {
-      setupMarquee();
-    } else {
-      teardown();
-    }
+    clearTimeout(rt);
+    rt = setTimeout(setupMarquee, 200);
   });
-
   ro.observe(document.body);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(setupMarquee);
+  }
 })();
 </script>
 
@@ -271,7 +241,7 @@
   "name": "Home Icons Bar",
   "tag": "section",
   "class": "section",
-  "max_blocks": 6,
+  "max_blocks": 8,
   "settings": [
     {
       "type": "header",
@@ -490,6 +460,9 @@
             { "value": "medal", "label": "Medal" },
             { "value": "smile", "label": "Smile" },
             { "value": "factory", "label": "Factory (cGMP/FDA facility)" },
+            { "value": "seal_100", "label": "100% Satisfaction seal" },
+            { "value": "microscope", "label": "Microscope (cGMP facility)" },
+            { "value": "fda_factory", "label": "Factory + seal (FDA facility)" },
             { "value": "ts_vet", "label": "Tailspark vet formulated" },
             { "value": "ts_clean", "label": "Tailspark clean ingredients" },
             { "value": "ts_shipping", "label": "Tailspark free shipping" },

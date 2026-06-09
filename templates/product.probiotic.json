@@ -162,7 +162,7 @@
         "share": {
           "type": "share",
           "settings": {
-            "share_label": "Share"
+            "share_label": "Share with a friend"
           }
         }
       },
@@ -363,12 +363,20 @@
         "hib_2": {
           "type": "badge",
           "settings": {
+            "icon_preset": "seal_100",
+            "heading": "60-Day Money Back Guarantee",
+            "description": ""
+          }
+        },
+        "hib_3": {
+          "type": "badge",
+          "settings": {
             "icon_preset": "ts_clean",
             "heading": "Clean Ingredients",
             "description": ""
           }
         },
-        "hib_3": {
+        "hib_4": {
           "type": "badge",
           "settings": {
             "icon_preset": "ts_usa",
@@ -376,27 +384,27 @@
             "description": ""
           }
         },
-        "hib_4": {
-          "type": "badge",
-          "settings": {
-            "icon_preset": "factory",
-            "heading": "Made in a cGMP, FDA-Registered Food Facility",
-            "description": ""
-          }
-        },
         "hib_5": {
           "type": "badge",
           "settings": {
-            "icon_preset": "ts_shipping",
-            "heading": "Free Standard Shipping",
+            "icon_preset": "microscope",
+            "heading": "Made in a cGMP facility",
             "description": ""
           }
         },
         "hib_6": {
           "type": "badge",
           "settings": {
-            "icon_preset": "shield",
-            "heading": "60-Day Money Back Guarantee",
+            "icon_preset": "fda_factory",
+            "heading": "Made in an FDA Registered Food Facility",
+            "description": ""
+          }
+        },
+        "hib_7": {
+          "type": "badge",
+          "settings": {
+            "icon_preset": "ts_shipping",
+            "heading": "Free Standard Shipping",
             "description": ""
           }
         }
@@ -407,7 +415,8 @@
         "hib_3",
         "hib_4",
         "hib_5",
-        "hib_6"
+        "hib_6",
+        "hib_7"
       ],
       "name": "Home Icons Bar",
       "settings": {
@@ -444,50 +453,50 @@
         "faq_pb1": {
           "type": "item",
           "settings": {
-            "heading": "How quickly will the Probiotic help my dog's digestion?",
-            "content": "<p>Many dogs show improvement in digestive comfort within 1-2 weeks of consistent daily use. For dogs recovering from antibiotics or with chronic digestive issues, allow 3-4 weeks for full benefit.</p>"
+            "heading": "How quickly will I notice a difference in my dog's digestion?",
+            "content": "<p>Every dog is different and individual results may vary. We recommend consistent daily use for at least 4 to 6 weeks to allow the ingredients to build up in your dog's system.</p>"
           }
         },
         "faq_pb2": {
           "type": "item",
           "settings": {
-            "heading": "Should I give Probiotics during antibiotic treatment?",
-            "content": "<p>Probiotics are especially beneficial during and after antibiotic use to restore healthy gut flora. Give the probiotic chew at least 2 hours apart from the antibiotic dose for best results.</p>"
+            "heading": "Can I give the Probiotic during or after antibiotic treatment?",
+            "content": "<p>If your dog is currently on antibiotic treatment, we recommend consulting your veterinarian before adding any supplement to their routine.</p>"
           }
         },
         "faq_pb3": {
           "type": "item",
           "settings": {
             "heading": "Can I give Probiotic with other Tailspark supplements?",
-            "content": "<p>Yes! Our Probiotic pairs excellently with the Multivitamin for comprehensive daily wellness. All Tailspark supplements are formulated to be safe in combination.</p>"
+            "content": "<p>Yes — our formulas are designed to complement each other. The Probiotic pairs well with the Daily Multivitamin as part of a complete daily wellness routine.</p>"
           }
         },
         "faq_pb4": {
           "type": "item",
           "settings": {
             "heading": "Is this suitable for dogs with sensitive stomachs?",
-            "content": "<p>Absolutely. Our Probiotic is specifically designed to be gentle and beneficial for dogs with sensitive stomachs. It's an ideal choice for dogs that experience regular digestive discomfort.</p>"
+            "content": "<p>Our Probiotic formula is designed for gentle daily use and is suitable for dogs of all ages. If your dog has a specific digestive condition, we recommend consulting your veterinarian before use.</p>"
           }
         },
         "faq_pb5": {
           "type": "item",
           "settings": {
             "heading": "Do I need to refrigerate the Probiotic chews?",
-            "content": "<p>No refrigeration needed. Our Probiotic uses Bacillus coagulans, a spore-forming strain that is naturally shelf-stable. Simply store in a cool, dry place out of direct sunlight. The sealed bag keeps freshness for the full shelf life of the product.</p>"
+            "content": "<p>No refrigeration needed. Our Probiotic uses Bacillus coagulans, a naturally shelf-stable spore-forming strain. Simply store in a cool, dry place out of direct sunlight.</p>"
           }
         },
         "faq_pb6": {
           "type": "item",
           "settings": {
-            "heading": "How fast does delivery arrive?",
-            "content": "<p>We ship free on every order. Orders are processed within 1 business day and delivered within 3-5 business days. You will get a tracking email as soon as your package is on its way. If anything goes wrong with delivery, contact us at hello@tailspark.com and we will resolve it.</p>"
+            "heading": "How long does shipping take?",
+            "content": "<p>Standard shipping is free on every order with no minimum. Orders are processed within 1 business day and typically arrive within 3 to 5 business days. You will receive a tracking email once your order ships.</p>"
           }
         },
         "faq_pb7": {
           "type": "item",
           "settings": {
             "heading": "Can I subscribe and save on Probiotic?",
-            "content": "<p>Absolutely. Subscribe &amp; Save gets you 15% off every order and free shipping on each delivery. Gut health works best with consistent daily use, so subscribing means your dog never misses a day. Skip, pause, or cancel anytime - no commitment required.</p>"
+            "content": "<p>Yes — our Subscribe &amp; Save program gives you 15% off every delivery plus free standard shipping. You can skip, pause, or cancel anytime from your account with no fees or penalties.</p>"
           }
         }
       },

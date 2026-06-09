@@ -12,6 +12,45 @@
 {% endcomment %}
 <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
 
+{%- style -%}
+  .share-button {
+    display: block;
+    margin: 18px auto 4px;
+    text-align: center;
+  }
+  .share-button > details { display: inline-block; position: relative; }
+  .share-button summary { list-style: none; }
+  .share-button summary::-webkit-details-marker { display: none; }
+  .share-button .share-button__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+    min-height: 0;
+    padding: 11px 28px;
+    border: 1.5px solid #FF6700;
+    border-radius: 999px;
+    background: transparent;
+    color: #FF6700;
+    font-family: "Poppins TailSpark", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  }
+  .share-button .share-button__button:hover {
+    background: #FF6700;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(255, 103, 0, 0.22);
+  }
+  .share-button .share-button__button .svg-wrapper { display: inline-flex; }
+  .share-button .share-button__button .svg-wrapper svg { width: 16px; height: 16px; }
+{%- endstyle -%}
+
 <share-button id="Share-{{ section.id }}" class="share-button quick-add-hidden" {{ block.shopify_attributes }}>
   <button class="share-button__button hidden">
     <span class="svg-wrapper">{{ 'icon-share.svg' | inline_asset_content }}</span>
