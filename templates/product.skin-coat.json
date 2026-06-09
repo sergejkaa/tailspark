@@ -453,8 +453,8 @@
       "settings": {
         "item_direction": "row",
         "item_align": "left",
-        "icon_size": 36,
-        "icon_size_mobile": 36,
+        "icon_size": 45,
+        "icon_size_mobile": 45,
         "item_gap": 8,
         "item_gap_mobile": 4,
         "heading_size": 15,
