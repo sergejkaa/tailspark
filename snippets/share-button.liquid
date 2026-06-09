@@ -1,92 +1,136 @@
 {% comment %}
-  Renders share button.
+  Tailspark custom share row: copy link + social share targets.
   Accepts:
-  - block: {Object} passes in the block information.
-  - share_link: {String} url to be added to the input the user will get/copy.
+  - block: {Object} block info (uses block.settings.share_label).
+  - share_link: {String} URL to share.
+  - share_title: {String} optional title for share text.
 
   Usage:
-  {% render 'share-button',
-    block: block,
-    share_link: share_url
-  %}
+  {% render 'share-button', block: block, share_link: share_url, share_title: product.title %}
 {% endcomment %}
-<script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+  assign s_url = share_link
+  assign s_title = share_title | default: product.title | default: shop.name
+-%}
 
 {%- style -%}
-  .share-button {
-    display: block;
-    margin: 18px auto 4px;
+  .ts-share {
     text-align: center;
+    margin: 22px auto 4px;
   }
-  .share-button > details:not([hidden]) { display: inline-block; position: relative; }
-  .share-button summary { list-style: none; }
-  .share-button summary::-webkit-details-marker { display: none; }
-  .share-button .share-button__button:not(.hidden) {
+  .ts-share__label {
+    font-family: "Poppins TailSpark", Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333333;
+    margin: 0 0 12px;
+    letter-spacing: 0.01em;
+  }
+  .ts-share__row {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ts-share__btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid #E7DFD0;
+    background: #ffffff;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    width: auto;
-    min-height: 0;
-    padding: 11px 28px;
-    border: 1.5px solid #FF6700;
-    border-radius: 999px;
-    background: transparent;
-    color: #FF6700;
-    font-family: "Poppins TailSpark", Arial, sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    letter-spacing: 0.01em;
-    line-height: 1;
+    color: #333333;
     cursor: pointer;
-    transition: background 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+    text-decoration: none;
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+    transition: transform .16s ease, background .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease;
   }
-  .share-button .share-button__button:hover {
+  .ts-share__btn:hover,
+  .ts-share__btn:focus-visible {
     background: #FF6700;
+    border-color: #FF6700;
     color: #ffffff;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(255, 103, 0, 0.22);
+    outline: none;
   }
-  .share-button .share-button__button .svg-wrapper { display: inline-flex; }
-  .share-button .share-button__button .svg-wrapper svg { width: 16px; height: 16px; }
+  .ts-share__btn svg {
+    width: 19px;
+    height: 19px;
+    display: block;
+  }
+  .ts-share__toast {
+    display: block;
+    min-height: 16px;
+    margin-top: 9px;
+    font-size: 1.25rem;
+    color: #5BA870;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+  .ts-share__toast.is-show {
+    opacity: 1;
+  }
 {%- endstyle -%}
 
-<share-button id="Share-{{ section.id }}" class="share-button quick-add-hidden" {{ block.shopify_attributes }}>
-  <button class="share-button__button hidden">
-    <span class="svg-wrapper">{{ 'icon-share.svg' | inline_asset_content }}</span>
-    {{ block.settings.share_label | escape }}
-  </button>
-  <details id="Details-{{ block.id }}-{{ section.id }}">
-    <summary class="share-button__button">
-      <span class="svg-wrapper">{{ 'icon-share.svg' | inline_asset_content }}</span>
-      {{ block.settings.share_label | escape }}
-    </summary>
-    <div class="share-button__fallback motion-reduce">
-      <div class="field">
-        <span id="ShareMessage-{{ section.id }}" class="share-button__message hidden" role="status"> </span>
-        <input
-          type="text"
-          class="field__input"
-          id="ShareUrl-{{ section.id }}"
-          value="{{ share_link }}"
-          placeholder="{{ 'general.share.share_url' | t }}"
-          onclick="this.select();"
-          readonly
-        >
-        <label class="field__label" for="ShareUrl-{{ section.id }}">{{ 'general.share.share_url' | t }}</label>
-      </div>
-      <button class="share-button__close hidden">
-        <span class="svg-wrapper">
-          {{- 'icon-close.svg' | inline_asset_content -}}
-        </span>
-        <span class="visually-hidden">{{ 'general.share.close' | t }}</span>
-      </button>
-      <button class="share-button__copy">
-        <span class="svg-wrapper">
-          {{- 'icon-copy.svg' | inline_asset_content -}}
-        </span>
-        <span class="visually-hidden">{{ 'general.share.copy_to_clipboard' | t }}</span>
-      </button>
-    </div>
-  </details>
-</share-button>
+<div class="ts-share" data-ts-share {{ block.shopify_attributes }}>
+  <p class="ts-share__label">{{ block.settings.share_label | default: 'Share with a friend' | escape }}</p>
+  <div class="ts-share__row">
+    <button type="button" class="ts-share__btn" data-ts-copy data-url="{{ s_url }}" aria-label="Copy link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg>
+    </button>
+    <a class="ts-share__btn" href="https://www.facebook.com/sharer/sharer.php?u={{ s_url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg>
+    </a>
+    <a class="ts-share__btn" href="https://twitter.com/intent/tweet?url={{ s_url | url_encode }}&text={{ s_title | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a class="ts-share__btn" href="https://wa.me/?text={{ s_title | url_encode }}%20{{ s_url | url_encode }}" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.555-5.338 11.89-11.893 11.89a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.788-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+    <a class="ts-share__btn" href="mailto:?subject={{ s_title | url_encode }}&body={{ s_url | url_encode }}" aria-label="Share by email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    </a>
+  </div>
+  <span class="ts-share__toast" data-ts-toast>Link copied!</span>
+</div>
+
+<script>
+  (function () {
+    document.querySelectorAll('[data-ts-copy]').forEach(function (btn) {
+      if (btn.dataset.tsBound) return;
+      btn.dataset.tsBound = '1';
+      btn.addEventListener('click', function () {
+        var url = btn.getAttribute('data-url');
+        function done() {
+          var wrap = btn.closest('[data-ts-share]');
+          var toast = wrap && wrap.querySelector('[data-ts-toast]');
+          if (toast) {
+            toast.classList.add('is-show');
+            setTimeout(function () { toast.classList.remove('is-show'); }, 1800);
+          }
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done).catch(done);
+        } else {
+          var t = document.createElement('textarea');
+          t.value = url;
+          t.setAttribute('readonly', '');
+          t.style.position = 'absolute';
+          t.style.left = '-9999px';
+          document.body.appendChild(t);
+          t.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(t);
+          done();
+        }
+      });
+    });
+  })();
+</script>
